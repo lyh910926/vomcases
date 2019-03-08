@@ -1,0 +1,49 @@
+#!/bin/sh
+#
+# Your job name
+#$ -N VOM
+#
+# Use current working directory
+#$ -cwd
+#
+# Join stdout and stderr
+#$ -j n
+#
+#$ -e /home/int/eva/nijzink/logfiles/
+#$ -o /home/int/eva/nijzink/logfiles/
+# pe (Parallel environment) request. Set your number of processors here.
+#$ -pe openmpi 4
+# Run job through bash shell
+#$ -S /bin/bash
+#
+# The following output will show in the output file. Used for debugging.
+echo "Got $NSLOTS processors."
+#
+# load modules
+# for tracking the inputs and outputs
+. /etc/profile.d/modules.sh
+. /home/int/eva/nijzink/.bashrc
+#
+# to avoid an error message in renku
+export LC_ALL='en_US.UTF-8'
+export LANG='en_US.UTF-8'
+module load null shared use.own conda
+#
+#files to be tracked with renku
+exe_src=$2
+dailyweather_input=$1
+
+
+date
+
+source activate renku
+
+#inputs:
+#workdir
+#dailyweather.prn
+#vom_namelist
+#VOM-code
+
+renku run bash src_sh/run_vom.sh $@
+
+date
