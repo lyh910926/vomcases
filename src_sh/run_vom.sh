@@ -11,7 +11,7 @@ date
 #compile code
 make --directory src/VOM/VOM_Fortran
 
-currdir=pwd
+currdir=$(pwd)
 
 #go to workdirectory
 cd $workdir
