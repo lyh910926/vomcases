@@ -45,6 +45,11 @@ source activate renku
 #dailyweather.prn
 #workdir
 #VOM-code
+echo $1
+echo $2
+echo $3
+echo $4
+echo $5
 
 renku run python3 src_py/sce_uncertainty.py -i $1 -o $2 -p $3 -op 1 1 1 1 1 1 0 1 -d $4 -w $5 -c src/VOM/VOM_Fortran/VOM-code/* 
 
