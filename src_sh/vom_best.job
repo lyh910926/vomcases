@@ -1,0 +1,59 @@
+#!/bin/sh
+#
+# Your job name
+#$ -N VOMbest
+#
+# Use current working directory
+#$ -cwd
+#
+# Join stdout and stderr
+#$ -j n
+#
+#$ -e /home/int/eva/nijzink/logfiles/
+#$ -o /home/int/eva/nijzink/logfiles/
+# pe (Parallel environment) request. Set your number of processors here.
+#$ -pe openmpi 1
+# Run job through bash shell
+#$ -S /bin/bash
+#
+# The following output will show in the output file. Used for debugging.
+echo "Got $NSLOTS processors."
+#
+# load modules
+# for tracking the inputs and outputs
+. /etc/profile.d/modules.sh
+. /home/int/eva/nijzink/.bashrc
+#
+# to avoid an error message in renku
+export LC_ALL='en_US.UTF-8'
+export LANG='en_US.UTF-8'
+module load null shared use.own conda
+#
+#files to be tracked with renku
+exe_src=$2
+dailyweather_input=$1
+
+
+date
+
+source activate renku
+
+#inputs:
+#sce_out.txt
+#outputfolder
+#mask parameters
+#dailyweather.prn
+#workdir
+#VOM-code
+echo $1
+echo $2
+echo $3
+echo $4
+echo $5
+
+renku run python3 src_py/sce_uncertainty.py -i $1 -o $2 -p $3 -op 1 1 1 1 1 1 0 1 -d $4 -w $5 -c src/VOM/VOM_Fortran/VOM-code/* 
+
+#python3 src_py/sce_uncertainty.py -i output/result_nofree_cpcff2/sce_out.txt -o output/test/ -p 0.1 -op 1 1 1 1 1 1 0 1 -d data/VOM_input/HowardSprings/dailyweather.prn -w work/HowardSprings/best_cgs20/tmp2/
+
+
+date
