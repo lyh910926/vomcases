@@ -88,6 +88,7 @@ def main():
 
     #copy exe to workdir
     os.system( "cp src/VOM/VOM_Fortran/model.x " + args.workfolder + "/model.x" )  
+    os.system( "rm src/VOM/VOM_Fortran/model.x " )  
 
     currdir = os.getcwd()
     os.chdir( args.workfolder)
