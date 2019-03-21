@@ -41,7 +41,6 @@ def main():
     with open(args.evap_obs) as file1:
         for line in file1:
             tmp = line.split()
-            print(tmp)
             evap_obs = np.append(evap_obs, float(tmp[2]) )
             dates_obs = np.append(dates_obs, tmp[0] )
     #make pandas series
