@@ -44,8 +44,8 @@ def main():
     #t_emp = pd.date_range(t_emp[0], t_emp[-1], freq='D')    
 
     #load max and min of model runs
-    max_mod = np.loadtxt(args.maxmod)
-    min_mod = np.loadtxt(args.minmod)
+    max_mod = np.loadtxt(args.maxmod, skiprows=1)
+    min_mod = np.loadtxt(args.minmod, skiprows=1)
 
     #load best results
     best_data = np.genfromtxt(args.best, skip_header=1)
@@ -68,7 +68,9 @@ def main():
 
     if( args.var == "evaporation"):
         best = best_data[:,10] + best_data[:,26] + best_data[:,27]
-        ax0.fill_between(tmod[0:len(max_mod)], max_mod*1000,  min_mod*1000, 
+        max_evap = max_mod[:,10] + max_mod[:,26] + max_mod[:,27]
+        min_evap = min_mod[:,10] + min_mod[:,26] + min_mod[:,27]
+        ax0.fill_between(tmod[0:len(max_evap)], max_evap*1000,  min_evap*1000, 
                           color='red',facecolor='red', zorder=0, alpha = 0.2 )
         ax0.plot(tflux, obs, color='blue', label='Obs.', zorder=1)
         ax0.plot(tmod[0:len(best)], best*1000, color='red', label='VOM', zorder=1)           
@@ -76,7 +78,9 @@ def main():
 
     if( args.var == "assimilation"):
         best = best_data[:,19] + best_data[:,20]
-        ax0.fill_between(tmod[0:len(max_mod)], max_mod,  min_mod, 
+        max_ass = max_mod[:,19] + max_mod[:,20]
+        min_ass = min_mod[:,19] + min_mod[:,20]
+        ax0.fill_between(tmod[0:len(max_ass)], max_ass,  min_ass, 
                           color='red',facecolor='red', zorder=0, alpha = 0.2 )
         ax0.plot(tflux, -obs, color='blue', label='Obs.', zorder=1)
         ax0.plot(tmod[0:len(best)], best, color='red', label='VOM', zorder=1)           
