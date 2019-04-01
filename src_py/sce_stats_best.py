@@ -17,8 +17,11 @@ def main():
     parser.add_argument("-o", "--outputfolder", help="outputfolder")    
     parser.add_argument("-eo", "--evap_obs", help="inputfile with observations evaporation")
     parser.add_argument("-ao", "--ass_obs", help="inputfile with observations assimilation")
-    parser.add_argument("-s", "--start", help="months to start", type=int)     
-    parser.add_argument("-e", "--end", help="months to end", type=int)  
+    parser.add_argument("-s", "--startdry", help="months to start", type=int)     
+    parser.add_argument("-e", "--enddry", help="months to end", type=int)  
+    parser.add_argument("-sw", "--startwet", help="months to start", type=int)     
+    parser.add_argument("-ew", "--endwet", help="months to end", type=int)  
+
     args = parser.parse_args()
 
        
@@ -78,11 +81,11 @@ def main():
     eMeanAnnRE  = calcREmean(emod_pd[dates_overlap], eobs_pd[dates_overlap])
     assMeanAnnRE  = calcREmean(assmod_pd[dates_overlap], assobs_pd[dates_overlap])
 
-    eMeanSeas1RE  = calcREmean_seasonal(emod_pd[dates_overlap], eobs_pd[dates_overlap], args.start, args.end)
-    assMeanSeas1RE  = calcREmean_seasonal(assmod_pd[dates_overlap], assobs_pd[dates_overlap], args.start, args.end)
+    eMeanSeas1RE  = calcREmean_seasonal(emod_pd[dates_overlap], eobs_pd[dates_overlap], args.startdry, args.enddry)
+    assMeanSeas1RE  = calcREmean_seasonal(assmod_pd[dates_overlap], assobs_pd[dates_overlap], args.startdry, args.enddry)
 
-    eMeanSeas2RE  = calcREmean_seasonal(emod_pd[dates_overlap], eobs_pd[dates_overlap], args.end, args.start)
-    assMeanSeas2RE  = calcREmean_seasonal(assmod_pd[dates_overlap], assobs_pd[dates_overlap], args.end, args.start)
+    eMeanSeas2RE  = calcREmean_seasonal(emod_pd[dates_overlap], eobs_pd[dates_overlap], args.startwet, args.endwet)
+    assMeanSeas2RE  = calcREmean_seasonal(assmod_pd[dates_overlap], assobs_pd[dates_overlap], args.endwet, args.endwet)
 
 
     #calc residuals
