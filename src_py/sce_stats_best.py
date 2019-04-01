@@ -85,7 +85,7 @@ def main():
     assMeanSeas1RE  = calcREmean_seasonal(assmod_pd[dates_overlap], assobs_pd[dates_overlap], args.startdry, args.enddry)
 
     eMeanSeas2RE  = calcREmean_seasonal(emod_pd[dates_overlap], eobs_pd[dates_overlap], args.startwet, args.endwet)
-    assMeanSeas2RE  = calcREmean_seasonal(assmod_pd[dates_overlap], assobs_pd[dates_overlap], args.endwet, args.endwet)
+    assMeanSeas2RE  = calcREmean_seasonal(assmod_pd[dates_overlap], assobs_pd[dates_overlap], args.startwet, args.endwet)
 
 
     #calc residuals
