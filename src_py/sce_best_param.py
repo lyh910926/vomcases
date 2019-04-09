@@ -52,7 +52,7 @@ def main():
     param_tmp = param_tmp.reshape(1,len(param_tmp))
 
     #write pars.txt
-    np.savetxt(ars.outputfile, param_tmp , delimiter=" " )
+    np.savetxt(args.outputfile, param_tmp , delimiter=" " )
 
 
 
