@@ -135,7 +135,7 @@ def calcREmean(sim, obs ):
         mu_o = np.mean( obs_annmean )  
 
         #print(np.min(sim))
-        RE = 1- abs(mu_s-mu_o)/mu_o
+        RE = (mu_s-mu_o)/mu_o
 
         return(RE)
 
@@ -153,7 +153,7 @@ def calcREmean_seasonal(sim, obs, start, end ):
         mu_s = np.mean( sim_sel )
         mu_o = np.mean( obs_sel )  
 
-        RE = 1- abs(mu_s-mu_o)/mu_o
+        RE = (mu_s-mu_o)/mu_o
         return(RE)
 
 main()
