@@ -9,7 +9,7 @@ workdir=$1
 date
 
 #compile code
-make --directory src/VOM/VOM_Fortran
+make FC=gfortran --directory src/VOM/VOM_Fortran
 
 currdir=$(pwd)
 
