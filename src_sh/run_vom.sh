@@ -9,7 +9,7 @@ workdir=$1
 date
 
 #compile code
-make FC=gfortran --directory src/VOM/VOM_Fortran
+make FC=gfortran --directory src_fork/VOM/VOM_Fortran
 
 currdir=$(pwd)
 
@@ -17,12 +17,12 @@ currdir=$(pwd)
 cd $workdir
 
 #run the model 
-$currdir/src/VOM/VOM_Fortran/model.x
+$currdir/src_fork/VOM/VOM_Fortran/model.x
 
 #go back to current directory
 cd $currdir
 
 #clean again
-make clean --directory src/VOM/VOM_Fortran
+make clean --directory src_fork/VOM/VOM_Fortran
 
 date
