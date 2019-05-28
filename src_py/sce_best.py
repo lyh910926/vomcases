@@ -18,6 +18,7 @@ def main():
     parser.add_argument("-w", "--workfolder", help="workfolder")    
     parser.add_argument("-d", "--dailyweather", help="dailyweather.prn")    
     parser.add_argument("-op", "--optpar", help="number of parameters", type=int, nargs='+')
+    parser.add_argument("-cd", "--codedir", help="directory of VOM", nargs='+')                          
     parser.add_argument("-c", "--code", help="code of VOM", nargs='+')                          
     args = parser.parse_args()
 
@@ -49,11 +50,11 @@ def main():
     os.mkdir(args.workfolder + "/out")
 
     #compile code
-    os.system( "make --directory src/VOM/VOM_Fortran" )  
+    os.system( "make --directory " + args.codedir )  
 
     #copy exe to workdir
-    os.system( "cp src/VOM/VOM_Fortran/model.x " + args.workfolder + "/model.x" )  
-    os.system( "rm src/VOM/VOM_Fortran/model.x " )  
+    os.system( "cp " + args.codedir + "/model.x " + args.workfolder + "/model.x" )  
+    os.system( "rm " + args.codedir + "/model.x " )  
 
     currdir = os.getcwd()
     os.chdir( args.workfolder)
