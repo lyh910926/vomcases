@@ -18,7 +18,7 @@ def main():
     parser.add_argument("-w", "--workfolder", help="workfolder")    
     parser.add_argument("-d", "--dailyweather", help="dailyweather.prn")    
     parser.add_argument("-op", "--optpar", help="number of parameters", type=int, nargs='+')
-    parser.add_argument("-cd", "--codedir", help="directory of VOM", nargs='+')                          
+    parser.add_argument("-cd", "--codedir", help="directory of VOM")                          
     parser.add_argument("-c", "--code", help="code of VOM", nargs='+')                          
     args = parser.parse_args()
 
