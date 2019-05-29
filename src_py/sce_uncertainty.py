@@ -14,8 +14,9 @@ def main():
     parser = argparse.ArgumentParser()
 
     parser.add_argument("-i", "--inputfile", help="SCE_out from VOM")
-    parser.add_argument("-o", "--outputfolder", help="outputfolder")    
-    parser.add_argument("-w", "--workfolder", help="outputfolder")    
+    parser.add_argument("-o1", "--outputfilemax", help="outputfile maximum values")    
+    parser.add_argument("-o2", "--outputfilemin", help="outputfile minimum values")    
+    parser.add_argument("-w", "--workfolder", help="workfolder")    
     parser.add_argument("-d", "--dailyweather", help="dailyweather.prn")    
     parser.add_argument("-p", "--percentage", help="percentage to keep", type=np.float) 
     parser.add_argument("-op", "--optpar", help="number of parameters", type=int, nargs='+')
