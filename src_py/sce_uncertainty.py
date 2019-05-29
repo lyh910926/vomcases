@@ -61,6 +61,7 @@ def main():
 
     #copy exe to workdir
     os.system( "cp " + args.codedir + "/model.x " + args.workfolder + "/model.x" )  
+    os.system( "rm " + args.codedir + "/model.x ")  
 
     currdir = os.getcwd()
     os.chdir( args.workfolder)
