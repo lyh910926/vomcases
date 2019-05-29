@@ -139,8 +139,8 @@ def main():
     print( tmp.columns.get_values()[0:29] )
 
     #write resultsdaily_best, resultsdaily_mean, resultsdaily_max, resultsdaily_min
-    np.savetxt( args.outputfolder + "/resultsdaily_max.txt", varmax, comments='', delimiter=" ", header = ' '.join(tmp.columns.get_values()) )
-    np.savetxt( args.outputfolder + "/resultsdaily_min.txt", varmin, comments='', delimiter=" ", header = ' '.join(tmp.columns.get_values()) )
+    np.savetxt( args.outputfilemax, varmax, comments='', delimiter=" ", header = ' '.join(tmp.columns.get_values()) )
+    np.savetxt( args.outputfilemin, varmin, comments='', delimiter=" ", header = ' '.join(tmp.columns.get_values()) )
 
     #clean up
     os.system( "rm -r " + args.workfolder + "/out")
