@@ -1,28 +1,20 @@
 #!/bin/sh
 #compiles and runs the model
 
-exe_src=$4
-nml_input=$3
-dailyweather_input=$2
-workdir=$1
+exe_dir=$1
+inputdir=$2
+outputdir=$3
+nml_input=$4
 
 date
 
 #compile code
-make --directory src/VOM/VOM_Fortran
-
-currdir=$(pwd)
-
-#go to workdirectory
-cd $workdir
+make --directory $exe_dir
 
 #run the model 
-$currdir/src/VOM/VOM_Fortran/model.x
-
-#go back to current directory
-cd $currdir
+$exe_dir/model.x -i $inputdir -o $outputdir -n $nml_input
 
 #clean again
-make clean --directory src/VOM/VOM_Fortran
+make clean --directory $exe_dir
 
 date
