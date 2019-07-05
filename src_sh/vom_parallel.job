@@ -31,8 +31,10 @@ export LANG='en_US.UTF-8'
 module load null shared use.own conda
 #
 #files to be tracked with renku
-exe_src=$2
-dailyweather_input=$1
+#exe_dir=$3
+#inputdir=$4
+#outputdir=$5
+#nml_input=$6
 
 
 date
@@ -45,6 +47,6 @@ source activate renku
 #vom_namelist
 #VOM-code
 
-renku run bash src_sh/run_vom.sh $@
+renku run --isolation bash src_sh/run_vom.sh ${@:3}
 
 date
