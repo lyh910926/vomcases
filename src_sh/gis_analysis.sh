@@ -2,7 +2,7 @@
 
 
 input=$1
-outputput=$2
+output=$2
 coor1=$3 #coordinate for basin outlet (east)
 coor2=$4 #coordinate for basin outlet (north)
 
