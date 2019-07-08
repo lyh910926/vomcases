@@ -2,9 +2,11 @@
 
 
 input=$1
-output=$2
-coor1=$3 #coordinate for basin outlet (east)
-coor2=$4 #coordinate for basin outlet (north)
+coor1=$2 #coordinate for basin outlet (east)
+coor2=$3 #coordinate for basin outlet (north)
+output_dem=$4
+output_slopes=$5
+output_area=$6
 
 #tmp-dir
 #pourpoint litchfield: 130.795565681,-13.179210211
@@ -26,6 +28,19 @@ grass74 -c tmp/loc_tmp/PERMANENT/ -e --exec r.water.outlet input=fdir output=bas
 grass74 -c tmp/loc_tmp/PERMANENT/ -e --exec r.mask raster=basin maskcats=1
 
 #calculate statistics
-grass74 -c tmp/loc_tmp/PERMANENT/ -e --exec r.univar map=dem output=$output
+grass74 -c tmp/loc_tmp/PERMANENT/ -e --exec r.univar map=dem output=$output_dem
 
+#determine slopes
+grass74 -c tmp/loc_tmp/PERMANENT/ -e --exec r.slope.aspect map=dem slope=slopes
+
+#calculate statistics of slopes
+grass74 -c tmp/loc_tmp/PERMANENT/ -e --exec r.univar map=slopes output=$output_slopes
+
+#convert raster to vector for area
+grass74 -c tmp/loc_tmp/PERMANENT/ -e --exec r.to.vect input=basin@PERMANENT output=basin_vec type=area            
+
+#area in meters**2
+grass74 -c tmp/loc_tmp/PERMANENT/ -e --exec v.to.db -p map=basin_vec@PERMANENT option=area columns=value >  $output_area                
+
+#remove temporary directory
 rm -r tmp/
