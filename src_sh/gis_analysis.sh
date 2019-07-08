@@ -28,10 +28,10 @@ grass74 -c tmp/loc_tmp/PERMANENT/ -e --exec r.water.outlet input=fdir output=bas
 grass74 -c tmp/loc_tmp/PERMANENT/ -e --exec r.mask raster=basin maskcats=1
 
 #calculate statistics
-grass74 -c tmp/loc_tmp/PERMANENT/ -e --exec r.univar input=dem output=$output_dem
+grass74 -c tmp/loc_tmp/PERMANENT/ -e --exec r.univar map=dem output=$output_dem
 
 #determine slopes
-grass74 -c tmp/loc_tmp/PERMANENT/ -e --exec r.slope.aspect map=dem slope=slopes
+grass74 -c tmp/loc_tmp/PERMANENT/ -e --exec r.slope.aspect elevation=dem slope=slopes
 
 #calculate statistics of slopes
 grass74 -c tmp/loc_tmp/PERMANENT/ -e --exec r.univar map=slopes output=$output_slopes
