@@ -39,19 +39,23 @@ grass74 -c tmp/loc_tmp/PERMANENT/ -e --exec r.water.outlet input=fdir output=bas
 grass74 -c tmp/loc_tmp/PERMANENT/ -e --exec r.mask raster=basin maskcats=1
 
 #calculate statistics
-grass74 -c tmp/loc_tmp/PERMANENT/ -e --exec r.univar map=dem output=- > $output_file
-
+echo "Elevation statistics:" > $output_file
+grass74 -c tmp/loc_tmp/PERMANENT/ -e --exec r.univar map=dem output=- >> $output_file
+echo "============================" >> $output_file
 #determine slopes
 grass74 -c tmp/loc_tmp/PERMANENT/ -e --exec r.slope.aspect elevation=dem slope=slopes
 
 #calculate statistics of slopes
+echo "Statistics of slopes:" >> $output_file
 grass74 -c tmp/loc_tmp/PERMANENT/ -e --exec r.univar map=slopes output=- >> $output_file
+echo "============================" >> $output_file
 
 #convert raster to vector for area
 grass74 -c tmp/loc_tmp/PERMANENT/ -e --exec r.to.vect input=basin@PERMANENT output=basin_vec type=area            
 
 #area in meters**2
+echo "Area in m2:" >> $output_file
 grass74 -c tmp/loc_tmp/PERMANENT/ -e --exec v.to.db -p map=basin_vec@PERMANENT option=area columns=value >> $output_file                
-
+echo "============================" >> $output_file
 #remove temporary directory
 rm -r tmp/
