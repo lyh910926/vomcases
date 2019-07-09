@@ -62,11 +62,11 @@ def main():
     parser.add_argument("--o_mdstore", default="1.0d2", help="wood water storage parameter of trees (can be in shufflepar)")
     parser.add_argument("--o_rgdepth", default="0.1d1", help="root depth grasses (can be in shufflepar)")
 
-    parser.add_argument("--i_lat", default="-13.077d0", help="geogr. latitude in degrees ")
-    parser.add_argument("--i_cz", default="94.2", help="average soil elevation in m ")
-    parser.add_argument("--i_cgs", default="2.0d0", help="Capital Gamma S (length scale for seepage outflow REG) (m) ")
-    parser.add_argument("--i_zr", default="64.2", help="average channel bed elevation in m")
-    parser.add_argument("--i_go", default="0.0200d0", help="slope close to channel in radians")
+    parser.add_argument("--i_lat", help="geogr. latitude in degrees ")
+    parser.add_argument("--i_cz", help="average soil elevation in m ")
+    parser.add_argument("--i_cgs", help="Capital Gamma S (length scale for seepage outflow REG) (m) ")
+    parser.add_argument("--i_zr", help="average channel bed elevation in m")
+    parser.add_argument("--i_go", help="slope close to channel in radians")
     parser.add_argument("--i_ksat", default="1.9d-6", help="Saturated hydraulic conductivity in [m/s]")
     parser.add_argument("--i_thetar", default="0.065d0", help="residual soil moisture")
     parser.add_argument("--i_thetas", default="0.41d0", help="saturated soil moisture")
@@ -175,13 +175,13 @@ def main():
             mins = "minimum" in line
             means = "mean" in line
 
-            if( (maxs == True) & (reading_elev == True) ): 
+            if( (maxs == True) & (reading_elev == True) & (args.i_cz == None) ): 
                 args.i_cz = str(float(line.split(":")[1]))
 
-            if( (mins == True) & (reading_elev == True) ): 
+            if( (mins == True) & (reading_elev == True) & (args.i_zr == None) ): 
                 args.i_zr = str(float(line.split(":")[1]))
 
-            if( (means == True) & (reading_slopes == True) ): 
+            if( (means == True) & (reading_slopes == True) & (args.i_go == None) ): 
                 args.i_go = str(float(line.split(":")[1]) * np.pi/180)
 
             if(reading_area == True ): 
@@ -190,7 +190,7 @@ def main():
                     area_tmp = area_tmp + float(line.split("|")[1])
         file_stats.close()
 
-        if(area_tmp > 0):
+        if(area_tmp > 0 & (args.i_cgs == None) ):
             args.i_cgs = str(np.sqrt(area_tmp/np.pi))
 
     #correct i_cz and i_zr, make sure both can be divided by i_delz
