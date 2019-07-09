@@ -190,7 +190,7 @@ def main():
                     area_tmp = area_tmp + float(line.split("|")[1])
         file_stats.close()
 
-        if( (area_tmp) > 0 & (args.i_cgs == None) ):
+        if( (area_tmp > 0) & (args.i_cgs == None) ):
             args.i_cgs = str(np.sqrt(area_tmp/np.pi))
 
     #correct i_cz and i_zr, make sure both can be divided by i_delz
