@@ -5,6 +5,7 @@ import argparse
 from netCDF4 import Dataset
 import pandas as pd
 import csv
+import re
 
 #file to prepare meterological data from SILO
 #and CO2 from Mauna Loa for applying it in
@@ -19,6 +20,8 @@ def main():
     parser = argparse.ArgumentParser()
 
     parser.add_argument("-o", "--outputfile", help="outputfile")
+    parser.add_argument("-is", "--input_stats", help="file with statistics on elevation")
+
     parser.add_argument("--i_alpha", default="0.3d0", help="initial slope of j(par) curve")
     parser.add_argument("--i_cpccf", default="0.2d-6", help="water transport cost factor (cpcc=pc*rootdepth*cpccf) in mol/m/m2/s")
     parser.add_argument("--i_tcf", default="2.2d-7", help="turnover cost factor for foliage (tc=tcf*LAI) in mol/m2/s")
@@ -49,27 +52,27 @@ def main():
     parser.add_argument("--i_read_pc", default="0", help="flag to read vegetation coverage values from file")
     parser.add_argument("--i_lai_function", default="1", help="switch for 1) linear or 2) exponential function of LAI for foliage cost")
     parser.add_argument("--i_inputpath", default="'input/'", help="path to folder with inputfiles ")
-    parser.add_argument("--i_outputpath", default="''output/'", help="path to folder with outputfiles ")
+    parser.add_argument("--i_outputpath", default="'output/'", help="path to folder with outputfiles ")
     parser.add_argument("--o_lambdagf", default="0.779827d3", help="factor for calculating lambdag_d")
     parser.add_argument("--o_wsgexp", default="-0.132889d1", help="exponent for calculating lambdag")
     parser.add_argument("--o_lambdatf", default="0.160181d4", help="factor for calculating lambdat_d")
-    parser.add_argument("--o_wstexp", default="0.564496d0", help="exponent for calculating lambdat_d")
+    parser.add_argument("--o_wstexp", default="-0.564496d0", help="exponent for calculating lambdat_d")
     parser.add_argument("--o_cai", default="0.3d0", help="projected cover perennial vegetation (0-1)")
     parser.add_argument("--o_rtdepth", default="0.3d1", help="tree rooting depth (m)")
     parser.add_argument("--o_mdstore", default="1.0d2", help="wood water storage parameter of trees (can be in shufflepar)")
     parser.add_argument("--o_rgdepth", default="0.1d1", help="root depth grasses (can be in shufflepar)")
 
-    parser.add_argument("--i_lat", default="13.077d0", help="geogr. latitude in degrees ")
-    parser.add_argument("--i_cz", default="94.2d0", help="average soil elevation in m ")
+    parser.add_argument("--i_lat", default="-13.077d0", help="geogr. latitude in degrees ")
+    parser.add_argument("--i_cz", default="94.2", help="average soil elevation in m ")
     parser.add_argument("--i_cgs", default="2.0d0", help="Capital Gamma S (length scale for seepage outflow REG) (m) ")
-    parser.add_argument("--i_zr", default="64.2d0", help="average channel bed elevation in m")
+    parser.add_argument("--i_zr", default="64.2", help="average channel bed elevation in m")
     parser.add_argument("--i_go", default="0.0200d0", help="slope close to channel in radians")
     parser.add_argument("--i_ksat", default="1.9d-6", help="Saturated hydraulic conductivity in [m/s]")
     parser.add_argument("--i_thetar", default="0.065d0", help="residual soil moisture")
     parser.add_argument("--i_thetas", default="0.41d0", help="saturated soil moisture")
     parser.add_argument("--i_nvg", default="1.89d0", help="van Genuchten soil parameter n")
     parser.add_argument("--i_avg", default="7.5d0", help="van Genuchten soil parameter alpha (1/m)")
-    parser.add_argument("--i_delz", default="0.2d0", help="thickness of soil sublayers (m)")
+    parser.add_argument("--i_delz", default="0.2", help="thickness of soil sublayers (m)")
 
     parser.add_argument("--vom_command", default="1", help="COMMAND LINE TO RUN ASSIMILATION MODEL (1 for -optimise with sce, 2 for -run without optization with pars.txt, 3 for run for ncp only with pars.txt, 4 for optimise without random_seed)")
     parser.add_argument("--i_ncomp_", default="2", help="MAXIMUM NUMBER OF COMPLEXES (p)")
@@ -137,6 +140,75 @@ def main():
     parser.add_argument("--opt_avg", default="0",  help="optimize van Genuchten soil parameter alpha (1/m)")
 
     args = parser.parse_args()
+
+
+
+    ################################################################################################
+    #read statistics from file
+    area_tmp = 0.0
+
+    if(args.input_stats is not None):
+
+        file_stats = open(args.input_stats,"r") 
+        for line in file_stats:
+            elev="Elevation statistics:" in line
+            slopes="Statistics of slopes:" in line
+            area="cat|area" in line
+            finished="===============" in line
+
+            if(elev == True):
+                reading_slopes = False
+                reading_elev = True
+                reading_area = False
+
+            if(slopes == True):
+                reading_slopes = True
+                reading_elev = False
+                reading_area = False
+
+            if(area == True):
+                reading_slopes = False
+                reading_elev = False
+                reading_area = True
+
+            maxs = "maximum" in line
+            mins = "minimum" in line
+            means = "mean" in line
+
+            if( (maxs == True) & (reading_elev == True) ): 
+                args.i_cz = str(float(line.split(":")[1]))
+
+            if( (mins == True) & (reading_elev == True) ): 
+                args.i_zr = str(float(line.split(":")[1]))
+
+            if( (means == True) & (reading_slopes == True) ): 
+                args.i_go = str(float(line.split(":")[1]) * np.pi/180)
+
+            if(reading_area == True ): 
+                header="cat|area" in line
+                if( (not(header)) & (finished == False) ):
+                    area_tmp = area_tmp + float(line.split("|")[1])
+        file_stats.close()
+
+        if(area_tmp > 0):
+            args.i_cgs = str(np.sqrt(area_tmp/np.pi))
+
+    #correct i_cz and i_zr, make sure both can be divided by i_delz
+    cz_tmp = float(args.i_cz)
+    zr_tmp = float(args.i_zr)
+    delz_tmp = float(args.i_delz)
+
+    remainder = cz_tmp % delz_tmp
+    if(remainder > 0.5*delz_tmp):
+        cz_tmp = round(cz_tmp + (delz_tmp-remainder), 2)
+        args.i_cz = str(cz_tmp)
+
+    remainder = zr_tmp % delz_tmp
+    if(remainder > 0.5*delz_tmp):
+        zr_tmp = round(zr_tmp + (delz_tmp-remainder), 2)
+        args.i_zr = str(zr_tmp)
+
+
 
     ################################################################################################
     #write to file
