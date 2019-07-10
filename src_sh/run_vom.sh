@@ -9,7 +9,7 @@ nml_input=$4
 date
 
 #compile code
-make --directory $exe_dir
+make --directory $exe_dir FC=gfortran
 
 #check if the outputdir exists and else make one
 if [ ! -d "$outputdir" ]; then

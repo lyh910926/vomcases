@@ -37,11 +37,11 @@ conda activate renku
 
 #inputs:
 #files to be tracked with renku
-#exe_dir=$3
-#inputdir=$4
-#outputdir=$5
-#nml_input=$6
+#exe_dir=$1
+#inputdir=$2
+#outputdir=$3
+#nml_input=$4
 
-renku run --isolation bash src_sh/run_vom.sh ${@:3}
+renku run --isolation bash src_sh/run_vom.sh $@
 
 date
