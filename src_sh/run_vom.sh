@@ -11,6 +11,11 @@ date
 #compile code
 make --directory $exe_dir
 
+#check if the outputdir exists and else make one
+if [ ! -d "$outputdir" ]; then
+   mkdir $outputdir
+fi
+
 #run the model 
 $exe_dir/model.x -i $inputdir -o $outputdir -n $nml_input
 
