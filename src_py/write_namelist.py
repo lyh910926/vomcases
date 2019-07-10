@@ -202,12 +202,17 @@ def main():
     if(remainder > 0.5*delz_tmp):
         cz_tmp = round(cz_tmp + (delz_tmp-remainder), 2)
         args.i_cz = str(cz_tmp)
+    else:
+        cz_tmp = round(cz_tmp -remainder, 2)
+        args.i_cz = str(cz_tmp)
 
     remainder = zr_tmp % delz_tmp
     if(remainder > 0.5*delz_tmp):
         zr_tmp = round(zr_tmp + (delz_tmp-remainder), 2)
         args.i_zr = str(zr_tmp)
-
+    else:
+        zr_tmp = round(zr_tmp -remainder, 2)
+        args.i_zr = str(zr_tmp)
 
 
     ################################################################################################
