@@ -84,6 +84,8 @@ def main():
     parser.add_argument("--i_iter", default="10", help="Maximum iterations in case of random runs")
     parser.add_argument("--vom_npar", default="8", help="number of parameters in shuffle2par used for optimization in SCE")
     parser.add_argument("--n_thread", default="4", help="number of threads to be used in parallel")
+    parser.add_argument("--sce_restart", default=".TRUE.", help="restart SCE from previous run")
+    parser.add_argument("--runtime_limit", default="2820", help="time in minutes before sce stops")
 
     parser.add_argument("--min_lambdagf", default="0.0d0", help="factor for calculating lambdag_d")
     parser.add_argument("--min_wsgexp", default="-3.0d0", help="exponent for calculating lambdag")
@@ -284,6 +286,8 @@ def main():
     file.write("i_iter="+ args.i_iter + ",              ! Maximum iterations in case of random runs\n")
     file.write("vom_npar="+ args.vom_npar + ",             ! number of parameters in shuffle2par used for optimization in SCE\n")
     file.write("n_thread="+ args.n_thread + ",             ! number of threads to be used in parallel\n")
+    file.write("sce_restart="+ args.sce_restart + ",             ! restart SCE from previous run\n")
+    file.write("runtime_limit="+ args.runtime_limit + ",             ! time in minutes before sce stops\n")
     file.write("&end\n")
     file.write("&shuffle2par\n")
     file.write("parname0='lambdagf'   'wsgexp'      'lambdatf'   'wstexp'      'cai'        'rtdepth' 'mdstore' 'rgdepth' 'i_cgs'    'i_zr'   'i_go' 'i_ksat' 'i_thetar' 'i_thetas' 'i_nvg' 'i_avg'\n")
