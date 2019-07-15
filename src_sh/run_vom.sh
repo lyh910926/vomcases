@@ -5,6 +5,7 @@ exe_dir=$1
 inputdir=$2
 outputdir=$3
 nml_input=$4
+restart_dir=$5
 
 date
 
@@ -15,6 +16,11 @@ make --directory $exe_dir FC=gfortran
 if [ ! -d "$outputdir" ]; then
    mkdir $outputdir
 fi
+
+if [ -z "$restart_dir" ]; then
+   cp $restart_dir/* $outputdir/*
+fi
+
 
 #run the model 
 $exe_dir/model.x -i $inputdir -o $outputdir -n $nml_input
