@@ -17,10 +17,9 @@ if [ ! -d "$outputdir" ]; then
    mkdir $outputdir
 fi
 
-if [ -z "$restart_dir" ]; then
-   cp $restart_dir/* $outputdir/*
+if [ -f "$restart_dir/sce_lastloop.txt" ]; then
+   cp $restart_dir/* $outputdir
 fi
-
 
 #run the model 
 $exe_dir/model.x -i $inputdir -o $outputdir -n $nml_input
