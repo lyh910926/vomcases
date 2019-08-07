@@ -99,10 +99,10 @@ def main():
         pddatetime = pd.to_datetime(co2data[0])
 
         #make a pandas index
-        index = pd.DatetimeIndex( pddatetime)	
+        index2 = pd.DatetimeIndex( pddatetime)	
 
         #replace index
-        co2data.index = index
+        co2data.index = index2
 
         #extract CO2 series
         co2mlo_pd = pd.Series(co2data[1], dtype = np.float64)
