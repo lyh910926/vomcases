@@ -1,59 +1,49 @@
 #!/bin/sh
 #
 # Your job name
-#$ -N VOMbest
+#SBATCH --job-name=VOM
 #
 # Use current working directory
-#$ -cwd
 #
-# Join stdout and stderr
-#$ -j n
 #
-#$ -e /home/int/eva/nijzink/logfiles/
-#$ -o /home/int/eva/nijzink/logfiles/
+#SBATCH -e /home/int/eva/nijzink/logfiles/err
+#SBATCH -o /home/int/eva/nijzink/logfiles/out
+#SBATCH --account=wave
 # pe (Parallel environment) request. Set your number of processors here.
-#$ -pe openmpi 1
-# Run job through bash shell
-#$ -S /bin/bash
+#SBATCH -n 4
+#SBATCH --time=47:00:00
 #
 # The following output will show in the output file. Used for debugging.
-echo "Got $NSLOTS processors."
+echo "Got $SLURM_NNODES processors."
 #
 # load modules
-# for tracking the inputs and outputs
-. /etc/profile.d/modules.sh
-. /home/int/eva/nijzink/.bashrc
+module load userspace/tr17.10
+module load userspace/spack
+module load gcc/7.2.0
 #
 # to avoid an error message in renku
-export LC_ALL='en_US.UTF-8'
-export LANG='en_US.UTF-8'
-module load null shared use.own conda
+#export LC_ALL='en_US.UTF-8'
+#export LANG='en_US.UTF-8'
+#module load null shared use.own conda
 #
-#files to be tracked with renku
-exe_src=$2
-dailyweather_input=$1
 
 
 date
-
-source activate renku
+source /home/int/eva/nijzink/miniconda3/etc/profile.d/conda.sh
+conda activate renku
 
 #inputs:
-#sce_out.txt
-#outputfolder
-#mask parameters
-#dailyweather.prn
-#workdir
-#VOM-code
-echo $1
-echo $2
-echo $3
-echo $4
-echo $5
+#files to be tracked with renku
+#$1 --> sce_out.txt
+#$2 --> sce_stats (output-folder)
+#$3 --> sce_best (output-folder)
+#$4 --> namelist
+#$5 --> workdir
+#$6 --> dailyweather.prn
+#$7 --> data/DINGO/Ea_*
+#$8 --> data/DINGO/GPPdaily_
 
-renku run python3 src_py/sce_uncertainty.py -i $1 -o $2 -p $3 -op 1 1 1 1 1 1 0 1 -d $4 -w $5 -c src/VOM/VOM_Fortran/VOM-code/* 
-
-#python3 src_py/sce_uncertainty.py -i output/result_nofree_cpcff2/sce_out.txt -o output/test/ -p 0.1 -op 1 1 1 1 1 1 0 1 -d data/VOM_input/HowardSprings/dailyweather.prn -w work/HowardSprings/best_cgs20/tmp2/
+renku run --isolation python3 src_py/proc_sce.py -i $1 -o $2 -ob $3 -n $4 -w $5 -d $6 -p 10 -op 1 1 1 1 1 1 0 1 -eo $7 -ao $8 howard.txt -cd src/VOM/VOM_Fortran/ -c src/VOM/VOM_Fortran/VOM-code/*
 
 
 date
