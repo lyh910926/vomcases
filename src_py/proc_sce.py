@@ -24,7 +24,8 @@ def main():
     parser.add_argument("-eo", "--evap_obs", help="inputfile with observations evaporation")
     parser.add_argument("-ao", "--ass_obs", help="inputfile with observations assimilation")
     parser.add_argument("-cd", "--codedir", help="directory of VOM")                          
-    parser.add_argument("-c", "--code", help="code of VOM", nargs='+')                          
+    parser.add_argument("-c", "--code", help="code of VOM", nargs='+')  
+    parser.add_argument("--compiler", help="compiler", default='gfortran')                                                  
     args = parser.parse_args()
 
        
@@ -87,7 +88,7 @@ def main():
     os.mkdir(args.workfolder + "/out_tot")
 
     #compile code
-    os.system( "make --directory " + args.codedir )  
+    os.system( "make --directory " + args.codedir + " FC=" + args.compiler  )  
 
     #copy exe to workdir
     #os.system( "cp " + args.codedir + "model.x " + args.workfolder + "/model.x" )  
