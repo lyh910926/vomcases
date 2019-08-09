@@ -89,13 +89,8 @@ def main():
 
     #compile code
     os.system( "make --directory " + args.codedir + " FC=" + args.compiler  )  
-
-    #copy exe to workdir
-    #os.system( "cp " + args.codedir + "model.x " + args.workfolder + "/model.x" )  
-    #os.system( "rm " + args.codedir + "model.x " )  
-
     currdir = os.getcwd()
-    #os.chdir( args.workfolder)
+
 
     for j in range(0,indend):
         filenum = str(j + 1)
@@ -103,7 +98,7 @@ def main():
 
         shiftpar = 0
         for ipar in range(0,8):
-            #print(ipar)
+
             if(args.optpar[ipar] == 1):
                 param_tmp[ipar] = params_sorted[j, shiftpar]
                 shiftpar = shiftpar + 1
@@ -140,8 +135,8 @@ def main():
 
     eKGE = np.zeros(( indend ))
     assKGE = np.zeros(( indend ))
-    varmax = np.zeros((len(tmp['nday']), 30 ))
-    varmin = np.zeros((len(tmp['nday']), 30 ))
+    varmax = np.zeros((len(tmp['nday']), 38 ))
+    varmin = np.zeros((len(tmp['nday']), 38 ))
 
     #loop over solutions
     for j in range(0,indend):
@@ -152,7 +147,6 @@ def main():
         ass_tmp = (np.array(tmp[tmp.columns[19]]) +  np.array(tmp[tmp.columns[20]] ))
 
         #make array of dates
-
         if j==0:
             #determine which dates overlap       
             dates_mod = pd.date_range(str(tmp[tmp.columns[2]][0]) + "/" +
@@ -165,24 +159,14 @@ def main():
             print(dates_overlap[-1])
             eRes = np.zeros((len(dates_overlap), indend ))
             assRes = np.zeros((len(dates_overlap), indend ))
-            var_max = tmp
-            var_min = tmp
+            varmax = np.array(tmp[tmp.columns[0:38]].values )
+            varmin = np.array(tmp[tmp.columns[0:38]].values )
 
-            #add dates
-            varmax[:,0] = tmp[tmp.columns[0]]
-            varmax[:,1] = tmp[tmp.columns[1]]
-            varmax[:,2] = tmp[tmp.columns[2]]
-            varmax[:,3] = tmp[tmp.columns[3]]
-
-            varmin[:,0] = tmp[tmp.columns[0]]
-            varmin[:,1] = tmp[tmp.columns[1]]
-            varmin[:,2] = tmp[tmp.columns[2]]
-            varmin[:,3] = tmp[tmp.columns[3]]
-
-        for k in range(4,30):
+        #loop over all columns in results_daily
+        for k in range(4,38):
                 var_tmp = tmp[tmp.columns[k]] 
-                var_max[:,k] = np.max(var_tmp , var_max[:,k])
-                var_min[:,k] = np.min(var_tmp , var_min[:,k])
+                varmax_tmp = np.maximum(var_tmp , np.array(varmax[:,k]) )
+                varmin[:,k] = np.minimum(var_tmp , varmin[:,k])
 
         #calc KGE
         emod_pd = pd.Series(e_tmp, index = dates_mod )
@@ -212,7 +196,6 @@ def main():
     os.system( "rm -r " + args.workfolder + "/output")
     os.system( "rm -r " + args.workfolder + "/out_tot")
     os.system( "rm -r " + args.workfolder + "/input")
-    #os.system( "rm " + args.workfolder + "/model.x")
     os.system( "make clean --directory " + args.codedir )  
     print("finished!")
 
@@ -235,7 +218,6 @@ def calcKGE(sim, obs ):
         # bias term (mu_s / mu_o)
         beta = mu_s / mu_o
 
-        #print(np.min(sim))
         KGE = 1- ((r-1)**2 + (alpha-1)**2 + (beta-1)**2)**0.5
         return(KGE)
 
