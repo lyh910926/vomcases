@@ -24,7 +24,8 @@ def main():
     parser.add_argument("-eo", "--evap_obs", help="inputfile with observations evaporation")
     parser.add_argument("-ao", "--ass_obs", help="inputfile with observations assimilation")
     parser.add_argument("-cd", "--codedir", help="directory of VOM")                          
-    parser.add_argument("-c", "--code", help="code of VOM", nargs='+')                          
+    parser.add_argument("-c", "--code", help="code of VOM", nargs='+')  
+    parser.add_argument("--compiler", help="compiler", default='gfortran')                                                  
     args = parser.parse_args()
 
        
@@ -36,6 +37,13 @@ def main():
         #exit the program
         sys.exit(1)
 
+    ###########################################
+    #check if output-dirs exist, else make them
+
+    if( not  os.path.exists(args.outputfolder) ):
+        os.system("mkdir " + args.outputfolder)
+    if( not  os.path.exists(args.outputbest) ):
+        os.system("mkdir " + args.outputbest)
 
     ###########################################
     #load observed evaporation
@@ -87,14 +95,9 @@ def main():
     os.mkdir(args.workfolder + "/out_tot")
 
     #compile code
-    os.system( "make --directory " + args.codedir )  
-
-    #copy exe to workdir
-    #os.system( "cp " + args.codedir + "model.x " + args.workfolder + "/model.x" )  
-    #os.system( "rm " + args.codedir + "model.x " )  
-
+    os.system( "make --directory " + args.codedir + " FC=" + args.compiler  )  
     currdir = os.getcwd()
-    #os.chdir( args.workfolder)
+
 
     for j in range(0,indend):
         filenum = str(j + 1)
@@ -102,7 +105,7 @@ def main():
 
         shiftpar = 0
         for ipar in range(0,8):
-            #print(ipar)
+
             if(args.optpar[ipar] == 1):
                 param_tmp[ipar] = params_sorted[j, shiftpar]
                 shiftpar = shiftpar + 1
@@ -139,8 +142,10 @@ def main():
 
     eKGE = np.zeros(( indend ))
     assKGE = np.zeros(( indend ))
+    varmax = np.zeros((len(tmp['nday']), 38 ))
+    varmin = np.zeros((len(tmp['nday']), 38 ))
 
-
+    #loop over solutions
     for j in range(0,indend):
         filenum = str(j + 1)
 
@@ -149,7 +154,6 @@ def main():
         ass_tmp = (np.array(tmp[tmp.columns[19]]) +  np.array(tmp[tmp.columns[20]] ))
 
         #make array of dates
-
         if j==0:
             #determine which dates overlap       
             dates_mod = pd.date_range(str(tmp[tmp.columns[2]][0]) + "/" +
@@ -162,6 +166,14 @@ def main():
             print(dates_overlap[-1])
             eRes = np.zeros((len(dates_overlap), indend ))
             assRes = np.zeros((len(dates_overlap), indend ))
+            varmax = np.array(tmp[tmp.columns[0:38]].values )
+            varmin = np.array(tmp[tmp.columns[0:38]].values )
+
+        #loop over all columns in results_daily
+        for k in range(4,38):
+                var_tmp = tmp[tmp.columns[k]] 
+                varmax_tmp = np.maximum(var_tmp , np.array(varmax[:,k]) )
+                varmin[:,k] = np.minimum(var_tmp , varmin[:,k])
 
         #calc KGE
         emod_pd = pd.Series(e_tmp, index = dates_mod )
@@ -181,12 +193,16 @@ def main():
     np.savetxt( args.outputfolder + "/KGE_ass.txt", assKGE, comments='', delimiter=" " )
     np.savetxt( args.outputfolder + "/Res_evap.txt", eRes, comments='', delimiter=" " )
     np.savetxt( args.outputfolder + "/Res_ass.txt", assRes, comments='', delimiter=" " )
+    #write resultsdaily_max, resultsdaily_min
+    np.savetxt( args.outputfolder + "/resultsdaily_max.txt", varmax, comments='', delimiter=" ", header = ' '.join(tmp.columns.get_values()) )
+    np.savetxt( args.outputfolder + "/resultsdaily_min.txt", varmin, comments='', delimiter=" ", header = ' '.join(tmp.columns.get_values()) )
+
+
 
     #clean up
     os.system( "rm -r " + args.workfolder + "/output")
     os.system( "rm -r " + args.workfolder + "/out_tot")
     os.system( "rm -r " + args.workfolder + "/input")
-    #os.system( "rm " + args.workfolder + "/model.x")
     os.system( "make clean --directory " + args.codedir )  
     print("finished!")
 
@@ -209,7 +225,6 @@ def calcKGE(sim, obs ):
         # bias term (mu_s / mu_o)
         beta = mu_s / mu_o
 
-        #print(np.min(sim))
         KGE = 1- ((r-1)**2 + (alpha-1)**2 + (beta-1)**2)**0.5
         return(KGE)
 

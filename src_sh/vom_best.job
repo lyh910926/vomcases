@@ -10,7 +10,7 @@
 #SBATCH -o /home/int/eva/nijzink/logfiles/out
 #SBATCH --account=wave
 # pe (Parallel environment) request. Set your number of processors here.
-#SBATCH -n 4
+#SBATCH -n 1
 #SBATCH --time=47:00:00
 #
 # The following output will show in the output file. Used for debugging.
@@ -43,7 +43,7 @@ conda activate renku
 #$7 --> data/DINGO/Ea_*
 #$8 --> data/DINGO/GPPdaily_
 
-renku run --isolation python3 src_py/proc_sce.py -i $1 -o $2 -ob $3 -n $4 -w $5 -d $6 -p 10 -op 1 1 1 1 1 1 0 1 -eo $7 -ao $8 howard.txt -cd src/VOM/VOM_Fortran/ -c src/VOM/VOM_Fortran/VOM-code/*
+renku run --isolation python3 src_py/proc_sce.py -i $1 -o $2 -ob $3 -n $4 -w $5 -d $6 -p 10 -op 1 1 1 1 1 1 0 1 -eo $7 -ao $8 -cd src/VOM/VOM_Fortran/ -c src/VOM/VOM_Fortran/VOM-code/*
 
 
 date
