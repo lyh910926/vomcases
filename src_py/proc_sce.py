@@ -140,8 +140,10 @@ def main():
 
     eKGE = np.zeros(( indend ))
     assKGE = np.zeros(( indend ))
+    varmax = np.zeros((len(tmp['nday']), 30 ))
+    varmin = np.zeros((len(tmp['nday']), 30 ))
 
-
+    #loop over solutions
     for j in range(0,indend):
         filenum = str(j + 1)
 
@@ -163,6 +165,24 @@ def main():
             print(dates_overlap[-1])
             eRes = np.zeros((len(dates_overlap), indend ))
             assRes = np.zeros((len(dates_overlap), indend ))
+            var_max = tmp
+            var_min = tmp
+
+            #add dates
+            varmax[:,0] = tmp[tmp.columns[0]]
+            varmax[:,1] = tmp[tmp.columns[1]]
+            varmax[:,2] = tmp[tmp.columns[2]]
+            varmax[:,3] = tmp[tmp.columns[3]]
+
+            varmin[:,0] = tmp[tmp.columns[0]]
+            varmin[:,1] = tmp[tmp.columns[1]]
+            varmin[:,2] = tmp[tmp.columns[2]]
+            varmin[:,3] = tmp[tmp.columns[3]]
+
+        for k in range(4,30):
+                var_tmp = tmp[tmp.columns[k]] 
+                var_max[:,k] = np.max(var_tmp , var_max[:,k])
+                var_min[:,k] = np.min(var_tmp , var_min[:,k])
 
         #calc KGE
         emod_pd = pd.Series(e_tmp, index = dates_mod )
@@ -182,6 +202,11 @@ def main():
     np.savetxt( args.outputfolder + "/KGE_ass.txt", assKGE, comments='', delimiter=" " )
     np.savetxt( args.outputfolder + "/Res_evap.txt", eRes, comments='', delimiter=" " )
     np.savetxt( args.outputfolder + "/Res_ass.txt", assRes, comments='', delimiter=" " )
+    #write resultsdaily_max, resultsdaily_min
+    np.savetxt( args.outputfolder + "/resultsdaily_max.txt", varmax, comments='', delimiter=" ", header = ' '.join(tmp.columns.get_values()) )
+    np.savetxt( args.outputfolder + "/resultsdaily_min.txt", varmin, comments='', delimiter=" ", header = ' '.join(tmp.columns.get_values()) )
+
+
 
     #clean up
     os.system( "rm -r " + args.workfolder + "/output")
