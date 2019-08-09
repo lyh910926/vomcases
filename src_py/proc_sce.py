@@ -37,6 +37,13 @@ def main():
         #exit the program
         sys.exit(1)
 
+    ###########################################
+    #check if output-dirs exist, else make them
+
+    if( not  os.path.exists(args.outputfolder) ):
+        os.system("mkdir " + args.outputfolder)
+    if( not  os.path.exists(args.outputbest) ):
+        os.system("mkdir " + args.outputbest)
 
     ###########################################
     #load observed evaporation
