@@ -1,86 +1,213 @@
 '@context':
-  added: http://schema.org/dateCreated
-  affiliation: scoro:affiliate
-  authors:
-    '@container': '@list'
-  created: http://schema.org/dateCreated
-  dcterms: http://purl.org/dc/terms/
-  dctypes: http://purl.org/dc/dcmitypes/
-  email: dcterms:email
-  files:
-    '@container': '@index'
-  foaf: http://xmlns.com/foaf/0.1/
-  identifier:
-    '@id': dctypes:Dataset
-    '@type': '@id'
-  name: dcterms:name
+  _id: '@id'
+  _label: rdfs:label
+  _project: schema:isPartOf
+  added: schema:dateCreated
+  affiliation: schema:affiliation
+  alternate_name: schema:alternateName
+  created: schema:dateCreated
+  creator: schema:creator
+  date_published: schema:datePublished
+  description: schema:description
+  email: schema:email
+  files: schema:hasPart
+  identifier: schema:identifier
+  in_language: schema:inLanguage
+  keywords: schema:keywords
+  license: schema:license
+  name: schema:name
+  path: prov:atLocation
   prov: http://www.w3.org/ns/prov#
-  scoro: http://purl.org/spar/scoro/
-  url: http://schema.org/url
-'@type': dctypes:Dataset
+  schema: http://schema.org/
+  url: schema:url
+  version: schema:version
+  wfprov: http://purl.org/wf4ever/wfprov#
+'@type':
+- prov:Entity
+- schema:Dataset
+- wfprov:Artifact
+_id: 3ada2727-8ef6-4c3e-8873-d33109970636
+_label: 3ada2727-8ef6-4c3e-8873-d33109970636
+_project:
+  '@context':
+    _id: '@id'
+    foaf: http://xmlns.com/foaf/0.1/
+    prov: http://www.w3.org/ns/prov#
+  '@type':
+  - foaf:Project
+  - prov:Location
+  _id: https://renkulab.io/remko.nijzink/vomcases
 authors: []
-created: 2019-03-21 09:02:34.231411
-files:
-  ../../../data/DINGO/Ea_adelaide.txt:
-    '@type': http://schema.org/DigitalDocument
-    added: 2019-03-21 09:02:34.276702
-    authors: []
-    path: ../../../data/DINGO/Ea_adelaide.txt
-    url: /home/remko/data/DINGO/Ea_adelaide.txt
-  ../../../data/DINGO/Ea_daly.txt:
-    '@type': http://schema.org/DigitalDocument
-    added: 2019-03-21 09:02:34.315037
-    authors: []
-    path: ../../../data/DINGO/Ea_daly.txt
-    url: /home/remko/data/DINGO/Ea_daly.txt
-  ../../../data/DINGO/Ea_dry.txt:
-    '@type': http://schema.org/DigitalDocument
-    added: 2019-03-21 09:02:34.357569
-    authors: []
-    path: ../../../data/DINGO/Ea_dry.txt
-    url: /home/remko/data/DINGO/Ea_dry.txt
-  ../../../data/DINGO/Ea_howard.txt:
-    '@type': http://schema.org/DigitalDocument
-    added: 2019-03-21 09:02:34.397423
-    authors: []
-    path: ../../../data/DINGO/Ea_howard.txt
-    url: /home/remko/data/DINGO/Ea_howard.txt
-  ../../../data/DINGO/Ea_sturt.txt:
-    '@type': http://schema.org/DigitalDocument
-    added: 2019-03-21 09:02:34.436223
-    authors: []
-    path: ../../../data/DINGO/Ea_sturt.txt
-    url: /home/remko/data/DINGO/Ea_sturt.txt
-  ../../../data/DINGO/GPPdaily_adelaide.txt:
-    '@type': http://schema.org/DigitalDocument
-    added: 2019-03-21 09:04:23.909740
-    authors: []
-    path: ../../../data/DINGO/GPPdaily_adelaide.txt
-    url: /home/remko/data/DINGO/GPPdaily_adelaide.txt
-  ../../../data/DINGO/GPPdaily_daly.txt:
-    '@type': http://schema.org/DigitalDocument
-    added: 2019-03-21 09:04:23.948404
-    authors: []
-    path: ../../../data/DINGO/GPPdaily_daly.txt
-    url: /home/remko/data/DINGO/GPPdaily_daly.txt
-  ../../../data/DINGO/GPPdaily_dry.txt:
-    '@type': http://schema.org/DigitalDocument
-    added: 2019-03-21 09:04:23.989225
-    authors: []
-    path: ../../../data/DINGO/GPPdaily_dry.txt
-    url: /home/remko/data/DINGO/GPPdaily_dry.txt
-  ../../../data/DINGO/GPPdaily_howard.txt:
-    '@type': http://schema.org/DigitalDocument
-    added: 2019-03-21 09:04:24.034435
-    authors: []
-    path: ../../../data/DINGO/GPPdaily_howard.txt
-    url: /home/remko/data/DINGO/GPPdaily_howard.txt
-  ../../../data/DINGO/GPPdaily_sturt.txt:
-    '@type': http://schema.org/DigitalDocument
-    added: 2019-03-21 09:04:24.073910
-    authors: []
-    path: ../../../data/DINGO/GPPdaily_sturt.txt
-    url: /home/remko/data/DINGO/GPPdaily_sturt.txt
-identifier: 3ada2727-8ef6-4c3e-8873-d33109970636
+created: '2019-03-21 09:02:34.231411'
+creator: []
+date_published: null
 description: Extracted from CSV-files send by Jason Beringer by Dropbox
+files:
+- '@type':
+  - prov:Entity
+  - schema:DigitalDocument
+  - wfprov:Artifact
+  _id: blob/UNCOMMITTED/../../../data/DINGO/Ea_adelaide.txt
+  _label: ../../../data/DINGO/Ea_adelaide.txt@UNCOMMITTED
+  _project: null
+  added: '2019-03-21 09:02:34.276702'
+  creator: []
+  dataset: null
+  path: ../../../data/DINGO/Ea_adelaide.txt
+  url: /home/remko/data/DINGO/Ea_adelaide.txt
+- '@type':
+  - prov:Entity
+  - schema:DigitalDocument
+  - wfprov:Artifact
+  _id: blob/UNCOMMITTED/../../../data/DINGO/Ea_daly.txt
+  _label: ../../../data/DINGO/Ea_daly.txt@UNCOMMITTED
+  _project: null
+  added: '2019-03-21 09:02:34.315037'
+  creator: []
+  dataset: null
+  path: ../../../data/DINGO/Ea_daly.txt
+  url: /home/remko/data/DINGO/Ea_daly.txt
+- '@type':
+  - prov:Entity
+  - schema:DigitalDocument
+  - wfprov:Artifact
+  _id: blob/UNCOMMITTED/../../../data/DINGO/Ea_dry.txt
+  _label: ../../../data/DINGO/Ea_dry.txt@UNCOMMITTED
+  _project: null
+  added: '2019-03-21 09:02:34.357569'
+  creator: []
+  dataset: null
+  path: ../../../data/DINGO/Ea_dry.txt
+  url: /home/remko/data/DINGO/Ea_dry.txt
+- '@type':
+  - prov:Entity
+  - schema:DigitalDocument
+  - wfprov:Artifact
+  _id: blob/UNCOMMITTED/../../../data/DINGO/Ea_howard.txt
+  _label: ../../../data/DINGO/Ea_howard.txt@UNCOMMITTED
+  _project: null
+  added: '2019-03-21 09:02:34.397423'
+  creator: []
+  dataset: null
+  path: ../../../data/DINGO/Ea_howard.txt
+  url: /home/remko/data/DINGO/Ea_howard.txt
+- '@type':
+  - prov:Entity
+  - schema:DigitalDocument
+  - wfprov:Artifact
+  _id: blob/UNCOMMITTED/../../../data/DINGO/Ea_sturt.txt
+  _label: ../../../data/DINGO/Ea_sturt.txt@UNCOMMITTED
+  _project: null
+  added: '2019-03-21 09:02:34.436223'
+  creator: []
+  dataset: null
+  path: ../../../data/DINGO/Ea_sturt.txt
+  url: /home/remko/data/DINGO/Ea_sturt.txt
+- '@type':
+  - prov:Entity
+  - schema:DigitalDocument
+  - wfprov:Artifact
+  _id: blob/UNCOMMITTED/../../../data/DINGO/GPPdaily_adelaide.txt
+  _label: ../../../data/DINGO/GPPdaily_adelaide.txt@UNCOMMITTED
+  _project: null
+  added: '2019-03-21 09:04:23.909740'
+  creator: []
+  dataset: null
+  path: ../../../data/DINGO/GPPdaily_adelaide.txt
+  url: /home/remko/data/DINGO/GPPdaily_adelaide.txt
+- '@type':
+  - prov:Entity
+  - schema:DigitalDocument
+  - wfprov:Artifact
+  _id: blob/UNCOMMITTED/../../../data/DINGO/GPPdaily_daly.txt
+  _label: ../../../data/DINGO/GPPdaily_daly.txt@UNCOMMITTED
+  _project: null
+  added: '2019-03-21 09:04:23.948404'
+  creator: []
+  dataset: null
+  path: ../../../data/DINGO/GPPdaily_daly.txt
+  url: /home/remko/data/DINGO/GPPdaily_daly.txt
+- '@type':
+  - prov:Entity
+  - schema:DigitalDocument
+  - wfprov:Artifact
+  _id: blob/UNCOMMITTED/../../../data/DINGO/GPPdaily_dry.txt
+  _label: ../../../data/DINGO/GPPdaily_dry.txt@UNCOMMITTED
+  _project: null
+  added: '2019-03-21 09:04:23.989225'
+  creator: []
+  dataset: null
+  path: ../../../data/DINGO/GPPdaily_dry.txt
+  url: /home/remko/data/DINGO/GPPdaily_dry.txt
+- '@type':
+  - prov:Entity
+  - schema:DigitalDocument
+  - wfprov:Artifact
+  _id: blob/UNCOMMITTED/../../../data/DINGO/GPPdaily_howard.txt
+  _label: ../../../data/DINGO/GPPdaily_howard.txt@UNCOMMITTED
+  _project: null
+  added: '2019-03-21 09:04:24.034435'
+  creator: []
+  dataset: null
+  path: ../../../data/DINGO/GPPdaily_howard.txt
+  url: /home/remko/data/DINGO/GPPdaily_howard.txt
+- '@type':
+  - prov:Entity
+  - schema:DigitalDocument
+  - wfprov:Artifact
+  _id: blob/UNCOMMITTED/../../../data/DINGO/GPPdaily_sturt.txt
+  _label: ../../../data/DINGO/GPPdaily_sturt.txt@UNCOMMITTED
+  _project: null
+  added: '2019-03-21 09:04:24.073910'
+  creator: []
+  dataset: null
+  path: ../../../data/DINGO/GPPdaily_sturt.txt
+  url: /home/remko/data/DINGO/GPPdaily_sturt.txt
+- '@type':
+  - prov:Entity
+  - schema:DigitalDocument
+  - wfprov:Artifact
+  _id: blob/5f2e6a924ad99333fe7ed0dee6abe31382689fa2/data/DINGO/Ea_litch.txt
+  _label: data/DINGO/Ea_litch.txt@5f2e6a924ad99333fe7ed0dee6abe31382689fa2
+  _project:
+    '@context':
+      _id: '@id'
+      foaf: http://xmlns.com/foaf/0.1/
+      prov: http://www.w3.org/ns/prov#
+    '@type':
+    - foaf:Project
+    - prov:Location
+    _id: https://renkulab.io/remko.nijzink/vomcases
+  added: '2019-08-09 12:37:47.970134'
+  creator: []
+  dataset: DINGO
+  path: data/DINGO/Ea_litch.txt
+  url: /home/remko/data/DINGO/Ea_litch.txt
+- '@type':
+  - prov:Entity
+  - schema:DigitalDocument
+  - wfprov:Artifact
+  _id: blob/011643bb7cf2c8bde8eecc0a1d9bb43733fef556/data/DINGO/GPPdaily_litch.txt
+  _label: data/DINGO/GPPdaily_litch.txt@011643bb7cf2c8bde8eecc0a1d9bb43733fef556
+  _project:
+    '@context':
+      _id: '@id'
+      foaf: http://xmlns.com/foaf/0.1/
+      prov: http://www.w3.org/ns/prov#
+    '@type':
+    - foaf:Project
+    - prov:Location
+    _id: https://renkulab.io/remko.nijzink/vomcases
+  added: '2019-08-09 12:37:55.091238'
+  creator: []
+  dataset: DINGO
+  path: data/DINGO/GPPdaily_litch.txt
+  url: /home/remko/data/DINGO/GPPdaily_litch.txt
+identifier: 3ada2727-8ef6-4c3e-8873-d33109970636
+in_language: null
+keywords: []
+license: null
 name: DINGO
+path: /home/remko/Documents/renku-projects/VOM_cases_renku_egu/vomcases/.renku/datasets/3ada2727-8ef6-4c3e-8873-d33109970636
+url: null
+version: null
