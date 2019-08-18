@@ -172,7 +172,7 @@ def main():
         #loop over all columns in results_daily
         for k in range(4,38):
                 var_tmp = tmp[tmp.columns[k]] 
-                varmax_tmp = np.maximum(var_tmp , np.array(varmax[:,k]) )
+                varmax[:,k] = np.maximum(var_tmp , np.array(varmax[:,k]) )
                 varmin[:,k] = np.minimum(var_tmp , varmin[:,k])
 
         #calc KGE
