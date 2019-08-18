@@ -172,7 +172,7 @@ def main():
         #loop over all columns in results_daily
         for k in range(4,38):
                 var_tmp = tmp[tmp.columns[k]] 
-                if isinstance(var_tmp) == True:
+                if isinstance(var_tmp, str) == True:
                     print("String in output:")                    
                     print(var_tmp)
                 else:
