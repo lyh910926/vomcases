@@ -172,12 +172,12 @@ def main():
         #loop over all columns in results_daily
         for k in range(4,38):
                 var_tmp = tmp[tmp.columns[k]] 
-                if isinstance(var_tmp, str) == True:
-                    print("String in output:")                    
-                    print(var_tmp)
-                else:
+                try:
                     varmax[:,k] = np.maximum(var_tmp , np.array(varmax[:,k]) )
                     varmin[:,k] = np.minimum(var_tmp , varmin[:,k])
+                except TypeError:
+                    print(var_tmp)
+                    print("TypeError:skipping solution" + str(k))
 
         #calc KGE
         emod_pd = pd.Series(e_tmp, index = dates_mod )
