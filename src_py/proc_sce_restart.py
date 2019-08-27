@@ -162,7 +162,7 @@ def main():
         ass_tmp = (np.array(tmp[tmp.columns[19]]) +  np.array(tmp[tmp.columns[20]] ))
 
         #make array of dates
-        if j==0:
+        try:
             #determine which dates overlap       
             dates_mod = pd.date_range(str(tmp[tmp.columns[2]][0]) + "/" +
                                       str(tmp[tmp.columns[1]][0]) + "/" +
@@ -177,6 +177,22 @@ def main():
             varmax = np.array(tmp[tmp.columns[0:38]].values )
             varmin = np.array(tmp[tmp.columns[0:38]].values )
 
+            #calc KGE
+            emod_pd = pd.Series(e_tmp, index = dates_mod )
+            assmod_pd = pd.Series(ass_tmp, index = dates_mod )
+
+            eKGE[j]  = calcKGE(emod_pd[dates_overlap], eobs_pd[dates_overlap])
+            assKGE[j]  = calcKGE(assmod_pd[dates_overlap], assobs_pd[dates_overlap])
+            #calc residuals
+            eRes[:,j]  = calcResiduals(emod_pd[dates_overlap], eobs_pd[dates_overlap])
+            assRes[:,j]  = calcResiduals(assmod_pd[dates_overlap], assobs_pd[dates_overlap])
+        except IndexError:
+            print("no overlapping dates")
+            eKGE[j] = np.nan
+            assKGE[j] = np.nan
+            eRes[:,j] = np.nan
+            assRes[:,j] = np.nan
+
         #loop over all columns in results_daily
         for k in range(4,38):
                 var_tmp = tmp[tmp.columns[k]] 
@@ -187,15 +203,7 @@ def main():
                     print(var_tmp)
                     print("TypeError:skipping solution" + str(k))
 
-        #calc KGE
-        emod_pd = pd.Series(e_tmp, index = dates_mod )
-        assmod_pd = pd.Series(ass_tmp, index = dates_mod )
 
-        eKGE[j]  = calcKGE(emod_pd[dates_overlap], eobs_pd[dates_overlap])
-        assKGE[j]  = calcKGE(assmod_pd[dates_overlap], assobs_pd[dates_overlap])
-        #calc residuals
-        eRes[:,j]  = calcResiduals(emod_pd[dates_overlap], eobs_pd[dates_overlap])
-        assRes[:,j]  = calcResiduals(assmod_pd[dates_overlap], assobs_pd[dates_overlap])
 
     #os.chdir( currdir )
 
