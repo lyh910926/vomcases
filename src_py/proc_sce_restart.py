@@ -115,7 +115,9 @@ def main():
         end = indend
     else:
         eKGE = np.zeros(( indend ))
+        eKGE[:] = np.nan
         assKGE = np.zeros(( indend ))
+        assKGE[:] = np.nan
 
         start = 0
         end = int(np.ceil(0.5*len(indsort)*args.percentage/100)-1)
@@ -197,10 +199,7 @@ def main():
             assRes[:,j]  = calcResiduals(assmod_pd[dates_overlap], assobs_pd[dates_overlap])
         except IndexError:
             print("no overlapping dates")
-            eKGE[j] = np.nan
-            assKGE[j] = np.nan
-            eRes[:,j] = np.nan
-            assRes[:,j] = np.nan
+  
 
         #loop over all columns in results_daily
         for k in range(4,38):
