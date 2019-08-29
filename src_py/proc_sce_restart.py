@@ -182,7 +182,9 @@ def main():
             print(dates_overlap[0])
             print(dates_overlap[-1])
 
-            if( (j == 0) & (args.restartdir is None) ):
+            try:
+                varmax
+            except NameError:
                 eRes = np.zeros((len(dates_overlap), indend ))
                 assRes = np.zeros((len(dates_overlap), indend ))
                 varmax = np.array(tmp[tmp.columns[0:38]].values )
