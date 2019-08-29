@@ -209,9 +209,9 @@ def main():
                 try:
                     varmax[:,k] = np.maximum(var_tmp , np.array(varmax[:,k]) )
                     varmin[:,k] = np.minimum(var_tmp , varmin[:,k])
-                except TypeError:
+                except (TypeError, ValueError):
                     print(var_tmp)
-                    print("TypeError:skipping solution" + str(k))
+                    print("Error:skipping solution" + str(k))
 
 
 
