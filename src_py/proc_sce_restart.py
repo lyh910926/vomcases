@@ -182,7 +182,9 @@ def main():
             print(dates_overlap[0])
             print(dates_overlap[-1])
 
-            if( (j == 0) & (args.restartdir is None) ):
+            try:
+                varmax
+            except NameError:
                 eRes = np.zeros((len(dates_overlap), indend ))
                 assRes = np.zeros((len(dates_overlap), indend ))
                 varmax = np.array(tmp[tmp.columns[0:38]].values )
@@ -207,9 +209,9 @@ def main():
                 try:
                     varmax[:,k] = np.maximum(var_tmp , np.array(varmax[:,k]) )
                     varmin[:,k] = np.minimum(var_tmp , varmin[:,k])
-                except TypeError:
+                except (TypeError, ValueError):
                     print(var_tmp)
-                    print("TypeError:skipping solution" + str(k))
+                    print("Error:skipping solution" + str(k))
 
 
 
