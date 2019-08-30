@@ -187,7 +187,7 @@ def main():
             eRes = np.zeros((len(dates_overlap), indend ))
             assRes = np.zeros((len(dates_overlap), indend ))
             varmax = np.zeros( (len(dates_mod), 38)  )
-            varmax = np.zeros( (len(dates_mod), 38)  )
+            varmin = np.zeros( (len(dates_mod), 38)  )
 
 
         #calc KGE
