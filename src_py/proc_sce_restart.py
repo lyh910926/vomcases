@@ -24,6 +24,8 @@ def main():
     parser.add_argument("-eo", "--evap_obs", help="inputfile with observations evaporation")
     parser.add_argument("-ao", "--ass_obs", help="inputfile with observations assimilation")
     parser.add_argument("-cd", "--codedir", help="directory of VOM") 
+    parser.add_argument("-sd", "--startdate", help="startdate of modeloutput") 
+    parser.add_argument("-ed", "--enddate", help="enddate of modeloutput") 
     parser.add_argument("--restartdir", help="restartdirectory of processed VOM-results")                                                   
     parser.add_argument("-c", "--code", help="code of VOM", nargs='+')  
     parser.add_argument("--compiler", help="compiler", default='gfortran')                                                  
@@ -45,6 +47,9 @@ def main():
         os.system("mkdir " + args.outputfolder)
     if( not  os.path.exists(args.outputbest) ):
         os.system("mkdir " + args.outputbest)
+
+    dates_mod = pd.date_range(args.startdate, args.enddate, freq='D')
+
 
     ###########################################
     #load observed evaporation
@@ -161,6 +166,10 @@ def main():
         os.system( "rm "   + args.workfolder +  "/output/results_daily.txt" )
 
 
+    eRes = np.zeros((len(dates_overlap), indend ))
+    assRes = np.zeros((len(dates_overlap), indend ))
+    varmax = np.zeros( (len(dates_mod), 38)  )
+    varmax = np.zeros( (len(dates_mod), 38)  )
 
     #loop over solutions
     for j in range(start,end):
@@ -171,35 +180,24 @@ def main():
         ass_tmp = (np.array(tmp[tmp.columns[19]]) +  np.array(tmp[tmp.columns[20]] ))
 
         #make array of dates
-        try:
-            #determine which dates overlap       
-            dates_mod = pd.date_range(str(tmp[tmp.columns[2]][0]) + "/" +
-                                      str(tmp[tmp.columns[1]][0]) + "/" +
-                                      str(tmp[tmp.columns[0]][0]) ,periods=len( tmp[tmp.columns[0]] ), freq='D')
+        
+        dates_overlap = dates_mod.intersection(eobs_pd.index)
+        print("Evaluating for:")
+        print(dates_overlap[0])
+        print(dates_overlap[-1])
 
-            dates_overlap = dates_mod.intersection(eobs_pd.index)
-            print("Evaluating for:")
-            print(dates_overlap[0])
-            print(dates_overlap[-1])
+        #calc KGE
+        emod_pd = pd.Series(e_tmp, index = dates_mod[0:len(e_tmp)] )
+        assmod_pd = pd.Series(ass_tmp, index = dates_mod[0:len(ass_tmp)] )
 
-            try:
-                varmax
-            except NameError:
-                eRes = np.zeros((len(dates_overlap), indend ))
-                assRes = np.zeros((len(dates_overlap), indend ))
-                varmax = np.array(tmp[tmp.columns[0:38]].values )
-                varmin = np.array(tmp[tmp.columns[0:38]].values )
-
-            #calc KGE
-            emod_pd = pd.Series(e_tmp, index = dates_mod )
-            assmod_pd = pd.Series(ass_tmp, index = dates_mod )
-
+        
+        if( not(any(np.isnan(emod_pd[dates_overlap]) ) ) ):
             eKGE[j]  = calcKGE(emod_pd[dates_overlap], eobs_pd[dates_overlap])
             assKGE[j]  = calcKGE(assmod_pd[dates_overlap], assobs_pd[dates_overlap])
             #calc residuals
             eRes[:,j]  = calcResiduals(emod_pd[dates_overlap], eobs_pd[dates_overlap])
             assRes[:,j]  = calcResiduals(assmod_pd[dates_overlap], assobs_pd[dates_overlap])
-        except IndexError:
+        else:
             print("no overlapping dates")
   
 
@@ -207,10 +205,9 @@ def main():
         for k in range(4,38):
                 var_tmp = tmp[tmp.columns[k]] 
                 try:
-                    varmax[:,k] = np.maximum(var_tmp , np.array(varmax[:,k]) )
-                    varmin[:,k] = np.minimum(var_tmp , varmin[:,k])
-                except (TypeError, ValueError):
-                    print(var_tmp)
+                    varmax[0:len(var_tmp),k] = np.maximum(var_tmp , np.array(varmax[0:len(var_tmp),k]) )
+                    varmin[0:len(var_tmp),k] = np.minimum(var_tmp , np.array(varmin[0:len(var_tmp),k]) )
+                except (TypeError, ValueError, UnboundLocalError):
                     print("Error:skipping solution" + str(k))
 
 
