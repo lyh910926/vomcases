@@ -166,10 +166,7 @@ def main():
         os.system( "rm "   + args.workfolder +  "/output/results_daily.txt" )
 
 
-    eRes = np.zeros((len(dates_overlap), indend ))
-    assRes = np.zeros((len(dates_overlap), indend ))
-    varmax = np.zeros( (len(dates_mod), 38)  )
-    varmax = np.zeros( (len(dates_mod), 38)  )
+
 
     #loop over solutions
     for j in range(start,end):
@@ -185,6 +182,13 @@ def main():
         print("Evaluating for:")
         print(dates_overlap[0])
         print(dates_overlap[-1])
+
+        if(j == 0):
+            eRes = np.zeros((len(dates_overlap), indend ))
+            assRes = np.zeros((len(dates_overlap), indend ))
+            varmax = np.zeros( (len(dates_mod), 38)  )
+            varmax = np.zeros( (len(dates_mod), 38)  )
+
 
         #calc KGE
         emod_pd = pd.Series(e_tmp, index = dates_mod[0:len(e_tmp)] )
