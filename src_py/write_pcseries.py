@@ -47,7 +47,7 @@ def main():
     fpar.index = index
 
     #make daily series
-    fpar_daily = fpar.resample('D').ffill()
+    #fpar_daily = fpar.resample('D').ffill()
 
     #calculate means per month
     means=np.zeros((12))
@@ -61,13 +61,21 @@ def main():
     datetime_result = pd.DatetimeIndex(start=args.start, end=args.end, freq='D')
     fpar_result = pd.Series( np.nan ,index=datetime_result)
 
-    fpar_result[fpar_daily.index] = fpar_daily
+    fpar_result[fpar.index] = fpar
 
     for i in range(0,len(fpar_result)):
         if( np.isnan(fpar_result[ i ])):
+            month = fpar_result.index.month[i]
+            year = fpar_result.index.year[i]
             i_month = fpar_result.index.month[i]-1
-            fpar_result[ i ] = means[ i_month ]
+            if(  any(~(np.isnan(fpar_result[ (fpar_result.index.month ==month) & (fpar_result.index.year == year)] )))):
+                fpar_result[i] = np.nanmean(fpar_result[ (fpar_result.index.month ==month) & (fpar_result.index.year == year)])
+            else:
+                fpar_result[ i ] = means[ i_month ]
 
+    ###################################
+    #convert to projective cover
+    pc_result = fpar_result/0.95
 
     ####################################
     #plot
@@ -75,7 +83,7 @@ def main():
     if(args.plot):
         fpar_result.plot()
         fpar.plot()
-        fpar_daily.plot()
+        #fpar_daily.plot()
         plt.show()
 
 
@@ -85,11 +93,11 @@ def main():
 
 
     for i in range(0,len(fpar_result)):
-        pc_file.write("%8.0f%8.0f%8.0f%8.0f\n" % ( i, 
-        fpar_result.index.day[i] , 
-        fpar_result.index.month[i] ,
-        fpar_result.index.year[i],
-        fpar_result[i]  ))
+        pc_file.write("%8.0f%8.0f%8.0f%8.0f%8.3f\n" % ( i, 
+        pc_result.index.day[i] , 
+        pc_result.index.month[i] ,
+        pc_result.index.year[i],
+        pc_result[i]  ))
 
 
 
