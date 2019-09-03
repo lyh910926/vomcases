@@ -102,23 +102,24 @@ def main():
     #read optional data and replace
     if(args.tmaxfile is not None):
         tmax = read_dingodata(args.tmaxfile)
-        tempmax_daily.loc[tmax.index] = tmax #oC
+        tempmax_daily = tmax.combine_first(tempmax_daily) #oC
     if(args.tmaxfile is not None):
         tmin = read_dingodata(args.tminfile)
-        tempmin_daily.loc[tmin.index] = tmin #oC
+        tempmin_daily = tmin.combine_first(tempmin_daily) #oC
     if(args.tmaxfile is not None):
         rain = read_dingodata(args.rainfile)
-        prec_daily.loc[rain.index] = rain #mm/d
+        prec_daily = rain.combine_first(prec_daily) #mm/d
     if(args.radnfile is not None):
         radn = read_dingodata(args.radnfile) #W/m2
-        radn_daily.loc[radn.index] = radn * 24 * 60 * 60 * 10**-6 #MJ/m2
+        radn = radn* 24 * 60 * 60 * 10**-6 #MJ/m2
+        radn_daily = radn.combine_first(radn_daily) #MJ/m2
     if(args.vpfile is not None):
         vp = read_dingodata(args.vpfile)
-        vp_daily.loc[vp.index] = vp #hPa
+        vp_daily = vp.combine_first(vp_daily) #hPa
     if(args.presfile is not None):
         pres = read_dingodata(args.presfile) #kPa
-        pres_daily.loc[pres.index] = pres * 10 #hPa
-
+        pres = pres * 10 #hPa
+        pres_daily = pres.combine_first(pres_daily) #hPa
 
     ##################################################
     #append to files
