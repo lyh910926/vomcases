@@ -23,7 +23,10 @@ def main():
     parser.add_argument("-op", "--optpar", help="number of parameters", type=int, nargs='+')
     parser.add_argument("-eo", "--evap_obs", help="inputfile with observations evaporation")
     parser.add_argument("-ao", "--ass_obs", help="inputfile with observations assimilation")
-    parser.add_argument("-cd", "--codedir", help="directory of VOM")                          
+    parser.add_argument("-cd", "--codedir", help="directory of VOM") 
+    parser.add_argument("-sd", "--startdate", help="startdate of modeloutput") 
+    parser.add_argument("-ed", "--enddate", help="enddate of modeloutput") 
+    parser.add_argument("--restartdir", help="restartdirectory of processed VOM-results")                                                   
     parser.add_argument("-c", "--code", help="code of VOM", nargs='+')  
     parser.add_argument("--compiler", help="compiler", default='gfortran')                                                  
     args = parser.parse_args()
@@ -44,6 +47,9 @@ def main():
         os.system("mkdir " + args.outputfolder)
     if( not  os.path.exists(args.outputbest) ):
         os.system("mkdir " + args.outputbest)
+
+    dates_mod = pd.date_range(args.startdate, args.enddate, freq='D')
+
 
     ###########################################
     #load observed evaporation
@@ -95,19 +101,35 @@ def main():
 
     if( not  os.path.exists(args.workfolder + "/out_tot") ):
         os.mkdir(args.workfolder + "/out_tot")
-        start = 0
-    else:
-        #count existing results_daily in folder
-        outfiles = os.listdir(args.workfolder + "/out_tot") # dir is your directory path
-        number_files = len(outfiles)
-        start = number_files - 1
+
+
 
     #compile code
     os.system( "make --directory " + args.codedir + " FC=" + args.compiler  )  
     currdir = os.getcwd()
 
+    #initialize arrays for results
+    if(args.restartdir is not None):
+        eKGE = np.loadtxt(args.restartdir + "/KGE_evap.txt")
+        assKGE = np.loadtxt(args.restartdir + "/KGE_ass.txt")
+        varmax = np.loadtxt( args.restartdir + "/resultsdaily_max.txt", skiprows = 1)
+        varmin = np.loadtxt( args.restartdir + "/resultsdaily_min.txt", skiprows = 1)
+        eRes = np.loadtxt( args.restartdir + "/Res_evap.txt" )
+        assRes = np.loadtxt( args.restartdir + "/Res_ass.txt" )
+        start = int(np.ceil(0.5*len(indsort)*args.percentage/100)-1) 
+        end = indend
+    else:
+        eKGE = np.zeros(( indend ))
+        eKGE[:] = np.nan
+        assKGE = np.zeros(( indend ))
+        assKGE[:] = np.nan
 
-    for j in range(start,indend):
+        start = 0
+        end = int(np.ceil(0.5*len(indsort)*args.percentage/100)-1)
+
+
+    #run the model
+    for j in range(start,end):
         filenum = str(j + 1)
         param_tmp = par_default
 
@@ -143,18 +165,11 @@ def main():
         os.system( "cp "  + args.workfolder +  "/output/results_daily.txt " + args.workfolder + "out_tot/results_daily" + filenum )
         os.system( "rm "   + args.workfolder +  "/output/results_daily.txt" )
 
-    #derive uncertainties
-    #read data
-    tmp = pd.read_csv( args.workfolder + "/out_tot/results_daily1", delim_whitespace=True)
 
 
-    eKGE = np.zeros(( indend ))
-    assKGE = np.zeros(( indend ))
-    varmax = np.zeros((len(tmp['nday']), 38 ))
-    varmin = np.zeros((len(tmp['nday']), 38 ))
 
     #loop over solutions
-    for j in range(0,indend):
+    for j in range(start,end):
         filenum = str(j + 1)
 
         tmp = pd.read_csv( args.workfolder + "/out_tot/results_daily" + filenum, delim_whitespace=True)
@@ -162,40 +177,44 @@ def main():
         ass_tmp = (np.array(tmp[tmp.columns[19]]) +  np.array(tmp[tmp.columns[20]] ))
 
         #make array of dates
-        if j==0:
-            #determine which dates overlap       
-            dates_mod = pd.date_range(str(tmp[tmp.columns[2]][0]) + "/" +
-                                      str(tmp[tmp.columns[1]][0]) + "/" +
-                                      str(tmp[tmp.columns[0]][0]) ,periods=len( tmp[tmp.columns[0]] ), freq='D')
+        
+        dates_overlap = dates_mod.intersection(eobs_pd.index)
+        print("Evaluating for:")
+        print(dates_overlap[0])
+        print(dates_overlap[-1])
 
-            dates_overlap = dates_mod.intersection(eobs_pd.index)
-            print("Evaluating for:")
-            print(dates_overlap[0])
-            print(dates_overlap[-1])
+        if(j == 0):
             eRes = np.zeros((len(dates_overlap), indend ))
             assRes = np.zeros((len(dates_overlap), indend ))
-            varmax = np.array(tmp[tmp.columns[0:38]].values )
-            varmin = np.array(tmp[tmp.columns[0:38]].values )
+            varmax = np.zeros( (len(dates_mod), 38)  )
+            varmin = np.zeros( (len(dates_mod), 38)  )
+
+
+        #calc KGE
+        emod_pd = pd.Series(e_tmp, index = dates_mod[0:len(e_tmp)] )
+        assmod_pd = pd.Series(ass_tmp, index = dates_mod[0:len(ass_tmp)] )
+
+        
+        if( not(any(np.isnan(emod_pd[dates_overlap]) ) ) ):
+            eKGE[j]  = calcKGE(emod_pd[dates_overlap], eobs_pd[dates_overlap])
+            assKGE[j]  = calcKGE(assmod_pd[dates_overlap], assobs_pd[dates_overlap])
+            #calc residuals
+            eRes[:,j]  = calcResiduals(emod_pd[dates_overlap], eobs_pd[dates_overlap])
+            assRes[:,j]  = calcResiduals(assmod_pd[dates_overlap], assobs_pd[dates_overlap])
+        else:
+            print("no overlapping dates")
+  
 
         #loop over all columns in results_daily
         for k in range(4,38):
                 var_tmp = tmp[tmp.columns[k]] 
                 try:
-                    varmax[:,k] = np.maximum(var_tmp , np.array(varmax[:,k]) )
-                    varmin[:,k] = np.minimum(var_tmp , varmin[:,k])
-                except TypeError:
-                    print(var_tmp)
-                    print("TypeError:skipping solution" + str(k))
+                    varmax[0:len(var_tmp),k] = np.maximum(var_tmp , np.array(varmax[0:len(var_tmp),k]) )
+                    varmin[0:len(var_tmp),k] = np.minimum(var_tmp , np.array(varmin[0:len(var_tmp),k]) )
+                except (TypeError, ValueError, UnboundLocalError):
+                    print("Error:skipping solution" + str(k))
 
-        #calc KGE
-        emod_pd = pd.Series(e_tmp, index = dates_mod )
-        assmod_pd = pd.Series(ass_tmp, index = dates_mod )
 
-        eKGE[j]  = calcKGE(emod_pd[dates_overlap], eobs_pd[dates_overlap])
-        assKGE[j]  = calcKGE(assmod_pd[dates_overlap], assobs_pd[dates_overlap])
-        #calc residuals
-        eRes[:,j]  = calcResiduals(emod_pd[dates_overlap], eobs_pd[dates_overlap])
-        assRes[:,j]  = calcResiduals(assmod_pd[dates_overlap], assobs_pd[dates_overlap])
 
     #os.chdir( currdir )
 
