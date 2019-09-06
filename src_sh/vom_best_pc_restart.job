@@ -1,0 +1,50 @@
+#!/bin/sh
+#
+# Your job name
+#SBATCH --job-name=VOM
+#
+# Use current working directory
+#
+#
+#SBATCH -e /home/int/eva/nijzink/logfiles/err
+#SBATCH -o /home/int/eva/nijzink/logfiles/out
+#SBATCH --account=wave
+# pe (Parallel environment) request. Set your number of processors here.
+#SBATCH -n 1
+#SBATCH --time=47:00:00
+#
+# The following output will show in the output file. Used for debugging.
+echo "Got $SLURM_NNODES processors."
+#
+# load modules
+module load userspace/tr17.10
+module load userspace/spack
+module load gcc/7.2.0
+#
+# to avoid an error message in renku
+#export LC_ALL='en_US.UTF-8'
+#export LANG='en_US.UTF-8'
+#module load null shared use.own conda
+#
+
+
+date
+source /home/int/eva/nijzink/miniconda3/etc/profile.d/conda.sh
+conda activate renku
+
+#inputs:
+#files to be tracked with renku
+#$1 --> sce_out.txt
+#$2 --> sce_stats (output-folder)
+#$3 --> sce_best (output-folder)
+#$4 --> namelist
+#$5 --> workdir
+#$6 --> dailyweather.prn
+#$7 --> perc_cover.txt
+#$8 --> data/DINGO/Ea_*
+#$9 --> data/DINGO/GPPdaily_
+
+renku run python3 src_py/proc_sce_pc_restart.py -i $1 -o $2 -ob $3 -n $4 -w $5 -d $6 -pc $7 -p 10 -op 1 1 1 1 1 1 0 1 -eo $8 -ao $9 -cd src/VOM/VOM_Fortran/ -sd 01-01-1980 -ed 21-12-2016 -c src/VOM/VOM_Fortran/VOM-code/*
+
+
+date
