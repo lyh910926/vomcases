@@ -45,7 +45,7 @@ conda activate renku
 #$9 --> data/DINGO/GPPdaily_
 #$10 --> restart-dir (previous sce_stats)
 
-renku run python3 src_py/proc_sce_pc_restart.py -i $1 -o $2 -ob $3 -n $4 -w $5 -d $6 -pc $7 -p 10 -op 1 1 1 1 1 1 0 1 -eo $8 -ao $9 -cd src/VOM/VOM_Fortran/ -sd 01-01-1980 -ed 21-12-2016 --restartdir $10 -c src/VOM/VOM_Fortran/VOM-code/*
+renku run python3 src_py/proc_sce_pc_restart.py -i $1 -o $2 -ob $3 -n $4 -w $5 -d $6 -pc $7 -p 10 -op 1 1 1 1 1 1 0 1 -eo $8 -ao $9 -cd src/VOM/VOM_Fortran/ -sd 01-01-1980 -ed 21-12-2016 --restartdir ${10} -c src/VOM/VOM_Fortran/VOM-code/*
 
 
 date
