@@ -54,9 +54,9 @@ def main():
     #select 10% best runs from sce
 
 
-    tmp = pd.read_csv( args.inputfile, delim_whitespace=True)
-    e_tmp = 1000*(np.array(tmp[tmp.columns[26]]) + np.array(tmp[tmp.columns[27]]) + np.array(tmp[tmp.columns[10]]))
-    ass_tmp = (np.array(tmp[tmp.columns[19]]) +  np.array(tmp[tmp.columns[20]] ))
+    tmp = pd.read_csv( args.inputfile, delim_whitespace=True, header = 0)
+    e_tmp = 1000*(np.array(tmp["esoil"]) + np.array(tmp["etmg"]) + np.array(tmp["etmt"]))
+    ass_tmp = (np.array(tmp["assg"]) +  np.array(tmp["asst"] ))
 
     #make array of dates
 
