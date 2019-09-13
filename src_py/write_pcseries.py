@@ -56,12 +56,14 @@ def main():
         month = i_month + 1
         means[i_month] = np.nanmean(fpar[fpar.index.month == month] )
 
+    const_cov = np.min(means)
 
     #final months
     datetime_result = pd.DatetimeIndex(start=args.start, end=args.end, freq='D')
     fpar_result = pd.Series( np.nan ,index=datetime_result)
 
-    fpar_result[fpar.index] = fpar
+    fpar_result[fpar.index] = fpar - const_cov
+    fpar_result[fpar_result < 0.0] = 0.0
 
     for i in range(0,len(fpar_result)):
         if( np.isnan(fpar_result[ i ])):
@@ -71,11 +73,12 @@ def main():
             if(  any(~(np.isnan(fpar_result[ (fpar_result.index.month ==month) & (fpar_result.index.year == year)] )))):
                 fpar_result[i] = np.nanmean(fpar_result[ (fpar_result.index.month ==month) & (fpar_result.index.year == year)])
             else:
-                fpar_result[ i ] = means[ i_month ]
+                fpar_result[ i ] = means[ i_month ] - const_cov
 
     ###################################
     #convert to projective cover
     pc_result = fpar_result/0.95
+    print("Constant cover:" + str(const_cov/0.95) )
 
     ####################################
     #plot
