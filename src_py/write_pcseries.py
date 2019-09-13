@@ -78,6 +78,7 @@ def main():
     ###################################
     #convert to projective cover
     pc_result = fpar_result/0.95
+    print("Constant cover:" + str(const_cov/0.95) )
 
     ####################################
     #plot
