@@ -149,9 +149,10 @@ def main():
     for j in range(0,indend):
         filenum = str(j + 1)
 
-        tmp = pd.read_csv( args.workfolder + "/out_tot/results_daily" + filenum, delim_whitespace=True)
-        e_tmp = 1000*(np.array(tmp[tmp.columns[26]]) + np.array(tmp[tmp.columns[27]]) + np.array(tmp[tmp.columns[10]]))
-        ass_tmp = (np.array(tmp[tmp.columns[19]]) +  np.array(tmp[tmp.columns[20]] ))
+        tmp = np.genfromtxt(args.workfolder + "/out_tot/results_daily" + filenum, names=True)
+
+        e_tmp = 1000*(np.array(tmp["esoil"]) + np.array(tmp["etmt"]) + np.array(tmp["etmg"]))
+        ass_tmp = (np.array(tmp["assg"]) +  np.array(tmp["asst"] ))
 
         #make array of dates
         if j==0:
