@@ -1,0 +1,47 @@
+#!/bin/sh
+#
+# Your job name
+#SBATCH --job-name=VOM
+#
+# Use current working directory
+#
+#
+#SBATCH -e /home/int/eva/nijzink/logfiles/err
+#SBATCH -o /home/int/eva/nijzink/logfiles/out
+#SBATCH --account=wave
+# pe (Parallel environment) request. Set your number of processors here.
+#SBATCH -n 4
+#SBATCH --time=47:00:00
+#
+# The following output will show in the output file. Used for debugging.
+echo "Got $SLURM_NNODES processors."
+#
+# load modules
+module load userspace/tr17.10
+module load userspace/spack
+module load gcc/7.2.0
+#
+# to avoid an error message in renku
+#export LC_ALL='en_US.UTF-8'
+#export LANG='en_US.UTF-8'
+#module load null shared use.own conda
+#
+#files to be tracked with renku
+exe_src=$2
+dailyweather_input=$1
+
+
+date
+source /home/int/eva/nijzink/miniconda3/etc/profile.d/conda.sh
+conda activate renku
+
+#inputs:
+#files to be tracked with renku
+#exe_dir=$1
+#inputdir=$2
+#outputdir=$3
+#nml_input=$4
+
+renku run bash src_sh/run_vom.sh $@
+
+date
