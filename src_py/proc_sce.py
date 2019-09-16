@@ -147,6 +147,7 @@ def main():
             eKGE[:] = np.nan
             assKGE = np.zeros(( indend ))
             assKGE[:] = np.nan
+            start = 0
             end = int(np.ceil(len(indsort)*args.percentage/100)-1)
 
     #run the model
