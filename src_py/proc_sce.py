@@ -32,7 +32,17 @@ def main():
     parser.add_argument("--restart", help="stop runs after n runs to restart later", type=bool)
     parser.add_argument("--restartdir", help="restartdirectory of processed VOM-results")   
     parser.add_argument("--restart_batches", help="split runs in n restart_batches") 
-    parser.add_argument("--perc_cover", help="perc_cover.txt")                                                                                                                                                                                                            
+    parser.add_argument("--perc_cover", help="perc_cover.txt") 
+    parser.add_argument("--o_lambdagf", default="779.827", help="factor for calculating lambdag_d", type=np.float) 
+    parser.add_argument("--o_wsgexp", default="-1.32889", help="exponent for calculating lambdag", type=np.float) 
+    parser.add_argument("--o_lambdatf", default="1601.81", help="factor for calculating lambdat_d", type=np.float) 
+    parser.add_argument("--o_wstexp", default="-0.564496", help="exponent for calculating lambdat_d", type=np.float) 
+    parser.add_argument("--o_cai", default="0.300", help="projected cover perennial vegetation (0-1)",type=np.float) 
+    parser.add_argument("--o_rtdepth", default="3.0", help="tree rooting depth (m)",type=np.float) 
+    parser.add_argument("--o_mdstore", default="100", help="wood water storage parameter of trees (can be in shufflepar)",type=np.float) 
+    parser.add_argument("--o_rgdepth", default="1.0", help="root depth grasses (can be in shufflepar)",type=np.float) 
+
+                                                                                                                                                                                                           
     args = parser.parse_args()
 
        
@@ -83,7 +93,7 @@ def main():
     #select 10% best runs from sce
     params = np.loadtxt(args.inputfile) 
 
-    par_default = [779.827, -1.32889, 1601.81, -0.564496, 0.300, 3.0, 100.0, 1.0]
+    par_default = [args.o_lambdagf, args.o_wsgexp, args.o_lambdatf, args.o_wstexp, args.o_cai, args.o_rtdepth, args.o_mdstore, args.o_rgdepth]
 
     #sorts ascending and returns indices
     indsort = np.argsort(params[:, np.sum(args.optpar)])
