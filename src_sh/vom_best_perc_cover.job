@@ -43,8 +43,9 @@ conda activate renku
 #$7 --> perc_cover.txt
 #$8 --> data/DINGO/Ea_*
 #$9 --> data/DINGO/GPPdaily_
+#$10 --> o_cai
 
-renku run python3 src_py/proc_sce_presc_cov.py -i $1 -o $2 -ob $3 -n $4 -w $5 -d $6 -pc $7 -p 10 -op 1 1 1 1 1 1 0 1 -eo $8 -ao $9 -cd src/VOM/VOM_Fortran/ -c src/VOM/VOM_Fortran/VOM-code/*
+renku run python3 src_py/proc_sce.py -i $1 -o $2 -ob $3 -n $4 -w $5 -d $6 --perc_cover $7 -p 10 -op 1 1 1 1 0 1 0 1 -eo $8 -ao $9 --o_cai ${10} -cd src/VOM/VOM_Fortran/ -sd 01-01-1980 -ed 21-12-2016 -c src/VOM/VOM_Fortran/VOM-code/*
 
 
 date
