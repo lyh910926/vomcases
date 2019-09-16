@@ -25,7 +25,24 @@ def main():
     parser.add_argument("-ao", "--ass_obs", help="inputfile with observations assimilation")
     parser.add_argument("-cd", "--codedir", help="directory of VOM")                          
     parser.add_argument("-c", "--code", help="code of VOM", nargs='+')  
-    parser.add_argument("--compiler", help="compiler", default='gfortran')                                                  
+    parser.add_argument("-sd", "--startdate", help="startdate of modeloutput") 
+    parser.add_argument("-ed", "--enddate", help="enddate of modeloutput") 
+
+    parser.add_argument("--compiler", help="compiler", default='gfortran') 
+    parser.add_argument("--restart", help="stop runs after n runs to restart later", type=bool)
+    parser.add_argument("--restartdir", help="restartdirectory of processed VOM-results")   
+    parser.add_argument("--restart_batches", help="split runs in n restart_batches") 
+    parser.add_argument("--perc_cover", help="perc_cover.txt") 
+    parser.add_argument("--o_lambdagf", default="779.827", help="factor for calculating lambdag_d", type=np.float) 
+    parser.add_argument("--o_wsgexp", default="-1.32889", help="exponent for calculating lambdag", type=np.float) 
+    parser.add_argument("--o_lambdatf", default="1601.81", help="factor for calculating lambdat_d", type=np.float) 
+    parser.add_argument("--o_wstexp", default="-0.564496", help="exponent for calculating lambdat_d", type=np.float) 
+    parser.add_argument("--o_cai", default="0.300", help="projected cover perennial vegetation (0-1)",type=np.float) 
+    parser.add_argument("--o_rtdepth", default="3.0", help="tree rooting depth (m)",type=np.float) 
+    parser.add_argument("--o_mdstore", default="100", help="wood water storage parameter of trees (can be in shufflepar)",type=np.float) 
+    parser.add_argument("--o_rgdepth", default="1.0", help="root depth grasses (can be in shufflepar)",type=np.float) 
+
+                                                                                                                                                                                                           
     args = parser.parse_args()
 
        
@@ -44,6 +61,8 @@ def main():
         os.system("mkdir " + args.outputfolder)
     if( not  os.path.exists(args.outputbest) ):
         os.system("mkdir " + args.outputbest)
+
+    dates_mod = pd.date_range(args.startdate, args.enddate, freq='D')
 
     ###########################################
     #load observed evaporation
@@ -74,7 +93,7 @@ def main():
     #select 10% best runs from sce
     params = np.loadtxt(args.inputfile) 
 
-    par_default = [779.827, -1.32889, 1601.81, -0.564496, 0.300, 3.0, 100.0, 1.0]
+    par_default = [args.o_lambdagf, args.o_wsgexp, args.o_lambdatf, args.o_wstexp, args.o_cai, args.o_rtdepth, args.o_mdstore, args.o_rgdepth]
 
     #sorts ascending and returns indices
     indsort = np.argsort(params[:, np.sum(args.optpar)])
@@ -89,6 +108,8 @@ def main():
     #create temporary directory for VOM-input
     os.mkdir(args.workfolder + "/input")
     os.system('cp ' + args.dailyweather + ' ' + args.workfolder + "/input" )  
+    if(args.perc_cover is not None):
+        os.system('cp ' + args.perc_cover + ' ' + args.workfolder + "/input" )  
 
     #mkdir args.workfolder/output
     os.mkdir(args.workfolder + "/output")
@@ -98,8 +119,39 @@ def main():
     os.system( "make --directory " + args.codedir + " FC=" + args.compiler  )  
     currdir = os.getcwd()
 
+    #initialize arrays for results
+    if(args.restart == True):
+        if(args.restartdir is not None):
+            eKGE = np.loadtxt(args.restartdir + "/KGE_evap.txt")
+            assKGE = np.loadtxt(args.restartdir + "/KGE_ass.txt")
+            varmax = np.loadtxt( args.restartdir + "/resultsdaily_max.txt", skiprows = 1)
+            varmin = np.loadtxt( args.restartdir + "/resultsdaily_min.txt", skiprows = 1)
+            eRes = np.loadtxt( args.restartdir + "/Res_evap.txt" )
+            assRes = np.loadtxt( args.restartdir + "/Res_ass.txt" )
+            split = 1.0/np.float(args.restart_batches)
+            start = int(np.ceil(split*len(indsort)*args.percentage/100)-1) 
+            #count where to start
 
-    for j in range(0,indend):
+            end = indend
+        else:
+            eKGE = np.zeros(( indend ))
+            eKGE[:] = np.nan
+            assKGE = np.zeros(( indend ))
+            assKGE[:] = np.nan
+
+            start = 0
+            split = 1.0/np.float(args.restart_batches)
+            end = int(np.ceil(split*len(indsort)*args.percentage/100)-1)
+    else:
+            eKGE = np.zeros(( indend ))
+            eKGE[:] = np.nan
+            assKGE = np.zeros(( indend ))
+            assKGE[:] = np.nan
+            start = 0
+            end = int(np.ceil(len(indsort)*args.percentage/100)-1)
+
+    #run the model
+    for j in range(start,end):
         filenum = str(j + 1)
         param_tmp = par_default
 
@@ -136,38 +188,42 @@ def main():
         os.system( "rm "   + args.workfolder +  "/output/results_daily.txt" )
 
     #derive uncertainties
-    #read data
-    tmp = pd.read_csv( args.workfolder + "/out_tot/results_daily1", delim_whitespace=True)
-
-
-    eKGE = np.zeros(( indend ))
-    assKGE = np.zeros(( indend ))
-    varmax = np.zeros((len(tmp['nday']), 38 ))
-    varmin = np.zeros((len(tmp['nday']), 38 ))
 
     #loop over solutions
-    for j in range(0,indend):
+    for j in range(start,indend):
         filenum = str(j + 1)
 
-        tmp = pd.read_csv( args.workfolder + "/out_tot/results_daily" + filenum, delim_whitespace=True)
-        e_tmp = 1000*(np.array(tmp[tmp.columns[26]]) + np.array(tmp[tmp.columns[27]]) + np.array(tmp[tmp.columns[10]]))
-        ass_tmp = (np.array(tmp[tmp.columns[19]]) +  np.array(tmp[tmp.columns[20]] ))
+        tmp = np.genfromtxt(args.workfolder + "/out_tot/results_daily" + filenum, names=True)
+
+        e_tmp = 1000*(np.array(tmp["esoil"]) + np.array(tmp["etmt"]) + np.array(tmp["etmg"]))
+        ass_tmp = (np.array(tmp["assg"]) +  np.array(tmp["asst"] ))
 
         #make array of dates
-        if j==0:
-            #determine which dates overlap       
-            dates_mod = pd.date_range(str(tmp[tmp.columns[2]][0]) + "/" +
-                                      str(tmp[tmp.columns[1]][0]) + "/" +
-                                      str(tmp[tmp.columns[0]][0]) ,periods=len( tmp[tmp.columns[0]] ), freq='D')
 
-            dates_overlap = dates_mod.intersection(eobs_pd.index)
-            print("Evaluating for:")
-            print(dates_overlap[0])
-            print(dates_overlap[-1])
+        #determine which dates overlap       
+        dates_overlap = dates_mod.intersection(eobs_pd.index)
+        print("Evaluating for:")
+        print(dates_overlap[0])
+        print(dates_overlap[-1])
+        if(j == 0):
             eRes = np.zeros((len(dates_overlap), indend ))
             assRes = np.zeros((len(dates_overlap), indend ))
-            varmax = np.array(tmp[tmp.columns[0:38]].values )
-            varmin = np.array(tmp[tmp.columns[0:38]].values )
+            varmax = np.zeros( (len(dates_mod), 38)  )
+            varmin = np.zeros( (len(dates_mod), 38)  )
+
+        #calc KGE
+        emod_pd = pd.Series(e_tmp, index = dates_mod )
+        assmod_pd = pd.Series(ass_tmp, index = dates_mod )
+
+        if( not(any(np.isnan(emod_pd[dates_overlap]) ) ) ):
+            eKGE[j]  = calcKGE(emod_pd[dates_overlap], eobs_pd[dates_overlap])
+            assKGE[j]  = calcKGE(assmod_pd[dates_overlap], assobs_pd[dates_overlap])
+            #calc residuals
+            eRes[:,j]  = calcResiduals(emod_pd[dates_overlap], eobs_pd[dates_overlap])
+            assRes[:,j]  = calcResiduals(assmod_pd[dates_overlap], assobs_pd[dates_overlap])
+        else:
+            print("no overlapping dates")
+
 
         #loop over all columns in results_daily
         for k in range(4,38):
@@ -179,9 +235,7 @@ def main():
                     print(var_tmp)
                     print("TypeError:skipping solution" + str(k))
 
-        #calc KGE
-        emod_pd = pd.Series(e_tmp, index = dates_mod )
-        assmod_pd = pd.Series(ass_tmp, index = dates_mod )
+
 
         eKGE[j]  = calcKGE(emod_pd[dates_overlap], eobs_pd[dates_overlap])
         assKGE[j]  = calcKGE(assmod_pd[dates_overlap], assobs_pd[dates_overlap])
