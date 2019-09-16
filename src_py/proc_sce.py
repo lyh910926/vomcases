@@ -227,10 +227,10 @@ def main():
 
         #loop over all columns in results_daily
         for k in range(4,38):
-                var_tmp = tmp[tmp.columns[k]] 
+                var_tmp = tmp[tmp.dtype.names[k]] 
                 try:
                     varmax[:,k] = np.maximum(var_tmp , np.array(varmax[:,k]) )
-                    varmin[:,k] = np.minimum(var_tmp , varmin[:,k])
+                    varmin[:,k] = np.minimum(var_tmp , np.array(varmin[:,k]))
                 except TypeError:
                     print(var_tmp)
                     print("TypeError:skipping solution" + str(k))
@@ -252,8 +252,8 @@ def main():
     np.savetxt( args.outputfolder + "/Res_evap.txt", eRes, comments='', delimiter=" " )
     np.savetxt( args.outputfolder + "/Res_ass.txt", assRes, comments='', delimiter=" " )
     #write resultsdaily_max, resultsdaily_min
-    np.savetxt( args.outputfolder + "/resultsdaily_max.txt", varmax, comments='', delimiter=" ", header = ' '.join(tmp.columns.get_values()) )
-    np.savetxt( args.outputfolder + "/resultsdaily_min.txt", varmin, comments='', delimiter=" ", header = ' '.join(tmp.columns.get_values()) )
+    np.savetxt( args.outputfolder + "/resultsdaily_max.txt", varmax, comments='', delimiter=" ", header = ' '.join(tmp.dtype.names) )
+    np.savetxt( args.outputfolder + "/resultsdaily_min.txt", varmin, comments='', delimiter=" ", header = ' '.join(tmp.dtype.names) )
 
 
 
