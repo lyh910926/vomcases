@@ -1,5 +1,7 @@
 '@context':
   _id: '@id'
+  _label: rdfs:label
+  _project: schema:isPartOf
   added: schema:dateCreated
   affiliation: schema:affiliation
   alternate_name: schema:alternateName
@@ -8,18 +10,34 @@
   date_published: schema:datePublished
   description: schema:description
   email: schema:email
-  files: schema:DigitalDocument
+  files: schema:hasPart
   identifier: schema:identifier
   in_language: schema:inLanguage
   keywords: schema:keywords
   license: schema:license
   name: schema:name
+  path: prov:atLocation
+  prov: http://www.w3.org/ns/prov#
   schema: http://schema.org/
   url: schema:url
   version: schema:version
-'@type': schema:Dataset
+  wfprov: http://purl.org/wf4ever/wfprov#
+'@type':
+- prov:Entity
+- schema:Dataset
+- wfprov:Artifact
 _id: vomcases/datasets/f1d92965-72fc-4e73-b686-58312c529520
-created: 2019-03-08 08:29:36.845093
+_label: vomcases/datasets/f1d92965-72fc-4e73-b686-58312c529520
+_project:
+  '@context':
+    _id: '@id'
+    foaf: http://xmlns.com/foaf/0.1/
+    prov: http://www.w3.org/ns/prov#
+  '@type':
+  - foaf:Project
+  - prov:Location
+  _id: https://renkulab.io/remko.nijzink/vomcases
+created: '2019-03-08T08:29:36.845093+02:00'
 creator:
 - '@type': schema:Person
   _id: remko.nijzink
@@ -35,5 +53,6 @@ in_language: null
 keywords: []
 license: null
 name: DINGO
+path: .renku/datasets/vomcases/datasets/f1d92965-72fc-4e73-b686-58312c529520
 url: null
 version: null

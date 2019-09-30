@@ -1,5 +1,7 @@
 '@context':
   _id: '@id'
+  _label: rdfs:label
+  _project: schema:isPartOf
   added: schema:dateCreated
   affiliation: schema:affiliation
   alternate_name: schema:alternateName
@@ -8,18 +10,34 @@
   date_published: schema:datePublished
   description: schema:description
   email: schema:email
-  files: schema:DigitalDocument
+  files: schema:hasPart
   identifier: schema:identifier
   in_language: schema:inLanguage
   keywords: schema:keywords
   license: schema:license
   name: schema:name
+  path: prov:atLocation
+  prov: http://www.w3.org/ns/prov#
   schema: http://schema.org/
   url: schema:url
   version: schema:version
-'@type': schema:Dataset
+  wfprov: http://purl.org/wf4ever/wfprov#
+'@type':
+- prov:Entity
+- schema:Dataset
+- wfprov:Artifact
 _id: vomcases/datasets/803cc2d1-a409-443e-8efd-ea2664232358
-created: 2019-03-08 08:31:00.531153
+_label: vomcases/datasets/803cc2d1-a409-443e-8efd-ea2664232358
+_project:
+  '@context':
+    _id: '@id'
+    foaf: http://xmlns.com/foaf/0.1/
+    prov: http://www.w3.org/ns/prov#
+  '@type':
+  - foaf:Project
+  - prov:Location
+  _id: https://renkulab.io/remko.nijzink/vomcases
+created: '2019-03-08T08:31:00.531153+02:00'
 creator:
 - '@type': schema:Person
   _id: remko.nijzink
@@ -30,9 +48,14 @@ creator:
 date_published: null
 description: null
 files:
-- '@type': schema:DigitalDocument
-  _id: ../../data_tmp/MaunaLoa/weekly_in_situ_co2_mlo.csv
-  added: 2019-03-08 08:31:21.286450
+- '@type':
+  - prov:Entity
+  - schema:DigitalDocument
+  - wfprov:Artifact
+  _id: blob/d22889702028cc5023aeff44a4ab2db0e19ccfe1/data/MaunaLoa/weekly_in_situ_co2_mlo.csv
+  _label: data/MaunaLoa/weekly_in_situ_co2_mlo.csv
+  _project: null
+  added: '2019-03-08T08:31:21.286450+02:00'
   creator:
   - '@type': schema:Person
     _id: remko.nijzink
@@ -40,12 +63,15 @@ files:
     alternate_name: null
     email: remko.nijzink@list.lu
     name: Remko Nijzink
-  path: ../../../data/MaunaLoa/weekly_in_situ_co2_mlo.csv
+  dataset: null
+  name: weekly_in_situ_co2_mlo.csv
+  path: data/MaunaLoa/weekly_in_situ_co2_mlo.csv
   url: http://scrippsco2.ucsd.edu/assets/data/atmospheric/stations/in_situ_co2/weekly/weekly_in_situ_co2_mlo.csv
 identifier: vomcases/datasets/803cc2d1-a409-443e-8efd-ea2664232358
 in_language: null
 keywords: []
 license: null
 name: MaunaLoa
+path: .renku/datasets/vomcases/datasets/803cc2d1-a409-443e-8efd-ea2664232358
 url: http://scrippsco2.ucsd.edu/assets/data/atmospheric/stations/in_situ_co2/weekly/weekly_in_situ_co2_mlo.csv
 version: null
