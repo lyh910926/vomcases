@@ -7,8 +7,9 @@ input_weather=$3
 input_soil=$4
 nml_input=$5
 outputdir=$6
-restart_dir=$7
-input_extra=$8
+input_extra=$7
+restart_dir=$8
+
 date
 
 #compile code
@@ -27,6 +28,7 @@ if [ ! -d  "$inputdir" ]; then
 mkdir $inputdir
 cp $input_weather $inputdir
 cp $input_soil $inputdir
+cp $input_extra $inputdir
 fi
 
 #run the model 
