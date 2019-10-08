@@ -4,9 +4,9 @@
 exe_dir=$1
 inputdir=$2
 input_weather=$3
-nml_input=$5
-outputdir=$6
-restart_dir=$7
+nml_input=$4
+outputdir=$5
+restart_dir=$6
 
 date
 
