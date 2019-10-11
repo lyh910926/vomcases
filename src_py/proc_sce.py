@@ -62,8 +62,6 @@ def main():
 
     if( not  os.path.exists(args.outputfolder) ):
         os.system("mkdir " + args.outputfolder)
-    if( not  os.path.exists(args.outputbest) ):
-        os.system("mkdir " + args.outputbest)
 
     dates_mod = pd.date_range(args.startdate, args.enddate, freq='D')
 
