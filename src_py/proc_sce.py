@@ -24,8 +24,12 @@ def main():
     parser.add_argument("-ao", "--ass_obs", help="inputfile with observations assimilation")
     parser.add_argument("-cd", "--codedir", help="directory of VOM")                          
     parser.add_argument("-c", "--code", help="code of VOM", nargs='+')  
-    parser.add_argument("-sd", "--startdate", help="startdate of modeloutput") 
-    parser.add_argument("-ed", "--enddate", help="enddate of modeloutput") 
+    parser.add_argument("-s", "--startdate", help="startdate of modeloutput") 
+    parser.add_argument("-e", "--enddate", help="enddate of modeloutput") 
+    parser.add_argument("-sd", "--startdry", help="months to start", type=int)     
+    parser.add_argument("-ed", "--enddry", help="months to end", type=int)  
+    parser.add_argument("-sw", "--startwet", help="months to start", type=int)     
+    parser.add_argument("-ew", "--endwet", help="months to end", type=int)  
 
     parser.add_argument("--compiler", help="compiler", default='gfortran') 
     parser.add_argument("--restart", help="stop runs after n runs to restart later", type=bool)
@@ -123,6 +127,17 @@ def main():
         if(args.restartdir is not None):
             eKGE = np.loadtxt(args.restartdir + "/KGE_evap.txt")
             assKGE = np.loadtxt(args.restartdir + "/KGE_ass.txt")
+
+
+            eRE = np.loadtxt(args.restartdir + "/REma_evap.txt")
+            assRE = np.loadtxt(args.restartdir + "/REma_ass.txt")
+
+            eREs_wet = np.loadtxt(args.restartdir + "/REma_wet_evap.txt")
+            assREs_wet =  np.loadtxt(args.restartdir + "/REma_wet_ass.txt")
+
+            eREs_dry = np.loadtxt(args.restartdir + "/REma_dry_evap.txt")
+            assREs_dry =  np.loadtxt(args.restartdir + "/REma_dry_ass.txt")
+
             varmax = np.loadtxt( args.restartdir + "/resultsdaily_max.txt", skiprows = 1)
             varmin = np.loadtxt( args.restartdir + "/resultsdaily_min.txt", skiprows = 1)
             eRes = np.loadtxt( args.restartdir + "/Res_evap.txt" )
@@ -138,6 +153,21 @@ def main():
             assKGE = np.zeros(( indend ))
             assKGE[:] = np.nan
 
+            eRE = np.zeros(( indend ))
+            eRE[:] = np.nan
+            assRE = np.zeros(( indend ))
+            assRE[:] = np.nan
+
+            eREs_wet = np.zeros(( indend ))
+            eREs_wet[:] = np.nan
+            assREs_wet = np.zeros(( indend ))
+            assREs_wet[:] = np.nan
+
+            eREs_dry = np.zeros(( indend ))
+            eREs_dry[:] = np.nan
+            assREs_dry = np.zeros(( indend ))
+            assREs_dry[:] = np.nan
+
             start = 0
             split = 1.0/np.float(args.restart_batches)
             end = int(np.ceil(split*len(indsort)*args.percentage/100)-1)
@@ -146,6 +176,22 @@ def main():
             eKGE[:] = np.nan
             assKGE = np.zeros(( indend ))
             assKGE[:] = np.nan
+
+            eRE = np.zeros(( indend ))
+            eRE[:] = np.nan
+            assRE = np.zeros(( indend ))
+            assRE[:] = np.nan
+
+            eREs_wet = np.zeros(( indend ))
+            eREs_wet[:] = np.nan
+            assREs_wet = np.zeros(( indend ))
+            assREs_wet[:] = np.nan
+
+            eREs_dry = np.zeros(( indend ))
+            eREs_dry[:] = np.nan
+            assREs_dry = np.zeros(( indend ))
+            assREs_dry[:] = np.nan
+
             start = 0
             end = int(np.ceil(len(indsort)*args.percentage/100)-1)
 
@@ -210,8 +256,19 @@ def main():
         assmod_pd = pd.Series(ass_tmp, index = dates_mod )
 
         if( not(any(np.isnan(emod_pd[dates_overlap]) ) ) ):
+
             eKGE[j]  = calcKGE(emod_pd[dates_overlap], eobs_pd[dates_overlap])
             assKGE[j]  = calcKGE(assmod_pd[dates_overlap], assobs_pd[dates_overlap])
+
+            eRE[j]  = calcREmean(emod_pd[dates_overlap], eobs_pd[dates_overlap])
+            assRE[j]  = calcREmean(assmod_pd[dates_overlap], assobs_pd[dates_overlap])
+
+            eREs_dry[j]  = calcREmean_seasonal(emod_pd[dates_overlap], eobs_pd[dates_overlap], args.startdry, args.enddry)
+            assREs_dry[j]  = calcREmean_seasonal(assmod_pd[dates_overlap], assobs_pd[dates_overlap], args.startdry, args.enddry)
+
+            eREs_wet[j]  = calcREmean_seasonal(emod_pd[dates_overlap], eobs_pd[dates_overlap], args.startwet, args.endwet)
+            assREs_wet[j]  = calcREmean_seasonal(assmod_pd[dates_overlap], assobs_pd[dates_overlap], args.startwet, args.endwet)
+
             #calc residuals
             eRes[:,j]  = calcResiduals(emod_pd[dates_overlap], eobs_pd[dates_overlap])
             assRes[:,j]  = calcResiduals(assmod_pd[dates_overlap], assobs_pd[dates_overlap])
@@ -231,11 +288,7 @@ def main():
 
 
 
-        eKGE[j]  = calcKGE(emod_pd[dates_overlap], eobs_pd[dates_overlap])
-        assKGE[j]  = calcKGE(assmod_pd[dates_overlap], assobs_pd[dates_overlap])
-        #calc residuals
-        eRes[:,j]  = calcResiduals(emod_pd[dates_overlap], eobs_pd[dates_overlap])
-        assRes[:,j]  = calcResiduals(assmod_pd[dates_overlap], assobs_pd[dates_overlap])
+
 
     #os.chdir( currdir )
 
@@ -245,6 +298,17 @@ def main():
     np.savetxt( args.outputfolder + "/KGE_ass.txt", assKGE, comments='', delimiter=" " )
     np.savetxt( args.outputfolder + "/Res_evap.txt", eRes, comments='', delimiter=" " )
     np.savetxt( args.outputfolder + "/Res_ass.txt", assRes, comments='', delimiter=" " )
+
+    np.savetxt( args.outputfolder + "/REma_evap.txt", eRE, comments='', delimiter=" " )
+    np.savetxt( args.outputfolder + "/REma_ass.txt", assRE, comments='', delimiter=" " )
+
+    np.savetxt( args.outputfolder + "/REma_wet_evap.txt", eREs_wet, comments='', delimiter=" " )
+    np.savetxt( args.outputfolder + "/REma_wet_ass.txt", assREs_wet, comments='', delimiter=" " )
+
+    np.savetxt( args.outputfolder + "/REma_dry_evap.txt", eREs_dry, comments='', delimiter=" " )
+    np.savetxt( args.outputfolder + "/REma_dry_ass.txt", assREs_dry, comments='', delimiter=" " )
+
+
     #write resultsdaily_max, resultsdaily_min
     np.savetxt( args.outputfolder + "/resultsdaily_max.txt", varmax, comments='', delimiter=" ", header = ' '.join(tmp.dtype.names) )
     np.savetxt( args.outputfolder + "/resultsdaily_min.txt", varmin, comments='', delimiter=" ", header = ' '.join(tmp.dtype.names) )
