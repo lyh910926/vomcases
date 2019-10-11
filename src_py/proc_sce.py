@@ -15,9 +15,8 @@ def main():
 
     parser.add_argument("-i", "--inputfile", help="SCE_out from VOM")
     parser.add_argument("-o", "--outputfolder", help="outputfolder")
-    parser.add_argument("-ob", "--outputbest", help="outputfolder best sce-run")        
     parser.add_argument("-w", "--workfolder", help="outputfolder")
-    parser.add_argument("-n", "--namelist", help="outputfolder")        
+    parser.add_argument("-n", "--namelist", help="namelist to run best")        
     parser.add_argument("-d", "--dailyweather", help="dailyweather.prn")    
     parser.add_argument("-p", "--percentage", help="percentage to keep", type=np.float) 
     parser.add_argument("-op", "--optpar", help="number of parameters", type=int, nargs='+')
@@ -172,11 +171,6 @@ def main():
         #run model
         os.system( args.codedir + "model.x -n " + args.namelist + " -o " + args.workfolder + "output/" + " -i " + args.workfolder + "input/") 
 
-        #save best results
-        if( j == (indend-1) ):            
-            os.system( "cp " + args.workfolder + "/output/* " + currdir + "/" + args.outputbest )
-            os.system( "cp " + args.workfolder + "/input/pars.txt " + currdir + "/" + args.outputbest + "/pars.txt" )
-
         #remove files, copy results_daily to temporary folder
         os.system( "rm "  + args.workfolder +  "/output/su_hourly.txt" )
         os.system( "rm "   + args.workfolder +  "/output/delz_hourly.txt" )
@@ -290,6 +284,41 @@ def calcResiduals(sim, obs):
 
         residuals= (abs(sim) - abs(obs)) / np.std( abs(obs) )
         return(residuals)
+
+def calcREmean(sim, obs ):
+
+        #mean value    
+
+        sim_annmean = sim.resample("A").mean()
+        obs_annmean = obs.resample("A").mean()
+
+        #remove first and last value to avoid incomplete series
+        mu_s = np.mean( sim_annmean )
+        mu_o = np.mean( obs_annmean )  
+
+        #print(np.min(sim))
+        RE = (mu_s-mu_o)/mu_o
+
+        return(RE)
+
+
+def calcREmean_seasonal(sim, obs, start, end ):
+
+        if start < end:
+            obs_sel =obs.loc[ (obs.index.month >= start) &  (obs.index.month <= end)]
+            sim_sel =sim.loc[ (sim.index.month >= start) &  (sim.index.month <= end)]
+        if start > end: 
+            obs_sel =obs.loc[ (obs.index.month >= start) |  (obs.index.month <= end)]
+            sim_sel =sim.loc[ (sim.index.month >= start) |  (sim.index.month <= end)]
+
+        #residual errors
+        mu_s = np.mean( sim_sel )
+        mu_o = np.mean( obs_sel )  
+
+        RE = (mu_s-mu_o)/mu_o
+        return(RE)
+
+
 main()
 
 
