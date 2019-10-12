@@ -15,9 +15,8 @@ def main():
 
     parser.add_argument("-i", "--inputfile", help="SCE_out from VOM")
     parser.add_argument("-o", "--outputfolder", help="outputfolder")
-    parser.add_argument("-ob", "--outputbest", help="outputfolder best sce-run")        
     parser.add_argument("-w", "--workfolder", help="outputfolder")
-    parser.add_argument("-n", "--namelist", help="outputfolder")        
+    parser.add_argument("-n", "--namelist", help="namelist to run best")        
     parser.add_argument("-d", "--dailyweather", help="dailyweather.prn")    
     parser.add_argument("-p", "--percentage", help="percentage to keep", type=np.float) 
     parser.add_argument("-op", "--optpar", help="number of parameters", type=int, nargs='+')
@@ -25,8 +24,12 @@ def main():
     parser.add_argument("-ao", "--ass_obs", help="inputfile with observations assimilation")
     parser.add_argument("-cd", "--codedir", help="directory of VOM")                          
     parser.add_argument("-c", "--code", help="code of VOM", nargs='+')  
-    parser.add_argument("-sd", "--startdate", help="startdate of modeloutput") 
-    parser.add_argument("-ed", "--enddate", help="enddate of modeloutput") 
+    parser.add_argument("-s", "--startdate", help="startdate of modeloutput") 
+    parser.add_argument("-e", "--enddate", help="enddate of modeloutput") 
+    parser.add_argument("-sd", "--startdry", help="months to start", type=int)     
+    parser.add_argument("-ed", "--enddry", help="months to end", type=int)  
+    parser.add_argument("-sw", "--startwet", help="months to start", type=int)     
+    parser.add_argument("-ew", "--endwet", help="months to end", type=int)  
 
     parser.add_argument("--compiler", help="compiler", default='gfortran') 
     parser.add_argument("--restart", help="stop runs after n runs to restart later", type=bool)
@@ -59,8 +62,6 @@ def main():
 
     if( not  os.path.exists(args.outputfolder) ):
         os.system("mkdir " + args.outputfolder)
-    if( not  os.path.exists(args.outputbest) ):
-        os.system("mkdir " + args.outputbest)
 
     dates_mod = pd.date_range(args.startdate, args.enddate, freq='D')
 
@@ -124,6 +125,17 @@ def main():
         if(args.restartdir is not None):
             eKGE = np.loadtxt(args.restartdir + "/KGE_evap.txt")
             assKGE = np.loadtxt(args.restartdir + "/KGE_ass.txt")
+
+
+            eRE = np.loadtxt(args.restartdir + "/REma_evap.txt")
+            assRE = np.loadtxt(args.restartdir + "/REma_ass.txt")
+
+            eREs_wet = np.loadtxt(args.restartdir + "/REma_wet_evap.txt")
+            assREs_wet =  np.loadtxt(args.restartdir + "/REma_wet_ass.txt")
+
+            eREs_dry = np.loadtxt(args.restartdir + "/REma_dry_evap.txt")
+            assREs_dry =  np.loadtxt(args.restartdir + "/REma_dry_ass.txt")
+
             varmax = np.loadtxt( args.restartdir + "/resultsdaily_max.txt", skiprows = 1)
             varmin = np.loadtxt( args.restartdir + "/resultsdaily_min.txt", skiprows = 1)
             eRes = np.loadtxt( args.restartdir + "/Res_evap.txt" )
@@ -139,6 +151,21 @@ def main():
             assKGE = np.zeros(( indend ))
             assKGE[:] = np.nan
 
+            eRE = np.zeros(( indend ))
+            eRE[:] = np.nan
+            assRE = np.zeros(( indend ))
+            assRE[:] = np.nan
+
+            eREs_wet = np.zeros(( indend ))
+            eREs_wet[:] = np.nan
+            assREs_wet = np.zeros(( indend ))
+            assREs_wet[:] = np.nan
+
+            eREs_dry = np.zeros(( indend ))
+            eREs_dry[:] = np.nan
+            assREs_dry = np.zeros(( indend ))
+            assREs_dry[:] = np.nan
+
             start = 0
             split = 1.0/np.float(args.restart_batches)
             end = int(np.ceil(split*len(indsort)*args.percentage/100)-1)
@@ -147,6 +174,22 @@ def main():
             eKGE[:] = np.nan
             assKGE = np.zeros(( indend ))
             assKGE[:] = np.nan
+
+            eRE = np.zeros(( indend ))
+            eRE[:] = np.nan
+            assRE = np.zeros(( indend ))
+            assRE[:] = np.nan
+
+            eREs_wet = np.zeros(( indend ))
+            eREs_wet[:] = np.nan
+            assREs_wet = np.zeros(( indend ))
+            assREs_wet[:] = np.nan
+
+            eREs_dry = np.zeros(( indend ))
+            eREs_dry[:] = np.nan
+            assREs_dry = np.zeros(( indend ))
+            assREs_dry[:] = np.nan
+
             start = 0
             end = int(np.ceil(len(indsort)*args.percentage/100)-1)
 
@@ -171,11 +214,6 @@ def main():
 
         #run model
         os.system( args.codedir + "model.x -n " + args.namelist + " -o " + args.workfolder + "output/" + " -i " + args.workfolder + "input/") 
-
-        #save best results
-        if( j == (indend-1) ):            
-            os.system( "cp " + args.workfolder + "/output/* " + currdir + "/" + args.outputbest )
-            os.system( "cp " + args.workfolder + "/input/pars.txt " + currdir + "/" + args.outputbest + "/pars.txt" )
 
         #remove files, copy results_daily to temporary folder
         os.system( "rm "  + args.workfolder +  "/output/su_hourly.txt" )
@@ -216,8 +254,19 @@ def main():
         assmod_pd = pd.Series(ass_tmp, index = dates_mod )
 
         if( not(any(np.isnan(emod_pd[dates_overlap]) ) ) ):
+
             eKGE[j]  = calcKGE(emod_pd[dates_overlap], eobs_pd[dates_overlap])
             assKGE[j]  = calcKGE(assmod_pd[dates_overlap], assobs_pd[dates_overlap])
+
+            eRE[j]  = calcREmean(emod_pd[dates_overlap], eobs_pd[dates_overlap])
+            assRE[j]  = calcREmean(assmod_pd[dates_overlap], assobs_pd[dates_overlap])
+
+            eREs_dry[j]  = calcREmean_seasonal(emod_pd[dates_overlap], eobs_pd[dates_overlap], args.startdry, args.enddry)
+            assREs_dry[j]  = calcREmean_seasonal(assmod_pd[dates_overlap], assobs_pd[dates_overlap], args.startdry, args.enddry)
+
+            eREs_wet[j]  = calcREmean_seasonal(emod_pd[dates_overlap], eobs_pd[dates_overlap], args.startwet, args.endwet)
+            assREs_wet[j]  = calcREmean_seasonal(assmod_pd[dates_overlap], assobs_pd[dates_overlap], args.startwet, args.endwet)
+
             #calc residuals
             eRes[:,j]  = calcResiduals(emod_pd[dates_overlap], eobs_pd[dates_overlap])
             assRes[:,j]  = calcResiduals(assmod_pd[dates_overlap], assobs_pd[dates_overlap])
@@ -237,11 +286,7 @@ def main():
 
 
 
-        eKGE[j]  = calcKGE(emod_pd[dates_overlap], eobs_pd[dates_overlap])
-        assKGE[j]  = calcKGE(assmod_pd[dates_overlap], assobs_pd[dates_overlap])
-        #calc residuals
-        eRes[:,j]  = calcResiduals(emod_pd[dates_overlap], eobs_pd[dates_overlap])
-        assRes[:,j]  = calcResiduals(assmod_pd[dates_overlap], assobs_pd[dates_overlap])
+
 
     #os.chdir( currdir )
 
@@ -251,6 +296,17 @@ def main():
     np.savetxt( args.outputfolder + "/KGE_ass.txt", assKGE, comments='', delimiter=" " )
     np.savetxt( args.outputfolder + "/Res_evap.txt", eRes, comments='', delimiter=" " )
     np.savetxt( args.outputfolder + "/Res_ass.txt", assRes, comments='', delimiter=" " )
+
+    np.savetxt( args.outputfolder + "/REma_evap.txt", eRE, comments='', delimiter=" " )
+    np.savetxt( args.outputfolder + "/REma_ass.txt", assRE, comments='', delimiter=" " )
+
+    np.savetxt( args.outputfolder + "/REma_wet_evap.txt", eREs_wet, comments='', delimiter=" " )
+    np.savetxt( args.outputfolder + "/REma_wet_ass.txt", assREs_wet, comments='', delimiter=" " )
+
+    np.savetxt( args.outputfolder + "/REma_dry_evap.txt", eREs_dry, comments='', delimiter=" " )
+    np.savetxt( args.outputfolder + "/REma_dry_ass.txt", assREs_dry, comments='', delimiter=" " )
+
+
     #write resultsdaily_max, resultsdaily_min
     np.savetxt( args.outputfolder + "/resultsdaily_max.txt", varmax, comments='', delimiter=" ", header = ' '.join(tmp.dtype.names) )
     np.savetxt( args.outputfolder + "/resultsdaily_min.txt", varmin, comments='', delimiter=" ", header = ' '.join(tmp.dtype.names) )
@@ -290,6 +346,41 @@ def calcResiduals(sim, obs):
 
         residuals= (abs(sim) - abs(obs)) / np.std( abs(obs) )
         return(residuals)
+
+def calcREmean(sim, obs ):
+
+        #mean value    
+
+        sim_annmean = sim.resample("A").mean()
+        obs_annmean = obs.resample("A").mean()
+
+        #remove first and last value to avoid incomplete series
+        mu_s = np.mean( sim_annmean )
+        mu_o = np.mean( obs_annmean )  
+
+        #print(np.min(sim))
+        RE = (mu_s-mu_o)/mu_o
+
+        return(RE)
+
+
+def calcREmean_seasonal(sim, obs, start, end ):
+
+        if start < end:
+            obs_sel =obs.loc[ (obs.index.month >= start) &  (obs.index.month <= end)]
+            sim_sel =sim.loc[ (sim.index.month >= start) &  (sim.index.month <= end)]
+        if start > end: 
+            obs_sel =obs.loc[ (obs.index.month >= start) |  (obs.index.month <= end)]
+            sim_sel =sim.loc[ (sim.index.month >= start) |  (sim.index.month <= end)]
+
+        #residual errors
+        mu_s = np.mean( sim_sel )
+        mu_o = np.mean( obs_sel )  
+
+        RE = (mu_s-mu_o)/mu_o
+        return(RE)
+
+
 main()
 
 

@@ -36,14 +36,13 @@ conda activate renku
 #files to be tracked with renku
 #$1 --> sce_out.txt
 #$2 --> sce_stats (output-folder)
-#$3 --> sce_best (output-folder)
-#$4 --> namelist
-#$5 --> workdir
-#$6 --> dailyweather.prn
-#$7 --> data/DINGO/Ea_*
-#$8 --> data/DINGO/GPPdaily_
+#$3 --> namelist
+#$4 --> workdir
+#$5 --> dailyweather.prn
+#$6 --> data/DINGO/Ea_*
+#$7 --> data/DINGO/GPPdaily_
 
-renku run python3 src_py/proc_sce.py -i $1 -o $2 -ob $3 -n $4 -w $5 -d $6 -p 10 -op 1 1 1 1 1 1 0 1 -eo $7 -ao $8 -cd src/VOM/VOM_Fortran/ -sd 01-01-1980 -ed 21-12-2016 -c src/VOM/VOM_Fortran/VOM-code/*
+renku run python3 src_py/proc_sce.py -i $1 -o $2 -n $3 -w $4 -d $5 -p 10 -op 1 1 1 1 1 1 0 1 -eo $6 -ao $7 -cd src/VOM/VOM_Fortran/ -s 01-01-1980 -e 21-12-2016  -sd 5 -ed 9 -sw 11 -ew 2 -c src/VOM/VOM_Fortran/VOM-code/*
 
 
 
