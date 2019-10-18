@@ -17,14 +17,13 @@ def main():
 
     #required input
     parser.add_argument("-i", "--input", help="results_daily (can be multiple)", nargs='+')
-    parser.add_argument("-v", "--var", help="variable in results_daily, or total assimilation (asstot) or evaporation(evaptot)")
     parser.add_argument("-ys", "--yearstart", help="startyear for plotting", type=int)
     parser.add_argument("-ye", "--yearend", help="endyear for plotting", type=int)
     parser.add_argument("-w", "--weather", help="dailyweather.prn")
 
     #optional input
     parser.add_argument("--i2015", help="results_daily AoB2015 ")
-    parser.add_argument("--var2015", help="variable in results_daily, or total assimilation (asstot) or evaporation(evaptot), 2015 format")
+
     parser.add_argument("--maxmod", help="results_daily max-values ")
     parser.add_argument("--minmod", help="results_daily min-values")
     parser.add_argument("--emp1", help="empirical solution 1")
@@ -39,7 +38,10 @@ def main():
     parser.add_argument("--dpi", help="dpi of figure",  type=float, default = 80 )
     parser.add_argument("--i_cz", help="surface level, for groundwater plot", type=float )
     parser.add_argument("--i_zr", help="bottom level, for groundwater plot", type=float )
+    parser.add_argument("--i_cz2015", help="surface level, for groundwater plot", type=float )
+    parser.add_argument("--i_zr2015", help="bottom level, for groundwater plot", type=float )
     parser.add_argument("--pars", help="parameter file, for plotting rooting depths" )
+    parser.add_argument("--depth", help="plot depth, default is water table" )
     parser.add_argument("--ylabel", help="ylabel" )
     parser.add_argument("--xlabel", help="xlabel", default=" ")
     parser.add_argument("--cblabel", help="label for colorbar", default=" ")
@@ -95,12 +97,14 @@ def main():
     tmod = []
     for i in range(0, len(args.input)):
         data = np.genfromtxt(args.input[i], names=True)
-        if( args.var == "evaptot"):
-            vals.append( (data["etmt"] + data["etmg"] + data["esoil"])*args.mf)
-        elif( args.var == "asstot"):
-                vals.append( (data["asst"] + data["assg"])*args.mf )
+
+        if( args.depth == "True"):
+            vals_tmp = -1.0*( args.i_cz - data["zw"])
         else:
-            vals.append( data[args.var]*args.mf )
+            vals_tmp = data["zw"]
+
+        vals.append(vals_tmp)
+
 
         tmod.append(np.arange(datetime(int(data["fyear"][0]),int(data["fmonth"][0]),int(data["fday"][0])), 
                       datetime(int(data["fyear"][-1]),int(data["fmonth"][-1]),int(data["fday"][-1]))+timedelta(days=1), 
@@ -110,12 +114,10 @@ def main():
 
         data2015 = np.genfromtxt(args.i2015, names=True)
 
-        if( args.var2015 == "evaptot"):
-            vals2015 =  (data2015["etm_t"] + data2015["etm_g"] + data2015["esoil"])*args.mf
-        elif( args.var2015 == "asstot"):
-            vals2015 = (data2015["ass_t"] + data2015["ass_g"])*args.mf 
-        else:
-            vals2015 = data2015[args.var2015]*args.mf 
+        vals2015 = data["ws"]
+
+        if( args.depth == "True"):
+            vals2015 = -1*(args.i_cz2015 - vals2015)
 
         tmod2015 = np.arange(datetime(int(data2015["year"][0]),int(data2015["month"][0]),int(data2015["day"][0])), 
                       datetime(int(data2015["year"][0]),int(data2015["month"][0]),int(data2015["day"][0]))+timedelta(days=len(vals2015) ), 
@@ -154,9 +156,12 @@ def main():
     if args.obs is not None:
         ax0.plot(tobs, obs, color='blue', label='Obs.', zorder=2)
 
-    #plot observations
+    #plot 2015 data
     if args.i2015 is not None:
-        ax0.plot(tmod2015, vals2015, color='green', label='2015 data', zorder=2)
+        ax0.plot(tmod2015, vals2015, color='green', label='Schymanski et al. (2015)', zorder=2)
+
+
+
 
     if args.palette is not None:
         palette = plt.get_cmap(args.palette, len(args.input))
@@ -171,8 +176,7 @@ def main():
         cb.ax.tick_params(labelsize=14)
         cb.set_label(args.cblabel, labelpad=10, size=20)
 
-
-    #plot model results
+     #plot model results
     for i in range(0, len(args.input)):
         try:  
             if args.colors is not None:
@@ -186,6 +190,15 @@ def main():
             else:      
                 ax0.plot(tmod[i], vals[i], color=palette(i), label=str(i), zorder=1)    
 
+    #plot rooting depths
+    if args.pars is not None:
+        if(args.depth == "True"):
+            ax0.plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params[5], - params[5]], ":", lw=3, color='red', label='rtdepth trees')
+            ax0.plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params[7],  -params[7]],":",lw=3,color='orange', label='rtdepth grasses')
+        else:
+            ax0.plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [args.i_cz- params[5], args.i_cz - params[5]], ":", lw=3, color='red', label='rtdepth trees')
+            ax0.plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [args.i_cz - params[7], args.i_cz-params[7]],":",lw=3, color='orange', label='rtdepth grasses')
+
     #plot emperical benchmarks
     if args.emp1 is not None:
         ax0.plot(t_emp1, emp1, color='lightgray', label='emp1', zorder=1)
@@ -194,18 +207,26 @@ def main():
 
     #plot surface levels
     if args.i_cz is not None:
-        ax0.plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)],[args.i_cz,args.i_cz], 
+        if(args.depth == "True"):
+            ax0.plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)],[-args.i_cz,-args.i_cz], 
+          "--",color='black', label='bedrock')
+        else:
+            ax0.plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)],[args.i_cz,args.i_cz], 
           "--",color='black', label='surface')
     if args.i_zr is not None:
         ax0.plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)],[args.i_zr,args.i_zr], 
           "--",color='black', label='i_zr')
 
+    if args.i_cz2015 is not None:
+        if(args.depth == "True"):
+            ax0.plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)],[-args.i_cz2015,-args.i_cz2015], 
+          "--",color='grey', label='bedrock 2015')
+        else:
+            ax0.plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)],[args.i_cz2015,args.i_cz2015], 
+          "--",color='grey', label='surface 2015')
 
-    if args.pars is not None:
-        ax0.plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [args.i_cz- params[5], args.i_cz - params[5]],
-          ":",color='darkgreen', label='rtdepth trees')
-        ax0.plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [args.i_cz - params[7], args.i_cz-params[7]],
-          ":",color='orange', label='rtdepth grasses')
+
+
 
     #set labels
     ax0.set_ylabel(args.ylabel, size=24  )
@@ -218,10 +239,9 @@ def main():
         tick.label.set_rotation(90)
     for tick in ax0.yaxis.get_major_ticks():
         tick.label.set_fontsize(20)
-    if( args.var == "evaporation"):
-        ax0.set_ylim( [0,10] )
-    if( args.var == "assimilation"):
-        ax0.set_ylim( [0,1.5] )
+
+    ax0.set_ylim( [-50,0] )
+
     ax0.set_frame_on(True) # make it transparent
     
 
