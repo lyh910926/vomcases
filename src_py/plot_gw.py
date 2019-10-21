@@ -28,7 +28,7 @@ def main():
     parser.add_argument("--minmod", help="results_daily min-values")
     parser.add_argument("--emp1", help="empirical solution 1")
     parser.add_argument("--emp2", help="empirical solution 2")
-    parser.add_argument("--obs", help="observations")
+    parser.add_argument("--obs", help="observations", nargs='+')
     parser.add_argument("--outputfile", help="outputfile")
     parser.add_argument("--mf", help="multiplication factor for unit conversion", type=float, default = 1.0)
     parser.add_argument("--mf_obs", help="multiplication factor for unit conversion observations", type=float, default = 1.0)
@@ -126,11 +126,20 @@ def main():
 
     #load observations
     if args.obs is not None:
-        #values observations
-        obs = (np.loadtxt(args.obs, usecols=2) ) *args.mf_obs  #mm/d
-        #date/times observations
-        tobs = np.genfromtxt(args.obs,usecols=0, dtype=np.str )#mm/d
-        tobs = pd.date_range(tobs[0], tobs[-1], freq='D')   
+
+        obs = []
+        tobs = []
+        for i in range(0, len(args.obs)):
+
+
+            #values observations
+            obs_tmp = (np.genfromtxt(args.obs[i], usecols=1, missing_values="", delimiter=",", skip_header=4) ) *args.mf_obs  #
+            #date/times observations
+            tobs_tmp = np.genfromtxt(args.obs[i],usecols=0, missing_values="", delimiter=",", skip_header=4, dtype=np.str )#mm/d
+            tobs_tmp = pd.date_range(tobs_tmp[0], tobs_tmp[-1], freq='D')   
+
+            obs.append(obs_tmp)
+            tobs.append(tobs_tmp)
 
     #load weather data
     if args.weather is not None:
@@ -154,7 +163,12 @@ def main():
                           color='red',facecolor='red', zorder=0, alpha = 0.2 )
     #plot observations
     if args.obs is not None:
-        ax0.plot(tobs, obs, color='blue', label='Obs.', zorder=2)
+
+        for i in range(0, len(args.obs)):
+            if(i == 0):
+                ax0.plot(tobs[i], -obs[i], color='blue', label='Obs.', zorder=2)
+            else:
+                ax0.plot(tobs[i], -obs[i], color='blue', zorder=2)
 
     #plot 2015 data
     if args.i2015 is not None:
