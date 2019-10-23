@@ -161,15 +161,21 @@ def main():
         norm = mpl.colors.Normalize(vmin=args.cbar_min, vmax=args.cbar_max)
         cb  = mpl.colorbar.ColorbarBase(ax2,cmap=palette,norm=norm,orientation='vertical')
         cb.ax.tick_params(labelsize=14)
-        cb.set_label(args.cblabel, labelpad=10, size=20)
+        cb.set_label(r"" + args.cblabel, labelpad=10, size=20)
 
 
     #plot model results
     for i in range(0, len(args.input)):
-        try:
-            ax0.plot(tmod[i], vals[i], color=palette(i), label=args.labels[i], zorder=1)           
-        except IndexError:
-            ax0.plot(tmod[i], vals[i], color=palette(i), label=str(i), zorder=1)           
+        if(args.plot_cbar == True):
+            try:
+                ax0.plot(tmod[i], vals[i], color=palette(i), zorder=1)           
+            except IndexError:
+                ax0.plot(tmod[i], vals[i], color=palette(i), zorder=1) 
+        else:
+            try:
+                ax0.plot(tmod[i], vals[i], color=palette(i), label=args.labels[i], zorder=1)           
+            except IndexError:
+                ax0.plot(tmod[i], vals[i], color=palette(i), label=str(i), zorder=1)                  
 
     #plot emperical benchmarks
     if args.emp1 is not None:
@@ -178,8 +184,8 @@ def main():
         ax0.plot(t_emp2, emp2, color='gray', label='emp2', zorder=1)
 
     #set labels
-    ax0.set_ylabel(args.ylabel, size=24  )
-    ax0.set_xlabel(args.xlabel, size=24  )
+    ax0.set_ylabel(r"" + args.ylabel, size=24  )
+    ax0.set_xlabel(r"" + args.xlabel, size=24  )
 
     #set axis and ticks
     ax0.set_xlim([datetime(yearstart,1, 1), datetime( yearend ,12, 31)]) 
