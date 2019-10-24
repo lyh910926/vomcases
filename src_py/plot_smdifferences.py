@@ -124,7 +124,7 @@ def main():
     else:
         plt.show()
 
-    print("Script finished")
+
 
 
 main()
