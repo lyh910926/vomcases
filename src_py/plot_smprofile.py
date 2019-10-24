@@ -35,6 +35,7 @@ def main():
     parser.add_argument("--cbar_max", help="max value for colorbar", type=float, default = 2.6 )
     parser.add_argument("--cblabel", help="colorbar label", default=" ")
     parser.add_argument("--plot_cbar", help="add colorbar", type=bool, default = False )
+    parser.add_argument("--legend", help="plot legend", type=bool, default = False )
     args = parser.parse_args()
 
     ##########################################
@@ -66,7 +67,7 @@ def main():
         su = np.zeros((nlayers))
         su_data = np.zeros((nlines,nlayers))
         depth = np.zeros((nlayers))
-        depth[0] = args.cz-args.delz[i]/2
+        depth[0] = 0.0-args.delz[i]/2
         time = []
         t = 0
 
@@ -97,8 +98,9 @@ def main():
     ax0.set_xlabel( args.xlabel, size=24  )
 
 
-    ax0.set_frame_on(True) # make it transparent  
-    ax0.legend(prop={'size':15})
+    ax0.set_frame_on(True) # make it transparent
+    if(args.legend == True):  
+        ax0.legend(prop={'size':15})
 
 
 
