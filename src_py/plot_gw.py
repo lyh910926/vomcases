@@ -52,6 +52,9 @@ def main():
     parser.add_argument("--cbar_max", help="max value for colorbar", type=float, default = 2.6 )
     parser.add_argument("--legend", help="show legend", type=bool, default = False )
     parser.add_argument("--palette", help="color-palette", default = 'OrRd' )
+    parser.add_argument("--xloc_title", help="location x title", type=float, default = 0.01 )
+    parser.add_argument("--yloc_title", help="location y title", type=float, default = 1.05 )
+    parser.add_argument("--size_title", help="size of title", type=float, default = 20 )
 
 
     args = parser.parse_args()
@@ -282,7 +285,7 @@ def main():
  
    #add title
     if args.title is not None:
-        ax0.text(0.01, 1.05, args.title, ha='left', va='center', transform=ax0.transAxes, fontsize=20)
+        ax0.text(args.xloc_title, args.yloc_title, args.title, ha='left', va='center', transform=ax0.transAxes, fontsize=args.size_title)
     else:
         plt.show()
 
