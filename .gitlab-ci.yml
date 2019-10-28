@@ -20,14 +20,4 @@ image_build:
   tags:
     - image-build
 
-dot:
-  stage: build
-  image: renku/renku-python:v0.3.2
-  script:
-    - renku log --format dot $(git ls-files --no-empty-directory --recurse-submodules) > graph.dot
-  artifacts:
-    paths:
-      - graph.dot
-  environment:
-    name: dot/$CI_COMMIT_REF_NAME
-    url: $CI_PROJECT_URL/-/jobs/artifacts/$CI_COMMIT_REF_NAME/raw/graph.dot?job=$CI_JOB_NAME
+
