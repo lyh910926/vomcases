@@ -238,7 +238,7 @@ def main():
 
     #save figure
     if args.outputfile is not None:
-        plt.savefig(args.outputfile)
+        plt.savefig(args.outputfile,  bbox_inches = "tight")
     else:
         plt.show()
 

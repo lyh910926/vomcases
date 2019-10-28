@@ -67,7 +67,7 @@ def main():
    
 
     plt.tight_layout()
-    plt.savefig(args.outputfile)
+    plt.savefig(args.outputfile, bbox_inches = "tight")
 
     print("Script finished")
 
