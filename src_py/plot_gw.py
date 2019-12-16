@@ -54,6 +54,7 @@ def main():
     parser.add_argument("--palette", help="color-palette", default = 'OrRd' )
     parser.add_argument("--xloc_title", help="location x title", type=float, default = 0.01 )
     parser.add_argument("--yloc_title", help="location y title", type=float, default = 1.05 )
+    parser.add_argument("--ylim", help="limits y-axist", type=float, nargs='+', default = [-50,0] )
     parser.add_argument("--size_title", help="size of title", type=float, default = 20 )
 
 
@@ -257,7 +258,7 @@ def main():
     for tick in ax0.yaxis.get_major_ticks():
         tick.label.set_fontsize(20)
 
-    ax0.set_ylim( [-50,0] )
+    ax0.set_ylim( args.ylim )
 
     ax0.set_frame_on(True) # make it transparent
     
@@ -281,7 +282,7 @@ def main():
         ax0.set_zorder(ax1.get_zorder()+1) # put ax in front of ax2
 
     if(args.legend == True):
-        ax0.legend(prop={'size':15})
+        ax0.legend(prop={'size':15}, framealpha=1  )
  
    #add title
     if args.title is not None:
