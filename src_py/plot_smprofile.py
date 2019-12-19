@@ -31,11 +31,18 @@ def main():
     parser.add_argument("--dpi", help="dpi of figure",  type=float, default = 80 )
     parser.add_argument("--ylabel", help="ylabel" )
     parser.add_argument("--xlabel", help="xlabel", default=" ")
+    parser.add_argument("--xlim", help="min-max x-axis", nargs='+',type=float, default = [0,100])
+    parser.add_argument("--ylim", help="min-max y-axis", nargs='+',type=float )
     parser.add_argument("--cbar_min", help="min value for colorbar", type=float, default = 0.2)
     parser.add_argument("--cbar_max", help="max value for colorbar", type=float, default = 2.6 )
     parser.add_argument("--cblabel", help="colorbar label", default=" ")
     parser.add_argument("--plot_cbar", help="add colorbar", type=bool, default = False )
     parser.add_argument("--legend", help="plot legend", type=bool, default = False )
+    parser.add_argument("--xloc_title", help="location x title", type=float, default = 0.01 )
+    parser.add_argument("--yloc_title", help="location y title", type=float, default = 1.05 )
+    parser.add_argument("--title", help="title", default=" ")
+    parser.add_argument("--size_title", help="size of title", type=float, default = 20 )
+
     args = parser.parse_args()
 
     ##########################################
@@ -96,7 +103,7 @@ def main():
     #set labels
     ax0.set_ylabel( args.ylabel, size=24  )
     ax0.set_xlabel( args.xlabel, size=24  )
-
+    ax0.set_xlim( args.xlim  )
 
     ax0.set_frame_on(True) # make it transparent
     if(args.legend == True):  
@@ -111,6 +118,8 @@ def main():
         cb.ax.tick_params(labelsize=14)
         cb.set_label(args.cblabel, labelpad=10, size=20)
 
+    if args.title is not None:
+        ax0.text(args.xloc_title, args.yloc_title, args.title, ha='left', va='center', transform=ax0.transAxes, fontsize=args.size_title)
 
 
     plt.tight_layout()
