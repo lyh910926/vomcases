@@ -224,25 +224,31 @@ def main():
         ax0.plot(t_emp2, emp2, color='gray', label='emp2', zorder=1)
 
     #plot surface levels
-    if args.i_cz is not None:
-        if(args.depth == "True"):
-            ax0.plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)],[-args.i_cz,-args.i_cz], 
-          "--",color='black', label='bedrock')
-        else:
-            ax0.plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)],[args.i_cz,args.i_cz], 
-          "--",color='black', label='surface')
+    #if args.i_cz is not None:
+    #    if(args.depth == "True"):
+    #        ax0.plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)],[-args.i_cz,-args.i_cz], 
+    #      "--",color='black', label='bedrock')
+    #    else:
+    #        ax0.plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)],[args.i_cz,args.i_cz], 
+    #      "--",color='black', label='surface')
     if args.i_zr is not None:
-        ax0.plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)],[args.i_zr,args.i_zr], 
-          "--",color='black', label='i_zr')
-
-    if args.i_cz2015 is not None:
         if(args.depth == "True"):
-            ax0.plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)],[-args.i_cz2015,-args.i_cz2015], 
-          "--",color='grey', label='bedrock 2015')
+            ax0.plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)],[-args.i_cz + args.i_zr, -args.i_cz + args.i_zr], "--",color='black', label=r'$Z_{r}$')
         else:
-            ax0.plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)],[args.i_cz2015,args.i_cz2015], 
-          "--",color='grey', label='surface 2015')
+            ax0.plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)],[args.i_zr,args.i_zr], "--",color='black', label='i_zr')
 
+    #if args.i_cz2015 is not None:
+    #    if(args.depth == "True"):
+    #        ax0.plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)],[-args.i_cz2015,-args.i_cz2015], 
+    #      "--",color='grey', label='bedrock 2015')
+    #    else:
+    #        ax0.plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)],[args.i_cz2015,args.i_cz2015], "--",color='grey', label='surface 2015')
+
+    if args.i_zr2015 is not None:
+        if(args.depth == "True"):
+            ax0.plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)],[-args.i_cz2015 + args.i_zr2015, -args.i_cz2015 + args.i_zr2015], "--",color='grey', label=r'$Z_{r}$ 2015')
+        else:
+            ax0.plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)],[args.i_zr2015,args.i_zr2015], "--",color='grey', label=r'$Z_{r}$')
 
 
 

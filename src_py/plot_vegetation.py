@@ -122,7 +122,8 @@ def main():
     #load observations
     if args.obs is not None:
         #values observations
-        obs = np.loadtxt(args.obs,delimiter=',', usecols=3 )
+        obs = np.genfromtxt(args.obs,delimiter=',', usecols=3, missing_values=-999 )
+        obs[obs <= 0] = np.nan
         obs = 100*obs/0.95 #from fPar to vegetative cover
         tobs = np.genfromtxt(args.obsdates, dtype='str', delimiter=',')
         tobs = pd.to_datetime(tobs[:,1], format="%Y%m")
