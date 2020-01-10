@@ -1,24 +1,124 @@
 '@context':
+  '@version': 1.1
   _id: '@id'
-  _label: rdfs:label
-  _project: schema:isPartOf
-  added: schema:dateCreated
-  affiliation: schema:affiliation
-  alternate_name: schema:alternateName
+  _project:
+    '@context':
+      '@version': 1.1
+      _id: '@id'
+      created: schema:dateCreated
+      creator:
+        '@context':
+          '@version': 1.1
+          _id: '@id'
+          affiliation: schema:affiliation
+          alternate_name: schema:alternateName
+          email: schema:email
+          label: rdfs:label
+          name: schema:name
+          prov: http://www.w3.org/ns/prov#
+          rdfs: http://www.w3.org/2000/01/rdf-schema#
+          schema: http://schema.org/
+        '@id': schema:creator
+      name: schema:name
+      prov: http://www.w3.org/ns/prov#
+      schema: http://schema.org/
+      updated: schema:dateUpdated
+      version: schema:schemaVersion
+    '@id': schema:isPartOf
+  based_on: schema:isBasedOn
   created: schema:dateCreated
-  creator: schema:creator
+  creator:
+    '@context':
+      '@version': 1.1
+      _id: '@id'
+      affiliation: schema:affiliation
+      alternate_name: schema:alternateName
+      email: schema:email
+      label: rdfs:label
+      name: schema:name
+      prov: http://www.w3.org/ns/prov#
+      rdfs: http://www.w3.org/2000/01/rdf-schema#
+      schema: http://schema.org/
+    '@id': schema:creator
   date_published: schema:datePublished
   description: schema:description
-  email: schema:email
-  files: schema:hasPart
+  files:
+    '@context':
+      '@version': 1.1
+      _id: '@id'
+      _project:
+        '@context':
+          '@version': 1.1
+          _id: '@id'
+          created: schema:dateCreated
+          creator:
+            '@context':
+              '@version': 1.1
+              _id: '@id'
+              affiliation: schema:affiliation
+              alternate_name: schema:alternateName
+              email: schema:email
+              label: rdfs:label
+              name: schema:name
+              prov: http://www.w3.org/ns/prov#
+              rdfs: http://www.w3.org/2000/01/rdf-schema#
+              schema: http://schema.org/
+            '@id': schema:creator
+          name: schema:name
+          prov: http://www.w3.org/ns/prov#
+          schema: http://schema.org/
+          updated: schema:dateUpdated
+          version: schema:schemaVersion
+        '@id': schema:isPartOf
+      added: schema:dateCreated
+      based_on: schema:isBasedOn
+      creator:
+        '@context':
+          '@version': 1.1
+          _id: '@id'
+          affiliation: schema:affiliation
+          alternate_name: schema:alternateName
+          email: schema:email
+          label: rdfs:label
+          name: schema:name
+          prov: http://www.w3.org/ns/prov#
+          rdfs: http://www.w3.org/2000/01/rdf-schema#
+          schema: http://schema.org/
+        '@id': schema:creator
+      name: schema:name
+      path: prov:atLocation
+      prov: http://www.w3.org/ns/prov#
+      schema: http://schema.org/
+      url: schema:url
+      wfprov: http://purl.org/wf4ever/wfprov#
+    '@id': schema:hasPart
   identifier: schema:identifier
-  in_language: schema:inLanguage
+  in_language:
+    '@context':
+      '@version': 1.1
+      alternate_name: schema:alternateName
+      name: schema:name
+      schema: http://schema.org/
+    '@id': schema:inLanguage
   keywords: schema:keywords
   license: schema:license
   name: schema:name
   path: prov:atLocation
   prov: http://www.w3.org/ns/prov#
+  same_as: schema:sameAs
   schema: http://schema.org/
+  short_name: schema:alternateName
+  tags:
+    '@context':
+      '@version': 1.1
+      _id: '@id'
+      commit: schema:location
+      created: schema:startDate
+      dataset: schema:about
+      description: schema:description
+      name: schema:name
+      schema: http://schema.org/
+    '@id': schema:subjectOf
   url: schema:url
   version: schema:version
   wfprov: http://purl.org/wf4ever/wfprov#
@@ -26,24 +126,38 @@
 - prov:Entity
 - schema:Dataset
 - wfprov:Artifact
-_id: 93655899-f18a-4b77-92c2-3449adf754a2
+_id: https://renkulab.io/datasets/93655899-f18a-4b77-92c2-3449adf754a2
 _label: 93655899-f18a-4b77-92c2-3449adf754a2
 _project:
-  '@context':
-    _id: '@id'
-    foaf: http://xmlns.com/foaf/0.1/
-    prov: http://www.w3.org/ns/prov#
   '@type':
-  - foaf:Project
   - prov:Location
-  _id: https://renkulab.io/remko.nijzink/vomcases
+  - schema:Project
+  _id: https://renkulab.io/projects/remko.nijzink/vomcases
+  created: '2019-03-08T08:28:48.938000+00:00'
+  creator:
+    '@type':
+    - prov:Person
+    - schema:Person
+    _id: mailto:remko.nijzink@list.lu
+    affiliation: null
+    alternate_name: null
+    email: remko.nijzink@list.lu
+    label: Remko Nijzink
+    name: Remko Nijzink
+  name: VOMcases
+  updated: '2019-03-08T08:28:48.938000+00:00'
+  version: '1'
+based_on: null
 created: '2019-03-08T08:29:40.938317+02:00'
 creator:
-- '@type': schema:Person
+- '@type':
+  - prov:Person
+  - schema:Person
   _id: mailto:remko.nijzink@list.lu
   affiliation: null
   alternate_name: null
   email: remko.nijzink@list.lu
+  label: Remko Nijzink
   name: Remko Nijzink
 date_published: null
 description: ''
@@ -52,18 +166,21 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: blob/ef9c3146bec5e9a6ca1a93040a850e5633cafb5d/data/Silo/adelaide.txt
-  _label: data/Silo/adelaide.txt@ef9c3146bec5e9a6ca1a93040a850e5633cafb5d
+  _id: file://blob/ef9c3146bec5e9a6ca1a93040a850e5633cafb5d/data/Silo/adelaide.txt
+  _label: data/Silo/adelaide.txt@UNCOMMITTED
   _project: null
   added: '2019-03-08T08:30:27.888506+02:00'
+  based_on: null
   creator:
-  - '@type': schema:Person
+  - '@type':
+    - prov:Person
+    - schema:Person
     _id: mailto:remko.nijzink@list.lu
     affiliation: null
     alternate_name: null
     email: remko.nijzink@list.lu
+    label: Remko Nijzink
     name: Remko Nijzink
-  dataset: null
   name: adelaide.txt
   path: data/Silo/adelaide.txt
   url: ../../data_tmp/Silo/adelaide.txt
@@ -71,18 +188,21 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: blob/b7f29c2cd44c95d21db51e8cd8464d04d205896a/data/Silo/daly.txt
-  _label: data/Silo/daly.txt@b7f29c2cd44c95d21db51e8cd8464d04d205896a
+  _id: file://blob/b7f29c2cd44c95d21db51e8cd8464d04d205896a/data/Silo/daly.txt
+  _label: data/Silo/daly.txt@UNCOMMITTED
   _project: null
   added: '2019-03-08T08:30:31.807292+02:00'
+  based_on: null
   creator:
-  - '@type': schema:Person
+  - '@type':
+    - prov:Person
+    - schema:Person
     _id: mailto:remko.nijzink@list.lu
     affiliation: null
     alternate_name: null
     email: remko.nijzink@list.lu
+    label: Remko Nijzink
     name: Remko Nijzink
-  dataset: null
   name: daly.txt
   path: data/Silo/daly.txt
   url: ../../data_tmp/Silo/daly.txt
@@ -90,18 +210,21 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: blob/29fdbe45cb15391790de507eb923fdcf0bd14ac5/data/Silo/dry.txt
-  _label: data/Silo/dry.txt@29fdbe45cb15391790de507eb923fdcf0bd14ac5
+  _id: file://blob/29fdbe45cb15391790de507eb923fdcf0bd14ac5/data/Silo/dry.txt
+  _label: data/Silo/dry.txt@UNCOMMITTED
   _project: null
   added: '2019-03-08T08:30:35.586235+02:00'
+  based_on: null
   creator:
-  - '@type': schema:Person
+  - '@type':
+    - prov:Person
+    - schema:Person
     _id: mailto:remko.nijzink@list.lu
     affiliation: null
     alternate_name: null
     email: remko.nijzink@list.lu
+    label: Remko Nijzink
     name: Remko Nijzink
-  dataset: null
   name: dry.txt
   path: data/Silo/dry.txt
   url: ../../data_tmp/Silo/dry.txt
@@ -109,18 +232,21 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: blob/a28f14ec0c9a79e2432c7acfd80f94b4666bec53/data/Silo/howard.txt
-  _label: data/Silo/howard.txt@a28f14ec0c9a79e2432c7acfd80f94b4666bec53
+  _id: file://blob/a28f14ec0c9a79e2432c7acfd80f94b4666bec53/data/Silo/howard.txt
+  _label: data/Silo/howard.txt@UNCOMMITTED
   _project: null
   added: '2019-03-08T08:30:40.503712+02:00'
+  based_on: null
   creator:
-  - '@type': schema:Person
+  - '@type':
+    - prov:Person
+    - schema:Person
     _id: mailto:remko.nijzink@list.lu
     affiliation: null
     alternate_name: null
     email: remko.nijzink@list.lu
+    label: Remko Nijzink
     name: Remko Nijzink
-  dataset: null
   name: howard.txt
   path: data/Silo/howard.txt
   url: ../../data_tmp/Silo/howard.txt
@@ -128,18 +254,21 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: blob/c5fd16fbdbbe4aff0e128148fc7ac1e018201f57/data/Silo/sturt.txt
-  _label: data/Silo/sturt.txt@c5fd16fbdbbe4aff0e128148fc7ac1e018201f57
+  _id: file://blob/c5fd16fbdbbe4aff0e128148fc7ac1e018201f57/data/Silo/sturt.txt
+  _label: data/Silo/sturt.txt@UNCOMMITTED
   _project: null
   added: '2019-03-08T08:30:44.656451+02:00'
+  based_on: null
   creator:
-  - '@type': schema:Person
+  - '@type':
+    - prov:Person
+    - schema:Person
     _id: mailto:remko.nijzink@list.lu
     affiliation: null
     alternate_name: null
     email: remko.nijzink@list.lu
+    label: Remko Nijzink
     name: Remko Nijzink
-  dataset: null
   name: sturt.txt
   path: data/Silo/sturt.txt
   url: ../../data_tmp/Silo/sturt.txt
@@ -149,5 +278,8 @@ keywords: []
 license: null
 name: Silo
 path: .renku/datasets/93655899-f18a-4b77-92c2-3449adf754a2
-url: null
+same_as: null
+short_name: Silo
+tags: []
+url: https://www.longpaddock.qld.gov.au/silo/point-data/
 version: null
