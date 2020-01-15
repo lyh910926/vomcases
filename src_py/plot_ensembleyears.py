@@ -60,7 +60,6 @@ def main():
     ###################################
     #read in data from Whitley et al. 
     whitley_sites = np.array(args.sites)[np.array(args.whitley_sites)==1]
-    print(whitley_sites)
 
     bess = dict()
     bess_dates = dict()
@@ -88,8 +87,6 @@ def main():
 
         #read in data from LPJ-GUESS, ET in W/m2, GPP in umol/m2/s
         data_tmp, data_tmp2, time_tmp = read_lpjguess(args.lpjguess[i], args.lpjguess[i+len(whitley_sites)])
-        print(args.lpjguess[i])
-        print(args.lpjguess[i+len(whitley_sites)])
         lpjguess[whitley_sites[i]] = [data_tmp, data_tmp2]
         lpjguess_dates[whitley_sites[i]] = time_tmp
     
@@ -130,7 +127,7 @@ def main():
 
         dingo_le[args.sites[i]] = le_tmp
         dingo_le_dates[args.sites[i]] = le_time
-        dingo_gpp[args.sites[i]] = gpp_tmp
+        dingo_gpp[args.sites[i]] = gpp_obs
         dingo_gpp_dates[args.sites[i]] = gpp_time
 
         vom_tmp = np.genfromtxt(args.vom[i], names=True)
@@ -189,7 +186,7 @@ def main():
 
 
         #load the AoB2015-data for HowardSprings
-        if(args.sites[isite] == "HowardSprings"):
+        if(args.sites[isite] == "Howard Springs"):
             data2015 = np.genfromtxt(args.i2015, names=True)
             tmod2015 = pd.date_range(datetime(int(data2015["year"][3]),int(data2015["month"][0]),int(data2015["day"][0])), 
                   datetime(int(data2015["year"][-1]),int(data2015["month"][-1]),int(data2015["day"][-1])), 
@@ -262,7 +259,7 @@ def main():
             print("Litchfield")
 
         #load AoB2015-data for HowardSprings
-        if(args.sites[isite] == "HowardSprings"):
+        if(args.sites[isite] == "Howard Springs"):
 
             #determine total assimilation and convert units
             best_ass2015 = 1000000*(data2015["ass_t"] + data2015["ass_g"])/ (3600*24)
@@ -300,7 +297,7 @@ def main():
     ax[iplot-1].legend(lines, labels, loc='upper right')
     
     plt.savefig(args.outfile, bbox_inches = "tight")
-    plt.show()
+    #plt.show()
 
 
 
