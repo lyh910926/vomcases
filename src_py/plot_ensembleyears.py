@@ -296,8 +296,10 @@ def main():
     lines, labels = [sum(lol, []) for lol in zip(*lines_labels)]
     ax[iplot-1].legend(lines, labels, loc='upper right')
     
-    plt.savefig(args.outfile, bbox_inches = "tight")
-    #plt.show()
+    if args.outfile is not None:
+        plt.savefig(args.outfile, bbox_inches = "tight")
+    else:
+        plt.show()
 
 
 
