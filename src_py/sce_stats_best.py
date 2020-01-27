@@ -18,7 +18,7 @@ def main():
     parser.add_argument("-eo", "--evap_obs", help="inputfile with observations evaporation")
     parser.add_argument("-ao", "--ass_obs", help="inputfile with observations assimilation")
     parser.add_argument("-po", "--pc_obs", help="inputfile with observations projective cover")
-    parser.add_argument("-pd", "--pc_obsdates" help="dates of fpar")
+    parser.add_argument("-pd", "--pc_obsdates", help="dates of fpar")
     parser.add_argument("-s", "--startdry", help="months to start", type=int)     
     parser.add_argument("-e", "--enddry", help="months to end", type=int)  
     parser.add_argument("-sw", "--startwet", help="months to start", type=int)     
