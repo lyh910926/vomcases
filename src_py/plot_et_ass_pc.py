@@ -318,9 +318,9 @@ def main():
     ax[2].set_frame_on(True) 
 
     if(args.legend == True):
-        ax[0].legend(prop={'size':15})
-        ax[1].legend(prop={'size':15})
-        ax[2].legend(prop={'size':15})
+        ax[0].legend(prop={'size':15}, loc='upper right')
+        ax[1].legend(prop={'size':15}, loc='upper right')
+        ax[2].legend(prop={'size':15}, loc='upper right')
  
    #add title
     #if args.title is not None:
