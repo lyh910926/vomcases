@@ -53,10 +53,10 @@ def main():
     assobs_pd = pd.Series(ass_obs, index = dates_obs )
 
     #load observed projective cover
-    pcobs = np.genfromtxt(args.pcobs,delimiter=',', usecols=3, missing_values=-999 )
+    pcobs = np.genfromtxt(args.pc_obs,delimiter=',', usecols=3, missing_values=-999 )
     pcobs[pcobs <= 0] = np.nan
     pcobs = 100*pcobs/0.95 #from fPar to vegetative cover
-    t_pcobs = np.genfromtxt(args.pcobsdates, dtype='str', delimiter=',')
+    t_pcobs = np.genfromtxt(args.pc_obsdates, dtype='str', delimiter=',')
     t_pcobs = pd.to_datetime(t_pcobs[:,1], format="%Y%m")
     pcobs_pd = pd.Series(pcobs, index = t_pcobs )
 
