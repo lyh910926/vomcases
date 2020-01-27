@@ -34,6 +34,12 @@ def main():
     parser.add_argument("--assobs_qc", help="quality of observations evaporation")
     parser.add_argument("--pcobs", help="observations of fpar")
     parser.add_argument("--pcobsdates", help="dates of fpar")
+
+    parser.add_argument("--stats_evap", help="statistics of evaporation timeseries", nargs='+')
+    parser.add_argument("--stats_ass", help="statistics of assimilation timeseries", nargs='+')
+    parser.add_argument("--stats_pc", help="statistics of projective cover timeseries", nargs='+')
+    parser.add_argument("--stats_label", help="label for statistics", nargs='+')
+
     parser.add_argument("--outputfile", help="outputfile")
     parser.add_argument("--labels", help="labels corresponding to input-files", nargs='+', default = ["VOM"] )
     parser.add_argument("--colors", help="colors corresponding to input-files", nargs='+', default = ["red"] )
@@ -143,6 +149,18 @@ def main():
         qcass_pd = pd.Series(assobs_qc, index=tassobs_qc)
         qcass_daily = qcass_pd.resample("D").mean()
 
+    #load statistics
+    evap_stats = []
+    ass_stats = []
+    pc_stats = []
+    for i in range(0, len(args.stats_evap)):
+        evap_stats.append( np.genfromtxt(args.stats_evap[i] ) )
+
+    for i in range(0, len(args.stats_ass)):
+        ass_stats.append( np.genfromtxt(args.stats_ass[i] ) )
+
+    for i in range(0, len(args.stats_pc)):
+        pc_stats.append( np.genfromtxt(args.stats_pc[i] ) )
 
     #load weather data
     weather_data = np.genfromtxt(args.weather, names=True)
@@ -311,6 +329,22 @@ def main():
     ax[2].text(args.xloc_title, args.yloc_title, "c)", ha='left', va='center', transform=ax[2].transAxes, fontsize=args.size_title)
     #else:
     #    plt.show()
+
+    #add statistics
+    yloc = 0.93
+    for i in range(0, len(args.stats_evap)):
+        ax[0].text(0.01, yloc,  args.stats_label[i] + " = {0:.2f} mm/d".format(evap_stats[i][4])  , ha='left', va='center', transform=ax[0].transAxes, fontsize=14, bbox=dict(boxstyle="square", alpha=0.75, color='white'  ))
+        yloc = yloc - 0.12
+
+    yloc = 0.93
+    for i in range(0, len(args.stats_ass)):
+        ax[1].text(0.01, yloc,  args.stats_label[i] + " = {0:.2f} mol/m$^2$/d".format(ass_stats[i][4]) , ha='left', va='center', transform=ax[1].transAxes, fontsize=14, bbox=dict(boxstyle="square", alpha=0.75, color='white' ))
+        yloc = yloc - 0.12
+
+    yloc = 0.93
+    for i in range(0, len(args.stats_pc)):
+        ax[2].text(0.01, yloc,  args.stats_label[i] + " = {0:.2f}%".format(pc_stats[i][4]) , ha='left', va='center', transform=ax[2].transAxes, fontsize=14, bbox=dict(boxstyle="square", alpha=0.75, color='white' ))
+        yloc = yloc - 0.12
 
     ax[0].patch.set_visible(False)
     ax[1].patch.set_visible(False)
