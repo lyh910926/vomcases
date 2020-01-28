@@ -5,6 +5,8 @@ import numpy as np
 from scipy import signal
 import pandas as pd
 import matplotlib.pyplot as plt
+from datetime import datetime, timedelta, date
+from netCDF4 import Dataset
 
 #selects the best solutions of sce and makes pars.txt for re-running the VOM
 
@@ -15,7 +17,7 @@ def main():
 
     parser.add_argument("--bess", help="bess input files")
     parser.add_argument("--bios2", help="bios2 input files")
-    parser.add_argument("--lpjguess", help="lpj-guess input files, first all files with et, second gpp")
+    parser.add_argument("--lpjguess", help="lpj-guess input files, first all files with et, second gpp", nargs="+")
     parser.add_argument("--maespa", help="maespa input files")
     parser.add_argument("--spa", help="spa input files")
     parser.add_argument("--cable", help="cable input files")
@@ -76,42 +78,48 @@ def main():
     bess_le = pd.Series(bess[:,0], index = bess_dates) #W/m2
     bess_et = 60*60*24* bess_le / ( lat_heat_vapor * rho_w * 1000)  #mm/d
     bess_gpp = pd.Series(bess[:,1], index = bess_dates) #umol/m2/s
-    bess_gpp = 60*60*24*bess_gpp/1000 #mol/m2/d
+    bess_gpp = -1.0*60*60*24*bess_gpp/1000000 #mol/m2/d
 
     #read in data from BIOS2
     bios2, bios2_dates = read_bios2(args.bios2)
     bios2_le = pd.Series(bios2[:,3], index = bios2_dates) #W/m2
     bios2_et = 60*60*24* bios2_le / ( lat_heat_vapor * rho_w * 1000)  #mm/d
     bios2_gpp = pd.Series(bios2[:,4], index = bios2_dates) #umol/m2/s
-    bios2_gpp = 60*60*24*bios2_gpp/1000 #mol/m2/d
+    bios2_gpp = -1.0*60*60*24*bios2_gpp/1000000 #mol/m2/d
 
     #read in data from LPJ-GUESS, ET in W/m2, GPP in umol/m2/s
-    lpjguess, lpjguess2, lpjguess_dates = read_lpjguess(args.lpjguess, args.lpjguess[i+len(whitley_sites)])
+    lpjguess, lpjguess2, lpjguess_dates = read_lpjguess(args.lpjguess[0], args.lpjguess[1])
     lpjguess_le = pd.Series(lpjguess, index = lpjguess_dates) #W/m2
     lpjguess_et = 60*60*24* lpjguess_le / ( lat_heat_vapor * rho_w * 1000)  #mm/d
     lpjguess_gpp = pd.Series(lpjguess2, index = lpjguess_dates) #umol/m2/s
-    lpjguess_gpp = 60*60*24*lpjguess_gpp/1000 #mol/m2/d
+    lpjguess_gpp = -1.0*60*60*24*lpjguess_gpp/1000000 #mol/m2/d
 
     #read in data from MAESPA, ET in W m-2, GPP in umol m-2 s-1
     maespa, maespa_dates = read_maespa(args.maespa)
     maespa_le = pd.Series(maespa[:,1], index = maespa_dates) #W/m2
-    maespa_et = 60*60*24* maespa_le / ( lat_heat_vapor * rho_w * 1000)  #mm/d
+    maespa_le = maespa_le.resample("D").sum()*30*60 #J/m2/d
+    maespa_et = maespa_le / ( lat_heat_vapor * rho_w * 1000)  #mm/d
     maespa_gpp = pd.Series(maespa[:,0], index = maespa_dates) #umol/m2/s
-    maespa_gpp = 60*60*24*maespa_gpp/1000 #mol/m2/d
+    maespa_gpp = maespa_gpp.resample("D").sum()*30*60 #umol/m2/d
+    maespa_gpp = -1.0*maespa_gpp/1000000 #mol/m2/d
+    maespa_dates = maespa_gpp.index
 
     #read in data from SPA, ET in W m-2, GPP in mmol m-2 s-1
     spa, spa_dates = read_spa(args.spa)
     spa_le = pd.Series(spa[:,1], index = spa_dates)
     spa_et = 60*60*24* spa_le / ( lat_heat_vapor * rho_w * 1000)  #mm/d
     spa_gpp = pd.Series(spa[:,0], index = spa_dates) #umol/m2/s
-    spa_gpp = 60*60*24*spa_gpp/1000 #mol/m2/d
+    spa_gpp = -1.0*60*60*24*spa_gpp/1000000 #mol/m2/d
 
     #read in data from CABLE, ET in kg/m^2/s, GPP in umol/m^2/s
     cable, cable2, cable_dates = read_cable(args.cable)
-    cable_le = pd.Series(cable * lat_heat_vapor * 1000 * 1000 , index = spa_dates) #W/m2
-    cable_et = 60*60*24* cable_le / ( lat_heat_vapor * rho_w * 1000)  #mm/d
-    cable_gpp = pd.Series(cable2, index = spa_dates) #umol/m2/s
-    cable_gpp = 60*60*24*cable_gpp/1000 #mol/m2/d
+    cable_le = pd.Series(cable * lat_heat_vapor * 1000 * 1000 , index = cable_dates) #W/m2
+    cable_le = cable_le.resample("D").sum()*60*60 #J/m2/d
+    cable_et = cable_le / ( lat_heat_vapor * rho_w * 1000)  #mm/d
+    cable_gpp = pd.Series(cable2, index = cable_dates) #umol/m2/s
+    cable_gpp = cable_gpp.resample("D").sum()*60*60 #umol/m2/d
+    cable_gpp = -1.0*cable_gpp/1000000 #mol/m2/d
+    cable_dates = cable_gpp.index
 
     #############################
     #BESS statistics
@@ -146,7 +154,7 @@ def main():
 
     #############################
     #BIOS2 statistics
-    dates_overlap = BIOS2_dates.intersection(eobs_pd.index)
+    dates_overlap = bios2_dates.intersection(eobs_pd.index)
     print("Evaluating BIOS2 fluxes for:")
     print(dates_overlap[0])
     print(dates_overlap[-1])
@@ -307,15 +315,15 @@ def main():
 def calcKGE(sim, obs ):
 
         #mean value    
-        mu_s = np.mean( sim )
-        mu_o = np.mean( obs )
+        mu_s = np.nanmean( sim )
+        mu_o = np.nanmean( obs )
 
         #standard deviations
-        sigma_s = np.std( sim )
-        sigma_o = np.std( obs )
+        sigma_s = np.nanstd( sim )
+        sigma_o = np.nanstd( obs )
 
         #correlation coefficient
-        r = np.corrcoef( sim, obs )[0,1]
+        r = np.corrcoef( sim[~np.isnan(sim)], obs[~np.isnan(sim)] )[0,1]
 
         #variability term alpha = sigma_s / sigma_o
         alpha = sigma_s / sigma_o
