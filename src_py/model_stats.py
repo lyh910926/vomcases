@@ -69,7 +69,7 @@ def main():
     tmp = pd.read_csv( args.inputfile, delim_whitespace=True, header = 0)
     e_tmp = 1000*(np.array(tmp["esoil"]) + np.array(tmp["etmg"]) + np.array(tmp["etmt"]))
     ass_tmp = (np.array(tmp["assg"]) +  np.array(tmp["asst"] ))
-    pc_tmp = np.array(tmp["pc"]) *100.0
+    pc_tmp = np.array(tmp["pc"]) 
 
     #make array of dates
 
