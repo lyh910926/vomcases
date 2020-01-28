@@ -54,7 +54,7 @@ def main():
             dates_obs = np.append(dates_obs, tmp[0] )
     #make pandas series
     dates_obs = pd.date_range(dates_obs[0],periods=len( dates_obs ), freq='D')
-    eobs_pd = pd.Series(evap_obs, index = dates_obs ) * lat_heat_vapor * rho_w * 1000/(3600*24) 
+    eobs_pd = pd.Series(evap_obs, index = dates_obs ) #* lat_heat_vapor * rho_w * 1000/(3600*24) 
 
     #load observed assimilation
     ass_obs = np.array([])
@@ -66,40 +66,52 @@ def main():
             dates_obs = np.append(dates_obs, tmp[0] )
     #make pandas series
     dates_obs = pd.date_range(dates_obs[0],periods=len( dates_obs ), freq='D')
-    ass_obs = -1000000*ass_obs/ (3600*24)
+    #ass_obs = -1000000*ass_obs/ (3600*24)
     assobs_pd = pd.Series(ass_obs, index = dates_obs )
 
 
     #############################
     #read in data from BESS
     bess, bess_dates = read_bess(args.bess)
-    bess_le = pd.Series(bess[:,0], index = bess_dates)
-    bess_gpp = pd.Series(bess[:,1], index = bess_dates)
+    bess_le = pd.Series(bess[:,0], index = bess_dates) #W/m2
+    bess_et = 60*60*24* bess_le / ( lat_heat_vapor * rho_w * 1000)  #mm/d
+    bess_gpp = pd.Series(bess[:,1], index = bess_dates) #umol/m2/s
+    bess_gpp = 60*60*24*bess_gpp/1000 #mol/m2/d
 
     #read in data from BIOS2
     bios2, bios2_dates = read_bios2(args.bios2)
-    bios2_le = pd.Series(bios2[:,3], index = bios2_dates)
-    bios2_gpp = pd.Series(bios2[:,4], index = bios2_dates)
+    bios2_le = pd.Series(bios2[:,3], index = bios2_dates) #W/m2
+    bios2_et = 60*60*24* bios2_le / ( lat_heat_vapor * rho_w * 1000)  #mm/d
+    bios2_gpp = pd.Series(bios2[:,4], index = bios2_dates) #umol/m2/s
+    bios2_gpp = 60*60*24*bios2_gpp/1000 #mol/m2/d
 
     #read in data from LPJ-GUESS, ET in W/m2, GPP in umol/m2/s
     lpjguess, lpjguess2, lpjguess_dates = read_lpjguess(args.lpjguess, args.lpjguess[i+len(whitley_sites)])
-    lpjguess_le = pd.Series(lpjguess, index = lpjguess_dates)
-    lpjguess_gpp = pd.Series(lpjguess2, index = lpjguess_dates)
+    lpjguess_le = pd.Series(lpjguess, index = lpjguess_dates) #W/m2
+    lpjguess_et = 60*60*24* lpjguess_le / ( lat_heat_vapor * rho_w * 1000)  #mm/d
+    lpjguess_gpp = pd.Series(lpjguess2, index = lpjguess_dates) #umol/m2/s
+    lpjguess_gpp = 60*60*24*lpjguess_gpp/1000 #mol/m2/d
 
     #read in data from MAESPA, ET in W m-2, GPP in umol m-2 s-1
     maespa, maespa_dates = read_maespa(args.maespa)
-    maespa_le = pd.Series(maespa[:,1], index = maespa_dates)
-    maespa_gpp = pd.Series(maespa[:,0], index = maespa_dates)
+    maespa_le = pd.Series(maespa[:,1], index = maespa_dates) #W/m2
+    maespa_et = 60*60*24* maespa_le / ( lat_heat_vapor * rho_w * 1000)  #mm/d
+    maespa_gpp = pd.Series(maespa[:,0], index = maespa_dates) #umol/m2/s
+    maespa_gpp = 60*60*24*maespa_gpp/1000 #mol/m2/d
 
     #read in data from SPA, ET in W m-2, GPP in mmol m-2 s-1
     spa, spa_dates = read_spa(args.spa)
     spa_le = pd.Series(spa[:,1], index = spa_dates)
-    spa_gpp = pd.Series(spa[:,0], index = spa_dates)
+    spa_et = 60*60*24* spa_le / ( lat_heat_vapor * rho_w * 1000)  #mm/d
+    spa_gpp = pd.Series(spa[:,0], index = spa_dates) #umol/m2/s
+    spa_gpp = 60*60*24*spa_gpp/1000 #mol/m2/d
 
     #read in data from CABLE, ET in kg/m^2/s, GPP in umol/m^2/s
     cable, cable2, cable_dates = read_cable(args.cable)
-    cable_le = pd.Series(cable * lat_heat_vapor * 1000 * 1000 , index = spa_dates)
-    cable_gpp = pd.Series(cable2, index = spa_dates)
+    cable_le = pd.Series(cable * lat_heat_vapor * 1000 * 1000 , index = spa_dates) #W/m2
+    cable_et = 60*60*24* cable_le / ( lat_heat_vapor * rho_w * 1000)  #mm/d
+    cable_gpp = pd.Series(cable2, index = spa_dates) #umol/m2/s
+    cable_gpp = 60*60*24*cable_gpp/1000 #mol/m2/d
 
     #############################
     #BESS statistics
