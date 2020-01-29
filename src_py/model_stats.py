@@ -78,21 +78,21 @@ def main():
     bess_le = pd.Series(bess[:,0], index = bess_dates) #W/m2
     bess_et = 60*60*24* bess_le / ( lat_heat_vapor * rho_w * 1000)  #mm/d
     bess_gpp = pd.Series(bess[:,1], index = bess_dates) #umol/m2/s
-    bess_gpp = -1.0*60*60*24*bess_gpp/1000000 #mol/m2/d
+    bess_gpp = 60*60*24*bess_gpp/1000000 #mol/m2/d
 
     #read in data from BIOS2
     bios2, bios2_dates = read_bios2(args.bios2)
     bios2_le = pd.Series(bios2[:,3], index = bios2_dates) #W/m2
     bios2_et = 60*60*24* bios2_le / ( lat_heat_vapor * rho_w * 1000)  #mm/d
     bios2_gpp = pd.Series(bios2[:,4], index = bios2_dates) #umol/m2/s
-    bios2_gpp = -1.0*60*60*24*bios2_gpp/1000000 #mol/m2/d
+    bios2_gpp = 60*60*24*bios2_gpp/1000000 #mol/m2/d
 
     #read in data from LPJ-GUESS, ET in W/m2, GPP in umol/m2/s
     lpjguess, lpjguess2, lpjguess_dates = read_lpjguess(args.lpjguess[0], args.lpjguess[1])
     lpjguess_le = pd.Series(lpjguess, index = lpjguess_dates) #W/m2
     lpjguess_et = 60*60*24* lpjguess_le / ( lat_heat_vapor * rho_w * 1000)  #mm/d
     lpjguess_gpp = pd.Series(lpjguess2, index = lpjguess_dates) #umol/m2/s
-    lpjguess_gpp = -1.0*60*60*24*lpjguess_gpp/1000000 #mol/m2/d
+    lpjguess_gpp = 60*60*24*lpjguess_gpp/1000000 #mol/m2/d
 
     #read in data from MAESPA, ET in W m-2, GPP in umol m-2 s-1
     maespa, maespa_dates = read_maespa(args.maespa)
@@ -101,7 +101,7 @@ def main():
     maespa_et = maespa_le / ( lat_heat_vapor * rho_w * 1000)  #mm/d
     maespa_gpp = pd.Series(maespa[:,0], index = maespa_dates) #umol/m2/s
     maespa_gpp = maespa_gpp.resample("D").sum()*30*60 #umol/m2/d
-    maespa_gpp = -1.0*maespa_gpp/1000000 #mol/m2/d
+    maespa_gpp = maespa_gpp/1000000 #mol/m2/d
     maespa_dates = maespa_gpp.index
 
     #read in data from SPA, ET in W m-2, GPP in mmol m-2 s-1
@@ -118,7 +118,7 @@ def main():
     cable_et = cable_le / ( lat_heat_vapor * rho_w * 1000)  #mm/d
     cable_gpp = pd.Series(cable2, index = cable_dates) #umol/m2/s
     cable_gpp = cable_gpp.resample("D").sum()*60*60 #umol/m2/d
-    cable_gpp = -1.0*cable_gpp/1000000 #mol/m2/d
+    cable_gpp = cable_gpp/1000000 #mol/m2/d
     cable_dates = cable_gpp.index
 
     #############################
