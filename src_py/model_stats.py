@@ -106,18 +106,20 @@ def main():
 
     #read in data from SPA, ET in W m-2, GPP in mmol m-2 s-1
     spa, spa_dates = read_spa(args.spa)
-    spa_le = pd.Series(spa[:,1], index = spa_dates)
-    spa_et = 60*60*24* spa_le / ( lat_heat_vapor * rho_w * 1000)  #mm/d
+    spa_le = pd.Series(spa[:,1], index = spa_dates) #W/m2
+    spa_le = spa_le.resample("D").sum()*30*60 #J/m2/d
+    spa_et = spa_le / ( lat_heat_vapor * rho_w * 1000)  #mm/d
     spa_gpp = pd.Series(spa[:,0], index = spa_dates) #umol/m2/s
-    spa_gpp = -1.0*60*60*24*spa_gpp/1000000 #mol/m2/d
+    spa_gpp = spa_gpp.resample("D").sum()*30*60 #umol/m2/d
+    spa_gpp = -1.0*spa_gpp/1000000 #mol/m2/d
 
     #read in data from CABLE, ET in kg/m^2/s, GPP in umol/m^2/s
     cable, cable2, cable_dates = read_cable(args.cable)
     cable_le = pd.Series(cable * lat_heat_vapor * 1000 * 1000 , index = cable_dates) #W/m2
-    cable_le = cable_le.resample("D").sum()*60*60 #J/m2/d
+    cable_le = cable_le.resample("D").sum()*30*60 #J/m2/d
     cable_et = cable_le / ( lat_heat_vapor * rho_w * 1000)  #mm/d
     cable_gpp = pd.Series(cable2, index = cable_dates) #umol/m2/s
-    cable_gpp = cable_gpp.resample("D").sum()*60*60 #umol/m2/d
+    cable_gpp = cable_gpp.resample("D").sum()*30*60 #umol/m2/d
     cable_gpp = cable_gpp/1000000 #mol/m2/d
     cable_dates = cable_gpp.index
 
