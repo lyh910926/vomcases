@@ -129,19 +129,19 @@ def main():
     print(dates_overlap[-1])
 
     #calc KGE
-    eKGE  = calcKGE(bess_le[dates_overlap], eobs_pd[dates_overlap])
+    eKGE  = calcKGE(bess_et[dates_overlap], eobs_pd[dates_overlap])
     assKGE  = calcKGE(bess_gpp[dates_overlap], assobs_pd[dates_overlap])
 
-    eMeanAnnRE  = calcREmean(bess_le[dates_overlap], eobs_pd[dates_overlap])
+    eMeanAnnRE  = calcREmean(bess_et[dates_overlap], eobs_pd[dates_overlap])
     assMeanAnnRE  = calcREmean(bess_gpp[dates_overlap], assobs_pd[dates_overlap])
 
-    eMAE  = calcMAE(bess_le[dates_overlap], eobs_pd[dates_overlap])
+    eMAE  = calcMAE(bess_et[dates_overlap], eobs_pd[dates_overlap])
     assMAE = calcMAE(bess_gpp[dates_overlap], assobs_pd[dates_overlap])
 
-    eMeanSeas1RE  = calcREmean_seasonal(bess_le[dates_overlap], eobs_pd[dates_overlap], args.startdry, args.enddry)
+    eMeanSeas1RE  = calcREmean_seasonal(bess_et[dates_overlap], eobs_pd[dates_overlap], args.startdry, args.enddry)
     assMeanSeas1RE  = calcREmean_seasonal(bess_gpp[dates_overlap], assobs_pd[dates_overlap], args.startdry, args.enddry)
 
-    eMeanSeas2RE  = calcREmean_seasonal(bess_le[dates_overlap], eobs_pd[dates_overlap], args.startwet, args.endwet)
+    eMeanSeas2RE  = calcREmean_seasonal(bess_et[dates_overlap], eobs_pd[dates_overlap], args.startwet, args.endwet)
     assMeanSeas2RE  = calcREmean_seasonal(bess_gpp[dates_overlap], assobs_pd[dates_overlap], args.startwet, args.endwet)
 
     #put results together
@@ -160,19 +160,19 @@ def main():
     print(dates_overlap[-1])
 
     #calc KGE
-    eKGE  = calcKGE(bios2_le[dates_overlap], eobs_pd[dates_overlap])
+    eKGE  = calcKGE(bios2_et[dates_overlap], eobs_pd[dates_overlap])
     assKGE  = calcKGE(bios2_gpp[dates_overlap], assobs_pd[dates_overlap])
 
-    eMeanAnnRE  = calcREmean(bios2_le[dates_overlap], eobs_pd[dates_overlap])
+    eMeanAnnRE  = calcREmean(bios2_et[dates_overlap], eobs_pd[dates_overlap])
     assMeanAnnRE  = calcREmean(bios2_gpp[dates_overlap], assobs_pd[dates_overlap])
 
-    eMAE  = calcMAE(bios2_le[dates_overlap], eobs_pd[dates_overlap])
+    eMAE  = calcMAE(bios2_et[dates_overlap], eobs_pd[dates_overlap])
     assMAE = calcMAE(bios2_gpp[dates_overlap], assobs_pd[dates_overlap])
 
-    eMeanSeas1RE  = calcREmean_seasonal(bios2_le[dates_overlap], eobs_pd[dates_overlap], args.startdry, args.enddry)
+    eMeanSeas1RE  = calcREmean_seasonal(bios2_et[dates_overlap], eobs_pd[dates_overlap], args.startdry, args.enddry)
     assMeanSeas1RE  = calcREmean_seasonal(bios2_gpp[dates_overlap], assobs_pd[dates_overlap], args.startdry, args.enddry)
 
-    eMeanSeas2RE  = calcREmean_seasonal(bios2_le[dates_overlap], eobs_pd[dates_overlap], args.startwet, args.endwet)
+    eMeanSeas2RE  = calcREmean_seasonal(bios2_et[dates_overlap], eobs_pd[dates_overlap], args.startwet, args.endwet)
     assMeanSeas2RE  = calcREmean_seasonal(bios2_gpp[dates_overlap], assobs_pd[dates_overlap], args.startwet, args.endwet)
 
     #put results together
@@ -191,19 +191,19 @@ def main():
     print(dates_overlap[-1])
 
     #calc KGE
-    eKGE  = calcKGE(lpjguess_le[dates_overlap], eobs_pd[dates_overlap])
+    eKGE  = calcKGE(lpjguess_et[dates_overlap], eobs_pd[dates_overlap])
     assKGE  = calcKGE(lpjguess_gpp[dates_overlap], assobs_pd[dates_overlap])
 
-    eMeanAnnRE  = calcREmean(lpjguess_le[dates_overlap], eobs_pd[dates_overlap])
+    eMeanAnnRE  = calcREmean(lpjguess_et[dates_overlap], eobs_pd[dates_overlap])
     assMeanAnnRE  = calcREmean(lpjguess_gpp[dates_overlap], assobs_pd[dates_overlap])
 
-    eMAE  = calcMAE(lpjguess_le[dates_overlap], eobs_pd[dates_overlap])
+    eMAE  = calcMAE(lpjguess_et[dates_overlap], eobs_pd[dates_overlap])
     assMAE = calcMAE(lpjguess_gpp[dates_overlap], assobs_pd[dates_overlap])
 
-    eMeanSeas1RE  = calcREmean_seasonal(lpjguess_le[dates_overlap], eobs_pd[dates_overlap], args.startdry, args.enddry)
+    eMeanSeas1RE  = calcREmean_seasonal(lpjguess_et[dates_overlap], eobs_pd[dates_overlap], args.startdry, args.enddry)
     assMeanSeas1RE  = calcREmean_seasonal(lpjguess_gpp[dates_overlap], assobs_pd[dates_overlap], args.startdry, args.enddry)
 
-    eMeanSeas2RE  = calcREmean_seasonal(lpjguess_le[dates_overlap], eobs_pd[dates_overlap], args.startwet, args.endwet)
+    eMeanSeas2RE  = calcREmean_seasonal(lpjguess_et[dates_overlap], eobs_pd[dates_overlap], args.startwet, args.endwet)
     assMeanSeas2RE  = calcREmean_seasonal(lpjguess_gpp[dates_overlap], assobs_pd[dates_overlap], args.startwet, args.endwet)
 
     #put results together
@@ -222,19 +222,19 @@ def main():
     print(dates_overlap[-1])
 
     #calc KGE
-    eKGE  = calcKGE(maespa_le[dates_overlap], eobs_pd[dates_overlap])
+    eKGE  = calcKGE(maespa_et[dates_overlap], eobs_pd[dates_overlap])
     assKGE  = calcKGE(maespa_gpp[dates_overlap], assobs_pd[dates_overlap])
 
-    eMeanAnnRE  = calcREmean(maespa_le[dates_overlap], eobs_pd[dates_overlap])
+    eMeanAnnRE  = calcREmean(maespa_et[dates_overlap], eobs_pd[dates_overlap])
     assMeanAnnRE  = calcREmean(maespa_gpp[dates_overlap], assobs_pd[dates_overlap])
 
-    eMAE  = calcMAE(maespa_le[dates_overlap], eobs_pd[dates_overlap])
+    eMAE  = calcMAE(maespa_et[dates_overlap], eobs_pd[dates_overlap])
     assMAE = calcMAE(maespa_gpp[dates_overlap], assobs_pd[dates_overlap])
 
-    eMeanSeas1RE  = calcREmean_seasonal(maespa_le[dates_overlap], eobs_pd[dates_overlap], args.startdry, args.enddry)
+    eMeanSeas1RE  = calcREmean_seasonal(maespa_et[dates_overlap], eobs_pd[dates_overlap], args.startdry, args.enddry)
     assMeanSeas1RE  = calcREmean_seasonal(maespa_gpp[dates_overlap], assobs_pd[dates_overlap], args.startdry, args.enddry)
 
-    eMeanSeas2RE  = calcREmean_seasonal(maespa_le[dates_overlap], eobs_pd[dates_overlap], args.startwet, args.endwet)
+    eMeanSeas2RE  = calcREmean_seasonal(maespa_et[dates_overlap], eobs_pd[dates_overlap], args.startwet, args.endwet)
     assMeanSeas2RE  = calcREmean_seasonal(maespa_gpp[dates_overlap], assobs_pd[dates_overlap], args.startwet, args.endwet)
 
     #put results together
@@ -253,19 +253,19 @@ def main():
     print(dates_overlap[-1])
 
     #calc KGE
-    eKGE  = calcKGE(spa_le[dates_overlap], eobs_pd[dates_overlap])
+    eKGE  = calcKGE(spa_et[dates_overlap], eobs_pd[dates_overlap])
     assKGE  = calcKGE(spa_gpp[dates_overlap], assobs_pd[dates_overlap])
 
-    eMeanAnnRE  = calcREmean(spa_le[dates_overlap], eobs_pd[dates_overlap])
+    eMeanAnnRE  = calcREmean(spa_et[dates_overlap], eobs_pd[dates_overlap])
     assMeanAnnRE  = calcREmean(spa_gpp[dates_overlap], assobs_pd[dates_overlap])
 
-    eMAE  = calcMAE(spa_le[dates_overlap], eobs_pd[dates_overlap])
+    eMAE  = calcMAE(spa_et[dates_overlap], eobs_pd[dates_overlap])
     assMAE = calcMAE(spa_gpp[dates_overlap], assobs_pd[dates_overlap])
 
-    eMeanSeas1RE  = calcREmean_seasonal(spa_le[dates_overlap], eobs_pd[dates_overlap], args.startdry, args.enddry)
+    eMeanSeas1RE  = calcREmean_seasonal(spa_et[dates_overlap], eobs_pd[dates_overlap], args.startdry, args.enddry)
     assMeanSeas1RE  = calcREmean_seasonal(spa_gpp[dates_overlap], assobs_pd[dates_overlap], args.startdry, args.enddry)
 
-    eMeanSeas2RE  = calcREmean_seasonal(spa_le[dates_overlap], eobs_pd[dates_overlap], args.startwet, args.endwet)
+    eMeanSeas2RE  = calcREmean_seasonal(spa_et[dates_overlap], eobs_pd[dates_overlap], args.startwet, args.endwet)
     assMeanSeas2RE  = calcREmean_seasonal(spa_gpp[dates_overlap], assobs_pd[dates_overlap], args.startwet, args.endwet)
 
     #put results together
@@ -284,19 +284,19 @@ def main():
     print(dates_overlap[-1])
 
     #calc KGE
-    eKGE  = calcKGE(cable_le[dates_overlap], eobs_pd[dates_overlap])
+    eKGE  = calcKGE(cable_et[dates_overlap], eobs_pd[dates_overlap])
     assKGE  = calcKGE(cable_gpp[dates_overlap], assobs_pd[dates_overlap])
 
-    eMeanAnnRE  = calcREmean(cable_le[dates_overlap], eobs_pd[dates_overlap])
+    eMeanAnnRE  = calcREmean(cable_et[dates_overlap], eobs_pd[dates_overlap])
     assMeanAnnRE  = calcREmean(cable_gpp[dates_overlap], assobs_pd[dates_overlap])
 
-    eMAE  = calcMAE(cable_le[dates_overlap], eobs_pd[dates_overlap])
+    eMAE  = calcMAE(cable_et[dates_overlap], eobs_pd[dates_overlap])
     assMAE = calcMAE(cable_gpp[dates_overlap], assobs_pd[dates_overlap])
 
-    eMeanSeas1RE  = calcREmean_seasonal(cable_le[dates_overlap], eobs_pd[dates_overlap], args.startdry, args.enddry)
+    eMeanSeas1RE  = calcREmean_seasonal(cable_et[dates_overlap], eobs_pd[dates_overlap], args.startdry, args.enddry)
     assMeanSeas1RE  = calcREmean_seasonal(cable_gpp[dates_overlap], assobs_pd[dates_overlap], args.startdry, args.enddry)
 
-    eMeanSeas2RE  = calcREmean_seasonal(cable_le[dates_overlap], eobs_pd[dates_overlap], args.startwet, args.endwet)
+    eMeanSeas2RE  = calcREmean_seasonal(cable_et[dates_overlap], eobs_pd[dates_overlap], args.startwet, args.endwet)
     assMeanSeas2RE  = calcREmean_seasonal(cable_gpp[dates_overlap], assobs_pd[dates_overlap], args.startwet, args.endwet)
 
     #put results together
