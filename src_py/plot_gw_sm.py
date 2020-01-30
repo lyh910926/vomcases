@@ -118,7 +118,7 @@ def main():
 
         data2015 = np.genfromtxt(args.i2015, names=True)
 
-        vals2015 = data2015["ws"]
+        vals2015 = data2015["ys"]
         su_vals2015 = data2015["su_1"]
         theta_vals2015 = (su_vals2015 * (args.i_thetas2015 - args.i_thetar2015)) + theta_r
 
