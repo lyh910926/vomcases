@@ -118,7 +118,7 @@ def main():
 
         data2015 = np.genfromtxt(args.i2015, names=True)
 
-        vals2015 = data["ws"]
+        vals2015 = data2015["ws"]
 
         if( args.depth == "True"):
             vals2015 = -1*(args.i_cz2015 - vals2015)
