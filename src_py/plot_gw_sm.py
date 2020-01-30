@@ -99,6 +99,7 @@ def main():
         data2015 = np.genfromtxt(args.i2015, names=True)
 
         vals2015 = data2015["ws"]
+        su_vals2015 = data2015["su_1"]
 
         if( args.depth == "True"):
             vals2015 = -1*(args.i_cz2015 - vals2015)
@@ -246,9 +247,12 @@ def main():
     #plot soil moisture results
     iplot = 1
     for i in range(0, len(args.input)):
-        ax[iplot].plot(tmod[i], su_vals[i], color="red", label="VOM", zorder=1)     
-
-
+        ax[iplot].plot(tmod[i], su_vals[i], color="red", label="VOM", zorder=1) 
+    
+        #plot 2015 data
+        if args.i2015 is not None:
+            if iplot ==1:
+                ax[iplot].plot(tmod2015, su_vals2015, color='green', label='Schymanski et al. (2015)', zorder=2)
 
         ax[iplot].set_ylabel("Soil moisture [-]", size=24  )
         for tick in ax[iplot].xaxis.get_major_ticks():
