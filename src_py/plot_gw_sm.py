@@ -31,6 +31,7 @@ def main():
     parser.add_argument("--emp2", help="empirical solution 2")
     parser.add_argument("--obs_gw", help="observations groundwater Howard Springs", nargs='+')
     parser.add_argument("--obs_sm", help="observations soil moisture all sites", nargs='+')
+    parser.add_argument("--soildata", help="soildata used for the VOM", nargs='+')
     parser.add_argument("--outputfile", help="outputfile")
     parser.add_argument("--mf", help="multiplication factor for unit conversion", type=float, default = 1.0)
     parser.add_argument("--mf_obs", help="multiplication factor for unit conversion observations", type=float, default = 1.0)
@@ -42,6 +43,8 @@ def main():
     parser.add_argument("--i_zr", help="bottom level, for groundwater plot", type=float )
     parser.add_argument("--i_cz2015", help="surface level, for groundwater plot", type=float )
     parser.add_argument("--i_zr2015", help="bottom level, for groundwater plot", type=float )
+    parser.add_argument("--i_thetar2015", help="Van genuchten thetar AoB2015", type=float )
+    parser.add_argument("--i_thetas2015", help="Van genuchten thetas AoB2015", type=float )
     parser.add_argument("--pars", help="parameter file, for plotting rooting depths" )
     parser.add_argument("--depth", help="plot depth, default is water table" )
     parser.add_argument("--ylabel", help="ylabel" )
@@ -75,9 +78,18 @@ def main():
         t_emp = np.genfromtxt( args.emp2, usecols=0, dtype=np.str)
         t_emp = pd.date_range(t_emp[0], t_emp[-1], freq='D')    
 
+    #load soildata
+    if args.soildata is not None:
+        soildata = []
+        for i in range(0, len(args.soildata)):
+            #values observations
+            soildata.append((np.loadtxt(args.soildata[i]) ) )  
+
+
     #load results
     zw_vals = []
     su_vals = []
+    theta_vals = []
     tmod = []
     for i in range(0, len(args.input)):
         data = np.genfromtxt(args.input[i], names=True)
@@ -94,12 +106,21 @@ def main():
                       datetime(int(data["fyear"][-1]),int(data["fmonth"][-1]),int(data["fday"][-1]))+timedelta(days=1), 
                       timedelta(days=1)).astype(datetime))
 
+        theta_s = soildata[i][0,5]
+        theta_r = soildata[i][0,6]
+        theta_tmp = (su_vals[i] * (theta_s - theta_r)) + theta_r
+        theta_vals.append(theta_tmp)
+
+
+
+
     if args.i2015 is not None:
 
         data2015 = np.genfromtxt(args.i2015, names=True)
 
         vals2015 = data2015["ws"]
         su_vals2015 = data2015["su_1"]
+        theta_vals2015 = (su_vals2015 * (args.i_thetas2015 - args.i_thetar2015)) + theta_r
 
         if( args.depth == "True"):
             vals2015 = -1*(args.i_cz2015 - vals2015)
@@ -111,6 +132,8 @@ def main():
     #load parameters
     if args.pars is not None:
         params = np.loadtxt(args.pars)
+
+
 
     #load observations
     if args.obs_gw is not None:
@@ -131,11 +154,13 @@ def main():
 
     #observations of soil moisture
     obs_sm = []
+    obs_theta = []
     tobs_sm = []
     if args.obs_sm is not None:
         for i in range(0, len(args.obs_sm)):
             #values observations
             obs_sm.append((np.loadtxt(args.obs_sm[i], usecols=2) ) *args.mf_obs)  #mm/d
+
             #date/times observations
             tobs_tmp = np.genfromtxt(args.obs_sm[i],usecols=0, dtype=np.str )#mm/d
             tobs_sm.append(pd.date_range(tobs_tmp[0], tobs_tmp[-1], freq='D') )
@@ -247,12 +272,12 @@ def main():
     #plot soil moisture results
     iplot = 1
     for i in range(0, len(args.input)):
-        ax[iplot].plot(tmod[i], su_vals[i], color="red", label="VOM", zorder=1) 
+        ax[iplot].plot(tmod[i], theta_vals[i], color="red", label="VOM", zorder=1) 
     
         #plot 2015 data
         if args.i2015 is not None:
             if iplot ==1:
-                ax[iplot].plot(tmod2015, su_vals2015, color='green', label='Schymanski et al. (2015)', zorder=2)
+                ax[iplot].plot(tmod2015, theta_vals2015, color='green', label='Schymanski et al. (2015)', zorder=2)
 
         ax[iplot].set_ylabel("Soil moisture [-]", size=24  )
         for tick in ax[iplot].xaxis.get_major_ticks():
