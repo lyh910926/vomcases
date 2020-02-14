@@ -155,7 +155,7 @@ def main():
 
     #plot observations
     if args.i2015 is not None:
-        ax0.plot(tmod2015, vals2015, color='green', label='2015 data', zorder=2)
+        ax0.plot(tmod2015, vals2015, color='green', label='Schymanski et al. (2015)', zorder=2)
 
     palette = plt.get_cmap(args.palette, len(args.input))
 

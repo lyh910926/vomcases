@@ -49,6 +49,8 @@ def main():
     parser.add_argument("--dingo_et", help="DINGO files evaporation", nargs='+')
     parser.add_argument("--dingo_gpp", help="DINGO files assimilation", nargs='+')
     parser.add_argument("--i2015", help="results_daily AoB2015 ")
+    parser.add_argument("--sharex", help="share x-axis ", type=bool, default = True)
+    parser.add_argument("--figsize", help="figure size", nargs='+', type=float, default = [15,23] )
 
     args = parser.parse_args()
 
@@ -148,7 +150,7 @@ def main():
 
     ####################################################
     #start plotting
-    fig, axes   = plt.subplots(nrows=6, ncols=2, figsize=(15, 23), sharex=True,gridspec_kw = {'wspace':0.2, 'hspace':-0.3} )
+    fig, axes   = plt.subplots(nrows=6, ncols=2, figsize=(args.figsize[0], args.figsize[1]), sharex=False,gridspec_kw = {'wspace':0.2, 'hspace':-0.3} )
     ax = axes.flat
 
     iplot = 0
@@ -294,8 +296,10 @@ def main():
     
     lines_labels = [ax[0].get_legend_handles_labels() ]
     lines, labels = [sum(lol, []) for lol in zip(*lines_labels)]
-    ax[iplot-1].legend(lines, labels, loc='upper right')
+
+    ax[iplot-1].legend(lines, labels, loc='upper right', bbox_to_anchor=(1.8, 1.6),prop={'size':16})
     
+    #plt.tight_layout()
     if args.outfile is not None:
         plt.savefig(args.outfile, bbox_inches = "tight")
     else:
