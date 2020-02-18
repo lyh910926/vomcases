@@ -146,8 +146,8 @@ def main():
     eMeanSeas2RE  = calcREmean_seasonal(bess_et[dates_overlap], eobs_pd[dates_overlap], args.startwet, args.endwet)
     assMeanSeas2RE  = calcREmean_seasonal(bess_gpp[dates_overlap], assobs_pd[dates_overlap], args.startwet, args.endwet)
 
-    eAmpRE = calcAmpRE(bess_et, bess_dates, evap_obs, dates_obs )
-    assAmpRE = calcAmpRE(bess_gpp, bess_dates, ass_obs, dates_obs )
+    eAmpRE = calcAmpRE(bess_et, bess_et.index, evap_obs, dates_obs )
+    assAmpRE = calcAmpRE(bess_gpp, bess_gpp.index, ass_obs, dates_obs )
 
     #put results together
     eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE, eAmpRE ]
@@ -180,8 +180,8 @@ def main():
     eMeanSeas2RE  = calcREmean_seasonal(bios2_et[dates_overlap], eobs_pd[dates_overlap], args.startwet, args.endwet)
     assMeanSeas2RE  = calcREmean_seasonal(bios2_gpp[dates_overlap], assobs_pd[dates_overlap], args.startwet, args.endwet)
 
-    eAmpRE = calcAmpRE(bios2_et, bios2_dates, evap_obs, dates_obs )
-    assAmpRE = calcAmpRE(bios2_gpp, bios2_dates, ass_obs, dates_obs )
+    eAmpRE = calcAmpRE(bios2_et, bios2_et.index, evap_obs, dates_obs )
+    assAmpRE = calcAmpRE(bios2_gpp, bios2_gpp.index, ass_obs, dates_obs )
 
     #put results together
     eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE, eAmpRE ]
@@ -214,8 +214,8 @@ def main():
     eMeanSeas2RE  = calcREmean_seasonal(lpjguess_et[dates_overlap], eobs_pd[dates_overlap], args.startwet, args.endwet)
     assMeanSeas2RE  = calcREmean_seasonal(lpjguess_gpp[dates_overlap], assobs_pd[dates_overlap], args.startwet, args.endwet)
 
-    eAmpRE = calcAmpRE(lpjguess_et, lpjguess_dates, evap_obs, dates_obs )
-    assAmpRE = calcAmpRE(lpjguess_gpp, lpjguess_dates, ass_obs, dates_obs )
+    eAmpRE = calcAmpRE(lpjguess_et, lpjguess_et.index, evap_obs, dates_obs )
+    assAmpRE = calcAmpRE(lpjguess_gpp, lpjguess_gpp.index, ass_obs, dates_obs )
 
     #put results together
     eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE, eAmpRE ]
@@ -248,8 +248,8 @@ def main():
     eMeanSeas2RE  = calcREmean_seasonal(maespa_et[dates_overlap], eobs_pd[dates_overlap], args.startwet, args.endwet)
     assMeanSeas2RE  = calcREmean_seasonal(maespa_gpp[dates_overlap], assobs_pd[dates_overlap], args.startwet, args.endwet)
 
-    eAmpRE = calcAmpRE(maespa_et, maespa_dates, evap_obs, dates_obs )
-    assAmpRE = calcAmpRE(maespa_gpp, maespa_dates, ass_obs, dates_obs )
+    eAmpRE = calcAmpRE(maespa_et, maespa_et.index, evap_obs, dates_obs )
+    assAmpRE = calcAmpRE(maespa_gpp, maespa_gpp.index, ass_obs, dates_obs )
 
     #put results together
     eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE ]
@@ -282,8 +282,8 @@ def main():
     eMeanSeas2RE  = calcREmean_seasonal(spa_et[dates_overlap], eobs_pd[dates_overlap], args.startwet, args.endwet)
     assMeanSeas2RE  = calcREmean_seasonal(spa_gpp[dates_overlap], assobs_pd[dates_overlap], args.startwet, args.endwet)
 
-    eAmpRE = calcAmpRE(spa_et, spa_dates, evap_obs, dates_obs )
-    assAmpRE = calcAmpRE(spa_gpp, spa_dates, ass_obs, dates_obs )
+    eAmpRE = calcAmpRE(spa_et, spa_et.index, evap_obs, dates_obs )
+    assAmpRE = calcAmpRE(spa_gpp, spa_gpp.index, ass_obs, dates_obs )
 
     #put results together
     eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE, eAmpRE ]
@@ -316,8 +316,8 @@ def main():
     eMeanSeas2RE  = calcREmean_seasonal(cable_et[dates_overlap], eobs_pd[dates_overlap], args.startwet, args.endwet)
     assMeanSeas2RE  = calcREmean_seasonal(cable_gpp[dates_overlap], assobs_pd[dates_overlap], args.startwet, args.endwet)
 
-    eAmpRE = calcAmpRE(cable_et, cable_dates, evap_obs, dates_obs )
-    assAmpRE = calcAmpRE(cable_gpp, cable_dates, ass_obs, dates_obs )
+    eAmpRE = calcAmpRE(cable_et, cable_et.index, evap_obs, dates_obs )
+    assAmpRE = calcAmpRE(cable_gpp, cable_gpp.index, ass_obs, dates_obs )
 
 
     #put results together
