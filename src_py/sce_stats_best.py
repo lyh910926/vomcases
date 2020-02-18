@@ -204,7 +204,7 @@ def calcAmpRE(vals, time, vals_obs, time_obs):
 
 
     DOY = time.dayofyear[0:len(vals)] 
-    DOYobs = time_obs.dayofyear[0:len(vals)] 
+    DOYobs = time_obs.dayofyear[0:len(vals_obs)] 
 
     for iday in range(0,366):
         ens[iday] = np.nanmean( vals[DOY == (iday+1)]  ) 
