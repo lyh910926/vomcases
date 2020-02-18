@@ -226,7 +226,7 @@ def calcAmpRE(vals, time, vals_obs, time_obs):
 
     RE = (ampl - amplo)/amplo
 
-    return ens7d
+    return RE
 
 
 
