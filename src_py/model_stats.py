@@ -252,8 +252,8 @@ def main():
     assAmpRE = calcAmpRE(maespa_gpp, maespa_gpp.index, ass_obs, dates_obs )
 
     #put results together
-    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE ]
-    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE ]
+    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE, eAmpRE ]
+    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE, assAmpRE ]
  
     #write output files
     np.savetxt( args.out_maespa + "/evap_beststats.txt", eresult, comments='', delimiter=" " )
