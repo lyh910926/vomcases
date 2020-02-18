@@ -248,10 +248,10 @@ def main():
 
     ylabels = [ r"Evaporation [mm/year]",
                 r'Assimilation [mol/m$^2$/year]',
-                "Abs. Err. [mm/d]",  
-                "Abs. Err. [mol/m$^2$/d]", 
-                "Mean Annual Rel. Err. [-]", 
-                "Mean Annual Rel. Err. [-]", 
+                "AE evaporation [mm/d]",  
+                "AE assimilation [mol/m$^2$/d]", 
+                "RE amplitude evaporation[-]", 
+                "REamplitude assimilation[-]", 
                 "Mean Dry Season Rel. Err. [-]", 
                 "Mean Dry Season Rel. Err. [-]", 
                 "Mean Wet Season Rel. Err. [-]", 
@@ -262,11 +262,11 @@ def main():
     maxy= [1500, 200, 2.5,0.3, 1.0, 1.0, 2,5, 1.5,1.5]
     miny= [0, 0 , 0,0, -1.0,-1.0, -2,-5, -1.5,-1.5]
 
-    stats_order = [ 4,1]
+    stats_order = [ 4,5]
     iplot = 0
 
     #start plotting
-    fig, axes   = plt.subplots(nrows=3, ncols=2, figsize=(args.figsize[0], args.figsize[1]), sharex=True) # ,gridspec_kw = {'wspace':0.2, 'hspace':-0.3} )
+    fig, axes   = plt.subplots(nrows=3, ncols=2, figsize=(args.figsize[0], args.figsize[1]), sharex=True) 
     ax = axes.flat
 
     ax[0].set_axisbelow(True)
