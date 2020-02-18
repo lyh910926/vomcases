@@ -115,8 +115,8 @@ def main():
     assMeanSeas2RE  = calcREmean_seasonal(assmod_pd[dates_overlap], assobs_pd[dates_overlap], args.startwet, args.endwet)
     pcMeanSeas2RE  = calcREmean_seasonal(pcmod_pd[dates_overlap_pc], pcobs_pd[dates_overlap_pc], args.startwet, args.endwet)
 
-    eAmpRE = calcAmpRE(e_tmp, dates_mod, evap_obs, dates_obs )
-    assAmpRE = calcAmpRE(ass_tmp, dates_mod, ass_obs, dates_obs )
+    eAmpRE = calcAmpRE(e_tmp[-3650:], dates_mod[-3650:], evap_obs, dates_obs )
+    assAmpRE = calcAmpRE(ass_tmp[-3650:], dates_mod[-3650:], ass_obs, dates_obs )
 
 
     #merge results
@@ -221,8 +221,11 @@ def calcAmpRE(vals, time, vals_obs, time_obs):
             ens7d[iday] = np.nanmean(ens[iday:(iday+N)])
             enso7d[iday] = np.nanmean(enso[iday:(iday+N)])   
 
+
+
+
     ampl = np.max(ens7d) - np.min(ens7d)
-    amplo = np.max(enso7d) - np.min(enso7d)            
+    amplo = np.max(enso7d) - np.min(enso7d)       
 
     RE = (ampl - amplo)/amplo
 
