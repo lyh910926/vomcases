@@ -447,7 +447,7 @@ def read_bess(infile):
 
     #make pandas series and return daily values
     evap_pd = pd.Series(tmp, index = time ) #mm/day
-    ass_pd = pd.Series(data[:,1]*24*60*60*10**-6, index = time ) #umol/m2/d
+    ass_pd = pd.Series(data[:,1]*24*60*60*10**-6, index = time ) #mol/m2/d
 
     return evap_pd, ass_pd
 
@@ -463,7 +463,7 @@ def read_bios2(infile):
     tmp = 24*60*60*data[:,3] /( lat_heat_vapor * rho_w * 1000 )
 
     #make pandas series and return daily values
-    ass_pd = pd.Series(data[:,4]*24*60*60*10**-6, index = time ) #mm/day
+    ass_pd = pd.Series(data[:,4]*24*60*60*10**-6, index = time ) #mol/m2/d
     evap_pd = pd.Series(tmp, index = time ) 
 
     return evap_pd, ass_pd
