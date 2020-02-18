@@ -115,10 +115,13 @@ def main():
     assMeanSeas2RE  = calcREmean_seasonal(assmod_pd[dates_overlap], assobs_pd[dates_overlap], args.startwet, args.endwet)
     pcMeanSeas2RE  = calcREmean_seasonal(pcmod_pd[dates_overlap_pc], pcobs_pd[dates_overlap_pc], args.startwet, args.endwet)
 
+    eAmpRE = calcAmpRE(e_tmp, dates_mod, evap_obs, dates_obs )
+    assAmpRE = calcAmpRE(ass_tmp, dates_mod, ass_obs, dates_obs )
 
-    #calc residuals
-    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE ]
-    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE ]
+
+    #merge results
+    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE, eAmpRE ]
+    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE, assAmpRE ]
     pcresult = [ pcKGE, pcMeanAnnRE, pcMeanSeas1RE, pcMeanSeas2RE, pcMAE ]
  
     #write output files
@@ -190,6 +193,41 @@ def calcREmean_seasonal(sim, obs, start, end ):
 
         RE = (mu_s-mu_o)/mu_o
         return(RE)
+
+def calcAmpRE(vals, time, vals_obs, time_obs):    
+    
+    ens = np.zeros([366])
+    ens7d = np.zeros([367])    
+
+    enso = np.zeros([366])
+    enso7d = np.zeros([367])      
+
+
+    DOY = time.dayofyear[0:len(vals)] 
+
+    for iday in range(0,366):
+        ens[iday] = np.nanmean( vals[DOY == (iday+1)]  ) 
+        enso[iday] = np.nanmean( vals_obs[DOY == (iday+1)]  ) 
+
+    #7-day running mean
+    N = 7
+    for iday in range(0,367):
+        if iday > (366-N):
+            ens7d[iday]  = np.nanmean( np.concatenate( (ens[iday:366], ens[0:(N-(366-iday))] )) )
+            enso7d[iday]  = np.nanmean( np.concatenate( (enso[iday:366], enso[0:(N-(366-iday))] )) )
+        else:    
+            enso7d[iday] = np.nanmean(enso[iday:(iday+N)])
+            enso7d[iday] = np.nanmean(enso[iday:(iday+N)])   
+
+    ampl = np.max(ens7d) - np.min(ens7d)
+    amplo = np.max(enso7d) - np.min(enso7d)            
+
+    RE = (ampl - amplo)/amplo
+
+    return ens7d
+
+
+
 
 main()
 
