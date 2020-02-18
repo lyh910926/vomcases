@@ -218,7 +218,7 @@ def calcAmpRE(vals, time, vals_obs, time_obs):
             ens7d[iday]  = np.nanmean( np.concatenate( (ens[iday:366], ens[0:(N-(366-iday))] )) )
             enso7d[iday]  = np.nanmean( np.concatenate( (enso[iday:366], enso[0:(N-(366-iday))] )) )
         else:    
-            enso7d[iday] = np.nanmean(enso[iday:(iday+N)])
+            ens7d[iday] = np.nanmean(ens[iday:(iday+N)])
             enso7d[iday] = np.nanmean(enso[iday:(iday+N)])   
 
     ampl = np.max(ens7d) - np.min(ens7d)
