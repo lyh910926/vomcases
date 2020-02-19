@@ -479,8 +479,6 @@ def calcAmpRE(vals, time, vals_obs, time_obs):
     ampl = np.max(ens7d) - np.min(ens7d)
     amplo = np.max(enso7d) - np.min(enso7d)            
 
-    print(np.max(ens7d) )
-    print(np.min(ens7d) )
 
     RE = (ampl - amplo)/amplo
 
