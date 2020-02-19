@@ -280,50 +280,70 @@ def main():
         ax[1].plot( [loc_vom[i]-0.5, loc_vom[i]-0.5],[-9999,9999], "--", c="gray") 
 
 
+    ax[0].plot(loc_vom, pd.Series(vom_evap),  "--", color="darkgreen" , zorder=1)
+    ax[0].plot(loc_vom, pd.Series(dingo_evap),"--", color="black" , zorder=1)
+
+    ax[0].plot(np.delete(loc_bess,1), pd.Series(bess_ema), "--", color="purple", zorder=1)
+    ax[0].plot(np.delete(loc_bios2,1), pd.Series(bios2_ema), "--", color="lightgreen", zorder=1)
+    ax[0].plot(np.delete(loc_cable,1), pd.Series(cable_ema), "--", color="red", zorder=1)
+    ax[0].plot(np.delete(loc_maespa,1), pd.Series(maespa_ema), "--", color="gold", zorder=1)
+    ax[0].plot(np.delete(loc_spa,1), pd.Series(spa_ema), "--", color="pink", zorder=1)
+    ax[0].plot(np.delete(loc_lpjguess,1), pd.Series(lpjguess_ema), "--", color="lightblue", zorder=1)
+
+    ax[1].plot(loc_vom, pd.Series(vom_gpp),  "--", color="darkgreen", zorder=1 )
+    ax[1].plot(loc_vom, pd.Series(dingo_gpp),"--", color="black", zorder=1)
+
+    ax[1].plot(np.delete(loc_bess,1), pd.Series(bess_assma), "--", color="purple", zorder=1)
+    ax[1].plot(np.delete(loc_bios2,1), pd.Series(bios2_assma), "--", color="lightgreen", zorder=1)
+    ax[1].plot(np.delete(loc_cable,1), pd.Series(cable_assma), "--", color="red", zorder=1)
+    ax[1].plot(np.delete(loc_maespa,1), pd.Series(maespa_assma), "--", color="gold", zorder=1)
+    ax[1].plot(np.delete(loc_spa,1), pd.Series(spa_assma), "--", color="pink", zorder=1)
+    ax[1].plot(np.delete(loc_lpjguess,1), pd.Series(lpjguess_assma), "--", color="lightblue", zorder=1)
+
     iplot = 0
     #loop over study sites
     for isite in range(0, len(args.sites)): 
 
         #ensemble years from Whitley
         try:
-            ax[0].scatter(loc_bess[isite], bess_ema[args.sites[isite]],color="purple")
-            ax[0].scatter(loc_bios2[isite], bios2_ema[args.sites[isite]],color="lightgreen")
-            ax[0].scatter(loc_cable[isite], cable_ema[args.sites[isite]],color="red")
-            ax[0].scatter(loc_maespa[isite], maespa_ema[args.sites[isite]],color="gold")
-            ax[0].scatter(loc_spa[isite], spa_ema[args.sites[isite]],color="pink")
-            ax[0].scatter(loc_lpjguess[isite], lpjguess_ema[args.sites[isite]],color="lightblue")
+            ax[0].scatter(loc_bess[isite], bess_ema[args.sites[isite]],color="purple", s=100, zorder=2)
+            ax[0].scatter(loc_bios2[isite], bios2_ema[args.sites[isite]],color="lightgreen", s=100, zorder=2)
+            ax[0].scatter(loc_cable[isite], cable_ema[args.sites[isite]],color="red", s=100, zorder=2)
+            ax[0].scatter(loc_maespa[isite], maespa_ema[args.sites[isite]],color="gold", s=100, zorder=2)
+            ax[0].scatter(loc_spa[isite], spa_ema[args.sites[isite]],color="pink", s=100, zorder=2)
+            ax[0].scatter(loc_lpjguess[isite], lpjguess_ema[args.sites[isite]],color="lightblue", s=100, zorder=2)
 
             if( isite == 0):
-                ax[1].scatter(loc_bess[isite], bess_assma[args.sites[isite]],color="purple", label = "BESS")
-                ax[1].scatter(loc_bios2[isite], bios2_assma[args.sites[isite]],color="lightgreen", label = "BIOS2")
-                ax[1].scatter(loc_cable[isite], cable_assma[args.sites[isite]],color="red", label = "CABLE")
-                ax[1].scatter(loc_maespa[isite], maespa_assma[args.sites[isite]],color="gold", label = "MAESPA")
-                ax[1].scatter(loc_spa[isite], spa_assma[args.sites[isite]],color="pink", label = "SPA")
-                ax[1].scatter(loc_lpjguess[isite], lpjguess_assma[args.sites[isite]],color="lightblue", label = "LPJ-GUESS")
+                ax[1].scatter(loc_bess[isite], bess_assma[args.sites[isite]],color="purple", label = "BESS", s=100, zorder=2)
+                ax[1].scatter(loc_bios2[isite], bios2_assma[args.sites[isite]],color="lightgreen", label = "BIOS2", s=100, zorder=2)
+                ax[1].scatter(loc_cable[isite], cable_assma[args.sites[isite]],color="red", label = "CABLE", s=100, zorder=2)
+                ax[1].scatter(loc_maespa[isite], maespa_assma[args.sites[isite]],color="gold", label = "MAESPA", s=100, zorder=2)
+                ax[1].scatter(loc_spa[isite], spa_assma[args.sites[isite]],color="pink", label = "SPA", s=100, zorder=2)
+                ax[1].scatter(loc_lpjguess[isite], lpjguess_assma[args.sites[isite]],color="lightblue", label = "LPJ-GUESS", s=100, zorder=2)
             else:
-                ax[1].scatter(loc_bess[isite], bess_assma[args.sites[isite]],color="purple")
-                ax[1].scatter(loc_bios2[isite], bios2_assma[args.sites[isite]],color="lightgreen")
-                ax[1].scatter(loc_cable[isite], cable_assma[args.sites[isite]],color="red")
-                ax[1].scatter(loc_maespa[isite], maespa_assma[args.sites[isite]],color="gold")
-                ax[1].scatter(loc_spa[isite], spa_assma[args.sites[isite]],color="pink")
-                ax[1].scatter(loc_lpjguess[isite], lpjguess_assma[args.sites[isite]],color="lightblue")
+                ax[1].scatter(loc_bess[isite], bess_assma[args.sites[isite]],color="purple", s=100, zorder=2)
+                ax[1].scatter(loc_bios2[isite], bios2_assma[args.sites[isite]],color="lightgreen", s=100, zorder=2)
+                ax[1].scatter(loc_cable[isite], cable_assma[args.sites[isite]],color="red", s=100, zorder=2)
+                ax[1].scatter(loc_maespa[isite], maespa_assma[args.sites[isite]],color="gold", s=100, zorder=2)
+                ax[1].scatter(loc_spa[isite], spa_assma[args.sites[isite]],color="pink", s=100, zorder=2)
+                ax[1].scatter(loc_lpjguess[isite], lpjguess_assma[args.sites[isite]],color="lightblue", s=100, zorder=2)
             
         except KeyError:
             print("Litchfield")
 
 
         if( isite == 0):
-            ax[0].scatter(loc_vom[isite], vom_evap[args.sites[isite]], color="darkgreen", s=75, marker= "s" )
-            ax[0].scatter(loc_vom[isite], dingo_evap[args.sites[isite]],color="black", s=75, marker= "*" )
+            ax[0].scatter(loc_vom[isite], vom_evap[args.sites[isite]], color="darkgreen", s=130, marker= "s", zorder=2 )
+            ax[0].scatter(loc_vom[isite], dingo_evap[args.sites[isite]],color="black", s=130, marker= "*", zorder=2 )
 
-            ax[1].scatter(loc_vom[isite], vom_gpp[args.sites[isite]], color="darkgreen", s=75, marker= "s", label = "VOM" )
-            ax[1].scatter(loc_vom[isite], dingo_gpp[args.sites[isite]],color="black", s=75, marker= "*", label = "Obs." )
+            ax[1].scatter(loc_vom[isite], vom_gpp[args.sites[isite]], color="darkgreen", s=130, marker= "s", label = "VOM", zorder=2 )
+            ax[1].scatter(loc_vom[isite], dingo_gpp[args.sites[isite]],color="black", s=130, marker= "*", label = "Obs.", zorder=2 )
         else:
-            ax[0].scatter(loc_vom[isite], vom_evap[args.sites[isite]], color="darkgreen", s=75, marker= "s")
-            ax[0].scatter(loc_vom[isite], dingo_evap[args.sites[isite]],color="black", s=75, marker= "*" )
+            ax[0].scatter(loc_vom[isite], vom_evap[args.sites[isite]], color="darkgreen", s=130, marker= "s", zorder=2)
+            ax[0].scatter(loc_vom[isite], dingo_evap[args.sites[isite]],color="black", s=130, marker= "*", zorder=2 )
 
-            ax[1].scatter(loc_vom[isite], vom_gpp[args.sites[isite]], color="darkgreen", s=75, marker= "s" )
-            ax[1].scatter(loc_vom[isite], dingo_gpp[args.sites[isite]],color="black", s=75, marker= "*" )
+            ax[1].scatter(loc_vom[isite], vom_gpp[args.sites[isite]], color="darkgreen", s=130, marker= "s", zorder=2 )
+            ax[1].scatter(loc_vom[isite], dingo_gpp[args.sites[isite]],color="black", s=130, marker= "*", zorder=2 )
 
 
     ax[0].set_xlim([0,60])
@@ -331,14 +351,18 @@ def main():
     ax[0].set_xticks( np.arange(5,65,10)  )
     ax[0].set_xticklabels( args.sites, rotation=90, fontsize=20  ) 
     ax[0].set_ylabel( ylabels[0], fontsize=20   )
-    ax[0].text(-0.15, 1.02, plot_label[0], transform=ax[0].transAxes,  size=20, weight='bold')
+    ax[0].text(-0.15, 1.04, plot_label[0], transform=ax[0].transAxes,  size=20, weight='bold')
+    for tick in ax[0].yaxis.get_major_ticks():
+        tick.label.set_fontsize(16)
 
     ax[1].set_xlim([0,60])
     ax[1].set_ylim([ miny[1], maxy[1]])
     ax[1].set_xticks( np.arange(5,65,10)  )
     ax[1].set_xticklabels( args.sites, rotation=90, fontsize=20  ) 
     ax[1].set_ylabel( ylabels[1], fontsize=20   )    
-    ax[1].text(-0.15, 1.02, plot_label[1], transform=ax[1].transAxes,  size=20, weight='bold')
+    ax[1].text(-0.15, 1.04, plot_label[1], transform=ax[1].transAxes,  size=20, weight='bold')
+    for tick in ax[1].yaxis.get_major_ticks():
+        tick.label.set_fontsize(16)
 
     #plot statistics
     iplot = 2
@@ -354,17 +378,17 @@ def main():
 
         for isite in range(0, len(args.sites)): 
             try:
-                ax[iplot].scatter( loc_vom[isite], vom_evap_stats[args.sites[isite]][i_stat], c="darkgreen", s=75, marker="s", label = "VOM"    )
-                ax[iplot].scatter( loc_vom2[isite], vom_pc_evap_stats[args.sites[isite]][i_stat], c="green", marker="v", label = "VOM - prescribed cover"    )
-                ax[iplot].scatter( loc_vom3[isite], vom_pc2_evap_stats[args.sites[isite]][i_stat], c="green", marker="*", label = "VOM - prescribed cover (mean monthly)"    )
-                ax[iplot].scatter( loc_vom4[isite], vom_zr_evap_stats[args.sites[isite]][i_stat], c="green", marker="+", label = "VOM - prescribed roots"    )
+                ax[iplot].scatter( loc_vom[isite], vom_evap_stats[args.sites[isite]][i_stat], c="darkgreen", s=130, marker="s", label = "VOM"    )
+                ax[iplot].scatter( loc_vom2[isite], vom_pc_evap_stats[args.sites[isite]][i_stat], c="green", s=100, marker="v", label = "VOM - prescribed cover"    )
+                ax[iplot].scatter( loc_vom3[isite], vom_pc2_evap_stats[args.sites[isite]][i_stat], c="green",s=100, marker="*", label = "VOM - prescribed cover (mean monthly)"    )
+                ax[iplot].scatter( loc_vom4[isite], vom_zr_evap_stats[args.sites[isite]][i_stat], c="green", s=100,marker="+", label = "VOM - prescribed roots"    )
 
-                ax[iplot].scatter( loc_bess[isite], bess_evap_stats[args.sites[isite]][i_stat] ,c = "purple", label = "BESS"  )
-                ax[iplot].scatter( loc_bios2[isite], bios2_evap_stats[args.sites[isite]][i_stat], c = "lightgreen", label = "BIOS2"   )
-                ax[iplot].scatter( loc_cable[isite], cable_evap_stats[args.sites[isite]][i_stat], c = "red", label = "CABLE"   )
-                ax[iplot].scatter( loc_lpjguess[isite], lpjguess_evap_stats[args.sites[isite]][i_stat], c = "blue", label = "LPJ-GUESS"   )
-                ax[iplot].scatter( loc_maespa[isite], maespa_evap_stats[args.sites[isite]][i_stat], c = "gold", label = "MAESPA"   )
-                ax[iplot].scatter( loc_spa[isite], spa_evap_stats[args.sites[isite]][i_stat], c = "pink", label="SPA"  )
+                ax[iplot].scatter( loc_bess[isite], bess_evap_stats[args.sites[isite]][i_stat] ,c = "purple",s=100, label = "BESS"  )
+                ax[iplot].scatter( loc_bios2[isite], bios2_evap_stats[args.sites[isite]][i_stat], c = "lightgreen",s=100, label = "BIOS2"   )
+                ax[iplot].scatter( loc_cable[isite], cable_evap_stats[args.sites[isite]][i_stat], c = "red", s=100,label = "CABLE"   )
+                ax[iplot].scatter( loc_lpjguess[isite], lpjguess_evap_stats[args.sites[isite]][i_stat], c = "blue",s=100, label = "LPJ-GUESS"   )
+                ax[iplot].scatter( loc_maespa[isite], maespa_evap_stats[args.sites[isite]][i_stat], c = "gold", s=100,label = "MAESPA"   )
+                ax[iplot].scatter( loc_spa[isite], spa_evap_stats[args.sites[isite]][i_stat], c = "pink", s=100,label="SPA"  )
             except KeyError:
                print("Litchfield")
 
@@ -374,7 +398,9 @@ def main():
         ax[iplot].set_xticks( np.arange(5,65,10)  )
         ax[iplot].set_xticklabels( args.sites, rotation=90, fontsize=20  )        
         ax[iplot].set_ylabel( ylabels[iplot], fontsize=20  )    
-        ax[iplot].text(-0.15, 1.02, plot_label[iplot], transform=ax[iplot].transAxes,  size=20, weight='bold')
+        ax[iplot].text(-0.15, 1.04, plot_label[iplot], transform=ax[iplot].transAxes,  size=20, weight='bold')
+        for tick in ax[iplot].yaxis.get_major_ticks():
+            tick.label.set_fontsize(16)
 
         #GPP
         iplot = iplot + 1
@@ -386,29 +412,29 @@ def main():
         for isite in range(0, len(args.sites)): 
             try:
                 if(isite == 0):
-                    ax[iplot].scatter( loc_vom[isite], vom_gpp_stats[args.sites[isite]][i_stat], c="darkgreen", s=75, marker="s", label = "VOM"    )
-                    ax[iplot].scatter( loc_vom2[isite], vom_pc_gpp_stats[args.sites[isite]][i_stat], c="green", marker="v", label = "VOM - prescribed cover"    )
-                    ax[iplot].scatter( loc_vom3[isite], vom_pc2_gpp_stats[args.sites[isite]][i_stat], c="green", marker="*", label = "VOM - prescribed cover (mean monthly)"    )
-                    ax[iplot].scatter( loc_vom4[isite], vom_zr_gpp_stats[args.sites[isite]][i_stat], c="green", marker="+", label = "VOM - prescribed roots"    )
+                    ax[iplot].scatter( loc_vom[isite], vom_gpp_stats[args.sites[isite]][i_stat], c="darkgreen", s=130, marker="s", label = "VOM"    )
+                    ax[iplot].scatter( loc_vom2[isite], vom_pc_gpp_stats[args.sites[isite]][i_stat], c="green", s=100,marker="v", label = "VOM - prescribed cover"    )
+                    ax[iplot].scatter( loc_vom3[isite], vom_pc2_gpp_stats[args.sites[isite]][i_stat], c="green",s=100, marker="*", label = "VOM - prescribed cover (mean monthly)"    )
+                    ax[iplot].scatter( loc_vom4[isite], vom_zr_gpp_stats[args.sites[isite]][i_stat], c="green", s=100,marker="+", label = "VOM - prescribed roots"    )
 
-                    ax[iplot].scatter( loc_bess[isite], bess_ass_stats[args.sites[isite]][i_stat] ,c = "purple", label = "BESS"  )
-                    ax[iplot].scatter( loc_bios2[isite], bios2_ass_stats[args.sites[isite]][i_stat], c = "lightgreen", label = "BIOS2"   )
-                    ax[iplot].scatter( loc_cable[isite], cable_ass_stats[args.sites[isite]][i_stat], c = "red", label = "CABLE"   )
-                    ax[iplot].scatter( loc_lpjguess[isite], lpjguess_ass_stats[args.sites[isite]][i_stat], c = "blue", label = "LPJ-GUESS"   )
-                    ax[iplot].scatter( loc_maespa[isite], maespa_ass_stats[args.sites[isite]][i_stat], c = "gold", label = "MAESPA"   )
-                    ax[iplot].scatter( loc_spa[isite], spa_ass_stats[args.sites[isite]][i_stat], c = "pink", label="SPA"  )
+                    ax[iplot].scatter( loc_bess[isite], bess_ass_stats[args.sites[isite]][i_stat] ,c = "purple", s=100,label = "BESS"  )
+                    ax[iplot].scatter( loc_bios2[isite], bios2_ass_stats[args.sites[isite]][i_stat], c = "lightgreen",s=100, label = "BIOS2"   )
+                    ax[iplot].scatter( loc_cable[isite], cable_ass_stats[args.sites[isite]][i_stat], c = "red",s=100, label = "CABLE"   )
+                    ax[iplot].scatter( loc_lpjguess[isite], lpjguess_ass_stats[args.sites[isite]][i_stat], c = "blue",s=100, label = "LPJ-GUESS"   )
+                    ax[iplot].scatter( loc_maespa[isite], maespa_ass_stats[args.sites[isite]][i_stat], c = "gold",s=100, label = "MAESPA"   )
+                    ax[iplot].scatter( loc_spa[isite], spa_ass_stats[args.sites[isite]][i_stat], c = "pink", s=100,label="SPA"  )
                 else:
-                    ax[iplot].scatter( loc_vom[isite], vom_gpp_stats[args.sites[isite]][i_stat], c="green", marker="s"  )
-                    ax[iplot].scatter( loc_vom2[isite], vom_pc_gpp_stats[args.sites[isite]][i_stat], c="green", marker="v"   )
-                    ax[iplot].scatter( loc_vom3[isite], vom_pc2_gpp_stats[args.sites[isite]][i_stat], c="green", marker="*"   )
-                    ax[iplot].scatter( loc_vom4[isite], vom_zr_gpp_stats[args.sites[isite]][i_stat], c="green", marker="+"   )
+                    ax[iplot].scatter( loc_vom[isite], vom_gpp_stats[args.sites[isite]][i_stat], c="green",s=130, marker="s"  )
+                    ax[iplot].scatter( loc_vom2[isite], vom_pc_gpp_stats[args.sites[isite]][i_stat], c="green", s=100,marker="v"   )
+                    ax[iplot].scatter( loc_vom3[isite], vom_pc2_gpp_stats[args.sites[isite]][i_stat], c="green",s=100, marker="*"   )
+                    ax[iplot].scatter( loc_vom4[isite], vom_zr_gpp_stats[args.sites[isite]][i_stat], c="green", s=100,marker="+"   )
 
-                    ax[iplot].scatter( loc_bess[isite], bess_ass_stats[args.sites[isite]][i_stat] ,c = "purple" )
-                    ax[iplot].scatter( loc_bios2[isite], bios2_ass_stats[args.sites[isite]][i_stat], c = "lightgreen"  )
-                    ax[iplot].scatter( loc_cable[isite], cable_ass_stats[args.sites[isite]][i_stat], c = "red"  )
-                    ax[iplot].scatter( loc_lpjguess[isite], lpjguess_ass_stats[args.sites[isite]][i_stat], c = "blue"  )
-                    ax[iplot].scatter( loc_maespa[isite], maespa_ass_stats[args.sites[isite]][i_stat], c = "gold"  )
-                    ax[iplot].scatter( loc_spa[isite], spa_ass_stats[args.sites[isite]][i_stat], c = "pink" )
+                    ax[iplot].scatter( loc_bess[isite], bess_ass_stats[args.sites[isite]][i_stat] ,c = "purple", s=100 )
+                    ax[iplot].scatter( loc_bios2[isite], bios2_ass_stats[args.sites[isite]][i_stat], c = "lightgreen",s=100  )
+                    ax[iplot].scatter( loc_cable[isite], cable_ass_stats[args.sites[isite]][i_stat], c = "red" ,s=100 )
+                    ax[iplot].scatter( loc_lpjguess[isite], lpjguess_ass_stats[args.sites[isite]][i_stat], c = "blue",s=100  )
+                    ax[iplot].scatter( loc_maespa[isite], maespa_ass_stats[args.sites[isite]][i_stat], c = "gold",s=100  )
+                    ax[iplot].scatter( loc_spa[isite], spa_ass_stats[args.sites[isite]][i_stat], c = "pink" ,s=100)
 
             except KeyError:
                print("Litchfield")
@@ -420,20 +446,22 @@ def main():
         ax[iplot].set_xticks( np.arange(5,65,10)  )
         ax[iplot].set_xticklabels( args.sites, rotation=90, fontsize=20  ) 
         ax[iplot].set_ylabel( ylabels[iplot], fontsize=20   )    
-        ax[iplot].text(-0.15, 1.02, plot_label[iplot], transform=ax[iplot].transAxes,  size=20, weight='bold')
-
+        ax[iplot].text(-0.15, 1.04, plot_label[iplot], transform=ax[iplot].transAxes,  size=20, weight='bold')
+        for tick in ax[iplot].yaxis.get_major_ticks():
+            tick.label.set_fontsize(16)
         
         iplot = iplot + 1
 
 
 
 
-    plt.legend(bbox_to_anchor=(1, 1))  
+    plt.legend(bbox_to_anchor=(1, 1), fontsize=14)  
     plt.tight_layout()
-    #plt.savefig("../data/img/4_fitness.png", bbox_inches = "tight")
-    plt.show()
 
-
+    if args.outfile is not None:
+        plt.savefig(args.outfile, bbox_inches = "tight")
+    else:
+        plt.show()
 
 def read_bess(infile):
 
