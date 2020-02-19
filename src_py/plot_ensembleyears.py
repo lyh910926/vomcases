@@ -186,7 +186,6 @@ def main():
         except KeyError:
             print("Litchfield")
 
-
         #load the AoB2015-data for HowardSprings
         if(args.sites[isite] == "Howard Springs"):
             data2015 = np.genfromtxt(args.i2015, names=True)
@@ -360,6 +359,7 @@ def read_maespa(infile):
     data = np.loadtxt(infile, delimiter=",", skiprows=3, usecols=(3,6))
     data[data == -9999.9] = np.nan
     data[data == -999] = np.nan
+    data[data == -1388055] = np.nan
     time_tmp = np.loadtxt(infile, delimiter=",", dtype=np.str, skiprows=3, usecols=0)
     time = pd.date_range(time_tmp[0], time_tmp[-1],freq='30min')
 

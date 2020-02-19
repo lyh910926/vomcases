@@ -194,7 +194,7 @@ def main():
    #############################
     #LPJ-GUESS statistics
     dates_overlap = lpjguess_dates.intersection(eobs_pd.index)
-    print("Evaluating BIOS2 fluxes for:")
+    print("Evaluating LPJ-GUESS fluxes for:")
     print(dates_overlap[0])
     print(dates_overlap[-1])
 
@@ -426,6 +426,7 @@ def read_maespa(infile):
     data = np.loadtxt(infile, delimiter=",", skiprows=3, usecols=(3,6))
     data[data == -9999.9] = np.nan
     data[data == -999] = np.nan
+    data[data == -1388055] = np.nan
     time_tmp = np.loadtxt(infile, delimiter=",", dtype=np.str, skiprows=3, usecols=0)
     time = pd.date_range(time_tmp[0], time_tmp[-1],freq='30min')
 
@@ -477,6 +478,9 @@ def calcAmpRE(vals, time, vals_obs, time_obs):
 
     ampl = np.max(ens7d) - np.min(ens7d)
     amplo = np.max(enso7d) - np.min(enso7d)            
+
+    print(np.max(ens7d) )
+    print(np.min(ens7d) )
 
     RE = (ampl - amplo)/amplo
 

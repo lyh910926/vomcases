@@ -77,7 +77,7 @@ def main():
     parser.add_argument("--dingo_gpp", help="DINGO files assimilation", nargs='+')
     parser.add_argument("--i2015", help="results_daily AoB2015 ")
     parser.add_argument("--sharex", help="share x-axis ", type=bool, default = True)
-    parser.add_argument("--figsize", help="figure size", nargs='+', type=float, default = [17,15] )
+    parser.add_argument("--figsize", help="figure size", nargs='+', type=float, default = [18,18] )
 
     args = parser.parse_args()
 
@@ -248,10 +248,10 @@ def main():
 
     ylabels = [ r"Evaporation [mm/year]",
                 r'Assimilation [mol/m$^2$/year]',
-                "AE evaporation [mm/d]",  
-                "AE assimilation [mol/m$^2$/d]", 
-                "RE amplitude evaporation[-]", 
-                "REamplitude assimilation[-]", 
+                "Abs.Err. evaporation [mm/d]",  
+                "Abs.Err. assimilation [mol/m$^2$/d]", 
+                "Rel.Err. amplitude evaporation[-]", 
+                "Rel.Err. amplitude assimilation[-]", 
                 "Mean Dry Season Rel. Err. [-]", 
                 "Mean Dry Season Rel. Err. [-]", 
                 "Mean Wet Season Rel. Err. [-]", 
