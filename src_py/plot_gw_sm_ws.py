@@ -112,6 +112,25 @@ def main():
     theta_tmp = (su_vals * (theta_s - theta_r)) + theta_r
     theta_vals = theta_tmp
 
+    #---------------------------------
+    #soil moisture results
+    data_su = np.genfromtxt(args.su_hourly, skipheader = 1)
+
+    delz = soildata[:,0]
+
+    delz_sum = np.cumsum(delz)
+
+    ind5 = list(filter(lambda i: i <= 5.0, delz_sum))[-1]
+
+    print("Using 5m , till layer:")
+    print(ind5)
+
+    theta_r = soildata[0:ind5,6]
+    theta_s = soildata[0:ind5,5]
+
+    ws5_hourly(t) = np.sum((data_su(t, 5:(ind5+5) * theta_r(5:(ind5+5)) + \
+                            data_su(t, 5:(ind5+5)*theta_s(5:(ind5+5)) \
+                            + theta_r(5:(ind5+5))) * delz(0:ind5))
 
 
     #---------------------------------
