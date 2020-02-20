@@ -249,6 +249,7 @@ def main():
         val5 = list(filter(lambda i: round(i,2) < params2015[5], delz_sum))[-1]
     else:
         val5 = list(filter(lambda i: round(i,2) <= 5.00, delz_sum))[-1]
+    ind5 = list(delz_sum).index(val5)
 
     print("---")
     print("Tree rooting depth:")
