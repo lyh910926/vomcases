@@ -165,7 +165,7 @@ def main():
     if(args.use_roots == True):
         val5 = list(filter(lambda i: round(i,2) < params[5], delz_sum))[-1]
     else:
-        val5 = list(filter(lambda i: round(i,2) =< 5.00, delz_sum))[-1]
+        val5 = list(filter(lambda i: round(i,2) <= 5.00, delz_sum))[-1]
     ind5 = list(delz_sum).index(val5)
 
     print("Tree rooting depth:")
@@ -248,7 +248,7 @@ def main():
     if(args.use_roots == True):
         val5 = list(filter(lambda i: round(i,2) < params2015[5], delz_sum))[-1]
     else:
-        val5 = list(filter(lambda i: round(i,2) =< 5.00, delz_sum))[-1]
+        val5 = list(filter(lambda i: round(i,2) <= 5.00, delz_sum))[-1]
 
     print("---")
     print("Tree rooting depth:")
