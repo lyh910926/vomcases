@@ -415,6 +415,11 @@ def main():
 
     plot_flux(time_su, ws5_pd, ax[2], "Water storage [m]", "c)", yearstart, yearend ) 
 
+    if args.title is True:
+
+        plot_label = ["a)","b)","c)"]
+        for i in range(0, 3):
+            ax[i].text(args.xloc_title, args.yloc_title, plot_label[i], ha='left', va='center', transform=ax[i].transAxes, fontsize=args.size_title)
 
 
     #save figure
