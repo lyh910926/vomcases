@@ -423,6 +423,9 @@ def main():
             ax[i].text(args.xloc_title, args.yloc_title, plot_label[i], ha='left', va='center', transform=ax[i].transAxes, fontsize=args.size_title)
 
 
+    ax[1].legend(prop={'size':15}, framealpha=1  )
+    ax[2].legend(prop={'size':15}, framealpha=1  )
+
     #save figure
     if args.outputfile is not None:
         plt.savefig(args.outputfile, bbox_inches = "tight")
@@ -449,7 +452,7 @@ def plot_flux(time, vals, ax, ylabel, plot_label, yearstart, yearend):
     ax.xaxis.set_major_locator(locator)
     ax.xaxis.set_major_formatter(mdate.DateFormatter('%Y'))
 
-    ax.legend(prop={'size':15}, framealpha=1  )
+
     ax.xaxis.set_major_locator(locator)
     ax.xaxis.set_major_formatter(mdate.DateFormatter('%Y'))
     ax.set_xlim([datetime(yearstart,1, 1), datetime( yearend ,12, 31)]) 
@@ -475,7 +478,7 @@ def plot_flux_obs(time, vals, ax, time_obs, vals_obs, ylabel, plot_label, yearst
 
     ax.plot(time_obs, vals_obs, color='blue', label='Obs.', zorder=2)
 
-    ax.legend(prop={'size':15}, framealpha=1  )
+
     ax.xaxis.set_major_locator(locator)
     ax.xaxis.set_major_formatter(mdate.DateFormatter('%Y'))
     ax.set_xlim([datetime(yearstart,1, 1), datetime( yearend ,12, 31)]) 
