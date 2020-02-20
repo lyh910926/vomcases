@@ -24,6 +24,8 @@ def main():
 
     #optional input
     parser.add_argument("--i2015", help="results_daily AoB2015 ")
+    parser.add_argument("--su_hourly", help="su_hourly.txt from the VOM")
+    parser.add_argument("--su_hourly2015", help="su_hourly.txt from the VOM")
 
     parser.add_argument("--maxmod", help="results_daily max-values ")
     parser.add_argument("--minmod", help="results_daily min-values")
@@ -47,11 +49,14 @@ def main():
     parser.add_argument("--dpi", help="dpi of figure",  type=float, default = 80 )
     parser.add_argument("--i_cz", help="surface level, for groundwater plot", type=float )
     parser.add_argument("--i_zr", help="bottom level, for groundwater plot", type=float )
+    parser.add_argument("--i_delz", help="layer thickness", type=float )
     parser.add_argument("--i_cz2015", help="surface level, for groundwater plot", type=float )
     parser.add_argument("--i_zr2015", help="bottom level, for groundwater plot", type=float )
+    parser.add_argument("--i_delz2015", help="bottom level, for groundwater plot", type=float )
     parser.add_argument("--i_thetar2015", help="Van genuchten thetar AoB2015", type=float )
     parser.add_argument("--i_thetas2015", help="Van genuchten thetas AoB2015", type=float )
     parser.add_argument("--pars", help="parameter file, for plotting rooting depths" )
+    parser.add_argument("--pars2015", help="parameter file Aob2015, for plotting rooting depths" )
     parser.add_argument("--depth", help="plot depth, default is water table" )
     parser.add_argument("--ylabel", help="ylabel" )
     parser.add_argument("--xlabel", help="xlabel", default=" ")
@@ -91,6 +96,16 @@ def main():
         soildata = np.loadtxt(args.soildata) 
 
     #---------------------------------
+    #load parameters
+    if args.pars2015 is not None:
+        params2015 = np.loadtxt(args.pars2015)
+
+    #---------------------------------
+    #load parameters
+    if args.pars is not None:
+        params = np.loadtxt(args.pars)
+
+    #---------------------------------
     #load results
     data = np.genfromtxt(args.input, names=True)
 
@@ -114,23 +129,65 @@ def main():
 
     #---------------------------------
     #soil moisture results
-    data_su = np.genfromtxt(args.su_hourly, skipheader = 1)
+    nlayers = np.int(np.ceil(args.i_cz / args.i_delz))
 
-    delz = soildata[:,0]
+    #open file, count lines
+    file = open(args.su_hourly) #mm/d     
+    nlines = 0
+    for line in file: 
+        nlines = nlines + 1
+    file.close()
 
+
+    time = []
+    su_data = np.zeros((nlines-1,nlayers))
+    t = 0
+
+    file = open(args.su_hourly)     
+
+    #read per line as lines have different lengths
+    for line in file: 
+        tmp_data = line.split()
+        if(t>0):
+            if(len(tmp_data)>5):
+                time.append(tmp_data[0:4])
+                su_data[t-1,0:len(tmp_data[5:-1])] = np.float_(tmp_data[5:-1])
+            else:
+                time.append(tmp_data[0:4])
+                su_data[t-1,0:len(tmp_data[5:-1])] = 0.0
+        t = t + 1
+    file.close()
+
+    delz = soildata[:,1]
     delz_sum = np.cumsum(delz)
 
-    ind5 = list(filter(lambda i: i <= 5.0, delz_sum))[-1]
+    val5 = list(filter(lambda i: round(i,2) < params[5], delz_sum))[-1]
+    ind5 = list(delz_sum).index(val5)
 
-    print("Using 5m , till layer:")
+    print("Tree rooting depth:")
+    print(val5)
+    print(params[5])
+    print("Untill layer:")
     print(ind5)
 
     theta_r = soildata[0:ind5,6]
     theta_s = soildata[0:ind5,5]
 
-    ws5_hourly(t) = np.sum((data_su(t, 5:(ind5+5) * theta_r(5:(ind5+5)) + \
-                            data_su(t, 5:(ind5+5)*theta_s(5:(ind5+5)) \
-                            + theta_r(5:(ind5+5))) * delz(0:ind5))
+    su = su_data[:, 5:(ind5+5)]
+
+
+    #loop over time
+    ws5_hourly = np.zeros((nlines-1))
+
+    for t in range(0, len(su[:,0])):
+        ws5_hourly[t] = np.sum((-su[t,:] * theta_r + \
+                                su[t,:] *theta_s + theta_r) * delz[0:ind5] )
+
+
+    startdate = str(time[0][0]) + "-" + str(time[0][1]) + "-" + str(time[0][2] )
+    time_su = pd.date_range(startdate, periods = len(su_data[:,0]), freq='H')
+
+    ws5_pd = pd.Series(ws5_hourly, index=time_su)
 
 
     #---------------------------------
@@ -141,7 +198,7 @@ def main():
 
         vals2015 = data2015["ys"]
         su_vals2015 = data2015["su_1"]
-        theta_vals2015 = (su_vals2015 * (args.i_thetas2015 - args.i_thetar2015)) + theta_r
+        theta_vals2015 = (su_vals2015 * (args.i_thetas2015 - args.i_thetar2015)) + args.i_thetar2015
         wsvals2015 = data2015["ws"]
         if( args.depth == "True"):
             vals2015 = -1*(args.i_cz2015 - vals2015)
@@ -150,10 +207,68 @@ def main():
                       datetime(int(data2015["year"][0]),int(data2015["month"][0]),int(data2015["day"][0]))+timedelta(days=len(vals2015) ), 
                       timedelta(days=1)).astype(datetime)
 
-    #---------------------------------
-    #load parameters
-    if args.pars is not None:
-        params = np.loadtxt(args.pars)
+   #---------------------------------
+    #soil moisture results 2015
+    nlayers = np.int(np.ceil(args.i_cz2015 / args.i_delz2015))
+
+    #open file, count lines
+    file = open(args.su_hourly2015) #mm/d     
+    nlines = 0
+    for line in file: 
+        nlines = nlines + 1
+    file.close()
+
+
+    time2015 = []
+    su_data2015 = np.zeros((nlines-1,nlayers))
+    t = 0
+
+    file = open(args.su_hourly2015)     
+
+    #read per line as lines have different lengths
+    for line in file: 
+        tmp_data = line.split()
+        if(t>0):
+            if(len(tmp_data)>5):
+                time2015.append(tmp_data[0:4])
+                su_data2015[t-1,0:len(tmp_data[5:-1])] = np.float_(tmp_data[5:-1])
+            else:
+                time2015.append(tmp_data[0:4])
+                su_data2015[t-1,0:len(tmp_data[5:-1])] = 0.0
+        t = t + 1
+    file.close()
+
+    delz =  np.repeat(args.i_delz2015, nlayers)
+    delz_sum = np.cumsum(delz)
+
+    val5 = list(filter(lambda i: round(i,2) < params2015[5], delz_sum))[-1]
+    ind5 = list(delz_sum).index(val5)
+
+    print("Tree rooting depth:")
+    print(val5)
+    print(params2015[5])
+    print("Untill layer:")
+    print(ind5)
+
+    thetar2015 = soildata[0:ind5,6]
+    theta_s = soildata[0:ind5,5]
+
+    su2015 = su_data2015[:, 5:(ind5+5)]
+
+
+    #loop over time
+    ws5_hourly2015 = np.zeros((nlines-1))
+
+    for t in range(0, len(su2015[:,0])):
+        ws5_hourly2015[t] = np.sum((-su2015[t,:] * args.i_thetar2015 + \
+                                su2015[t,:] * args.i_thetas2015 + args.i_thetar2015) * delz[0:ind5] )
+
+    print(time2015[0])
+    startdate = str(time2015[0][0]) + "-" + str(time2015[0][1]) + "-" + str(time2015[0][2] )
+    print(startdate)
+    time_su2015 = pd.date_range(startdate, periods = len(su_data2015[:,0]), freq='H')
+
+    ws5_2015_pd = pd.Series(ws5_hourly2015, index=time_su2015)
 
     #---------------------------------
     #load observations groundwater
@@ -289,10 +404,10 @@ def main():
     #plot 2015 data
     if args.i2015 is not None:
         ax[1].plot(tmod2015, theta_vals2015, color='green', label='Schymanski et al. (2015)', zorder=2)
-        ax[2].plot(tmod2015, wsvals2015, color='green', label='Schymanski et al. (2015)', zorder=2)
+        ax[2].plot(time_su2015, ws5_2015_pd, color='green', label='Schymanski et al. (2015)', zorder=2)
 
 
-    plot_flux(tmod, ws_vals, ax[2], "Water storage [m]", "c)", yearstart, yearend ) 
+    plot_flux(time_su, ws5_pd, ax[2], "Water storage [m]", "c)", yearstart, yearend ) 
 
 
 
