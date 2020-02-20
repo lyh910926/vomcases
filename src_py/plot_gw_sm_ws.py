@@ -64,6 +64,7 @@ def main():
     parser.add_argument("--title", help="title", type=bool, default=False)
     parser.add_argument("--plot_prec", help="add precipation to figure", type=bool, default = False )
     parser.add_argument("--plot_cbar", help="add colorbar", type=bool, default = False )
+    parser.add_argument("--use_roots", help="use rooting depths for water storage", type=lambda x: bool(int(x)),  default = False )
     parser.add_argument("--cbar_min", help="min value for colorbar", type=float, default = 0.2)
     parser.add_argument("--cbar_max", help="max value for colorbar", type=float, default = 2.6 )
     parser.add_argument("--legend", help="show legend", type=bool, default = False )
@@ -161,7 +162,10 @@ def main():
     delz = soildata[:,1]
     delz_sum = np.cumsum(delz)
 
-    val5 = list(filter(lambda i: round(i,2) < params[5], delz_sum))[-1]
+    if(args.use_roots == True):
+        val5 = list(filter(lambda i: round(i,2) < params[5], delz_sum))[-1]
+    else:
+        val5 = list(filter(lambda i: round(i,2) < 5.00, delz_sum))[-1]
     ind5 = list(delz_sum).index(val5)
 
     print("Tree rooting depth:")
@@ -241,9 +245,12 @@ def main():
     delz =  np.repeat(args.i_delz2015, nlayers)
     delz_sum = np.cumsum(delz)
 
-    val5 = list(filter(lambda i: round(i,2) < params2015[5], delz_sum))[-1]
-    ind5 = list(delz_sum).index(val5)
+    if(args.use_roots == True):
+        val5 = list(filter(lambda i: round(i,2) < params2015[5], delz_sum))[-1]
+    else:
+        val5 = list(filter(lambda i: round(i,2) < 5.00, delz_sum))[-1]
 
+    print("---")
     print("Tree rooting depth:")
     print(val5)
     print(params2015[5])
@@ -263,9 +270,8 @@ def main():
         ws5_hourly2015[t] = np.sum((-su2015[t,:] * args.i_thetar2015 + \
                                 su2015[t,:] * args.i_thetas2015 + args.i_thetar2015) * delz[0:ind5] )
 
-    print(time2015[0])
+
     startdate = str(time2015[0][0]) + "-" + str(time2015[0][1]) + "-" + str(time2015[0][2] )
-    print(startdate)
     time_su2015 = pd.date_range(startdate, periods = len(su_data2015[:,0]), freq='H')
 
     ws5_2015_pd = pd.Series(ws5_hourly2015, index=time_su2015)
