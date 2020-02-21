@@ -146,9 +146,12 @@ def main():
     eMeanSeas2RE  = calcREmean_seasonal(bess_et[dates_overlap], eobs_pd[dates_overlap], args.startwet, args.endwet)
     assMeanSeas2RE  = calcREmean_seasonal(bess_gpp[dates_overlap], assobs_pd[dates_overlap], args.startwet, args.endwet)
 
+    eAmpRE = calcAmpRE(bess_et, bess_et.index, evap_obs, dates_obs )
+    assAmpRE = calcAmpRE(bess_gpp, bess_gpp.index, ass_obs, dates_obs )
+
     #put results together
-    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE ]
-    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE ]
+    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE, eAmpRE ]
+    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE, assAmpRE ]
  
     #write output files
     np.savetxt( args.out_bess + "/evap_beststats.txt", eresult, comments='', delimiter=" " )
@@ -177,9 +180,12 @@ def main():
     eMeanSeas2RE  = calcREmean_seasonal(bios2_et[dates_overlap], eobs_pd[dates_overlap], args.startwet, args.endwet)
     assMeanSeas2RE  = calcREmean_seasonal(bios2_gpp[dates_overlap], assobs_pd[dates_overlap], args.startwet, args.endwet)
 
+    eAmpRE = calcAmpRE(bios2_et, bios2_et.index, evap_obs, dates_obs )
+    assAmpRE = calcAmpRE(bios2_gpp, bios2_gpp.index, ass_obs, dates_obs )
+
     #put results together
-    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE ]
-    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE ]
+    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE, eAmpRE ]
+    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE, assAmpRE]
  
     #write output files
     np.savetxt( args.out_bios2 + "/evap_beststats.txt", eresult, comments='', delimiter=" " )
@@ -188,7 +194,7 @@ def main():
    #############################
     #LPJ-GUESS statistics
     dates_overlap = lpjguess_dates.intersection(eobs_pd.index)
-    print("Evaluating BIOS2 fluxes for:")
+    print("Evaluating LPJ-GUESS fluxes for:")
     print(dates_overlap[0])
     print(dates_overlap[-1])
 
@@ -208,9 +214,12 @@ def main():
     eMeanSeas2RE  = calcREmean_seasonal(lpjguess_et[dates_overlap], eobs_pd[dates_overlap], args.startwet, args.endwet)
     assMeanSeas2RE  = calcREmean_seasonal(lpjguess_gpp[dates_overlap], assobs_pd[dates_overlap], args.startwet, args.endwet)
 
+    eAmpRE = calcAmpRE(lpjguess_et, lpjguess_et.index, evap_obs, dates_obs )
+    assAmpRE = calcAmpRE(lpjguess_gpp, lpjguess_gpp.index, ass_obs, dates_obs )
+
     #put results together
-    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE ]
-    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE ]
+    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE, eAmpRE ]
+    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE, assAmpRE ]
  
     #write output files
     np.savetxt( args.out_lpjguess + "/evap_beststats.txt", eresult, comments='', delimiter=" " )
@@ -239,9 +248,12 @@ def main():
     eMeanSeas2RE  = calcREmean_seasonal(maespa_et[dates_overlap], eobs_pd[dates_overlap], args.startwet, args.endwet)
     assMeanSeas2RE  = calcREmean_seasonal(maespa_gpp[dates_overlap], assobs_pd[dates_overlap], args.startwet, args.endwet)
 
+    eAmpRE = calcAmpRE(maespa_et, maespa_et.index, evap_obs, dates_obs )
+    assAmpRE = calcAmpRE(maespa_gpp, maespa_gpp.index, ass_obs, dates_obs )
+
     #put results together
-    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE ]
-    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE ]
+    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE, eAmpRE ]
+    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE, assAmpRE ]
  
     #write output files
     np.savetxt( args.out_maespa + "/evap_beststats.txt", eresult, comments='', delimiter=" " )
@@ -270,9 +282,12 @@ def main():
     eMeanSeas2RE  = calcREmean_seasonal(spa_et[dates_overlap], eobs_pd[dates_overlap], args.startwet, args.endwet)
     assMeanSeas2RE  = calcREmean_seasonal(spa_gpp[dates_overlap], assobs_pd[dates_overlap], args.startwet, args.endwet)
 
+    eAmpRE = calcAmpRE(spa_et, spa_et.index, evap_obs, dates_obs )
+    assAmpRE = calcAmpRE(spa_gpp, spa_gpp.index, ass_obs, dates_obs )
+
     #put results together
-    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE ]
-    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE ]
+    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE, eAmpRE ]
+    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE, assAmpRE ]
  
     #write output files
     np.savetxt( args.out_spa + "/evap_beststats.txt", eresult, comments='', delimiter=" " )
@@ -301,9 +316,13 @@ def main():
     eMeanSeas2RE  = calcREmean_seasonal(cable_et[dates_overlap], eobs_pd[dates_overlap], args.startwet, args.endwet)
     assMeanSeas2RE  = calcREmean_seasonal(cable_gpp[dates_overlap], assobs_pd[dates_overlap], args.startwet, args.endwet)
 
+    eAmpRE = calcAmpRE(cable_et, cable_et.index, evap_obs, dates_obs )
+    assAmpRE = calcAmpRE(cable_gpp, cable_gpp.index, ass_obs, dates_obs )
+
+
     #put results together
-    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE ]
-    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE ]
+    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE, eAmpRE ]
+    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE, assAmpRE ]
  
     #write output files
     np.savetxt( args.out_cable + "/evap_beststats.txt", eresult, comments='', delimiter=" " )
@@ -407,6 +426,7 @@ def read_maespa(infile):
     data = np.loadtxt(infile, delimiter=",", skiprows=3, usecols=(3,6))
     data[data == -9999.9] = np.nan
     data[data == -999] = np.nan
+    data[data == -1388055] = np.nan
     time_tmp = np.loadtxt(infile, delimiter=",", dtype=np.str, skiprows=3, usecols=0)
     time = pd.date_range(time_tmp[0], time_tmp[-1],freq='30min')
 
@@ -429,6 +449,40 @@ def read_cable(infile):
 
     return data_et, data_gpp, time
 
+def calcAmpRE(vals, time, vals_obs, time_obs):    
+    
+    ens = np.zeros([366])
+    ens7d = np.zeros([367])    
+
+    enso = np.zeros([366])
+    enso7d = np.zeros([367])      
+
+
+    DOY = time.dayofyear[0:len(vals)] 
+    DOYobs = time_obs.dayofyear[0:len(vals_obs)] 
+
+    for iday in range(0,366):
+        ens[iday] = np.nanmean( vals[DOY == (iday+1)]  ) 
+        enso[iday] = np.nanmean( vals_obs[DOYobs == (iday+1)]  ) 
+
+
+    #7-day running mean
+    N = 7
+    for iday in range(0,367):
+        if iday > (366-N):
+            ens7d[iday]  = np.nanmean( np.concatenate( (ens[iday:366], ens[0:(N-(366-iday))] )) )
+            enso7d[iday]  = np.nanmean( np.concatenate( (enso[iday:366], enso[0:(N-(366-iday))] )) )
+        else:    
+            ens7d[iday] = np.nanmean(ens[iday:(iday+N)])
+            enso7d[iday] = np.nanmean(enso[iday:(iday+N)])   
+
+    ampl = np.max(ens7d) - np.min(ens7d)
+    amplo = np.max(enso7d) - np.min(enso7d)            
+
+
+    RE = (ampl - amplo)/amplo
+
+    return RE
 
 
 

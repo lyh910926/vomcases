@@ -36,12 +36,13 @@ def main():
     parser.add_argument("--cbar_min", help="min value for colorbar", type=float, default = 0.2)
     parser.add_argument("--cbar_max", help="max value for colorbar", type=float, default = 2.6 )
     parser.add_argument("--cblabel", help="colorbar label", default=" ")
-    parser.add_argument("--plot_cbar", help="add colorbar", type=bool, default = False )
+    parser.add_argument("--plot_cbar", help="add colorbar", type=lambda x: bool(int(x)), default = False )
     parser.add_argument("--legend", help="plot legend", type=bool, default = False )
     parser.add_argument("--xloc_title", help="location x title", type=float, default = 0.01 )
     parser.add_argument("--yloc_title", help="location y title", type=float, default = 1.05 )
     parser.add_argument("--title", help="title", default=" ")
     parser.add_argument("--size_title", help="size of title", type=float, default = 20 )
+
 
     args = parser.parse_args()
 
@@ -84,10 +85,14 @@ def main():
         #read per line as lines have different lengths
         for line in file: 
             tmp_data = line.split()
-            if(len(tmp_data)>5):
-                time.append(tmp_data[0:4])
-                su_data[t,0:len(tmp_data[5:-1])] = np.float_(tmp_data[5:-1])
-                t = t + 1
+            if(t>0):
+                if(len(tmp_data)>5):
+                    time.append(tmp_data[0:4])
+                    su_data[t-1,0:len(tmp_data[5:-1])] = np.float_(tmp_data[5:-1])
+                else:
+                    time.append(tmp_data[0:4])
+                    su_data[t-1,0:len(tmp_data[5:-1])] = 0.0
+            t = t + 1
         file.close()
 
         for ilayer in range(1,nlayers):
@@ -96,7 +101,10 @@ def main():
 
         #######################################################################################
         #plot model results
-        ax0.plot(su, depth, color=palette(i), zorder=1)
+        if(args.plot_cbar == True):
+            ax0.plot(su, depth, color=palette(i), zorder=1)
+        else:
+            ax0.plot(su, depth, zorder=1, label = args.labels[i])
                    
         #ax0.plot(su, depth, color='red', label=args.labels[i], zorder=1)           
 
@@ -110,7 +118,6 @@ def main():
         ax0.legend(prop={'size':15})
 
 
-
     if(args.plot_cbar == True):
         ax2  = fig.add_axes([0.90,0.10,0.03,0.85])
         norm = mpl.colors.Normalize(vmin=args.cbar_min, vmax=args.cbar_max)
@@ -118,12 +125,14 @@ def main():
         cb.ax.tick_params(labelsize=14)
         cb.set_label(args.cblabel, labelpad=10, size=20)
 
+
+
     if args.title is not None:
         ax0.text(args.xloc_title, args.yloc_title, args.title, ha='left', va='center', transform=ax0.transAxes, fontsize=args.size_title)
 
 
     plt.tight_layout()
-
+    plt.legend()
     #save figure
     if args.outputfile is not None:
         plt.savefig(args.outputfile)

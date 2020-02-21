@@ -55,6 +55,7 @@ def main():
     parser.add_argument("--cpccf_min", help="minimum value for the costfactor for water transport", type=float)
     parser.add_argument("--cpccf_max", help="maximum value for the costfactor for water transport", type=float)
     parser.add_argument("--cpccf_step", help="increment between costfactors", type=float)
+    parser.add_argument("--figlab", help="figure labels", nargs='+')
 
     args = parser.parse_args()
 
@@ -78,7 +79,11 @@ def main():
 
     symbols = ['s', '>', '.','8', 'P','*']
     colors = ['red', 'blue', 'green', 'gray', 'black', 'orange']
-    fig_lab = ['a)', 'b)', 'c)', 'd)', 'e)', 'f)', 'g)']
+
+    if args.figlab is not None:
+        fig_lab = args.figlab
+    else:
+        fig_lab = ['a)', 'b)', 'c)', 'd)', 'e)', 'f)', 'g)']
 
     fig, axes = plt.subplots(nrows=4, ncols=2, figsize=(16, 13)) 
     fig.delaxes(axes[3,1])
