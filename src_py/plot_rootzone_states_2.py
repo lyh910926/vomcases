@@ -480,7 +480,7 @@ def main():
     if args.title is True:
 
         plot_label = ["a)","b)","c)", "d)", "e)", "f)"]
-        for i in range(0, 5):
+        for i in range(0, 4):
             ax[i].text(args.xloc_title, args.yloc_title, plot_label[i], ha='left', va='center', transform=ax[i].transAxes, fontsize=args.size_title)
 
 
