@@ -473,7 +473,7 @@ def main():
         tick.label.set_fontsize(20)
 
     #set colorbar
-    cb = fig.colorbar(c1,ax=ax[2])
+    cb = fig.colorbar(c1,ax=ax[3])
     cb.ax.tick_params(labelsize=14)
     cb.set_label("Matrix potential (m)", size=20)
 
