@@ -341,7 +341,7 @@ def main():
     #######################################################################################
     #make plot
     #fig=plt.figure(figsize=(args.figsize[0], args.figsize[1]), dpi= args.dpi, facecolor='w', edgecolor='k' )
-    fig, axes = plt.subplots(nrows=4, ncols=1, figsize=(args.figsize[0], args.figsize[1]))        
+    fig, axes = plt.subplots(nrows=5, ncols=1, figsize=(args.figsize[0], args.figsize[1]))        
     ax = axes.flat
 
 
@@ -437,14 +437,15 @@ def main():
     if args.i2015 is not None:
         ax[1].plot(tmod2015, theta_vals2015, color='green', label='Schymanski et al. (2015)', zorder=2)
 
-    ##############################################################
-    #plot water potentials
-    #new VOM-results
-    y = np.insert(-delz_sum[0:ind5],0,0)
-    c1 = ax[2].pcolor(watpot_hourly_pd.index, y ,watpot_hourly_pd.values.T,norm=LogNorm(vmin=0.01, vmax=250), vmin=0.01, vmax=250, cmap = 'RdYlGn')
 
-    ax[2].plot( [datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params[5], - params[5]], ":", lw=3, color='red', label='rtdepth trees')
-    ax[2].plot( [datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params[7],  -params[7]],":",lw=3,color='orange', label='rtdepth grasses')
+    ##############################################################
+    #plot storage results
+    plot_flux(ax[2], "Water storage [m]", "c)", yearstart, yearend ) 
+    ax[2].plot(time_su, ws5_pd, color="red", label="VOM", zorder=1) 
+
+    #plot 2015 data
+    if args.i2015 is not None:
+        ax[2].plot(time_su2015, ws5_2015_pd, color='green', label='Schymanski et al. (2015)', zorder=2)
 
     ax[2].legend(prop={'size':15}, framealpha=1  )
 
@@ -454,6 +455,23 @@ def main():
     for tick in ax[2].xaxis.get_major_ticks():
         tick.label.set_fontsize(20)
 
+    ##############################################################
+    #plot water potentials
+    #new VOM-results
+    y = np.insert(-delz_sum[0:ind5],0,0)
+    c1 = ax[3].pcolor(watpot_hourly_pd.index, y ,watpot_hourly_pd.values.T,norm=LogNorm(vmin=0.01, vmax=250), vmin=0.01, vmax=250, cmap = 'RdYlGn')
+
+    ax[3].plot( [datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params[5], - params[5]], ":", lw=3, color='red', label='root depth trees')
+    ax[3].plot( [datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params[7],  -params[7]],":",lw=3,color='orange', label='root depth grasses')
+
+    ax[3].legend(prop={'size':15}, framealpha=1  )
+
+    ax[3].set_ylabel("Depth (m)", size=20)
+    for tick in ax[3].yaxis.get_major_ticks():
+        tick.label.set_fontsize(20)
+    for tick in ax[3].xaxis.get_major_ticks():
+        tick.label.set_fontsize(20)
+
     #set colorbar
     cb = fig.colorbar(c1,ax=ax[2])
     cb.ax.tick_params(labelsize=14)
@@ -461,33 +479,33 @@ def main():
 
     #Aob2015 results
     y2015 = np.insert(-delz2015_sum[0:ind5_2015],0,0)
-    c2 = ax[3].pcolor(watpot_hourly2015_pd.index, y2015, watpot_hourly2015_pd.values.T, norm=LogNorm(vmin=0.01, vmax=250), vmin=0.01, vmax=250, cmap='RdYlGn'   )
-    ax[3].plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params2015[5],- params2015[5]], ":", lw=3, color='red', label='rtdepth trees')
-    ax[3].plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params2015[7],- params2015[7]],":",lw=3, color='orange', label='rtdepth grasses')
+    c2 = ax[4].pcolor(watpot_hourly2015_pd.index, y2015, watpot_hourly2015_pd.values.T, norm=LogNorm(vmin=0.01, vmax=250), vmin=0.01, vmax=250, cmap='RdYlGn'   )
+    ax[4].plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params2015[5],- params2015[5]], ":", lw=3, color='red', label='root depth trees')
+    ax[4].plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params2015[7],- params2015[7]],":",lw=3, color='orange', label='root depth grasses')
 
     #set colorbar
-    cb = fig.colorbar(c2,ax=ax[3])
+    cb = fig.colorbar(c2,ax=ax[4])
     cb.ax.tick_params(labelsize=14)
     cb.set_label("Matrix potential (m)", size=20)
 
-    ax[3].set_ylabel("Depth (m)", size=20)
-    for tick in ax[3].xaxis.get_major_ticks():
+    ax[4].set_ylabel("Depth (m)", size=20)
+    for tick in ax[4].xaxis.get_major_ticks():
         tick.label.set_fontsize(20)
-    for tick in ax[3].yaxis.get_major_ticks():
+    for tick in ax[4].yaxis.get_major_ticks():
         tick.label.set_fontsize(20)
 
     #set labels/titles of plots
     if args.title is True:
 
         plot_label = ["a)","b)","c)", "d)", "e)", "f)"]
-        for i in range(0, 4):
+        for i in range(0, 5):
             ax[i].text(args.xloc_title, args.yloc_title, plot_label[i], ha='left', va='center', transform=ax[i].transAxes, fontsize=args.size_title)
 
 
     ax[1].legend(prop={'size':15}, framealpha=1  )
     ax[2].legend(prop={'size':15}, framealpha=1  )
     ax[3].legend(prop={'size':15}, framealpha=1  )
-
+    ax[4].legend(prop={'size':15}, framealpha=1  )
 
     #save figure
     if args.outputfile is not None:
