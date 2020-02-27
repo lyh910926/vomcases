@@ -20,7 +20,7 @@ def main():
     parser.add_argument("-d", "--delz", help="soil layer thickness (can be multiple, should match input)", nargs='+', type=float)
     #parser.add_argument("-ys", "--yearstart", help="startyear for plotting", type=int)
     #parser.add_argument("-ye", "--yearend", help="endyear for plotting", type=int)
-    parser.add_argument("-cz", "--cz", help="average soil elevation in m", type=float)
+    parser.add_argument("-cz", "--cz", help="average soil elevation in m", nargs='+', type=float)
     parser.add_argument("-nd", "--ndays", help="number of days used for averaging, starting from the last day", type=int)
 
     #optional input
@@ -42,7 +42,8 @@ def main():
     parser.add_argument("--yloc_title", help="location y title", type=float, default = 1.05 )
     parser.add_argument("--title", help="title", default=" ")
     parser.add_argument("--size_title", help="size of title", type=float, default = 20 )
-
+    parser.add_argument("--palette", help="color-palette", default = 'OrRd' )
+    parser.add_argument("--colors", help="colors corresponding to input-files", nargs='+', default = ["red"] )
 
     args = parser.parse_args()
 
@@ -59,7 +60,7 @@ def main():
     vals = []
     tmod = []
 
-    palette = plt.get_cmap('OrRd', len(args.input))
+    palette = plt.get_cmap(args.palette, len(args.input))
 
     for i in range(0, len(args.input)):
 
@@ -71,7 +72,7 @@ def main():
             nlines = nlines + 1
         file.close()
 
-        nlayers = int(args.cz/args.delz[i])
+        nlayers = int(args.cz[i]/args.delz[i])
         su = np.zeros((nlayers))
         su_data = np.zeros((nlines,nlayers))
         depth = np.zeros((nlayers))
@@ -104,7 +105,7 @@ def main():
         if(args.plot_cbar == True):
             ax0.plot(su, depth, color=palette(i), zorder=1)
         else:
-            ax0.plot(su, depth, zorder=1, label = args.labels[i])
+            ax0.plot(su, depth, zorder=1, color=args.colors[i], label = args.labels[i])
                    
         #ax0.plot(su, depth, color='red', label=args.labels[i], zorder=1)           
 
