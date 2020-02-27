@@ -378,11 +378,11 @@ def main():
     #plot rooting depths
     if args.pars is not None:
         if(args.depth == "True"):
-            ax[0].plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params[5], - params[5]], ":", lw=3, color='red', label='rtdepth trees')
-            ax[0].plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params[7],  -params[7]],":",lw=3,color='orange', label='rtdepth grasses')
+            ax[0].plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params[5], - params[5]], ":", lw=3, color='red', label='root depth trees')
+            ax[0].plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params[7],  -params[7]],":",lw=3,color='orange', label='root depth grasses')
         else:
-            ax[0].plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [args.i_cz- params[5], args.i_cz - params[5]], ":", lw=3, color='red', label='rtdepth trees')
-            ax[0].plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [args.i_cz - params[7], args.i_cz-params[7]],":",lw=3, color='orange', label='rtdepth grasses')
+            ax[0].plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [args.i_cz- params[5], args.i_cz - params[5]], ":", lw=3, color='red', label='root depth trees')
+            ax[0].plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [args.i_cz - params[7], args.i_cz-params[7]],":",lw=3, color='orange', label='root depth grasses')
 
 
     if args.i_zr is not None:
@@ -400,7 +400,7 @@ def main():
 
 
     #set labels
-    ax[0].set_ylabel("Water table [m]", size=24  )
+    ax[0].set_ylabel("Water table (m)", size=24  )
     ax[0].set_xlabel(args.xlabel, size=24  )
 
     #set axis and ticks
@@ -430,7 +430,7 @@ def main():
     #other plots
 
     #plot soil moisture results
-    plot_flux_obs(tmod, theta_vals, ax[1], tobs_sm, obs_sm, "Soil moisture [-]", "b)" ,yearstart, yearend) 
+    plot_flux_obs(tmod, theta_vals, ax[1], tobs_sm, obs_sm, "Soil moisture (m)", "b)" ,yearstart, yearend) 
 
  
     #plot 2015 data
@@ -440,7 +440,7 @@ def main():
 
     ##############################################################
     #plot storage results
-    plot_flux(ax[2], "Water storage [m]", "c)", yearstart, yearend ) 
+    plot_flux(ax[2], "Water storage (m)", "c)", yearstart, yearend ) 
     ax[2].plot(time_su, ws5_pd, color="red", label="VOM", zorder=1) 
 
     #plot 2015 data
@@ -449,7 +449,7 @@ def main():
 
     ax[2].legend(prop={'size':15}, framealpha=1  )
 
-    ax[2].set_ylabel("Depth (m)", size=20)
+
     for tick in ax[2].yaxis.get_major_ticks():
         tick.label.set_fontsize(20)
     for tick in ax[2].xaxis.get_major_ticks():
