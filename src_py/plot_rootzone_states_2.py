@@ -487,7 +487,7 @@ def main():
     ax[1].legend(prop={'size':15}, framealpha=1  )
     ax[2].legend(prop={'size':15}, framealpha=1  )
     ax[3].legend(prop={'size':15}, framealpha=1  )
-    ax[4].legend(prop={'size':15}, framealpha=1  )
+
 
     #save figure
     if args.outputfile is not None:
