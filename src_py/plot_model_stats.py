@@ -232,7 +232,7 @@ def main():
     #parameters for plotting
     plot_label = [ "a)","b)","c)","d)","e)","f)", "g)", "h)" ] 
 
-    loc = 0.5
+    loc = np.arange(5,65,10) 
     loc_vom =  np.arange(0.5, 60.5, 10)  
     loc_vom2 =  np.arange(1.5, 61.5, 10)  
     loc_vom3 =  np.arange(2.5, 62.5, 10)  
@@ -280,25 +280,25 @@ def main():
         ax[1].plot( [loc_vom[i]-0.5, loc_vom[i]-0.5],[-9999,9999], "--", c="gray") 
 
 
-    ax[0].plot(loc_vom, pd.Series(vom_evap),  "--", color="darkgreen" , zorder=1)
-    ax[0].plot(loc_vom, pd.Series(dingo_evap),"--", color="black" , zorder=1)
+    ax[0].plot(loc, pd.Series(vom_evap),  "--", color="darkgreen" , zorder=1)
+    ax[0].plot(loc, pd.Series(dingo_evap),"--", color="black" , zorder=1)
 
-    ax[0].plot(np.delete(loc_vom,1), pd.Series(bess_ema), "--", color="purple", zorder=1)
-    ax[0].plot(np.delete(loc_vom,1), pd.Series(bios2_ema), "--", color="lightgreen", zorder=1)
-    ax[0].plot(np.delete(loc_vom,1), pd.Series(cable_ema), "--", color="red", zorder=1)
-    ax[0].plot(np.delete(loc_vom,1), pd.Series(maespa_ema), "--", color="gold", zorder=1)
-    ax[0].plot(np.delete(loc_vom,1), pd.Series(spa_ema), "--", color="pink", zorder=1)
-    ax[0].plot(np.delete(loc_vom,1), pd.Series(lpjguess_ema), "--", color="lightblue", zorder=1)
+    ax[0].plot(np.delete(loc,1), pd.Series(bess_ema), "--", color="purple", zorder=1)
+    ax[0].plot(np.delete(loc,1), pd.Series(bios2_ema), "--", color="lightgreen", zorder=1)
+    ax[0].plot(np.delete(loc,1), pd.Series(cable_ema), "--", color="red", zorder=1)
+    ax[0].plot(np.delete(loc,1), pd.Series(maespa_ema), "--", color="gold", zorder=1)
+    ax[0].plot(np.delete(loc,1), pd.Series(spa_ema), "--", color="pink", zorder=1)
+    ax[0].plot(np.delete(loc,1), pd.Series(lpjguess_ema), "--", color="lightblue", zorder=1)
 
-    ax[1].plot(loc_vom, pd.Series(vom_gpp),  "--", color="darkgreen", zorder=1 )
-    ax[1].plot(loc_vom, pd.Series(dingo_gpp),"--", color="black", zorder=1)
+    ax[1].plot(loc, pd.Series(vom_gpp),  "--", color="darkgreen", zorder=1 )
+    ax[1].plot(loc, pd.Series(dingo_gpp),"--", color="black", zorder=1)
 
-    ax[1].plot(np.delete(loc_vom,1), pd.Series(bess_assma), "--", color="purple", zorder=1)
-    ax[1].plot(np.delete(loc_vom,1), pd.Series(bios2_assma), "--", color="lightgreen", zorder=1)
-    ax[1].plot(np.delete(loc_vom,1), pd.Series(cable_assma), "--", color="red", zorder=1)
-    ax[1].plot(np.delete(loc_vom,1), pd.Series(maespa_assma), "--", color="gold", zorder=1)
-    ax[1].plot(np.delete(loc_vom,1), pd.Series(spa_assma), "--", color="pink", zorder=1)
-    ax[1].plot(np.delete(loc_vom,1), pd.Series(lpjguess_assma), "--", color="lightblue", zorder=1)
+    ax[1].plot(np.delete(loc,1), pd.Series(bess_assma), "--", color="purple", zorder=1)
+    ax[1].plot(np.delete(loc,1), pd.Series(bios2_assma), "--", color="lightgreen", zorder=1)
+    ax[1].plot(np.delete(loc,1), pd.Series(cable_assma), "--", color="red", zorder=1)
+    ax[1].plot(np.delete(loc,1), pd.Series(maespa_assma), "--", color="gold", zorder=1)
+    ax[1].plot(np.delete(loc,1), pd.Series(spa_assma), "--", color="pink", zorder=1)
+    ax[1].plot(np.delete(loc,1), pd.Series(lpjguess_assma), "--", color="lightblue", zorder=1)
 
     iplot = 0
     #loop over study sites
@@ -306,44 +306,44 @@ def main():
 
         #ensemble years from Whitley
         try:
-            ax[0].scatter(loc_vom[isite], bess_ema[args.sites[isite]],color="purple", s=100, zorder=2)
-            ax[0].scatter(loc_vom[isite], bios2_ema[args.sites[isite]],color="lightgreen", s=100, zorder=2)
-            ax[0].scatter(loc_vom[isite], cable_ema[args.sites[isite]],color="red", s=100, zorder=2)
-            ax[0].scatter(loc_vom[isite], maespa_ema[args.sites[isite]],color="gold", s=100, zorder=2)
-            ax[0].scatter(loc_vom[isite], spa_ema[args.sites[isite]],color="pink", s=100, zorder=2)
-            ax[0].scatter(loc_vom[isite], lpjguess_ema[args.sites[isite]],color="lightblue", s=100, zorder=2)
+            ax[0].scatter(loc[isite], bess_ema[args.sites[isite]],color="purple", s=100, zorder=2)
+            ax[0].scatter(loc[isite], bios2_ema[args.sites[isite]],color="lightgreen", s=100, zorder=2)
+            ax[0].scatter(loc[isite], cable_ema[args.sites[isite]],color="red", s=100, zorder=2)
+            ax[0].scatter(loc[isite], maespa_ema[args.sites[isite]],color="gold", s=100, zorder=2)
+            ax[0].scatter(loc[isite], spa_ema[args.sites[isite]],color="pink", s=100, zorder=2)
+            ax[0].scatter(loc[isite], lpjguess_ema[args.sites[isite]],color="lightblue", s=100, zorder=2)
 
             if( isite == 0):
-                ax[1].scatter(loc_vom[isite], bess_assma[args.sites[isite]],color="purple", label = "BESS", s=100, zorder=2)
-                ax[1].scatter(loc_vom[isite], bios2_assma[args.sites[isite]],color="lightgreen", label = "BIOS2", s=100, zorder=2)
-                ax[1].scatter(loc_vom[isite], cable_assma[args.sites[isite]],color="red", label = "CABLE", s=100, zorder=2)
-                ax[1].scatter(loc_vom[isite], maespa_assma[args.sites[isite]],color="gold", label = "MAESPA", s=100, zorder=2)
-                ax[1].scatter(loc_vom[isite], spa_assma[args.sites[isite]],color="pink", label = "SPA", s=100, zorder=2)
-                ax[1].scatter(loc_vom[isite], lpjguess_assma[args.sites[isite]],color="lightblue", label = "LPJ-GUESS", s=100, zorder=2)
+                ax[1].scatter(loc[isite], bess_assma[args.sites[isite]],color="purple", label = "BESS", s=100, zorder=2)
+                ax[1].scatter(loc[isite], bios2_assma[args.sites[isite]],color="lightgreen", label = "BIOS2", s=100, zorder=2)
+                ax[1].scatter(loc[isite], cable_assma[args.sites[isite]],color="red", label = "CABLE", s=100, zorder=2)
+                ax[1].scatter(loc[isite], maespa_assma[args.sites[isite]],color="gold", label = "MAESPA", s=100, zorder=2)
+                ax[1].scatter(loc[isite], spa_assma[args.sites[isite]],color="pink", label = "SPA", s=100, zorder=2)
+                ax[1].scatter(loc[isite], lpjguess_assma[args.sites[isite]],color="lightblue", label = "LPJ-GUESS", s=100, zorder=2)
             else:
-                ax[1].scatter(loc_vom[isite], bess_assma[args.sites[isite]],color="purple", s=100, zorder=2)
-                ax[1].scatter(loc_vom[isite], bios2_assma[args.sites[isite]],color="lightgreen", s=100, zorder=2)
-                ax[1].scatter(loc_vom[isite], cable_assma[args.sites[isite]],color="red", s=100, zorder=2)
-                ax[1].scatter(loc_vom[isite], maespa_assma[args.sites[isite]],color="gold", s=100, zorder=2)
-                ax[1].scatter(loc_vom[isite], spa_assma[args.sites[isite]],color="pink", s=100, zorder=2)
-                ax[1].scatter(loc_vom[isite], lpjguess_assma[args.sites[isite]],color="lightblue", s=100, zorder=2)
+                ax[1].scatter(loc[isite], bess_assma[args.sites[isite]],color="purple", s=100, zorder=2)
+                ax[1].scatter(loc[isite], bios2_assma[args.sites[isite]],color="lightgreen", s=100, zorder=2)
+                ax[1].scatter(loc[isite], cable_assma[args.sites[isite]],color="red", s=100, zorder=2)
+                ax[1].scatter(loc[isite], maespa_assma[args.sites[isite]],color="gold", s=100, zorder=2)
+                ax[1].scatter(loc[isite], spa_assma[args.sites[isite]],color="pink", s=100, zorder=2)
+                ax[1].scatter(loc[isite], lpjguess_assma[args.sites[isite]],color="lightblue", s=100, zorder=2)
             
         except KeyError:
             print("Litchfield")
 
 
         if( isite == 0):
-            ax[0].scatter(loc_vom[isite], vom_evap[args.sites[isite]], color="darkgreen", s=130, marker= "s", zorder=2 )
-            ax[0].scatter(loc_vom[isite], dingo_evap[args.sites[isite]],color="black", s=130, marker= "*", zorder=2 )
+            ax[0].scatter(loc[isite], vom_evap[args.sites[isite]], color="darkgreen", s=130, marker= "s", zorder=2 )
+            ax[0].scatter(loc[isite], dingo_evap[args.sites[isite]],color="black", s=130, marker= "*", zorder=2 )
 
-            ax[1].scatter(loc_vom[isite], vom_gpp[args.sites[isite]], color="darkgreen", s=130, marker= "s", label = "VOM", zorder=2 )
-            ax[1].scatter(loc_vom[isite], dingo_gpp[args.sites[isite]],color="black", s=130, marker= "*", label = "Obs.", zorder=2 )
+            ax[1].scatter(loc[isite], vom_gpp[args.sites[isite]], color="darkgreen", s=130, marker= "s", zorder=2 )
+            ax[1].scatter(loc[isite], dingo_gpp[args.sites[isite]],color="black", s=130, marker= "*", label = "Obs.", zorder=2 )
         else:
-            ax[0].scatter(loc_vom[isite], vom_evap[args.sites[isite]], color="darkgreen", s=130, marker= "s", zorder=2)
-            ax[0].scatter(loc_vom[isite], dingo_evap[args.sites[isite]],color="black", s=130, marker= "*", zorder=2 )
+            ax[0].scatter(loc[isite], vom_evap[args.sites[isite]], color="darkgreen", s=130, marker= "s", zorder=2)
+            ax[0].scatter(loc[isite], dingo_evap[args.sites[isite]],color="black", s=130, marker= "*", zorder=2 )
 
-            ax[1].scatter(loc_vom[isite], vom_gpp[args.sites[isite]], color="darkgreen", s=130, marker= "s", zorder=2 )
-            ax[1].scatter(loc_vom[isite], dingo_gpp[args.sites[isite]],color="black", s=130, marker= "*", zorder=2 )
+            ax[1].scatter(loc[isite], vom_gpp[args.sites[isite]], color="darkgreen", s=130, marker= "s", zorder=2 )
+            ax[1].scatter(loc[isite], dingo_gpp[args.sites[isite]],color="black", s=130, marker= "*", zorder=2 )
 
 
     ax[0].set_xlim([0,60])
@@ -378,17 +378,17 @@ def main():
 
         for isite in range(0, len(args.sites)): 
             try:
-                ax[iplot].scatter( loc_vom[isite], vom_evap_stats[args.sites[isite]][i_stat], c="darkgreen", s=130, marker="s", label = "VOM"    )
-                ax[iplot].scatter( loc_vom2[isite], vom_pc_evap_stats[args.sites[isite]][i_stat], c="green", s=100, marker="v", label = "VOM - prescribed cover"    )
-                ax[iplot].scatter( loc_vom3[isite], vom_pc2_evap_stats[args.sites[isite]][i_stat], c="green",s=100, marker="*", label = "VOM - prescribed cover (mean monthly)"    )
-                ax[iplot].scatter( loc_vom4[isite], vom_zr_evap_stats[args.sites[isite]][i_stat], c="green", s=100,marker="+", label = "VOM - prescribed roots"    )
+                ax[iplot].scatter( loc_vom[isite], vom_evap_stats[args.sites[isite]][i_stat], c="darkgreen", s=130, marker="s"   )
+                ax[iplot].scatter( loc_vom2[isite], vom_pc_evap_stats[args.sites[isite]][i_stat], c="green", s=100, marker="v"   )
+                ax[iplot].scatter( loc_vom3[isite], vom_pc2_evap_stats[args.sites[isite]][i_stat], c="green",s=100, marker="*"  )
+                ax[iplot].scatter( loc_vom4[isite], vom_zr_evap_stats[args.sites[isite]][i_stat], c="green", s=100,marker="+"   )
 
-                ax[iplot].scatter( loc_bess[isite], bess_evap_stats[args.sites[isite]][i_stat] ,c = "purple",s=100, label = "BESS"  )
-                ax[iplot].scatter( loc_bios2[isite], bios2_evap_stats[args.sites[isite]][i_stat], c = "lightgreen",s=100, label = "BIOS2"   )
-                ax[iplot].scatter( loc_cable[isite], cable_evap_stats[args.sites[isite]][i_stat], c = "red", s=100,label = "CABLE"   )
-                ax[iplot].scatter( loc_lpjguess[isite], lpjguess_evap_stats[args.sites[isite]][i_stat], c = "blue",s=100, label = "LPJ-GUESS"   )
-                ax[iplot].scatter( loc_maespa[isite], maespa_evap_stats[args.sites[isite]][i_stat], c = "gold", s=100,label = "MAESPA"   )
-                ax[iplot].scatter( loc_spa[isite], spa_evap_stats[args.sites[isite]][i_stat], c = "pink", s=100,label="SPA"  )
+                ax[iplot].scatter( loc_bess[isite], bess_evap_stats[args.sites[isite]][i_stat] ,c = "purple",s=100 )
+                ax[iplot].scatter( loc_bios2[isite], bios2_evap_stats[args.sites[isite]][i_stat], c = "lightgreen",s=100   )
+                ax[iplot].scatter( loc_cable[isite], cable_evap_stats[args.sites[isite]][i_stat], c = "red", s=100  )
+                ax[iplot].scatter( loc_lpjguess[isite], lpjguess_evap_stats[args.sites[isite]][i_stat], c = "blue",s=100   )
+                ax[iplot].scatter( loc_maespa[isite], maespa_evap_stats[args.sites[isite]][i_stat], c = "gold", s=100  )
+                ax[iplot].scatter( loc_spa[isite], spa_evap_stats[args.sites[isite]][i_stat], c = "pink", s=100  )
             except KeyError:
                print("Litchfield")
 
@@ -411,18 +411,18 @@ def main():
  
         for isite in range(0, len(args.sites)): 
             try:
-                if(isite == 0):
+                if( (isite == 0) & (i_stat == stats_order[0]) ):
                     ax[iplot].scatter( loc_vom[isite], vom_gpp_stats[args.sites[isite]][i_stat], c="darkgreen", s=130, marker="s", label = "VOM"    )
                     ax[iplot].scatter( loc_vom2[isite], vom_pc_gpp_stats[args.sites[isite]][i_stat], c="green", s=100,marker="v", label = "VOM - prescribed cover"    )
                     ax[iplot].scatter( loc_vom3[isite], vom_pc2_gpp_stats[args.sites[isite]][i_stat], c="green",s=100, marker="*", label = "VOM - prescribed cover (mean monthly)"    )
                     ax[iplot].scatter( loc_vom4[isite], vom_zr_gpp_stats[args.sites[isite]][i_stat], c="green", s=100,marker="+", label = "VOM - prescribed roots"    )
 
-                    ax[iplot].scatter( loc_bess[isite], bess_ass_stats[args.sites[isite]][i_stat] ,c = "purple", s=100,label = "BESS"  )
-                    ax[iplot].scatter( loc_bios2[isite], bios2_ass_stats[args.sites[isite]][i_stat], c = "lightgreen",s=100, label = "BIOS2"   )
-                    ax[iplot].scatter( loc_cable[isite], cable_ass_stats[args.sites[isite]][i_stat], c = "red",s=100, label = "CABLE"   )
-                    ax[iplot].scatter( loc_lpjguess[isite], lpjguess_ass_stats[args.sites[isite]][i_stat], c = "blue",s=100, label = "LPJ-GUESS"   )
-                    ax[iplot].scatter( loc_maespa[isite], maespa_ass_stats[args.sites[isite]][i_stat], c = "gold",s=100, label = "MAESPA"   )
-                    ax[iplot].scatter( loc_spa[isite], spa_ass_stats[args.sites[isite]][i_stat], c = "pink", s=100,label="SPA"  )
+                    ax[iplot].scatter( loc_bess[isite], bess_ass_stats[args.sites[isite]][i_stat] ,c = "purple", s=100 )
+                    ax[iplot].scatter( loc_bios2[isite], bios2_ass_stats[args.sites[isite]][i_stat], c = "lightgreen",s=100  )
+                    ax[iplot].scatter( loc_cable[isite], cable_ass_stats[args.sites[isite]][i_stat], c = "red",s=100  )
+                    ax[iplot].scatter( loc_lpjguess[isite], lpjguess_ass_stats[args.sites[isite]][i_stat], c = "blue",s=100  )
+                    ax[iplot].scatter( loc_maespa[isite], maespa_ass_stats[args.sites[isite]][i_stat], c = "gold",s=100  )
+                    ax[iplot].scatter( loc_spa[isite], spa_ass_stats[args.sites[isite]][i_stat], c = "pink", s=100 )
                 else:
                     ax[iplot].scatter( loc_vom[isite], vom_gpp_stats[args.sites[isite]][i_stat], c="green",s=130, marker="s"  )
                     ax[iplot].scatter( loc_vom2[isite], vom_pc_gpp_stats[args.sites[isite]][i_stat], c="green", s=100,marker="v"   )
@@ -453,9 +453,11 @@ def main():
         iplot = iplot + 1
 
 
+    lines_labels = [ax.get_legend_handles_labels() for ax in fig.axes]
+    lines, labels = [sum(lol, []) for lol in zip(*lines_labels)]
 
+    ax[5].legend(lines, labels, bbox_to_anchor=(1.0, 1.0), fontsize=14)
 
-    plt.legend(bbox_to_anchor=(1, 1), fontsize=14, ax=ax[1])  
     plt.tight_layout()
 
     if args.outfile is not None:
