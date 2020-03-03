@@ -1,24 +1,124 @@
 '@context':
+  '@version': 1.1
   _id: '@id'
-  _label: rdfs:label
-  _project: schema:isPartOf
-  added: schema:dateCreated
-  affiliation: schema:affiliation
-  alternate_name: schema:alternateName
+  _project:
+    '@context':
+      '@version': 1.1
+      _id: '@id'
+      created: schema:dateCreated
+      creator:
+        '@context':
+          '@version': 1.1
+          _id: '@id'
+          affiliation: schema:affiliation
+          alternate_name: schema:alternateName
+          email: schema:email
+          label: rdfs:label
+          name: schema:name
+          prov: http://www.w3.org/ns/prov#
+          rdfs: http://www.w3.org/2000/01/rdf-schema#
+          schema: http://schema.org/
+        '@id': schema:creator
+      name: schema:name
+      prov: http://www.w3.org/ns/prov#
+      schema: http://schema.org/
+      updated: schema:dateUpdated
+      version: schema:schemaVersion
+    '@id': schema:isPartOf
+  based_on: schema:isBasedOn
   created: schema:dateCreated
-  creator: schema:creator
+  creator:
+    '@context':
+      '@version': 1.1
+      _id: '@id'
+      affiliation: schema:affiliation
+      alternate_name: schema:alternateName
+      email: schema:email
+      label: rdfs:label
+      name: schema:name
+      prov: http://www.w3.org/ns/prov#
+      rdfs: http://www.w3.org/2000/01/rdf-schema#
+      schema: http://schema.org/
+    '@id': schema:creator
   date_published: schema:datePublished
   description: schema:description
-  email: schema:email
-  files: schema:hasPart
+  files:
+    '@context':
+      '@version': 1.1
+      _id: '@id'
+      _project:
+        '@context':
+          '@version': 1.1
+          _id: '@id'
+          created: schema:dateCreated
+          creator:
+            '@context':
+              '@version': 1.1
+              _id: '@id'
+              affiliation: schema:affiliation
+              alternate_name: schema:alternateName
+              email: schema:email
+              label: rdfs:label
+              name: schema:name
+              prov: http://www.w3.org/ns/prov#
+              rdfs: http://www.w3.org/2000/01/rdf-schema#
+              schema: http://schema.org/
+            '@id': schema:creator
+          name: schema:name
+          prov: http://www.w3.org/ns/prov#
+          schema: http://schema.org/
+          updated: schema:dateUpdated
+          version: schema:schemaVersion
+        '@id': schema:isPartOf
+      added: schema:dateCreated
+      based_on: schema:isBasedOn
+      creator:
+        '@context':
+          '@version': 1.1
+          _id: '@id'
+          affiliation: schema:affiliation
+          alternate_name: schema:alternateName
+          email: schema:email
+          label: rdfs:label
+          name: schema:name
+          prov: http://www.w3.org/ns/prov#
+          rdfs: http://www.w3.org/2000/01/rdf-schema#
+          schema: http://schema.org/
+        '@id': schema:creator
+      name: schema:name
+      path: prov:atLocation
+      prov: http://www.w3.org/ns/prov#
+      schema: http://schema.org/
+      url: schema:url
+      wfprov: http://purl.org/wf4ever/wfprov#
+    '@id': schema:hasPart
   identifier: schema:identifier
-  in_language: schema:inLanguage
+  in_language:
+    '@context':
+      '@version': 1.1
+      alternate_name: schema:alternateName
+      name: schema:name
+      schema: http://schema.org/
+    '@id': schema:inLanguage
   keywords: schema:keywords
   license: schema:license
   name: schema:name
   path: prov:atLocation
   prov: http://www.w3.org/ns/prov#
+  same_as: schema:sameAs
   schema: http://schema.org/
+  short_name: schema:alternateName
+  tags:
+    '@context':
+      '@version': 1.1
+      _id: '@id'
+      commit: schema:location
+      created: schema:startDate
+      dataset: schema:about
+      description: schema:description
+      name: schema:name
+      schema: http://schema.org/
+    '@id': schema:subjectOf
   url: schema:url
   version: schema:version
   wfprov: http://purl.org/wf4ever/wfprov#
@@ -26,64 +126,88 @@
 - prov:Entity
 - schema:Dataset
 - wfprov:Artifact
-_id: f495c97f-80f1-41b7-8f01-275edad9ff44
+_id: https://renkulab.io/datasets/f495c97f-80f1-41b7-8f01-275edad9ff44
 _label: f495c97f-80f1-41b7-8f01-275edad9ff44
 _project:
-  '@context':
-    _id: '@id'
-    foaf: http://xmlns.com/foaf/0.1/
-    prov: http://www.w3.org/ns/prov#
   '@type':
-  - foaf:Project
   - prov:Location
-  _id: https://renkulab.io/remko.nijzink/vomcases
+  - schema:Project
+  _id: https://renkulab.io/projects/remko.nijzink/vomcases
+  created: '2019-03-08T08:28:48.938000+00:00'
+  creator:
+    '@type':
+    - prov:Person
+    - schema:Person
+    _id: mailto:remko.nijzink@list.lu
+    affiliation: null
+    alternate_name: null
+    email: remko.nijzink@list.lu
+    label: Remko Nijzink
+    name: Remko Nijzink
+  name: VOMcases
+  updated: '2019-03-08T08:28:48.938000+00:00'
+  version: '1'
+based_on: null
 created: '2019-09-11T18:57:44.660880+02:00'
 creator:
-- '@type': schema:Person
+- '@type':
+  - prov:Person
+  - schema:Person
   _id: mailto:remko.nijzink@list.lu
   affiliation: null
   alternate_name: null
   email: remko.nijzink@list.lu
+  label: Remko Nijzink
   name: Remko Nijzink
-- '@type': schema:Person
+- '@type':
+  - prov:Person
+  - schema:Person
   _id: mailto:remko.nijzink@list.lu
   affiliation: null
   alternate_name: null
   email: remko.nijzink@list.lu
+  label: Remko Nijzink
   name: Remko Nijzink
 date_published: null
-description: null
+description: ''
 files:
 - '@type':
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: blob/9f7d20cf2b49028c41a330580899d8fdddd77074/data/boreholes/RN030982.csv
+  _id: file://blob/9f7d20cf2b49028c41a330580899d8fdddd77074/data/boreholes/RN030982.csv
   _label: data/boreholes/RN030982.csv@9f7d20cf2b49028c41a330580899d8fdddd77074
   _project:
-    '@context':
-      _id: '@id'
-      foaf: http://xmlns.com/foaf/0.1/
-      prov: http://www.w3.org/ns/prov#
     '@type':
-    - foaf:Project
     - prov:Location
-    _id: https://renkulab.io/remko.nijzink/vomcases
+    - schema:Project
+    _id: https://localhost/projects/NULL/NULL
+    created: '2020-03-03T09:04:44.017819+00:00'
+    creator: null
+    name: null
+    updated: '2020-03-03T09:04:44.017822+00:00'
+    version: '2'
   added: '2019-10-21T09:58:00.846674+00:00'
+  based_on: null
   creator:
-  - '@type': schema:Person
+  - '@type':
+    - prov:Person
+    - schema:Person
     _id: mailto:remko.nijzink@list.lu
     affiliation: null
     alternate_name: null
     email: remko.nijzink@list.lu
+    label: Remko Nijzink
     name: Remko Nijzink
-  - '@type': schema:Person
+  - '@type':
+    - prov:Person
+    - schema:Person
     _id: mailto:remko.nijzink@list.lu
     affiliation: null
     alternate_name: null
     email: remko.nijzink@list.lu
+    label: Remko Nijzink
     name: Remko Nijzink
-  dataset: boreholes
   name: RN030982.csv
   path: data/boreholes/RN030982.csv
   url: https://nt.gov.au/environment/water/water-information-systems/water-data-portal
@@ -91,32 +215,39 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: blob/9f7d20cf2b49028c41a330580899d8fdddd77074/data/boreholes/glossary.htm
+  _id: file://blob/9f7d20cf2b49028c41a330580899d8fdddd77074/data/boreholes/glossary.htm
   _label: data/boreholes/glossary.htm@9f7d20cf2b49028c41a330580899d8fdddd77074
   _project:
-    '@context':
-      _id: '@id'
-      foaf: http://xmlns.com/foaf/0.1/
-      prov: http://www.w3.org/ns/prov#
     '@type':
-    - foaf:Project
     - prov:Location
-    _id: https://renkulab.io/remko.nijzink/vomcases
+    - schema:Project
+    _id: https://localhost/projects/NULL/NULL
+    created: '2020-03-03T09:04:44.018599+00:00'
+    creator: null
+    name: null
+    updated: '2020-03-03T09:04:44.018602+00:00'
+    version: '2'
   added: '2019-10-21T09:58:00.879005+00:00'
+  based_on: null
   creator:
-  - '@type': schema:Person
+  - '@type':
+    - prov:Person
+    - schema:Person
     _id: mailto:remko.nijzink@list.lu
     affiliation: null
     alternate_name: null
     email: remko.nijzink@list.lu
+    label: Remko Nijzink
     name: Remko Nijzink
-  - '@type': schema:Person
+  - '@type':
+    - prov:Person
+    - schema:Person
     _id: mailto:remko.nijzink@list.lu
     affiliation: null
     alternate_name: null
     email: remko.nijzink@list.lu
+    label: Remko Nijzink
     name: Remko Nijzink
-  dataset: boreholes
   name: glossary.htm
   path: data/boreholes/glossary.htm
   url: https://nt.gov.au/environment/water/water-information-systems/water-data-portal
@@ -124,32 +255,39 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: blob/68401f3b3304ee6239813e7e2350a20a20f89cfe/data/boreholes/RN030983.csv
+  _id: file://blob/68401f3b3304ee6239813e7e2350a20a20f89cfe/data/boreholes/RN030983.csv
   _label: data/boreholes/RN030983.csv@68401f3b3304ee6239813e7e2350a20a20f89cfe
   _project:
-    '@context':
-      _id: '@id'
-      foaf: http://xmlns.com/foaf/0.1/
-      prov: http://www.w3.org/ns/prov#
     '@type':
-    - foaf:Project
     - prov:Location
-    _id: https://renkulab.io/remko.nijzink/vomcases
+    - schema:Project
+    _id: https://localhost/projects/NULL/NULL
+    created: '2020-03-03T09:04:44.019307+00:00'
+    creator: null
+    name: null
+    updated: '2020-03-03T09:04:44.019309+00:00'
+    version: '2'
   added: '2019-10-21T09:58:46.920604+00:00'
+  based_on: null
   creator:
-  - '@type': schema:Person
+  - '@type':
+    - prov:Person
+    - schema:Person
     _id: mailto:remko.nijzink@list.lu
     affiliation: null
     alternate_name: null
     email: remko.nijzink@list.lu
+    label: Remko Nijzink
     name: Remko Nijzink
-  - '@type': schema:Person
+  - '@type':
+    - prov:Person
+    - schema:Person
     _id: mailto:remko.nijzink@list.lu
     affiliation: null
     alternate_name: null
     email: remko.nijzink@list.lu
+    label: Remko Nijzink
     name: Remko Nijzink
-  dataset: boreholes
   name: RN030983.csv
   path: data/boreholes/RN030983.csv
   url: /home/remko/data/boreholes/RN030983_20191021/RN030983.csv
@@ -157,32 +295,39 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: blob/9ad8382584e1c896bb3d00b4fdea586b7a7bc049/data/boreholes/RN030984.csv
+  _id: file://blob/9ad8382584e1c896bb3d00b4fdea586b7a7bc049/data/boreholes/RN030984.csv
   _label: data/boreholes/RN030984.csv@9ad8382584e1c896bb3d00b4fdea586b7a7bc049
   _project:
-    '@context':
-      _id: '@id'
-      foaf: http://xmlns.com/foaf/0.1/
-      prov: http://www.w3.org/ns/prov#
     '@type':
-    - foaf:Project
     - prov:Location
-    _id: https://renkulab.io/remko.nijzink/vomcases
+    - schema:Project
+    _id: https://localhost/projects/NULL/NULL
+    created: '2020-03-03T09:04:44.019990+00:00'
+    creator: null
+    name: null
+    updated: '2020-03-03T09:04:44.019992+00:00'
+    version: '2'
   added: '2019-10-21T09:59:04.940160+00:00'
+  based_on: null
   creator:
-  - '@type': schema:Person
+  - '@type':
+    - prov:Person
+    - schema:Person
     _id: mailto:remko.nijzink@list.lu
     affiliation: null
     alternate_name: null
     email: remko.nijzink@list.lu
+    label: Remko Nijzink
     name: Remko Nijzink
-  - '@type': schema:Person
+  - '@type':
+    - prov:Person
+    - schema:Person
     _id: mailto:remko.nijzink@list.lu
     affiliation: null
     alternate_name: null
     email: remko.nijzink@list.lu
+    label: Remko Nijzink
     name: Remko Nijzink
-  dataset: boreholes
   name: RN030984.csv
   path: data/boreholes/RN030984.csv
   url: https://nt.gov.au/environment/water/water-information-systems/water-data-portal
@@ -192,5 +337,8 @@ keywords: []
 license: null
 name: boreholes
 path: .renku/datasets/f495c97f-80f1-41b7-8f01-275edad9ff44
+same_as: null
+short_name: boreholes
+tags: []
 url: https://nt.gov.au/environment/water/water-information-systems/water-data-portal
 version: null

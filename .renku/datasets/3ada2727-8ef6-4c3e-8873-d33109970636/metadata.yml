@@ -1,24 +1,124 @@
 '@context':
+  '@version': 1.1
   _id: '@id'
-  _label: rdfs:label
-  _project: schema:isPartOf
-  added: schema:dateCreated
-  affiliation: schema:affiliation
-  alternate_name: schema:alternateName
+  _project:
+    '@context':
+      '@version': 1.1
+      _id: '@id'
+      created: schema:dateCreated
+      creator:
+        '@context':
+          '@version': 1.1
+          _id: '@id'
+          affiliation: schema:affiliation
+          alternate_name: schema:alternateName
+          email: schema:email
+          label: rdfs:label
+          name: schema:name
+          prov: http://www.w3.org/ns/prov#
+          rdfs: http://www.w3.org/2000/01/rdf-schema#
+          schema: http://schema.org/
+        '@id': schema:creator
+      name: schema:name
+      prov: http://www.w3.org/ns/prov#
+      schema: http://schema.org/
+      updated: schema:dateUpdated
+      version: schema:schemaVersion
+    '@id': schema:isPartOf
+  based_on: schema:isBasedOn
   created: schema:dateCreated
-  creator: schema:creator
+  creator:
+    '@context':
+      '@version': 1.1
+      _id: '@id'
+      affiliation: schema:affiliation
+      alternate_name: schema:alternateName
+      email: schema:email
+      label: rdfs:label
+      name: schema:name
+      prov: http://www.w3.org/ns/prov#
+      rdfs: http://www.w3.org/2000/01/rdf-schema#
+      schema: http://schema.org/
+    '@id': schema:creator
   date_published: schema:datePublished
   description: schema:description
-  email: schema:email
-  files: schema:hasPart
+  files:
+    '@context':
+      '@version': 1.1
+      _id: '@id'
+      _project:
+        '@context':
+          '@version': 1.1
+          _id: '@id'
+          created: schema:dateCreated
+          creator:
+            '@context':
+              '@version': 1.1
+              _id: '@id'
+              affiliation: schema:affiliation
+              alternate_name: schema:alternateName
+              email: schema:email
+              label: rdfs:label
+              name: schema:name
+              prov: http://www.w3.org/ns/prov#
+              rdfs: http://www.w3.org/2000/01/rdf-schema#
+              schema: http://schema.org/
+            '@id': schema:creator
+          name: schema:name
+          prov: http://www.w3.org/ns/prov#
+          schema: http://schema.org/
+          updated: schema:dateUpdated
+          version: schema:schemaVersion
+        '@id': schema:isPartOf
+      added: schema:dateCreated
+      based_on: schema:isBasedOn
+      creator:
+        '@context':
+          '@version': 1.1
+          _id: '@id'
+          affiliation: schema:affiliation
+          alternate_name: schema:alternateName
+          email: schema:email
+          label: rdfs:label
+          name: schema:name
+          prov: http://www.w3.org/ns/prov#
+          rdfs: http://www.w3.org/2000/01/rdf-schema#
+          schema: http://schema.org/
+        '@id': schema:creator
+      name: schema:name
+      path: prov:atLocation
+      prov: http://www.w3.org/ns/prov#
+      schema: http://schema.org/
+      url: schema:url
+      wfprov: http://purl.org/wf4ever/wfprov#
+    '@id': schema:hasPart
   identifier: schema:identifier
-  in_language: schema:inLanguage
+  in_language:
+    '@context':
+      '@version': 1.1
+      alternate_name: schema:alternateName
+      name: schema:name
+      schema: http://schema.org/
+    '@id': schema:inLanguage
   keywords: schema:keywords
   license: schema:license
   name: schema:name
   path: prov:atLocation
   prov: http://www.w3.org/ns/prov#
+  same_as: schema:sameAs
   schema: http://schema.org/
+  short_name: schema:alternateName
+  tags:
+    '@context':
+      '@version': 1.1
+      _id: '@id'
+      commit: schema:location
+      created: schema:startDate
+      dataset: schema:about
+      description: schema:description
+      name: schema:name
+      schema: http://schema.org/
+    '@id': schema:subjectOf
   url: schema:url
   version: schema:version
   wfprov: http://purl.org/wf4ever/wfprov#
@@ -26,18 +126,29 @@
 - prov:Entity
 - schema:Dataset
 - wfprov:Artifact
-_id: 3ada2727-8ef6-4c3e-8873-d33109970636
+_id: https://renkulab.io/datasets/3ada2727-8ef6-4c3e-8873-d33109970636
 _label: 3ada2727-8ef6-4c3e-8873-d33109970636
 _project:
-  '@context':
-    _id: '@id'
-    foaf: http://xmlns.com/foaf/0.1/
-    prov: http://www.w3.org/ns/prov#
   '@type':
-  - foaf:Project
   - prov:Location
-  _id: https://renkulab.io/remko.nijzink/vomcases
+  - schema:Project
+  _id: https://renkulab.io/projects/remko.nijzink/vomcases
+  created: '2019-03-08T08:28:48.938000+00:00'
+  creator:
+    '@type':
+    - prov:Person
+    - schema:Person
+    _id: mailto:remko.nijzink@list.lu
+    affiliation: null
+    alternate_name: null
+    email: remko.nijzink@list.lu
+    label: Remko Nijzink
+    name: Remko Nijzink
+  name: VOMcases
+  updated: '2019-03-08T08:28:48.938000+00:00'
+  version: '1'
 authors: []
+based_on: null
 created: '2019-03-21T09:02:34.231411+02:00'
 creator: []
 date_published: null
@@ -47,12 +158,12 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: blob/58de9aed1a2047cbfea36d7278a11ff356cda3de/data/DINGO/Ea_adelaide.txt
-  _label: data/DINGO/Ea_adelaide.txt
+  _id: file://blob/58de9aed1a2047cbfea36d7278a11ff356cda3de/data/DINGO/Ea_adelaide.txt
+  _label: data/DINGO/Ea_adelaide.txt@58de9aed1a2047cbfea36d7278a11ff356cda3de
   _project: null
-  added: '2019-03-21 09:02:34.276702'
+  added: '2019-03-21T09:02:34.276702+01:00'
+  based_on: null
   creator: []
-  dataset: null
   name: Ea_adelaide.txt
   path: data/DINGO/Ea_adelaide.txt
   url: /home/remko/data/DINGO/Ea_adelaide.txt
@@ -60,12 +171,12 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: blob/58de9aed1a2047cbfea36d7278a11ff356cda3de/data/DINGO/Ea_daly.txt
-  _label: data/DINGO/Ea_daly.txt
+  _id: file://blob/58de9aed1a2047cbfea36d7278a11ff356cda3de/data/DINGO/Ea_daly.txt
+  _label: data/DINGO/Ea_daly.txt@58de9aed1a2047cbfea36d7278a11ff356cda3de
   _project: null
-  added: '2019-03-21 09:02:34.315037'
+  added: '2019-03-21T09:02:34.315037+01:00'
+  based_on: null
   creator: []
-  dataset: null
   name: Ea_daly.txt
   path: data/DINGO/Ea_daly.txt
   url: /home/remko/data/DINGO/Ea_daly.txt
@@ -73,12 +184,12 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: blob/58de9aed1a2047cbfea36d7278a11ff356cda3de/data/DINGO/Ea_dry.txt
-  _label: data/DINGO/Ea_dry.txt
+  _id: file://blob/58de9aed1a2047cbfea36d7278a11ff356cda3de/data/DINGO/Ea_dry.txt
+  _label: data/DINGO/Ea_dry.txt@58de9aed1a2047cbfea36d7278a11ff356cda3de
   _project: null
-  added: '2019-03-21 09:02:34.357569'
+  added: '2019-03-21T09:02:34.357569+01:00'
+  based_on: null
   creator: []
-  dataset: null
   name: Ea_dry.txt
   path: data/DINGO/Ea_dry.txt
   url: /home/remko/data/DINGO/Ea_dry.txt
@@ -86,12 +197,12 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: blob/58de9aed1a2047cbfea36d7278a11ff356cda3de/data/DINGO/Ea_howard.txt
-  _label: data/DINGO/Ea_howard.txt
+  _id: file://blob/58de9aed1a2047cbfea36d7278a11ff356cda3de/data/DINGO/Ea_howard.txt
+  _label: data/DINGO/Ea_howard.txt@58de9aed1a2047cbfea36d7278a11ff356cda3de
   _project: null
-  added: '2019-03-21 09:02:34.397423'
+  added: '2019-03-21T09:02:34.397423+01:00'
+  based_on: null
   creator: []
-  dataset: null
   name: Ea_howard.txt
   path: data/DINGO/Ea_howard.txt
   url: /home/remko/data/DINGO/Ea_howard.txt
@@ -99,12 +210,12 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: blob/58de9aed1a2047cbfea36d7278a11ff356cda3de/data/DINGO/Ea_sturt.txt
-  _label: data/DINGO/Ea_sturt.txt
+  _id: file://blob/58de9aed1a2047cbfea36d7278a11ff356cda3de/data/DINGO/Ea_sturt.txt
+  _label: data/DINGO/Ea_sturt.txt@58de9aed1a2047cbfea36d7278a11ff356cda3de
   _project: null
-  added: '2019-03-21 09:02:34.436223'
+  added: '2019-03-21T09:02:34.436223+01:00'
+  based_on: null
   creator: []
-  dataset: null
   name: Ea_sturt.txt
   path: data/DINGO/Ea_sturt.txt
   url: /home/remko/data/DINGO/Ea_sturt.txt
@@ -112,12 +223,12 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: blob/a83299e6635d22266a16fa97aa9d6e39ef005b90/data/DINGO/GPPdaily_adelaide.txt
-  _label: data/DINGO/GPPdaily_adelaide.txt
+  _id: file://blob/a83299e6635d22266a16fa97aa9d6e39ef005b90/data/DINGO/GPPdaily_adelaide.txt
+  _label: data/DINGO/GPPdaily_adelaide.txt@a83299e6635d22266a16fa97aa9d6e39ef005b90
   _project: null
-  added: '2019-03-21 09:04:23.909740'
+  added: '2019-03-21T09:04:23.909740+01:00'
+  based_on: null
   creator: []
-  dataset: null
   name: GPPdaily_adelaide.txt
   path: data/DINGO/GPPdaily_adelaide.txt
   url: /home/remko/data/DINGO/GPPdaily_adelaide.txt
@@ -125,12 +236,12 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: blob/a83299e6635d22266a16fa97aa9d6e39ef005b90/data/DINGO/GPPdaily_daly.txt
-  _label: data/DINGO/GPPdaily_daly.txt
+  _id: file://blob/a83299e6635d22266a16fa97aa9d6e39ef005b90/data/DINGO/GPPdaily_daly.txt
+  _label: data/DINGO/GPPdaily_daly.txt@a83299e6635d22266a16fa97aa9d6e39ef005b90
   _project: null
-  added: '2019-03-21 09:04:23.948404'
+  added: '2019-03-21T09:04:23.948404+01:00'
+  based_on: null
   creator: []
-  dataset: null
   name: GPPdaily_daly.txt
   path: data/DINGO/GPPdaily_daly.txt
   url: /home/remko/data/DINGO/GPPdaily_daly.txt
@@ -138,12 +249,12 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: blob/a83299e6635d22266a16fa97aa9d6e39ef005b90/data/DINGO/GPPdaily_dry.txt
-  _label: data/DINGO/GPPdaily_dry.txt
+  _id: file://blob/a83299e6635d22266a16fa97aa9d6e39ef005b90/data/DINGO/GPPdaily_dry.txt
+  _label: data/DINGO/GPPdaily_dry.txt@a83299e6635d22266a16fa97aa9d6e39ef005b90
   _project: null
-  added: '2019-03-21 09:04:23.989225'
+  added: '2019-03-21T09:04:23.989225+01:00'
+  based_on: null
   creator: []
-  dataset: null
   name: GPPdaily_dry.txt
   path: data/DINGO/GPPdaily_dry.txt
   url: /home/remko/data/DINGO/GPPdaily_dry.txt
@@ -151,12 +262,12 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: blob/a83299e6635d22266a16fa97aa9d6e39ef005b90/data/DINGO/GPPdaily_howard.txt
-  _label: data/DINGO/GPPdaily_howard.txt
+  _id: file://blob/a83299e6635d22266a16fa97aa9d6e39ef005b90/data/DINGO/GPPdaily_howard.txt
+  _label: data/DINGO/GPPdaily_howard.txt@a83299e6635d22266a16fa97aa9d6e39ef005b90
   _project: null
-  added: '2019-03-21 09:04:24.034435'
+  added: '2019-03-21T09:04:24.034435+01:00'
+  based_on: null
   creator: []
-  dataset: null
   name: GPPdaily_howard.txt
   path: data/DINGO/GPPdaily_howard.txt
   url: /home/remko/data/DINGO/GPPdaily_howard.txt
@@ -164,12 +275,12 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: blob/a83299e6635d22266a16fa97aa9d6e39ef005b90/data/DINGO/GPPdaily_sturt.txt
-  _label: data/DINGO/GPPdaily_sturt.txt
+  _id: file://blob/a83299e6635d22266a16fa97aa9d6e39ef005b90/data/DINGO/GPPdaily_sturt.txt
+  _label: data/DINGO/GPPdaily_sturt.txt@a83299e6635d22266a16fa97aa9d6e39ef005b90
   _project: null
-  added: '2019-03-21 09:04:24.073910'
+  added: '2019-03-21T09:04:24.073910+01:00'
+  based_on: null
   creator: []
-  dataset: null
   name: GPPdaily_sturt.txt
   path: data/DINGO/GPPdaily_sturt.txt
   url: /home/remko/data/DINGO/GPPdaily_sturt.txt
@@ -177,20 +288,21 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: blob/5f2e6a924ad99333fe7ed0dee6abe31382689fa2/data/DINGO/Ea_litch.txt
+  _id: file://blob/5f2e6a924ad99333fe7ed0dee6abe31382689fa2/data/DINGO/Ea_litch.txt
   _label: data/DINGO/Ea_litch.txt@5f2e6a924ad99333fe7ed0dee6abe31382689fa2
   _project:
-    '@context':
-      _id: '@id'
-      foaf: http://xmlns.com/foaf/0.1/
-      prov: http://www.w3.org/ns/prov#
     '@type':
-    - foaf:Project
     - prov:Location
-    _id: https://renkulab.io/remko.nijzink/vomcases
-  added: '2019-08-09 12:37:47.970134'
+    - schema:Project
+    _id: https://localhost/projects/NULL/NULL
+    created: '2020-03-03T09:04:49.032636+00:00'
+    creator: null
+    name: null
+    updated: '2020-03-03T09:04:49.032638+00:00'
+    version: '2'
+  added: '2019-08-09T12:37:47.970134+01:00'
+  based_on: null
   creator: []
-  dataset: DINGO
   name: Ea_litch.txt
   path: data/DINGO/Ea_litch.txt
   url: /home/remko/data/DINGO/Ea_litch.txt
@@ -198,20 +310,21 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: blob/011643bb7cf2c8bde8eecc0a1d9bb43733fef556/data/DINGO/GPPdaily_litch.txt
+  _id: file://blob/011643bb7cf2c8bde8eecc0a1d9bb43733fef556/data/DINGO/GPPdaily_litch.txt
   _label: data/DINGO/GPPdaily_litch.txt@011643bb7cf2c8bde8eecc0a1d9bb43733fef556
   _project:
-    '@context':
-      _id: '@id'
-      foaf: http://xmlns.com/foaf/0.1/
-      prov: http://www.w3.org/ns/prov#
     '@type':
-    - foaf:Project
     - prov:Location
-    _id: https://renkulab.io/remko.nijzink/vomcases
-  added: '2019-08-09 12:37:55.091238'
+    - schema:Project
+    _id: https://localhost/projects/NULL/NULL
+    created: '2020-03-03T09:04:49.033289+00:00'
+    creator: null
+    name: null
+    updated: '2020-03-03T09:04:49.033291+00:00'
+    version: '2'
+  added: '2019-08-09T12:37:55.091238+01:00'
+  based_on: null
   creator: []
-  dataset: DINGO
   name: GPPdaily_litch.txt
   path: data/DINGO/GPPdaily_litch.txt
   url: /home/remko/data/DINGO/GPPdaily_litch.txt
@@ -221,5 +334,8 @@ keywords: []
 license: null
 name: DINGO
 path: .renku/datasets/3ada2727-8ef6-4c3e-8873-d33109970636
+same_as: null
+short_name: DINGO
+tags: []
 url: null
 version: null

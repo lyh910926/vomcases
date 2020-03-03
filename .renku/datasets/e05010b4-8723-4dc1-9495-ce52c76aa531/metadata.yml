@@ -13,10 +13,12 @@
           affiliation: schema:affiliation
           alternate_name: schema:alternateName
           email: schema:email
+          label: rdfs:label
           name: schema:name
+          prov: http://www.w3.org/ns/prov#
+          rdfs: http://www.w3.org/2000/01/rdf-schema#
           schema: http://schema.org/
         '@id': schema:creator
-        '@type': schema:Person
       name: schema:name
       prov: http://www.w3.org/ns/prov#
       schema: http://schema.org/
@@ -32,7 +34,10 @@
       affiliation: schema:affiliation
       alternate_name: schema:alternateName
       email: schema:email
+      label: rdfs:label
       name: schema:name
+      prov: http://www.w3.org/ns/prov#
+      rdfs: http://www.w3.org/2000/01/rdf-schema#
       schema: http://schema.org/
     '@id': schema:creator
   date_published: schema:datePublished
@@ -53,10 +58,12 @@
               affiliation: schema:affiliation
               alternate_name: schema:alternateName
               email: schema:email
+              label: rdfs:label
               name: schema:name
+              prov: http://www.w3.org/ns/prov#
+              rdfs: http://www.w3.org/2000/01/rdf-schema#
               schema: http://schema.org/
             '@id': schema:creator
-            '@type': schema:Person
           name: schema:name
           prov: http://www.w3.org/ns/prov#
           schema: http://schema.org/
@@ -72,10 +79,12 @@
           affiliation: schema:affiliation
           alternate_name: schema:alternateName
           email: schema:email
+          label: rdfs:label
           name: schema:name
+          prov: http://www.w3.org/ns/prov#
+          rdfs: http://www.w3.org/2000/01/rdf-schema#
           schema: http://schema.org/
         '@id': schema:creator
-      dataset: schema:isPartOf
       name: schema:name
       path: prov:atLocation
       prov: http://www.w3.org/ns/prov#
@@ -98,6 +107,7 @@
   prov: http://www.w3.org/ns/prov#
   same_as: schema:sameAs
   schema: http://schema.org/
+  short_name: schema:alternateName
   tags:
     '@context':
       '@version': 1.1
@@ -125,11 +135,14 @@ _project:
   _id: https://renkulab.io/projects/remko.nijzink/vomcases
   created: '2019-03-08T08:28:48.938000+00:00'
   creator:
-    '@type': schema:Person
+    '@type':
+    - prov:Person
+    - schema:Person
     _id: mailto:remko.nijzink@list.lu
     affiliation: null
     alternate_name: null
     email: remko.nijzink@list.lu
+    label: Remko Nijzink
     name: Remko Nijzink
   name: VOMcases
   updated: '2019-03-08T08:28:48.938000+00:00'
@@ -137,17 +150,23 @@ _project:
 based_on: null
 created: '2019-10-28T16:09:24.725742+00:00'
 creator:
-- '@type': schema:Person
+- '@type':
+  - prov:Person
+  - schema:Person
   _id: mailto:remko.nijzink@list.lu
   affiliation: null
   alternate_name: null
   email: remko.nijzink@list.lu
+  label: Remko Nijzink
   name: Remko Nijzink
-- '@type': schema:Person
+- '@type':
+  - prov:Person
+  - schema:Person
   _id: mailto:remko.nijzink@list.lu
   affiliation: null
   alternate_name: null
   email: remko.nijzink@list.lu
+  label: Remko Nijzink
   name: Remko Nijzink
 date_published: null
 description: ''
@@ -156,20 +175,23 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: blob/418b4ecff927b9fbca47dc456e1ad27a41f8eebe/data/img/graphs_whitley/
-  _label: data/img/graphs_whitley/@418b4ecff927b9fbca47dc456e1ad27a41f8eebe
+  _id: file://blob/b1c847905f5f6f53797e51222592fe4464a89c03/data/img/graphs_whitley/
+  _label: data/img/graphs_whitley/@b1c847905f5f6f53797e51222592fe4464a89c03
   _project:
     '@type':
     - prov:Location
     - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
+    _id: https://localhost/projects/remko.nijzink/VOMcases
+    created: '2020-03-03T09:04:51.354832+00:00'
     creator:
-      '@type': schema:Person
+      '@type':
+      - prov:Person
+      - schema:Person
       _id: mailto:remko.nijzink@list.lu
       affiliation: null
       alternate_name: null
       email: remko.nijzink@list.lu
+      label: Remko Nijzink
       name: Remko Nijzink
     name: VOMcases
     updated: '2019-03-08T08:28:48.938000+00:00'
@@ -177,1042 +199,40 @@ files:
   added: '2019-10-28T16:27:25.279095+00:00'
   based_on: null
   creator: []
-  dataset: null
   name: graphs_whitley
   path: data/img/graphs_whitley/
   url: null
 - '@type':
-  - prov:Collection
   - prov:Entity
+  - schema:DigitalDocument
   - wfprov:Artifact
-  _id: blob/343308b50c295a7d0afe0c6ed0c214b652eac4e5/data/img/
-  _label: data/img/@343308b50c295a7d0afe0c6ed0c214b652eac4e5
+  _id: file://blob/6312e5bebe535bf6a77a841924422b051dfb5614/data/img/
+  _label: data/img/@6312e5bebe535bf6a77a841924422b051dfb5614
   _project:
     '@type':
     - prov:Location
     - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
+    _id: https://localhost/projects/remko.nijzink/VOMcases
+    created: '2020-03-03T09:04:51.356171+00:00'
     creator:
-      '@type': schema:Person
+      '@type':
+      - prov:Person
+      - schema:Person
       _id: mailto:remko.nijzink@list.lu
       affiliation: null
       alternate_name: null
       email: remko.nijzink@list.lu
+      label: Remko Nijzink
       name: Remko Nijzink
     name: VOMcases
     updated: '2019-03-08T08:28:48.938000+00:00'
     version: '1'
-  members:
-  - '@type':
-    - prov:Entity
-    - schema:DigitalDocument
-    - wfprov:Artifact
-    _id: blob/343308b50c295a7d0afe0c6ed0c214b652eac4e5/data/img/4a_gw_depths.png
-    _label: data/img/4a_gw_depths.png@343308b50c295a7d0afe0c6ed0c214b652eac4e5
-    _project:
-      '@type':
-      - prov:Location
-      - schema:Project
-      _id: https://renkulab.io/projects/remko.nijzink/vomcases
-      created: '2019-03-08T08:28:48.938000+00:00'
-      creator:
-        '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      name: VOMcases
-      updated: '2019-03-08T08:28:48.938000+00:00'
-      version: '1'
-    added: '2019-10-28T16:27:26.013240+00:00'
-    based_on: null
-    creator:
-    - '@type': schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      name: Remko Nijzink
-    - '@type': schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      name: Remko Nijzink
-    dataset: img
-    name: 4a_gw_depths.png
-    path: data/img/4a_gw_depths.png
-    url: data/img/
-  - '@type':
-    - prov:Entity
-    - schema:DigitalDocument
-    - wfprov:Artifact
-    _id: blob/343308b50c295a7d0afe0c6ed0c214b652eac4e5/data/img/6_cpcff.png
-    _label: data/img/6_cpcff.png@343308b50c295a7d0afe0c6ed0c214b652eac4e5
-    _project:
-      '@type':
-      - prov:Location
-      - schema:Project
-      _id: https://renkulab.io/projects/remko.nijzink/vomcases
-      created: '2019-03-08T08:28:48.938000+00:00'
-      creator:
-        '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      name: VOMcases
-      updated: '2019-03-08T08:28:48.938000+00:00'
-      version: '1'
-    added: '2019-10-28T16:27:26.051526+00:00'
-    based_on: null
-    creator:
-    - '@type': schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      name: Remko Nijzink
-    - '@type': schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      name: Remko Nijzink
-    dataset: img
-    name: 6_cpcff.png
-    path: data/img/6_cpcff.png
-    url: data/img/
-  - '@type':
-    - prov:Collection
-    - prov:Entity
-    - wfprov:Artifact
-    _id: blob/418b4ecff927b9fbca47dc456e1ad27a41f8eebe/data/img/graphs_whitley
-    _label: data/img/graphs_whitley@418b4ecff927b9fbca47dc456e1ad27a41f8eebe
-    _project:
-      '@type':
-      - prov:Location
-      - schema:Project
-      _id: https://renkulab.io/projects/remko.nijzink/vomcases
-      created: '2019-03-08T08:28:48.938000+00:00'
-      creator:
-        '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      name: VOMcases
-      updated: '2019-03-08T08:28:48.938000+00:00'
-      version: '1'
-    members:
-    - '@type':
-      - prov:Entity
-      - schema:DigitalDocument
-      - wfprov:Artifact
-      _id: blob/418b4ecff927b9fbca47dc456e1ad27a41f8eebe/data/img/graphs_whitley/HowardSprings_LE.png
-      _label: data/img/graphs_whitley/HowardSprings_LE.png@418b4ecff927b9fbca47dc456e1ad27a41f8eebe
-      _project:
-        '@type':
-        - prov:Location
-        - schema:Project
-        _id: https://renkulab.io/projects/remko.nijzink/vomcases
-        created: '2019-03-08T08:28:48.938000+00:00'
-        creator:
-          '@type': schema:Person
-          _id: mailto:remko.nijzink@list.lu
-          affiliation: null
-          alternate_name: null
-          email: remko.nijzink@list.lu
-          name: Remko Nijzink
-        name: VOMcases
-        updated: '2019-03-08T08:28:48.938000+00:00'
-        version: '1'
-      added: '2019-10-28T16:27:26.127898+00:00'
-      based_on: null
-      creator:
-      - '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      - '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      dataset: img
-      name: HowardSprings_LE.png
-      path: data/img/graphs_whitley/HowardSprings_LE.png
-      url: data/img/
-    - '@type':
-      - prov:Entity
-      - schema:DigitalDocument
-      - wfprov:Artifact
-      _id: blob/418b4ecff927b9fbca47dc456e1ad27a41f8eebe/data/img/graphs_whitley/HowardSprings_GPP.png
-      _label: data/img/graphs_whitley/HowardSprings_GPP.png@418b4ecff927b9fbca47dc456e1ad27a41f8eebe
-      _project:
-        '@type':
-        - prov:Location
-        - schema:Project
-        _id: https://renkulab.io/projects/remko.nijzink/vomcases
-        created: '2019-03-08T08:28:48.938000+00:00'
-        creator:
-          '@type': schema:Person
-          _id: mailto:remko.nijzink@list.lu
-          affiliation: null
-          alternate_name: null
-          email: remko.nijzink@list.lu
-          name: Remko Nijzink
-        name: VOMcases
-        updated: '2019-03-08T08:28:48.938000+00:00'
-        version: '1'
-      added: '2019-10-28T16:27:26.166174+00:00'
-      based_on: null
-      creator:
-      - '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      - '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      dataset: img
-      name: HowardSprings_GPP.png
-      path: data/img/graphs_whitley/HowardSprings_GPP.png
-      url: data/img/
-    - '@type':
-      - prov:Entity
-      - schema:DigitalDocument
-      - wfprov:Artifact
-      _id: blob/418b4ecff927b9fbca47dc456e1ad27a41f8eebe/data/img/graphs_whitley/DalyUncleared_LE.png
-      _label: data/img/graphs_whitley/DalyUncleared_LE.png@418b4ecff927b9fbca47dc456e1ad27a41f8eebe
-      _project:
-        '@type':
-        - prov:Location
-        - schema:Project
-        _id: https://renkulab.io/projects/remko.nijzink/vomcases
-        created: '2019-03-08T08:28:48.938000+00:00'
-        creator:
-          '@type': schema:Person
-          _id: mailto:remko.nijzink@list.lu
-          affiliation: null
-          alternate_name: null
-          email: remko.nijzink@list.lu
-          name: Remko Nijzink
-        name: VOMcases
-        updated: '2019-03-08T08:28:48.938000+00:00'
-        version: '1'
-      added: '2019-10-28T16:27:26.206651+00:00'
-      based_on: null
-      creator:
-      - '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      - '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      dataset: img
-      name: DalyUncleared_LE.png
-      path: data/img/graphs_whitley/DalyUncleared_LE.png
-      url: data/img/
-    - '@type':
-      - prov:Entity
-      - schema:DigitalDocument
-      - wfprov:Artifact
-      _id: blob/418b4ecff927b9fbca47dc456e1ad27a41f8eebe/data/img/graphs_whitley/DalyUncleared_GPP.png
-      _label: data/img/graphs_whitley/DalyUncleared_GPP.png@418b4ecff927b9fbca47dc456e1ad27a41f8eebe
-      _project:
-        '@type':
-        - prov:Location
-        - schema:Project
-        _id: https://renkulab.io/projects/remko.nijzink/vomcases
-        created: '2019-03-08T08:28:48.938000+00:00'
-        creator:
-          '@type': schema:Person
-          _id: mailto:remko.nijzink@list.lu
-          affiliation: null
-          alternate_name: null
-          email: remko.nijzink@list.lu
-          name: Remko Nijzink
-        name: VOMcases
-        updated: '2019-03-08T08:28:48.938000+00:00'
-        version: '1'
-      added: '2019-10-28T16:27:26.244704+00:00'
-      based_on: null
-      creator:
-      - '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      - '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      dataset: img
-      name: DalyUncleared_GPP.png
-      path: data/img/graphs_whitley/DalyUncleared_GPP.png
-      url: data/img/
-    - '@type':
-      - prov:Entity
-      - schema:DigitalDocument
-      - wfprov:Artifact
-      _id: blob/418b4ecff927b9fbca47dc456e1ad27a41f8eebe/data/img/graphs_whitley/DryRiver_LE.png
-      _label: data/img/graphs_whitley/DryRiver_LE.png@418b4ecff927b9fbca47dc456e1ad27a41f8eebe
-      _project:
-        '@type':
-        - prov:Location
-        - schema:Project
-        _id: https://renkulab.io/projects/remko.nijzink/vomcases
-        created: '2019-03-08T08:28:48.938000+00:00'
-        creator:
-          '@type': schema:Person
-          _id: mailto:remko.nijzink@list.lu
-          affiliation: null
-          alternate_name: null
-          email: remko.nijzink@list.lu
-          name: Remko Nijzink
-        name: VOMcases
-        updated: '2019-03-08T08:28:48.938000+00:00'
-        version: '1'
-      added: '2019-10-28T16:27:26.282957+00:00'
-      based_on: null
-      creator:
-      - '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      - '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      dataset: img
-      name: DryRiver_LE.png
-      path: data/img/graphs_whitley/DryRiver_LE.png
-      url: data/img/
-    - '@type':
-      - prov:Entity
-      - schema:DigitalDocument
-      - wfprov:Artifact
-      _id: blob/418b4ecff927b9fbca47dc456e1ad27a41f8eebe/data/img/graphs_whitley/SturtPlains_LE.png
-      _label: data/img/graphs_whitley/SturtPlains_LE.png@418b4ecff927b9fbca47dc456e1ad27a41f8eebe
-      _project:
-        '@type':
-        - prov:Location
-        - schema:Project
-        _id: https://renkulab.io/projects/remko.nijzink/vomcases
-        created: '2019-03-08T08:28:48.938000+00:00'
-        creator:
-          '@type': schema:Person
-          _id: mailto:remko.nijzink@list.lu
-          affiliation: null
-          alternate_name: null
-          email: remko.nijzink@list.lu
-          name: Remko Nijzink
-        name: VOMcases
-        updated: '2019-03-08T08:28:48.938000+00:00'
-        version: '1'
-      added: '2019-10-28T16:27:26.320986+00:00'
-      based_on: null
-      creator:
-      - '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      - '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      dataset: img
-      name: SturtPlains_LE.png
-      path: data/img/graphs_whitley/SturtPlains_LE.png
-      url: data/img/
-    - '@type':
-      - prov:Entity
-      - schema:DigitalDocument
-      - wfprov:Artifact
-      _id: blob/418b4ecff927b9fbca47dc456e1ad27a41f8eebe/data/img/graphs_whitley/DryRiver_GPP.png
-      _label: data/img/graphs_whitley/DryRiver_GPP.png@418b4ecff927b9fbca47dc456e1ad27a41f8eebe
-      _project:
-        '@type':
-        - prov:Location
-        - schema:Project
-        _id: https://renkulab.io/projects/remko.nijzink/vomcases
-        created: '2019-03-08T08:28:48.938000+00:00'
-        creator:
-          '@type': schema:Person
-          _id: mailto:remko.nijzink@list.lu
-          affiliation: null
-          alternate_name: null
-          email: remko.nijzink@list.lu
-          name: Remko Nijzink
-        name: VOMcases
-        updated: '2019-03-08T08:28:48.938000+00:00'
-        version: '1'
-      added: '2019-10-28T16:27:26.359231+00:00'
-      based_on: null
-      creator:
-      - '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      - '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      dataset: img
-      name: DryRiver_GPP.png
-      path: data/img/graphs_whitley/DryRiver_GPP.png
-      url: data/img/
-    - '@type':
-      - prov:Entity
-      - schema:DigitalDocument
-      - wfprov:Artifact
-      _id: blob/418b4ecff927b9fbca47dc456e1ad27a41f8eebe/data/img/graphs_whitley/AdelaideRiver_LE.png
-      _label: data/img/graphs_whitley/AdelaideRiver_LE.png@418b4ecff927b9fbca47dc456e1ad27a41f8eebe
-      _project:
-        '@type':
-        - prov:Location
-        - schema:Project
-        _id: https://renkulab.io/projects/remko.nijzink/vomcases
-        created: '2019-03-08T08:28:48.938000+00:00'
-        creator:
-          '@type': schema:Person
-          _id: mailto:remko.nijzink@list.lu
-          affiliation: null
-          alternate_name: null
-          email: remko.nijzink@list.lu
-          name: Remko Nijzink
-        name: VOMcases
-        updated: '2019-03-08T08:28:48.938000+00:00'
-        version: '1'
-      added: '2019-10-28T16:27:26.398170+00:00'
-      based_on: null
-      creator:
-      - '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      - '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      dataset: img
-      name: AdelaideRiver_LE.png
-      path: data/img/graphs_whitley/AdelaideRiver_LE.png
-      url: data/img/
-    - '@type':
-      - prov:Entity
-      - schema:DigitalDocument
-      - wfprov:Artifact
-      _id: blob/418b4ecff927b9fbca47dc456e1ad27a41f8eebe/data/img/graphs_whitley/SturtPlains_GPP.png
-      _label: data/img/graphs_whitley/SturtPlains_GPP.png@418b4ecff927b9fbca47dc456e1ad27a41f8eebe
-      _project:
-        '@type':
-        - prov:Location
-        - schema:Project
-        _id: https://renkulab.io/projects/remko.nijzink/vomcases
-        created: '2019-03-08T08:28:48.938000+00:00'
-        creator:
-          '@type': schema:Person
-          _id: mailto:remko.nijzink@list.lu
-          affiliation: null
-          alternate_name: null
-          email: remko.nijzink@list.lu
-          name: Remko Nijzink
-        name: VOMcases
-        updated: '2019-03-08T08:28:48.938000+00:00'
-        version: '1'
-      added: '2019-10-28T16:27:26.436093+00:00'
-      based_on: null
-      creator:
-      - '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      - '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      dataset: img
-      name: SturtPlains_GPP.png
-      path: data/img/graphs_whitley/SturtPlains_GPP.png
-      url: data/img/
-    - '@type':
-      - prov:Entity
-      - schema:DigitalDocument
-      - wfprov:Artifact
-      _id: blob/418b4ecff927b9fbca47dc456e1ad27a41f8eebe/data/img/graphs_whitley/AdelaideRiver_GPP.png
-      _label: data/img/graphs_whitley/AdelaideRiver_GPP.png@418b4ecff927b9fbca47dc456e1ad27a41f8eebe
-      _project:
-        '@type':
-        - prov:Location
-        - schema:Project
-        _id: https://renkulab.io/projects/remko.nijzink/vomcases
-        created: '2019-03-08T08:28:48.938000+00:00'
-        creator:
-          '@type': schema:Person
-          _id: mailto:remko.nijzink@list.lu
-          affiliation: null
-          alternate_name: null
-          email: remko.nijzink@list.lu
-          name: Remko Nijzink
-        name: VOMcases
-        updated: '2019-03-08T08:28:48.938000+00:00'
-        version: '1'
-      added: '2019-10-28T16:27:26.474130+00:00'
-      based_on: null
-      creator:
-      - '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      - '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      dataset: img
-      name: AdelaideRiver_GPP.png
-      path: data/img/graphs_whitley/AdelaideRiver_GPP.png
-      url: data/img/
-    - '@type':
-      - prov:Entity
-      - schema:DigitalDocument
-      - wfprov:Artifact
-      _id: blob/418b4ecff927b9fbca47dc456e1ad27a41f8eebe/data/img/graphs_whitley/empty_GPP.png
-      _label: data/img/graphs_whitley/empty_GPP.png@418b4ecff927b9fbca47dc456e1ad27a41f8eebe
-      _project:
-        '@type':
-        - prov:Location
-        - schema:Project
-        _id: https://renkulab.io/projects/remko.nijzink/vomcases
-        created: '2019-03-08T08:28:48.938000+00:00'
-        creator:
-          '@type': schema:Person
-          _id: mailto:remko.nijzink@list.lu
-          affiliation: null
-          alternate_name: null
-          email: remko.nijzink@list.lu
-          name: Remko Nijzink
-        name: VOMcases
-        updated: '2019-03-08T08:28:48.938000+00:00'
-        version: '1'
-      added: '2019-10-28T16:27:26.512026+00:00'
-      based_on: null
-      creator:
-      - '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      - '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      dataset: img
-      name: empty_GPP.png
-      path: data/img/graphs_whitley/empty_GPP.png
-      url: data/img/
-    - '@type':
-      - prov:Entity
-      - schema:DigitalDocument
-      - wfprov:Artifact
-      _id: blob/418b4ecff927b9fbca47dc456e1ad27a41f8eebe/data/img/graphs_whitley/empty_LE.png
-      _label: data/img/graphs_whitley/empty_LE.png@418b4ecff927b9fbca47dc456e1ad27a41f8eebe
-      _project:
-        '@type':
-        - prov:Location
-        - schema:Project
-        _id: https://renkulab.io/projects/remko.nijzink/vomcases
-        created: '2019-03-08T08:28:48.938000+00:00'
-        creator:
-          '@type': schema:Person
-          _id: mailto:remko.nijzink@list.lu
-          affiliation: null
-          alternate_name: null
-          email: remko.nijzink@list.lu
-          name: Remko Nijzink
-        name: VOMcases
-        updated: '2019-03-08T08:28:48.938000+00:00'
-        version: '1'
-      added: '2019-10-28T16:27:26.549833+00:00'
-      based_on: null
-      creator:
-      - '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      - '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      dataset: img
-      name: empty_LE.png
-      path: data/img/graphs_whitley/empty_LE.png
-      url: data/img/
-    path: data/img/graphs_whitley
-  - '@type':
-    - prov:Entity
-    - schema:DigitalDocument
-    - wfprov:Artifact
-    _id: blob/343308b50c295a7d0afe0c6ed0c214b652eac4e5/data/img/10_rootdepths.png
-    _label: data/img/10_rootdepths.png@343308b50c295a7d0afe0c6ed0c214b652eac4e5
-    _project:
-      '@type':
-      - prov:Location
-      - schema:Project
-      _id: https://renkulab.io/projects/remko.nijzink/vomcases
-      created: '2019-03-08T08:28:48.938000+00:00'
-      creator:
-        '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      name: VOMcases
-      updated: '2019-03-08T08:28:48.938000+00:00'
-      version: '1'
-    added: '2019-10-28T16:27:26.587820+00:00'
-    based_on: null
-    creator:
-    - '@type': schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      name: Remko Nijzink
-    - '@type': schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      name: Remko Nijzink
-    dataset: img
-    name: 10_rootdepths.png
-    path: data/img/10_rootdepths.png
-    url: data/img/
-  - '@type':
-    - prov:Entity
-    - schema:DigitalDocument
-    - wfprov:Artifact
-    _id: blob/343308b50c295a7d0afe0c6ed0c214b652eac4e5/data/img/7_cpcff_climate.png
-    _label: data/img/7_cpcff_climate.png@343308b50c295a7d0afe0c6ed0c214b652eac4e5
-    _project:
-      '@type':
-      - prov:Location
-      - schema:Project
-      _id: https://renkulab.io/projects/remko.nijzink/vomcases
-      created: '2019-03-08T08:28:48.938000+00:00'
-      creator:
-        '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      name: VOMcases
-      updated: '2019-03-08T08:28:48.938000+00:00'
-      version: '1'
-    added: '2019-10-28T16:27:26.627574+00:00'
-    based_on: null
-    creator:
-    - '@type': schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      name: Remko Nijzink
-    - '@type': schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      name: Remko Nijzink
-    dataset: img
-    name: 7_cpcff_climate.png
-    path: data/img/7_cpcff_climate.png
-    url: data/img/
-  - '@type':
-    - prov:Entity
-    - schema:DigitalDocument
-    - wfprov:Artifact
-    _id: blob/343308b50c295a7d0afe0c6ed0c214b652eac4e5/data/img/5b_hs_fluxes.png
-    _label: data/img/5b_hs_fluxes.png@343308b50c295a7d0afe0c6ed0c214b652eac4e5
-    _project:
-      '@type':
-      - prov:Location
-      - schema:Project
-      _id: https://renkulab.io/projects/remko.nijzink/vomcases
-      created: '2019-03-08T08:28:48.938000+00:00'
-      creator:
-        '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      name: VOMcases
-      updated: '2019-03-08T08:28:48.938000+00:00'
-      version: '1'
-    added: '2019-10-28T16:27:26.666201+00:00'
-    based_on: null
-    creator:
-    - '@type': schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      name: Remko Nijzink
-    - '@type': schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      name: Remko Nijzink
-    dataset: img
-    name: 5b_hs_fluxes.png
-    path: data/img/5b_hs_fluxes.png
-    url: data/img/
-  - '@type':
-    - prov:Entity
-    - schema:DigitalDocument
-    - wfprov:Artifact
-    _id: blob/343308b50c295a7d0afe0c6ed0c214b652eac4e5/data/img/4b_gw_depths.png
-    _label: data/img/4b_gw_depths.png@343308b50c295a7d0afe0c6ed0c214b652eac4e5
-    _project:
-      '@type':
-      - prov:Location
-      - schema:Project
-      _id: https://renkulab.io/projects/remko.nijzink/vomcases
-      created: '2019-03-08T08:28:48.938000+00:00'
-      creator:
-        '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      name: VOMcases
-      updated: '2019-03-08T08:28:48.938000+00:00'
-      version: '1'
-    added: '2019-10-28T16:27:26.704537+00:00'
-    based_on: null
-    creator:
-    - '@type': schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      name: Remko Nijzink
-    - '@type': schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      name: Remko Nijzink
-    dataset: img
-    name: 4b_gw_depths.png
-    path: data/img/4b_gw_depths.png
-    url: data/img/
-  - '@type':
-    - prov:Entity
-    - schema:DigitalDocument
-    - wfprov:Artifact
-    _id: blob/343308b50c295a7d0afe0c6ed0c214b652eac4e5/data/img/9_flux_partitioning.png
-    _label: data/img/9_flux_partitioning.png@343308b50c295a7d0afe0c6ed0c214b652eac4e5
-    _project:
-      '@type':
-      - prov:Location
-      - schema:Project
-      _id: https://renkulab.io/projects/remko.nijzink/vomcases
-      created: '2019-03-08T08:28:48.938000+00:00'
-      creator:
-        '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      name: VOMcases
-      updated: '2019-03-08T08:28:48.938000+00:00'
-      version: '1'
-    added: '2019-10-28T16:27:26.743180+00:00'
-    based_on: null
-    creator:
-    - '@type': schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      name: Remko Nijzink
-    - '@type': schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      name: Remko Nijzink
-    dataset: img
-    name: 9_flux_partitioning.png
-    path: data/img/9_flux_partitioning.png
-    url: data/img/
-  - '@type':
-    - prov:Entity
-    - schema:DigitalDocument
-    - wfprov:Artifact
-    _id: blob/343308b50c295a7d0afe0c6ed0c214b652eac4e5/data/img/5a_hs_fluxes.png
-    _label: data/img/5a_hs_fluxes.png@343308b50c295a7d0afe0c6ed0c214b652eac4e5
-    _project:
-      '@type':
-      - prov:Location
-      - schema:Project
-      _id: https://renkulab.io/projects/remko.nijzink/vomcases
-      created: '2019-03-08T08:28:48.938000+00:00'
-      creator:
-        '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      name: VOMcases
-      updated: '2019-03-08T08:28:48.938000+00:00'
-      version: '1'
-    added: '2019-10-28T16:27:26.781732+00:00'
-    based_on: null
-    creator:
-    - '@type': schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      name: Remko Nijzink
-    - '@type': schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      name: Remko Nijzink
-    dataset: img
-    name: 5a_hs_fluxes.png
-    path: data/img/5a_hs_fluxes.png
-    url: data/img/
-  - '@type':
-    - prov:Entity
-    - schema:DigitalDocument
-    - wfprov:Artifact
-    _id: blob/343308b50c295a7d0afe0c6ed0c214b652eac4e5/data/img/8a_pc_daly.png
-    _label: data/img/8a_pc_daly.png@343308b50c295a7d0afe0c6ed0c214b652eac4e5
-    _project:
-      '@type':
-      - prov:Location
-      - schema:Project
-      _id: https://renkulab.io/projects/remko.nijzink/vomcases
-      created: '2019-03-08T08:28:48.938000+00:00'
-      creator:
-        '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      name: VOMcases
-      updated: '2019-03-08T08:28:48.938000+00:00'
-      version: '1'
-    added: '2019-10-28T16:27:26.820476+00:00'
-    based_on: null
-    creator:
-    - '@type': schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      name: Remko Nijzink
-    - '@type': schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      name: Remko Nijzink
-    dataset: img
-    name: 8a_pc_daly.png
-    path: data/img/8a_pc_daly.png
-    url: data/img/
-  - '@type':
-    - prov:Entity
-    - schema:DigitalDocument
-    - wfprov:Artifact
-    _id: blob/343308b50c295a7d0afe0c6ed0c214b652eac4e5/data/img/3_model_comparison.png
-    _label: data/img/3_model_comparison.png@343308b50c295a7d0afe0c6ed0c214b652eac4e5
-    _project:
-      '@type':
-      - prov:Location
-      - schema:Project
-      _id: https://renkulab.io/projects/remko.nijzink/vomcases
-      created: '2019-03-08T08:28:48.938000+00:00'
-      creator:
-        '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      name: VOMcases
-      updated: '2019-03-08T08:28:48.938000+00:00'
-      version: '1'
-    added: '2019-10-28T16:27:26.859386+00:00'
-    based_on: null
-    creator:
-    - '@type': schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      name: Remko Nijzink
-    - '@type': schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      name: Remko Nijzink
-    dataset: img
-    name: 3_model_comparison.png
-    path: data/img/3_model_comparison.png
-    url: data/img/
-  - '@type':
-    - prov:Entity
-    - schema:DigitalDocument
-    - wfprov:Artifact
-    _id: blob/343308b50c295a7d0afe0c6ed0c214b652eac4e5/data/img/5c_hs_fluxes.png
-    _label: data/img/5c_hs_fluxes.png@343308b50c295a7d0afe0c6ed0c214b652eac4e5
-    _project:
-      '@type':
-      - prov:Location
-      - schema:Project
-      _id: https://renkulab.io/projects/remko.nijzink/vomcases
-      created: '2019-03-08T08:28:48.938000+00:00'
-      creator:
-        '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      name: VOMcases
-      updated: '2019-03-08T08:28:48.938000+00:00'
-      version: '1'
-    added: '2019-10-28T16:27:26.897759+00:00'
-    based_on: null
-    creator:
-    - '@type': schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      name: Remko Nijzink
-    - '@type': schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      name: Remko Nijzink
-    dataset: img
-    name: 5c_hs_fluxes.png
-    path: data/img/5c_hs_fluxes.png
-    url: data/img/
-  - '@type':
-    - prov:Entity
-    - schema:DigitalDocument
-    - wfprov:Artifact
-    _id: blob/343308b50c295a7d0afe0c6ed0c214b652eac4e5/data/img/8b_pc_daly.png
-    _label: data/img/8b_pc_daly.png@343308b50c295a7d0afe0c6ed0c214b652eac4e5
-    _project:
-      '@type':
-      - prov:Location
-      - schema:Project
-      _id: https://renkulab.io/projects/remko.nijzink/vomcases
-      created: '2019-03-08T08:28:48.938000+00:00'
-      creator:
-        '@type': schema:Person
-        _id: mailto:remko.nijzink@list.lu
-        affiliation: null
-        alternate_name: null
-        email: remko.nijzink@list.lu
-        name: Remko Nijzink
-      name: VOMcases
-      updated: '2019-03-08T08:28:48.938000+00:00'
-      version: '1'
-    added: '2019-10-28T16:27:26.935746+00:00'
-    based_on: null
-    creator:
-    - '@type': schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      name: Remko Nijzink
-    - '@type': schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      name: Remko Nijzink
-    dataset: img
-    name: 8b_pc_daly.png
-    path: data/img/8b_pc_daly.png
-    url: data/img/
+  added: '2020-03-03T09:04:51.356366+00:00'
+  based_on: null
+  creator: []
+  name: img
   path: data/img/
+  url: null
 identifier: e05010b4-8723-4dc1-9495-ce52c76aa531
 in_language: null
 keywords: []
@@ -1220,6 +240,7 @@ license: null
 name: img
 path: .renku/datasets/e05010b4-8723-4dc1-9495-ce52c76aa531
 same_as: null
+short_name: img
 tags: []
 url: null
 version: null
