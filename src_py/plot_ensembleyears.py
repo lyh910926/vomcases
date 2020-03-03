@@ -51,6 +51,7 @@ def main():
     parser.add_argument("--i2015", help="results_daily AoB2015 ")
     parser.add_argument("--sharex", help="share x-axis ", type=bool, default = True)
     parser.add_argument("--figsize", help="figure size", nargs='+', type=float, default = [15,23] )
+    parser.add_argument("--startyear", help="startyears for BESS modelruns", nargs='+')
 
     args = parser.parse_args()
 
@@ -78,7 +79,7 @@ def main():
 
     for i in range(0, len(whitley_sites)):
         #read in data from BESS
-        data_tmp, time_tmp = read_bess(args.bess[i])
+        data_tmp, time_tmp = read_bess(args.bess[i], args.startyear[i])
         bess[whitley_sites[i]] = data_tmp
         bess_dates[whitley_sites[i]] = time_tmp
 
@@ -330,10 +331,10 @@ def ensemble_year(vals, time):
     return ens7d
 
 
-def read_bess(infile):
+def read_bess(infile, startyear):
 
     data = np.loadtxt(infile, delimiter=",") 
-    time = pd.date_range("01-01-2000", periods = len(data[:,0]), freq='D')
+    time = pd.date_range("01-01-" + startyear, periods = len(data[:,0]), freq='D')
 
     return data, time
 

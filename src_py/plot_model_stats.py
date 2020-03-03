@@ -38,6 +38,10 @@ def main():
 
     parser.add_argument("-o", "--outfile", help="outputfile with plot")
     parser.add_argument("--vom", help="VOM results", nargs='+')
+    parser.add_argument("--vom_pc", help="VOM results", nargs='+')
+    parser.add_argument("--vom_pc2", help="VOM results", nargs='+')
+    parser.add_argument("--vom_zr", help="VOM results", nargs='+')
+
     parser.add_argument("--vom_evap_stats", help="vom statistics evaporation", nargs='+')
     parser.add_argument("--vom_gpp_stats", help="vom statistics evaporation", nargs='+')
 
@@ -70,6 +74,8 @@ def main():
     parser.add_argument("--maespa_gpp_stats", help="maespa statistics assimilation", nargs='+')
     parser.add_argument("--spa_gpp_stats", help="spa statistics assimilation", nargs='+')
     parser.add_argument("--cable_gpp_stats", help="cable statistics assimilation", nargs='+')
+
+    parser.add_argument("--startyear", help="startyears for BESS modelruns", nargs='+')
 
     parser.add_argument("--sites", help="study sites, should correspond to the number and order of inputfiles", nargs='+')
     parser.add_argument("--whitley_sites", help="mask the study sites that are also used in Whitley et al.",nargs='+', type=int )
@@ -122,7 +128,7 @@ def main():
 
     for i in range(0, len(whitley_sites)):
         #read in data from BESS
-        evap_tmp, ass_tmp = read_bess(args.bess[i])
+        evap_tmp, ass_tmp = read_bess(args.bess[i], args.startyear[i])
 
         bess_ema[whitley_sites[i]] = np.mean( evap_tmp.resample("A").sum() )
         bess_assma[whitley_sites[i]] = np.mean( ass_tmp.resample("A").sum() )
@@ -171,11 +177,17 @@ def main():
     dingo_evap = dict()
     dingo_gpp = dict()
     vom_evap = dict()
+    vom_pc_evap = dict()
+    vom_pc2_evap = dict()
+    vom_zr_evap = dict()
     vom_evap_stats = dict()
     vom_pc_evap_stats = dict()
     vom_pc2_evap_stats = dict()
     vom_zr_evap_stats = dict()
     vom_gpp = dict()
+    vom_pc_gpp = dict()
+    vom_pc2_gpp = dict()
+    vom_zr_gpp = dict()
     vom_gpp_stats = dict()
     vom_pc_gpp_stats = dict()
     vom_pc2_gpp_stats = dict()
@@ -200,8 +212,22 @@ def main():
         vom_tmp = np.genfromtxt(args.vom[i], names=True)
         etot = (vom_tmp["esoil"] + vom_tmp["etmt"] + vom_tmp["etmg"])*1000
         letot= etot[-3650:]* lat_heat_vapor * rho_w * 1000 * 1000/(3600*24)
-        #gpptot = 1000000*(vom_tmp["assg"] + vom_tmp["asst"] )/ (3600*24)
         gpptot = vom_tmp["assg"] + vom_tmp["asst"]
+
+        vom_pc = np.genfromtxt(args.vom_pc[i], names=True)
+        etot_pc = (vom_pc["esoil"] + vom_pc["etmt"] + vom_pc["etmg"])*1000
+        letot_pc = etot_pc[-3650:]* lat_heat_vapor * rho_w * 1000 * 1000/(3600*24)
+        gpptot_pc = vom_pc["assg"] + vom_pc["asst"]
+
+        vom_pc2 = np.genfromtxt(args.vom_pc2[i], names=True)
+        etot_pc2 = (vom_pc2["esoil"] + vom_pc2["etmt"] + vom_pc2["etmg"])*1000
+        letot_pc2 = etot_pc2[-3650:]* lat_heat_vapor * rho_w * 1000 * 1000/(3600*24)
+        gpptot_pc2 = vom_pc2["assg"] + vom_pc2["asst"]
+
+        vom_zr = np.genfromtxt(args.vom_zr[i], names=True)
+        etot_zr = (vom_zr["esoil"] + vom_zr["etmt"] + vom_zr["etmg"])*1000
+        letot_zr = etot_zr[-3650:]* lat_heat_vapor * rho_w * 1000 * 1000/(3600*24)
+        gpptot_zr = vom_zr["assg"] + vom_zr["asst"]
 
         time = pd.date_range(datetime(int(vom_tmp["fyear"][3]),int(vom_tmp["fmonth"][0]),int(vom_tmp["fday"][0])), 
               datetime(int(vom_tmp["fyear"][-1]),int(vom_tmp["fmonth"][-1]),int(vom_tmp["fday"][-1])), 
@@ -211,9 +237,27 @@ def main():
         emod_pd = pd.Series(etot[-3650:], index = time[-3650:] )
         assmod_pd = pd.Series(gpptot[-3650:], index = time[-3650:] )
 
+        emod_pc_pd = pd.Series(etot_pc[-3650:], index = time[-3650:] )
+        assmod_pc_pd = pd.Series(gpptot_pc[-3650:], index = time[-3650:] )
+
+        emod_pc2_pd = pd.Series(etot_pc2[-3650:], index = time[-3650:] )
+        assmod_pc2_pd = pd.Series(gpptot_pc2[-3650:], index = time[-3650:] )
+
+        emod_zr_pd = pd.Series(etot_zr[-3650:], index = time[-3650:] )
+        assmod_zr_pd = pd.Series(gpptot_zr[-3650:], index = time[-3650:] )
+
         vom_evap[args.sites[i]] = np.mean( emod_pd.resample("A").sum() )
         vom_gpp[args.sites[i]] = np.mean( assmod_pd.resample("A").sum() )
     
+        vom_pc_evap[args.sites[i]] = np.mean( emod_pc_pd.resample("A").sum() )
+        vom_pc_gpp[args.sites[i]] = np.mean( assmod_pc_pd.resample("A").sum() )
+
+        vom_pc2_evap[args.sites[i]] = np.mean( emod_pc2_pd.resample("A").sum() )
+        vom_pc2_gpp[args.sites[i]] = np.mean( assmod_pc2_pd.resample("A").sum() )
+
+        vom_zr_evap[args.sites[i]] = np.mean( emod_zr_pd.resample("A").sum() )
+        vom_zr_gpp[args.sites[i]] = np.mean( assmod_zr_pd.resample("A").sum() )
+
         vom_evap_stats[args.sites[i]] = np.genfromtxt( args.vom_evap_stats[i]  )
         vom_gpp_stats[args.sites[i]] = np.genfromtxt( args.vom_gpp_stats[i]  )
 
@@ -281,7 +325,11 @@ def main():
 
 
     ax[0].plot(loc, pd.Series(vom_evap),  "--", color="darkgreen" , zorder=1)
-    ax[0].plot(loc, pd.Series(dingo_evap),"--", color="black" , zorder=1)
+    ax[0].plot(loc, pd.Series(vom_pc_evap),  "--", color="darkgreen" , zorder=1)
+    ax[0].plot(loc, pd.Series(vom_pc2_evap),  "--", color="darkgreen" , zorder=1)
+    ax[0].plot(loc, pd.Series(vom_zr_evap),  "--", color="darkgreen" , zorder=1)
+
+    ax[0].plot(loc, pd.Series(dingo_evap),"--", color="black" , lw=3, zorder=1)
 
     ax[0].plot(np.delete(loc,1), pd.Series(bess_ema), "--", color="purple", zorder=1)
     ax[0].plot(np.delete(loc,1), pd.Series(bios2_ema), "--", color="lightgreen", zorder=1)
@@ -291,7 +339,11 @@ def main():
     ax[0].plot(np.delete(loc,1), pd.Series(lpjguess_ema), "--", color="lightblue", zorder=1)
 
     ax[1].plot(loc, pd.Series(vom_gpp),  "--", color="darkgreen", zorder=1 )
-    ax[1].plot(loc, pd.Series(dingo_gpp),"--", color="black", zorder=1)
+    ax[1].plot(loc, pd.Series(vom_pc_gpp),  "--", color="darkgreen", zorder=1 )
+    ax[1].plot(loc, pd.Series(vom_pc2_gpp),  "--", color="darkgreen", zorder=1 )
+    ax[1].plot(loc, pd.Series(vom_zr_gpp),  "--", color="darkgreen", zorder=1 )
+
+    ax[1].plot(loc, pd.Series(dingo_gpp),"--", color="black", lw=3, zorder=1)
 
     ax[1].plot(np.delete(loc,1), pd.Series(bess_assma), "--", color="purple", zorder=1)
     ax[1].plot(np.delete(loc,1), pd.Series(bios2_assma), "--", color="lightgreen", zorder=1)
@@ -334,15 +386,31 @@ def main():
 
         if( isite == 0):
             ax[0].scatter(loc[isite], vom_evap[args.sites[isite]], color="darkgreen", s=130, marker= "s", zorder=2 )
-            ax[0].scatter(loc[isite], dingo_evap[args.sites[isite]],color="black", s=130, marker= "*", zorder=2 )
+            ax[0].scatter(loc[isite], vom_pc_evap[args.sites[isite]], color="darkgreen", s=130, marker= "v", zorder=2 )
+            ax[0].scatter(loc[isite], vom_pc2_evap[args.sites[isite]], color="darkgreen", s=130, marker= "*", zorder=2 )
+            ax[0].scatter(loc[isite], vom_zr_evap[args.sites[isite]], color="darkgreen", s=130, marker= "X", zorder=2 )
+
+            ax[0].scatter(loc[isite], dingo_evap[args.sites[isite]],color="black", s=175, marker= "*", zorder=2 )
 
             ax[1].scatter(loc[isite], vom_gpp[args.sites[isite]], color="darkgreen", s=130, marker= "s", zorder=2 )
+            ax[1].scatter(loc[isite], vom_pc_gpp[args.sites[isite]], color="darkgreen", s=130, marker= "v", zorder=2 )
+            ax[1].scatter(loc[isite], vom_pc2_gpp[args.sites[isite]], color="darkgreen", s=130, marker= "*", zorder=2 )
+            ax[1].scatter(loc[isite], vom_zr_gpp[args.sites[isite]], color="darkgreen", s=130, marker= "X", zorder=2 )
+
             ax[1].scatter(loc[isite], dingo_gpp[args.sites[isite]],color="black", s=130, marker= "*", label = "Obs.", zorder=2 )
         else:
             ax[0].scatter(loc[isite], vom_evap[args.sites[isite]], color="darkgreen", s=130, marker= "s", zorder=2)
-            ax[0].scatter(loc[isite], dingo_evap[args.sites[isite]],color="black", s=130, marker= "*", zorder=2 )
+            ax[0].scatter(loc[isite], vom_pc_evap[args.sites[isite]], color="darkgreen", s=130, marker= "v", zorder=2 )
+            ax[0].scatter(loc[isite], vom_pc2_evap[args.sites[isite]], color="darkgreen", s=130, marker= "*", zorder=2 )
+            ax[0].scatter(loc[isite], vom_zr_evap[args.sites[isite]], color="darkgreen", s=130, marker= "X", zorder=2 )
+
+            ax[0].scatter(loc[isite], dingo_evap[args.sites[isite]],color="black", s=175, marker= "*", zorder=2 )
 
             ax[1].scatter(loc[isite], vom_gpp[args.sites[isite]], color="darkgreen", s=130, marker= "s", zorder=2 )
+            ax[1].scatter(loc[isite], vom_pc_gpp[args.sites[isite]], color="darkgreen", s=130, marker= "v", zorder=2 )
+            ax[1].scatter(loc[isite], vom_pc2_gpp[args.sites[isite]], color="darkgreen", s=130, marker= "*", zorder=2 )
+            ax[1].scatter(loc[isite], vom_zr_gpp[args.sites[isite]], color="darkgreen", s=130, marker= "X", zorder=2 )
+
             ax[1].scatter(loc[isite], dingo_gpp[args.sites[isite]],color="black", s=130, marker= "*", zorder=2 )
 
 
@@ -381,7 +449,7 @@ def main():
                 ax[iplot].scatter( loc_vom[isite], vom_evap_stats[args.sites[isite]][i_stat], c="darkgreen", s=130, marker="s"   )
                 ax[iplot].scatter( loc_vom2[isite], vom_pc_evap_stats[args.sites[isite]][i_stat], c="green", s=100, marker="v"   )
                 ax[iplot].scatter( loc_vom3[isite], vom_pc2_evap_stats[args.sites[isite]][i_stat], c="green",s=100, marker="*"  )
-                ax[iplot].scatter( loc_vom4[isite], vom_zr_evap_stats[args.sites[isite]][i_stat], c="green", s=100,marker="+"   )
+                ax[iplot].scatter( loc_vom4[isite], vom_zr_evap_stats[args.sites[isite]][i_stat], c="green", s=100,marker="X"   )
 
                 ax[iplot].scatter( loc_bess[isite], bess_evap_stats[args.sites[isite]][i_stat] ,c = "purple",s=100 )
                 ax[iplot].scatter( loc_bios2[isite], bios2_evap_stats[args.sites[isite]][i_stat], c = "lightgreen",s=100   )
@@ -415,7 +483,7 @@ def main():
                     ax[iplot].scatter( loc_vom[isite], vom_gpp_stats[args.sites[isite]][i_stat], c="darkgreen", s=130, marker="s", label = "VOM"    )
                     ax[iplot].scatter( loc_vom2[isite], vom_pc_gpp_stats[args.sites[isite]][i_stat], c="green", s=100,marker="v", label = "VOM - prescribed cover"    )
                     ax[iplot].scatter( loc_vom3[isite], vom_pc2_gpp_stats[args.sites[isite]][i_stat], c="green",s=100, marker="*", label = "VOM - prescribed cover (mean monthly)"    )
-                    ax[iplot].scatter( loc_vom4[isite], vom_zr_gpp_stats[args.sites[isite]][i_stat], c="green", s=100,marker="+", label = "VOM - prescribed roots"    )
+                    ax[iplot].scatter( loc_vom4[isite], vom_zr_gpp_stats[args.sites[isite]][i_stat], c="green", s=100,marker="X", label = "VOM - prescribed roots"    )
 
                     ax[iplot].scatter( loc_bess[isite], bess_ass_stats[args.sites[isite]][i_stat] ,c = "purple", s=100 )
                     ax[iplot].scatter( loc_bios2[isite], bios2_ass_stats[args.sites[isite]][i_stat], c = "lightgreen",s=100  )
@@ -427,7 +495,7 @@ def main():
                     ax[iplot].scatter( loc_vom[isite], vom_gpp_stats[args.sites[isite]][i_stat], c="green",s=130, marker="s"  )
                     ax[iplot].scatter( loc_vom2[isite], vom_pc_gpp_stats[args.sites[isite]][i_stat], c="green", s=100,marker="v"   )
                     ax[iplot].scatter( loc_vom3[isite], vom_pc2_gpp_stats[args.sites[isite]][i_stat], c="green",s=100, marker="*"   )
-                    ax[iplot].scatter( loc_vom4[isite], vom_zr_gpp_stats[args.sites[isite]][i_stat], c="green", s=100,marker="+"   )
+                    ax[iplot].scatter( loc_vom4[isite], vom_zr_gpp_stats[args.sites[isite]][i_stat], c="green", s=100,marker="X"   )
 
                     ax[iplot].scatter( loc_bess[isite], bess_ass_stats[args.sites[isite]][i_stat] ,c = "purple", s=100 )
                     ax[iplot].scatter( loc_bios2[isite], bios2_ass_stats[args.sites[isite]][i_stat], c = "lightgreen",s=100  )
@@ -465,13 +533,13 @@ def main():
     else:
         plt.show()
 
-def read_bess(infile):
+def read_bess(infile, startyear):
 
     lat_heat_vapor = 2.26   #[MJ/kg]
     rho_w = 1000             #[kg/m3]
 
     data = np.loadtxt(infile, delimiter=",") 
-    time = pd.date_range("01-01-2000", periods = len(data[:,0]), freq='D')
+    time = pd.date_range("01-01-" + startyear, periods = len(data[:,0]), freq='D')
 
     tmp = 24*60*60*data[:,0] /( lat_heat_vapor * rho_w * 1000 )
 
