@@ -75,7 +75,7 @@ def main():
     parser.add_argument("--yloc_title", help="location y title", type=float, default = 1.05 )
     parser.add_argument("--ylim", help="limits y-axist", type=float, nargs='+', default = [-50,0] )
     parser.add_argument("--size_title", help="size of title", type=float, default = 20 )
-
+    parser.add_argument("--print_depths", help="print rooting depths", type=lambda x: bool(int(x)),  default = False )
 
     args = parser.parse_args()
 
@@ -170,13 +170,14 @@ def main():
         val5 = list(filter(lambda i: round(i,2) <= 5.00, delz_sum))[-1]
     ind5 = list(delz_sum).index(val5) + 1
 
-    print("-------------")
-    print("Tree rooting depth:")
-    print(val5)
-    print(params[5])
-    print("Untill layer:")
-    print(ind5)
-    print("")
+    if(args.print_depths == True):
+        print("-------------")
+        print("Tree rooting depth:")
+        print(val5)
+        print(params[5])
+        print("Untill layer:")
+        print(ind5)
+        print("")
 
     #soil parameters
     theta_r = soildata[0:ind5,6]
@@ -264,13 +265,14 @@ def main():
         val5 = list(filter(lambda i: round(i,2) <= 5.00, delz2015_sum))[-1]
     ind5_2015 = list(delz2015_sum).index(val5) +1
 
-    print("-------------")
-    print("Tree rooting depth:")
-    print(val5)
-    print(params2015[5])
-    print("Untill layer:")
-    print(ind5_2015)
-    print("")
+    if(args.print_depths == True):
+        print("-------------")
+        print("Tree rooting depth:")
+        print(val5)
+        print(params2015[5])
+        print("Untill layer:")
+        print(ind5_2015)
+        print("")
 
     #soil parameters
     alpha_vg2015 = args.i_avg2015

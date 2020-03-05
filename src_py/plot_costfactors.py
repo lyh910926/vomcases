@@ -143,7 +143,7 @@ def main():
 
     ax[6].plot(cpcff_vals, ED, "*", markersize=10)
     ax[6].set_ylabel("Euclidian distance [-]", size = 16 )  
-    #ax[1].set_ylim( 1, 9  )
+    ax[6].set_ylim( 0, 1.2  )
     ax[6].set_xlim( 0, 3.2  )    
 
     ax[6].legend(prop={'size':10})
