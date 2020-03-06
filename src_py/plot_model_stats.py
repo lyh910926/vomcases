@@ -296,8 +296,8 @@ def main():
                 "Abs.Err. assimilation [mol/m$^2$/d]", 
                 "Rel.Err. amplitude evaporation[-]", 
                 "Rel.Err. amplitude assimilation[-]", 
-                "Mean Dry Season Rel. Err. [-]", 
-                "Mean Dry Season Rel. Err. [-]", 
+                "Bias [mm/d]", 
+                "Bias [mol/m$^2$/d]", 
                 "Mean Wet Season Rel. Err. [-]", 
                 "Mean Wet Season Rel. Err. [-]", 
               ]
@@ -306,7 +306,7 @@ def main():
     maxy= [1500, 200, 2.5,0.3, 1.0, 1.0, 2,5, 1.5,1.5]
     miny= [0, 0 , 0,0, -1.0,-1.0, -2,-5, -1.5,-1.5]
 
-    stats_order = [ 4,5,2]
+    stats_order = [ 4,5,6]
     iplot = 0
 
     #start plotting
