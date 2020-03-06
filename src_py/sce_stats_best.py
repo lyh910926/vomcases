@@ -115,6 +115,10 @@ def main():
     assMeanSeas2RE  = calcREmean_seasonal(assmod_pd[dates_overlap], assobs_pd[dates_overlap], args.startwet, args.endwet)
     pcMeanSeas2RE  = calcREmean_seasonal(pcmod_pd[dates_overlap_pc], pcobs_pd[dates_overlap_pc], args.startwet, args.endwet)
 
+    eMinRE  = calcREmin(emod_pd[dates_overlap], eobs_pd[dates_overlap])
+    assMinRE  = calcREmin(assmod_pd[dates_overlap], assobs_pd[dates_overlap])
+    pcMinRE  = calcREmin(pcmod_pd[dates_overlap_pc], pcobs_pd[dates_overlap_pc])
+
     eAmpRE = calcAmpRE(e_tmp[-3650:], dates_mod[-3650:], evap_obs, dates_obs )
     assAmpRE = calcAmpRE(ass_tmp[-3650:], dates_mod[-3650:], ass_obs, dates_obs )
 
@@ -124,9 +128,9 @@ def main():
 
 
     #merge results
-    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE, eAmpRE, eBIAS ]
-    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE, assAmpRE, assBIAS ]
-    pcresult = [ pcKGE, pcMeanAnnRE, pcMeanSeas1RE, pcMeanSeas2RE, pcMAE, pcBIAS ]
+    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE, eAmpRE, eBIAS, eMinRE ]
+    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE, assAmpRE, assBIAS, assMinRE ]
+    pcresult = [ pcKGE, pcMeanAnnRE, pcMeanSeas1RE, pcMeanSeas2RE, pcMAE, pcBIAS, pcMinRE ]
  
     #write output files
     np.savetxt( args.outputfolder + "/evap_beststats.txt", eresult, comments='', delimiter=" " )
@@ -185,6 +189,22 @@ def calcBIAS(sim, obs ):
         BIAS  = np.nanmean(sim - obs)
 
         return(BIAS)
+
+def calcREmin(sim, obs ):
+
+        #mean value    
+
+        sim_annmin = sim.resample("A").min()
+        obs_annmin = obs.resample("A").min()
+
+        #remove first and last value to avoid incomplete series
+        mu_s = np.mean( sim_annmin )
+        mu_o = np.mean( obs_annmin )  
+
+        #print(np.min(sim))
+        MIN_ERR = (mu_s-mu_o)/mu_o
+
+        return(MIN_ERR)
 
 
 def calcREmean_seasonal(sim, obs, start, end ):
