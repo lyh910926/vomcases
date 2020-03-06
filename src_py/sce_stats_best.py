@@ -118,11 +118,15 @@ def main():
     eAmpRE = calcAmpRE(e_tmp[-3650:], dates_mod[-3650:], evap_obs, dates_obs )
     assAmpRE = calcAmpRE(ass_tmp[-3650:], dates_mod[-3650:], ass_obs, dates_obs )
 
+    eBIAS  = calcBIAS(emod_pd[dates_overlap], eobs_pd[dates_overlap])
+    assBIAS = calcBIAS(assmod_pd[dates_overlap], assobs_pd[dates_overlap])
+    pcBIAS  = calcBIAS(pcmod_pd[dates_overlap_pc], pcobs_pd[dates_overlap_pc])
+
 
     #merge results
-    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE, eAmpRE ]
-    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE, assAmpRE ]
-    pcresult = [ pcKGE, pcMeanAnnRE, pcMeanSeas1RE, pcMeanSeas2RE, pcMAE ]
+    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE, eAmpRE, eBIAS ]
+    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE, assAmpRE, assBIAS ]
+    pcresult = [ pcKGE, pcMeanAnnRE, pcMeanSeas1RE, pcMeanSeas2RE, pcMAE, pcBIAS ]
  
     #write output files
     np.savetxt( args.outputfolder + "/evap_beststats.txt", eresult, comments='', delimiter=" " )
@@ -176,6 +180,11 @@ def calcMAE(sim, obs ):
 
         return(MAE)
 
+def calcBIAS(sim, obs ):
+
+        BIAS  = np.nanmean(sim - obs)
+
+        return(BIAS)
 
 
 def calcREmean_seasonal(sim, obs, start, end ):

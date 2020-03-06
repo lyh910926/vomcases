@@ -306,11 +306,11 @@ def main():
     maxy= [1500, 200, 2.5,0.3, 1.0, 1.0, 2,5, 1.5,1.5]
     miny= [0, 0 , 0,0, -1.0,-1.0, -2,-5, -1.5,-1.5]
 
-    stats_order = [ 4,5]
+    stats_order = [ 4,5,2]
     iplot = 0
 
     #start plotting
-    fig, axes   = plt.subplots(nrows=3, ncols=2, figsize=(args.figsize[0], args.figsize[1]), sharex=True) 
+    fig, axes   = plt.subplots(nrows=4, ncols=2, figsize=(args.figsize[0], args.figsize[1]), sharex=True) 
     ax = axes.flat
 
     ax[0].set_axisbelow(True)
