@@ -82,8 +82,12 @@ def main():
     parser.add_argument("--dingo_et", help="DINGO files evaporation", nargs='+')
     parser.add_argument("--dingo_gpp", help="DINGO files assimilation", nargs='+')
     parser.add_argument("--i2015", help="results_daily AoB2015 ")
-    parser.add_argument("--sharex", help="share x-axis ", type=bool, default = True)
     parser.add_argument("--figsize", help="figure size", nargs='+', type=float, default = [18,18] )
+    parser.add_argument("--fig_lab", dest="fig_lab", action='store_true', help="plot labels of subplots")
+    parser.add_argument("--no_fig_lab", dest="fig_lab", action='store_false', help="do not plot labels of subplots")
+    parser.add_argument("--sharex", help="share x-axis", dest="sharex", action='store_true' )
+    parser.add_argument("--no_sharex", help="share x-axis", dest="sharex", action='store_false')
+    parser.set_defaults(fig_lab=True, sharex = True)
 
     args = parser.parse_args()
 
@@ -274,7 +278,10 @@ def main():
     #start plotting
 
     #parameters for plotting
-    plot_label = [ "a)","b)","c)","d)","e)","f)", "g)", "h)" ] 
+    if args.fig_lab is True:
+        plot_label = [ "a)","b)","c)","d)","e)","f)", "g)", "h)" ]
+    else: 
+        plot_label = [ " "," "," "," "," "," ", " ", " " ]
 
     loc = np.arange(5,65,10) 
     loc_vom =  np.arange(0.5, 60.5, 10)  
@@ -310,7 +317,7 @@ def main():
     iplot = 0
 
     #start plotting
-    fig, axes   = plt.subplots(nrows=4, ncols=2, figsize=(args.figsize[0], args.figsize[1]), sharex=True) 
+    fig, axes   = plt.subplots(nrows=4, ncols=2, figsize=(args.figsize[0], args.figsize[1]), sharex=args.sharex) 
     ax = axes.flat
 
     ax[0].set_axisbelow(True)

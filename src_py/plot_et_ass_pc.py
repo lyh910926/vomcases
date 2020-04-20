@@ -43,7 +43,7 @@ def main():
     parser.add_argument("--outputfile", help="outputfile")
     parser.add_argument("--labels", help="labels corresponding to input-files", nargs='+', default = ["VOM"] )
     parser.add_argument("--colors", help="colors corresponding to input-files", nargs='+', default = ["red"] )
-    parser.add_argument("--figsize", help="figure size", nargs='+', type=float, default = [16,15] )
+    parser.add_argument("-- figsize", help="figure size", nargs='+', type=float, default = [16,15] )
     parser.add_argument("--dpi", help="dpi of figure",  type=float, default = 80 )
     parser.add_argument("--ylabel", help="ylabel" )
     parser.add_argument("--xlabel", help="xlabel", default=" ")
@@ -60,6 +60,13 @@ def main():
     parser.add_argument("--size_title", help="size of title", type=float, default = 20 )
     parser.add_argument("--locx_qctitle", help="x-location of qflag-label", type=float, default = 1.04 )
     parser.add_argument("--locy_qctitle", help="y-location of qflag-label", type=float, default = 0.92 )
+    parser.add_argument("--fig_lab", dest="fig_lab", action='store_true', help="plot labels of subplots")
+    parser.add_argument("--no_fig_lab", dest="fig_lab", action='store_false', help="do not plot labels of subplots")
+    parser.add_argument("--sharex", help="share x-axis", dest="sharex", action='store_true' )
+    parser.add_argument("--no_sharex", help="share x-axis", dest="sharex", action='store_false')
+    parser.add_argument("--tight_layout", help="tight layout", dest="tight_layout", action='store_true' )
+    parser.add_argument("--no_tight_layout", help="no tight layout", dest="tight_layout", action='store_false')
+    parser.set_defaults(fig_lab=True, sharex = False, tight_layout=True)
 
     args = parser.parse_args()
 
@@ -172,8 +179,14 @@ def main():
 
     #######################################################################################
     #make plot
+
+    if args.fig_lab is True:
+        plot_label = [ "a)","b)","c)","d)","e)","f)", "g)", "h)" ]
+    else: 
+        plot_label = [ " "," "," "," "," "," ", " ", " " ]
+
     fig=plt.figure(figsize=(args.figsize[0], args.figsize[1]), dpi= args.dpi, facecolor='w', edgecolor='k' )
-    fig, axes = plt.subplots(nrows=3, ncols=1, figsize=(args.figsize[0], args.figsize[1]))        
+    fig, axes = plt.subplots(nrows=3, ncols=1, figsize=(args.figsize[0], args.figsize[1]), sharex=args.sharex)        
     ax = axes.flat
 
     if args.palette is not None:
@@ -324,9 +337,9 @@ def main():
  
    #add title
     #if args.title is not None:
-    ax[0].text(args.xloc_title, args.yloc_title, "a)", ha='left', va='center', transform=ax[0].transAxes, fontsize=args.size_title)
-    ax[1].text(args.xloc_title, args.yloc_title, "b)", ha='left', va='center', transform=ax[1].transAxes, fontsize=args.size_title)
-    ax[2].text(args.xloc_title, args.yloc_title, "c)", ha='left', va='center', transform=ax[2].transAxes, fontsize=args.size_title)
+    ax[0].text(args.xloc_title, args.yloc_title, plot_label[0], ha='left', va='center', transform=ax[0].transAxes, fontsize=args.size_title)
+    ax[1].text(args.xloc_title, args.yloc_title, plot_label[1], ha='left', va='center', transform=ax[1].transAxes, fontsize=args.size_title)
+    ax[2].text(args.xloc_title, args.yloc_title, plot_label[2], ha='left', va='center', transform=ax[2].transAxes, fontsize=args.size_title)
     #else:
     #    plt.show()
 
@@ -350,7 +363,8 @@ def main():
     ax[1].patch.set_visible(False)
     ax[2].patch.set_visible(False)
 
-    plt.tight_layout()
+    if(args.tight_layout == True):
+        plt.tight_layout()
 
     #save figure
     if args.outputfile is not None:
