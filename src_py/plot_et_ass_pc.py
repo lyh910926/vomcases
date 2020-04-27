@@ -43,7 +43,7 @@ def main():
     parser.add_argument("--outputfile", help="outputfile")
     parser.add_argument("--labels", help="labels corresponding to input-files", nargs='+', default = ["VOM"] )
     parser.add_argument("--colors", help="colors corresponding to input-files", nargs='+', default = ["red"] )
-    parser.add_argument("-- figsize", help="figure size", nargs='+', type=float, default = [16,15] )
+    parser.add_argument("--figsize", help="figure size", nargs='+', type=float, default = [16,15] )
     parser.add_argument("--dpi", help="dpi of figure",  type=float, default = 80 )
     parser.add_argument("--ylabel", help="ylabel" )
     parser.add_argument("--xlabel", help="xlabel", default=" ")
