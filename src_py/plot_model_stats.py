@@ -299,8 +299,8 @@ def main():
 
     ylabels = [ r"Evaporation [mm/year]",
                 r'Assimilation [mol/m$^2$/year]',
-                "Abs.Err. evaporation [mm/d]",  
-                "Abs.Err. assimilation [mol/m$^2$/d]", 
+                "Rel.Err. evaporation [mm/d]",  
+                "Rel.Err. assimilation [mol/m$^2$/d]", 
                 "Rel.Err. amplitude evaporation[-]", 
                 "Rel.Err. amplitude assimilation[-]", 
                 "Err. Min. Annual [-]", 
@@ -310,14 +310,14 @@ def main():
               ]
 
 
-    maxy= [1500, 200, 2.5,0.3, 1.0, 1.0, 1.0 , 2.0, 1.5,1.5]
-    miny= [0, 0 , 0,0, -1.0,-1.0, -1.5,-2.5, -1.5,-1.5]
+    maxy= [1500, 200, 1,1, 1.0, 1.0, 1.0 , 2.0, 1.5,1.5]
+    miny= [0, 0 , -1,-1, -1.0,-1.0, -1.5,-2.5, -1.5,-1.5]
 
-    stats_order = [ 4,5,7]
+    stats_order = [ 1,5]
     iplot = 0
 
     #start plotting
-    fig, axes   = plt.subplots(nrows=4, ncols=2, figsize=(args.figsize[0], args.figsize[1]), sharex=args.sharex) 
+    fig, axes   = plt.subplots(nrows=3, ncols=2, figsize=(args.figsize[0], args.figsize[1]), sharex=args.sharex) 
     ax = axes.flat
 
     ax[0].set_axisbelow(True)
