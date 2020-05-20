@@ -343,7 +343,7 @@ def main():
     ax[0].plot(np.delete(loc,1), pd.Series(cable_ema), "--", color="red", zorder=1)
     ax[0].plot(np.delete(loc,1), pd.Series(maespa_ema), "--", color="gold", zorder=1)
     ax[0].plot(np.delete(loc,1), pd.Series(spa_ema), "--", color="pink", zorder=1)
-    ax[0].plot(np.delete(loc,1), pd.Series(lpjguess_ema), "--", color="lightblue", zorder=1)
+    ax[0].plot(np.delete(loc,1), pd.Series(lpjguess_ema), "--", color="blue", zorder=1)
 
     ax[1].plot(loc, pd.Series(vom_gpp),  "--", color="darkgreen", zorder=1 )
     ax[1].plot(loc, pd.Series(vom_pc_gpp),  "--", color="darkgreen", zorder=1 )
@@ -357,7 +357,7 @@ def main():
     ax[1].plot(np.delete(loc,1), pd.Series(cable_assma), "--", color="red", zorder=1)
     ax[1].plot(np.delete(loc,1), pd.Series(maespa_assma), "--", color="gold", zorder=1)
     ax[1].plot(np.delete(loc,1), pd.Series(spa_assma), "--", color="pink", zorder=1)
-    ax[1].plot(np.delete(loc,1), pd.Series(lpjguess_assma), "--", color="lightblue", zorder=1)
+    ax[1].plot(np.delete(loc,1), pd.Series(lpjguess_assma), "--", color="blue", zorder=1)
 
     iplot = 0
     #loop over study sites
@@ -370,7 +370,7 @@ def main():
             ax[0].scatter(loc[isite], cable_ema[args.sites[isite]],color="red", s=100, zorder=2)
             ax[0].scatter(loc[isite], maespa_ema[args.sites[isite]],color="gold", s=100, zorder=2)
             ax[0].scatter(loc[isite], spa_ema[args.sites[isite]],color="pink", s=100, zorder=2)
-            ax[0].scatter(loc[isite], lpjguess_ema[args.sites[isite]],color="lightblue", s=100, zorder=2)
+            ax[0].scatter(loc[isite], lpjguess_ema[args.sites[isite]],color="blue", s=100, zorder=2)
 
             if( isite == 0):
                 ax[1].scatter(loc[isite], bess_assma[args.sites[isite]],color="purple", label = "BESS", s=100, zorder=2)
@@ -378,14 +378,14 @@ def main():
                 ax[1].scatter(loc[isite], cable_assma[args.sites[isite]],color="red", label = "CABLE", s=100, zorder=2)
                 ax[1].scatter(loc[isite], maespa_assma[args.sites[isite]],color="gold", label = "MAESPA", s=100, zorder=2)
                 ax[1].scatter(loc[isite], spa_assma[args.sites[isite]],color="pink", label = "SPA", s=100, zorder=2)
-                ax[1].scatter(loc[isite], lpjguess_assma[args.sites[isite]],color="lightblue", label = "LPJ-GUESS", s=100, zorder=2)
+                ax[1].scatter(loc[isite], lpjguess_assma[args.sites[isite]],color="blue", label = "LPJ-GUESS", s=100, zorder=2)
             else:
                 ax[1].scatter(loc[isite], bess_assma[args.sites[isite]],color="purple", s=100, zorder=2)
                 ax[1].scatter(loc[isite], bios2_assma[args.sites[isite]],color="lightgreen", s=100, zorder=2)
                 ax[1].scatter(loc[isite], cable_assma[args.sites[isite]],color="red", s=100, zorder=2)
                 ax[1].scatter(loc[isite], maespa_assma[args.sites[isite]],color="gold", s=100, zorder=2)
                 ax[1].scatter(loc[isite], spa_assma[args.sites[isite]],color="pink", s=100, zorder=2)
-                ax[1].scatter(loc[isite], lpjguess_assma[args.sites[isite]],color="lightblue", s=100, zorder=2)
+                ax[1].scatter(loc[isite], lpjguess_assma[args.sites[isite]],color="blue", s=100, zorder=2)
             
         except KeyError:
             print("Litchfield")
