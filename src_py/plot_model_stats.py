@@ -299,8 +299,8 @@ def main():
 
     ylabels = [ r"Evaporation [mm/year]",
                 r'Assimilation [mol/m$^2$/year]',
-                "Rel.Err. evaporation [mm/d]",  
-                "Rel.Err. assimilation [mol/m$^2$/d]", 
+                "Rel.Err. evaporation [-]",  
+                "Rel.Err. assimilation [-]", 
                 "Rel.Err. amplitude evaporation[-]", 
                 "Rel.Err. amplitude assimilation[-]", 
                 "Err. Min. Annual [-]", 
