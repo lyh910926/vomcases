@@ -52,6 +52,7 @@ def main():
     parser.add_argument("--sharex", help="share x-axis", dest="sharex", action='store_true' )
     parser.add_argument("--no_sharex", help="share x-axis", dest="sharex", action='store_false')
     parser.add_argument("--figsize", help="figure size", nargs='+', type=float, default = [15,23] )
+    parser.add_argument("--loc_legend", help="bbox_to_anchor", nargs='+', type=float, default = [15,23] )
     parser.add_argument("--lab_size", help="label fontsize", type=float, default = 18)
     parser.add_argument("--lw_vom", help="linewidth VOM", type=float, default = 3 )
     parser.add_argument("--lw_obs", help="linewidth observations", type=float, default = 3 )
@@ -168,7 +169,7 @@ def main():
 
     ####################################################
     #start plotting
-    fig, axes   = plt.subplots(nrows=6, ncols=2, figsize=(args.figsize[0], args.figsize[1]), sharex=args.sharex,gridspec_kw = {'wspace':0.2, 'hspace':-0.3} )
+    fig, axes   = plt.subplots(nrows=len(args.sites), ncols=2, figsize=(args.figsize[0], args.figsize[1]), sharex=args.sharex,gridspec_kw = {'wspace':0.2, 'hspace':-0.3} )
     ax = axes.flat
 
     iplot = 0
@@ -328,7 +329,7 @@ def main():
     lines_labels = [ax[0].get_legend_handles_labels() ]
     lines, labels = [sum(lol, []) for lol in zip(*lines_labels)]
 
-    ax[iplot-1].legend(lines, labels, loc='upper right', bbox_to_anchor=(1.65, 1.2),prop={'size':16})
+    ax[iplot-1].legend(lines, labels, loc='upper right', bbox_to_anchor=(args.loc_legend[0], args.loc_legend[1]),prop={'size':16})
     
     if args.tight_layout == True:
         plt.tight_layout()
