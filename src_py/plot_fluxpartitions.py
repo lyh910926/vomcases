@@ -62,11 +62,11 @@ def main():
 
 
 
-    etot_dingo = np.zeros( (6)  )
-    ewet_dingo = np.zeros( (6)  )
-    edry_dingo = np.zeros( (6)  )
-    edry2wet_dingo = np.zeros( (6)  )
-    ewet2dry_dingo = np.zeros( (6)  )
+    etot_dingo = np.zeros( (len(args.evap_obs))  )
+    ewet_dingo = np.zeros( (len(args.evap_obs))  )
+    edry_dingo = np.zeros( (len(args.evap_obs))  )
+    edry2wet_dingo = np.zeros( (len(args.evap_obs))  )
+    ewet2dry_dingo = np.zeros( (len(args.evap_obs))  )
 
     #mean annual evaporation
     for i in range(0,len(args.evap_obs) ):
@@ -77,10 +77,10 @@ def main():
         edry2wet_dingo[i] = tmp[3]
         ewet2dry_dingo[i] = tmp[4]
 
-    gpptot_dingo = np.zeros( (6)  )
-    gppwet_dingo = np.zeros( (6)  )
-    gppdry_dingo = np.zeros( (6)  )
-    gppwet2dry_dingo = np.zeros( (6)  )
+    gpptot_dingo = np.zeros( (len(args.ass_obs))  )
+    gppwet_dingo = np.zeros( (len(args.ass_obs))  )
+    gppdry_dingo = np.zeros( (len(args.ass_obs))  )
+    gppwet2dry_dingo = np.zeros( (len(args.ass_obs))  )
 
     #mean annual assimilation
     for i in range(0,len(args.ass_obs)):
@@ -91,29 +91,29 @@ def main():
         gppwet2dry_dingo[i] = tmp[4]*-1.0
 
     #mean annual fluxes for predicted cover
-    esoil_ma = np.zeros( (6)  )    
-    etmt_ma = np.zeros( (6)  )
-    etmg_ma = np.zeros( (6)  )
-    assg_ma = np.zeros( (6)  )
-    asst_ma = np.zeros( (6)  )
+    esoil_ma = np.zeros( (len(args.pred_cover))  )    
+    etmt_ma = np.zeros( (len(args.pred_cover))  )
+    etmg_ma = np.zeros( (len(args.pred_cover))  )
+    assg_ma = np.zeros( (len(args.pred_cover))  )
+    asst_ma = np.zeros( (len(args.pred_cover))  )
 
-    esoil_wet = np.zeros( (6)  )
-    etmt_wet = np.zeros( (6)  )
-    etmg_wet = np.zeros( (6)  )
-    assg_wet = np.zeros( (6)  )
-    asst_wet = np.zeros( (6)  )
+    esoil_wet = np.zeros( (len(args.pred_cover))  )
+    etmt_wet = np.zeros( (len(args.pred_cover))  )
+    etmg_wet = np.zeros( (len(args.pred_cover))  )
+    assg_wet = np.zeros( (len(args.pred_cover))  )
+    asst_wet = np.zeros( (len(args.pred_cover))  )
 
-    esoil_dry = np.zeros( (6)  )
-    etmt_dry = np.zeros( (6)  )
-    etmg_dry = np.zeros( (6)  )
-    assg_dry = np.zeros( (6)  )
-    asst_dry = np.zeros( (6)  )
+    esoil_dry = np.zeros( (len(args.pred_cover))  )
+    etmt_dry = np.zeros( (len(args.pred_cover))  )
+    etmg_dry = np.zeros( (len(args.pred_cover))  )
+    assg_dry = np.zeros( (len(args.pred_cover))  )
+    asst_dry = np.zeros( (len(args.pred_cover))  )
 
-    esoil_wet2dry = np.zeros( (6)  )
-    etmt_wet2dry = np.zeros( (6)  )
-    etmg_wet2dry = np.zeros( (6)  )
-    assg_wet2dry = np.zeros( (6)  )
-    asst_wet2dry = np.zeros( (6)  )
+    esoil_wet2dry = np.zeros( (len(args.pred_cover))  )
+    etmt_wet2dry = np.zeros( (len(args.pred_cover))  )
+    etmg_wet2dry = np.zeros( (len(args.pred_cover))  )
+    assg_wet2dry = np.zeros( (len(args.pred_cover))  )
+    asst_wet2dry = np.zeros( (len(args.pred_cover))  )
 
     for i in range(0,len(args.pred_cover)):
         tmp = fluxpartitions(args.pred_cover[i], args.startyear_mod[i], args.endyear_mod[i], 12, 3, 5, 9 )
@@ -143,29 +143,29 @@ def main():
         asst_wet2dry[i] = tmp[4][4]
 
     #mean annual fluxes for prescribed cover
-    esoil_ma_pc = np.zeros( (6)  )
-    etmt_ma_pc = np.zeros( (6)  )
-    etmg_ma_pc = np.zeros( (6)  )
-    assg_ma_pc = np.zeros( (6)  )
-    asst_ma_pc = np.zeros( (6)  )
+    esoil_ma_pc = np.zeros( (len(args.pres_cover))  )
+    etmt_ma_pc = np.zeros( (len(args.pres_cover))  )
+    etmg_ma_pc = np.zeros( (len(args.pres_cover))  )
+    assg_ma_pc = np.zeros( (len(args.pres_cover))  )
+    asst_ma_pc = np.zeros( (len(args.pres_cover))  )
 
-    esoil_wet_pc = np.zeros( (6)  )
-    etmt_wet_pc = np.zeros( (6)  )
-    etmg_wet_pc = np.zeros( (6)  )
-    assg_wet_pc = np.zeros( (6)  )
-    asst_wet_pc = np.zeros( (6)  )
+    esoil_wet_pc = np.zeros( (len(args.pres_cover))  )
+    etmt_wet_pc = np.zeros( (len(args.pres_cover))  )
+    etmg_wet_pc = np.zeros( (len(args.pres_cover))  )
+    assg_wet_pc = np.zeros( (len(args.pres_cover))  )
+    asst_wet_pc = np.zeros( (len(args.pres_cover))  )
 
-    esoil_dry_pc = np.zeros( (6)  )
-    etmt_dry_pc = np.zeros( (6)  )
-    etmg_dry_pc = np.zeros( (6)  )
-    assg_dry_pc = np.zeros( (6)  )
-    asst_dry_pc = np.zeros( (6)  )
+    esoil_dry_pc = np.zeros( (len(args.pres_cover))  )
+    etmt_dry_pc = np.zeros( (len(args.pres_cover))  )
+    etmg_dry_pc = np.zeros( (len(args.pres_cover))  )
+    assg_dry_pc = np.zeros( (len(args.pres_cover))  )
+    asst_dry_pc = np.zeros( (len(args.pres_cover))  )
 
-    esoil_wet2dry_pc = np.zeros( (6)  )
-    etmt_wet2dry_pc = np.zeros( (6)  )
-    etmg_wet2dry_pc = np.zeros( (6)  )
-    assg_wet2dry_pc = np.zeros( (6)  )
-    asst_wet2dry_pc = np.zeros( (6)  )
+    esoil_wet2dry_pc = np.zeros( (len(args.pres_cover))  )
+    etmt_wet2dry_pc = np.zeros( (len(args.pres_cover))  )
+    etmg_wet2dry_pc = np.zeros( (len(args.pres_cover))  )
+    assg_wet2dry_pc = np.zeros( (len(args.pres_cover))  )
+    asst_wet2dry_pc = np.zeros( (len(args.pres_cover))  )
 
     for i in range(0,len(args.pres_cover)):
         tmp = fluxpartitions(args.pres_cover[i], args.startyear_mod[i], args.endyear_mod[i], 12, 3, 5, 9 )
@@ -446,7 +446,7 @@ def mean_annual_dingo(inputfile, startyear, endyear, startwet, endwet, startdry,
 
 def evap_barplot(esoil, etmt, etmg, esoil_pc, etmt_pc, etmg_pc, evap_dingo, ax, title, labels, label_pad, dist_lab, lab_size,ylabel):
 
-    ind = np.arange(0,24, 4)
+    ind = np.arange(0,(len(esoil))*4, 4)
     ind2 = ind + 1
     ind3 = ind2 + 1
 
@@ -485,7 +485,7 @@ def evap_barplot(esoil, etmt, etmg, esoil_pc, etmt_pc, etmg_pc, evap_dingo, ax, 
 
 def ass_barplot(assg, asst, assg_pc, asst_pc, gpp_dingo, ax, title, labels, label_pad,dist_lab, lab_size, ylabel):
 
-    ind = np.arange(0,24, 4)
+    ind = np.arange(0,(len(assg))*4, 4)
     ind2 = ind + 1
     ind3 = ind2 + 1
 
