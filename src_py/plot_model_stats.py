@@ -283,18 +283,18 @@ def main():
     else: 
         plot_label = [ " "," "," "," "," "," ", " ", " " ]
 
-    loc = np.arange(5,65,10) 
-    loc_vom =  np.arange(0.5, 60.5, 10)  
-    loc_vom2 =  np.arange(1.5, 61.5, 10)  
-    loc_vom3 =  np.arange(2.5, 62.5, 10)  
-    loc_vom4 =  np.arange(3.5, 63.5, 10)  
+    loc = np.arange(5,len(args.sites)*10+5,10) 
+    loc_vom =  np.arange(0.5, len(args.sites)*10+0.5, 10)  
+    loc_vom2 =  np.arange(1.5, len(args.sites)*10+1.5, 10)  
+    loc_vom3 =  np.arange(2.5, len(args.sites)*10+2.5, 10)  
+    loc_vom4 =  np.arange(3.5, len(args.sites)*10+3.5, 10)  
 
-    loc_bess = np.arange(4.5, 64.5, 10)
-    loc_bios2 = np.arange(5.5, 65.5, 10)
-    loc_cable = np.arange(6.5, 66.5, 10)
-    loc_lpjguess = np.arange(7.5, 67.5, 10)
-    loc_maespa = np.arange(8.5, 68.5, 10)
-    loc_spa = np.arange(9.5, 69.5, 10)
+    loc_bess = np.arange(4.5, len(args.sites)*10+4.5, 10)
+    loc_bios2 = np.arange(5.5, len(args.sites)*10+5.5, 10)
+    loc_cable = np.arange(6.5, len(args.sites)*10+6.5, 10)
+    loc_lpjguess = np.arange(7.5, len(args.sites)*10+7.5, 10)
+    loc_maespa = np.arange(8.5, len(args.sites)*10+8.5, 10)
+    loc_spa = np.arange(9.5, len(args.sites)*10+9.5, 10)
 
 
     ylabels = [ r"Evaporation [mm/year]",
@@ -338,12 +338,20 @@ def main():
 
     ax[0].plot(loc, pd.Series(dingo_evap),"--", color="black" , lw=3, zorder=1)
 
-    ax[0].plot(np.delete(loc,1), pd.Series(bess_ema), "--", color="purple", zorder=1)
-    ax[0].plot(np.delete(loc,1), pd.Series(bios2_ema), "--", color="lightgreen", zorder=1)
-    ax[0].plot(np.delete(loc,1), pd.Series(cable_ema), "--", color="red", zorder=1)
-    ax[0].plot(np.delete(loc,1), pd.Series(maespa_ema), "--", color="gold", zorder=1)
-    ax[0].plot(np.delete(loc,1), pd.Series(spa_ema), "--", color="pink", zorder=1)
-    ax[0].plot(np.delete(loc,1), pd.Series(lpjguess_ema), "--", color="blue", zorder=1)
+    if(len(loc) != len(pd.Series(bess_ema))):
+        ax[0].plot(np.delete(loc,1), pd.Series(bess_ema), "--", color="purple", zorder=1)
+        ax[0].plot(np.delete(loc,1), pd.Series(bios2_ema), "--", color="lightgreen", zorder=1)
+        ax[0].plot(np.delete(loc,1), pd.Series(cable_ema), "--", color="red", zorder=1)
+        ax[0].plot(np.delete(loc,1), pd.Series(maespa_ema), "--", color="gold", zorder=1)
+        ax[0].plot(np.delete(loc,1), pd.Series(spa_ema), "--", color="pink", zorder=1)
+        ax[0].plot(np.delete(loc,1), pd.Series(lpjguess_ema), "--", color="blue", zorder=1)
+    else:
+        ax[0].plot(loc, pd.Series(bess_ema), "--", color="purple", zorder=1)
+        ax[0].plot(loc, pd.Series(bios2_ema), "--", color="lightgreen", zorder=1)
+        ax[0].plot(loc, pd.Series(cable_ema), "--", color="red", zorder=1)
+        ax[0].plot(loc, pd.Series(maespa_ema), "--", color="gold", zorder=1)
+        ax[0].plot(loc, pd.Series(spa_ema), "--", color="pink", zorder=1)
+        ax[0].plot(loc, pd.Series(lpjguess_ema), "--", color="blue", zorder=1)
 
     ax[1].plot(loc, pd.Series(vom_gpp),  "--", color="darkgreen", zorder=1 )
     ax[1].plot(loc, pd.Series(vom_pc_gpp),  "--", color="darkgreen", zorder=1 )
@@ -352,12 +360,21 @@ def main():
 
     ax[1].plot(loc, pd.Series(dingo_gpp),"--", color="black", lw=3, zorder=1)
 
-    ax[1].plot(np.delete(loc,1), pd.Series(bess_assma), "--", color="purple", zorder=1)
-    ax[1].plot(np.delete(loc,1), pd.Series(bios2_assma), "--", color="lightgreen", zorder=1)
-    ax[1].plot(np.delete(loc,1), pd.Series(cable_assma), "--", color="red", zorder=1)
-    ax[1].plot(np.delete(loc,1), pd.Series(maespa_assma), "--", color="gold", zorder=1)
-    ax[1].plot(np.delete(loc,1), pd.Series(spa_assma), "--", color="pink", zorder=1)
-    ax[1].plot(np.delete(loc,1), pd.Series(lpjguess_assma), "--", color="blue", zorder=1)
+    if(len(loc) != len(pd.Series(bess_assma))):
+        ax[1].plot(np.delete(loc,1), pd.Series(bess_assma), "--", color="purple", zorder=1)
+        ax[1].plot(np.delete(loc,1), pd.Series(bios2_assma), "--", color="lightgreen", zorder=1)
+        ax[1].plot(np.delete(loc,1), pd.Series(cable_assma), "--", color="red", zorder=1)
+        ax[1].plot(np.delete(loc,1), pd.Series(maespa_assma), "--", color="gold", zorder=1)
+        ax[1].plot(np.delete(loc,1), pd.Series(spa_assma), "--", color="pink", zorder=1)
+        ax[1].plot(np.delete(loc,1), pd.Series(lpjguess_assma), "--", color="blue", zorder=1)
+    else:
+        ax[1].plot(loc, pd.Series(bess_assma), "--", color="purple", zorder=1)
+        ax[1].plot(loc, pd.Series(bios2_assma), "--", color="lightgreen", zorder=1)
+        ax[1].plot(loc, pd.Series(cable_assma), "--", color="red", zorder=1)
+        ax[1].plot(loc, pd.Series(maespa_assma), "--", color="gold", zorder=1)
+        ax[1].plot(loc, pd.Series(spa_assma), "--", color="pink", zorder=1)
+        ax[1].plot(loc, pd.Series(lpjguess_assma), "--", color="blue", zorder=1)
+
 
     iplot = 0
     #loop over study sites
@@ -421,7 +438,7 @@ def main():
             ax[1].scatter(loc[isite], dingo_gpp[args.sites[isite]],color="black", s=130, marker= "*", zorder=2 )
 
 
-    ax[0].set_xlim([0,60])
+    ax[0].set_xlim([0,len(args.sites)*10])
     ax[0].set_ylim([ miny[0], maxy[0]])
     ax[0].set_xticks( np.arange(5,65,10)  )
     ax[0].set_xticklabels( args.sites, rotation=90, fontsize=20  ) 
@@ -430,7 +447,7 @@ def main():
     for tick in ax[0].yaxis.get_major_ticks():
         tick.label.set_fontsize(16)
 
-    ax[1].set_xlim([0,60])
+    ax[1].set_xlim([0,len(args.sites)*10])
     ax[1].set_ylim([ miny[1], maxy[1]])
     ax[1].set_xticks( np.arange(5,65,10)  )
     ax[1].set_xticklabels( args.sites, rotation=90, fontsize=20  ) 
@@ -469,7 +486,7 @@ def main():
 
         ax[iplot].grid(color='gray', linestyle='--', linewidth=1, alpha=0.5, axis="y")
         ax[iplot].set_ylim([ miny[iplot], maxy[iplot]])
-        ax[iplot].set_xlim([0,60])
+        ax[iplot].set_xlim([0,len(args.sites)*10])
         ax[iplot].set_xticks( np.arange(5,65,10)  )
         ax[iplot].set_xticklabels( args.sites, rotation=90, fontsize=20  )        
         ax[iplot].set_ylabel( ylabels[iplot], fontsize=20  )    
@@ -517,8 +534,8 @@ def main():
 
         ax[iplot].grid(color='gray', linestyle='--', linewidth=1, alpha=0.5, axis="y")
         ax[iplot].set_ylim([ miny[iplot], maxy[iplot]])
-        ax[iplot].set_xlim([0,60])
-        ax[iplot].set_xticks( np.arange(5,65,10)  )
+        ax[iplot].set_xlim([0,len(args.sites)*10])
+        ax[iplot].set_xticks( np.arange(5,len(args.sites)*10+5,10)  )
         ax[iplot].set_xticklabels( args.sites, rotation=90, fontsize=20  ) 
         ax[iplot].set_ylabel( ylabels[iplot], fontsize=20   )    
         ax[iplot].text(-0.15, 1.04, plot_label[iplot], transform=ax[iplot].transAxes,  size=20, weight='bold')
