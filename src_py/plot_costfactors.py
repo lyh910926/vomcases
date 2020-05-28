@@ -50,7 +50,7 @@ def main():
     parser.add_argument("--fpar5", help="fpar-based projective cover")
     parser.add_argument("--fpar6", help="fpar-based projective cover")
     parser.add_argument("--fpar_dates", help="dates for fpar-based projective cover")
-
+    parser.add_argument("--figsize", help="figure size", nargs='+', type=float, default = [18,18] )
     parser.add_argument("--sites", help="study sites, should correspond to the number and order of inputfiles", nargs='+')
     parser.add_argument("--cpccf_min", help="minimum value for the costfactor for water transport", type=float)
     parser.add_argument("--cpccf_max", help="maximum value for the costfactor for water transport", type=float)
@@ -93,7 +93,7 @@ def main():
 
     n_rows = np.ceil((len(args.sites)+1)/2)
 
-    fig, axes = plt.subplots(nrows=int(n_rows), ncols=2, figsize=(16, 13)) 
+    fig, axes = plt.subplots(nrows=int(n_rows), ncols=2, figsize=(args.figsize[0], args.figsize[1])) 
     if( np.abs( ( (len(args.sites)+1)/2) - n_rows ) > 0):
         fig.delaxes(axes[n_rows,1]) #remove last plot
     ax = axes.flat
