@@ -468,7 +468,7 @@ def evap_barplot(esoil, etmt, etmg, esoil_pc, etmt_pc, etmg_pc, evap_dingo, ax, 
     ax.set_xticklabels( labels, rotation=90, fontsize=18)
     ax.legend((p1[0], p2[0], p3[0]), ('Esoil', 'Etmt', 'Etmg'))
 
-    ax.text(-0.15, 1.05, title, transform=ax.transAxes, 
+    ax.text(titlex, titley, title, transform=ax.transAxes, 
                 size=18)
 
     for loc in ind:
@@ -514,7 +514,7 @@ def ass_barplot(assg, asst, assg_pc, asst_pc, gpp_dingo, ax, title, labels, labe
     ax.set_xticklabels( labels,rotation=90, fontsize=18 )
     ax.legend((p1[0], p2[0]), ('Assg', 'Asst'))
 
-    ax.text(-0.15, 1.05, title, transform=ax.transAxes, size=18)
+    ax.text(titlex, titley, title, transform=ax.transAxes, size=18)
 
 
     return ax
