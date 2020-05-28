@@ -56,6 +56,16 @@ def main():
     parser.add_argument("--cpccf_max", help="maximum value for the costfactor for water transport", type=float)
     parser.add_argument("--cpccf_step", help="increment between costfactors", type=float)
     parser.add_argument("--plot_cpccf", help="value use for plotting rooting depths", type=float)
+    parser.add_argument("--spa_rtdepth", help="value use for plotting rooting depths", type=float)
+    parser.add_argument("--spa_rgdepth", help="value use for plotting rooting depths", type=float)
+    parser.add_argument("--maespa_rtdepth", help="value use for plotting rooting depths", type=float)
+    parser.add_argument("--maespa_rgdepth", help="value use for plotting rooting depths", type=float)
+    parser.add_argument("--cable_rtdepth", help="value use for plotting rooting depths", type=float)
+    parser.add_argument("--cable_rgdepth", help="value use for plotting rooting depths", type=float)
+    parser.add_argument("--bios2_rtdepth", help="value use for plotting rooting depths", type=float)
+    parser.add_argument("--bios2_rgdepth", help="value use for plotting rooting depths", type=float)
+    parser.add_argument("--lpj_rtdepth", help="value use for plotting rooting depths", type=float)
+    parser.add_argument("--lpj_rgdepth", help="value use for plotting rooting depths", type=float)
     parser.add_argument("--figlab", help="figure labels", nargs='+')
 
     args = parser.parse_args()
@@ -126,11 +136,11 @@ def main():
         ax[1].scatter(isite, params_tmp[7], marker=symbols[isite], color=colors[isite], s=140) 
         icount = icount + 1 
         
-    ax[0].plot( [-1,6], [6.5,6.5])# , label='SPA'  )
-    ax[0].plot( [-1,6], [5, 5] )#, label='MAESPA'  )
-    ax[0].plot( [-1,6], [4.5,4.5])# , label='CABLE'  )
-    ax[0].plot( [-1,6], [5,5] )#, label='BIOS2'  )
-    ax[0].plot( [-1,6], [2,2] )# , label='LPJGUESS'  )   
+    ax[0].plot( [-1,6], [args.spa_rtdepth,args.spa_rtdepth])# , label='SPA'  )
+    ax[0].plot( [-1,6], [args.maespa_rtdepth, args.maespa_rtdepth] )#, label='MAESPA'  )
+    ax[0].plot( [-1,6], [args.cable_rtdepth,args.cable_rtdepth])# , label='CABLE'  )
+    ax[0].plot( [-1,6], [args.bios2_rtdepth,args.bios2_rtdepth] )#, label='BIOS2'  )
+    ax[0].plot( [-1,6], [args.lpj_rtdepth,args.lpj_rtdepth] )# , label='LPJGUESS'  )   
         
     ax[0].set_xlim( -1, 6  ) 
     ax[0].set_ylim( 10, 0  ) 
@@ -147,11 +157,11 @@ def main():
         tick.label.set_fontsize(20)
 
         
-    ax[1].plot( [-1,6], [6.5,6.5] , label='SPA'  )
-    ax[1].plot( [-1,6], [5, 5] , label='MAESPA'  )
-    ax[1].plot( [-1,6], [4.5,4.5] , label='CABLE'  )
-    ax[1].plot( [-1,6], [0.5,0.5] , label='BIOS2'  )
-    ax[1].plot( [-1,6], [2,2] , label='LPJGUESS'  )
+    ax[1].plot( [-1,6], [args.spa_rgdepth,args.spa_rgdepth] , label='SPA'  )
+    ax[1].plot( [-1,6], [args.maespa_rgdepth, args.maespa_rgdepth] , label='MAESPA'  )
+    ax[1].plot( [-1,6], [args.cable_rgdepth,args.cable_rgdepth] , label='CABLE'  )
+    ax[1].plot( [-1,6], [rgs.bios2_rgdepth,rgs.bios2_rgdepth] , label='BIOS2'  )
+    ax[1].plot( [-1,6], [args.lpj_rgdepth,args.lpj_rgdepth] , label='LPJGUESS'  )
         
     #ax2.set_ylim([0,1]) 
 
