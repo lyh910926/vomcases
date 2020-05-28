@@ -51,6 +51,7 @@ def main():
 
     parser.add_argument("--sites", help="study sites, should correspond to the number and order of inputfiles", nargs='+')
     parser.add_argument("--figsize", help="figure size", nargs='+', type=float, default = [15,20] )
+    parser.add_argument("--loc_title", help="figure title location", nargs='+', type=float, default = [-0.15, 1.05] )
     parser.add_argument("--labsize", help="label size", type=float, default = 8)
     parser.add_argument("--label_pad", help="label pad", type=float, default = 50)
     parser.add_argument("--only_meanannual",dest="only_meanannual", action='store_true', help="only plot mean annual values")
@@ -214,17 +215,17 @@ def main():
         fig, axes   = plt.subplots(nrows=4, ncols=2, figsize=(args.figsize[0], args.figsize[1]), sharex = True )
         ax = axes.flat
 
-        evap_barplot(esoil_ma, etmt_ma, etmg_ma, esoil_ma_pc, etmt_ma_pc, etmg_ma_pc, etot_dingo, ax[0], plot_label[0], args.sites, args.label_pad, -40, args.labsize,"Mean annual evaporation [mm/year]")
-        ass_barplot(assg_ma, asst_ma, assg_ma_pc, asst_ma_pc, gpptot_dingo, ax[1], plot_label[1], args.sites, args.label_pad, -5, args.labsize, "Mean annual assimilation [mol/m$^2$/year]")
+        evap_barplot(esoil_ma, etmt_ma, etmg_ma, esoil_ma_pc, etmt_ma_pc, etmg_ma_pc, etot_dingo, ax[0], plot_label[0], args.sites, args.label_pad, -40, args.labsize,"Mean annual evaporation [mm/year]", args.loc_title[0], args.loc_title[1] )
+        ass_barplot(assg_ma, asst_ma, assg_ma_pc, asst_ma_pc, gpptot_dingo, ax[1], plot_label[1], args.sites, args.label_pad, -5, args.labsize, "Mean annual assimilation [mol/m$^2$/year]", args.loc_title[0], args.loc_title[1])
 
-        evap_barplot(esoil_wet, etmt_wet, etmg_wet, esoil_wet_pc, etmt_wet_pc, etmg_wet_pc, ewet_dingo, ax[2], plot_label[2], args.sites, args.label_pad, -20, args.labsize, "Mean wet season evaporation [mm/year]")
-        ass_barplot(assg_wet, asst_wet, assg_wet_pc, asst_wet_pc, gppwet_dingo, ax[3], plot_label[3], args.sites, args.label_pad, -3, args.labsize, "Mean wet season assimilation [mol/m$^2$/year]")
+        evap_barplot(esoil_wet, etmt_wet, etmg_wet, esoil_wet_pc, etmt_wet_pc, etmg_wet_pc, ewet_dingo, ax[2], plot_label[2], args.sites, args.label_pad, -20, args.labsize, "Mean wet season evaporation [mm/year]", args.loc_title[0], args.loc_title[1])
+        ass_barplot(assg_wet, asst_wet, assg_wet_pc, asst_wet_pc, gppwet_dingo, ax[3], plot_label[3], args.sites, args.label_pad, -3, args.labsize, "Mean wet season assimilation [mol/m$^2$/year]", args.loc_title[0], args.loc_title[1])
 
-        evap_barplot(esoil_dry, etmt_dry, etmg_dry, esoil_dry_pc, etmt_dry_pc, etmg_dry_pc, edry_dingo, ax[4], plot_label[4], args.sites, args.label_pad, -10, args.labsize, "Mean dry season evaporation [mm/year]")
-        ass_barplot(assg_dry, asst_dry, assg_dry_pc, asst_dry_pc, gppdry_dingo, ax[5], plot_label[5], args.sites, args.label_pad, -2, args.labsize, "Mean dry season assimilation [mol/m$^2$/year]")
+        evap_barplot(esoil_dry, etmt_dry, etmg_dry, esoil_dry_pc, etmt_dry_pc, etmg_dry_pc, edry_dingo, ax[4], plot_label[4], args.sites, args.label_pad, -10, args.labsize, "Mean dry season evaporation [mm/year]", args.loc_title[0], args.loc_title[1])
+        ass_barplot(assg_dry, asst_dry, assg_dry_pc, asst_dry_pc, gppdry_dingo, ax[5], plot_label[5], args.sites, args.label_pad, -2, args.labsize, "Mean dry season assimilation [mol/m$^2$/year]", args.loc_title[0], args.loc_title[1])
 
-        evap_barplot(esoil_wet2dry, etmt_wet2dry, etmg_wet2dry, esoil_wet2dry_pc, etmt_wet2dry_pc, etmg_wet2dry_pc, ewet2dry_dingo, ax[6], plot_label[6], args.sites, args.label_pad, -5, args.labsize, "Mean drying season evaporation [mm/year]")
-        ass_barplot(assg_wet2dry, asst_wet2dry, assg_wet2dry_pc, asst_wet2dry_pc,  gppwet2dry_dingo, ax[7], plot_label[7], args.sites, args.label_pad, -1, args.labsize, "Mean drying season assimilation [mol/m$^2$/year]")
+        evap_barplot(esoil_wet2dry, etmt_wet2dry, etmg_wet2dry, esoil_wet2dry_pc, etmt_wet2dry_pc, etmg_wet2dry_pc, ewet2dry_dingo, ax[6], plot_label[6], args.sites, args.label_pad, -5, args.labsize, "Mean drying season evaporation [mm/year]", args.loc_title[0], args.loc_title[1])
+        ass_barplot(assg_wet2dry, asst_wet2dry, assg_wet2dry_pc, asst_wet2dry_pc,  gppwet2dry_dingo, ax[7], plot_label[7], args.sites, args.label_pad, -1, args.labsize, "Mean drying season assimilation [mol/m$^2$/year]", args.loc_title[0], args.loc_title[1])
 
 
 
@@ -444,7 +445,7 @@ def mean_annual_dingo(inputfile, startyear, endyear, startwet, endwet, startdry,
     return result      
                 
 
-def evap_barplot(esoil, etmt, etmg, esoil_pc, etmt_pc, etmg_pc, evap_dingo, ax, title, labels, label_pad, dist_lab, lab_size,ylabel):
+def evap_barplot(esoil, etmt, etmg, esoil_pc, etmt_pc, etmg_pc, evap_dingo, ax, title, labels, label_pad, dist_lab, lab_size,ylabel, titlex, titley):
 
     ind = np.arange(0,(len(esoil))*4, 4)
     ind2 = ind + 1
@@ -483,7 +484,7 @@ def evap_barplot(esoil, etmt, etmg, esoil_pc, etmt_pc, etmg_pc, evap_dingo, ax, 
     return ax
 
 
-def ass_barplot(assg, asst, assg_pc, asst_pc, gpp_dingo, ax, title, labels, label_pad,dist_lab, lab_size, ylabel):
+def ass_barplot(assg, asst, assg_pc, asst_pc, gpp_dingo, ax, title, labels, label_pad,dist_lab, lab_size, ylabel, titlex, titley):
 
     ind = np.arange(0,(len(assg))*4, 4)
     ind2 = ind + 1
