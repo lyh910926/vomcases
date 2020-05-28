@@ -160,7 +160,7 @@ def main():
     ax[1].plot( [-1,6], [args.spa_rgdepth,args.spa_rgdepth] , label='SPA'  )
     ax[1].plot( [-1,6], [args.maespa_rgdepth, args.maespa_rgdepth] , label='MAESPA'  )
     ax[1].plot( [-1,6], [args.cable_rgdepth,args.cable_rgdepth] , label='CABLE'  )
-    ax[1].plot( [-1,6], [rgs.bios2_rgdepth,rgs.bios2_rgdepth] , label='BIOS2'  )
+    ax[1].plot( [-1,6], [args.bios2_rgdepth,args.bios2_rgdepth] , label='BIOS2'  )
     ax[1].plot( [-1,6], [args.lpj_rgdepth,args.lpj_rgdepth] , label='LPJGUESS'  )
         
     #ax2.set_ylim([0,1]) 
