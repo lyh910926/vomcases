@@ -66,15 +66,21 @@ def main():
     cpcff_str = map(str, np.round(cpcff_vals,1) ) 
     cpcff_str = list(cpcff_str)
 
-    cai_fpar = np.zeros(6)
-    cai_fpar[0] = get_pc(args.fpar1, args.fpar_dates)
-    cai_fpar[1] = get_pc(args.fpar2, args.fpar_dates)
-    cai_fpar[2] = get_pc(args.fpar3, args.fpar_dates)
-    cai_fpar[3] = get_pc(args.fpar4, args.fpar_dates)
-    cai_fpar[4] = get_pc(args.fpar5, args.fpar_dates)
-    cai_fpar[5] = get_pc(args.fpar6, args.fpar_dates)
+    cai_fpar = np.zeros(len(args.sites))
+    if args.fpar1 is not None:
+        cai_fpar[0] = get_pc(args.fpar1, args.fpar_dates)
+    if args.fpar2 is not None:
+        cai_fpar[1] = get_pc(args.fpar2, args.fpar_dates)
+    if args.fpar3 is not None:
+        cai_fpar[2] = get_pc(args.fpar3, args.fpar_dates)
+    if args.fpar4 is not None:
+        cai_fpar[3] = get_pc(args.fpar4, args.fpar_dates)
+    if args.fpar5 is not None:
+        cai_fpar[4] = get_pc(args.fpar5, args.fpar_dates)
+    if args.fpar6 is not None:
+        cai_fpar[5] = get_pc(args.fpar6, args.fpar_dates)
 
-    err = np.zeros((len(cpcff_vals),6))
+    err = np.zeros((len(cpcff_vals),len(args.sites)))
     ED = np.zeros((len(cpcff_vals)))
 
     symbols = ['s', '>', '.','8', 'P','*']
@@ -85,17 +91,26 @@ def main():
     else:
         fig_lab = ['a)', 'b)', 'c)', 'd)', 'e)', 'f)', 'g)']
 
-    fig, axes = plt.subplots(nrows=4, ncols=2, figsize=(16, 13)) 
-    fig.delaxes(axes[3,1])
+    n_rows = np.ceil((len(args.sites)+1)/2)
+
+    fig, axes = plt.subplots(nrows=int(n_rows), ncols=2, figsize=(16, 13)) 
+    if( np.abs( ( (len(args.sites)+1)/2) - n_rows ) > 0):
+        fig.delaxes(axes[n_rows,1]) #remove last plot
     ax = axes.flat
 
     files=dict()
-    files[args.sites[0]] = args.in1
-    files[args.sites[1]] = args.in2
-    files[args.sites[2]] = args.in3
-    files[args.sites[3]] = args.in4
-    files[args.sites[4]] = args.in5
-    files[args.sites[5]] = args.in6
+    if args.in1 is not None:
+        files[args.sites[0]] = args.in1
+    if args.in2 is not None:
+        files[args.sites[1]] = args.in2
+    if args.in3 is not None:
+        files[args.sites[2]] = args.in3
+    if args.in4 is not None:
+        files[args.sites[3]] = args.in4
+    if args.in5 is not None:
+        files[args.sites[4]] = args.in5
+    if args.in6 is not None:
+        files[args.sites[5]] = args.in6
 
     i_cpcff = 0
     for cpcff in  cpcff_str:  
@@ -124,9 +139,6 @@ def main():
 
                 ax[ibasin].legend(prop={'size':10})
 
-                if( ibasin == 5):
-                    ax[ibasin].set_xlabel(r'$c_{rv}$ ($\mu$$mol$ $m^3$ $s^{-1}$)', size=14 )  
-
                 ax[ibasin].tick_params(axis='both', which='major', labelsize=14)
                 ax[ibasin].set_xticks(cpcff_vals)
                 ax[ibasin].set_xticklabels(cpcff_str)
@@ -141,19 +153,20 @@ def main():
     for i_cpcff in range(len(cpcff_str)):
         ED[i_cpcff] = np.sqrt(np.sum(err[i_cpcff,:]**2))
 
-    ax[6].plot(cpcff_vals, ED, "*", markersize=10)
-    ax[6].set_ylabel("Euclidian distance [-]", size = 16 )  
-    ax[6].set_ylim( 0, 1.2  )
-    ax[6].set_xlim( 0, 3.2  )    
+    ax[len(args.sites)].plot(cpcff_vals, ED, "*", markersize=10)
+    ax[len(args.sites)].set_ylabel("Euclidian distance [-]", size = 16 )  
+    ax[len(args.sites)].set_ylim( 0, 1.2  )
+    ax[len(args.sites)].set_xlim( 0, 3.2  )    
 
-    ax[6].legend(prop={'size':10})
-    ax[6].text(-0.10, 1.05, fig_lab[ibasin], transform=ax[6].transAxes, 
+    ax[len(args.sites)].legend(prop={'size':10})
+    ax[len(args.sites)].text(-0.10, 1.05, fig_lab[ibasin], transform=ax[len(args.sites)].transAxes, 
                 size=18)
-    ax[6].tick_params(axis='both', which='major', labelsize=14)
-    ax[6].set_xticks(cpcff_vals)
-    ax[6].set_xticklabels(cpcff_str)
-    ax[6].grid(color='gray', linestyle='--', linewidth=1, alpha=0.5)
-    ax[6].set_xlabel(r'$c_{rv}$ ($\mu$$mol$ $m^3$ $s^{-1}$)', size=14 )  
+    ax[len(args.sites)].tick_params(axis='both', which='major', labelsize=14)
+    ax[len(args.sites)].set_xticks(cpcff_vals)
+    ax[len(args.sites)].set_xticklabels(cpcff_str)
+    ax[len(args.sites)].grid(color='gray', linestyle='--', linewidth=1, alpha=0.5)
+    ax[len(args.sites)].set_xlabel(r'$c_{rv}$ ($\mu$$mol$ $m^3$ $s^{-1}$)', size=14 )  
+    ax[len(args.sites)-1].set_xlabel(r'$c_{rv}$ ($\mu$$mol$ $m^3$ $s^{-1}$)', size=14 )  
 
     plt.tight_layout() 
     if args.outfile is not None:
