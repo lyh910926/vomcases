@@ -166,7 +166,7 @@ def main():
     delz_sum = np.cumsum(delz)
 
     if(args.use_roots == True):
-        val5 = list(filter(lambda i: round(i,2) < params[5], delz_sum))[-1]
+        val5 = list(filter(lambda i: round(i,2) < params[8], delz_sum))[-1]
     else:
         val5 = list(filter(lambda i: round(i,2) <= 5.00, delz_sum))[-1]
     ind5 = list(delz_sum).index(val5) + 1
@@ -174,7 +174,7 @@ def main():
     if(args.print_depths == True):
         print("Tree rooting depth:")
         print(val5)
-        print(params[5])
+        print(params[8])
         print("Untill layer:")
         print(ind5)
 
@@ -258,7 +258,7 @@ def main():
     delz2015_sum = np.cumsum(delz2015)
 
     if(args.use_roots == True):
-        val5 = list(filter(lambda i: round(i,2) < params2015[5], delz2015_sum))[-1]
+        val5 = list(filter(lambda i: round(i,2) < params2015[8], delz2015_sum))[-1]
     else:
         val5 = list(filter(lambda i: round(i,2) <= 5.00, delz2015_sum))[-1]
     ind5_2015 = list(delz2015_sum).index(val5) + 1
@@ -267,7 +267,7 @@ def main():
         print("---")
         print("Tree rooting depth:")
         print(val5)
-        print(params2015[5])
+        print(params2015[8])
         print("Untill layer:")
         print(ind5_2015)
 
@@ -338,9 +338,12 @@ def main():
     #######################################################################################
     #make plot
     #fig=plt.figure(figsize=(args.figsize[0], args.figsize[1]), dpi= args.dpi, facecolor='w', edgecolor='k' )
-    fig, axes = plt.subplots(nrows=5, ncols=1, figsize=(args.figsize[0], args.figsize[1]))        
+    fig, axes = plt.subplots(nrows=5, ncols=2, figsize=(args.figsize[0], args.figsize[1]), gridspec_kw={"width_ratios":[1,0.05]})        
     ax = axes.flat
-
+        
+    fig.delaxes(ax[1]) #remove last plot
+    fig.delaxes(ax[3]) #remove last plot
+    fig.delaxes(ax[5]) #remove last plot
 
     #plot observations
     if args.obs_gw is not None:
@@ -427,82 +430,83 @@ def main():
     #other plots
 
     #plot soil moisture results
-    plot_flux_obs(tmod, theta_vals, ax[1], tobs_sm, obs_sm, "Soil moisture (m)", "b)" ,yearstart, yearend) 
+    plot_flux_obs(tmod, theta_vals, ax[2], tobs_sm, obs_sm, "Soil moisture (m)", "b)" ,yearstart, yearend) 
 
  
     #plot 2015 data
     if args.i2015 is not None:
-        ax[1].plot(tmod2015, theta_vals2015, color='green', label='Schymanski et al. (2015)', zorder=2)
+        ax[2].plot(tmod2015, theta_vals2015, color='green', label='Schymanski et al. (2015)', zorder=2)
 
 
     ##############################################################
     #plot storage results
-    plot_flux(ax[2], "Water storage (m)", "c)", yearstart, yearend ) 
-    ax[2].plot(time_su, ws5_pd, color="red", label="VOM", zorder=1) 
+    plot_flux(ax[4], "Water storage (m)", "c)", yearstart, yearend ) 
+    ax[4].plot(time_su, ws5_pd, color="red", label="VOM", zorder=1) 
 
     #plot 2015 data
     if args.i2015 is not None:
-        ax[2].plot(time_su2015, ws5_2015_pd, color='green', label='Schymanski et al. (2015)', zorder=2)
+        ax[4].plot(time_su2015, ws5_2015_pd, color='green', label='Schymanski et al. (2015)', zorder=2)
 
-    ax[2].legend(prop={'size':15}, framealpha=1  )
+    ax[4].legend(prop={'size':15}, framealpha=1  )
 
 
-    for tick in ax[2].yaxis.get_major_ticks():
+    for tick in ax[4].yaxis.get_major_ticks():
         tick.label.set_fontsize(20)
-    for tick in ax[2].xaxis.get_major_ticks():
+    for tick in ax[4].xaxis.get_major_ticks():
         tick.label.set_fontsize(20)
 
     ##############################################################
     #plot water potentials
     #new VOM-results
     y = np.insert(-delz_sum[0:ind5],0,0)
-    c1 = ax[3].pcolor(watpot_hourly_pd.index, y ,watpot_hourly_pd.values.T,norm=LogNorm(vmin=0.01, vmax=250), vmin=0.01, vmax=250, cmap = 'RdYlGn')
+    c1 = ax[6].pcolor(watpot_hourly_pd.index, y ,watpot_hourly_pd.values.T,norm=LogNorm(vmin=0.01, vmax=250), vmin=0.01, vmax=250, cmap = 'RdYlGn')
 
-    ax[3].plot( [datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params[5], - params[5]], ":", lw=3, color='red', label='root depth trees')
-    ax[3].plot( [datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params[7],  -params[7]],":",lw=3,color='orange', label='root depth grasses')
+    ax[6].plot( [datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params[5], - params[5]], ":", lw=3, color='red', label='root depth trees')
+    ax[6].plot( [datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params[7],  -params[7]],":",lw=3,color='orange', label='root depth grasses')
 
-    ax[3].legend(prop={'size':15}, framealpha=1  )
+    ax[6].legend(prop={'size':15}, framealpha=1  )
 
-    ax[3].set_ylabel("Depth (m)", size=20)
-    for tick in ax[3].yaxis.get_major_ticks():
+    ax[6].set_ylabel("Depth (m)", size=20)
+    for tick in ax[6].yaxis.get_major_ticks():
         tick.label.set_fontsize(20)
-    for tick in ax[3].xaxis.get_major_ticks():
+    for tick in ax[6].xaxis.get_major_ticks():
         tick.label.set_fontsize(20)
 
     #set colorbar
-    cb = fig.colorbar(c1,ax=ax[3])
+    cb = fig.colorbar(c1,cax=ax[7])
     cb.ax.tick_params(labelsize=14)
     cb.set_label("Matrix potential (m)", size=20)
 
     #Aob2015 results
     y2015 = np.insert(-delz2015_sum[0:ind5_2015],0,0)
-    c2 = ax[4].pcolor(watpot_hourly2015_pd.index, y2015, watpot_hourly2015_pd.values.T, norm=LogNorm(vmin=0.01, vmax=250), vmin=0.01, vmax=250, cmap='RdYlGn'   )
-    ax[4].plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params2015[5],- params2015[5]], ":", lw=3, color='red', label='root depth trees')
-    ax[4].plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params2015[7],- params2015[7]],":",lw=3, color='orange', label='root depth grasses')
+    c2 = ax[8].pcolor(watpot_hourly2015_pd.index, y2015, watpot_hourly2015_pd.values.T, norm=LogNorm(vmin=0.01, vmax=250), vmin=0.01, vmax=250, cmap='RdYlGn'   )
+    ax[8].plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params2015[5],- params2015[5]], ":", lw=3, color='red', label='root depth trees')
+    ax[8].plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params2015[7],- params2015[7]],":",lw=3, color='orange', label='root depth grasses')
 
     #set colorbar
-    cb = fig.colorbar(c2,ax=ax[4])
+    cb = fig.colorbar(c2,cax=ax[9])
     cb.ax.tick_params(labelsize=14)
     cb.set_label("Matrix potential (m)", size=20)
 
-    ax[4].set_ylabel("Depth (m)", size=20)
-    for tick in ax[4].xaxis.get_major_ticks():
+    ax[8].set_ylabel("Depth (m)", size=20)
+    for tick in ax[8].xaxis.get_major_ticks():
         tick.label.set_fontsize(20)
-    for tick in ax[4].yaxis.get_major_ticks():
+    for tick in ax[8].yaxis.get_major_ticks():
         tick.label.set_fontsize(20)
 
     #set labels/titles of plots
     if args.title is True:
 
         plot_label = ["a)","b)","c)", "d)", "e)", "f)"]
+        label_ax = [0,2,4,6,8]
         for i in range(0, 5):
-            ax[i].text(args.xloc_title, args.yloc_title, plot_label[i], ha='left', va='center', transform=ax[i].transAxes, fontsize=args.size_title)
+            ax[label_ax[i]].text(args.xloc_title, args.yloc_title, plot_label[i], ha='left', va='center', transform=ax[label_ax[i]].transAxes, fontsize=args.size_title)
 
 
-    ax[1].legend(prop={'size':15}, framealpha=1  )
     ax[2].legend(prop={'size':15}, framealpha=1  )
-    ax[3].legend(prop={'size':15}, framealpha=1  )
     ax[4].legend(prop={'size':15}, framealpha=1  )
+    ax[6].legend(prop={'size':15}, framealpha=1  )
+    ax[8].legend(prop={'size':15}, framealpha=1  )
 
     #save figure
     if args.outputfile is not None:
