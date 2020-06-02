@@ -142,7 +142,7 @@ def main():
     ax[0].plot( [-1,6], [args.bios2_rtdepth,args.bios2_rtdepth] )#, label='BIOS2'  )
     ax[0].plot( [-1,6], [args.lpj_rtdepth,args.lpj_rtdepth] )# , label='LPJGUESS'  )   
         
-    ax[0].set_xlim( -1, 6  ) 
+    ax[0].set_xlim( -1, 5  ) 
     ax[0].set_ylim( 10, 0  ) 
     ax[0].legend(prop={'size':15})
 
