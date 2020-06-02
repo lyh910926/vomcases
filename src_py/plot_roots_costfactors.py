@@ -161,14 +161,14 @@ def main():
     ax[1].plot( [-1,6], [args.maespa_rgdepth, args.maespa_rgdepth] , label='MAESPA'  )
     ax[1].plot( [-1,6], [args.cable_rgdepth,args.cable_rgdepth] , label='CABLE'  )
     ax[1].plot( [-1,6], [args.bios2_rgdepth,args.bios2_rgdepth] , label='BIOS2'  )
-    ax[1].plot( [-1,6], [args.lpj_rgdepth,args.lpj_rgdepth] , label='LPJGUESS'  )
+    ax[1].plot( [-1,6], [args.lpj_rgdepth,args.lpj_rgdepth] , label='LPJ-GUESS'  )
         
     #ax2.set_ylim([0,1]) 
 
-    ax[1].set_xlim( -1, 6  ) 
+    ax[1].set_xlim( -1, 5  ) 
     ax[1].set_ylim( 10, 0  ) 
 
-    ax[1].set_xticks( [0,1,2,3,4,5] )  
+    ax[1].set_xticks( [0,1,2,3,4] )  
     ax[1].set_xticklabels( "", rotation=90, size=14  )  
     ax[1].set_ylabel("Root depth grass [m]", size=20 ) 
     ax[1].set_xlabel("Study sites", size=16 )  
