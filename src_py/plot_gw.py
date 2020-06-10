@@ -58,8 +58,8 @@ def main():
     parser.add_argument("--size_title", help="size of title", type=float, default = 20 )
     parser.add_argument("--obs_freq", help="D or H (daily-hourly)")
     parser.add_argument("--obs_header", help="lines to skip", type=int, default = 4)
-    parser.add_argument("--obs_col", help="column to extract", type=int, default = 4)
-    parser.add_argument("--obs_timeformat", help="column to extract", default = "%S:%H:%M %d/%m/%Y")
+    parser.add_argument("--obs_col", help="column to extract", type=int, default = 1)
+    parser.add_argument("--obs_timeformat", help="time format observations", default = "%S:%H:%M %d/%m/%Y")
 
 
 
@@ -175,9 +175,9 @@ def main():
 
         for i in range(0, len(args.obs)):
             if(i == 0):
-                ax0.plot(tobs[i], -obs[i], color='blue', label='Obs.', zorder=2)
+                ax0.plot(tobs[i], obs[i], color='blue', label='Obs.', zorder=2)
             else:
-                ax0.plot(tobs[i], -obs[i], color='blue', zorder=2)
+                ax0.plot(tobs[i], obs[i], color='blue', zorder=2)
 
     #plot 2015 data
     if args.i2015 is not None:
