@@ -25,7 +25,6 @@
       updated: schema:dateUpdated
       version: schema:schemaVersion
     '@id': schema:isPartOf
-  based_on: schema:isBasedOn
   created: schema:dateCreated
   creator:
     '@context':
@@ -105,7 +104,13 @@
   name: schema:name
   path: prov:atLocation
   prov: http://www.w3.org/ns/prov#
-  same_as: schema:sameAs
+  same_as:
+    '@context':
+      '@version': 1.1
+      _id: '@id'
+      schema: http://schema.org/
+      url: schema:url
+    '@id': schema:sameAs
   schema: http://schema.org/
   short_name: schema:alternateName
   tags:
@@ -147,7 +152,6 @@ _project:
   name: VOMcases
   updated: '2019-03-08T08:28:48.938000+00:00'
   version: '1'
-based_on: null
 created: '2019-03-26T15:04:59.557042+02:00'
 creator:
 - '@type':
@@ -166,9 +170,27 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: file://blob/32b59523532ac9bd257a511b5bfb63e317a4674e/data/MODIS/dates_modis
+  _id: https://renkulab.io/blob/32b59523532ac9bd257a511b5bfb63e317a4674e/data/MODIS/dates_modis
   _label: data/MODIS/dates_modis@32b59523532ac9bd257a511b5bfb63e317a4674e
-  _project: null
+  _project:
+    '@type':
+    - prov:Location
+    - schema:Project
+    _id: https://renkulab.io/projects/remko.nijzink/vomcases
+    created: '2019-03-08T08:28:48.938000+00:00'
+    creator:
+      '@type':
+      - prov:Person
+      - schema:Person
+      _id: mailto:remko.nijzink@list.lu
+      affiliation: null
+      alternate_name: null
+      email: remko.nijzink@list.lu
+      label: Remko Nijzink
+      name: Remko Nijzink
+    name: VOMcases
+    updated: '2019-03-08T08:28:48.938000+00:00'
+    version: '1'
   added: '2019-03-26T15:05:41.455940+02:00'
   based_on: null
   creator:
@@ -181,6 +203,7 @@ files:
     email: remko.nijzink@list.lu
     label: Remko Nijzink
     name: Remko Nijzink
+  external: false
   name: dates_modis
   path: data/MODIS/dates_modis
   url: https://e4ftl01.cr.usgs.gov/MOLT/MOD13Q1.006/
@@ -188,9 +211,27 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: file://blob/ee8c05f4b56dd1c0b666540ae753c468898201b3/data/MODIS/evi_adelaide.txt
+  _id: https://renkulab.io/blob/ee8c05f4b56dd1c0b666540ae753c468898201b3/data/MODIS/evi_adelaide.txt
   _label: data/MODIS/evi_adelaide.txt@ee8c05f4b56dd1c0b666540ae753c468898201b3
-  _project: null
+  _project:
+    '@type':
+    - prov:Location
+    - schema:Project
+    _id: https://renkulab.io/projects/remko.nijzink/vomcases
+    created: '2019-03-08T08:28:48.938000+00:00'
+    creator:
+      '@type':
+      - prov:Person
+      - schema:Person
+      _id: mailto:remko.nijzink@list.lu
+      affiliation: null
+      alternate_name: null
+      email: remko.nijzink@list.lu
+      label: Remko Nijzink
+      name: Remko Nijzink
+    name: VOMcases
+    updated: '2019-03-08T08:28:48.938000+00:00'
+    version: '1'
   added: '2019-03-26T15:05:31.854232+02:00'
   based_on: null
   creator:
@@ -203,6 +244,7 @@ files:
     email: remko.nijzink@list.lu
     label: Remko Nijzink
     name: Remko Nijzink
+  external: false
   name: evi_adelaide.txt
   path: data/MODIS/evi_adelaide.txt
   url: https://e4ftl01.cr.usgs.gov/MOLT/MOD13Q1.006/
@@ -210,9 +252,27 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: file://blob/ee8c05f4b56dd1c0b666540ae753c468898201b3/data/MODIS/evi_daly.txt
+  _id: https://renkulab.io/blob/ee8c05f4b56dd1c0b666540ae753c468898201b3/data/MODIS/evi_daly.txt
   _label: data/MODIS/evi_daly.txt@ee8c05f4b56dd1c0b666540ae753c468898201b3
-  _project: null
+  _project:
+    '@type':
+    - prov:Location
+    - schema:Project
+    _id: https://renkulab.io/projects/remko.nijzink/vomcases
+    created: '2019-03-08T08:28:48.938000+00:00'
+    creator:
+      '@type':
+      - prov:Person
+      - schema:Person
+      _id: mailto:remko.nijzink@list.lu
+      affiliation: null
+      alternate_name: null
+      email: remko.nijzink@list.lu
+      label: Remko Nijzink
+      name: Remko Nijzink
+    name: VOMcases
+    updated: '2019-03-08T08:28:48.938000+00:00'
+    version: '1'
   added: '2019-03-26T15:05:31.921770+02:00'
   based_on: null
   creator:
@@ -225,6 +285,7 @@ files:
     email: remko.nijzink@list.lu
     label: Remko Nijzink
     name: Remko Nijzink
+  external: false
   name: evi_daly.txt
   path: data/MODIS/evi_daly.txt
   url: https://e4ftl01.cr.usgs.gov/MOLT/MOD13Q1.006/
@@ -232,9 +293,27 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: file://blob/ee8c05f4b56dd1c0b666540ae753c468898201b3/data/MODIS/evi_dry.txt
+  _id: https://renkulab.io/blob/ee8c05f4b56dd1c0b666540ae753c468898201b3/data/MODIS/evi_dry.txt
   _label: data/MODIS/evi_dry.txt@ee8c05f4b56dd1c0b666540ae753c468898201b3
-  _project: null
+  _project:
+    '@type':
+    - prov:Location
+    - schema:Project
+    _id: https://renkulab.io/projects/remko.nijzink/vomcases
+    created: '2019-03-08T08:28:48.938000+00:00'
+    creator:
+      '@type':
+      - prov:Person
+      - schema:Person
+      _id: mailto:remko.nijzink@list.lu
+      affiliation: null
+      alternate_name: null
+      email: remko.nijzink@list.lu
+      label: Remko Nijzink
+      name: Remko Nijzink
+    name: VOMcases
+    updated: '2019-03-08T08:28:48.938000+00:00'
+    version: '1'
   added: '2019-03-26T15:05:31.991138+02:00'
   based_on: null
   creator:
@@ -247,6 +326,7 @@ files:
     email: remko.nijzink@list.lu
     label: Remko Nijzink
     name: Remko Nijzink
+  external: false
   name: evi_dry.txt
   path: data/MODIS/evi_dry.txt
   url: https://e4ftl01.cr.usgs.gov/MOLT/MOD13Q1.006/
@@ -254,9 +334,27 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: file://blob/ee8c05f4b56dd1c0b666540ae753c468898201b3/data/MODIS/evi_howard.txt
+  _id: https://renkulab.io/blob/ee8c05f4b56dd1c0b666540ae753c468898201b3/data/MODIS/evi_howard.txt
   _label: data/MODIS/evi_howard.txt@ee8c05f4b56dd1c0b666540ae753c468898201b3
-  _project: null
+  _project:
+    '@type':
+    - prov:Location
+    - schema:Project
+    _id: https://renkulab.io/projects/remko.nijzink/vomcases
+    created: '2019-03-08T08:28:48.938000+00:00'
+    creator:
+      '@type':
+      - prov:Person
+      - schema:Person
+      _id: mailto:remko.nijzink@list.lu
+      affiliation: null
+      alternate_name: null
+      email: remko.nijzink@list.lu
+      label: Remko Nijzink
+      name: Remko Nijzink
+    name: VOMcases
+    updated: '2019-03-08T08:28:48.938000+00:00'
+    version: '1'
   added: '2019-03-26T15:05:32.062147+02:00'
   based_on: null
   creator:
@@ -269,6 +367,7 @@ files:
     email: remko.nijzink@list.lu
     label: Remko Nijzink
     name: Remko Nijzink
+  external: false
   name: evi_howard.txt
   path: data/MODIS/evi_howard.txt
   url: https://e4ftl01.cr.usgs.gov/MOLT/MOD13Q1.006/
@@ -276,9 +375,27 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: file://blob/ee8c05f4b56dd1c0b666540ae753c468898201b3/data/MODIS/evi_sturt.txt
+  _id: https://renkulab.io/blob/ee8c05f4b56dd1c0b666540ae753c468898201b3/data/MODIS/evi_sturt.txt
   _label: data/MODIS/evi_sturt.txt@ee8c05f4b56dd1c0b666540ae753c468898201b3
-  _project: null
+  _project:
+    '@type':
+    - prov:Location
+    - schema:Project
+    _id: https://renkulab.io/projects/remko.nijzink/vomcases
+    created: '2019-03-08T08:28:48.938000+00:00'
+    creator:
+      '@type':
+      - prov:Person
+      - schema:Person
+      _id: mailto:remko.nijzink@list.lu
+      affiliation: null
+      alternate_name: null
+      email: remko.nijzink@list.lu
+      label: Remko Nijzink
+      name: Remko Nijzink
+    name: VOMcases
+    updated: '2019-03-08T08:28:48.938000+00:00'
+    version: '1'
   added: '2019-03-26T15:05:32.134244+02:00'
   based_on: null
   creator:
@@ -291,6 +408,7 @@ files:
     email: remko.nijzink@list.lu
     label: Remko Nijzink
     name: Remko Nijzink
+  external: false
   name: evi_sturt.txt
   path: data/MODIS/evi_sturt.txt
   url: https://e4ftl01.cr.usgs.gov/MOLT/MOD13Q1.006/
@@ -298,7 +416,7 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: file://blob/14e8774a0cb66b59e20cb505464916d9c6b3db8d/data/MODIS/dates_fpar_modis
+  _id: https://renkulab.io/blob/14e8774a0cb66b59e20cb505464916d9c6b3db8d/data/MODIS/dates_fpar_modis
   _label: data/MODIS/dates_fpar_modis@14e8774a0cb66b59e20cb505464916d9c6b3db8d
   _project:
     '@type':
@@ -331,6 +449,7 @@ files:
     email: remko.nijzink@list.lu
     label: Remko Nijzink
     name: Remko Nijzink
+  external: false
   name: dates_fpar_modis
   path: data/MODIS/dates_fpar_modis
   url: file://../../../../data/MODIS_fpar/dates_fpar_modis
@@ -338,7 +457,7 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: file://blob/14e8774a0cb66b59e20cb505464916d9c6b3db8d/data/MODIS/fpar_adelaide.txt
+  _id: https://renkulab.io/blob/14e8774a0cb66b59e20cb505464916d9c6b3db8d/data/MODIS/fpar_adelaide.txt
   _label: data/MODIS/fpar_adelaide.txt@14e8774a0cb66b59e20cb505464916d9c6b3db8d
   _project:
     '@type':
@@ -371,6 +490,7 @@ files:
     email: remko.nijzink@list.lu
     label: Remko Nijzink
     name: Remko Nijzink
+  external: false
   name: fpar_adelaide.txt
   path: data/MODIS/fpar_adelaide.txt
   url: file://../../../../data/MODIS_fpar/fpar_adelaide.txt
@@ -378,7 +498,7 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: file://blob/14e8774a0cb66b59e20cb505464916d9c6b3db8d/data/MODIS/fpar_daly.txt
+  _id: https://renkulab.io/blob/14e8774a0cb66b59e20cb505464916d9c6b3db8d/data/MODIS/fpar_daly.txt
   _label: data/MODIS/fpar_daly.txt@14e8774a0cb66b59e20cb505464916d9c6b3db8d
   _project:
     '@type':
@@ -411,6 +531,7 @@ files:
     email: remko.nijzink@list.lu
     label: Remko Nijzink
     name: Remko Nijzink
+  external: false
   name: fpar_daly.txt
   path: data/MODIS/fpar_daly.txt
   url: file://../../../../data/MODIS_fpar/fpar_daly.txt
@@ -418,7 +539,7 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: file://blob/14e8774a0cb66b59e20cb505464916d9c6b3db8d/data/MODIS/fpar_dry.txt
+  _id: https://renkulab.io/blob/14e8774a0cb66b59e20cb505464916d9c6b3db8d/data/MODIS/fpar_dry.txt
   _label: data/MODIS/fpar_dry.txt@14e8774a0cb66b59e20cb505464916d9c6b3db8d
   _project:
     '@type':
@@ -451,6 +572,7 @@ files:
     email: remko.nijzink@list.lu
     label: Remko Nijzink
     name: Remko Nijzink
+  external: false
   name: fpar_dry.txt
   path: data/MODIS/fpar_dry.txt
   url: file://../../../../data/MODIS_fpar/fpar_dry.txt
@@ -458,7 +580,7 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: file://blob/14e8774a0cb66b59e20cb505464916d9c6b3db8d/data/MODIS/fpar_howard.txt
+  _id: https://renkulab.io/blob/14e8774a0cb66b59e20cb505464916d9c6b3db8d/data/MODIS/fpar_howard.txt
   _label: data/MODIS/fpar_howard.txt@14e8774a0cb66b59e20cb505464916d9c6b3db8d
   _project:
     '@type':
@@ -491,6 +613,7 @@ files:
     email: remko.nijzink@list.lu
     label: Remko Nijzink
     name: Remko Nijzink
+  external: false
   name: fpar_howard.txt
   path: data/MODIS/fpar_howard.txt
   url: file://../../../../data/MODIS_fpar/fpar_howard.txt
@@ -498,7 +621,7 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: file://blob/14e8774a0cb66b59e20cb505464916d9c6b3db8d/data/MODIS/fpar_sturt.txt
+  _id: https://renkulab.io/blob/14e8774a0cb66b59e20cb505464916d9c6b3db8d/data/MODIS/fpar_sturt.txt
   _label: data/MODIS/fpar_sturt.txt@14e8774a0cb66b59e20cb505464916d9c6b3db8d
   _project:
     '@type':
@@ -531,6 +654,7 @@ files:
     email: remko.nijzink@list.lu
     label: Remko Nijzink
     name: Remko Nijzink
+  external: false
   name: fpar_sturt.txt
   path: data/MODIS/fpar_sturt.txt
   url: file://../../../../data/MODIS_fpar/fpar_sturt.txt
@@ -543,5 +667,5 @@ path: .renku/datasets/2ebe8c58-ec5d-402b-ab1c-e789ffc6d6ff
 same_as: null
 short_name: MODIS
 tags: []
-url: null
+url: https://renkulab.io/datasets/2ebe8c58-ec5d-402b-ab1c-e789ffc6d6ff
 version: null

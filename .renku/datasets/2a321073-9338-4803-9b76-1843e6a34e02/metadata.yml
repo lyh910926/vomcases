@@ -25,7 +25,6 @@
       updated: schema:dateUpdated
       version: schema:schemaVersion
     '@id': schema:isPartOf
-  based_on: schema:isBasedOn
   created: schema:dateCreated
   creator:
     '@context':
@@ -105,7 +104,13 @@
   name: schema:name
   path: prov:atLocation
   prov: http://www.w3.org/ns/prov#
-  same_as: schema:sameAs
+  same_as:
+    '@context':
+      '@version': 1.1
+      _id: '@id'
+      schema: http://schema.org/
+      url: schema:url
+    '@id': schema:sameAs
   schema: http://schema.org/
   short_name: schema:alternateName
   tags:
@@ -147,7 +152,6 @@ _project:
   name: VOMcases
   updated: '2019-03-08T08:28:48.938000+00:00'
   version: '1'
-based_on: null
 created: '2020-02-28T14:14:37.468834+00:00'
 creator:
 - '@type':
@@ -218,13 +222,13 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: file://blob/2174dbf7c7971f810c674ad9951ac6067e89280a/data/data_from_a_model_inter/SavMIP.zip
+  _id: https://renkulab.io/blob/2174dbf7c7971f810c674ad9951ac6067e89280a/data/data_from_a_model_inter/SavMIP.zip
   _label: data/data_from_a_model_inter/SavMIP.zip@2174dbf7c7971f810c674ad9951ac6067e89280a
   _project:
     '@type':
     - prov:Location
     - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
+    _id: https://renkulab.io/projects/remko.nijzink/vomcases
     created: '2019-03-08T08:28:48.938000+00:00'
     creator:
       '@type':
@@ -290,6 +294,7 @@ files:
     email: null
     label: Li, Longhui
     name: Li, Longhui
+  external: false
   name: SavMIP.zip
   path: data/data_from_a_model_inter/SavMIP.zip
   url: https://zenodo.org/api/files/9d6814ad-afe7-4825-b28b-2c74a30eaab2/SavMIP.zip
@@ -303,8 +308,11 @@ license: http://creativecommons.org/licenses/by/4.0/legalcode
 name: Data from a model inter-comparison study to examine limiting factors in modelling
   Australian tropical savannas
 path: .renku/datasets/2a321073-9338-4803-9b76-1843e6a34e02
-same_as: https://doi.org/10.5281/zenodo.3690711
+same_as:
+  '@type': schema:URL
+  _id: _:URL@4e246aeb-8474-4499-8095-626bb5a3102c
+  url: https://doi.org/10.5281/zenodo.3690711
 short_name: data_from_a_model_inter
 tags: []
-url: https://zenodo.org/record/3690711
+url: https://renkulab.io/datasets/2a321073-9338-4803-9b76-1843e6a34e02
 version: null

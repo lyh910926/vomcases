@@ -25,7 +25,6 @@
       updated: schema:dateUpdated
       version: schema:schemaVersion
     '@id': schema:isPartOf
-  based_on: schema:isBasedOn
   created: schema:dateCreated
   creator:
     '@context':
@@ -105,7 +104,13 @@
   name: schema:name
   path: prov:atLocation
   prov: http://www.w3.org/ns/prov#
-  same_as: schema:sameAs
+  same_as:
+    '@context':
+      '@version': 1.1
+      _id: '@id'
+      schema: http://schema.org/
+      url: schema:url
+    '@id': schema:sameAs
   schema: http://schema.org/
   short_name: schema:alternateName
   tags:
@@ -147,7 +152,6 @@ _project:
   name: VOMcases
   updated: '2019-03-08T08:28:48.938000+00:00'
   version: '1'
-based_on: null
 created: '2020-03-02T09:40:50.068195+00:00'
 creator:
 - '@type':
@@ -171,5 +175,5 @@ path: .renku/datasets/eea48f86-6d9b-467b-a791-1e506d1e2e9c
 same_as: null
 short_name: SavMIP_stats
 tags: []
-url: null
+url: https://renkulab.io/datasets/eea48f86-6d9b-467b-a791-1e506d1e2e9c
 version: null

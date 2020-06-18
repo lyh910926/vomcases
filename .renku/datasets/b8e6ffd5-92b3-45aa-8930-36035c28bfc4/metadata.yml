@@ -25,7 +25,6 @@
       updated: schema:dateUpdated
       version: schema:schemaVersion
     '@id': schema:isPartOf
-  based_on: schema:isBasedOn
   created: schema:dateCreated
   creator:
     '@context':
@@ -105,7 +104,13 @@
   name: schema:name
   path: prov:atLocation
   prov: http://www.w3.org/ns/prov#
-  same_as: schema:sameAs
+  same_as:
+    '@context':
+      '@version': 1.1
+      _id: '@id'
+      schema: http://schema.org/
+      url: schema:url
+    '@id': schema:sameAs
   schema: http://schema.org/
   short_name: schema:alternateName
   tags:
@@ -147,7 +152,6 @@ _project:
   name: VOMcases
   updated: '2019-03-08T08:28:48.938000+00:00'
   version: '1'
-based_on: null
 created: '2020-06-03T11:34:21.071603+00:00'
 creator:
 - '@type':
@@ -166,7 +170,7 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: file://blob/74522b3c513379484f008310af5a5ead7169c8c2/data/vegmachine/adelaideriver.csv
+  _id: https://renkulab.io/blob/74522b3c513379484f008310af5a5ead7169c8c2/data/vegmachine/adelaideriver.csv
   _label: data/vegmachine/adelaideriver.csv@74522b3c513379484f008310af5a5ead7169c8c2
   _project:
     '@type':
@@ -199,6 +203,7 @@ files:
     email: remko.nijzink@list.lu
     label: Remko Nijzink
     name: Remko Nijzink
+  external: false
   name: adelaideriver.csv
   path: data/vegmachine/adelaideriver.csv
   url: file://../../../../data/vegmachine/adelaideriver.csv
@@ -206,7 +211,7 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: file://blob/74522b3c513379484f008310af5a5ead7169c8c2/data/vegmachine/dalyuncleared.csv
+  _id: https://renkulab.io/blob/74522b3c513379484f008310af5a5ead7169c8c2/data/vegmachine/dalyuncleared.csv
   _label: data/vegmachine/dalyuncleared.csv@74522b3c513379484f008310af5a5ead7169c8c2
   _project:
     '@type':
@@ -239,6 +244,7 @@ files:
     email: remko.nijzink@list.lu
     label: Remko Nijzink
     name: Remko Nijzink
+  external: false
   name: dalyuncleared.csv
   path: data/vegmachine/dalyuncleared.csv
   url: file://../../../../data/vegmachine/dalyuncleared.csv
@@ -246,7 +252,7 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: file://blob/74522b3c513379484f008310af5a5ead7169c8c2/data/vegmachine/dryriver.csv
+  _id: https://renkulab.io/blob/74522b3c513379484f008310af5a5ead7169c8c2/data/vegmachine/dryriver.csv
   _label: data/vegmachine/dryriver.csv@74522b3c513379484f008310af5a5ead7169c8c2
   _project:
     '@type':
@@ -279,6 +285,7 @@ files:
     email: remko.nijzink@list.lu
     label: Remko Nijzink
     name: Remko Nijzink
+  external: false
   name: dryriver.csv
   path: data/vegmachine/dryriver.csv
   url: file://../../../../data/vegmachine/dryriver.csv
@@ -286,7 +293,7 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: file://blob/74522b3c513379484f008310af5a5ead7169c8c2/data/vegmachine/howardsprings.csv
+  _id: https://renkulab.io/blob/74522b3c513379484f008310af5a5ead7169c8c2/data/vegmachine/howardsprings.csv
   _label: data/vegmachine/howardsprings.csv@74522b3c513379484f008310af5a5ead7169c8c2
   _project:
     '@type':
@@ -319,6 +326,7 @@ files:
     email: remko.nijzink@list.lu
     label: Remko Nijzink
     name: Remko Nijzink
+  external: false
   name: howardsprings.csv
   path: data/vegmachine/howardsprings.csv
   url: file://../../../../data/vegmachine/howardsprings.csv
@@ -326,7 +334,7 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: file://blob/74522b3c513379484f008310af5a5ead7169c8c2/data/vegmachine/litchfield.csv
+  _id: https://renkulab.io/blob/74522b3c513379484f008310af5a5ead7169c8c2/data/vegmachine/litchfield.csv
   _label: data/vegmachine/litchfield.csv@74522b3c513379484f008310af5a5ead7169c8c2
   _project:
     '@type':
@@ -359,6 +367,7 @@ files:
     email: remko.nijzink@list.lu
     label: Remko Nijzink
     name: Remko Nijzink
+  external: false
   name: litchfield.csv
   path: data/vegmachine/litchfield.csv
   url: file://../../../../data/vegmachine/litchfield.csv
@@ -366,7 +375,7 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: file://blob/74522b3c513379484f008310af5a5ead7169c8c2/data/vegmachine/sturtplains.csv
+  _id: https://renkulab.io/blob/74522b3c513379484f008310af5a5ead7169c8c2/data/vegmachine/sturtplains.csv
   _label: data/vegmachine/sturtplains.csv@74522b3c513379484f008310af5a5ead7169c8c2
   _project:
     '@type':
@@ -399,6 +408,7 @@ files:
     email: remko.nijzink@list.lu
     label: Remko Nijzink
     name: Remko Nijzink
+  external: false
   name: sturtplains.csv
   path: data/vegmachine/sturtplains.csv
   url: file://../../../../data/vegmachine/sturtplains.csv
@@ -411,5 +421,5 @@ path: .renku/datasets/b8e6ffd5-92b3-45aa-8930-36035c28bfc4
 same_as: null
 short_name: vegmachine
 tags: []
-url: null
+url: https://renkulab.io/datasets/b8e6ffd5-92b3-45aa-8930-36035c28bfc4
 version: null

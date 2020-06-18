@@ -25,7 +25,6 @@
       updated: schema:dateUpdated
       version: schema:schemaVersion
     '@id': schema:isPartOf
-  based_on: schema:isBasedOn
   created: schema:dateCreated
   creator:
     '@context':
@@ -105,7 +104,13 @@
   name: schema:name
   path: prov:atLocation
   prov: http://www.w3.org/ns/prov#
-  same_as: schema:sameAs
+  same_as:
+    '@context':
+      '@version': 1.1
+      _id: '@id'
+      schema: http://schema.org/
+      url: schema:url
+    '@id': schema:sameAs
   schema: http://schema.org/
   short_name: schema:alternateName
   tags:
@@ -126,8 +131,8 @@
 - prov:Entity
 - schema:Dataset
 - wfprov:Artifact
-_id: https://renkulab.io/datasets/vomcases%2Fdatasets%2F3846f574-0691-4461-be3b-0c41eed009c5
-_label: vomcases/datasets/3846f574-0691-4461-be3b-0c41eed009c5
+_id: https://renkulab.io/datasets/83125cdd-6949-40d4-8bf6-db0b530c9c51
+_label: 83125cdd-6949-40d4-8bf6-db0b530c9c51
 _project:
   '@type':
   - prov:Location
@@ -147,7 +152,6 @@ _project:
   name: VOMcases
   updated: '2019-03-08T08:28:48.938000+00:00'
   version: '1'
-based_on: null
 created: '2019-07-02T09:36:01.374919+02:00'
 creator: []
 date_published: null
@@ -157,23 +161,42 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: file://blob/4611c3daf8144c69dbb15fb47a45580675d4e112/data/Silo/litchfield.txt
+  _id: https://renkulab.io/blob/4611c3daf8144c69dbb15fb47a45580675d4e112/data/Silo/litchfield.txt
   _label: data/Silo/litchfield.txt@4611c3daf8144c69dbb15fb47a45580675d4e112
-  _project: null
+  _project:
+    '@type':
+    - prov:Location
+    - schema:Project
+    _id: https://renkulab.io/projects/remko.nijzink/vomcases
+    created: '2019-03-08T08:28:48.938000+00:00'
+    creator:
+      '@type':
+      - prov:Person
+      - schema:Person
+      _id: mailto:remko.nijzink@list.lu
+      affiliation: null
+      alternate_name: null
+      email: remko.nijzink@list.lu
+      label: Remko Nijzink
+      name: Remko Nijzink
+    name: VOMcases
+    updated: '2019-03-08T08:28:48.938000+00:00'
+    version: '1'
   added: '2019-07-02T09:36:01.467198+02:00'
   based_on: null
   creator: []
+  external: false
   name: litchfield.txt
   path: data/Silo/litchfield.txt
   url: ../../data_tmp/Silo/litchfield.txt
-identifier: vomcases/datasets/3846f574-0691-4461-be3b-0c41eed009c5
+identifier: 83125cdd-6949-40d4-8bf6-db0b530c9c51
 in_language: null
 keywords: []
 license: null
 name: Silo
-path: .renku/datasets/vomcases%2Fdatasets%2F3846f574-0691-4461-be3b-0c41eed009c5
+path: .renku/datasets/83125cdd-6949-40d4-8bf6-db0b530c9c51
 same_as: null
 short_name: Silo
 tags: []
-url: null
+url: https://renkulab.io/datasets/83125cdd-6949-40d4-8bf6-db0b530c9c51
 version: null

@@ -25,7 +25,6 @@
       updated: schema:dateUpdated
       version: schema:schemaVersion
     '@id': schema:isPartOf
-  based_on: schema:isBasedOn
   created: schema:dateCreated
   creator:
     '@context':
@@ -105,7 +104,13 @@
   name: schema:name
   path: prov:atLocation
   prov: http://www.w3.org/ns/prov#
-  same_as: schema:sameAs
+  same_as:
+    '@context':
+      '@version': 1.1
+      _id: '@id'
+      schema: http://schema.org/
+      url: schema:url
+    '@id': schema:sameAs
   schema: http://schema.org/
   short_name: schema:alternateName
   tags:
@@ -126,8 +131,8 @@
 - prov:Entity
 - schema:Dataset
 - wfprov:Artifact
-_id: https://renkulab.io/datasets/vomcases%2Fdatasets%2Ff1d92965-72fc-4e73-b686-58312c529520
-_label: vomcases/datasets/f1d92965-72fc-4e73-b686-58312c529520
+_id: https://renkulab.io/datasets/91e799b6-e130-4f49-8e5d-45af628cabfd
+_label: 91e799b6-e130-4f49-8e5d-45af628cabfd
 _project:
   '@type':
   - prov:Location
@@ -147,7 +152,6 @@ _project:
   name: VOMcases
   updated: '2019-03-08T08:28:48.938000+00:00'
   version: '1'
-based_on: null
 created: '2019-03-08T08:29:36.845093+02:00'
 creator:
 - '@type':
@@ -162,14 +166,14 @@ creator:
 date_published: null
 description: Extracted from CSV-files send by Jason Beringer by Dropbox
 files: []
-identifier: vomcases/datasets/f1d92965-72fc-4e73-b686-58312c529520
+identifier: 91e799b6-e130-4f49-8e5d-45af628cabfd
 in_language: null
 keywords: []
 license: null
 name: DINGO
-path: .renku/datasets/vomcases%2Fdatasets%2Ff1d92965-72fc-4e73-b686-58312c529520
+path: .renku/datasets/91e799b6-e130-4f49-8e5d-45af628cabfd
 same_as: null
 short_name: DINGO
 tags: []
-url: null
+url: https://renkulab.io/datasets/91e799b6-e130-4f49-8e5d-45af628cabfd
 version: null

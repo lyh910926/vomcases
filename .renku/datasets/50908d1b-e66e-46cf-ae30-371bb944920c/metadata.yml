@@ -25,7 +25,6 @@
       updated: schema:dateUpdated
       version: schema:schemaVersion
     '@id': schema:isPartOf
-  based_on: schema:isBasedOn
   created: schema:dateCreated
   creator:
     '@context':
@@ -105,7 +104,13 @@
   name: schema:name
   path: prov:atLocation
   prov: http://www.w3.org/ns/prov#
-  same_as: schema:sameAs
+  same_as:
+    '@context':
+      '@version': 1.1
+      _id: '@id'
+      schema: http://schema.org/
+      url: schema:url
+    '@id': schema:sameAs
   schema: http://schema.org/
   short_name: schema:alternateName
   tags:
@@ -147,7 +152,6 @@ _project:
   name: VOMcases
   updated: '2019-03-08T08:28:48.938000+00:00'
   version: '1'
-based_on: null
 created: '2019-09-30T14:11:41.118907+00:00'
 creator:
 - '@type':
@@ -166,18 +170,27 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: file://blob/e6642b0551169d4cb4e1af9f8d4c623eb5081b70/data/VOM_soils/SturtPlains/soilprofile.par
+  _id: https://renkulab.io/blob/e6642b0551169d4cb4e1af9f8d4c623eb5081b70/data/VOM_soils/SturtPlains/soilprofile.par
   _label: data/VOM_soils/SturtPlains/soilprofile.par@e6642b0551169d4cb4e1af9f8d4c623eb5081b70
   _project:
     '@type':
     - prov:Location
     - schema:Project
-    _id: https://localhost/projects/NULL/NULL
-    created: '2020-03-03T09:04:51.659433+00:00'
-    creator: null
-    name: null
-    updated: '2020-03-03T09:04:51.659436+00:00'
-    version: '2'
+    _id: https://renkulab.io/projects/remko.nijzink/vomcases
+    created: '2019-03-08T08:28:48.938000+00:00'
+    creator:
+      '@type':
+      - prov:Person
+      - schema:Person
+      _id: mailto:remko.nijzink@list.lu
+      affiliation: null
+      alternate_name: null
+      email: remko.nijzink@list.lu
+      label: Remko Nijzink
+      name: Remko Nijzink
+    name: VOMcases
+    updated: '2019-03-08T08:28:48.938000+00:00'
+    version: '1'
   added: '2019-09-30T15:09:34.982750+00:00'
   based_on: null
   creator:
@@ -190,6 +203,7 @@ files:
     email: remko.nijzink@list.lu
     label: Remko Nijzink
     name: Remko Nijzink
+  external: false
   name: soilprofile.par
   path: data/VOM_soils/SturtPlains/soilprofile.par
   url: /home/remko/data/Soil_and_Landscape_Grid_Australia/SturtPlains/soilprofile.par
@@ -202,5 +216,5 @@ path: .renku/datasets/50908d1b-e66e-46cf-ae30-371bb944920c
 same_as: null
 short_name: vomsoilssturtplains
 tags: []
-url: null
+url: https://renkulab.io/datasets/50908d1b-e66e-46cf-ae30-371bb944920c
 version: null

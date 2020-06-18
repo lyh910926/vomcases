@@ -25,7 +25,6 @@
       updated: schema:dateUpdated
       version: schema:schemaVersion
     '@id': schema:isPartOf
-  based_on: schema:isBasedOn
   created: schema:dateCreated
   creator:
     '@context':
@@ -105,7 +104,13 @@
   name: schema:name
   path: prov:atLocation
   prov: http://www.w3.org/ns/prov#
-  same_as: schema:sameAs
+  same_as:
+    '@context':
+      '@version': 1.1
+      _id: '@id'
+      schema: http://schema.org/
+      url: schema:url
+    '@id': schema:sameAs
   schema: http://schema.org/
   short_name: schema:alternateName
   tags:
@@ -147,7 +152,6 @@ _project:
   name: VOMcases
   updated: '2019-03-08T08:28:48.938000+00:00'
   version: '1'
-based_on: null
 created: '2019-10-28T16:09:24.725742+00:00'
 creator:
 - '@type':
@@ -175,14 +179,14 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: file://blob/b1c847905f5f6f53797e51222592fe4464a89c03/data/img/graphs_whitley/
+  _id: https://renkulab.io/blob/b1c847905f5f6f53797e51222592fe4464a89c03/data/img/graphs_whitley/
   _label: data/img/graphs_whitley/@b1c847905f5f6f53797e51222592fe4464a89c03
   _project:
     '@type':
     - prov:Location
     - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2020-03-03T09:04:51.354832+00:00'
+    _id: https://renkulab.io/projects/remko.nijzink/vomcases
+    created: '2019-03-08T08:28:48.938000+00:00'
     creator:
       '@type':
       - prov:Person
@@ -199,6 +203,7 @@ files:
   added: '2019-10-28T16:27:25.279095+00:00'
   based_on: null
   creator: []
+  external: false
   name: graphs_whitley
   path: data/img/graphs_whitley/
   url: null
@@ -206,14 +211,14 @@ files:
   - prov:Entity
   - schema:DigitalDocument
   - wfprov:Artifact
-  _id: file://blob/6312e5bebe535bf6a77a841924422b051dfb5614/data/img/
-  _label: data/img/@6312e5bebe535bf6a77a841924422b051dfb5614
+  _id: https://renkulab.io/blob/b4ac6608035b7eeadbd995e045d5dfba565b319b/data/img/
+  _label: data/img/@b4ac6608035b7eeadbd995e045d5dfba565b319b
   _project:
     '@type':
     - prov:Location
     - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2020-03-03T09:04:51.356171+00:00'
+    _id: https://renkulab.io/projects/remko.nijzink/vomcases
+    created: '2019-03-08T08:28:48.938000+00:00'
     creator:
       '@type':
       - prov:Person
@@ -230,6 +235,7 @@ files:
   added: '2020-03-03T09:04:51.356366+00:00'
   based_on: null
   creator: []
+  external: false
   name: img
   path: data/img/
   url: null
@@ -242,5 +248,5 @@ path: .renku/datasets/e05010b4-8723-4dc1-9495-ce52c76aa531
 same_as: null
 short_name: img
 tags: []
-url: null
+url: https://renkulab.io/datasets/e05010b4-8723-4dc1-9495-ce52c76aa531
 version: null
