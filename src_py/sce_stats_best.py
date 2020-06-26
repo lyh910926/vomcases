@@ -103,6 +103,10 @@ def main():
     assMeanAnnRE  = calcREmean(assmod_pd[dates_overlap], assobs_pd[dates_overlap])
     pcMeanAnnRE  = calcREmean(pcmod_pd[dates_overlap_pc], pcobs_pd[dates_overlap_pc])
 
+    eMeanAnn_mod, eMeanAnn_obs  = calc_meanann(emod_pd[dates_overlap], eobs_pd[dates_overlap])
+    assMeanAnn_mod, eMeanAnn_obs  = calc_meanann(assmod_pd[dates_overlap], assobs_pd[dates_overlap])
+
+
     eMAE  = calcMAE(emod_pd[dates_overlap], eobs_pd[dates_overlap])
     assMAE = calcMAE(assmod_pd[dates_overlap], assobs_pd[dates_overlap])
     pcMAE  = calcMAE(pcmod_pd[dates_overlap_pc], pcobs_pd[dates_overlap_pc])
@@ -128,8 +132,8 @@ def main():
 
 
     #merge results
-    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE, eAmpRE, eBIAS, eMinRE ]
-    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE, assAmpRE, assBIAS, assMinRE ]
+    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE, eAmpRE, eBIAS, eMinRE, eMeanAnn_mod, eMeanAnn_obs ]
+    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE, assAmpRE, assBIAS, assMinRE,assMeanAnn_mod, eMeanAnn_obs ]
     pcresult = [ pcKGE, pcMeanAnnRE, pcMeanSeas1RE, pcMeanSeas2RE, pcMAE, pcBIAS, pcMinRE ]
  
     #write output files
@@ -177,6 +181,19 @@ def calcREmean(sim, obs ):
         RE = (mu_s-mu_o)/mu_o
 
         return(RE)
+
+def calc_meanann(sim, obs ):
+
+        #mean value    
+
+        sim_annmean = sim.resample("A").mean()
+        obs_annmean = obs.resample("A").mean()
+
+        #remove first and last value to avoid incomplete series
+        mu_s = np.mean( sim_annmean )
+        mu_o = np.mean( obs_annmean )  
+
+        return(mu_s, mu_o)
 
 def calcMAE(sim, obs ):
 
