@@ -37,10 +37,6 @@ def main():
     parser = argparse.ArgumentParser()
 
     parser.add_argument("-o", "--outfile", help="outputfile with plot")
-    parser.add_argument("--vom", help="VOM results", nargs='+')
-    parser.add_argument("--vom_pc", help="VOM results", nargs='+')
-    parser.add_argument("--vom_pc2", help="VOM results", nargs='+')
-    parser.add_argument("--vom_zr", help="VOM results", nargs='+')
 
     parser.add_argument("--vom_evap_stats", help="vom statistics evaporation", nargs='+')
     parser.add_argument("--vom_gpp_stats", help="vom statistics evaporation", nargs='+')
@@ -134,46 +130,46 @@ def main():
         #read in data from BESS
         evap_tmp, ass_tmp = read_bess(args.bess[i], args.startyear[i])
 
-        bess_ema[whitley_sites[i]] = np.mean( evap_tmp.resample("A").sum() )
-        bess_assma[whitley_sites[i]] = np.mean( ass_tmp.resample("A").sum() )
         bess_evap_stats[whitley_sites[i]] = np.genfromtxt( args.bess_evap_stats[i]  )
         bess_ass_stats[whitley_sites[i]] = np.genfromtxt( args.bess_gpp_stats[i]  )
+        bess_ema[whitley_sites[i]] =  bess_evap_stats[whitley_sites[i]][8]
+        bess_assma[whitley_sites[i]] = bess_ass_stats[whitley_sites[i]][8]
 
         #read in data from BIOS2
         evap_tmp, ass_tmp = read_bios2(args.bios2[i])
 
-        bios2_ema[whitley_sites[i]] = np.mean( evap_tmp.resample("A").sum() )
-        bios2_assma[whitley_sites[i]] = np.mean( ass_tmp.resample("A").sum() )
         bios2_evap_stats[whitley_sites[i]] = np.genfromtxt( args.bios2_evap_stats[i]  )
         bios2_ass_stats[whitley_sites[i]] = np.genfromtxt( args.bios2_gpp_stats[i]  )
+        bios2_ema[whitley_sites[i]] = bios2_evap_stats[whitley_sites[i]][8]
+        bios2_assma[whitley_sites[i]] = bios2_ass_stats[whitley_sites[i]][8]
 
         #read in data from LPJ-GUESS, ET in W/m2, GPP in umol/m2/s
         evap_tmp, ass_tmp = read_lpjguess(args.lpjguess[i], args.lpjguess[i+len(whitley_sites)])
-        lpjguess_ema[whitley_sites[i]] = np.mean( evap_tmp.resample("A").sum() )
-        lpjguess_assma[whitley_sites[i]] = np.mean( ass_tmp.resample("A").sum() )
         lpjguess_evap_stats[whitley_sites[i]] = np.genfromtxt( args.lpjguess_evap_stats[i]  )
         lpjguess_ass_stats[whitley_sites[i]] = np.genfromtxt( args.lpjguess_gpp_stats[i]  )
+        lpjguess_ema[whitley_sites[i]] = lpjguess_evap_stats[whitley_sites[i]][8]
+        lpjguess_assma[whitley_sites[i]] = lpjguess_ass_stats[whitley_sites[i]][8]
 
         #read in data from MAESPA, ET in W m-2, GPP in umol m-2 s-1
         evap_tmp, ass_tmp = read_maespa(args.maespa[i])
-        maespa_ema[whitley_sites[i]] = np.mean( evap_tmp.resample("A").sum() )
-        maespa_assma[whitley_sites[i]] = np.mean( ass_tmp.resample("A").sum() )
         maespa_evap_stats[whitley_sites[i]] = np.genfromtxt( args.maespa_evap_stats[i]  )
         maespa_ass_stats[whitley_sites[i]] = np.genfromtxt( args.maespa_gpp_stats[i]  )
+        maespa_ema[whitley_sites[i]] = maespa_evap_stats[whitley_sites[i]][8]
+        maespa_assma[whitley_sites[i]] = maespa_ass_stats[whitley_sites[i]][8]
 
         #read in data from SPA, ET in W m-2, GPP in mmol m-2 s-1
         evap_tmp, ass_tmp = read_spa(args.spa[i])
-        spa_ema[whitley_sites[i]] = np.mean( evap_tmp.resample("A").sum() )
-        spa_assma[whitley_sites[i]] = np.mean( ass_tmp.resample("A").sum() )
         spa_evap_stats[whitley_sites[i]] = np.genfromtxt( args.spa_evap_stats[i]  )
         spa_ass_stats[whitley_sites[i]] = np.genfromtxt( args.spa_gpp_stats[i]  )
+        spa_ema[whitley_sites[i]] = spa_evap_stats[whitley_sites[i]][8]
+        spa_assma[whitley_sites[i]] = spa_ass_stats[whitley_sites[i]][8]
 
         #read in data from CABLE, ET in kg/m^2/s, GPP in umol/m^2/s
         evap_tmp, ass_tmp = read_cable(args.cable[i])
-        cable_ema[whitley_sites[i]] = np.mean( evap_tmp.resample("A").sum() )
-        cable_assma[whitley_sites[i]] = np.mean( ass_tmp.resample("A").sum() )
         cable_evap_stats[whitley_sites[i]] = np.genfromtxt( args.cable_evap_stats[i]  )
         cable_ass_stats[whitley_sites[i]] = np.genfromtxt( args.cable_gpp_stats[i]  )
+        cable_ema[whitley_sites[i]] = cable_evap_stats[whitley_sites[i]][8]
+        cable_assma[whitley_sites[i]] = cable_ass_stats[whitley_sites[i]][8]
 
     ####################################################
     #load other data 
@@ -198,69 +194,6 @@ def main():
     vom_zr_gpp_stats = dict()
 
     for i in range(0, len(args.sites)):
-        ea_tmp = np.loadtxt(args.dingo_et[i], usecols=2) #mm/d
-        le_tmp = ea_tmp *  lat_heat_vapor * rho_w * 1000/(3600*24) 
-        le_time =  np.genfromtxt(args.dingo_et[i],usecols=0, dtype=np.str )#mm/d
-        le_time = pd.date_range(le_time[0], le_time[-1], freq='D')   
-        e_pd = pd.Series(ea_tmp, index = le_time)         
-
-        gpp_tmp = np.loadtxt(args.dingo_gpp[i], usecols=2) #mm/d
-        gpp_obs = -1000000*gpp_tmp/ (3600*24)
-        gpp_time =  np.genfromtxt(args.dingo_gpp[i],usecols=0, dtype=np.str )#mm/d
-        gpp_time= pd.date_range(gpp_time[0], gpp_time[-1], freq='D')  
-        gpp_pd = pd.Series(-gpp_tmp, index = gpp_time)         
-
-        dingo_evap[args.sites[i]] = np.mean( e_pd.resample("A").sum() )
-        dingo_gpp[args.sites[i]] = np.mean( gpp_pd.resample("A").sum() )
-
-        vom_tmp = np.genfromtxt(args.vom[i], names=True)
-        etot = (vom_tmp["esoil"] + vom_tmp["etmt"] + vom_tmp["etmg"])*1000
-        letot= etot[-3650:]* lat_heat_vapor * rho_w * 1000 * 1000/(3600*24)
-        gpptot = vom_tmp["assg"] + vom_tmp["asst"]
-
-        vom_pc = np.genfromtxt(args.vom_pc[i], names=True)
-        etot_pc = (vom_pc["esoil"] + vom_pc["etmt"] + vom_pc["etmg"])*1000
-        letot_pc = etot_pc[-3650:]* lat_heat_vapor * rho_w * 1000 * 1000/(3600*24)
-        gpptot_pc = vom_pc["assg"] + vom_pc["asst"]
-
-        vom_pc2 = np.genfromtxt(args.vom_pc2[i], names=True)
-        etot_pc2 = (vom_pc2["esoil"] + vom_pc2["etmt"] + vom_pc2["etmg"])*1000
-        letot_pc2 = etot_pc2[-3650:]* lat_heat_vapor * rho_w * 1000 * 1000/(3600*24)
-        gpptot_pc2 = vom_pc2["assg"] + vom_pc2["asst"]
-
-        vom_zr = np.genfromtxt(args.vom_zr[i], names=True)
-        etot_zr = (vom_zr["esoil"] + vom_zr["etmt"] + vom_zr["etmg"])*1000
-        letot_zr = etot_zr[-3650:]* lat_heat_vapor * rho_w * 1000 * 1000/(3600*24)
-        gpptot_zr = vom_zr["assg"] + vom_zr["asst"]
-
-        time = pd.date_range(datetime(int(vom_tmp["fyear"][3]),int(vom_tmp["fmonth"][0]),int(vom_tmp["fday"][0])), 
-              datetime(int(vom_tmp["fyear"][-1]),int(vom_tmp["fmonth"][-1]),int(vom_tmp["fday"][-1])), 
-              freq='D')
-
-
-        emod_pd = pd.Series(etot[-3650:], index = time[-3650:] )
-        assmod_pd = pd.Series(gpptot[-3650:], index = time[-3650:] )
-
-        emod_pc_pd = pd.Series(etot_pc[-3650:], index = time[-3650:] )
-        assmod_pc_pd = pd.Series(gpptot_pc[-3650:], index = time[-3650:] )
-
-        emod_pc2_pd = pd.Series(etot_pc2[-3650:], index = time[-3650:] )
-        assmod_pc2_pd = pd.Series(gpptot_pc2[-3650:], index = time[-3650:] )
-
-        emod_zr_pd = pd.Series(etot_zr[-3650:], index = time[-3650:] )
-        assmod_zr_pd = pd.Series(gpptot_zr[-3650:], index = time[-3650:] )
-
-        vom_evap[args.sites[i]] = np.mean( emod_pd.resample("A").sum() )
-        vom_gpp[args.sites[i]] = np.mean( assmod_pd.resample("A").sum() )
-    
-        vom_pc_evap[args.sites[i]] = np.mean( emod_pc_pd.resample("A").sum() )
-        vom_pc_gpp[args.sites[i]] = np.mean( assmod_pc_pd.resample("A").sum() )
-
-        vom_pc2_evap[args.sites[i]] = np.mean( emod_pc2_pd.resample("A").sum() )
-        vom_pc2_gpp[args.sites[i]] = np.mean( assmod_pc2_pd.resample("A").sum() )
-
-        vom_zr_evap[args.sites[i]] = np.mean( emod_zr_pd.resample("A").sum() )
-        vom_zr_gpp[args.sites[i]] = np.mean( assmod_zr_pd.resample("A").sum() )
 
         vom_evap_stats[args.sites[i]] = np.genfromtxt( args.vom_evap_stats[i]  )
         vom_gpp_stats[args.sites[i]] = np.genfromtxt( args.vom_gpp_stats[i]  )
@@ -273,6 +206,23 @@ def main():
 
         vom_zr_evap_stats[args.sites[i]] = np.genfromtxt( args.vom_zr_evap_stats[i]  )
         vom_zr_gpp_stats[args.sites[i]] = np.genfromtxt( args.vom_zr_gpp_stats[i]  )
+
+
+        vom_evap[args.sites[i]] = vom_evap_stats[args.sites[i]][8]
+        vom_gpp[args.sites[i]] = vom_gpp_stats[args.sites[i]][8]
+    
+        vom_pc_evap[args.sites[i]] = vom_pc_evap_stats[args.sites[i]][8]
+        vom_pc_gpp[args.sites[i]] = vom_pc_gpp_stats[args.sites[i]][8]
+
+        vom_pc2_evap[args.sites[i]] = vom_pc2_evap_stats[args.sites[i]][8]
+        vom_pc2_gpp[args.sites[i]] = vom_pc2_gpp_stats[args.sites[i]][8]
+
+        vom_zr_evap[args.sites[i]] = vom_zr_evap_stats[args.sites[i]][8]
+        vom_zr_gpp[args.sites[i]] = vom_zr_gpp_stats[args.sites[i]][8]
+
+        dingo_evap[args.sites[i]] = vom_evap_stats[args.sites[i]][9]
+        dingo_gpp[args.sites[i]] = vom_gpp_stats[args.sites[i]][9]
+
 
     ####################################################
     #start plotting
@@ -409,33 +359,33 @@ def main():
 
 
         if( isite == 0):
-            ax[0].scatter(loc[isite], vom_evap_stats[args.sites[isite]][8], color="darkgreen", s=130, marker= "s", zorder=2 )
-            ax[0].scatter(loc[isite], vom_pc_evap_stats[args.sites[isite]][8], color="darkgreen", s=130, marker= "v", zorder=2 )
-            ax[0].scatter(loc[isite], vom_pc2_evap_stats[args.sites[isite]][8], color="darkgreen", s=130, marker= "*", zorder=2 )
-            ax[0].scatter(loc[isite], vom_zr_evap_stats[args.sites[isite]][8], color="darkgreen", s=130, marker= "X", zorder=2 )
+            ax[0].scatter(loc[isite], vom_evap[args.sites[isite]], color="darkgreen", s=130, marker= "s", zorder=2 )
+            ax[0].scatter(loc[isite], vom_pc_evap[args.sites[isite]], color="darkgreen", s=130, marker= "v", zorder=2 )
+            ax[0].scatter(loc[isite], vom_pc2_evap[args.sites[isite]], color="darkgreen", s=130, marker= "*", zorder=2 )
+            ax[0].scatter(loc[isite], vom_zr_evap[args.sites[isite]], color="darkgreen", s=130, marker= "X", zorder=2 )
 
-            ax[0].scatter(loc[isite], vom_evap_stats[args.sites[isite]][9],color="black", s=175, marker= "*", zorder=2 )
+            ax[0].scatter(loc[isite], dingo_evap[args.sites[isite]],color="black", s=175, marker= "*", zorder=2 )
 
-            ax[1].scatter(loc[isite], vom_gpp_stats[args.sites[isite]][8], color="darkgreen", s=130, marker= "s", zorder=2 )
-            ax[1].scatter(loc[isite], vom_pc_gpp_stats[args.sites[isite]][8], color="darkgreen", s=130, marker= "v", zorder=2 )
-            ax[1].scatter(loc[isite], vom_pc2_gpp_stats[args.sites[isite]][8], color="darkgreen", s=130, marker= "*", zorder=2 )
-            ax[1].scatter(loc[isite], vom_zr_gpp_stats[args.sites[isite]][8], color="darkgreen", s=130, marker= "X", zorder=2 )
+            ax[1].scatter(loc[isite], vom_gpp[args.sites[isite]], color="darkgreen", s=130, marker= "s", zorder=2 )
+            ax[1].scatter(loc[isite], vom_pc_gpp[args.sites[isite]], color="darkgreen", s=130, marker= "v", zorder=2 )
+            ax[1].scatter(loc[isite], vom_pc2_gpp[args.sites[isite]], color="darkgreen", s=130, marker= "*", zorder=2 )
+            ax[1].scatter(loc[isite], vom_zr_gpp[args.sites[isite]], color="darkgreen", s=130, marker= "X", zorder=2 )
 
-            ax[1].scatter(loc[isite], vom_gpp_stats[args.sites[isite]],color="black", s=130, marker= "*", label = "Obs.", zorder=2 )
+            ax[1].scatter(loc[isite], dingo_gpp[args.sites[isite]],color="black", s=130, marker= "*", label = "Obs.", zorder=2 )
         else:
-            ax[0].scatter(loc[isite], vom_evap_stats[args.sites[isite]][8], color="darkgreen", s=130, marker= "s", zorder=2)
-            ax[0].scatter(loc[isite], vom_pc_evap_stats[args.sites[isite]][8], color="darkgreen", s=130, marker= "v", zorder=2 )
-            ax[0].scatter(loc[isite], vom_pc2_evap_stats[args.sites[isite]][8], color="darkgreen", s=130, marker= "*", zorder=2 )
-            ax[0].scatter(loc[isite], vom_zr_evap_stats[args.sites[isite]][8], color="darkgreen", s=130, marker= "X", zorder=2 )
+            ax[0].scatter(loc[isite], vom_evap[args.sites[isite]], color="darkgreen", s=130, marker= "s", zorder=2)
+            ax[0].scatter(loc[isite], vom_pc_evap[args.sites[isite]], color="darkgreen", s=130, marker= "v", zorder=2 )
+            ax[0].scatter(loc[isite], vom_pc2_evap[args.sites[isite]], color="darkgreen", s=130, marker= "*", zorder=2 )
+            ax[0].scatter(loc[isite], vom_zr_evap[args.sites[isite]], color="darkgreen", s=130, marker= "X", zorder=2 )
 
-            ax[0].scatter(loc[isite], vom_evap_stats[args.sites[isite]][9],color="black", s=175, marker= "*", zorder=2 )
+            ax[0].scatter(loc[isite], dingo_evap[args.sites[isite]],color="black", s=175, marker= "*", zorder=2 )
 
-            ax[1].scatter(loc[isite], vom_gpp_stats[args.sites[isite]][8], color="darkgreen", s=130, marker= "s", zorder=2 )
-            ax[1].scatter(loc[isite], vom_pc_gpp_stats[args.sites[isite]][8], color="darkgreen", s=130, marker= "v", zorder=2 )
-            ax[1].scatter(loc[isite], vom_pc2_gpp_stats[args.sites[isite]][8], color="darkgreen", s=130, marker= "*", zorder=2 )
-            ax[1].scatter(loc[isite], vom_zr_gpp_stats[args.sites[isite]][8], color="darkgreen", s=130, marker= "X", zorder=2 )
+            ax[1].scatter(loc[isite], vom_gpp[args.sites[isite]], color="darkgreen", s=130, marker= "s", zorder=2 )
+            ax[1].scatter(loc[isite], vom_pc_gpp[args.sites[isite]], color="darkgreen", s=130, marker= "v", zorder=2 )
+            ax[1].scatter(loc[isite], vom_pc2_gpp[args.sites[isite]], color="darkgreen", s=130, marker= "*", zorder=2 )
+            ax[1].scatter(loc[isite], vom_zr_gpp[args.sites[isite]], color="darkgreen", s=130, marker= "X", zorder=2 )
 
-            ax[1].scatter(loc[isite], vom_gpp_stats[args.sites[isite]][9],color="black", s=130, marker= "*", zorder=2 )
+            ax[1].scatter(loc[isite], dingo_gpp[args.sites[isite]],color="black", s=130, marker= "*", zorder=2 )
 
 
     ax[0].set_xlim([0,len(args.sites)*10])

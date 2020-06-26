@@ -104,7 +104,7 @@ def main():
     pcMeanAnnRE  = calcREmean(pcmod_pd[dates_overlap_pc], pcobs_pd[dates_overlap_pc])
 
     eMeanAnn_mod, eMeanAnn_obs  = calc_meanann(emod_pd[dates_overlap], eobs_pd[dates_overlap])
-    assMeanAnn_mod, eMeanAnn_obs  = calc_meanann(assmod_pd[dates_overlap], assobs_pd[dates_overlap])
+    assMeanAnn_mod, assMeanAnn_obs  = calc_meanann(assmod_pd[dates_overlap], assobs_pd[dates_overlap])
 
 
     eMAE  = calcMAE(emod_pd[dates_overlap], eobs_pd[dates_overlap])
