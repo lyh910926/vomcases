@@ -133,7 +133,7 @@ def main():
 
     #merge results
     eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE, eAmpRE, eBIAS, eMinRE, eMeanAnn_mod, eMeanAnn_obs ]
-    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE, assAmpRE, assBIAS, assMinRE,assMeanAnn_mod, eMeanAnn_obs ]
+    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE, assAmpRE, assBIAS, assMinRE,assMeanAnn_mod, assMeanAnn_obs ]
     pcresult = [ pcKGE, pcMeanAnnRE, pcMeanSeas1RE, pcMeanSeas2RE, pcMAE, pcBIAS, pcMinRE ]
  
     #write output files
