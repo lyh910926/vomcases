@@ -137,6 +137,9 @@ def main():
     eMeanAnnRE  = calcREmean(bess_et[dates_overlap], eobs_pd[dates_overlap])
     assMeanAnnRE  = calcREmean(bess_gpp[dates_overlap], assobs_pd[dates_overlap])
 
+    eMeanAnn_mod, eMeanAnn_obs = calc_meanann(bess_et[dates_overlap], eobs_pd[dates_overlap])
+    assMeanAnn_mod, assMeanAnn_obs = calc_meanann(bess_gpp[dates_overlap], assobs_pd[dates_overlap])
+
     eMAE  = calcMAE(bess_et[dates_overlap], eobs_pd[dates_overlap])
     assMAE = calcMAE(bess_gpp[dates_overlap], assobs_pd[dates_overlap])
 
@@ -156,8 +159,8 @@ def main():
     assMinAnnRE  = calcREmin(bess_gpp[dates_overlap], assobs_pd[dates_overlap])
 
     #put results together
-    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE, eAmpRE, eBIAS, eMinAnnRE ]
-    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE, assAmpRE, assBIAS, assMinAnnRE ]
+    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE, eAmpRE, eBIAS, eMinAnnRE, eMeanAnn_mod, eMeanAnn_obs ]
+    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE, assAmpRE, assBIAS, assMinAnnRE, assMeanAnn_mod, assMeanAnn_obs ]
  
     #write output files
     np.savetxt( args.out_bess + "/evap_beststats.txt", eresult, comments='', delimiter=" " )
@@ -176,6 +179,9 @@ def main():
 
     eMeanAnnRE  = calcREmean(bios2_et[dates_overlap], eobs_pd[dates_overlap])
     assMeanAnnRE  = calcREmean(bios2_gpp[dates_overlap], assobs_pd[dates_overlap])
+
+    eMeanAnn_mod, eMeanAnn_obs = calc_meanann(bios2_et[dates_overlap], eobs_pd[dates_overlap])
+    assMeanAnn_mod, assMeanAnn_obs = calc_meanann(bios2_gpp[dates_overlap], assobs_pd[dates_overlap])
 
     eMAE  = calcMAE(bios2_et[dates_overlap], eobs_pd[dates_overlap])
     assMAE = calcMAE(bios2_gpp[dates_overlap], assobs_pd[dates_overlap])
@@ -196,8 +202,8 @@ def main():
     assMinAnnRE  = calcREmin(bios2_gpp[dates_overlap], assobs_pd[dates_overlap])
 
     #put results together
-    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE, eAmpRE, eBIAS, eMinAnnRE ]
-    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE, assAmpRE, assBIAS, assMinAnnRE]
+    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE, eAmpRE, eBIAS, eMinAnnRE, eMeanAnn_mod, eMeanAnn_obs]
+    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE, assAmpRE, assBIAS, assMinAnnRE, assMeanAnn_mod, assMeanAnn_obs]
  
     #write output files
     np.savetxt( args.out_bios2 + "/evap_beststats.txt", eresult, comments='', delimiter=" " )
@@ -216,6 +222,9 @@ def main():
 
     eMeanAnnRE  = calcREmean(lpjguess_et[dates_overlap], eobs_pd[dates_overlap])
     assMeanAnnRE  = calcREmean(lpjguess_gpp[dates_overlap], assobs_pd[dates_overlap])
+
+    eMeanAnn_mod, eMeanAnn_obs = calc_meanann(lpjguess_et[dates_overlap], eobs_pd[dates_overlap])
+    assMeanAnn_mod, assMeanAnn_obs = calc_meanann(lpjguess_gpp[dates_overlap], assobs_pd[dates_overlap])
 
     eMAE  = calcMAE(lpjguess_et[dates_overlap], eobs_pd[dates_overlap])
     assMAE = calcMAE(lpjguess_gpp[dates_overlap], assobs_pd[dates_overlap])
@@ -236,8 +245,8 @@ def main():
     assMinAnnRE  = calcREmin(lpjguess_gpp[dates_overlap], assobs_pd[dates_overlap])
 
     #put results together
-    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE, eAmpRE, eBIAS, eMinAnnRE ]
-    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE, assAmpRE, assBIAS, assMinAnnRE ]
+    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE, eAmpRE, eBIAS, eMinAnnRE, eMeanAnn_mod, eMeanAnn_obs ]
+    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE, assAmpRE, assBIAS, assMinAnnRE, assMeanAnn_mod, assMeanAnn_obs]
  
     #write output files
     np.savetxt( args.out_lpjguess + "/evap_beststats.txt", eresult, comments='', delimiter=" " )
@@ -256,6 +265,9 @@ def main():
 
     eMeanAnnRE  = calcREmean(maespa_et[dates_overlap], eobs_pd[dates_overlap])
     assMeanAnnRE  = calcREmean(maespa_gpp[dates_overlap], assobs_pd[dates_overlap])
+
+    eMeanAnn_mod, eMeanAnn_obs = calc_meanann(maespa_et[dates_overlap], eobs_pd[dates_overlap])
+    assMeanAnn_mod, assMeanAnn_obs = calc_meanann(maespa_gpp[dates_overlap], assobs_pd[dates_overlap])
 
     eMAE  = calcMAE(maespa_et[dates_overlap], eobs_pd[dates_overlap])
     assMAE = calcMAE(maespa_gpp[dates_overlap], assobs_pd[dates_overlap])
@@ -276,8 +288,8 @@ def main():
     assMinAnnRE  = calcREmin(maespa_gpp[dates_overlap], assobs_pd[dates_overlap])
 
     #put results together
-    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE, eAmpRE, eBIAS, eMinAnnRE ]
-    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE, assAmpRE, assBIAS, assMinAnnRE ]
+    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE, eAmpRE, eBIAS, eMinAnnRE, eMeanAnn_mod, eMeanAnn_obs ]
+    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE, assAmpRE, assBIAS, assMinAnnRE, assMeanAnn_mod, assMeanAnn_obs]
  
     #write output files
     np.savetxt( args.out_maespa + "/evap_beststats.txt", eresult, comments='', delimiter=" " )
@@ -296,6 +308,9 @@ def main():
 
     eMeanAnnRE  = calcREmean(spa_et[dates_overlap], eobs_pd[dates_overlap])
     assMeanAnnRE  = calcREmean(spa_gpp[dates_overlap], assobs_pd[dates_overlap])
+
+    eMeanAnn_mod, eMeanAnn_obs = calc_meanann(spa_et[dates_overlap], eobs_pd[dates_overlap])
+    assMeanAnn_mod, assMeanAnn_obs = calc_meanann(spa_gpp[dates_overlap], assobs_pd[dates_overlap])
 
     eMAE  = calcMAE(spa_et[dates_overlap], eobs_pd[dates_overlap])
     assMAE = calcMAE(spa_gpp[dates_overlap], assobs_pd[dates_overlap])
@@ -316,8 +331,8 @@ def main():
     assMinAnnRE  = calcREmin(spa_gpp[dates_overlap], assobs_pd[dates_overlap])
 
     #put results together
-    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE, eAmpRE, eBIAS, eMinAnnRE ]
-    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE, assAmpRE, assBIAS, assMinAnnRE ]
+    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE, eAmpRE, eBIAS, eMinAnnRE, eMeanAnn_mod, eMeanAnn_obs ]
+    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE, assAmpRE, assBIAS, assMinAnnRE, assMeanAnn_mod, assMeanAnn_obs ]
  
     #write output files
     np.savetxt( args.out_spa + "/evap_beststats.txt", eresult, comments='', delimiter=" " )
@@ -336,6 +351,9 @@ def main():
 
     eMeanAnnRE  = calcREmean(cable_et[dates_overlap], eobs_pd[dates_overlap])
     assMeanAnnRE  = calcREmean(cable_gpp[dates_overlap], assobs_pd[dates_overlap])
+
+    eMeanAnn_mod, eMeanAnn_obs   = calc_meanann(cable_et[dates_overlap], eobs_pd[dates_overlap])
+    assMeanAnn_mod, assMeanAnn_obs  = calc_meanann(cable_gpp[dates_overlap], assobs_pd[dates_overlap])
 
     eMAE  = calcMAE(cable_et[dates_overlap], eobs_pd[dates_overlap])
     assMAE = calcMAE(cable_gpp[dates_overlap], assobs_pd[dates_overlap])
@@ -356,8 +374,8 @@ def main():
     assMinAnnRE  = calcREmin(cable_gpp[dates_overlap], assobs_pd[dates_overlap])
 
     #put results together
-    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE, eAmpRE, eBIAS, eMinAnnRE ]
-    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE, assAmpRE, assBIAS, assMinAnnRE ]
+    eresult = [ eKGE, eMeanAnnRE, eMeanSeas1RE, eMeanSeas2RE, eMAE, eAmpRE, eBIAS, eMinAnnRE, eMeanAnn_mod, eMeanAnn_obs ]
+    assresult = [ assKGE, assMeanAnnRE, assMeanSeas1RE, assMeanSeas2RE, assMAE, assAmpRE, assBIAS, assMinAnnRE, assMeanAnn_mod, assMeanAnn_obs ]
  
     #write output files
     np.savetxt( args.out_cable + "/evap_beststats.txt", eresult, comments='', delimiter=" " )
@@ -406,6 +424,19 @@ def calcREmean(sim, obs ):
         RE = (mu_s-mu_o)/mu_o
 
         return(RE)
+
+def calc_meanann(sim, obs ):
+
+        #mean value    
+
+        sim_annmean = sim.resample("A").sum()
+        obs_annmean = obs.resample("A").sum()
+
+        #remove first and last value to avoid incomplete series
+        mu_s = np.mean( sim_annmean )
+        mu_o = np.mean( obs_annmean )  
+
+        return(mu_s, mu_o)
 
 def calcMAE(sim, obs ):
 
