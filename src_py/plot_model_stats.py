@@ -409,33 +409,33 @@ def main():
 
 
         if( isite == 0):
-            ax[0].scatter(loc[isite], vom_evap[args.sites[isite]], color="darkgreen", s=130, marker= "s", zorder=2 )
-            ax[0].scatter(loc[isite], vom_pc_evap[args.sites[isite]], color="darkgreen", s=130, marker= "v", zorder=2 )
-            ax[0].scatter(loc[isite], vom_pc2_evap[args.sites[isite]], color="darkgreen", s=130, marker= "*", zorder=2 )
-            ax[0].scatter(loc[isite], vom_zr_evap[args.sites[isite]], color="darkgreen", s=130, marker= "X", zorder=2 )
+            ax[0].scatter(loc[isite], vom_evap_stats[args.sites[isite]][8], color="darkgreen", s=130, marker= "s", zorder=2 )
+            ax[0].scatter(loc[isite], vom_pc_evap_stats[args.sites[isite]][8], color="darkgreen", s=130, marker= "v", zorder=2 )
+            ax[0].scatter(loc[isite], vom_pc2_evap_stats[args.sites[isite]][8], color="darkgreen", s=130, marker= "*", zorder=2 )
+            ax[0].scatter(loc[isite], vom_zr_evap_stats[args.sites[isite]][8], color="darkgreen", s=130, marker= "X", zorder=2 )
 
-            ax[0].scatter(loc[isite], dingo_evap[args.sites[isite]],color="black", s=175, marker= "*", zorder=2 )
+            ax[0].scatter(loc[isite], vom_evap_stats[args.sites[isite]][9],color="black", s=175, marker= "*", zorder=2 )
 
-            ax[1].scatter(loc[isite], vom_gpp[args.sites[isite]], color="darkgreen", s=130, marker= "s", zorder=2 )
-            ax[1].scatter(loc[isite], vom_pc_gpp[args.sites[isite]], color="darkgreen", s=130, marker= "v", zorder=2 )
-            ax[1].scatter(loc[isite], vom_pc2_gpp[args.sites[isite]], color="darkgreen", s=130, marker= "*", zorder=2 )
-            ax[1].scatter(loc[isite], vom_zr_gpp[args.sites[isite]], color="darkgreen", s=130, marker= "X", zorder=2 )
+            ax[1].scatter(loc[isite], vom_gpp_stats[args.sites[isite]][8], color="darkgreen", s=130, marker= "s", zorder=2 )
+            ax[1].scatter(loc[isite], vom_pc_gpp_stats[args.sites[isite]][8], color="darkgreen", s=130, marker= "v", zorder=2 )
+            ax[1].scatter(loc[isite], vom_pc2_gpp_stats[args.sites[isite]][8], color="darkgreen", s=130, marker= "*", zorder=2 )
+            ax[1].scatter(loc[isite], vom_zr_gpp_stats[args.sites[isite]][8], color="darkgreen", s=130, marker= "X", zorder=2 )
 
-            ax[1].scatter(loc[isite], dingo_gpp[args.sites[isite]],color="black", s=130, marker= "*", label = "Obs.", zorder=2 )
+            ax[1].scatter(loc[isite], vom_gpp_stats[args.sites[isite]],color="black", s=130, marker= "*", label = "Obs.", zorder=2 )
         else:
-            ax[0].scatter(loc[isite], vom_evap[args.sites[isite]], color="darkgreen", s=130, marker= "s", zorder=2)
-            ax[0].scatter(loc[isite], vom_pc_evap[args.sites[isite]], color="darkgreen", s=130, marker= "v", zorder=2 )
-            ax[0].scatter(loc[isite], vom_pc2_evap[args.sites[isite]], color="darkgreen", s=130, marker= "*", zorder=2 )
-            ax[0].scatter(loc[isite], vom_zr_evap[args.sites[isite]], color="darkgreen", s=130, marker= "X", zorder=2 )
+            ax[0].scatter(loc[isite], vom_evap_stats[args.sites[isite]][8], color="darkgreen", s=130, marker= "s", zorder=2)
+            ax[0].scatter(loc[isite], vom_pc_evap_stats[args.sites[isite]][8], color="darkgreen", s=130, marker= "v", zorder=2 )
+            ax[0].scatter(loc[isite], vom_pc2_evap_stats[args.sites[isite]][8], color="darkgreen", s=130, marker= "*", zorder=2 )
+            ax[0].scatter(loc[isite], vom_zr_evap_stats[args.sites[isite]][8], color="darkgreen", s=130, marker= "X", zorder=2 )
 
-            ax[0].scatter(loc[isite], dingo_evap[args.sites[isite]],color="black", s=175, marker= "*", zorder=2 )
+            ax[0].scatter(loc[isite], vom_evap_stats[args.sites[isite]][9],color="black", s=175, marker= "*", zorder=2 )
 
-            ax[1].scatter(loc[isite], vom_gpp[args.sites[isite]], color="darkgreen", s=130, marker= "s", zorder=2 )
-            ax[1].scatter(loc[isite], vom_pc_gpp[args.sites[isite]], color="darkgreen", s=130, marker= "v", zorder=2 )
-            ax[1].scatter(loc[isite], vom_pc2_gpp[args.sites[isite]], color="darkgreen", s=130, marker= "*", zorder=2 )
-            ax[1].scatter(loc[isite], vom_zr_gpp[args.sites[isite]], color="darkgreen", s=130, marker= "X", zorder=2 )
+            ax[1].scatter(loc[isite], vom_gpp_stats[args.sites[isite]][8], color="darkgreen", s=130, marker= "s", zorder=2 )
+            ax[1].scatter(loc[isite], vom_pc_gpp_stats[args.sites[isite]][8], color="darkgreen", s=130, marker= "v", zorder=2 )
+            ax[1].scatter(loc[isite], vom_pc2_gpp_stats[args.sites[isite]][8], color="darkgreen", s=130, marker= "*", zorder=2 )
+            ax[1].scatter(loc[isite], vom_zr_gpp_stats[args.sites[isite]][8], color="darkgreen", s=130, marker= "X", zorder=2 )
 
-            ax[1].scatter(loc[isite], dingo_gpp[args.sites[isite]],color="black", s=130, marker= "*", zorder=2 )
+            ax[1].scatter(loc[isite], vom_gpp_stats[args.sites[isite]][9],color="black", s=130, marker= "*", zorder=2 )
 
 
     ax[0].set_xlim([0,len(args.sites)*10])
