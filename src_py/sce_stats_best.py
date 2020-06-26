@@ -186,8 +186,8 @@ def calc_meanann(sim, obs ):
 
         #mean value    
 
-        sim_annmean = sim.resample("A").mean()
-        obs_annmean = obs.resample("A").mean()
+        sim_annmean = sim.resample("A").sum()
+        obs_annmean = obs.resample("A").sum()
 
         #remove first and last value to avoid incomplete series
         mu_s = np.mean( sim_annmean )
