@@ -223,7 +223,6 @@ def main():
         dingo_evap[args.sites[i]] = vom_evap_stats[args.sites[i]][9]
         dingo_gpp[args.sites[i]] = vom_gpp_stats[args.sites[i]][9]
 
-    print(dingo_gpp)
     ####################################################
     #start plotting
 
