@@ -223,7 +223,7 @@ def main():
         dingo_evap[args.sites[i]] = vom_evap_stats[args.sites[i]][9]
         dingo_gpp[args.sites[i]] = vom_gpp_stats[args.sites[i]][9]
 
-
+    print(dingo_gpp)
     ####################################################
     #start plotting
 
@@ -247,12 +247,12 @@ def main():
     loc_spa = np.arange(9.5, len(args.sites)*10+9.5, 10)
 
 
-    ylabels = [ r"Evaporation [mm/year]",
-                r'Assimilation [mol/m$^2$/year]',
-                "Rel.Err. evaporation [-]",  
-                "Rel.Err. assimilation [-]", 
-                "Rel.Err. amplitude evaporation[-]", 
-                "Rel.Err. amplitude assimilation[-]", 
+    ylabels = [ r"Total Evaporation [mm/year]",
+                r'CO$_{2}$-assimilation [mol/m$^2$/year]',
+                "Rel.Err. tot. evaporation [-]",  
+                "Rel.Err. CO$_{2}$-assimilation [-]", 
+                "Rel.Err. amplitude tot. evaporation[-]", 
+                "Rel.Err. amplitude CO$_{2}$-assimilation[-]", 
                 "Err. Min. Annual [-]", 
                 "Err. Min. Annual [-]", 
                 "Mean Wet Season Rel. Err. [-]", 
