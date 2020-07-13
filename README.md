@@ -51,6 +51,8 @@ This project contains all pre- and post-processing scripts for the model runs of
 
 ## References
 
+Schymanski, S.J., Sivapalan, M., Roderick, M.L., Hutley, L.B., Beringer, J., 2009. An optimality‐based model of the dynamic feedbacks between natural vegetation and the water balance. Water Resources Research 45. https://doi.org/10.1029/2008WR006841
+
 Schymanski, S.J., Roderick, M.L., Sivapalan, M., 2015. Using an optimality model to understand medium and long-term responses of vegetation water use to elevated atmospheric CO2 concentrations. AoB PLANTS 7, plv060. https://doi.org/10.1093/aobpla/plv060
 Schymanski, S.J., Sivapalan, M., Roderick, M.L., Hutley, L.B., Beringer, J., 2009. An optimality‐based model of the dynamic feedbacks between natural vegetation and the water balance. Water Resources Research 45. https://doi.org/10.1029/2008WR006841
 
