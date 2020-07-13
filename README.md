@@ -22,14 +22,10 @@ This project contains all pre- and post-processing scripts for the model runs of
 
 
 ## Contents
-* data/
-All data used to run and evaluate the model, in addition to the model results.
+* data/: All data used to run and evaluate the model, in addition to the model results.
 
-    - boreholes
-Borehole data for several locations close to the NATT-sites, from 
-
-#### data_from_a_model_inter
-Raw data from the model-intercomparison study of Whitley et al. (2016).
+    - data/boreholes/: Borehole data for several locations close to the NATT-sites, from 
+    - data/data_from_a\_model\_inter/: Raw data from the model-intercomparison study of Whitley et al. (2016).
 
 #### DINGO
 Flux tower data from OzFlux 
