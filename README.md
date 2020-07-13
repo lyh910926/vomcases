@@ -1,4 +1,5 @@
-# The Vegetation Optimality Model along a precipitation gradient: influence of carbon costs and benefits on vegetation properties
+# The Vegetation Optimality Model along a precipitation gradient: 
+# influence of carbon costs and benefits on vegetation properties
 
 Ecological and hydrological processes are strongly interlinked by vegetation and its properties. Models often use static values for vegetation properties, that are in reality highly dynamic, or prescribe vegetation properties based on remotely sensed data. 
 
@@ -25,69 +26,28 @@ This project contains all pre- and post-processing scripts for the model runs of
 * data/: All data used to run and evaluate the model, in addition to the model results.
 
     - data/boreholes/: Borehole data for several locations close to the NATT-sites, from 
-    - data/data_from_a\_model\_inter/: Raw data from the model-intercomparison study of Whitley et al. (2016).
-
-#### DINGO
-Flux tower data from OzFlux 
-
-#### DINGO2
-Meteorological parameters measured at the flux towers
-
-#### DINGO_QC
-Quality flags of the flux data
-
-#### DINGO_SWS
-Soil moisture values at the flux tower sites.
-
-#### fPAR
-fPAR-data from Donohue et al. (2008), to derive vegetation cover.
-
-#### img
-Final figures
-
-#### MaunaLoa
-Atmosperic CO$_2$-levels
-
-#### MODIS
-MODIS fPar-data for comparison with the fPar-data of Donohue et al. 
-
-#### SavMIP_extracted
-Data from Whitley et al. (2016) extracted.
-
-#### Silo
-Meteorological data
-
-#### vegmachine
-Vegetation cover data from ...
-
-#### VOM_input
-Meteorological input data for the VOM (dailyweather.prn) per study site.
-
-#### VOM_output
-Results of the model runs.
-
-#### VOM_soils
-Input files for the VOM containing the soil profiles per study site.
-
-### notebooks
-
-#### results.ipynb
-Notebook containing all the figures with the final results
-
-### notebooks/additional_analyses
-Notebooks containing all additional analysis
-
-### src
-Release of the VOM used for the experiments.
-
-### src_py
-All python pre- and post-processing scripts.
-
-### src_sh
-All shell pre- and post-processing scripts
-
-### work
-Work directory with all model set-ups and intermediate results.
+    - data/data\_from_a\_model\_inter/: Raw data from the model-intercomparison study of Whitley et al. (2016).
+    - data/DINGO/: Flux tower data from OzFlux 
+    - data/DINGO2/: Meteorological parameters measured at the flux towers
+    - data/DINGO_QC/: Quality flags of the flux data
+    - data/DINGO_SWS/: Soil moisture values at the flux tower sites.
+    - data/fPAR/: fPAR-data from Donohue et al. (2008), to derive vegetation cover.
+    - data/img/: Final figures
+    - data/MaunaLoa/: Atmosperic CO2-levels
+    - data/MODIS: MODIS fPar-data for comparison with the fPar-data of Donohue et al. 
+    - data/SavMIP_extracted/: Data from Whitley et al. (2016) extracted.
+    - data/Silo/: Meteorological data
+    - data/vegmachine/: Vegetation cover data from ...
+    - data/VOM_input/: Meteorological input data for the VOM (dailyweather.prn) per study site.
+    - data/VOM_output/: Results of the model runs.
+    - data/VOM_soils/: Input files for the VOM containing the soil profiles per study site.
+* notebooks/: all notebooks with the analysis
+    - notebooks/results.ipynb: Notebook containing all the figures with the final results
+    - notebooks/additional_analyses\: Notebooks containing all additional analysis
+* src/: Release of the VOM used for the experiments.
+* src_py/: All python pre- and post-processing scripts.
+* src_sh/: All shell pre- and post-processing scripts
+* work/: Work directory with all model set-ups and intermediate results.
 
 ## References
 
