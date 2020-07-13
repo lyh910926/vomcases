@@ -4,10 +4,10 @@ Ecological and hydrological processes are strongly interlinked by vegetation and
 
 The Vegetation Optimality Model (VOM, Schymanski et al., 2009) optimizes vegetation properties in order the optimize the Net Carbon Profit, i.e. the difference between the total carbon taken up by photosynthesis and all the carbon costs of the plants. The VOM schematizes perennial trees and seasonal grasses each as a single big leaf with an associated root system, and optimizes rooting depths, foliage cover, photosynthetic capacity and water use strategies. More details of the model can be found [here](https://vom.readthedocs.io/en/latest/).
 
-In this repository, the Vegetation Optimality Model is applied along the North-Australian Tropical Transect (NATT). The NATT consists of six study sites with an increasing rainfall amount from North to South. Long-term data on evaporation and CO$_2$-measurements are available at these sites, which are used to validate the modelling results. 
+In this repository, the Vegetation Optimality Model is applied along the North-Australian Tropical Transect (NATT). The NATT consists of six study sites with an increasing rainfall amount from North to South. Long-term data on evaporation and CO2-measurements are available at these sites, which are used to validate the modelling results. 
 
 
-In this study, we hypothesize:
+In this study, we hypothesize that:
 
 - Conventional models capture the temporal and spatial variation of carbon and water fluxes better compared to the optimality-driven model. 
 
@@ -22,10 +22,10 @@ This project contains all pre- and post-processing scripts for the model runs of
 
 
 ## Contents
-### data
+* data/
 All data used to run and evaluate the model, in addition to the model results.
 
-#### boreholes
+    - boreholes
 Borehole data for several locations close to the NATT-sites, from 
 
 #### data_from_a_model_inter
