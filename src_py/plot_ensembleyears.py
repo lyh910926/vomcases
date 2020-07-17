@@ -162,7 +162,6 @@ def main():
             time = pd.date_range(datetime(int(vom_tmp["fyear"][3]),int(vom_tmp["fmonth"][0]),int(vom_tmp["fday"][0])), 
                   datetime(int(vom_tmp["fyear"][-1]),int(vom_tmp["fmonth"][-1]),int(vom_tmp["fday"][-1])), 
                   freq='D')
-index.year>=startyear) & (esoil_pd.index.year<=endyear)
 
 
             vom[args.sites[i]] = [letot[(time.year>=args.startyear_mod) & (time.year<=args.endyear_mod)], gpptot[(time.year>=args.startyear_mod) & (time.year<=args.endyear_mod)]]
