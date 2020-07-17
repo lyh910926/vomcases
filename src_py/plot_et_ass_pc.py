@@ -39,7 +39,7 @@ def main():
     parser.add_argument("--stats_ass", help="statistics of assimilation timeseries", nargs='+')
     parser.add_argument("--stats_pc", help="statistics of projective cover timeseries", nargs='+')
     parser.add_argument("--stats_label", help="label for statistics", nargs='+')
-
+    parser.add_argument("--moving_average", help="days for moving average",  type=int )
     parser.add_argument("--outputfile", help="outputfile")
     parser.add_argument("--labels", help="labels corresponding to input-files", nargs='+', default = ["VOM"] )
     parser.add_argument("--colors", help="colors corresponding to input-files", nargs='+', default = ["red"] )
