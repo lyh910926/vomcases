@@ -155,22 +155,26 @@ def main():
         if(args.vom is not None):
             vom_tmp = np.genfromtxt(args.vom[i], names=True)
             etot = vom_tmp["esoil"] + vom_tmp["etmt"] + vom_tmp["etmg"]
-            letot= etot* lat_heat_vapor * rho_w * 1000 * 1000/(3600*24)
+            letot= etot[:]* lat_heat_vapor * rho_w * 1000 * 1000/(3600*24)
             gpptot = 1000000*(vom_tmp["assg"] + vom_tmp["asst"] )/ (3600*24)
-            gpptot = gpptot
+            gpptot = gpptot[:]
 
             time = pd.date_range(datetime(int(vom_tmp["fyear"][3]),int(vom_tmp["fmonth"][0]),int(vom_tmp["fday"][0])), 
                   datetime(int(vom_tmp["fyear"][-1]),int(vom_tmp["fmonth"][-1]),int(vom_tmp["fday"][-1])), 
                   freq='D')
 
-            letot2 = letot[(time.year>=args.startyear_mod) & (time.year<=args.endyear_mod)]
-            gpptot2 = gpptot[(time.year>=args.startyear_mod) & (time.year<=args.endyear_mod)]
-            time2 = time[(time.year>=args.startyear_mod) & (time.year<=args.endyear_mod)]
+            dates_overlap = time.intersection(gpp_time)
+
+            letot_pd = pd.Series(letot, index=time)
+            gpptot_pd = pd.Series(gpptot, index=time)
+
+            letot2 = letot_pd[dates_overlap]
+            gpptot2 = gpptot_pd[dates_overlap]
 
             #vom[args.sites[i]] = [letot[(time.year>=args.startyear_mod) & (time.year<=args.endyear_mod)], gpptot[(time.year>=args.startyear_mod) & (time.year<=args.endyear_mod)]]
             vom[args.sites[i]] = [letot2, gpptot2]
 
-            vom_dates[args.sites[i]] = time2
+            vom_dates[args.sites[i]] = dates_overlap
     
 
 
