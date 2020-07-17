@@ -98,6 +98,17 @@ def main():
                       datetime(int(data["fyear"][-1]),int(data["fmonth"][-1]),int(data["fday"][-1]))+timedelta(days=1), 
                       timedelta(days=1)).astype(datetime))
 
+        if args.moving_average is not None:
+
+            evals_pd = pd.DataFrame(evals[i], index=tmod[i])
+            evals_ma = evals_pd.rolling( window = args.moving_average ).mean()
+            assvals_pd = pd.DataFrame(assvals[i], index=tmod[i])
+            assvals_ma = assvals_pd.rolling( window = args.moving_average ).mean()
+
+            #replace values
+            evals[i] = evals_ma
+            assvals[i] = assvals_ma
+            tmod[i] = evals_ma.index
 
     if args.i2015 is not None:
 
@@ -111,6 +122,19 @@ def main():
                       datetime(int(data2015["year"][0]),int(data2015["month"][0]),int(data2015["day"][0]))+timedelta(days=len(vals2015) ), 
                       timedelta(days=1)).astype(datetime)
 
+        if args.moving_average is not None:
+            evals2015_pd = pd.DataFrame(evals2015, index=tmod2015)
+            evals2015_ma = evals2015_pd.rolling( window = args.moving_average ).mean()
+
+            assvals2015_pd = pd.DataFrame(assvals2015, index=tmod2015)
+            assvals2015_ma = assvals2015_pd.rolling( window = args.moving_average ).mean()
+
+            #replace values
+            evals2015 = evals2015_ma
+            assvals2015 = assvals2015_ma
+            tmod2015 = evals2015_ma.index
+
+
 
     #load observations
     if args.eobs is not None:
@@ -120,12 +144,28 @@ def main():
         t_eobs = np.genfromtxt(args.eobs,usecols=0, dtype=np.str )#mm/d
         t_eobs = pd.date_range(t_eobs[0], t_eobs[-1], freq='D')   
 
+        if args.moving_average is not None:
+            eobs_pd = pd.DataFrame(eobs, index=t_eobs)
+            eobs_ma = eobs_pd.rolling( window = args.moving_average ).mean()
+
+            #replace values
+            eobs = eobs_ma
+            t_eobs = eobs_ma.index
+
     if args.assobs is not None:
         #values observations
         assobs = (np.loadtxt(args.assobs, usecols=2) ) *-1.0  #mm/d
         #date/times observations
         t_assobs = np.genfromtxt(args.assobs,usecols=0, dtype=np.str )#mm/d
         t_assobs = pd.date_range(t_assobs[0], t_assobs[-1], freq='D')   
+
+        if args.moving_average is not None:
+            assobs_pd = pd.DataFrame(assobs, index=t_assobs)
+            assobs_ma = assobs_pd.rolling( window = args.moving_average ).mean()
+
+            #replace values
+            eobs = assobs_ma
+            t_eobs = assobs_ma.index
 
     #load observations
     if args.pcobs is not None:
@@ -295,8 +335,8 @@ def main():
                 ax[2].plot(tmod[i], pcvals[i], color=colors[i], label=str(i), zorder=1)           
 
     #set labels
-    ax[0].set_ylabel(r"Etot [mm/d]" , size=24  )
-    ax[1].set_ylabel(r"CO$_2$-uptake (mol/m$^2$/d)", size=24  )
+    ax[0].set_ylabel(r"Etot [mm d$^{-1}$]" , size=24  )
+    ax[1].set_ylabel(r"CO$_2$-uptake (mol m$^{-2}$ d$^{-1}$)", size=24  )
     ax[2].set_ylabel(r"Proj. Cover (%)", size=24  )
 
     #set axis and ticks
