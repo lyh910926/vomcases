@@ -164,7 +164,9 @@ def main():
                   freq='D')
 
 
-            vom[args.sites[i]] = [letot[(time.year>=args.startyear_mod) & (time.year<=args.endyear_mod)], gpptot[(time.year>=args.startyear_mod) & (time.year<=args.endyear_mod)]]
+            #vom[args.sites[i]] = [letot[(time.year>=args.startyear_mod) & (time.year<=args.endyear_mod)], gpptot[(time.year>=args.startyear_mod) & (time.year<=args.endyear_mod)]]
+            vom[args.sites[i]] = [letot, gpptot]
+
             vom_dates[args.sites[i]] = time[(time.year>=args.startyear_mod) & (time.year<=args.endyear_mod)]
     
 
