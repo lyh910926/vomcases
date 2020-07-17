@@ -335,7 +335,7 @@ def main():
                 ax[2].plot(tmod[i], pcvals[i], color=colors[i], label=str(i), zorder=1)           
 
     #set labels
-    ax[0].set_ylabel(r"Etot [mm d$^{-1}$]" , size=24  )
+    ax[0].set_ylabel(r"Etot (mm d$^{-1}$)" , size=24  )
     ax[1].set_ylabel(r"CO$_2$-uptake (mol m$^{-2}$ d$^{-1}$)", size=24  )
     ax[2].set_ylabel(r"Proj. Cover (%)", size=24  )
 
