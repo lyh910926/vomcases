@@ -257,7 +257,7 @@ def main():
         ax[iplot].set_ylim([ 0, 180 ])
         ax[iplot].set_xlim([ 0, 366 ])  
         ax[iplot].set_aspect(0.8)
-        ax[iplot].set_ylabel(r'LE (W/m$^2$) ', size=args.lab_size  )
+        ax[iplot].set_ylabel(r'LE (W m$^{-2}$) ', size=args.lab_size  )
         
         ax[iplot].set_yticks(range(0,200,20))
         ax[iplot].set_yticklabels(range(0,200,20))
@@ -330,7 +330,7 @@ def main():
         ax[iplot].set_xlim([ 0, 366 ])  
         ax[iplot].set_aspect(15)
     
-        ax[iplot].set_ylabel( r'GPP ($\mu mol/m^2/s$)', size=args.lab_size, labelpad=-3   )
+        ax[iplot].set_ylabel( r'GPP ($\mu mol m^{-2} s${-1}$)', size=args.lab_size, labelpad=-3   )
 
         if( iplot == 11):
             ax[iplot].set_xlabel( r'Day of year', size=args.lab_size  )
