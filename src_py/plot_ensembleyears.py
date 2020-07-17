@@ -38,6 +38,8 @@ def main():
 
     parser.add_argument("-o", "--outfile", help="outputfile with plot")
     parser.add_argument("--vom", help="VOM results", nargs='+')
+    parser.add_argument("--startyear_mod", help="first year to calculate long term means", nargs='+', type=int)
+    parser.add_argument("--endyear_mod", help="last year to calculate long term means", nargs='+', type=int)
     parser.add_argument("--bess", help="bess input files", nargs='+')
     parser.add_argument("--bios2", help="bios2 input files", nargs='+')
     parser.add_argument("--lpjguess", help="lpj-guess input files, first all files with et, second gpp", nargs='+')
@@ -153,16 +155,18 @@ def main():
         if(args.vom is not None):
             vom_tmp = np.genfromtxt(args.vom[i], names=True)
             etot = vom_tmp["esoil"] + vom_tmp["etmt"] + vom_tmp["etmg"]
-            letot= etot[-3650:]* lat_heat_vapor * rho_w * 1000 * 1000/(3600*24)
+            letot= etot* lat_heat_vapor * rho_w * 1000 * 1000/(3600*24)
             gpptot = 1000000*(vom_tmp["assg"] + vom_tmp["asst"] )/ (3600*24)
-            gpptot = gpptot[-3650:]
+            gpptot = gpptot
 
             time = pd.date_range(datetime(int(vom_tmp["fyear"][3]),int(vom_tmp["fmonth"][0]),int(vom_tmp["fday"][0])), 
                   datetime(int(vom_tmp["fyear"][-1]),int(vom_tmp["fmonth"][-1]),int(vom_tmp["fday"][-1])), 
                   freq='D')
+index.year>=startyear) & (esoil_pd.index.year<=endyear)
 
-            vom[args.sites[i]] = [letot, gpptot]
-            vom_dates[args.sites[i]] = time[-3650:]
+
+            vom[args.sites[i]] = [letot[(time.year>=args.startyear_mod) & (time.year<=args.endyear_mod)], gpptot[(time.year>=args.startyear_mod) & (time.year<=args.endyear_mod)]]
+            vom_dates[args.sites[i]] = time[(time.year>=args.startyear_mod) & (time.year<=args.endyear_mod)]
     
 
 
