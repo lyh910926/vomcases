@@ -164,8 +164,8 @@ def main():
             assobs_ma = assobs_pd.rolling( window = args.moving_average ).mean()
 
             #replace values
-            eobs = assobs_ma
-            t_eobs = assobs_ma.index
+            assobs = assobs_ma
+            t_assobs = assobs_ma.index
 
     #load observations
     if args.pcobs is not None:
