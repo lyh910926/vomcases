@@ -163,11 +163,14 @@ def main():
                   datetime(int(vom_tmp["fyear"][-1]),int(vom_tmp["fmonth"][-1]),int(vom_tmp["fday"][-1])), 
                   freq='D')
 
+            letot = letot[(time.year>=args.startyear_mod) & (time.year<=args.endyear_mod)]
+            gpptot = gpptot[(time.year>=args.startyear_mod) & (time.year<=args.endyear_mod)]
+            time = time[(time.year>=args.startyear_mod) & (time.year<=args.endyear_mod)]
 
             #vom[args.sites[i]] = [letot[(time.year>=args.startyear_mod) & (time.year<=args.endyear_mod)], gpptot[(time.year>=args.startyear_mod) & (time.year<=args.endyear_mod)]]
             vom[args.sites[i]] = [letot, gpptot]
 
-            vom_dates[args.sites[i]] = time[(time.year>=args.startyear_mod) & (time.year<=args.endyear_mod)]
+            vom_dates[args.sites[i]] = time
     
 
 
