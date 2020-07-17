@@ -142,15 +142,14 @@ def main():
         le_time =  np.genfromtxt(args.dingo_et[i],usecols=0, dtype=np.str )#mm/d
         le_time = pd.date_range(le_time[0], le_time[-1], freq='D')   
          
+        leobs_pd =pd.Series(le_tmp, index=le_time)
+
         gpp_tmp = np.loadtxt(args.dingo_gpp[i], usecols=2) #mm/d
         gpp_obs = -1000000*gpp_tmp/ (3600*24)
         gpp_time =  np.genfromtxt(args.dingo_gpp[i],usecols=0, dtype=np.str )#mm/d
         gpp_time= pd.date_range(gpp_time[0], gpp_time[-1], freq='D')  
 
-        dingo_le[args.sites[i]] = le_tmp
-        dingo_le_dates[args.sites[i]] = le_time
-        dingo_gpp[args.sites[i]] = gpp_obs
-        dingo_gpp_dates[args.sites[i]] = gpp_time
+        gppobs_pd =pd.Series(gpp_obs, index=le_time)
 
         if(args.vom is not None):
             vom_tmp = np.genfromtxt(args.vom[i], names=True)
@@ -164,6 +163,11 @@ def main():
                   freq='D')
 
             dates_overlap = time.intersection(gpp_time)
+
+            dingo_le[args.sites[i]] = leobs_pd[dates_overlap]
+            dingo_le_dates[args.sites[i]] = dates_overlap
+            dingo_gpp[args.sites[i]] = gppobs_pd[dates_overlap]
+            dingo_gpp_dates[args.sites[i]] = dates_overlap
 
             letot_pd = pd.Series(letot, index=time)
             gpptot_pd = pd.Series(gpptot, index=time)

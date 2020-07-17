@@ -71,7 +71,7 @@ def main():
 
     #mean annual evaporation
     for i in range(0,len(args.evap_obs) ):
-        tmp = mean_annual_dingo(args.evap_obs[i], args.startyear_obs[i], args.endyear_obs[i], 12, 3, 5, 9 )
+        tmp = mean_annual_dingo(args.evap_obs[i], args.pred_cover[i], args.startyear_obs[i], args.endyear_obs[i], 12, 3, 5, 9 )
         etot_dingo[i] = tmp[0]
         ewet_dingo[i] = tmp[1]
         edry_dingo[i] = tmp[2]
@@ -85,7 +85,7 @@ def main():
 
     #mean annual assimilation
     for i in range(0,len(args.ass_obs)):
-        tmp = mean_annual_dingo(args.ass_obs[i], args.startyear_obs[i], args.endyear_obs[i], 12, 3, 5, 9 )
+        tmp = mean_annual_dingo(args.ass_obs[i], args.pred_cover[i], args.startyear_obs[i], args.endyear_obs[i], 12, 3, 5, 9 )
         gpptot_dingo[i] = tmp[0]*-1.0
         gppwet_dingo[i] = tmp[1]*-1.0
         gppdry_dingo[i] = tmp[2]*-1.0
@@ -117,7 +117,7 @@ def main():
     asst_wet2dry = np.zeros( (len(args.pred_cover))  )
 
     for i in range(0,len(args.pred_cover)):
-        tmp = fluxpartitions(args.pred_cover[i], args.startyear_mod[i], args.endyear_mod[i], 12, 3, 5, 9 )
+        tmp = fluxpartitions(args.pred_cover[i], args.evap_obs[i], args.startyear_mod[i], args.endyear_mod[i], 12, 3, 5, 9 )
 
         esoil_ma[i] = tmp[0][0]
         etmt_ma[i] = tmp[0][1]
@@ -169,7 +169,7 @@ def main():
     asst_wet2dry_pc = np.zeros( (len(args.pres_cover))  )
 
     for i in range(0,len(args.pres_cover)):
-        tmp = fluxpartitions(args.pres_cover[i], args.startyear_mod[i], args.endyear_mod[i], 12, 3, 5, 9 )
+        tmp = fluxpartitions(args.pres_cover[i], args.evap_obs[i], args.startyear_mod[i], args.endyear_mod[i], 12, 3, 5, 9 )
 
         esoil_ma_pc[i] = tmp[0][0]
         etmt_ma_pc[i] = tmp[0][1]
@@ -219,13 +219,13 @@ def main():
         ass_barplot(assg_ma, asst_ma, assg_ma_pc, asst_ma_pc, gpptot_dingo, ax[1], plot_label[1], args.sites, args.label_pad, -5, args.labsize, "Mean annual assimilation \n [mol/m$^2$/year]", args.loc_title[0], args.loc_title[1])
 
         evap_barplot(esoil_wet, etmt_wet, etmg_wet, esoil_wet_pc, etmt_wet_pc, etmg_wet_pc, ewet_dingo, ax[2], plot_label[2], args.sites, args.label_pad, -20, args.labsize, "Mean wet season evaporation \n [mm/year]", args.loc_title[0], args.loc_title[1])
-        ass_barplot(assg_wet, asst_wet, assg_wet_pc, asst_wet_pc, gppwet_dingo, ax[3], plot_label[3], args.sites, args.label_pad, -3, args.labsize, "Mean wet season assimilation \n [mol/m$^2$/year]", args.loc_title[0], args.loc_title[1])
+        ass_barplot(assg_wet, asst_wet, assg_wet_pc, asst_wet_pc, gppwet_dingo, ax[3], plot_label[3], args.sites, args.label_pad, -3, args.labsize, "Mean wet season assimilation \n [mol/m$^2$]", args.loc_title[0], args.loc_title[1])
 
         evap_barplot(esoil_dry, etmt_dry, etmg_dry, esoil_dry_pc, etmt_dry_pc, etmg_dry_pc, edry_dingo, ax[4], plot_label[4], args.sites, args.label_pad, -10, args.labsize, "Mean dry season evaporation \n [mm/year]", args.loc_title[0], args.loc_title[1])
-        ass_barplot(assg_dry, asst_dry, assg_dry_pc, asst_dry_pc, gppdry_dingo, ax[5], plot_label[5], args.sites, args.label_pad, -2, args.labsize, "Mean dry season assimilation \n [mol/m$^2$/year]", args.loc_title[0], args.loc_title[1])
+        ass_barplot(assg_dry, asst_dry, assg_dry_pc, asst_dry_pc, gppdry_dingo, ax[5], plot_label[5], args.sites, args.label_pad, -2, args.labsize, "Mean dry season assimilation \n [mol/m$^2$]", args.loc_title[0], args.loc_title[1])
 
-        evap_barplot(esoil_wet2dry, etmt_wet2dry, etmg_wet2dry, esoil_wet2dry_pc, etmt_wet2dry_pc, etmg_wet2dry_pc, ewet2dry_dingo, ax[6], plot_label[6], args.sites, args.label_pad, -5, args.labsize, "Mean drying season evaporation \n [mm/year]", args.loc_title[0], args.loc_title[1])
-        ass_barplot(assg_wet2dry, asst_wet2dry, assg_wet2dry_pc, asst_wet2dry_pc,  gppwet2dry_dingo, ax[7], plot_label[7], args.sites, args.label_pad, -1, args.labsize, "Mean drying season assimilation \n [mol/m$^2$/year]", args.loc_title[0], args.loc_title[1])
+        evap_barplot(esoil_wet2dry, etmt_wet2dry, etmg_wet2dry, esoil_wet2dry_pc, etmt_wet2dry_pc, etmg_wet2dry_pc, ewet2dry_dingo, ax[6], plot_label[6], args.sites, args.label_pad, -5, args.labsize, "Mean drying season evaporation \n [mm]", args.loc_title[0], args.loc_title[1])
+        ass_barplot(assg_wet2dry, asst_wet2dry, assg_wet2dry_pc, asst_wet2dry_pc,  gppwet2dry_dingo, ax[7], plot_label[7], args.sites, args.label_pad, -1, args.labsize, "Mean drying season assimilation \n [mol/m$^2$]", args.loc_title[0], args.loc_title[1])
 
 
 
@@ -243,7 +243,7 @@ def main():
 
 
 
-def fluxpartitions(inputfile, startyear, endyear, startwet, endwet, startdry, enddry):
+def fluxpartitions(inputfile, inputfile_obs, startyear, endyear, startwet, endwet, startdry, enddry):
 
     #load data
     data = np.genfromtxt(inputfile, names=True)
@@ -256,10 +256,19 @@ def fluxpartitions(inputfile, startyear, endyear, startwet, endwet, startdry, en
     asst = np.array(data["asst"])        #mol/m2/d
 
     #create series of pandas time
-    tmod = np.arange(datetime(int(data['fyear'][0]),int(data['fmonth'][0]),int(data['fday'][0])), 
-                      datetime(int(data['fyear'][-1]),int(data['fmonth'][-1]),int(data['fday'][-1]))+timedelta(days=1), 
-                      timedelta(days=1)).astype(datetime)
-                    
+    tmod = pd.date_range(datetime(int(data["fyear"][3]),int(data["fmonth"][0]),int(data["fday"][0])), 
+                  datetime(int(data["fyear"][-1]),int(data["fmonth"][-1]),int(data["fday"][-1])), 
+                  freq='D')
+
+    #load data -observions    
+    data_obs = np.loadtxt(inputfile_obs, usecols=2) #mm/d
+    
+    #create series of pandas time
+    tflux_tmp = np.genfromtxt(inputfile_obs, usecols=0, dtype=np.str )#mm/d
+    tflux = pd.date_range(tflux_tmp[0], tflux_tmp[-1], freq='D')
+
+    dates_overlap = tmod.intersection(tflux)
+   
     #make pandas series
     esoil_pd = pd.Series(esoil, index=tmod)
     etmt_pd = pd.Series(etmt, index=tmod)
@@ -267,17 +276,17 @@ def fluxpartitions(inputfile, startyear, endyear, startwet, endwet, startdry, en
     assg_pd = pd.Series(assg, index=tmod)
     asst_pd = pd.Series(asst, index=tmod)
                     
-    esoil_ma = np.mean(esoil_pd[ (esoil_pd.index.year>=startyear) & (esoil_pd.index.year<=endyear)].resample('A').sum() ) 
-    etmt_ma = np.mean(etmt_pd[(etmt_pd.index.year>=startyear) & (etmt_pd.index.year<=endyear)].resample('A').sum() ) 
-    etmg_ma = np.mean(etmg_pd[(etmg_pd.index.year>=startyear) & (etmg_pd.index.year<=endyear)].resample('A').sum() ) 
-    assg_ma = np.mean(assg_pd[(assg_pd.index.year>=startyear) & (assg_pd.index.year<=endyear)].resample('A').sum() ) 
-    asst_ma = np.mean(asst_pd[(asst_pd.index.year>=startyear) & (asst_pd.index.year<=endyear)].resample('A').sum() ) 
+    esoil_ma = np.mean(esoil_pd[ dates_overlap].resample('A').sum() ) 
+    etmt_ma = np.mean(etmt_pd[dates_overlap].resample('A').sum() ) 
+    etmg_ma = np.mean(etmg_pd[dates_overlap].resample('A').sum() ) 
+    assg_ma = np.mean(assg_pd[dates_overlap].resample('A').sum() ) 
+    asst_ma = np.mean(asst_pd[dates_overlap].resample('A').sum() ) 
 
-    esoil_mm = esoil_pd.resample('M').sum()
-    etmt_mm = etmt_pd.resample('M').sum()
-    etmg_mm = etmg_pd.resample('M').sum()
-    assg_mm = assg_pd.resample('M').sum()
-    asst_mm = asst_pd.resample('M').sum()
+    esoil_mm = esoil_pd[ dates_overlap].resample('M').sum()
+    etmt_mm = etmt_pd[ dates_overlap].resample('M').sum()
+    etmg_mm = etmg_pd[ dates_overlap].resample('M').sum()
+    assg_mm = assg_pd[ dates_overlap].resample('M').sum()
+    asst_mm = asst_pd[ dates_overlap].resample('M').sum()
 
     esoil_dry = 0.0
     etmt_dry = 0.0
@@ -383,7 +392,7 @@ def fluxpartitions(inputfile, startyear, endyear, startwet, endwet, startdry, en
     return result, result_wet, result_dry, result_dry2wet, result_wet2dry      
                 
 
-def mean_annual_dingo(inputfile, startyear, endyear, startwet, endwet, startdry, enddry):
+def mean_annual_dingo(inputfile, inputfile_mod, startyear, endyear, startwet, endwet, startdry, enddry):
 
     #load data
     
@@ -392,12 +401,23 @@ def mean_annual_dingo(inputfile, startyear, endyear, startwet, endwet, startdry,
     #create series of pandas time
     tflux_tmp = np.genfromtxt(inputfile, usecols=0, dtype=np.str )#mm/d
     tflux = pd.date_range(tflux_tmp[0], tflux_tmp[-1], freq='D')
-                    
+             
+    #load data
+    data_mod = np.genfromtxt(inputfile_mod, names=True)
+
+    #create series of pandas time
+    tmod = pd.date_range(datetime(int(data_mod["fyear"][3]),int(data_mod["fmonth"][0]),int(data_mod["fday"][0])), 
+                  datetime(int(data_mod["fyear"][-1]),int(data_mod["fmonth"][-1]),int(data_mod["fday"][-1])), 
+                  freq='D')
+
+
+    dates_overlap = tmod.intersection(tflux)
+
     #make pandas series
     vals_pd = pd.Series(data, index=tflux)                    
-    vals_ma = np.mean(vals_pd[ (vals_pd.index.year>=startyear) & (vals_pd.index.year<=endyear)].resample('A').sum() ) 
+    vals_ma = np.mean(vals_pd[ dates_overlap].resample('A').sum() ) 
 
-    vals_mm = vals_pd[ (vals_pd.index.year>=startyear) & (vals_pd.index.year<=endyear)].resample('M').sum()
+    vals_mm = vals_pd[ dates_overlap].resample('M').sum()
     vals_dry = 0.0
     vals_wet = 0.0
     vals_wet2dry = 0.0
