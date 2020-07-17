@@ -246,8 +246,8 @@ def main():
     loc_spa = np.arange(9.5, len(args.sites)*10+9.5, 10)
 
 
-    ylabels = [ r"Total Evaporation [mm year${-1}$]",
-                r'CO$_{2}$-assimilation [mol m$^{-2}$ year${-1}$]',
+    ylabels = [ r"Total Evaporation [mm year$^{-1}$]",
+                r'CO$_{2}$-assimilation [mol m$^{-2}$ year$^{-1}$]',
                 "Rel.Err. tot. evaporation [-]",  
                 "Rel.Err. CO$_{2}$-assimilation [-]", 
                 "Rel.Err. amplitude tot. evaporation[-]", 
