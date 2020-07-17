@@ -155,7 +155,7 @@ def main():
 
     #plot observations
     if args.i2015 is not None:
-        ax0.plot(tmod2015, vals2015, color='green', label='Schymanski et al. (2015)', zorder=2)
+        ax0.plot(tmod2015, vals2015, color='green' ,label='Schymanski et al. (2015)', zorder=2)
 
     palette = plt.get_cmap(args.palette, len(args.input))
 
@@ -176,9 +176,9 @@ def main():
                 ax0.plot(tmod[i], vals[i], color=palette(i), zorder=1) 
         else:
             try:
-                ax0.plot(tmod[i], vals[i], color=palette(i), label=args.labels[i], zorder=1)           
+                ax0.plot(tmod[i], vals[i], color=args.colors[i], label=args.labels[i], zorder=1)           
             except IndexError:
-                ax0.plot(tmod[i], vals[i], color=palette(i), label=str(i), zorder=1)                  
+                ax0.plot(tmod[i], vals[i], color=args.colors[i], label=str(i), zorder=1)                  
 
     #plot emperical benchmarks
     if args.emp1 is not None:
