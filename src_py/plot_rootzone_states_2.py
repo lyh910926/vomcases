@@ -51,6 +51,11 @@ def main():
     parser.add_argument("--i_cz", help="surface level, for groundwater plot", type=float )
     parser.add_argument("--i_zr", help="bottom level, for groundwater plot", type=float )
     parser.add_argument("--i_delz", help="layer thickness", type=float )
+    parser.add_argument("--i_thetar", help="Van genuchten thetar AoB2015", type=float )
+    parser.add_argument("--i_thetas", help="Van genuchten thetas AoB2015", type=float )
+    parser.add_argument("--i_avg", help="Van genuchten alpha AoB2015", type=float )
+    parser.add_argument("--i_nvg", help="Van genuchten n AoB2015", type=float )
+
     parser.add_argument("--i_cz2015", help="surface level, for groundwater plot", type=float )
     parser.add_argument("--i_zr2015", help="bottom level, for groundwater plot", type=float )
     parser.add_argument("--i_delz2015", help="bottom level, for groundwater plot", type=float )
@@ -93,11 +98,7 @@ def main():
         t_emp = np.genfromtxt( args.emp2, usecols=0, dtype=np.str)
         t_emp = pd.date_range(t_emp[0], t_emp[-1], freq='D')    
 
-    #---------------------------------
-    #load soildata
-    if args.soildata is not None:
-        #values observations
-        soildata = np.loadtxt(args.soildata) 
+
 
     #---------------------------------
     #load parameters
@@ -126,14 +127,29 @@ def main():
                   datetime(int(data["fyear"][-1]),int(data["fmonth"][-1]),int(data["fday"][-1]))+timedelta(days=1), 
                   timedelta(days=1)).astype(datetime)
 
-    theta_s = soildata[0,5]
-    theta_r = soildata[0,6]
-    theta_tmp = (su_vals * (theta_s - theta_r)) + theta_r
-    theta_vals = theta_tmp
+    #---------------------------------
+    #load soildata
+    nlayers = np.int(np.ceil(args.i_cz / args.i_delz))
+
+    if args.soildata is not None:
+        #values observations
+        soildata = np.loadtxt(args.soildata) 
+        theta_s = soildata[0,5]
+        theta_r = soildata[0,6]
+        theta_tmp = (su_vals * (theta_s - theta_r)) + theta_r
+        theta_vals = theta_tmp
+        delz = soildata[:,1]
+
+    else:
+        theta_s = args.i_thetas
+        theta_r = args.i_thetar
+        theta_tmp = (su_vals * (theta_s - theta_r)) + theta_r
+        theta_vals = theta_tmp
+        delz = np.repeat(args.i_delz, nlayers)
 
     #---------------------------------
     #soil moisture results
-    nlayers = np.int(np.ceil(args.i_cz / args.i_delz))
+
 
     #open file, count lines
     file = open(args.su_hourly) #mm/d     
@@ -162,7 +178,7 @@ def main():
         t = t + 1
     file.close()
 
-    delz = soildata[:,1]
+
     delz_sum = np.cumsum(delz)
 
     if(args.use_roots == True):
@@ -178,13 +194,22 @@ def main():
         print("Untill layer:")
         print(ind5)
 
-    theta_r = soildata[0:ind5,6]
-    theta_s = soildata[0:ind5,5]
-    alpha_vg = soildata[0:ind5,4]
-    n_vg = soildata[0:ind5,3]
-    m_vg = 1.0 -(1.0/n_vg)
+    if args.soildata is not None:
+        theta_r = soildata[0:ind5,6]
+        theta_s = soildata[0:ind5,5]
+        alpha_vg = soildata[0:ind5,4]
+        n_vg = soildata[0:ind5,3]
+        m_vg = 1.0 -(1.0/n_vg)
 
-    su = su_data[:, 0:ind5]
+        su = su_data[:, 0:ind5]
+    else:
+        theta_r = args.i_thetar
+        theta_s = args.i_thetas
+        alpha_vg = args.i_avg
+        n_vg = args.i_nvg
+        m_vg = 1.0 -(1.0/n_vg)
+
+        su = su_data[:, 0:ind5]
 
 
     #loop over time
@@ -430,7 +455,7 @@ def main():
     #other plots
 
     #plot soil moisture results
-    plot_flux_obs(tmod, theta_vals, ax[2], tobs_sm, obs_sm, "Soil moisture (m)", "b)" ,yearstart, yearend) 
+    plot_flux_obs(tmod, theta_vals, ax[2], tobs_sm, obs_sm, "Soil moisture (m)", "b)", args.labels[0] ,yearstart, yearend) 
 
  
     #plot 2015 data
@@ -441,7 +466,7 @@ def main():
     ##############################################################
     #plot storage results
     plot_flux(ax[4], "Water storage (m)", "c)", yearstart, yearend ) 
-    ax[4].plot(time_su, ws5_pd, color="red", label="VOM", zorder=1) 
+    ax[4].plot(time_su, ws5_pd, color="red", label=args.labels[0], zorder=1) 
 
     #plot 2015 data
     if args.i2015 is not None:
@@ -523,7 +548,7 @@ def plot_flux_layers(ax, ylabel, plot_label, yearstart, yearend):
 
     end = vals.shape[1]
     for i in range(0, end):
-        ax.plot(time, vals.iloc[:,i], color="red", label="VOM", zorder=1) 
+        ax.plot(time, vals.iloc[:,i], color="red", label=args.labels[0], zorder=1) 
 
 
     ax.set_ylabel(ylabel, size=24  )
@@ -567,10 +592,10 @@ def plot_flux(ax, ylabel, plot_label, yearstart, yearend):
 
     return ax
 
-def plot_flux_obs(time, vals, ax, time_obs, vals_obs, ylabel, plot_label, yearstart, yearend):
+def plot_flux_obs(time, vals, ax, time_obs, vals_obs, ylabel, plot_label, labels, yearstart, yearend):
     
 
-    ax.plot(time, vals, color="red", label="VOM", zorder=1) 
+    ax.plot(time, vals, color="red", label=labels, zorder=1) 
 
 
     ax.set_ylabel(ylabel, size=24  )

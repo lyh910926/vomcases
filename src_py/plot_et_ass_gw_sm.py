@@ -17,13 +17,20 @@ def main():
     parser = argparse.ArgumentParser()
 
     #required input
-    parser.add_argument("-i", "--input", help="results_daily (can be multiple)")
+    parser.add_argument("-i", "--input", help="results_daily (can be multiple)", nargs='+')
     parser.add_argument("-ys", "--yearstart", help="startyear for plotting", type=int)
     parser.add_argument("-ye", "--yearend", help="endyear for plotting", type=int)
     parser.add_argument("-w", "--weather", help="dailyweather.prn")
 
     #optional input
     parser.add_argument("--i2015", help="results_daily AoB2015 ")
+    parser.add_argument("--i_cz2015", help="surface level, for groundwater plot", type=float )
+    parser.add_argument("--i_zr2015", help="bottom level, for groundwater plot", type=float )
+    parser.add_argument("--i_delz2015", help="bottom level, for groundwater plot", type=float )
+    parser.add_argument("--i_thetar2015", help="Van genuchten thetar AoB2015", type=float )
+    parser.add_argument("--i_thetas2015", help="Van genuchten thetas AoB2015", type=float )
+    parser.add_argument("--i_avg2015", help="Van genuchten alpha AoB2015", type=float )
+    parser.add_argument("--i_nvg2015", help="Van genuchten n AoB2015", type=float )
 
     parser.add_argument("--maxmod", help="results_daily max-values ")
     parser.add_argument("--minmod", help="results_daily min-values")
@@ -84,35 +91,47 @@ def main():
         t_emp = np.genfromtxt( args.emp2, usecols=0, dtype=np.str)
         t_emp = pd.date_range(t_emp[0], t_emp[-1], freq='D')    
 
+
+
+
+    #---------------------------------
+    #load results
+    #load results
+    vals = []
+    tmod = []
+    for i in range(0, len(args.input)):
+        data = np.genfromtxt(args.input[i], names=True)
+
+        tmod.append(np.arange(datetime(int(data["fyear"][0]),int(data["fmonth"][0]),int(data["fday"][0])), 
+                      datetime(int(data["fyear"][-1]),int(data["fmonth"][-1]),int(data["fday"][-1]))+timedelta(days=1), 
+                      timedelta(days=1)).astype(datetime))
+
+        if( args.depth == "True"):
+            zw_vals_tmp = -1.0*( args.i_cz - data["zw"])
+        else:
+            zw_vals_tmp = data["zw"]
+
+        evap_vals = ( (data["esoil"] + data["etmt"] + data["etmg"])*1000  )
+        ass_vals = (data["asst"] + data["assg"]  )
+        su_vals = (data["su_1"])
+        pc_vals = data["pc"]*100.0
+        zw_vals = zw_vals_tmp
+
     #---------------------------------
     #load soildata
     if args.soildata is not None:
         #values observations
         soildata = np.loadtxt(args.soildata) 
 
-    #---------------------------------
-    #load results
-    data = np.genfromtxt(args.input, names=True)
-
-    if( args.depth == "True"):
-        zw_vals_tmp = -1.0*( args.i_cz - data["zw"])
+        theta_s = soildata[0,5]
+        theta_r = soildata[0,6]
+        theta_tmp = (su_vals * (theta_s - theta_r)) + theta_r
+        theta_vals = theta_tmp
     else:
-        zw_vals_tmp = data["zw"]
-
-    evap_vals = ( (data["esoil"] + data["etmt"] + data["etmg"])*1000  )
-    ass_vals = (data["asst"] + data["assg"]  )
-    su_vals = (data["su_1"])
-    pc_vals = data["pc"]*100.0
-    zw_vals = zw_vals_tmp
-
-    tmod = np.arange(datetime(int(data["fyear"][0]),int(data["fmonth"][0]),int(data["fday"][0])), 
-                  datetime(int(data["fyear"][-1]),int(data["fmonth"][-1]),int(data["fday"][-1]))+timedelta(days=1), 
-                  timedelta(days=1)).astype(datetime)
-
-    theta_s = soildata[0,5]
-    theta_r = soildata[0,6]
-    theta_tmp = (su_vals * (theta_s - theta_r)) + theta_r
-    theta_vals = theta_tmp
+        theta_s = soildata[0,5]
+        theta_r = soildata[0,6]
+        theta_tmp = (su_vals * (theta_s - theta_r)) + theta_r
+        theta_vals = theta_tmp
 
 
 

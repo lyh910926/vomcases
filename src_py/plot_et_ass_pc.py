@@ -119,7 +119,7 @@ def main():
         pcvals2015 = data2015["pc"]*100.0
 
         tmod2015 = np.arange(datetime(int(data2015["year"][0]),int(data2015["month"][0]),int(data2015["day"][0])), 
-                      datetime(int(data2015["year"][0]),int(data2015["month"][0]),int(data2015["day"][0]))+timedelta(days=len(vals2015) ), 
+                      datetime(int(data2015["year"][0]),int(data2015["month"][0]),int(data2015["day"][0]))+timedelta(days=len(evals2015) ), 
                       timedelta(days=1)).astype(datetime)
 
         if args.moving_average is not None:
@@ -200,14 +200,17 @@ def main():
     evap_stats = []
     ass_stats = []
     pc_stats = []
-    for i in range(0, len(args.stats_evap)):
-        evap_stats.append( np.genfromtxt(args.stats_evap[i] ) )
+    if args.stats_evap is not None:
+        for i in range(0, len(args.stats_evap)):
+            evap_stats.append( np.genfromtxt(args.stats_evap[i] ) )
 
-    for i in range(0, len(args.stats_ass)):
-        ass_stats.append( np.genfromtxt(args.stats_ass[i] ) )
+    if args.stats_ass is not None:
+        for i in range(0, len(args.stats_ass)):
+            ass_stats.append( np.genfromtxt(args.stats_ass[i] ) )
 
-    for i in range(0, len(args.stats_pc)):
-        pc_stats.append( np.genfromtxt(args.stats_pc[i] ) )
+    if args.stats_pc is not None:
+        for i in range(0, len(args.stats_pc)):
+            pc_stats.append( np.genfromtxt(args.stats_pc[i] ) )
 
     #load weather data
     weather_data = np.genfromtxt(args.weather, names=True)
@@ -385,18 +388,21 @@ def main():
 
     #add statistics
     yloc = 0.93
-    for i in range(0, len(args.stats_evap)):
-        ax[0].text(0.01, yloc,  args.stats_label[i] + " = {0:.2f} mm/d".format(evap_stats[i][4])  , ha='left', va='center', transform=ax[0].transAxes, fontsize=14, bbox=dict(boxstyle="square", alpha=0.75, color='white'  ))
+    if args.stats_evap is not None:
+        for i in range(0, len(args.stats_evap)):
+            ax[0].text(0.01, yloc,  args.stats_label[i] + " = {0:.2f} mm/d".format(evap_stats[i][4])  , ha='left', va='center', transform=ax[0].transAxes, fontsize=14, bbox=dict(boxstyle="square", alpha=0.75, color='white'  ))
         yloc = yloc - 0.12
 
     yloc = 0.93
-    for i in range(0, len(args.stats_ass)):
-        ax[1].text(0.01, yloc,  args.stats_label[i] + " = {0:.2f} mol/m$^2$/d".format(ass_stats[i][4]) , ha='left', va='center', transform=ax[1].transAxes, fontsize=14, bbox=dict(boxstyle="square", alpha=0.75, color='white' ))
+    if args.stats_ass is not None:
+        for i in range(0, len(args.stats_ass)):
+            ax[1].text(0.01, yloc,  args.stats_label[i] + " = {0:.2f} mol/m$^2$/d".format(ass_stats[i][4]) , ha='left', va='center', transform=ax[1].transAxes, fontsize=14, bbox=dict(boxstyle="square", alpha=0.75, color='white' ))
         yloc = yloc - 0.12
 
     yloc = 0.93
-    for i in range(0, len(args.stats_pc)):
-        ax[2].text(0.01, yloc,  args.stats_label[i] + " = {0:.2f}%".format(pc_stats[i][4]) , ha='left', va='center', transform=ax[2].transAxes, fontsize=14, bbox=dict(boxstyle="square", alpha=0.75, color='white' ))
+    if args.stats_pc is not None:
+        for i in range(0, len(args.stats_pc)):
+            ax[2].text(0.01, yloc,  args.stats_label[i] + " = {0:.2f}%".format(pc_stats[i][4]) , ha='left', va='center', transform=ax[2].transAxes, fontsize=14, bbox=dict(boxstyle="square", alpha=0.75, color='white' ))
         yloc = yloc - 0.12
 
     ax[0].patch.set_visible(False)
