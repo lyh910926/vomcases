@@ -532,6 +532,10 @@ def main():
     ax[4].legend(prop={'size':15}, framealpha=1  )
     ax[6].legend(prop={'size':15}, framealpha=1  )
     ax[8].legend(prop={'size':15}, framealpha=1  )
+    ax[6].set_xlim([datetime(yearstart,1, 1), datetime( yearend ,12, 31)]) 
+    ax[8].set_xlim([datetime(yearstart,1, 1), datetime( yearend ,12, 31)]) 
+    ax[6].xaxis.set_major_formatter(mdate.DateFormatter('%Y'))
+    ax[8].xaxis.set_major_formatter(mdate.DateFormatter('%Y'))
 
     #save figure
     if args.outputfile is not None:
