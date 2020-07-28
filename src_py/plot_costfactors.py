@@ -166,8 +166,8 @@ def main():
     ax[len(args.sites)].set_xticks(cpcff_vals)
     ax[len(args.sites)].set_xticklabels(cpcff_str)
     ax[len(args.sites)].grid(color='gray', linestyle='--', linewidth=1, alpha=0.5)
-    ax[len(args.sites)].set_xlabel(r'$c_{rv}$ ($\mu$$mol$ $m^3$ $s^{-1}$)', size=14 )  
-    ax[len(args.sites)-1].set_xlabel(r'$c_{rv}$ ($\mu$$mol$ $m^3$ $s^{-1}$)', size=14 )  
+    ax[len(args.sites)].set_xlabel(r'c$_{rv}$ ($\mu$mol m$^3$ s$^{-1}$)', size=14 )  
+    ax[len(args.sites)-1].set_xlabel(r'$c_{rv}$ ($\mu$mol m$^3$ s$^{-1}$)', size=14 )  
 
     plt.tight_layout() 
     if args.outfile is not None:
