@@ -114,6 +114,11 @@ def main():
     ax0.set_frame_on(True) # make it transparent  
     ax0.legend(prop={'size':15})
 
+    for tick in ax0.xaxis.get_major_ticks():
+        tick.label.set_fontsize(20)
+        #tick.label.set_rotation(90)
+    for tick in ax0.yaxis.get_major_ticks():
+        tick.label.set_fontsize(20)
 
 
     plt.tight_layout()

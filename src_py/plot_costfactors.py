@@ -127,7 +127,8 @@ def main():
                           
                 if(i_cpcff ==0):
                     ax[ibasin].scatter(cpcff_vals[i_cpcff], cai, marker=symbols[ibasin], color=colors[ibasin] , s=140, label=site_name[ibasin])     
-                    #ax[ibasin].plot(0.02, cai_fpar[ibasin], marker=symbols[ibasin], color=colors[ibasin] , markersize=8)     
+                    #ax[ibasin].plot(0.02, cai_fpar[ibasin], marker=symbols[ibasin], color=colors[ibasin] , markersize=8)
+
                     ax[ibasin].hlines( cai_fpar[ibasin], 0, 3.2, color = colors[ibasin],label = "Observations" )
                     ax[ibasin].text(-0.10, 1.05, fig_lab[ibasin], transform=ax[ibasin].transAxes, size=18)
                 else:
@@ -208,7 +209,7 @@ def get_pc(fparfile, fpardates):
 
     print("Constant cover:" + str(const_cov/0.95) )
 
-    return const_cov
+    return const_cov/0.95
 
 
 

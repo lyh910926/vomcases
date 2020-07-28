@@ -126,14 +126,18 @@ def main():
         cb.ax.tick_params(labelsize=14)
         cb.set_label(args.cblabel, labelpad=10, size=20)
 
+    for tick in ax0.yaxis.get_major_ticks():
+        tick.label.set_fontsize(20)
 
+    for tick in ax0.xaxis.get_major_ticks():
+        tick.label.set_fontsize(20)
 
     if args.title is not None:
         ax0.text(args.xloc_title, args.yloc_title, args.title, ha='left', va='center', transform=ax0.transAxes, fontsize=args.size_title)
 
 
     plt.tight_layout()
-    plt.legend()
+
     #save figure
     if args.outputfile is not None:
         plt.savefig(args.outputfile)
