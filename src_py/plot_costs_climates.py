@@ -92,95 +92,133 @@ def main():
     cpcff_str = list(cpcff_str)
 
     cai_fpar = np.zeros(6)
-    cai_fpar[0] = get_pc(args.fpar1, args.fpar_dates)
-    cai_fpar[1] = get_pc(args.fpar2, args.fpar_dates)
-    cai_fpar[2] = get_pc(args.fpar3, args.fpar_dates)
-    cai_fpar[3] = get_pc(args.fpar4, args.fpar_dates)
-    cai_fpar[4] = get_pc(args.fpar5, args.fpar_dates)
-    cai_fpar[5] = get_pc(args.fpar6, args.fpar_dates)
 
-    #mean net radiation
-    rn1 = calc_netrad(args.weather1, args.lat1, args.startyear, args.endyear)
-    rn2 = calc_netrad(args.weather2, args.lat2, args.startyear, args.endyear)
-    rn3 = calc_netrad(args.weather3, args.lat3, args.startyear, args.endyear)
-    rn4 = calc_netrad(args.weather4, args.lat4, args.startyear, args.endyear)
-    rn5 = calc_netrad(args.weather5, args.lat5, args.startyear, args.endyear)
-    rn6 = calc_netrad(args.weather6, args.lat6, args.startyear, args.endyear)
+    rn_ma = []
+    EP_fao = []
+    prec_all = []
+    tmax_all = []
+    drydur = []
+    seas = []
 
-    rn1_ma = np.mean(rn1[ (rn1.index.year>=args.startyear) & (rn1.index.year<=args.endyear)].resample('A').sum() ) 
-    rn2_ma = np.mean(rn2[ (rn2.index.year>=args.startyear) & (rn2.index.year<=args.endyear)].resample('A').sum() ) 
-    rn3_ma = np.mean(rn3[ (rn3.index.year>=args.startyear) & (rn3.index.year<=args.endyear)].resample('A').sum() ) 
-    rn4_ma = np.mean(rn4[ (rn4.index.year>=args.startyear) & (rn4.index.year<=args.endyear)].resample('A').sum() ) 
-    rn5_ma = np.mean(rn5[ (rn5.index.year>=args.startyear) & (rn5.index.year<=args.endyear)].resample('A').sum() ) 
-    rn6_ma = np.mean(rn6[ (rn6.index.year>=args.startyear) & (rn6.index.year<=args.endyear)].resample('A').sum() ) 
+    if args.fpar1 is not None:
+        cai_fpar[0] = get_pc(args.fpar1, args.fpar_dates)
+        rn1 = calc_netrad(args.weather1, args.lat1, args.startyear, args.endyear)
+        rn1_ma = np.mean(rn1[ (rn1.index.year>=args.startyear) & (rn1.index.year<=args.endyear)].resample('A').sum() ) 
+        EPfao1 = mean_annual_silo(args.silo1,  17)
+        prec1 = mean_annual_vom_input(args.weather1, "Rain", args.startyear, args.endyear, "sum")
+        tmax1 = mean_annual_vom_input(args.weather1, "TMax", args.startyear, args.endyear, "max")
+        drydur1 = dry_season(args.weather1, args.startyear, args.endyear)
+        seas1 = rainfall_seasonality(args.weather1, args.startyear, args.endyear, "mean_annual")
 
-    rn_ma = [rn1_ma, rn2_ma, rn3_ma, rn4_ma, rn5_ma, rn6_ma ]
+        rn_ma.append(rn1_ma)
+        EP_fao.append(EPfao1)
+        prec_all.append(prec1)
+        tmax_all.append(tmax1)
+        drydur.append(drydur1)
+        seas.append(seas1)
 
-    #mean annual potential evaporation
-    EPfao1 = mean_annual_silo(args.silo1,  17)
-    EPfao2 = mean_annual_silo(args.silo2,  17)
-    EPfao3 = mean_annual_silo(args.silo3,  17)
-    EPfao4 = mean_annual_silo(args.silo4,  17)
-    EPfao5 = mean_annual_silo(args.silo5,  17)
-    EPfao6 = mean_annual_silo(args.silo6,  17)
+    if args.fpar2 is not None:
+        cai_fpar[1] = get_pc(args.fpar2, args.fpar_dates)
+        rn2 = calc_netrad(args.weather2, args.lat2, args.startyear, args.endyear)
+        rn2_ma = np.mean(rn1[ (rn2.index.year>=args.startyear) & (rn2.index.year<=args.endyear)].resample('A').sum() ) 
+        EPfao2 = mean_annual_silo(args.silo2,  17)
+        prec2 = mean_annual_vom_input(args.weather2, "Rain", args.startyear, args.endyear, "sum")
+        tmax2 = mean_annual_vom_input(args.weather2, "TMax", args.startyear, args.endyear, "max")
+        drydur2 = dry_season(args.weather2, args.startyear, args.endyear)
+        seas2 = rainfall_seasonality(args.weather2, args.startyear, args.endyear, "mean_annual")
 
-    EP_fao = [EPfao1, EPfao2, EPfao3, EPfao4, EPfao5, EPfao6 ]
+        rn_ma.append(rn2_ma)
+        EP_fao.append(EPfao2)
+        prec_all.append(prec2)
+        tmax_all.append(tmax2)
+        drydur.append(drydur2)
+        seas.append(seas2)
 
-    #mean annual precipitation
-    prec1 = mean_annual_vom_input(args.weather1, "Rain", args.startyear, args.endyear, "sum")
-    prec2 = mean_annual_vom_input(args.weather2, "Rain", args.startyear, args.endyear, "sum")
-    prec3 = mean_annual_vom_input(args.weather3, "Rain", args.startyear, args.endyear, "sum")
-    prec4 = mean_annual_vom_input(args.weather4, "Rain", args.startyear, args.endyear, "sum")
-    prec5 = mean_annual_vom_input(args.weather5, "Rain", args.startyear, args.endyear, "sum")
-    prec6 = mean_annual_vom_input(args.weather6, "Rain", args.startyear, args.endyear, "sum")
+    if args.fpar3 is not None:
+        cai_fpar[2] = get_pc(args.fpar3, args.fpar_dates)
+        rn3 = calc_netrad(args.weather3, args.lat3, args.startyear, args.endyear)
+        rn3_ma =  np.mean(rn3[ (rn3.index.year>=args.startyear) & (rn3.index.year<=args.endyear)].resample('A').sum() )  
+        EPfao3 = mean_annual_silo(args.silo3,  17)
+        prec3 = mean_annual_vom_input(args.weather3, "Rain", args.startyear, args.endyear, "sum")
+        tmax3 = mean_annual_vom_input(args.weather3, "TMax", args.startyear, args.endyear, "max")
+        drydur3 = dry_season(args.weather3, args.startyear, args.endyear)
+        seas3 = rainfall_seasonality(args.weather3, args.startyear, args.endyear, "mean_annual")
 
-    prec_all = [prec1, prec2, prec3, prec4, prec5, prec6  ]
+        rn_ma.append(rn3_ma)
+        EP_fao.append(EPfao3)
+        prec_all.append(prec3)
+        tmax_all.append(tmax3)
+        drydur.append(drydur3)
+        seas.append(seas3)
 
-    #mean annual temperature
-    tmax1 = mean_annual_vom_input(args.weather1, "TMax", args.startyear, args.endyear, "max")
-    tmax2 = mean_annual_vom_input(args.weather2, "TMax", args.startyear, args.endyear, "max")
-    tmax3 = mean_annual_vom_input(args.weather3, "TMax", args.startyear, args.endyear, "max")
-    tmax4 = mean_annual_vom_input(args.weather4, "TMax", args.startyear, args.endyear, "max")
-    tmax5 = mean_annual_vom_input(args.weather5, "TMax", args.startyear, args.endyear, "max")
-    tmax6 = mean_annual_vom_input(args.weather6, "TMax", args.startyear, args.endyear, "max")
+    if args.fpar4 is not None:
+        cai_fpar[3] = get_pc(args.fpar4, args.fpar_dates)
+        rn4 = calc_netrad(args.weather4, args.lat4, args.startyear, args.endyear)
+        rn4_ma =  np.mean(rn4[ (rn4.index.year>=args.startyear) & (rn4.index.year<=args.endyear)].resample('A').sum() )  
+        EPfao4 = mean_annual_silo(args.silo4,  17)
+        prec4 = mean_annual_vom_input(args.weather4, "Rain", args.startyear, args.endyear, "sum")
+        tmax4 = mean_annual_vom_input(args.weather4, "TMax", args.startyear, args.endyear, "max")
+        drydur4 = dry_season(args.weather4, args.startyear, args.endyear)
+        seas4 = rainfall_seasonality(args.weather4, args.startyear, args.endyear, "mean_annual")
 
-    tmax_all = [tmax1, tmax2, tmax3, tmax4, tmax5, tmax6  ]
+        rn_ma.append(rn4_ma)
+        EP_fao.append(EPfao4)
+        prec_all.append(prec4)
+        tmax_all.append(tmax4)
+        drydur.append(drydur4)
+        seas.append(seas4)
 
+    if args.fpar5 is not None:
+        cai_fpar[4] = get_pc(args.fpar5, args.fpar_dates)
+        rn5 = calc_netrad(args.weather5, args.lat5, args.startyear, args.endyear)
+        rn5_ma =  np.mean(rn5[ (rn5.index.year>=args.startyear) & (rn5.index.year<=args.endyear)].resample('A').sum() )  
+        EPfao5 = mean_annual_silo(args.silo5,  17)
+        prec5 = mean_annual_vom_input(args.weather5, "Rain", args.startyear, args.endyear, "sum")
+        tmax5 = mean_annual_vom_input(args.weather5, "TMax", args.startyear, args.endyear, "max")
+        drydur5 = dry_season(args.weather5, args.startyear, args.endyear)
+        seas5 = rainfall_seasonality(args.weather5, args.startyear, args.endyear, "mean_annual")
 
-    #dry season duration
-    drydur1 = dry_season(args.weather1, args.startyear, args.endyear)
-    drydur2 = dry_season(args.weather2, args.startyear, args.endyear)
-    drydur3 = dry_season(args.weather3, args.startyear, args.endyear)
-    drydur4 = dry_season(args.weather4, args.startyear, args.endyear)
-    drydur5 = dry_season(args.weather5, args.startyear, args.endyear)
-    drydur6 = dry_season(args.weather6, args.startyear, args.endyear)
+        rn_ma.append(rn5_ma)
+        EP_fao.append(EPfao5)
+        prec_all.append(prec5)
+        tmax_all.append(tmax5)
+        drydur.append(drydur5)
+        seas.append(seas5)
 
-    drydur = [drydur1, drydur2, drydur3, drydur4, drydur5, drydur6 ]
+    if args.fpar6 is not None:
+        cai_fpar[5] = get_pc(args.fpar6, args.fpar_dates)
+        rn6 = calc_netrad(args.weather6, args.lat6, args.startyear, args.endyear)
+        rn6_ma =  np.mean(rn6[ (rn6.index.year>=args.startyear) & (rn6.index.year<=args.endyear)].resample('A').sum() )  
+        EPfao6 = mean_annual_silo(args.silo6,  17)
+        prec6 = mean_annual_vom_input(args.weather6, "Rain", args.startyear, args.endyear, "sum")
+        tmax6 = mean_annual_vom_input(args.weather6, "TMax", args.startyear, args.endyear, "max")
+        drydur6 = dry_season(args.weather6, args.startyear, args.endyear)
+        seas6 = rainfall_seasonality(args.weather6, args.startyear, args.endyear, "mean_annual")
 
-    #rainfall seasonality
-    seas1 = rainfall_seasonality(args.weather1, args.startyear, args.endyear, "mean_annual")
-    seas2 = rainfall_seasonality(args.weather2, args.startyear, args.endyear, "mean_annual")
-    seas3 = rainfall_seasonality(args.weather3, args.startyear, args.endyear, "mean_annual")
-    seas4 = rainfall_seasonality(args.weather4, args.startyear, args.endyear, "mean_annual")
-    seas5 = rainfall_seasonality(args.weather5, args.startyear, args.endyear, "mean_annual")
-    seas6 = rainfall_seasonality(args.weather6, args.startyear, args.endyear, "mean_annual")
-
-    seas = [seas1, seas2, seas3, seas4, seas5, seas6 ]
-
-
+        rn_ma.append(rn6_ma)
+        EP_fao.append(EPfao6)
+        prec_all.append(prec6)
+        tmax_all.append(tmax6)
+        drydur.append(drydur6)
+        seas.append(seas6)
 
 
     ##################################################################
     #determine best cpcff-values
     cpcff_best = np.zeros(6)
 
-
-    cpcff_best[0] = best_cpcff(args.in1, cpcff_vals, cai_fpar[0])
-    cpcff_best[1] = best_cpcff(args.in2, cpcff_vals, cai_fpar[1])
-    cpcff_best[2] = best_cpcff(args.in3, cpcff_vals, cai_fpar[2])
-    cpcff_best[3] = best_cpcff(args.in4, cpcff_vals, cai_fpar[3])
-    cpcff_best[4] = best_cpcff(args.in5, cpcff_vals, cai_fpar[4])
-    cpcff_best[5] = best_cpcff(args.in6, cpcff_vals, cai_fpar[5])
+    if args.in1 is not None:
+        cpcff_best[0] = best_cpcff(args.in1, cpcff_vals, cai_fpar[0])
+    if args.in2 is not None:
+        cpcff_best[1] = best_cpcff(args.in2, cpcff_vals, cai_fpar[1])
+    if args.in3 is not None:
+        cpcff_best[2] = best_cpcff(args.in3, cpcff_vals, cai_fpar[2])
+    if args.in4 is not None:
+        cpcff_best[3] = best_cpcff(args.in4, cpcff_vals, cai_fpar[3])
+    if args.in5 is not None:
+        cpcff_best[4] = best_cpcff(args.in5, cpcff_vals, cai_fpar[4])
+    if args.in6 is not None:
+        cpcff_best[5] = best_cpcff(args.in6, cpcff_vals, cai_fpar[5])
 
 
     ##################################################################
@@ -194,12 +232,12 @@ def main():
         fig_lab = ['a)', 'b)', 'c)', 'd)', 'e)', 'f)', 'g)']
 
 
-    xlabel = ["Mean Ann. Prec. [$mm/year$]",
-              r"Mean Net rad. [$MJ/m^{2}/year$]",
-              "Pot. Evap. [mm/year]",
-              "Mean dry season [days]",
-              "Mean max. temp. [ $^o C$]",
-              "Rain seasonality [-]"        
+    xlabel = ["Mean Ann. Prec. (mm year$^{-1}$)",
+              r"Mean Net rad. (MJ m$^{-2}$ year$^{-1}$)",
+              "Pot. Evap. (mm year$^{-1})$",
+              "Mean dry season length (days)",
+              "Mean max. temp. ( $^o$C)",
+              "Rain seasonality (-)"        
              ]
 
     fig=plt.figure(figsize=(16, 5), dpi= 80, facecolor='w', edgecolor='k')
@@ -233,8 +271,8 @@ def main():
         ax[i].grid(color='gray', linestyle='--', linewidth=1, alpha=0.5)
         ax[i].tick_params(axis='both', which='major', labelsize=16)
 
-        ax[i].set_ylabel(r'$c_{rv}$  ($\mu$$mol$ $m^3$ $s^{-1}$)', size=16 )  
-        ax[i].text(-0.15, 1.07, fig_lab[i], transform=ax[i].transAxes,  size=20, weight='bold')
+        ax[i].set_ylabel(r'c$_{rv}$  ($\mu$mol m$^3$ s$^{-1}$)', size=16 )  
+        ax[i].text(-0.15, 1.07, fig_lab[i], transform=ax[i].transAxes,  size=20)
 
     plt.tight_layout()
         
