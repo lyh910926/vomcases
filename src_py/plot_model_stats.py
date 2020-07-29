@@ -392,7 +392,7 @@ def main():
     ax[0].set_xticks( np.arange(5,65,10)  )
     ax[0].set_xticklabels( args.sites, rotation=90, fontsize=20  ) 
     ax[0].set_ylabel( ylabels[0], fontsize=20   )
-    ax[0].text(-0.15, 1.04, plot_label[0], transform=ax[0].transAxes,  size=20, weight='bold')
+    ax[0].text(-0.15, 1.06, plot_label[0], transform=ax[0].transAxes,  size=20, weight='bold')
     for tick in ax[0].yaxis.get_major_ticks():
         tick.label.set_fontsize(16)
 
