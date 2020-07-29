@@ -134,7 +134,7 @@ def main():
                 else:
                     ax[ibasin].scatter(cpcff_vals[i_cpcff], cai, marker=symbols[ibasin], color=colors[ibasin] , s=140)     
                 
-                ax[ibasin].set_ylabel("Cover fraction [-]", size=16 )  
+                ax[ibasin].set_ylabel("Cover fraction (-)", size=16 )  
                 ax[ibasin].set_ylim( 0, 1  ) 
                 ax[ibasin].set_xlim( 0, 3.2  )    
 
@@ -155,7 +155,7 @@ def main():
         ED[i_cpcff] = np.sqrt(np.sum(err[i_cpcff,:]**2))
 
     ax[len(args.sites)].plot(cpcff_vals, ED, "*", markersize=10)
-    ax[len(args.sites)].set_ylabel("Euclidian distance [-]", size = 16 )  
+    ax[len(args.sites)].set_ylabel("Euclidian distance (-)", size = 16 )  
     ax[len(args.sites)].set_ylim( 0, 1.2  )
     ax[len(args.sites)].set_xlim( 0, 3.2  )    
 
