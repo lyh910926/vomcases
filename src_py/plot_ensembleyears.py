@@ -249,7 +249,10 @@ def main():
             if(args.cable is not None):
                 cable_tmp = cable[args.sites[isite]][0] #kg/m^2/s
                 cable_le = cable_tmp * lat_heat_vapor * 1000 * 1000  #W/m2
+                cable_et = 3600*24* cable_le / ( lat_heat_vapor * rho_w * 1000 * 1000  ) #mm/d
+
                 cable_le7d = ensemble_year(cable_le, cable_dates[args.sites[isite]]) 
+                cable_et7d = ensemble_year(cable_et, cable_dates[args.sites[isite]]) 
 
                 if(args.plot_et):
                     ax[iplot].plot(range(0,367), cable_et7d, '--' , color="red", linewidth=2, label = "CABLE" )    
