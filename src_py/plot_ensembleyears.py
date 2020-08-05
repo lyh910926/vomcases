@@ -156,7 +156,7 @@ def main():
 
         if(args.vom is not None):
             vom_tmp = np.genfromtxt(args.vom[i], names=True)
-            etot = vom_tmp["esoil"] + vom_tmp["etmt"] + vom_tmp["etmg"]
+            etot = vom_tmp["esoil"] + vom_tmp["etmt"] + vom_tmp["etmg"] #m/d
             letot= etot[:]* lat_heat_vapor * rho_w * 1000 * 1000/(3600*24)
             gpptot = 1000000*(vom_tmp["assg"] + vom_tmp["asst"] )/ (3600*24)
             gpptot = gpptot[:]
@@ -168,7 +168,7 @@ def main():
             dates_overlap = time.intersection(gpp_time)
 
             dingo_le[args.sites[i]] = leobs_pd[dates_overlap]
-            dingo_et[args.sites[i]] = 3600*24*dingo_le[args.sites[i]]/ ( lat_heat_vapor * rho_w * 1000 * 1000  ) #mm/d
+            dingo_et[args.sites[i]] = 3600*24*dingo_le[args.sites[i]]/ ( lat_heat_vapor * rho_w * 1000   ) #mm/d
             dingo_le_dates[args.sites[i]] = dates_overlap
             dingo_gpp[args.sites[i]] = gppobs_pd[dates_overlap]
             dingo_gpp_dates[args.sites[i]] = dates_overlap
@@ -178,7 +178,7 @@ def main():
             gpptot_pd = pd.Series(gpptot, index=time)
 
             letot2 = letot_pd[dates_overlap]
-            ettot2 = ettot_pd[dates_overlap]
+            ettot2 = ettot_pd[dates_overlap]*1000
             gpptot2 = gpptot_pd[dates_overlap]
 
             #vom[args.sites[i]] = [letot[(time.year>=args.startyear_mod) & (time.year<=args.endyear_mod)], gpptot[(time.year>=args.startyear_mod) & (time.year<=args.endyear_mod)]]
@@ -191,7 +191,7 @@ def main():
 
     ####################################################
     #start plotting
-    fig, axes   = plt.subplots(nrows=len(args.sites), ncols=2, figsize=(args.figsize[0], args.figsize[1]), sharex=args.sharex,gridspec_kw = {'wspace':0.2, 'hspace':-0.3} )
+    fig, axes   = plt.subplots(nrows=len(args.sites), ncols=2, figsize=(args.figsize[0], args.figsize[1]), sharex=args.sharex, )
     ax = axes.flat
 
     iplot = 0
@@ -202,7 +202,7 @@ def main():
         try:
             if(args.bess is not None):
                 bess_le =  bess[args.sites[isite]][:,0] #W/m2   
-                bess_et = 3600*24* bess_le / ( lat_heat_vapor * rho_w * 1000 * 1000  ) #mm/d
+                bess_et = 3600*24* bess_le / ( lat_heat_vapor * rho_w * 1000   ) #mm/d
                 bess_le7d = ensemble_year(bess_le, bess_dates[args.sites[isite]]) #W/m2
                 bess_et7d = ensemble_year(bess_et, bess_dates[args.sites[isite]]) #mm/d
 
@@ -213,7 +213,7 @@ def main():
 
             if(args.bios2 is not None):
                 bios2_le = bios2[args.sites[isite]][:,3] #W/m2 
-                bios2_et = 3600*24* bios2_le / ( lat_heat_vapor * rho_w * 1000 * 1000  ) #mm/d
+                bios2_et = 3600*24* bios2_le / ( lat_heat_vapor * rho_w * 1000   ) #mm/d
                 bios2_le7d = ensemble_year(bios2_le, bios2_dates[args.sites[isite]]) #W/m2
                 bios2_et7d = ensemble_year(bios2_et, bios2_dates[args.sites[isite]]) #mm/d
 
@@ -224,7 +224,7 @@ def main():
 
             if(args.lpjguess is not None):
                 lpj_le = lpjguess[args.sites[isite]][0] # W/m2
-                lpj_et = 3600*24* lpj_le / ( lat_heat_vapor * rho_w * 1000 * 1000  ) #mm/d
+                lpj_et = 3600*24* lpj_le / ( lat_heat_vapor * rho_w * 1000   ) #mm/d
 
                 lpj_le7d = ensemble_year(lpj_le, lpjguess_dates[args.sites[isite]]) # W/m2
                 lpj_et7d = ensemble_year(lpj_et, lpjguess_dates[args.sites[isite]]) #mm/d
@@ -236,7 +236,7 @@ def main():
 
             if(args.spa is not None):
                 spa_le = spa[args.sites[isite]][:,1] # W/m2
-                spa_et = 3600*24* spa_le / ( lat_heat_vapor * rho_w * 1000 * 1000  ) #mm/d
+                spa_et = 3600*24* spa_le / ( lat_heat_vapor * rho_w * 1000   ) #mm/d
 
                 spa_le7d = ensemble_year(spa_le, spa_dates[args.sites[isite]]) # W/m2
                 spa_et7d = ensemble_year(spa_et, spa_dates[args.sites[isite]]) #mm/d
@@ -249,7 +249,7 @@ def main():
             if(args.cable is not None):
                 cable_tmp = cable[args.sites[isite]][0] #kg/m^2/s
                 cable_le = cable_tmp * lat_heat_vapor * 1000 * 1000  #W/m2
-                cable_et = 3600*24* cable_le / ( lat_heat_vapor * rho_w * 1000 * 1000  ) #mm/d
+                cable_et = 3600*24* cable_le / ( lat_heat_vapor * rho_w * 1000   ) #mm/d
 
                 cable_le7d = ensemble_year(cable_le, cable_dates[args.sites[isite]]) 
                 cable_et7d = ensemble_year(cable_et, cable_dates[args.sites[isite]]) 
@@ -261,7 +261,7 @@ def main():
 
             if(args.maespa is not None): 
                 maespa_le = maespa[args.sites[isite]][:,1]
-                maespa_et = 3600*24* maespa_le/ ( lat_heat_vapor * rho_w * 1000 * 1000  ) #mm/d
+                maespa_et = 3600*24* maespa_le/ ( lat_heat_vapor * rho_w * 1000   ) #mm/d
 
                 maespa_le7d = ensemble_year(maespa_le, maespa_dates[args.sites[isite]]) #W m-2
                 maespa_et7d = ensemble_year(maespa_et, maespa_dates[args.sites[isite]]) #W m-2
@@ -288,13 +288,13 @@ def main():
             
                 #determine ensemble year
                 le7d2015 = ensemble_year(le_mod2015, tmod2015[-3650:])
-                et7d2015 = ensemble_year(best_e2015[-3650:], tmod2015[-3650:])
+                et7d2015 = ensemble_year(best_e2015[-3650:]*1000, tmod2015[-3650:])
 
                 #plot
                 if(args.plot_et):
-                    ax[iplot].plot(range(0,367), le7d2015, '-', color="lightgreen", linewidth=3,label = "Schymanski et al. (2015)"   )
-                else:
                     ax[iplot].plot(range(0,367), et7d2015, '-', color="lightgreen", linewidth=3,label = "Schymanski et al. (2015)"   )
+                else:
+                    ax[iplot].plot(range(0,367), le7d2015, '-', color="lightgreen", linewidth=3,label = "Schymanski et al. (2015)"   )
 
 
         #ensemble year dingo and vom
@@ -318,23 +318,27 @@ def main():
 
 
             
-        ax[iplot].set_ylim([ 0, 180 ])
+
         ax[iplot].set_xlim([ 0, 366 ])  
-        ax[iplot].set_aspect(0.8)
+        #ax[iplot].set_aspect(0.8)
         if(args.plot_et):
-            ax[iplot].set_ylabel(r'LE (W m$^{-2}$) ', size=args.lab_size  )
-        else:
             ax[iplot].set_ylabel(r'ET (mm d$^{-1}$) ', size=args.lab_size  )
-        
-        ax[iplot].set_yticks(range(0,200,20))
-        ax[iplot].set_yticklabels(range(0,200,20))
+            ax[iplot].set_ylim([ 0, 8 ])
+        else:
+            ax[iplot].set_ylabel(r'LE (W m$^{-2}$) ', size=args.lab_size  )
+            ax[iplot].set_ylim([ 0, 180 ])
+
+            ax[iplot].set_yticks(range(0,200,20))
+            ax[iplot].set_yticklabels(range(0,200,20))
         
         for tick in ax[iplot].xaxis.get_major_ticks():
             tick.label.set_fontsize(args.lab_size)
         for tick in ax[iplot].yaxis.get_major_ticks():
             tick.label.set_fontsize(args.lab_size)
         
-        ax[iplot].set_title(args.sites[isite] ,x=0.03, size=18, loc="left", pad = args.title_pad   )
+        #ax[iplot].text(args.sites[isite] ,x=0.03, size=18, loc="left", pad = args.title_pad   )
+        ax[iplot].text(0.03, 0.9, args.sites[isite], transform=ax[iplot].transAxes,  size=18)
+
         if( iplot == 10):
             ax[iplot].set_xlabel( r'Day of year', size=args.lab_size  )
 
@@ -395,7 +399,7 @@ def main():
             
         ax[iplot].set_ylim([0 , 10 ])  
         ax[iplot].set_xlim([ 0, 366 ])  
-        ax[iplot].set_aspect(15)
+        #ax[iplot].set_aspect(15)
     
         ax[iplot].set_ylabel( r'GPP ($\mu$mol m$^{-2}$ s$^{-1}$)', size=args.lab_size, labelpad=-3   )
 
