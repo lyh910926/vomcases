@@ -308,7 +308,7 @@ def main():
 
         if(args.vom is not None): 
             le7d = ensemble_year(vom[args.sites[isite]][0], vom_dates[args.sites[isite]])
-            et7d = ensemble_year(vom[args.sites[isite]][3], vom_dates[args.sites[isite]])
+            et7d = ensemble_year(vom[args.sites[isite]][2], vom_dates[args.sites[isite]])
 
             if(args.plot_et):
                 ax[iplot].plot(range(0,367), et7d, '-' , color="green", linewidth=args.lw_vom, label = "VOM" )
