@@ -82,6 +82,7 @@ def main():
     gppwet_dingo = np.zeros( (len(args.ass_obs))  )
     gppdry_dingo = np.zeros( (len(args.ass_obs))  )
     gppwet2dry_dingo = np.zeros( (len(args.ass_obs))  )
+    gppdry2wet_dingo = np.zeros( (len(args.ass_obs))  )
 
     #mean annual assimilation
     for i in range(0,len(args.ass_obs)):
@@ -89,6 +90,7 @@ def main():
         gpptot_dingo[i] = tmp[0]*-1.0
         gppwet_dingo[i] = tmp[1]*-1.0
         gppdry_dingo[i] = tmp[2]*-1.0
+        gppdry2wet_dingo[i] = tmp[3]*-1.0
         gppwet2dry_dingo[i] = tmp[4]*-1.0
 
     #mean annual fluxes for predicted cover
@@ -115,6 +117,12 @@ def main():
     etmg_wet2dry = np.zeros( (len(args.pred_cover))  )
     assg_wet2dry = np.zeros( (len(args.pred_cover))  )
     asst_wet2dry = np.zeros( (len(args.pred_cover))  )
+
+    esoil_dry2wet = np.zeros( (len(args.pred_cover))  )
+    etmt_dry2wet = np.zeros( (len(args.pred_cover))  )
+    etmg_dry2wet = np.zeros( (len(args.pred_cover))  )
+    assg_dry2wet = np.zeros( (len(args.pred_cover))  )
+    asst_dry2wet = np.zeros( (len(args.pred_cover))  )
 
     for i in range(0,len(args.pred_cover)):
         tmp = fluxpartitions(args.pred_cover[i], args.evap_obs[i], args.startyear_mod[i], args.endyear_mod[i], 12, 3, 5, 9 )
@@ -143,6 +151,12 @@ def main():
         assg_wet2dry[i] = tmp[4][3]
         asst_wet2dry[i] = tmp[4][4]
 
+        esoil_dry2wet[i] = tmp[3][0]
+        etmt_dry2wet[i] = tmp[3][1]
+        etmg_dry2wet[i] = tmp[3][2]
+        assg_dry2wet[i] = tmp[3][3]
+        asst_dry2wet[i] = tmp[3][4]
+
     #mean annual fluxes for prescribed cover
     esoil_ma_pc = np.zeros( (len(args.pres_cover))  )
     etmt_ma_pc = np.zeros( (len(args.pres_cover))  )
@@ -167,6 +181,12 @@ def main():
     etmg_wet2dry_pc = np.zeros( (len(args.pres_cover))  )
     assg_wet2dry_pc = np.zeros( (len(args.pres_cover))  )
     asst_wet2dry_pc = np.zeros( (len(args.pres_cover))  )
+
+    esoil_dry2wet_pc = np.zeros( (len(args.pres_cover))  )
+    etmt_dry2wet_pc = np.zeros( (len(args.pres_cover))  )
+    etmg_dry2wet_pc = np.zeros( (len(args.pres_cover))  )
+    assg_dry2wet_pc = np.zeros( (len(args.pres_cover))  )
+    asst_dry2wet_pc = np.zeros( (len(args.pres_cover))  )
 
     for i in range(0,len(args.pres_cover)):
         tmp = fluxpartitions(args.pres_cover[i], args.evap_obs[i], args.startyear_mod[i], args.endyear_mod[i], 12, 3, 5, 9 )
@@ -195,14 +215,19 @@ def main():
         assg_wet2dry_pc[i] = tmp[4][3]
         asst_wet2dry_pc[i] = tmp[4][4]
 
+        esoil_dry2wet_pc[i] = tmp[3][0]
+        etmt_dry2wet_pc[i] = tmp[3][1]
+        etmg_dry2wet_pc[i] = tmp[3][2]
+        assg_dry2wet_pc[i] = tmp[3][3]
+        asst_dry2wet_pc[i] = tmp[3][4]
 
 
     ##################################################################
     #make plot
     if args.fig_lab is True:
-        plot_label = [ "a)","b)","c)","d)","e)","f)", "g)", "h)" ]
+        plot_label = [ "a)","b)","c)","d)","e)","f)", "g)", "h)", "i)", "j)" ]
     else: 
-        plot_label = [ " "," "," "," "," "," ", " ", " " ]
+        plot_label = [ " "," "," "," "," "," ", " ", " ", " ", " " ]
 
     if( args.only_meanannual == True):
         fig, axes   = plt.subplots(nrows=1, ncols=2, figsize=(args.figsize[0], args.figsize[1]), sharex = True )
@@ -227,8 +252,8 @@ def main():
         evap_barplot(esoil_wet2dry, etmt_wet2dry, etmg_wet2dry, esoil_wet2dry_pc, etmt_wet2dry_pc, etmg_wet2dry_pc, ewet2dry_dingo, ax[6], plot_label[6], args.sites, args.label_pad, -5, args.labsize, "Mean ET Oct.-Nov. \n (mm)", args.loc_title[0], args.loc_title[1])
         ass_barplot(assg_wet2dry, asst_wet2dry, assg_wet2dry_pc, asst_wet2dry_pc,  gppwet2dry_dingo, ax[7], plot_label[7], args.sites, args.label_pad, -1, args.labsize, "Mean GPP Oct.-Nov. \n (mol m$^{-2}$)", args.loc_title[0], args.loc_title[1])
 
-        evap_barplot(esoil_dry2wet, etmt_dry2wet, etmg_dry2wet, esoil_dry2wet_pc, etmt_dry2wet_pc, etmg_dry2wet_pc, edry2wet_dingo, ax[7], plot_label[7], args.sites, args.label_pad, -5, args.labsize, "Mean ET April \n (mm)", args.loc_title[0], args.loc_title[1])
-        ass_barplot(assg_dry2wet, asst_dry2wet, assg_dry2wet_pc, asst_dry2wet_pc,  gppdry2wet_dingo, ax[8], plot_label[8], args.sites, args.label_pad, -1, args.labsize, "Mean GPP April \n (mol m$^{-2}$)", args.loc_title[0], args.loc_title[1])
+        evap_barplot(esoil_dry2wet, etmt_dry2wet, etmg_dry2wet, esoil_dry2wet_pc, etmt_dry2wet_pc, etmg_dry2wet_pc, edry2wet_dingo, ax[8], plot_label[8], args.sites, args.label_pad, -5, args.labsize, "Mean ET April \n (mm)", args.loc_title[0], args.loc_title[1])
+        ass_barplot(assg_dry2wet, asst_dry2wet, assg_dry2wet_pc, asst_dry2wet_pc,  gppdry2wet_dingo, ax[9], plot_label[9], args.sites, args.label_pad, -1, args.labsize, "Mean GPP April \n (mol m$^{-2}$)", args.loc_title[0], args.loc_title[1])
 
 
 
