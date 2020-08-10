@@ -483,8 +483,11 @@ def main():
     ##############################################################
     #plot water potentials
     #new VOM-results
+    color_map = plt. cm. get_cmap('coolwarm')
+    reversed_color_map = color_map.reversed() 
+
     y = np.insert(-delz_sum[0:ind5],0,0)
-    c1 = ax[6].pcolor(watpot_hourly_pd.index, y ,watpot_hourly_pd.values.T,norm=LogNorm(vmin=0.01, vmax=250), vmin=0.01, vmax=250, cmap = 'RdYlGn')
+    c1 = ax[6].pcolor(watpot_hourly_pd.index, y ,watpot_hourly_pd.values.T,norm=LogNorm(vmin=0.01, vmax=250), vmin=0.01, vmax=250, cmap = reversed_color_map)
 
     ax[6].plot( [datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params[5], - params[5]], ":", lw=3, color='red', label='root depth trees')
     ax[6].plot( [datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params[7],  -params[7]],":",lw=3,color='orange', label='root depth grasses')
@@ -504,7 +507,7 @@ def main():
 
     #Aob2015 results
     y2015 = np.insert(-delz2015_sum[0:ind5_2015],0,0)
-    c2 = ax[8].pcolor(watpot_hourly2015_pd.index, y2015, watpot_hourly2015_pd.values.T, norm=LogNorm(vmin=0.01, vmax=250), vmin=0.01, vmax=250, cmap='RdYlGn'   )
+    c2 = ax[8].pcolor(watpot_hourly2015_pd.index, y2015, watpot_hourly2015_pd.values.T, norm=LogNorm(vmin=0.01, vmax=250), vmin=0.01, vmax=250, cmap=reversed_color_map   )
     ax[8].plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params2015[5],- params2015[5]], ":", lw=3, color='red', label='root depth trees')
     ax[8].plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params2015[7],- params2015[7]],":",lw=3, color='orange', label='root depth grasses')
 
