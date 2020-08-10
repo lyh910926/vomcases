@@ -455,7 +455,7 @@ def main():
     #other plots
 
     #plot soil moisture results
-    plot_flux_obs(tmod, theta_vals, ax[2], tobs_sm, obs_sm, "Soil moisture (m)", "b)", args.labels[0] ,yearstart, yearend) 
+    plot_flux_obs(tmod, theta_vals, ax[2], tobs_sm, obs_sm, "Volumetric water content (-)", "b)", args.labels[0] ,yearstart, yearend) 
 
  
     #plot 2015 data
