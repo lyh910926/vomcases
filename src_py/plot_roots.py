@@ -36,12 +36,12 @@ def main():
     parser = argparse.ArgumentParser()
 
     parser.add_argument("-o", "--outfile", help="outputfile with plot")
-    parser.add_argument("--in1", help="parameter-files with cpccf-values",  nargs='+')
-    parser.add_argument("--in2", help="parameter-files with cpccf-values",  nargs='+')
-    parser.add_argument("--in3", help="parameter-files with cpccf-values",  nargs='+')
-    parser.add_argument("--in4", help="parameter-files with cpccf-values",  nargs='+')
-    parser.add_argument("--in5", help="parameter-files with cpccf-values",  nargs='+')
-    parser.add_argument("--in6", help="parameter-files with cpccf-values",  nargs='+')
+    parser.add_argument("--in1", help="parameter-files",  nargs='+')
+    parser.add_argument("--in2", help="parameter-files",  nargs='+')
+    parser.add_argument("--in3", help="parameter-files",  nargs='+')
+    parser.add_argument("--in4", help="parameter-files",  nargs='+')
+    parser.add_argument("--in5", help="parameter-files",  nargs='+')
+    parser.add_argument("--in6", help="parameter-files",  nargs='+')
 
     parser.add_argument("--fpar1", help="fpar-based projective cover")
     parser.add_argument("--fpar2", help="fpar-based projective cover")
@@ -50,12 +50,8 @@ def main():
     parser.add_argument("--fpar5", help="fpar-based projective cover")
     parser.add_argument("--fpar6", help="fpar-based projective cover")
     parser.add_argument("--fpar_dates", help="dates for fpar-based projective cover")
-    parser.add_argument("--figsize", help="figure size", nargs='+', type=float, default = [16,24] )
+    parser.add_argument("--figsize", help="figure size", nargs='+', type=float, default = [16,10] )
     parser.add_argument("--sites", help="study sites, should correspond to the number and order of inputfiles", nargs='+')
-    parser.add_argument("--cpccf_min", help="minimum value for the costfactor for water transport", type=float)
-    parser.add_argument("--cpccf_max", help="maximum value for the costfactor for water transport", type=float)
-    parser.add_argument("--cpccf_step", help="increment between costfactors", type=float)
-    parser.add_argument("--plot_cpccf", help="value use for plotting rooting depths", type=float)
     parser.add_argument("--spa_rtdepth", help="value use for plotting rooting depths", type=float)
     parser.add_argument("--spa_rgdepth", help="value use for plotting rooting depths", type=float)
     parser.add_argument("--maespa_rtdepth", help="value use for plotting rooting depths", type=float)
@@ -71,12 +67,7 @@ def main():
     args = parser.parse_args()
 
     #plot parameters
-    cpcff_vals = np.arange(args.cpccf_min, args.cpccf_max + args.cpccf_step, args.cpccf_step)
     site_names = args.sites
-
-    cpcff_str = map(str, np.round(cpcff_vals,1) ) 
-    cpcff_str = list(cpcff_str)
-
 
     symbols = ['s', '>', '.','8', 'P','*']
     colors = ['red', 'blue', 'green', 'gray', 'black', 'orange']
@@ -107,16 +98,12 @@ def main():
 
     site_names = args.sites
 
-    cpcff_str = map(str, np.round(cpcff_vals,1) ) 
-    cpcff_str = list(cpcff_str) 
 
     symbols = ['s', '>', '.','8', 'P','*']
     colors = ['red', 'blue', 'green', 'gray', 'black', 'orange']
     fig_lab = ['a)', 'b)', 'c)', 'd)', 'e)', 'f)', 'g)', 'h)', 'i)', 'j)', 'k)', 'l)', 'm)', 'n)']
 
-    height_ratios = [2] + np.ones(len(args.sites)).tolist()
-
-    fig, axes = plt.subplots(nrows=int(n_rows), ncols=2, figsize=(args.figsize[0], args.figsize[1]), gridspec_kw={"height_ratios":height_ratios}) 
+    fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(args.figsize[0], args.figsize[1])) 
 
     ax = axes.flat
 
@@ -129,7 +116,7 @@ def main():
 
 
             #loop over files and load
-        params_tmp = np.loadtxt( files[site_names[isite]][np.where(cpcff_vals == args.plot_cpccf)[0][0]]    )
+        params_tmp = np.loadtxt( files[site_names[isite]][0]  )
             
        
         ax[0].scatter(isite, params_tmp[5], marker=symbols[isite], color=colors[isite], s=140,label = site_names[isite])     
@@ -178,69 +165,6 @@ def main():
 
     for tick in ax[1].yaxis.get_major_ticks():
         tick.label.set_fontsize(20)
-
-
-
-
-    ibasin = 0
-    iplot = 2
-
-    for site in args.sites:
-        i_cpcff = 0
-
-
-        for cpcff in  cpcff_str:  
-
-            try:
-                params = np.loadtxt( files[site][i_cpcff]    )
-
-                rtdepth = params[5]
-                rgdepth = params[7]
-
-                    
-                              
-                if(i_cpcff ==0):
-                    ax[iplot].scatter(cpcff_vals[i_cpcff], rtdepth, marker=symbols[ibasin], color=colors[ibasin] , s=140, label=site_names[ibasin])     
-                    ax[iplot+1].scatter(cpcff_vals[i_cpcff], rgdepth, marker=symbols[ibasin], color=colors[ibasin] , s=140, label=site_names[ibasin])     
-
-                    #ax[ibasin].plot(0.02, cai_fpar[ibasin], marker=symbols[ibasin], color=colors[ibasin] , markersize=8)     
-                    #ax7.text(-0.10, 1.05, fig_lab[ibasin], transform=ax[ibasin].transAxes, size=18)
-                else:
-                    ax[iplot].scatter(cpcff_vals[i_cpcff], rtdepth, marker=symbols[ibasin], color=colors[ibasin] , s=140)     
-                    ax[iplot+1].scatter(cpcff_vals[i_cpcff], rgdepth, marker=symbols[ibasin], color=colors[ibasin] , s=140)     
-            except OSError:
-                print('file not found')       
-
-            i_cpcff = i_cpcff + 1
-
-                        
-        ax[iplot].set_ylabel("Root depths trees (m)", size=14 )
-        ax[iplot+1].set_ylabel("Root depths grass (m)", size=14 )  
-        ax[iplot].set_ylim( 0, 10  ) 
-        ax[iplot].set_xlim( 0, 3.2  ) 
-        ax[iplot].legend(prop={'size':10})
-        ax[iplot].tick_params(axis='both', which='major', labelsize=14)
-        ax[iplot].set_xticks(cpcff_vals)
-        ax[iplot].set_xticklabels(cpcff_str)
-        ax[iplot].grid(color='gray', linestyle='--', linewidth=1, alpha=0.5)
-        ax[iplot].text( x=-0.65, y=10, s=fig_lab[iplot], fontsize = 20)
-
-        ax[iplot+1].set_ylim( 0, 2  ) 
-        ax[iplot+1].set_xlim( 0, 3.2  )  
-        ax[iplot+1].legend(prop={'size':10})    
-        ax[iplot+1].tick_params(axis='both', which='major', labelsize=14)
-        ax[iplot+1].set_xticks(cpcff_vals)
-        ax[iplot+1].set_xticklabels(cpcff_str)
-        ax[iplot+1].grid(color='gray', linestyle='--', linewidth=1, alpha=0.5)
-        ax[iplot+1].text( x=-0.6, y=2, s=fig_lab[iplot+1], fontsize = 20)
-
-        
-        iplot = iplot + 2 
-        ibasin = ibasin + 1
-                
-    ax[iplot-1].set_xlabel(r'$c_{rv}$ ($\mu$$mol$ $m^3$ $s^{-1}$)', size=14 )  
-    ax[iplot-2].set_xlabel(r'$c_{rv}$ ($\mu$$mol$ $m^3$ $s^{-1}$)', size=14 ) 
-     
 
     if args.outfile is not None:
         plt.savefig(args.outfile, bbox_inches = "tight")
