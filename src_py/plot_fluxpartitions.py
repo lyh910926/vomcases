@@ -249,11 +249,11 @@ def main():
         evap_barplot(esoil_dry, etmt_dry, etmg_dry, esoil_dry_pc, etmt_dry_pc, etmg_dry_pc, edry_dingo, ax[4], plot_label[4], args.sites, args.label_pad, -10, args.labsize, "Mean ET May-Sept. \n (mm year$^{-1}$)", args.loc_title[0], args.loc_title[1])
         ass_barplot(assg_dry, asst_dry, assg_dry_pc, asst_dry_pc, gppdry_dingo, ax[5], plot_label[5], args.sites, args.label_pad, -2, args.labsize, "Mean GPP May-Sept. \n (mol m$^{-2}$)", args.loc_title[0], args.loc_title[1])
 
-        evap_barplot(esoil_wet2dry, etmt_wet2dry, etmg_wet2dry, esoil_wet2dry_pc, etmt_wet2dry_pc, etmg_wet2dry_pc, ewet2dry_dingo, ax[6], plot_label[6], args.sites, args.label_pad, -5, args.labsize, "Mean ET Oct.-Nov. \n (mm)", args.loc_title[0], args.loc_title[1])
-        ass_barplot(assg_wet2dry, asst_wet2dry, assg_wet2dry_pc, asst_wet2dry_pc,  gppwet2dry_dingo, ax[7], plot_label[7], args.sites, args.label_pad, -1, args.labsize, "Mean GPP Oct.-Nov. \n (mol m$^{-2}$)", args.loc_title[0], args.loc_title[1])
+        evap_barplot(esoil_wet2dry, etmt_wet2dry, etmg_wet2dry, esoil_wet2dry_pc, etmt_wet2dry_pc, etmg_wet2dry_pc, ewet2dry_dingo, ax[6], plot_label[6], args.sites, args.label_pad, -5, args.labsize, "Mean ET April \n (mm)", args.loc_title[0], args.loc_title[1])
+        ass_barplot(assg_wet2dry, asst_wet2dry, assg_wet2dry_pc, asst_wet2dry_pc,  gppwet2dry_dingo, ax[7], plot_label[7], args.sites, args.label_pad, -1, args.labsize, "Mean GPP April \n (mol m$^{-2}$)", args.loc_title[0], args.loc_title[1])
 
-        evap_barplot(esoil_dry2wet, etmt_dry2wet, etmg_dry2wet, esoil_dry2wet_pc, etmt_dry2wet_pc, etmg_dry2wet_pc, edry2wet_dingo, ax[8], plot_label[8], args.sites, args.label_pad, -5, args.labsize, "Mean ET April \n (mm)", args.loc_title[0], args.loc_title[1])
-        ass_barplot(assg_dry2wet, asst_dry2wet, assg_dry2wet_pc, asst_dry2wet_pc,  gppdry2wet_dingo, ax[9], plot_label[9], args.sites, args.label_pad, -1, args.labsize, "Mean GPP April \n (mol m$^{-2}$)", args.loc_title[0], args.loc_title[1])
+        evap_barplot(esoil_dry2wet, etmt_dry2wet, etmg_dry2wet, esoil_dry2wet_pc, etmt_dry2wet_pc, etmg_dry2wet_pc, edry2wet_dingo, ax[8], plot_label[8], args.sites, args.label_pad, -5, args.labsize, "Mean ET Oct.-Nov. \n (mm)", args.loc_title[0], args.loc_title[1])
+        ass_barplot(assg_dry2wet, asst_dry2wet, assg_dry2wet_pc, asst_dry2wet_pc,  gppdry2wet_dingo, ax[9], plot_label[9], args.sites, args.label_pad, -1, args.labsize, "Mean GPP Oct.-Nov. \n (mol m$^{-2}$)", args.loc_title[0], args.loc_title[1])
 
 
 
