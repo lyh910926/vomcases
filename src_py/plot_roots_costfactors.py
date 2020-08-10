@@ -86,7 +86,7 @@ def main():
     else:
         fig_lab = ['a)', 'b)', 'c)', 'd)', 'e)', 'f)', 'g)']
 
-    n_rows = len(args.sites)+1
+    n_rows = len(args.sites)
 
 
     files=dict()
@@ -114,76 +114,21 @@ def main():
     colors = ['red', 'blue', 'green', 'gray', 'black', 'orange']
     fig_lab = ['a)', 'b)', 'c)', 'd)', 'e)', 'f)', 'g)', 'h)', 'i)', 'j)', 'k)', 'l)', 'm)', 'n)']
 
-    height_ratios = [2] + np.ones(len(args.sites)).tolist()
 
-    fig, axes = plt.subplots(nrows=int(n_rows), ncols=2, figsize=(args.figsize[0], args.figsize[1]), gridspec_kw={"height_ratios":height_ratios}) 
+
+    fig, axes = plt.subplots(nrows=int(n_rows), ncols=2, figsize=(args.figsize[0], args.figsize[1])) 
 
     ax = axes.flat
 
 
 
     icount = 0
-    for isite in  range(0,len(args.sites)):  
-        
-        params_tmp = []
-
-
-            #loop over files and load
-        params_tmp = np.loadtxt( files[site_names[isite]][np.where(cpcff_vals == args.plot_cpccf)[0][0]]    )
-            
-       
-        ax[0].scatter(isite, params_tmp[5], marker=symbols[isite], color=colors[isite], s=140,label = site_names[isite])     
-        ax[1].scatter(isite, params_tmp[7], marker=symbols[isite], color=colors[isite], s=140) 
-        icount = icount + 1 
-        
-    ax[0].plot( [-1,6], [args.spa_rtdepth,args.spa_rtdepth])# , label='SPA'  )
-    ax[0].plot( [-1,6], [args.maespa_rtdepth, args.maespa_rtdepth] )#, label='MAESPA'  )
-    ax[0].plot( [-1,6], [args.cable_rtdepth,args.cable_rtdepth])# , label='CABLE'  )
-    ax[0].plot( [-1,6], [args.bios2_rtdepth,args.bios2_rtdepth] )#, label='BIOS2'  )
-    ax[0].plot( [-1,6], [args.lpj_rtdepth,args.lpj_rtdepth] )# , label='LPJGUESS'  )   
-        
-    ax[0].set_xlim( -1, 5  ) 
-    ax[0].set_ylim( 10, 0  ) 
-    ax[0].legend(prop={'size':15})
-
-    ax[0].set_xticks( [0,1,2,3,4,5] )  
-    ax[0].set_xticklabels( "", rotation=90, size=24  )  
-    ax[0].set_ylabel("Root depth trees (m)", size=20 )  
-    ax[0].set_xlabel("Study sites", size=16 )  
-
-    ax[0].text( x=-2.0, y=-0.1, s="a)", fontsize = 20)
-
-    for tick in ax[0].yaxis.get_major_ticks():
-        tick.label.set_fontsize(20)
-
-        
-    ax[1].plot( [-1,6], [args.spa_rgdepth,args.spa_rgdepth] , label='SPA'  )
-    ax[1].plot( [-1,6], [args.maespa_rgdepth, args.maespa_rgdepth] , label='MAESPA'  )
-    ax[1].plot( [-1,6], [args.cable_rgdepth,args.cable_rgdepth] , label='CABLE'  )
-    ax[1].plot( [-1,6], [args.bios2_rgdepth,args.bios2_rgdepth] , label='BIOS2'  )
-    ax[1].plot( [-1,6], [args.lpj_rgdepth,args.lpj_rgdepth] , label='LPJ-GUESS'  )
-        
-    #ax2.set_ylim([0,1]) 
-
-    ax[1].set_xlim( -1, 5  ) 
-    ax[1].set_ylim( 10, 0  ) 
-
-    ax[1].set_xticks( [0,1,2,3,4] )  
-    ax[1].set_xticklabels( "", rotation=90, size=14  )  
-    ax[1].set_ylabel("Root depth grass (m)", size=20 ) 
-    ax[1].set_xlabel("Study sites", size=16 )  
-
-    ax[1].legend(prop={'size':15})
-    ax[1].text( x=-2.0, y=-0.1, s="b)",  fontsize = 20)
-
-    for tick in ax[1].yaxis.get_major_ticks():
-        tick.label.set_fontsize(20)
 
 
 
 
     ibasin = 0
-    iplot = 2
+    iplot = 0
 
     for site in args.sites:
         i_cpcff = 0

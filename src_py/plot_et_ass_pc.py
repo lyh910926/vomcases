@@ -391,19 +391,19 @@ def main():
     if args.stats_evap is not None:
         for i in range(0, len(args.stats_evap)):
             ax[0].text(0.01, yloc,  args.stats_label[i] + " = {0:.2f} mm/d".format(evap_stats[i][4])  , ha='left', va='center', transform=ax[0].transAxes, fontsize=14, bbox=dict(boxstyle="square", alpha=0.75, color='white'  ))
-        yloc = yloc - 0.12
+            yloc = yloc - 0.12
 
     yloc = 0.93
     if args.stats_ass is not None:
         for i in range(0, len(args.stats_ass)):
             ax[1].text(0.01, yloc,  args.stats_label[i] + " = {0:.2f} mol/m$^2$/d".format(ass_stats[i][4]) , ha='left', va='center', transform=ax[1].transAxes, fontsize=14, bbox=dict(boxstyle="square", alpha=0.75, color='white' ))
-        yloc = yloc - 0.12
+            yloc = yloc - 0.12
 
     yloc = 0.93
     if args.stats_pc is not None:
         for i in range(0, len(args.stats_pc)):
             ax[2].text(0.01, yloc,  args.stats_label[i] + " = {0:.2f}%".format(pc_stats[i][4]) , ha='left', va='center', transform=ax[2].transAxes, fontsize=14, bbox=dict(boxstyle="square", alpha=0.75, color='white' ))
-        yloc = yloc - 0.12
+            yloc = yloc - 0.12
 
     ax[0].patch.set_visible(False)
     ax[1].patch.set_visible(False)
