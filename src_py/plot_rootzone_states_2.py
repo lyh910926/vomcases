@@ -455,7 +455,7 @@ def main():
     #other plots
 
     #plot soil moisture results
-    plot_flux_obs(tmod, theta_vals, ax[2], tobs_sm, obs_sm, "Volum. water content (-)", "b)", args.labels[0] ,yearstart, yearend) 
+    plot_flux_obs(tmod, theta_vals, ax[2], tobs_sm, obs_sm, "Volumumetric \n water content (-)", "b)", args.labels[0] ,yearstart, yearend) 
 
  
     #plot 2015 data
@@ -494,7 +494,7 @@ def main():
 
     ax[6].legend(prop={'size':15}, framealpha=1  )
 
-    ax[6].set_ylabel("Depth (m)", size=20)
+    ax[6].set_ylabel("Depth (m)", size=24)
     for tick in ax[6].yaxis.get_major_ticks():
         tick.label.set_fontsize(20)
     for tick in ax[6].xaxis.get_major_ticks():
@@ -516,7 +516,7 @@ def main():
     cb.ax.tick_params(labelsize=14)
     cb.set_label("Matrix potential (m)", size=20)
 
-    ax[8].set_ylabel("Depth (m)", size=20)
+    ax[8].set_ylabel("Depth (m)", size=24)
     for tick in ax[8].xaxis.get_major_ticks():
         tick.label.set_fontsize(20)
     for tick in ax[8].yaxis.get_major_ticks():
@@ -605,7 +605,7 @@ def plot_flux_obs(time, vals, ax, time_obs, vals_obs, ylabel, plot_label, labels
     ax.plot(time, vals, color="red", label=labels, zorder=1) 
 
 
-    ax.set_ylabel(ylabel, size=24  )
+    ax.set_ylabel(r'' + ylabel, size=24  )
     for tick in ax.xaxis.get_major_ticks():
         tick.label.set_fontsize(20)
     for tick in ax.yaxis.get_major_ticks():
