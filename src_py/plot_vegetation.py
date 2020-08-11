@@ -103,6 +103,8 @@ def main():
                       datetime(int(data["fyear"][-1]),int(data["fmonth"][-1]),int(data["fday"][-1]))+timedelta(days=1), 
                       timedelta(days=1)).astype(datetime))
 
+        
+
     if args.i2015 is not None:
 
         data2015 = np.genfromtxt(args.i2015, names=True)
@@ -127,8 +129,8 @@ def main():
         obs = 100*obs/0.95 #from fPar to vegetative cover
         tobs = np.genfromtxt(args.obsdates, dtype='str', delimiter=',')
         tobs = pd.to_datetime(tobs[:,1], format="%Y%m")
-
-
+        obs_pd = pd.Series(obs, index = tobs)
+        obs_pd = obs_pd.resample('MS').max()
 
     #load weather data
     weather_data = np.genfromtxt(args.weather, names=True)
@@ -151,7 +153,7 @@ def main():
                           color='red',facecolor='red', zorder=0, alpha = 0.2 )
     #plot observations
     if args.obs is not None:
-        ax0.plot(tobs, obs, color='blue', label='Obs.', zorder=2)
+        ax0.plot(obs_pd.index, obs_pd, color='blue', label='Obs.', zorder=2)
 
     #plot observations
     if args.i2015 is not None:

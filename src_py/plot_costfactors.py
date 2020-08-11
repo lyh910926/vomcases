@@ -207,7 +207,7 @@ def get_pc(fparfile, fpardates):
     ###################################
     #convert to projective cover
 
-    print("Constant cover:" + str(const_cov/0.95) )
+    #print("Constant cover:" + str(const_cov/0.95) )
 
     return const_cov/0.95
 

@@ -175,9 +175,9 @@ def main():
 
         for i in range(0, len(args.obs)):
             if(i == 0):
-                ax0.plot(tobs[i], -obs[i], color='blue', label='Obs.', zorder=2)
+                ax0.plot(tobs[i], obs[i], color='blue', label='Obs.', zorder=2)
             else:
-                ax0.plot(tobs[i], -obs[i], color='blue', zorder=2)
+                ax0.plot(tobs[i], obs[i], color='blue', zorder=2)
 
     #plot 2015 data
     if args.i2015 is not None:
