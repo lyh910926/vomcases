@@ -375,7 +375,7 @@ def main():
     ax[0].set_xticks( np.arange(5,65,10)  )
     ax[0].set_xticklabels( args.sites, rotation=90, fontsize=20  ) 
     ax[0].set_ylabel( ylabels[0], fontsize=20   )
-    ax[0].text(-0.15, 1.06, plot_label[0], transform=ax[0].transAxes,  size=20)
+    ax[0].text(-0.2, 1.02, plot_label[0], transform=ax[0].transAxes,  size=20)
     for tick in ax[0].yaxis.get_major_ticks():
         tick.label.set_fontsize(16)
 
@@ -384,7 +384,7 @@ def main():
     ax[1].set_xticks( np.arange(5,65,10)  )
     ax[1].set_xticklabels( args.sites, rotation=90, fontsize=20  ) 
     ax[1].set_ylabel( ylabels[1], fontsize=20   )    
-    ax[1].text(-0.15, 1.06, plot_label[1], transform=ax[1].transAxes,  size=20)
+    ax[1].text(-0.2, 1.02, plot_label[1], transform=ax[1].transAxes,  size=20)
     for tick in ax[1].yaxis.get_major_ticks():
         tick.label.set_fontsize(16)
 
@@ -422,7 +422,7 @@ def main():
         ax[iplot].set_xticks( np.arange(5,65,10)  )
         ax[iplot].set_xticklabels( args.sites, rotation=90, fontsize=20  )        
         ax[iplot].set_ylabel( ylabels[iplot], fontsize=20  )    
-        ax[iplot].text(-0.15, 1.06, plot_label[iplot], transform=ax[iplot].transAxes,  size=20)
+        ax[iplot].text(-0.2, 1.02, plot_label[iplot], transform=ax[iplot].transAxes,  size=20)
         for tick in ax[iplot].yaxis.get_major_ticks():
             tick.label.set_fontsize(16)
 
@@ -470,7 +470,7 @@ def main():
         ax[iplot].set_xticks( np.arange(5,len(args.sites)*10+5,10)  )
         ax[iplot].set_xticklabels( args.sites, rotation=90, fontsize=20  ) 
         ax[iplot].set_ylabel( ylabels[iplot], fontsize=20   )    
-        ax[iplot].text(-0.15, 1.06, plot_label[iplot], transform=ax[iplot].transAxes,  size=20)
+        ax[iplot].text(-0.2, 1.02, plot_label[iplot], transform=ax[iplot].transAxes,  size=20)
         for tick in ax[iplot].yaxis.get_major_ticks():
             tick.label.set_fontsize(16)
         
