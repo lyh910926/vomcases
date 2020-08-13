@@ -29,7 +29,7 @@ import pandas as pd
 from datetime import datetime, timedelta, date
 from matplotlib.pyplot import imread
 import matplotlib.cbook as cbook
-from netCDF4 import Dataset
+from netCDF4 import Dataset,num2date
 import argparse
 
 def main():
@@ -499,8 +499,9 @@ def read_cable(infile):
     data_gpp = np.squeeze(ncfile.variables["GPP"]) # extract variable
     data_et = np.squeeze(ncfile.variables["Evap"]) # extract variable
     time_tmp = np.squeeze(ncfile.variables["time"]) # extract variable
-    time_tmp = [pd.to_datetime("2007-01-01 00:01:00") + pd.Timedelta(seconds=i) for i in time_tmp]
-    time = pd.date_range(time_tmp[0], time_tmp[-1],freq='30min')
+    time_unit = ncfile.variables["time"].units
+    time_tmp2 = num2date(time_tmp,units = time_unit,calendar = 'gregorian')
+    time = pd.date_range(time_tmp2[0], time_tmp2[-1],freq='30min')
 
     return data_et, data_gpp, time
 
