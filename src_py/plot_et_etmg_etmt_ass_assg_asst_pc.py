@@ -365,15 +365,15 @@ def main():
 
     #############################
     if(args.plot_cbar == True):
-        #axcbar0  = fig.add_axes([1.01,0.80,0.03,0.20])
-        axcbar0  = fig.add_axes([ax[0].get_position().x1+0.12, ax[0].get_position().y0 +0.105, 0.03, ax[0].get_position().height])
-        axcbar1  = fig.add_axes([ax[1].get_position().x1+0.12, ax[1].get_position().y0 +0.032, 0.03, ax[1].get_position().height])
-        axcbar2  = fig.add_axes([ax[2].get_position().x1+0.12, ax[2].get_position().y0 +0.032, 0.03, ax[2].get_position().height])
-        axcbar3  = fig.add_axes([ax[3].get_position().x1+0.12, ax[3].get_position().y0 +0.032, 0.03, ax[3].get_position().height])
-        axcbar4  = fig.add_axes([ax[4].get_position().x1+0.12, ax[4].get_position().y0 +0.032, 0.03, ax[3].get_position().height])
-        axcbar5  = fig.add_axes([ax[5].get_position().x1+0.12, ax[5].get_position().y0 +0.032, 0.03, ax[3].get_position().height])
-        axcbar6  = fig.add_axes([ax[6].get_position().x1+0.12, ax[6].get_position().y0 +0.032, 0.03, ax[3].get_position().height])
-        axcbar7  = fig.add_axes([ax[7].get_position().x1+0.12, ax[7].get_position().y0 -0.03, 0.03, ax[4].get_position().height])
+
+        axcbar0  = fig.add_axes([ax[0].get_position().x1+0.12, 0.18 + ax[1].get_position().y0 , 0.03, ax[0].get_position().height])
+        axcbar1  = fig.add_axes([ax[1].get_position().x1+0.12, 0.16 + ax[2].get_position().y0 , 0.03, ax[1].get_position().height])
+        axcbar2  = fig.add_axes([ax[2].get_position().x1+0.12, 0.14 + ax[3].get_position().y0, 0.03, ax[2].get_position().height])
+        axcbar3  = fig.add_axes([ax[3].get_position().x1+0.12, 0.11 + ax[4].get_position().y0, 0.03, ax[3].get_position().height])
+        axcbar4  = fig.add_axes([ax[4].get_position().x1+0.12, 0.09 + ax[5].get_position().y0, 0.03, ax[4].get_position().height])
+        axcbar5  = fig.add_axes([ax[5].get_position().x1+0.12, 0.07 + ax[6].get_position().y0, 0.03, ax[5].get_position().height])
+        axcbar6  = fig.add_axes([ax[6].get_position().x1+0.12, 0.045 + ax[7].get_position().y0, 0.03, ax[6].get_position().height])
+        axcbar7  = fig.add_axes([ax[7].get_position().x1+0.12, 0.05, 0.03, ax[7].get_position().height])
 
         norm = mpl.colors.Normalize(vmin=args.cbar_min, vmax=args.cbar_max)
         cb0  = mpl.colorbar.ColorbarBase(axcbar0,cmap=palette,norm=norm,orientation='vertical')
@@ -466,7 +466,7 @@ def main():
     ax[5].set_ylabel("GPP$_{perennials}$ \n (mol m$^{-2}$ d$^{-1}$)", size=args.labelsize  )
     ax[6].set_ylabel("GPP$_{seasonals}$ \n (mol m$^{-2}$ d$^{-1}$)", size=args.labelsize )
 
-    ax[7].set_ylabel(r"Proj. Cover (%)", size=24  )
+    ax[7].set_ylabel(r"Proj. Cover (%)", size=args.labelsize  )
 
     #set axis and ticks
     for iplot in range(0, 8):
