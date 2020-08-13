@@ -95,7 +95,7 @@ def main():
 
         if(args.bess is not None):
             #read in data from BESS
-            data_tmp, time_tmp = read_bess(args.bess[i], args.startyear[i])
+            data_tmp, time_tmp = read_bess(args.bess[i])
             bess[whitley_sites[i]] = data_tmp
             bess_dates[whitley_sites[i]] = time_tmp
 
@@ -135,6 +135,7 @@ def main():
     dingo_le = dict()
     dingo_et = dict()
     dingo_le_dates = dict()
+    dingo_dates = dict()
     dingo_gpp = dict()
     dingo_gpp_dates = dict()
     vom = dict()
@@ -165,6 +166,8 @@ def main():
                   datetime(int(vom_tmp["fyear"][-1]),int(vom_tmp["fmonth"][-1]),int(vom_tmp["fday"][-1])), 
                   freq='D')
 
+            dingo_dates[args.sites[i]] = le_time
+            #print(le_time)
             dates_overlap = time.intersection(gpp_time)
 
             dingo_le[args.sites[i]] = leobs_pd[dates_overlap]
@@ -203,8 +206,14 @@ def main():
             if(args.bess is not None):
                 bess_le =  bess[args.sites[isite]][:,0] #W/m2   
                 bess_et = 3600*24* bess_le / ( lat_heat_vapor * rho_w * 1000   ) #mm/d
-                bess_le7d = ensemble_year(bess_le, bess_dates[args.sites[isite]]) #W/m2
-                bess_et7d = ensemble_year(bess_et, bess_dates[args.sites[isite]]) #mm/d
+                #BESS statistics
+                dates_overlap = bess_dates[args.sites[isite]].intersection(dingo_dates[args.sites[isite]])
+
+                bess_le_pd = pd.Series(bess_le, bess_dates[args.sites[isite]])
+                bess_et_pd = pd.Series(bess_et, bess_dates[args.sites[isite]])
+
+                bess_le7d = ensemble_year(bess_le_pd[dates_overlap], dates_overlap) #W/m2
+                bess_et7d = ensemble_year(bess_et_pd[dates_overlap], dates_overlap) #mm/d
 
                 if(args.plot_et):
                     ax[iplot].plot(range(0,367), bess_et7d, '--' , color="purple", linewidth=2, label = "BESS" )
@@ -214,8 +223,14 @@ def main():
             if(args.bios2 is not None):
                 bios2_le = bios2[args.sites[isite]][:,3] #W/m2 
                 bios2_et = 3600*24* bios2_le / ( lat_heat_vapor * rho_w * 1000   ) #mm/d
-                bios2_le7d = ensemble_year(bios2_le, bios2_dates[args.sites[isite]]) #W/m2
-                bios2_et7d = ensemble_year(bios2_et, bios2_dates[args.sites[isite]]) #mm/d
+
+                dates_overlap = bios2_dates[args.sites[isite]].intersection(dingo_dates[args.sites[isite]])
+
+                bios2_le_pd = pd.Series(bios2_le, bios2_dates[args.sites[isite]])
+                bios2_et_pd = pd.Series(bios2_et, bios2_dates[args.sites[isite]])
+
+                bios2_le7d = ensemble_year(bios2_le_pd[dates_overlap], dates_overlap) #W/m2
+                bios2_et7d = ensemble_year(bios2_et_pd[dates_overlap], dates_overlap) #mm/d
 
                 if(args.plot_et):
                     ax[iplot].plot(range(0,367), bios2_et7d, '--' , color="green", linewidth=2, label = "BIOS2" )
@@ -226,8 +241,13 @@ def main():
                 lpj_le = lpjguess[args.sites[isite]][0] # W/m2
                 lpj_et = 3600*24* lpj_le / ( lat_heat_vapor * rho_w * 1000   ) #mm/d
 
-                lpj_le7d = ensemble_year(lpj_le, lpjguess_dates[args.sites[isite]]) # W/m2
-                lpj_et7d = ensemble_year(lpj_et, lpjguess_dates[args.sites[isite]]) #mm/d
+                dates_overlap = lpjguess_dates[args.sites[isite]].intersection(dingo_dates[args.sites[isite]])
+
+                lpj_le_pd = pd.Series(lpj_le, lpjguess_dates[args.sites[isite]])
+                lpj_et_pd = pd.Series(lpj_et, lpjguess_dates[args.sites[isite]])
+
+                lpj_le7d = ensemble_year(lpj_le_pd[dates_overlap], dates_overlap) # W/m2
+                lpj_et7d = ensemble_year(lpj_et_pd[dates_overlap], dates_overlap) #mm/d
 
                 if(args.plot_et):
                     ax[iplot].plot(range(0,367), lpj_et7d, '--' , color="lightblue", linewidth=2, label = "LPJ-GUESS" )
@@ -236,10 +256,16 @@ def main():
 
             if(args.spa is not None):
                 spa_le = spa[args.sites[isite]][:,1] # W/m2
-                spa_et = 3600*24* spa_le / ( lat_heat_vapor * rho_w * 1000   ) #mm/d
+                spa_le_pd_tmp = pd.Series(spa_le, spa_dates[args.sites[isite]])
+                spa_le_pd = spa_le_pd_tmp.resample("D").sum()*30*60 #J/m2/d
 
-                spa_le7d = ensemble_year(spa_le, spa_dates[args.sites[isite]]) # W/m2
-                spa_et7d = ensemble_year(spa_et, spa_dates[args.sites[isite]]) #mm/d
+                spa_et_pd = spa_le_pd/ ( lat_heat_vapor * rho_w * 1000   ) #mm/d
+
+
+                dates_overlap = spa_et_pd.index.intersection(dingo_dates[args.sites[isite]])
+
+                spa_le7d = ensemble_year(spa_le_pd[dates_overlap], dates_overlap) # W/m2
+                spa_et7d = ensemble_year(spa_et_pd[dates_overlap], dates_overlap) #mm/d
 
                 if(args.plot_et):
                     ax[iplot].plot(range(0,367), spa_et7d, '--' , color="pink", linewidth=2, label = "SPA" )
@@ -251,8 +277,16 @@ def main():
                 cable_le = cable_tmp * lat_heat_vapor * 1000 * 1000  #W/m2
                 cable_et = 3600*24* cable_le / ( lat_heat_vapor * rho_w * 1000   ) #mm/d
 
-                cable_le7d = ensemble_year(cable_le, cable_dates[args.sites[isite]]) 
-                cable_et7d = ensemble_year(cable_et, cable_dates[args.sites[isite]]) 
+                cable_le_pd_tmp = pd.Series(cable_le, cable_dates[args.sites[isite]])
+                cable_et_pd_tmp = pd.Series(cable_et, cable_dates[args.sites[isite]])
+
+                cable_le_pd = cable_le_pd_tmp.resample("D").sum()*30*60 #J/m2/d
+                cable_et_pd = cable_le_pd / ( lat_heat_vapor * rho_w * 1000)  #mm/d
+
+                dates_overlap = cable_et_pd.index.intersection(dingo_dates[args.sites[isite]])
+
+                cable_le7d = ensemble_year(cable_le_pd[dates_overlap], dates_overlap) 
+                cable_et7d = ensemble_year(cable_et_pd[dates_overlap], dates_overlap) 
 
                 if(args.plot_et):
                     ax[iplot].plot(range(0,367), cable_et7d, '--' , color="red", linewidth=2, label = "CABLE" )    
@@ -261,10 +295,17 @@ def main():
 
             if(args.maespa is not None): 
                 maespa_le = maespa[args.sites[isite]][:,1]
-                maespa_et = 3600*24* maespa_le/ ( lat_heat_vapor * rho_w * 1000   ) #mm/d
+                maespa_le_pd_tmp = pd.Series(maespa_le, maespa_dates[args.sites[isite]])
+                maespa_le_pd = maespa_le_pd_tmp.resample("D").sum()*30*60 #J/m2/d
 
-                maespa_le7d = ensemble_year(maespa_le, maespa_dates[args.sites[isite]]) #W m-2
-                maespa_et7d = ensemble_year(maespa_et, maespa_dates[args.sites[isite]]) #W m-2
+                maespa_et_pd = maespa_le_pd/ ( lat_heat_vapor * rho_w * 1000   ) #mm/d
+
+
+                dates_overlap = maespa_et_pd.index.intersection(dingo_dates[args.sites[isite]])
+
+
+                maespa_le7d = ensemble_year(maespa_le_pd[dates_overlap], dates_overlap) #W m-2
+                maespa_et7d = ensemble_year(maespa_et_pd[dates_overlap], dates_overlap) #W m-2
 
                 if(args.plot_et):
                     ax[iplot].plot(range(0,367), maespa_et7d, '--' , color="gold", linewidth=2, label = "MAESPA" )
@@ -282,13 +323,27 @@ def main():
                       datetime(int(data2015["year"][-1]),int(data2015["month"][-1]),int(data2015["day"][-1])), 
                       freq='D')
             
+                date2015 = []
+                for iday in range(0,len(data2015["day"])):
+                    date_tmp = datetime(int(data2015["year"][iday]),int(data2015["month"][iday]),int(data2015["day"][iday]))
+                    date2015.append(date_tmp)
+
                 #calculate total evaporation and convert to latent energy
                 best_e2015 = data2015["esoil"] + data2015["etm_t"] + data2015["etm_g"]
-                le_mod2015= best_e2015[-3650:]* lat_heat_vapor * rho_w * 1000 * 1000/(3600*24)
+                le_mod2015= best_e2015* lat_heat_vapor * rho_w * 1000 * 1000/(3600*24)
             
+                best_e2015_pd  =  pd.Series(best_e2015, date2015)
+                best_le2015_pd  =  pd.Series(le_mod2015, date2015)
+
+                dates_overlap = best_e2015_pd.index.intersection(dingo_dates[args.sites[isite]])
+  
+
+                et7d2015 = ensemble_year(best_e2015_pd[dates_overlap]*1000, dates_overlap)
+                le7d2015 = ensemble_year(best_le2015_pd[dates_overlap], dates_overlap)
+
                 #determine ensemble year
-                le7d2015 = ensemble_year(le_mod2015, tmod2015[-3650:])
-                et7d2015 = ensemble_year(best_e2015[-3650:]*1000, tmod2015[-3650:])
+                #le7d2015 = ensemble_year(le_mod2015, tmod2015[-3650:])
+                #t7d2015 = ensemble_year(best_e2015[-3650:]*1000, tmod2015[-3650:])
 
                 #plot
                 if(args.plot_et):
@@ -350,30 +405,66 @@ def main():
         try:
             if(args.bess is not None):
                 bess_gpp = bess[args.sites[isite]][:,1] #umol/m2/s   
-                bess_gpp7d = ensemble_year(bess_gpp, bess_dates[args.sites[isite]]) #umol/m2/s 
+                dates_overlap = bess_dates[args.sites[isite]].intersection(dingo_dates[args.sites[isite]])
+
+
+                bess_gpp_pd = pd.Series(bess_gpp, bess_dates[args.sites[isite]])
+                bess_gpp7d = ensemble_year(bess_gpp_pd[dates_overlap], dates_overlap) #umol/m2/s 
+
                 ax[iplot].plot(range(0,367), bess_gpp7d, '--' , color="purple", linewidth=2, label = "BESS" )
 
             if(args.bios2 is not None):
                 bios2_gpp = bios2[args.sites[isite]][:,4] #umol/m2/s
-                bios2_gpp7d = ensemble_year(bios2_gpp, bios2_dates[args.sites[isite]]) #umol/m2/s
+                dates_overlap = bios2_dates[args.sites[isite]].intersection(dingo_dates[args.sites[isite]])
+
+                bios2_gpp_pd = pd.Series(bios2_gpp, bios2_dates[args.sites[isite]])
+                bios2_gpp7d = ensemble_year(bios2_gpp_pd[dates_overlap], dates_overlap) #umol/m2/s
+
                 ax[iplot].plot(range(0,367), bios2_gpp7d, '--' , color="green", linewidth=2, label = "BIOS2" )
 
             if(args.lpjguess is not None):
-                lpj_gpp7d = ensemble_year(lpjguess[args.sites[isite]][1], lpjguess_dates[args.sites[isite]]) # umol/m2/s
+                dates_overlap = lpjguess_dates[args.sites[isite]].intersection(dingo_dates[args.sites[isite]])
+
+                lpjguess_gpp_pd = pd.Series(lpjguess[args.sites[isite]][1], lpjguess_dates[args.sites[isite]])
+
+                lpj_gpp7d = ensemble_year(lpjguess_gpp_pd[dates_overlap], dates_overlap) # umol/m2/s
                 ax[iplot].plot(range(0,367), lpj_gpp7d, '--' , color="lightblue", linewidth=2, label = "LPJ-GUESS" )
 
             if(args.spa is not None):
-                spa_gpp7d = ensemble_year(spa[args.sites[isite]][:,0], spa_dates[args.sites[isite]]) # umol/m2/s
+                spa_gpp_pd = pd.Series(spa[args.sites[isite]][:,0], spa_dates[args.sites[isite]]) #umol m-2 s-1
+                spa_gpp_pd = spa_gpp_pd.resample("D").sum()*30*60/(60*60*24) #umol/m2/s
+
+                dates_overlap = spa_gpp_pd.index.intersection(dingo_dates[args.sites[isite]])
+
+                dates_overlap = spa_dates[args.sites[isite]].intersection(dingo_dates[args.sites[isite]])
+
+                spa_gpp7d = ensemble_year(spa_gpp_pd[dates_overlap], dates_overlap) # umol/m2/s
                 ax[iplot].plot(range(0,367), -spa_gpp7d, '--' , color="pink", linewidth=2, label = "SPA" )
 
             if(args.cable is not None):
-                cable_gpp7d = ensemble_year(cable[args.sites[isite]][1], cable_dates[args.sites[isite]]) #umol/m^2/s
+                dates_overlap = cable_dates[args.sites[isite]].intersection(dingo_dates[args.sites[isite]])
+
+                cable_gpp_pd_tmp = pd.Series(cable[args.sites[isite]][1], cable_dates[args.sites[isite]])
+
+                cable_gpp_pd = cable_gpp_pd_tmp.resample("D").sum()*30*60/(60*60*24)  #umol/m2/d
+                #cable_gpp = cable_gpp/1000000 #mol/m2/d
+
+                dates_overlap = cable_gpp_pd.index.intersection(dingo_dates[args.sites[isite]])
+
+                cable_gpp7d = ensemble_year(cable_gpp_pd[dates_overlap], dates_overlap) #umol/m^2/s
                 ax[iplot].plot(range(0,367), cable_gpp7d, '--' , color="red", linewidth=2, label = "CABLE" )
 
             if(args.maespa is not None):
-                maespa_gpp7d = ensemble_year(maespa[args.sites[isite]][:,0], maespa_dates[args.sites[isite]]) #umol m-2 s-1
+
+                maespa_gpp_pd = pd.Series(maespa[args.sites[isite]][:,0], maespa_dates[args.sites[isite]]) #umol m-2 s-1
+                maespa_gpp_pd = maespa_gpp_pd.resample("D").sum()*30*60/(60*60*24) #umol/m2/s
+
+                dates_overlap = maespa_gpp_pd.index.intersection(dingo_dates[args.sites[isite]])
+
+                maespa_gpp7d = ensemble_year(maespa_gpp_pd[dates_overlap], dates_overlap) #umol m-2 s-1
                 ax[iplot].plot(range(0,367), maespa_gpp7d, '--' , color="gold", linewidth=2, label = "MAESPA" )
-        
+
+
         except KeyError:
             pass
 
@@ -383,8 +474,17 @@ def main():
                 #determine total assimilation and convert units
                 best_ass2015 = 1000000*(data2015["ass_t"] + data2015["ass_g"])/ (3600*24)
         
+                date2015 = []
+                for iday in range(0,len(data2015["day"])):
+                    date_tmp = datetime(int(data2015["year"][iday]),int(data2015["month"][iday]),int(data2015["day"][iday]))
+                    date2015.append(date_tmp)
+
                 #determine ensemble year
-                ass7d2015 = ensemble_year(best_ass2015[-3650:], tmod2015[-3650:])
+                best_ass2015_pd  =  pd.Series(best_ass2015, date2015)
+                dates_overlap = best_ass2015_pd.index.intersection(dingo_dates[args.sites[isite]])
+
+
+                ass7d2015 = ensemble_year(best_ass2015_pd[dates_overlap], dates_overlap)
                 ax[iplot].plot(range(0,367), ass7d2015, '-', color="lightgreen", linewidth=3,label = "Schymanski et al. (2015)"   )
 
         #ensemble year dingo and vom
@@ -452,10 +552,10 @@ def ensemble_year(vals, time):
     return ens7d
 
 
-def read_bess(infile, startyear):
+def read_bess(infile):
 
     data = np.loadtxt(infile, delimiter=",") 
-    time = pd.date_range("01-01-" + startyear, periods = len(data[:,0]), freq='D')
+    time = pd.date_range("01-01-2000", periods = len(data[:,0]), freq='D')
 
     return data, time
 
