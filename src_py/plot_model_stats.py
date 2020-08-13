@@ -50,13 +50,6 @@ def main():
     parser.add_argument("--vom_zr_evap_stats", help="vom statistics evaporation", nargs='+')
     parser.add_argument("--vom_zr_gpp_stats", help="vom statistics evaporation", nargs='+')
 
-    parser.add_argument("--bess", help="bess input files", nargs='+')
-    parser.add_argument("--bios2", help="bios2 input files", nargs='+')
-    parser.add_argument("--lpjguess", help="lpj-guess input files, first all files with et, second gpp", nargs='+')
-    parser.add_argument("--maespa", help="maespa input files", nargs='+')
-    parser.add_argument("--spa", help="spa input files", nargs='+')
-    parser.add_argument("--cable", help="cable input files", nargs='+')
-
     parser.add_argument("--bess_evap_stats", help="bess statistics evaporation", nargs='+')
     parser.add_argument("--bios2_evap_stats", help="bios2 statistics evaporation", nargs='+')
     parser.add_argument("--lpjguess_evap_stats", help="lpj-guess statistics evaporation", nargs='+')
@@ -70,8 +63,6 @@ def main():
     parser.add_argument("--maespa_gpp_stats", help="maespa statistics assimilation", nargs='+')
     parser.add_argument("--spa_gpp_stats", help="spa statistics assimilation", nargs='+')
     parser.add_argument("--cable_gpp_stats", help="cable statistics assimilation", nargs='+')
-
-    parser.add_argument("--startyear", help="startyears for BESS modelruns", nargs='+')
 
     parser.add_argument("--sites", help="study sites, should correspond to the number and order of inputfiles", nargs='+')
     parser.add_argument("--whitley_sites", help="mask the study sites that are also used in Whitley et al.",nargs='+', type=int )
@@ -128,44 +119,36 @@ def main():
 
     for i in range(0, len(whitley_sites)):
         #read in data from BESS
-        evap_tmp, ass_tmp = read_bess(args.bess[i], args.startyear[i])
-
         bess_evap_stats[whitley_sites[i]] = np.genfromtxt( args.bess_evap_stats[i]  )
         bess_ass_stats[whitley_sites[i]] = np.genfromtxt( args.bess_gpp_stats[i]  )
         bess_ema[whitley_sites[i]] =  bess_evap_stats[whitley_sites[i]][8]
         bess_assma[whitley_sites[i]] = bess_ass_stats[whitley_sites[i]][8]
 
         #read in data from BIOS2
-        evap_tmp, ass_tmp = read_bios2(args.bios2[i])
-
         bios2_evap_stats[whitley_sites[i]] = np.genfromtxt( args.bios2_evap_stats[i]  )
         bios2_ass_stats[whitley_sites[i]] = np.genfromtxt( args.bios2_gpp_stats[i]  )
         bios2_ema[whitley_sites[i]] = bios2_evap_stats[whitley_sites[i]][8]
         bios2_assma[whitley_sites[i]] = bios2_ass_stats[whitley_sites[i]][8]
 
         #read in data from LPJ-GUESS, ET in W/m2, GPP in umol/m2/s
-        evap_tmp, ass_tmp = read_lpjguess(args.lpjguess[i], args.lpjguess[i+len(whitley_sites)])
         lpjguess_evap_stats[whitley_sites[i]] = np.genfromtxt( args.lpjguess_evap_stats[i]  )
         lpjguess_ass_stats[whitley_sites[i]] = np.genfromtxt( args.lpjguess_gpp_stats[i]  )
         lpjguess_ema[whitley_sites[i]] = lpjguess_evap_stats[whitley_sites[i]][8]
         lpjguess_assma[whitley_sites[i]] = lpjguess_ass_stats[whitley_sites[i]][8]
 
         #read in data from MAESPA, ET in W m-2, GPP in umol m-2 s-1
-        evap_tmp, ass_tmp = read_maespa(args.maespa[i])
         maespa_evap_stats[whitley_sites[i]] = np.genfromtxt( args.maespa_evap_stats[i]  )
         maespa_ass_stats[whitley_sites[i]] = np.genfromtxt( args.maespa_gpp_stats[i]  )
         maespa_ema[whitley_sites[i]] = maespa_evap_stats[whitley_sites[i]][8]
         maespa_assma[whitley_sites[i]] = maespa_ass_stats[whitley_sites[i]][8]
 
         #read in data from SPA, ET in W m-2, GPP in mmol m-2 s-1
-        evap_tmp, ass_tmp = read_spa(args.spa[i])
         spa_evap_stats[whitley_sites[i]] = np.genfromtxt( args.spa_evap_stats[i]  )
         spa_ass_stats[whitley_sites[i]] = np.genfromtxt( args.spa_gpp_stats[i]  )
         spa_ema[whitley_sites[i]] = spa_evap_stats[whitley_sites[i]][8]
         spa_assma[whitley_sites[i]] = spa_ass_stats[whitley_sites[i]][8]
 
         #read in data from CABLE, ET in kg/m^2/s, GPP in umol/m^2/s
-        evap_tmp, ass_tmp = read_cable(args.cable[i])
         cable_evap_stats[whitley_sites[i]] = np.genfromtxt( args.cable_evap_stats[i]  )
         cable_ass_stats[whitley_sites[i]] = np.genfromtxt( args.cable_gpp_stats[i]  )
         cable_ema[whitley_sites[i]] = cable_evap_stats[whitley_sites[i]][8]
