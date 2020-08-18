@@ -134,10 +134,10 @@ def main():
 
             if(var == "jmax25t"):
                 data["jmax25t"] = data_tmp["jmax25t"] 
-                ylabels.append("J$_{max,p}$ \n (mol m$^{-2}$ s$^{-1}$)")
+                ylabels.append("J$_{max25,p}$ \n (mol m$^{-2}$ s$^{-1}$)")
             if(var == "jmax25g"):
                 data["jmax25g"] = data_tmp["jmax25g"] 
-                ylabels.append("J$_{max,s}$ \n (mol m$^{-2}$ s$^{-1}$)")
+                ylabels.append("J$_{max25,s}$ \n (mol m$^{-2}$ s$^{-1}$)")
             if(var == "rlt"):
                 data["rlt"] = data_tmp["rlt"] 
                 ylabels.append("Rl$_{p}$ \n (mol m$^{-2}$ d$^{-1}$)")
@@ -156,11 +156,11 @@ def main():
             if(var == "tcg"):
                 data["tcg"] = data_tmp["tcg"]
                 ylabels.append("Tc$_{s}$ \n (mol m$^{-2}$ d$^{-1}$)") 
-            if(var == "cpcct"):
-                data["cpcct"] = data_tmp["cpcct"] 
-                ylabels = ylabels.append("Rv$_{p}$ \n (mol m$^{-2}$ d$^{-1}$)") 
-            if(var == "cpccg"):
-                data["cpccg"] = data_tmp["cpccg"] 
+            if(var == "cpcct_d"):
+                data["cpcct_d"] = data_tmp["cpcct_d"] 
+                ylabels.append("Rv$_{p}$ \n (mol m$^{-2}$ d$^{-1}$)") 
+            if(var == "cpccg_d"):
+                data["cpccg_d"] = data_tmp["cpccg_d"] 
                 ylabels.append("Rv$_{s}$ \n (mol m$^{-2}$ d$^{-1}$)") 
             if(var == "su_avg"):
                 data["su_avg"] = data_tmp["su_avg"]
@@ -169,7 +169,7 @@ def main():
                 data["su_1"] = data_tmp["su_1"] 
                 ylabels.append("S$_{u,1}$ \n (-)")  
             if(var == "zw"):
-                data["zw"] = data_tmp["zw"] 
+                data["zw"] = data_tmp["zw"]     
                 ylabels.append("Z$_{w}$ \n (m)")  
             if(var == "ws"):
                 data["ws"] = data_tmp["ws"] 
@@ -185,26 +185,25 @@ def main():
                 yylabels.append("T$_{opt}$ \n ($^{o}$C)")  
             if(var == "lambdat"):
                 data["lambdat"] = data_tmp["lambdat"] 
-                ylabels.append("\lambda$_{p}$ \n (mol mol$^{-1}$)")  
+                ylabels.append("$\lambda_{p}$ \n (mol mol$^{-1}$)")  
             if(var == "lambdag"):
                 data["lambdag"] = data_tmp["lambdag"] 
-                ylabels.append("\lambda$_{s}$ \n (mol mol$^{-1}$)")  
+                ylabels.append("$\lambda_{s}$ \n (mol mol$^{-1}$)")  
             if(var == "pc"):
                 data["pc"] = data_tmp["pc"] *100
                 ylabels.append(r"Proj. Cover (%)")  
 
-            if(var == "ncpt"):
-                data["ncpt"] = data_tmp["ncpt"] 
+            if(var == "ncp_t"):
+                data["ncp_t"] = data_tmp["ncp_t"] 
                 ylabels.append("NCP$_{p}$ \n (mol m$^{-2}$ d$^{-1}$)") 
-            if(var == "ncpg"):
-                data["ncpg"] = data_tmp["ncpg"] 
+            if(var == "ncp_g"):
+                data["ncp_g"] = data_tmp["ncp_g"] 
                 ylabels.append("NCP$_{s}$ \n (mol m$^{-2}$ d$^{-1}$)") 
 
             if args.moving_average is not None:
                 data = data.rolling( window = args.moving_average ).mean()
 
         vals.append(data)
-
 
 
     if args.i2015 is not None:
@@ -220,7 +219,7 @@ def main():
             date2015.append(date_tmp)
 
         data2015 = pd.DataFrame(index=date2015, columns=args.var)
-         
+
         for ivar in range(0, len(args.var)):
             var = args.var[ivar]
 
@@ -242,25 +241,25 @@ def main():
 
             if(var == "jmax25t"):
                 data2015["jmax25t"] = data_tmp["jmax25_t"] 
-            if(var == "jmax25_g"):
+            if(var == "jmax25g"):
                 data2015["jmax25g"] = data_tmp["jmax25_g"] 
             if(var == "rlt"):
-                data2015["rlt"] = data_tmp["rlt+rlg"] 
+                data2015["rlt"] = data_tmp["rltrlg"] 
             if(var == "rlg"):
-                data2015["rlg"] = data_tmp["rlt+rlg"] 
+                data2015["rlg"] = data_tmp["rltrlg"] 
 
             if(var == "rr_t"):
                 data2015["rrt"] = data_tmp["rr_t"] 
             if(var == "rr_g"):
                 data2015["rrg"] = data_tmp["rr_g"] 
             if(var == "tct"):
-                data2015["tct"] = np.nan(len(tmod2015)) 
+                data2015["tct"][:] = np.nan  
             if(var == "tcg"):
-                data2015["tcg"] = np.nan(len(tmod2015))
+                data2015["tcg"][:] = np.nan
             if(var == "cpcct"):
-                data2015["cpcct"] = np.nan(len(tmod2015)) 
+                data2015["cpcct"][:] = np.nan 
             if(var == "cpccg"):
-                data2015["cpccg"] = np.nan(len(tmod2015))
+                data2015["cpccg"][:] = np.nan
 
             if(var == "su_avg"):
                 data2015["su_avg"] = data_tmp["su_avg"] 
