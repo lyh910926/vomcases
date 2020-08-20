@@ -99,6 +99,8 @@ def main():
         for ilayer in range(1,nlayers):
             su[ilayer] = np.mean(su_data[:,ilayer])
             depth[ilayer] = depth[ilayer - 1] - args.delz[i]
+            if( (ilayer > 1 ) & (su[ilayer] <= 0)):
+                su[ilayer] = 1
 
         #######################################################################################
         #plot model results
