@@ -284,8 +284,8 @@ def main():
                     data["ws"] = data_tmp["ws"] 
                     ylabels.append("w$_{s}$ \n (m)")  
                 if(var == "spgfcf"):
-                    data["spgfcf"] = data_tmp["spgfcf"] 
-                    ylabels.append("Q$_{sf}$ \n (m d$^{-1}$)")  
+                    data["spgfcf"] = data_tmp["spgfcf"] *1000
+                    ylabels.append("Q$_{sf}$ \n (mm d$^{-1}$)")  
                 if(var == "infx"):
                     data["infx"] = data_tmp["infx"] 
                     ylabels.append("Q$_{iex}$ \n (m d$^{-1}$)")  
@@ -458,9 +458,9 @@ def main():
                 if(var == "zw"):
                     data2015["zw"] = data_tmp["ys"] 
                 if(var == "ws"):
-                    data2015["wdata2015s"] = data_tmp["ws"] 
+                    data2015["ws"] = data_tmp["ws"] 
                 if(var == "spgfcf"):
-                    data2015["spgfcf"] = data_tmp["spgfcf"] 
+                    data2015["spgfcf"] = data_tmp["spgfcf"] *1000
                 if(var == "infx"):
                     data2015["infx"] = data_tmp["infx"] 
                 if(var == "topt"):
