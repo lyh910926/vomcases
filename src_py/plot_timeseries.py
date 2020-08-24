@@ -161,6 +161,11 @@ def main():
                 if(var == "rlg"):
                     data["rlg"] = data_tmp["rlg"] 
                     ylabels.append("Rl$_{s}$ \n (mol m$^{-2}$ h$^{-1}$)")
+                if(var == "rl"):
+                    data["rl"] = data_tmp["rlg"]  + data_tmp["rlt"] 
+                    ylabels.append("Rl \n (mol m$^{-2}$ h$^{-1}$)")
+
+
                 if(var == "rrt"):
                     data["rrt"] = data_tmp["rrt"] 
                     ylabels.append("Rr$_{p}$ \n (mol m$^{-2}$ h$^{-1}$)")
@@ -241,6 +246,19 @@ def main():
                     data["assg"] = data_tmp["assg"] 
                     ylabels.append("GPP$_{seasonals}$ \n (mol m$^{-2}$ d$^{-1}$)")
 
+                if(var == "par"):
+                    data["par"] = data_tmp["par"] 
+                    ylabels.append("PAR \n (mol m$^{-2}$ d$^{-1}$)")
+
+                if(var == "tairmax"):
+                    data["tairmax"] = data_tmp["tairmax"] 
+                    ylabels.append("Tmax \n (C$^{o}$)")
+
+                if(var == "tairmin"):
+                    data["tairmin"] = data_tmp["tairmin"] 
+                    ylabels.append("Tmin \n (C$^{o}$)")
+
+
                 if(var == "jmax25t"):
                     data["jmax25t"] = data_tmp["jmax25t"] 
                     ylabels.append("J$_{max25,p}$ \n (mol m$^{-2}$ s$^{-1}$)")
@@ -253,6 +271,10 @@ def main():
                 if(var == "rlg"):
                     data["rlg"] = data_tmp["rlg"] 
                     ylabels.append("Rl$_{s}$ \n (mol m$^{-2}$ d$^{-1}$)")
+                if(var == "rl"):
+                    data["rl"] = data_tmp["rlg"]  + data_tmp["rlt"] 
+                    ylabels.append("Rl \n (mol m$^{-2}$ d$^{-1}$)")
+
                 if(var == "rrt"):
                     data["rrt"] = data_tmp["rrt"] 
                     ylabels.append("Rr$_{p}$ \n (mol m$^{-2}$ d$^{-1}$)")
@@ -371,6 +393,11 @@ def main():
 
                 if(var == "par"):
                     data2015["par"] = data_tmp["par"] 
+                if(var == "tairmax"):
+                    data2015["tairmax"] = data_tmp["tmax"] 
+
+                if(var == "tairmin"):
+                    data2015["tairmin"] = data_tmp["tmin"] 
 
                 if(var == "rr_t"):
                     data2015["rrt"] = data_tmp["rr"] 
@@ -429,6 +456,15 @@ def main():
                 if(var == "assg"):
                     data2015["assg"] = data_tmp["ass_g"] 
 
+
+                if(var == "par"):
+                    data2015["par"] = data_tmp["par"] 
+                if(var == "tairmax"):
+                    data2015["tairmax"] = data_tmp["tmax"] 
+
+                if(var == "tairmin"):
+                    data2015["tairmin"] = data_tmp["tmin"] 
+
                 if(var == "jmax25t"):
                     data2015["jmax25t"] = data_tmp["jmax25_t"] 
                 if(var == "jmax25g"):
@@ -437,6 +473,9 @@ def main():
                     data2015["rlt"] = data_tmp["rltrlg"] 
                 if(var == "rlg"):
                     data2015["rlg"] = data_tmp["rltrlg"] 
+
+                if(var == "rl"):
+                    data2015["rl"] = data_tmp["rltrlg"] 
 
                 if(var == "rr_t"):
                     data2015["rrt"] = data_tmp["rr_t"] 
