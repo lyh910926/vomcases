@@ -6,7 +6,9 @@ import pandas as pd
 from datetime import datetime, timedelta, date
 
 
-#file to prepare timeseries plot of VOM-results
+# Script to plot timeseries of VOM-results
+# Needs always the VOM-files results_daily.txt or resultshourly.txt
+# Variables can be specified to plot, with multiple variables subplots are created
 #Vegetation Optimality Model (VOM)
 #written: June 2018, R.C. Nijzink
 
@@ -16,27 +18,24 @@ def main():
     parser = argparse.ArgumentParser()
 
     #required input
-    parser.add_argument("-i", "--input", help="results_daily (can be multiple)", nargs='+')
+    parser.add_argument("-i", "--input", help="results_daily.txt (can be multiple)", nargs='+')
     parser.add_argument("-ys", "--yearstart", help="startyear for plotting", type=int)
     parser.add_argument("-ye", "--yearend", help="endyear for plotting", type=int)
-    parser.add_argument("-ds", "--daystart", help="startyear for plotting", type=int, default=1)
-    parser.add_argument("-de", "--dayend", help="endyear for plotting", type=int, default=31)
-    parser.add_argument("-ms", "--monthstart", help="startyear for plotting", type=int, default=1)
-    parser.add_argument("-me", "--monthend", help="endyear for plotting", type=int, default=12)
+    parser.add_argument("-ds", "--daystart", help="start day for plotting", type=int, default=1)
+    parser.add_argument("-de", "--dayend", help="end day for plotting", type=int, default=31)
+    parser.add_argument("-ms", "--monthstart", help="start month for plotting", type=int, default=1)
+    parser.add_argument("-me", "--monthend", help="end month for plotting", type=int, default=12)
     parser.add_argument("-w", "--weather", help="dailyweather.prn")
-    parser.add_argument("-v", "--var", help="variable in results_daily, or total assimilation (asstot) or evaporation(evaptot)", nargs='+')
+    parser.add_argument("-v", "--var", help="variable in results_daily, or total assimilation (asstot) or evaporation (evaptot)", nargs='+')
 
     #optional input
-    parser.add_argument("--i2015", help="results_daily AoB2015 ")
-    parser.add_argument("--var2015", help="variable in results_daily, or total assimilation (asstot) or evaporation(evaptot), 2015 format")
-    parser.add_argument("--maxmod", help="results_daily max-values ")
-    parser.add_argument("--minmod", help="results_daily min-values")
-    parser.add_argument("--emp1", help="empirical solution 1")
-    parser.add_argument("--emp2", help="empirical solution 2")
+    parser.add_argument("--i2015", help="resultsdaily.txt from AoB2015 ")
+
+    #observations
     parser.add_argument("--eobs", help="observations evaporation")
     parser.add_argument("--eobs_qc", help="quality of observations evaporation")
-    parser.add_argument("--assobs", help="observations evaporation")
-    parser.add_argument("--assobs_qc", help="quality of observations evaporation")
+    parser.add_argument("--assobs", help="observations assimilation")
+    parser.add_argument("--assobs_qc", help="quality of observations assimilation")
     parser.add_argument("--pcobs", help="observations of fpar")
     parser.add_argument("--pcobsdates", help="dates of fpar")
 
@@ -86,13 +85,6 @@ def main():
     yearstart = args.yearstart
     yearend = args.yearend
 
-    #get benchmark if defined
-    if args.emp1 is not None:
-        emp1 = np.genfromtxt(args.emp1, usecols=1, dtype=np.float)
-    if args.emp2 is not None:
-        emp2 = np.genfromtxt(args.emp2, usecols=1, dtype=np.float)
-        t_emp = np.genfromtxt( args.emp2, usecols=0, dtype=np.str)
-        t_emp = pd.date_range(t_emp[0], t_emp[-1], freq='D')    
 
     #load results
     vals = []
