@@ -608,10 +608,10 @@ def main():
     if(args.plot_cbar == True):
         if(args.sharex == True):
             fig, ax = plt.subplots(nrows=len(args.var), ncols=2, figsize=(args.figsize[0], 
-                       args.figsize[1]), sharex='col', gridspec_kw={'width_ratios': [30, 1]}) 
+                       args.figsize[1]), sharex='col', gridspec_kw={'width_ratios': [30, 1]}, squeeze = False) 
         else:
            fig, ax = plt.subplots(nrows=len(args.var), ncols=2, figsize=(args.figsize[0], 
-                       args.figsize[1]), sharex=False, gridspec_kw={'width_ratios': [30, 1]}) 
+                       args.figsize[1]), sharex=False, gridspec_kw={'width_ratios': [30, 1]}, squeeze = False) 
     else:
         fig, ax = plt.subplots(nrows=len(args.var), ncols=1, figsize=(args.figsize[0], 
                 args.figsize[1]),squeeze=False, sharex=args.sharex) 
