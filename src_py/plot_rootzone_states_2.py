@@ -188,11 +188,12 @@ def main():
     ind5 = list(delz_sum).index(val5) + 1
 
     if(args.print_depths == True):
-        print("Tree rooting depth:")
+        print("Until depth:")
         print(val5)
         print(params[8])
-        print("Untill layer:")
+        print("Until layer:")
         print(ind5)
+
 
     if args.soildata is not None:
         theta_r = soildata[0:ind5,6]
@@ -290,11 +291,12 @@ def main():
 
     if(args.print_depths == True):
         print("---")
-        print("Tree rooting depth:")
+        print("Until depth:")
         print(val5)
         print(params2015[8])
-        print("Untill layer:")
+        print("Until layer:")
         print(ind5_2015)
+        print(delz[0:ind5_2015])
 
     #thetar2015 = soildata[0:ind5,6]
     #theta_s = soildata[0:ind5,5]
@@ -310,7 +312,7 @@ def main():
 
     for t in range(0, len(su2015[:,0])):
         ws5_hourly2015[t] = np.sum((-su2015[t,:] * args.i_thetar2015 + \
-                                su2015[t,:] * args.i_thetas2015 + args.i_thetar2015) * delz[0:ind5_2015] )
+                                su2015[t,:] * args.i_thetas2015 + args.i_thetar2015) * delz2015[0:ind5_2015] )
         watpot_hourly2015[t,:] = (1.0/alpha_vg2015) *  ( su2015[t,:] ** (-1.0/m_vg2015) - 1.0) ** (1.0/n_vg2015)
 
 
