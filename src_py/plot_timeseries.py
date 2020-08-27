@@ -10,12 +10,12 @@ from datetime import datetime, timedelta, date
 # Needs always the VOM-files results_daily.txt or resultshourly.txt
 # Variables can be specified to plot, with multiple variables subplots are created
 #Vegetation Optimality Model (VOM)
-#written: June 2018, R.C. Nijzink
+#written: July 2020, R.C. Nijzink
 
 
 def main():
 
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description="Script to plot time series of VOM-results. Requires always at least one VOM outputfile of results_daily.txt or resultshourly.txt, with multiple files multiple results will be plotted. Several variables can be specified and will plotted in one subplot for each variable.")
 
     #required input
     parser.add_argument("-i", "--input", help="results_daily.txt (can be multiple)", nargs='+')
@@ -25,58 +25,60 @@ def main():
     parser.add_argument("-de", "--dayend", help="end day for plotting", type=int, default=31)
     parser.add_argument("-ms", "--monthstart", help="start month for plotting", type=int, default=1)
     parser.add_argument("-me", "--monthend", help="end month for plotting", type=int, default=12)
-    parser.add_argument("-w", "--weather", help="dailyweather.prn")
     parser.add_argument("-v", "--var", help="variable in results_daily, or total assimilation (asstot) or evaporation (evaptot)", nargs='+')
 
     #optional input
     parser.add_argument("--i2015", help="resultsdaily.txt from AoB2015 ")
 
     #observations
-    parser.add_argument("--eobs", help="observations evaporation")
-    parser.add_argument("--eobs_qc", help="quality of observations evaporation")
     parser.add_argument("--assobs", help="observations assimilation")
     parser.add_argument("--assobs_qc", help="quality of observations assimilation")
+    parser.add_argument("--eobs", help="observations evaporation")
+    parser.add_argument("--eobs_qc", help="quality of observations evaporation")
     parser.add_argument("--pcobs", help="observations of fpar")
     parser.add_argument("--pcobsdates", help="dates of fpar")
-
     parser.add_argument("--stats_evap", help="statistics of evaporation timeseries", nargs='+')
     parser.add_argument("--stats_ass", help="statistics of assimilation timeseries", nargs='+')
     parser.add_argument("--stats_pc", help="statistics of projective cover timeseries", nargs='+')
     parser.add_argument("--stats_label", help="label for statistics", nargs='+')
-    parser.add_argument("--moving_average", help="days for moving average",  type=int )
-    parser.add_argument("--outputfile", help="outputfile")
-    parser.add_argument("--labels", help="labels corresponding to input-files", nargs='+', default = ["VOM"] )
-    parser.add_argument("--colors", help="colors corresponding to input-files", nargs='+', default = ["red"] )
-    parser.add_argument("--figsize", help="figure size", nargs='+', type=float, default = [14,35] )
-    parser.add_argument("--dpi", help="dpi of figure",  type=float, default = 80 )
-    parser.add_argument("--labelsize", help="size of labels",  type=float, default = 24 )
-    parser.add_argument("--ylabel", help="ylabel" )
-    parser.add_argument("--xlabel", help="xlabel", default=" ")
-    parser.add_argument("--cblabel", help="label for colorbar", default=" ")
-    parser.add_argument("--title", help="title", default=" ")
-    parser.add_argument("--plot_prec", help="add precipation to figure", type=bool, default = False )
-    parser.add_argument("--plot_cbar", help="add colorbar", type=bool, default = False )
+
+    #plot options
     parser.add_argument("--cbar_min", help="min value for colorbar", type=float, default = 0.2)
     parser.add_argument("--cbar_max", help="max value for colorbar", type=float, default = 2.6 )
-    parser.add_argument("--ymin", help="min value for y-axis", type=float, default = 1, nargs='+')
-    parser.add_argument("--ymax", help="max value for y-axis", type=float, default = 1, nargs='+')
-    parser.add_argument("--legend", help="show legend", type=bool, default = False )
-    parser.add_argument("--palette", help="color-palette", default = 'OrRd' )
-    parser.add_argument("--xloc_title", help="location x title", type=float, default = 0.01 )
-    parser.add_argument("--yloc_title", help="location y title", type=float, default = 1.10 )
-    parser.add_argument("--size_title", help="size of title", type=float, default = 20 )
+    parser.add_argument("--cblabel", help="label for colorbar", default=" ")
+    parser.add_argument("--colors", help="colors corresponding to input-files", nargs='+', default = ["red"] )
+    parser.add_argument("--dpi", help="dpi of figure",  type=float, default = 80 )
+    parser.add_argument("--fig_lab", dest="fig_lab", action='store_true', help="plot labels of subplots")
+    parser.add_argument("--figsize", help="figure size", nargs='+', type=float, default = [14,35] )
+    parser.add_argument("--hourly", help="plot hourly results", dest="hourly", action='store_true' )
+    parser.add_argument("--hpad", help="h_pad tight_layout", type=float, default = 0 )
+    parser.add_argument("--labels", help="labels corresponding to input-files", nargs='+', default = ["VOM"] )
+    parser.add_argument("--labelsize", help="size of labels",  type=float, default = 24 )
+    parser.add_argument("--legend", help="show legend",  action='store_true' )
     parser.add_argument("--locx_qctitle", help="x-location of qflag-label", type=float, default = 1.04 )
     parser.add_argument("--locy_qctitle", help="y-location of qflag-label", type=float, default = 0.92 )
-    parser.add_argument("--hpad", help="h_pad tight_layout", type=float, default = 0 )
-    parser.add_argument("--wpad", help="w_pad tight_layout", type=float, default = 0 )
-    parser.add_argument("--fig_lab", dest="fig_lab", action='store_true', help="plot labels of subplots")
+    parser.add_argument("--moving_average", help="days for moving average",  type=int )
     parser.add_argument("--no_fig_lab", dest="fig_lab", action='store_false', help="do not plot labels of subplots")
-    parser.add_argument("--sharex", help="share x-axis", dest="sharex", action='store_true' )
-    parser.add_argument("--hourly", help="plot hourly results", dest="hourly", action='store_true' )
     parser.add_argument("--no_sharex", help="share x-axis", dest="sharex", action='store_false')
-    parser.add_argument("--tight_layout", help="tight layout", dest="tight_layout", action='store_true' )
     parser.add_argument("--no_tight_layout", help="no tight layout", dest="tight_layout", action='store_false')
-    parser.set_defaults(fig_lab=True, sharex = False, tight_layout=True, hourly=False)
+    parser.add_argument("--palette", help="color-palette", default = 'OrRd' )
+    parser.add_argument("--plot_cbar", help="add colorbar", action='store_true')
+    parser.add_argument("--sharex", help="share x-axis", dest="sharex", action='store_true' )
+    parser.add_argument("--size_title", help="size of title", type=float, default = 20 )
+    parser.add_argument("--tight_layout", help="tight layout", dest="tight_layout", action='store_true' )
+    parser.add_argument("--wpad", help="w_pad tight_layout", type=float, default = 0 )
+    parser.add_argument("--xlabel", help="xlabel", default=" ")
+    parser.add_argument("--xloc_title", help="location x title", type=float, default = 0.01 )
+    parser.add_argument("--ylabel", help="ylabel" )
+    parser.add_argument("--ymax", help="max value for y-axis", type=float, default = 1, nargs='+')
+    parser.add_argument("--ymin", help="min value for y-axis", type=float, default = 1, nargs='+')
+    parser.add_argument("--yloc_title", help="location y title", type=float, default = 1.10 )
+
+    #outputfile
+    parser.add_argument("--outputfile", help="outputfile")
+ 
+    #set defaults
+    parser.set_defaults(fig_lab=True, sharex = False, tight_layout=True, hourly=False, plot_cbar=False, legend=False)
 
     args = parser.parse_args()
 
@@ -196,7 +198,7 @@ def main():
                     ylabels.append("Q$_{iex}$ \n (m h$^{-1}$)")  
                 if(var == "topt"):
                     data["topt"] = data_tmp["topt"] 
-                    yylabels.append("T$_{opt}$ \n ($^{o}$C)")  
+                    ylabels.append("T$_{opt}$ \n ($^{o}$C)")  
                 if(var == "lambdat"):
                     data["lambdat"] = data_tmp["lambdat"] 
                     ylabels.append("$\lambda_{p}$ \n (mol mol$^{-1}$)")  
@@ -301,11 +303,11 @@ def main():
                     data["spgfcf"] = data_tmp["spgfcf"] *1000
                     ylabels.append("Q$_{sf}$ \n (mm d$^{-1}$)")  
                 if(var == "infx"):
-                    data["infx"] = data_tmp["infx"] 
-                    ylabels.append("Q$_{iex}$ \n (m d$^{-1}$)")  
+                    data["infx"] = data_tmp["infx"] *1000
+                    ylabels.append("Q$_{iex}$ \n (mm d$^{-1}$)")  
                 if(var == "topt"):
                     data["topt"] = data_tmp["topt"] 
-                    yylabels.append("T$_{opt}$ \n ($^{o}$C)")  
+                    ylabels.append("T$_{opt}$ \n ($^{o}$C)")  
                 if(var == "lambdat"):
                     data["lambdat"] = data_tmp["lambdat"] 
                     ylabels.append("$\lambda_{p}$ \n (mol mol$^{-1}$)")  
@@ -493,7 +495,7 @@ def main():
                 if(var == "spgfcf"):
                     data2015["spgfcf"] = data_tmp["spgfcf"] *1000
                 if(var == "infx"):
-                    data2015["infx"] = data_tmp["infx"] 
+                    data2015["infx"] = data_tmp["infx"] *1000
                 if(var == "topt"):
                     data2015["topt"] = data_tmp["topt"] 
                 if(var == "lambdat"):
@@ -588,13 +590,6 @@ def main():
         for i in range(0, len(args.stats_pc)):
             pc_stats.append( np.genfromtxt(args.stats_pc[i] ) )
 
-    #load weather data
-    weather_data = np.genfromtxt(args.weather, names=True)
-    tweather = np.arange(datetime(int(weather_data["Year"][0]),int(weather_data["Month"][0]),int(weather_data["Day"][0])), 
-                  datetime(int(weather_data["Year"][-1]),int(weather_data["Month"][-1]),int(weather_data["Day"][-1]))+timedelta(days=1), 
-                  timedelta(days=1)).astype(datetime)
-    prec = weather_data["Rain"] #mm/d
-
 
     #######################################################################################
     #make plot
@@ -673,7 +668,6 @@ def main():
         ax1twin.set_xlim([datetime(yearstart,args.monthstart, args.daystart), datetime( yearend, args.monthend, args.dayend)])
         
         #set labels
-        #max_pre = max(prec)
         ax1twin_yticks = np.linspace(0, 100, 3)
         ax1twin_yticklabels = ["0", "50", "100"]
         ax1twin.set_yticks(-1 * ax1twin_yticks)
