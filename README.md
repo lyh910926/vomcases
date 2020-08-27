@@ -45,46 +45,46 @@ This project contains all pre- and post-processing scripts for the model runs of
     - notebooks/results.ipynb: Notebook containing all the figures with the final results
     - notebooks/additional_analyses\: Notebooks containing all additional analysis
 * src/: Release of the VOM used for the experiments.
-* src_py/: All python pre- and post-processing scripts:
-    - src_py/adj_dailyweather.py
-    - src_py/plot_mass_balance.py
-    - src_py/plot_smprofile.py
-    - src_py/calc_vp.py
-    - src_py/plot_meanannuals.py
-    - src_py/plot_timeseries.py
-    - src_py/sce_best_param_defaults.py
-    - src_py/dingo_dailyweather.py
-    - src_py/plot_meanannuals_vom.py
-    - src_py/plot_vegetation.py
-    - src_py/sce_best_param.py
-    - src_py/model_stats.py
-    - src_py/plot_model_stats.py
-    - src_py/plot_water_retention_curve.py
-    - src_py/sce_stats_best.py
-    - src_py/plot_costfactors.py
-    - src_py/plot_residuals.py
-    - src_py/plot_watpot_depth.py
-    - src_py/sce_stats.py
-    - src_py/plot_costs_climates.py
-    - src_py/plot_roots_costfactors.py
-    - src_py/proc_sce2.py
-    - src_py/sce_uncertainty.py
-    - src_py/plot_cover.py
-    - src_py/plot_roots.py
-    - src_py/proc_sce_pc_restart.py
-    - src_py/write_dailyweather.py
-    - src_py/plot_ensembleyears.py
-    - src_py/plot_rootzone_states_2.py
-    - src_py/proc_sce_presc_cov.py
-    - src_py/write_namelist.py
-    - src_py/plot_fluxpartitions.py
-    - src_py/plot_rootzone_states.py
-    - src_py/proc_sce.py
-    - src_py/write_pcseries_meanmonthly.py
-    - src_py/plot_gw.py
-    - src_py/plot_smdifferences.py
-    - src_py/proc_sce_restart.py
-    - src_py/write_pcseries.py
+* src\_py/: All python pre- and post-processing scripts:
+    - src\_py/adj_dailyweather.py
+    - src\_py/plot\_mass\_balance.py
+    - src\_py/plot\_smprofile.py
+    - src\_py/calc\_vp.py
+    - src\_py/plot\_meanannuals.py
+    - src\_py/plot\_timeseries.py
+    - src\_py/sce\_best\_param\_defaults.py
+    - src\_py/dingo\_dailyweather.py
+    - src\_py/plot\_meanannuals\_vom.py
+    - src\_py/plot\_vegetation.py
+    - src\_py/sce\_best\_param.py
+    - src\_py/model\_stats.py
+    - src\_py/plot\_model\_stats.py
+    - src\_py/plot\_water\_retention\_curve.py
+    - src\_py/sce\_stats\_best.py
+    - src\_py/plot\_costfactors.py
+    - src\_py/plot\_residuals.py
+    - src\_py/plot\_watpot\_depth.py
+    - src\_py/sce\_stats.py
+    - src\_py/plot\_costs\_climates.py
+    - src\_py/plot\_roots\_costfactors.py
+    - src\_py/proc\_sce2.py
+    - src\_py/sce\_uncertainty.py
+    - src\_py/plot\_cover.py
+    - src\_py/plot\_roots.py
+    - src\_py/proc\_sce\_pc\_restart.py
+    - src\_py/write\_dailyweather.py
+    - src\_py/plot\_ensembleyears.py
+    - src\_py/plot\_rootzone\_states_2.py
+    - src\_py/proc\_sce\_presc\_cov.py
+    - src\_py/write\_namelist.py
+    - src\_py/plot\_fluxpartitions.py
+    - src\_py/plot\_rootzone\_states.py
+    - src\_py/proc\_sce.py
+    - src\_py/write\_pcseries\_meanmonthly.py
+    - src\_py/plot\_gw.py
+    - src\_py/plot\_smdifferences.py
+    - src\_py/proc\_sce\_restart.py
+    - src\_py/write\_pcseries.py
 
 * src_sh/: All shell pre- and post-processing scripts
 * work/: Work directory with all model set-ups and intermediate results.
