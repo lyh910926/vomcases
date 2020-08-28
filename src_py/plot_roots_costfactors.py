@@ -1,21 +1,33 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Does maximisation of net carbon profit explain vegetation behaviour in savanna sites along a precipitation gradient?
-# 
-# It was shown by Whitley et al. (2016) that six models that expliticly included land surface exchange and vegetation dynamics (i.e. terrestial biosphere models, TBM's) were not able to represent, especially, the wet season dynamics in savanna regions. This reflects generally the simplicity used in the current generation TBM's with regard to modelling vegetation, which becomes especially apparent in the more complex ecosystems of savannas. The understanding of these more complex interactions between vegetation, water and climate in savanna-sites is therefore crucial in order to improve modelling with TBM's. 
-# Similar to the model inter-comparison presented by Whitley et al. (2016), in this study a coupled water-vegetation model (VOM, Schymanski et al. 2009) is applied in several savanna sites. In this case, vegetation properties are optimized for net carbon profit, instead of prescribing these.
-# 
-# The hypotheses tested are:
-# 
-# - Observed vegetation dynamics in tropical savanna sites can be explained by the maximization of Net Carbon Profit. 
-# 
-# - Optimization of vegetation properties for the Net Carbon Profit leads to reduced data requirements for Land Surface Models
-# 
-# - Carbon cost functions for roots, water transport system and foliage are valid along a precipitation gradient
-# 
-# 
-# 
+#***********************************************************************
+#        plot_roots_costfactors.py
+#        Script to rooting depths of the VOM agains multiple 
+#        costfactors for water transport
+#-----------------------------------------------------------------------
+#        Authors: Remko Nijzink
+#        Now at: LIST (Luxembourg Institute of Science and Technology)
+#-----------------------------------------------------------------------
+#
+#  Copyright (C) 2020 LIST (Luxembourg Institute of Science and Technology), all right reserved.
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+#***********************************************************************
+
+ 
 
 
 
@@ -33,7 +45,7 @@ import argparse
 
 def main():
 
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description="Script to rooting depths of the VOM agains multiple costfactors for water transport")
 
     parser.add_argument("-o", "--outfile", help="outputfile with plot")
     parser.add_argument("--in1", help="parameter-files with cpccf-values",  nargs='+')

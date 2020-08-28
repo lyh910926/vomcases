@@ -1,3 +1,29 @@
+#***********************************************************************
+#        plot_mass_balance.py
+#        Plots the water balance of (multiple) VOM simulations. 
+#        
+#-----------------------------------------------------------------------
+#        Authors: Remko Nijzink
+#        Now at: LIST (Luxembourg Institute of Science and Technology)
+#-----------------------------------------------------------------------
+#
+#  Copyright (C) 2020 LIST (Luxembourg Institute of Science and Technology), all right reserved.
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+#***********************************************************************
+
 import numpy as np
 import argparse
 import matplotlib as mpl
@@ -6,14 +32,9 @@ import pandas as pd
 from datetime import datetime, timedelta, date
 
 
-#file to prepare timeseries plot of VOM-results
-#Vegetation Optimality Model (VOM)
-#written: June 2018, R.C. Nijzink
-
-
 def main():
 
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description= "Plots the water balance of (multiple) VOM simulations.")
 
     #required input
     parser.add_argument("-i", "--input", help="results_daily (can be multiple)", nargs='+')
