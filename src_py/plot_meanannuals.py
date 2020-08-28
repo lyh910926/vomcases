@@ -1,25 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Does maximisation of net carbon profit explain vegetation behaviour in savanna sites along a precipitation gradient?
-# 
-# It was shown by Whitley et al. (2016) that six models that expliticly included land surface exchange and vegetation dynamics (i.e. terrestial biosphere models, TBM's) were not able to represent, especially, the wet season dynamics in savanna regions. This reflects generally the simplicity used in the current generation TBM's with regard to modelling vegetation, which becomes especially apparent in the more complex ecosystems of savannas. The understanding of these more complex interactions between vegetation, water and climate in savanna-sites is therefore crucial in order to improve modelling with TBM's. 
-# Similar to the model inter-comparison presented by Whitley et al. (2016), in this study a coupled water-vegetation model (VOM, Schymanski et al. 2009) is applied in several savanna sites. In this case, vegetation properties are optimized for net carbon profit, instead of prescribing these.
-# 
-# The hypotheses tested are:
-# 
-# - Observed vegetation dynamics in tropical savanna sites can be explained by the maximization of Net Carbon Profit. 
-# 
-# - Optimization of vegetation properties for the Net Carbon Profit leads to reduced data requirements for Land Surface Models
-# 
-# - Carbon cost functions for roots, water transport system and foliage are valid along a precipitation gradient
-# 
-# 
-# 
-
-# # Results
-
-
 
 import os
 import numpy as np

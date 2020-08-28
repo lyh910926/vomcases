@@ -46,26 +46,30 @@ This project contains all pre- and post-processing scripts for the model runs of
     - notebooks/additional_analyses\: Notebooks containing all additional analysis
 * src/: Release of the VOM used for the experiments.
 * src\_py/: All python pre- and post-processing scripts:
-    - src\_py/adj_dailyweather.py: Script to update dailyweather.prn to the new format, and/or update weather or CO2-data.
-    - src\_py/calc\_vp.py: Script to calculate vapour pressure deficit from DINGO-data.
-    - src\_py/dingo\_dailyweather.py: Script to write dailyweather.prn based on additional DINGO-data. 
-    - src\_py/model\_stats.py: Script to calculate several goodness-of-fit metrics for the models of Whitley et al. (2016) in comparison with flux tower data.
-    - src\_py/plot\_costfactors.py: Script to plot the modelled and observed dry season projective cover for different values of the cost factor of water transport. 
-
-
+    - src\_py/adj_dailyweather.py: Updates dailyweather.prn to the new format, and/or update weather or CO2-data.
+    - src\_py/calc\_vp.py: Calculate vapour pressure deficit from DINGO-data.
+    - src\_py/dingo\_dailyweather.py: Writes dailyweather.prn based on additional DINGO-data. 
+    - src\_py/model\_stats.py: Calculates several goodness-of-fit metrics for the models of Whitley et al. (2016) in comparison with flux tower data.
+    - src\_py/plot\_costfactors.py: Plots the modelled and observed dry season projective cover for different values of the cost factor of water transport. 
+    - src\_py/plot\_ensembleyears.py: Plots VOM-results and results of Whitley et al. (2016) as ensemble years.
+    - src\_py/plot\_fluxpartitions.py: Calculates and plots the flux partitions of the VOM. 
+    - src\_py/plot\_gw.py: Plots the groundwater of the VOM, including rooting depths and observations.
+    - src\_py/plot\_mass\_balance.py: Plots the water balance of (multiple) VOM simulations.
+    - src\_py/plot\_meanannuals.py: Plots mean annual values of VOM simulations and simulations of Whitley et al. (2016).
+    - src\_py/plot\_meanannuals\_vom.py: Plots mean annual values of multiple variables in results_daily.txt, for multiple VOM simulations. Data from Schymanski et al. (2015) can be used as a reference.
 
     - src\_py/plot\_roots\_costfactors.py: 
 
 
 
-    - src\_py/plot\_mass\_balance.py: Script to plot the water balance of (multiple) VOM simulations.
+
     - src\_py/plot\_smprofile.py: Script to plot the soil moisture profile of the VOM. 
 
-    - src\_py/plot\_meanannuals.py: Script to plot mean annual values of multiple fluxes and VOM simulations.
+
     - src\_py/plot\_timeseries.py: Script to plot time series from results\_daily.txt or results\_hourly.txt.
     - src\_py/sce\_best\_param\_defaults.py:
 
-    - src\_py/plot\_meanannuals\_vom.py
+
     - src\_py/plot\_vegetation.py
     - src\_py/sce\_best\_param.py
 
@@ -84,15 +88,15 @@ This project contains all pre- and post-processing scripts for the model runs of
     - src\_py/plot\_roots.py
     - src\_py/proc\_sce\_pc\_restart.py
     - src\_py/write\_dailyweather.py
-    - src\_py/plot\_ensembleyears.py
+
     - src\_py/plot\_rootzone\_states_2.py
     - src\_py/proc\_sce\_presc\_cov.py
     - src\_py/write\_namelist.py
-    - src\_py/plot\_fluxpartitions.py
+
     - src\_py/plot\_rootzone\_states.py
     - src\_py/proc\_sce.py
     - src\_py/write\_pcseries\_meanmonthly.py
-    - src\_py/plot\_gw.py
+
     - src\_py/plot\_smdifferences.py
     - src\_py/proc\_sce\_restart.py
     - src\_py/write\_pcseries.py
