@@ -14,7 +14,7 @@ In this study, we hypothesize that:
 
 - Optimality-based prognostic dynamics of vegetation cover will lead to worse reproduction of fluxes compared to using mean monthly vegetation cover values for each site obtained from remote sensing time series. 
 
-- Optimality-based prognostic rooting depths for each site will not result in better reproduction of carbon and water fluxes compared to a prescribed, homogeneous rooting depth. %You could just re-run the VOM with prescribed rooting depths.
+- Optimality-based prognostic rooting depths for each site will not result in better reproduction of carbon and water fluxes compared to a prescribed, homogeneous rooting depth. 
 
 - Re-calibration of water transport costs for each site will not result in a large variation of the cost parameter for these costs.
 
@@ -41,10 +41,13 @@ This project contains all pre- and post-processing scripts for the model runs of
     - data/VOM_input/: Meteorological input data for the VOM (dailyweather.prn) per study site.
     - data/VOM_output/: Results of the model runs.
     - data/VOM_soils/: Input files for the VOM containing the soil profiles per study site.
+
 * notebooks/: all notebooks with the analysis
     - notebooks/results.ipynb: Notebook containing all the figures with the final results
     - notebooks/additional_analyses\: Notebooks containing all additional analysis
+
 * src/: Release of the VOM used for the experiments.
+
 * src\_py/: All python pre- and post-processing scripts:
     - src\_py/adj_dailyweather.py: Updates dailyweather.prn to the new format, and/or update weather or CO2-data.
     - src\_py/calc\_vp.py: Calculate vapour pressure deficit from DINGO-data.
@@ -76,10 +79,14 @@ This project contains all pre- and post-processing scripts for the model runs of
     - src\_py/write\_pcseries\_meanmonthly.py: Writes time series of projective cover based on fPar-data to prescribe to the VOM. Only generates time series with mean monthly values. 
 
 
-
-
 * src_sh/: All shell pre- and post-processing scripts
-* work/: Work directory with all model set-ups and intermediate results.
+* work/: Work directory with all model set-ups. The general structure is _work/<site>/freedrainage\_cpcff<value>, that contains the setup for one study site and one value of the water transport parameter. Here the following can be found:
+    - vom_namelist: the namelist for the initial run with SCE.
+    - input: the input files for the model simulation.
+    - best: folder with the set-up of the highest NCP-value, identified with SCE.
+    - best/vom_namelist: namelist to run the simulation with the highest NCP.
+    - best/input: input files to run the simulation with the highest NCP.
+
 
 ## References
 
