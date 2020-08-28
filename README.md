@@ -46,27 +46,38 @@ This project contains all pre- and post-processing scripts for the model runs of
     - notebooks/additional_analyses\: Notebooks containing all additional analysis
 * src/: Release of the VOM used for the experiments.
 * src\_py/: All python pre- and post-processing scripts:
-    - src\_py/adj_dailyweather.py
-    - src\_py/plot\_mass\_balance.py
-    - src\_py/plot\_smprofile.py
-    - src\_py/calc\_vp.py
-    - src\_py/plot\_meanannuals.py
-    - src\_py/plot\_timeseries.py
-    - src\_py/sce\_best\_param\_defaults.py
-    - src\_py/dingo\_dailyweather.py
+    - src\_py/adj_dailyweather.py: Script to update dailyweather.prn to the new format, and/or update weather or CO2-data.
+    - src\_py/calc\_vp.py: Script to calculate vapour pressure deficit from DINGO-data.
+    - src\_py/dingo\_dailyweather.py: Script to write dailyweather.prn based on additional DINGO-data. 
+    - src\_py/model\_stats.py: Script to calculate several goodness-of-fit metrics for the models of Whitley et al. (2016) in comparison with flux tower data.
+    - src\_py/plot\_costfactors.py: Script to plot the modelled and observed dry season projective cover for different values of the cost factor of water transport. 
+
+
+
+    - src\_py/plot\_roots\_costfactors.py: 
+
+
+
+    - src\_py/plot\_mass\_balance.py: Script to plot the water balance of (multiple) VOM simulations.
+    - src\_py/plot\_smprofile.py: Script to plot the soil moisture profile of the VOM. 
+
+    - src\_py/plot\_meanannuals.py: Script to plot mean annual values of multiple fluxes and VOM simulations.
+    - src\_py/plot\_timeseries.py: Script to plot time series from results\_daily.txt or results\_hourly.txt.
+    - src\_py/sce\_best\_param\_defaults.py:
+
     - src\_py/plot\_meanannuals\_vom.py
     - src\_py/plot\_vegetation.py
     - src\_py/sce\_best\_param.py
-    - src\_py/model\_stats.py
+
     - src\_py/plot\_model\_stats.py
     - src\_py/plot\_water\_retention\_curve.py
     - src\_py/sce\_stats\_best.py
-    - src\_py/plot\_costfactors.py
+
     - src\_py/plot\_residuals.py
     - src\_py/plot\_watpot\_depth.py
     - src\_py/sce\_stats.py
-    - src\_py/plot\_costs\_climates.py
-    - src\_py/plot\_roots\_costfactors.py
+
+
     - src\_py/proc\_sce2.py
     - src\_py/sce\_uncertainty.py
     - src\_py/plot\_cover.py
