@@ -54,6 +54,7 @@ def main():
     parser.add_argument("--minmod", help="results_daily min-values")
     parser.add_argument("--emp1", help="empirical solution 1")
     parser.add_argument("--emp2", help="empirical solution 2")
+    parser.add_argument("--mf_obs", help="multiplication factor for unit conversion observations", type=float, default = 1.0)
     parser.add_argument("--obs_gw", help="observations groundwater Howard Springs", nargs='+')
     parser.add_argument("--obs_sm", help="observations soil moisture all sites")
     parser.add_argument("--obs_evap", help="observations evaporation")
@@ -65,7 +66,6 @@ def main():
     parser.add_argument("--soildata", help="soildata used for the VOM")
     parser.add_argument("--outputfile", help="outputfile")
     parser.add_argument("--mf", help="multiplication factor for unit conversion", type=float, default = 1.0)
-    parser.add_argument("--mf_obs", help="multiplication factor for unit conversion observations", type=float, default = 1.0)
     parser.add_argument("--labels", help="labels corresponding to input-files", nargs='+', default = ["VOM"] )
     parser.add_argument("--colors", help="colors corresponding to input-files", nargs='+', default = ["red"] )
     parser.add_argument("--figsize", help="figure size", nargs='+', type=float, default = [16,5] )
@@ -360,10 +360,11 @@ def main():
             obs_tmp = (np.genfromtxt(args.obs_gw[i], usecols=1, missing_values="", delimiter=",", skip_header=4) ) *args.mf_obs  #
             #date/times observations
             tobs_tmp = np.genfromtxt(args.obs_gw[i],usecols=0, missing_values="", delimiter=",", skip_header=4, dtype=np.str )#mm/d
-            tobs_tmp = pd.date_range(tobs_tmp[0], tobs_tmp[-1], freq='D')   
+            tobs_tmp = pd.date_range(tobs_tmp[0], tobs_tmp[-1], periods = len(tobs_tmp))   
 
             obs_gw.append(obs_tmp)
             tobs_gw.append(tobs_tmp)
+
 
     #observations of soil moisture
     if args.obs_sm is not None:
@@ -399,9 +400,9 @@ def main():
 
         for i in range(0, len(args.obs_gw)):
             if(i == 0):
-                ax[0].plot(tobs_gw[i], -obs_gw[i], color='blue', label='Obs.', zorder=2)
+                ax[0].plot(tobs_gw[i], args.mf_obs *obs_gw[i], color='blue', label='Obs.', zorder=2)
             else:
-                ax[0].plot(tobs_gw[i], -obs_gw[i], color='blue', zorder=2)
+                ax[0].plot(tobs_gw[i], args.mf_obs *obs_gw[i], color='blue', zorder=2)
 
     #plot 2015 data
     if args.i2015 is not None:
