@@ -33,6 +33,7 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdate
 from matplotlib.colors import LogNorm
 import pandas as pd
+import matplotlib.dates as mdates
 from datetime import datetime, timedelta, date
 
 def main():
@@ -144,11 +145,13 @@ def main():
     su_vals = (data["su_1"])
     ws_vals = data["ws"]
     zw_vals = zw_vals_tmp
+    del zw_vals_tmp
 
     tmod = np.arange(datetime(int(data["fyear"][0]),int(data["fmonth"][0]),int(data["fday"][0])), 
                   datetime(int(data["fyear"][-1]),int(data["fmonth"][-1]),int(data["fday"][-1]))+timedelta(days=1), 
                   timedelta(days=1)).astype(datetime)
 
+    del data
     #---------------------------------
     #load soildata
     nlayers = np.int(np.ceil(args.i_cz / args.i_delz))
@@ -200,6 +203,7 @@ def main():
         t = t + 1
     file.close()
 
+    del tmp_data
 
     delz_sum = np.cumsum(delz)
 
@@ -225,6 +229,7 @@ def main():
         m_vg = 1.0 -(1.0/n_vg)
 
         su = su_data[:, 0:ind5]
+        del su_data
     else:
         theta_r = args.i_thetar
         theta_s = args.i_thetas
@@ -233,25 +238,28 @@ def main():
         m_vg = 1.0 -(1.0/n_vg)
 
         su = su_data[:, 0:ind5]
-
+        del su_data
 
     #loop over time
     ws5_hourly = np.zeros((nlines-1))
-    watpot_hourly = np.zeros((nlines-1, len(su[0,:])  ))
+    #watpot_hourly = np.zeros((nlines-1, len(su[0,:])  ))
 
     for t in range(0, len(su[:,0])):
         ws5_hourly[t] = np.sum((-su[t,:] * theta_r + \
                                 su[t,:] *theta_s + theta_r) * delz[0:ind5] )
-        watpot_hourly[t,:] = (1.0/alpha_vg) *  ( su[t,:] ** (-1.0/m_vg) - 1.0) ** (1/n_vg)
+        #watpot_hourly[t,:] = (1.0/alpha_vg) *  ( su[t,:] ** (-1.0/m_vg) - 1.0) ** (1/n_vg)
 
         
 
 
     startdate = str(time[0][0]) + "-" + str(time[0][1]) + "-" + str(time[0][2] )
-    time_su = pd.date_range(startdate, periods = len(su_data[:,0]), freq='H')
+    time_su = pd.date_range(startdate, periods = len(su[:,0]), freq='H')
 
     ws5_pd = pd.Series(ws5_hourly, index=time_su)
-    watpot_hourly_pd = pd.DataFrame(watpot_hourly, index=time_su)
+
+    ws5_pd = ws5_pd.loc[datetime(yearstart,1, 1):datetime(yearend, 12, 31)]
+    del ws5_hourly
+    #watpot_hourly_pd = pd.DataFrame(watpot_hourly, index=time_su)
 
     #---------------------------------
     #load 2015 results
@@ -276,14 +284,14 @@ def main():
 
     #open file, count lines
     file = open(args.su_hourly2015) #mm/d     
-    nlines = 0
+    nlines2015 = 0
     for line in file: 
-        nlines = nlines + 1
+        nlines2015 = nlines2015 + 1
     file.close()
 
 
     time2015 = []
-    su_data2015 = np.zeros((nlines-1,nlayers))
+    su_data2015 = np.zeros((nlines2015-1,nlayers))
 
     t = 0
 
@@ -327,22 +335,25 @@ def main():
     m_vg2015 = 1.0 -(1.0/n_vg2015)
 
     su2015 = su_data2015[:, 0:ind5_2015]
+    del su_data2015
 
     #loop over time
-    ws5_hourly2015 = np.zeros((nlines-1))
-    watpot_hourly2015 = np.zeros((nlines-1, len(su2015[0,:])  ))
+    ws5_hourly2015 = np.zeros((nlines2015-1))
+    #watpot_hourly2015 = np.zeros((nlines2015-1, len(su2015[0,:])  ))
 
     for t in range(0, len(su2015[:,0])):
         ws5_hourly2015[t] = np.sum((-su2015[t,:] * args.i_thetar2015 + \
                                 su2015[t,:] * args.i_thetas2015 + args.i_thetar2015) * delz2015[0:ind5_2015] )
-        watpot_hourly2015[t,:] = (1.0/alpha_vg2015) *  ( su2015[t,:] ** (-1.0/m_vg2015) - 1.0) ** (1.0/n_vg2015)
+        #watpot_hourly2015[t,:] = (1.0/alpha_vg2015) *  ( su2015[t,:] ** (-1.0/m_vg2015) - 1.0) ** (1.0/n_vg2015)
 
 
     startdate = str(time2015[0][0]) + "-" + str(time2015[0][1]) + "-" + str(time2015[0][2] )
-    time_su2015 = pd.date_range(startdate, periods = len(su_data2015[:,0]), freq='H')
+    time_su2015 = pd.date_range(startdate, periods = len(su2015[:,0]), freq='H')
 
     ws5_2015_pd = pd.Series(ws5_hourly2015, index=time_su2015)
-    watpot_hourly2015_pd = pd.DataFrame(watpot_hourly2015, index=time_su2015)
+    ws5_2015_pd = ws5_2015_pd.loc[datetime(yearstart,1, 1):datetime(yearend, 12, 31)]
+    del ws5_hourly2015
+    #watpot_hourly2015_pd = pd.DataFrame(watpot_hourly2015, index=time_su2015)
 
     #print(watpot_hourly2015_pd)
 
@@ -480,7 +491,7 @@ def main():
     #other plots
 
     #plot soil moisture results
-    plot_flux_obs(tmod, theta_vals, ax[2], tobs_sm, obs_sm, "Volumumetric \n water content (-)", "b)", args.labels[0] ,yearstart, yearend) 
+    plot_flux_obs(tmod, theta_vals, ax[2], tobs_sm, obs_sm, "Volumetric \n water content (-)", "b)", args.labels[0] ,yearstart, yearend) 
 
  
     #plot 2015 data
@@ -491,11 +502,11 @@ def main():
     ##############################################################
     #plot storage results
     plot_flux(ax[4], "Water storage (m)", "c)", yearstart, yearend ) 
-    ax[4].plot(time_su, ws5_pd, color="red", label=args.labels[0], zorder=1) 
+    ax[4].plot(ws5_pd.index, ws5_pd, color="red", label=args.labels[0], zorder=1) 
 
     #plot 2015 data
     if args.i2015 is not None:
-        ax[4].plot(time_su2015, ws5_2015_pd, color='green', label='Schymanski et al. (2015)', zorder=2)
+        ax[4].plot(ws5_2015_pd.index, ws5_2015_pd, color='green', label='Schymanski et al. (2015)', zorder=2)
 
     ax[4].legend(prop={'size':15}, framealpha=1  )
 
@@ -512,7 +523,20 @@ def main():
     reversed_color_map = color_map.reversed() 
 
     y = np.insert(-delz_sum[0:ind5],0,0)
-    c1 = ax[6].pcolor(watpot_hourly_pd.index, y ,watpot_hourly_pd.values.T,norm=LogNorm(vmin=0.01, vmax=250), vmin=0.01, vmax=250, cmap = reversed_color_map)
+
+    #loop over time
+    watpot_hourly = np.zeros((nlines-1, len(su[0,:])  ))
+
+    for t in range(0, len(su[:,0])):
+        watpot_hourly[t,:] = (1.0/alpha_vg) *  ( su[t,:] ** (-1.0/m_vg) - 1.0) ** (1/n_vg)
+       
+    watpot_hourly_pd = pd.DataFrame(watpot_hourly, index=time_su)
+
+    extent = [mdates.date2num(datetime(yearstart,1, 1)), mdates.date2num(datetime( yearend ,12, 31)), -delz_sum[ind5],0]
+    #c1 = ax[6].pcolor(watpot_hourly_pd.index, y ,watpot_hourly_pd.values.T,norm=LogNorm(vmin=0.01, vmax=250), vmin=0.01, vmax=250, cmap = reversed_color_map)
+    c1 = ax[6].imshow(watpot_hourly_pd.values.T, extent =extent, norm=LogNorm(vmin=0.01, vmax=250), vmin=0.01, vmax=250, cmap=reversed_color_map,aspect='auto')
+    del watpot_hourly_pd 
+    del watpot_hourly 
 
     ax[6].plot( [datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params[5], - params[5]], ":", lw=3, color='red', label='root depth trees')
     ax[6].plot( [datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params[7],  -params[7]],":",lw=3,color='orange', label='root depth grasses')
@@ -531,8 +555,28 @@ def main():
     cb.set_label("Matrix potential (m)", size=20)
 
     #Aob2015 results
+    #loop over time
+    watpot_hourly2015 = np.zeros((nlines2015-1, len(su2015[0,:])  ))
+
+    for t in range(0, len(su2015[:,0])):
+        watpot_hourly2015[t,:] = (1.0/alpha_vg2015) *  ( su2015[t,:] ** (-1.0/m_vg2015) - 1.0) ** (1.0/n_vg2015)
+
+
+    startdate = str(time2015[0][0]) + "-" + str(time2015[0][1]) + "-" + str(time2015[0][2] )
+    watpot_hourly2015_pd = pd.DataFrame(watpot_hourly2015, index=time_su2015)
+
     y2015 = np.insert(-delz2015_sum[0:ind5_2015],0,0)
-    c2 = ax[8].pcolor(watpot_hourly2015_pd.index, y2015, watpot_hourly2015_pd.values.T, norm=LogNorm(vmin=0.01, vmax=250), vmin=0.01, vmax=250, cmap=reversed_color_map   )
+    #c2 = ax[8].pcolor(watpot_hourly2015_pd.index, y2015, watpot_hourly2015_pd.values.T, norm=LogNorm(vmin=0.01, vmax=250), vmin=0.01, vmax=250, cmap=reversed_color_map   )
+ 
+    extent = [mdates.date2num(datetime(yearstart,1, 1)), mdates.date2num(watpot_hourly2015_pd.index[-1]), -delz2015_sum[ind5_2015],0]
+    c2 = ax[8].imshow(watpot_hourly2015_pd.values.T, extent =extent, norm=LogNorm(vmin=0.01, vmax=250), vmin=0.01, vmax=250, cmap=reversed_color_map,aspect='auto')
+
+
+
+
+    del watpot_hourly2015_pd
+    del watpot_hourly2015 
+
     ax[8].plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params2015[5],- params2015[5]], ":", lw=3, color='red', label='root depth trees')
     ax[8].plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params2015[7],- params2015[7]],":",lw=3, color='orange', label='root depth grasses')
 
