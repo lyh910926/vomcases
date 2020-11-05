@@ -49,6 +49,7 @@ def main():
 
     parser.add_argument("--maxmod", help="results_daily max-values ")
     parser.add_argument("--minmod", help="results_daily min-values")
+    parser.add_argument("--dateformat", help="dateformat for observations", default='%Y-%m-%d %H:%M:%S')
     parser.add_argument("--emp1", help="empirical solution 1")
     parser.add_argument("--emp2", help="empirical solution 2")
     parser.add_argument("--obs", help="observations", nargs='+')
@@ -168,7 +169,8 @@ def main():
             obs_tmp = (np.genfromtxt(args.obs[i], usecols=args.obs_col, missing_values="", delimiter=",", skip_header=args.obs_header) ) *args.mf_obs  #
             #date/times observations
             tobs_tmp = np.genfromtxt(args.obs[i],usecols=0, missing_values="", delimiter=",", skip_header=args.obs_header, dtype=np.str )#mm/d
-            tobs_tmp = pd.date_range(datetime.strptime(tobs_tmp[0], args.obs_timeformat), periods=len(tobs_tmp), freq=args.obs_freq)   
+
+            tobs_tmp = pd.to_datetime(tobs_tmp, format=args.dateformat)
 
             obs.append(obs_tmp)
             tobs.append(tobs_tmp)
