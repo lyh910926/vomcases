@@ -219,7 +219,7 @@ def main():
 
     #parameters for plotting
     if args.fig_lab is True:
-        plot_label = [ "a)","b)","c)","d)","e)","f)", "g)", "h)" ]
+        plot_label = [ "(a)","(b)","(c)","(d)","(e)","(f)", "(g)", "(h)" ]
     else: 
         plot_label = [ " "," "," "," "," "," ", " ", " " ]
 
