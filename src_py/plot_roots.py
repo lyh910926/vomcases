@@ -148,7 +148,7 @@ def main():
     ax[0].set_ylabel("Root depth trees (m)", size=20 )  
     ax[0].set_xlabel("Study sites", size=16 )  
 
-    ax[0].text( x=-2.0, y=-0.1, s="a)", fontsize = 20)
+    ax[0].text( x=-2.0, y=-0.1, s="(a)", fontsize = 20)
 
     for tick in ax[0].yaxis.get_major_ticks():
         tick.label.set_fontsize(20)
@@ -171,7 +171,7 @@ def main():
     ax[1].set_xlabel("Study sites", size=16 )  
 
     ax[1].legend(prop={'size':15})
-    ax[1].text( x=-2.0, y=-0.1, s="b)",  fontsize = 20)
+    ax[1].text( x=-2.0, y=-0.1, s="(b)",  fontsize = 20)
 
     for tick in ax[1].yaxis.get_major_ticks():
         tick.label.set_fontsize(20)
