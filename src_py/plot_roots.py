@@ -85,7 +85,7 @@ def main():
     if args.figlab is not None:
         fig_lab = args.figlab
     else:
-        fig_lab = ['a)', 'b)', 'c)', 'd)', 'e)', 'f)', 'g)']
+        fig_lab = ['(a)', '(b)', '(c)', '(d)', '(e)', '(f)', '(g)']
 
     n_rows = len(args.sites)+1
 
@@ -111,7 +111,7 @@ def main():
 
     symbols = ['s', '>', '.','8', 'P','*']
     colors = ['red', 'blue', 'green', 'gray', 'black', 'orange']
-    fig_lab = ['a)', 'b)', 'c)', 'd)', 'e)', 'f)', 'g)', 'h)', 'i)', 'j)', 'k)', 'l)', 'm)', 'n)']
+    fig_lab = ['(a)', '(b)', '(c)', '(d)', '(e)', '(f)', '(g)', 'h)', 'i)', 'j)', 'k)', 'l)', 'm)', 'n)']
 
     fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(args.figsize[0], args.figsize[1])) 
 
