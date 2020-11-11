@@ -97,7 +97,7 @@ def main():
     if args.figlab is not None:
         fig_lab = args.figlab
     else:
-        fig_lab = ['a)', 'b)', 'c)', 'd)', 'e)', 'f)', 'g)']
+        fig_lab = ['(a)', '(b)', '(c)', '(d)', '(e)', '(f)', '(g)']
 
     n_rows = np.ceil((len(args.sites)+1)/2)
 
