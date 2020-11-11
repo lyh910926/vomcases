@@ -597,7 +597,7 @@ def main():
     #set labels/titles of plots
     if args.title is True:
 
-        plot_label = ["a)","b)","c)", "d)", "e)", "f)"]
+        plot_label = ["(a)","(b)","(c)", "(d)", "(e)", "(f)"]
         label_ax = [0,2,4,6,8]
         for i in range(0, 5):
             ax[label_ax[i]].text(args.xloc_title, args.yloc_title, plot_label[i], ha='left', va='center', transform=ax[label_ax[i]].transAxes, fontsize=args.size_title)
