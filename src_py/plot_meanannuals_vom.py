@@ -92,11 +92,13 @@ def main():
     parser.add_argument("--wpad", help="w_pad tight_layout", type=float, default = 0 )
     parser.add_argument("--fig_lab", dest="fig_lab", action='store_true', help="plot labels of subplots")
     parser.add_argument("--no_fig_lab", dest="fig_lab", action='store_false', help="do not plot labels of subplots")
+    parser.add_argument("--rel_changes", help="tight layout", dest="rel_changes", action='store_true' )
+    parser.add_argument("--no_rel_changes", help="tight layout", dest="rel_changes", action='store_false' )
     parser.add_argument("--sharex", help="share x-axis", dest="sharex", action='store_true' )
     parser.add_argument("--no_sharex", help="share x-axis", dest="sharex", action='store_false')
     parser.add_argument("--tight_layout", help="tight layout", dest="tight_layout", action='store_true' )
     parser.add_argument("--no_tight_layout", help="no tight layout", dest="tight_layout", action='store_false')
-    parser.set_defaults(fig_lab=True, sharex = False, tight_layout=True)
+    parser.set_defaults(fig_lab=True, sharex = False, tight_layout=True, rel_changes=False )
 
     args = parser.parse_args()
 
@@ -136,123 +138,210 @@ def main():
 
             if(var == "evaptot"):
                 data["evaptot"] = (data_tmp["etmt"] + data_tmp["etmg"] + data_tmp["esoil"])*1000.0
-                ylabels.append("ET (mm year$^{-1}$)")
+                if(args.rel_changes):
+                    ylabels.append("$\Delta$ET \n (%)")
+                else:
+                    ylabels.append("ET \n (mm year$^{-1}$)")
                 method.append("sum")
             if(var == "etmt"):
+                if(args.rel_changes):
+                    ylabels.append("$\Delta$E$_{perennials}$ \n (%)")
+                else:
+                    ylabels.append("E$_{perennials}$ \n (mm year$^{-1}$)")
                 data["etmt"] = data_tmp["etmt"]*1000.0
-                ylabels.append("E$_{perennials}$ \n (mm year$^{-1}$)")
                 method.append("sum")
             if(var == "etmg"):
                 data["etmg"] = data_tmp["etmg"]*1000.0
-                ylabels.append("E$_{seasonals}$ \n (mm year$^{-1}$)")
+                if(args.rel_changes):
+                    ylabels.append("$\Delta$E$_{seasonals}$ \n (%)")
+                else:
+                    ylabels.append("E$_{seasonals}$ \n (mm year$^{-1}$)")
                 method.append("sum")
             if(var == "esoil"):
                 data["esoil"] = data_tmp["esoil"]*1000.0
-                ylabels.append("E$_{soil}$ \n (mm year$^{-1}$)")
+                if(args.rel_changes):
+                    ylabels.append("$\Delta$E$_{soil}$ \n (%)")
+                else:
+                    ylabels.append("E$_{soil}$ \n (mm year$^{-1}$)")
                 method.append("sum")
 
             if(var == "asstot"):
                 data["asstot"] = data_tmp["asst"] + data_tmp["assg"]
-                ylabels.append('GPP \n (mol m$^{-2}$ year$^{-1}$)')
+                if(args.rel_changes):
+                    ylabels.append("$\Delta$GPP \n (%)")
+                else:
+                    ylabels.append('GPP \n (mol m$^{-2}$ year$^{-1}$)')
                 method.append("sum")
             if(var == "asst"):
                 data["asst"] = data_tmp["asst"] 
-                ylabels.append("GPP$_{perennials}$ \n (mol m$^{-2}$ year$^{-1}$)")
+                if(args.rel_changes):
+                    ylabels.append("$\Delta$GPP$_{perennials}$ \n (%)")
+                else:
+                    ylabels.append("GPP$_{perennials}$ \n (mol m$^{-2}$ year$^{-1}$)")
                 method.append("sum")
             if(var == "assg"):
                 data["assg"] = data_tmp["assg"] 
-                ylabels.append("GPP$_{seasonals}$ \n (mol m$^{-2}$ year$^{-1}$)")
+                if(args.rel_changes):
+                    ylabels.append("$\Delta$GPP$_{seasonals}$ \n (%)")
+                else:
+                    ylabels.append("GPP$_{seasonals}$ \n (mol m$^{-2}$ year$^{-1}$)")
                 method.append("sum")
 
             if(var == "jmax25t"):
                 data["jmax25t"] = data_tmp["jmax25t"] 
-                ylabels.append("J$_{max25,p}$ \n (mol m$^{-2}$ s$^{-1}$)")
+                if(args.rel_changes):
+                    ylabels.append("$\Delta$J$_{max25,p}$ \n (%)")
+                else:
+                    ylabels.append("J$_{max25,p}$ \n (mol m$^{-2}$ s$^{-1}$)")
                 method.append("mean")
 
             if(var == "jmax25g"):
                 data["jmax25g"] = data_tmp["jmax25g"] 
-                ylabels.append("J$_{max25,s}$ \n (mol m$^{-2}$ s$^{-1}$)")
+                if(args.rel_changes):
+                    ylabels.append("$\Delta$J$_{max25,s}$ \n (%)")
+                else:
+                    ylabels.append("J$_{max25,s}$ \n (mol m$^{-2}$ s$^{-1}$)")
                 method.append("mean")
 
             if(var == "rlt"):
                 data["rlt"] = data_tmp["rlt"] 
-                ylabels.append("Rl$_{p}$ \n (mol m$^{-2}$ year$^{-1}$)")
+                if(args.rel_changes):
+                    ylabels.append("$\Delta$Rl$_{p}$ \n (%)")
+                else:
+                    ylabels.append("Rl$_{p}$ \n (mol m$^{-2}$ year$^{-1}$)")
                 method.append("sum")
             if(var == "rlg"):
                 data["rlg"] = data_tmp["rlg"] 
-                ylabels.append("Rl$_{s}$ \n (mol m$^{-2}$ year$^{-1}$)")
+                if(args.rel_changes):
+                    ylabels.append("$\Delta$Rl$_{s}$ \n (%)")
+                else:
+                    ylabels.append("Rl$_{s}$ \n (mol m$^{-2}$ year$^{-1}$)")
                 method.append("sum")
             if(var == "rrt"):
                 data["rrt"] = data_tmp["rrt"] 
-                ylabels.append("Rr$_{p}$ \n (mol m$^{-2}$ year$^{-1}$)")
+                if(args.rel_changes):
+                    ylabels.append("$\Delta$Rr$_{p}$ \n (%)")
+                else:
+                    ylabels.append("Rr$_{p}$ \n (mol m$^{-2}$ year$^{-1}$)")
                 method.append("sum")
             if(var == "rrg"):
                 data["rrg"] = data_tmp["rrg"] 
-                ylabels.append("Rr$_{s}$ \n (mol m$^{-2}$ year$^{-1}$)")
+                if(args.rel_changes):
+                    ylabels.append("$\Delta$Rr$_{s}$ \n (%)")
+                else:
+                    ylabels.append("Rr$_{s}$ \n (mol m$^{-2}$ year$^{-1}$)")
                 method.append("sum")
             if(var == "tct"):
                 data["tct"] = data_tmp["tct"] 
-                ylabels.append("Tc$_{p}$ \n (mol m$^{-2}$ year$^{-1}$)")
+                if(args.rel_changes):
+                    ylabels.append("$\Delta$Tc$_{p}$ \n (%)")
+                else:
+                    ylabels.append("Tc$_{p}$ \n (mol m$^{-2}$ year$^{-1}$)")
                 method.append("sum")
             if(var == "tcg"):
                 data["tcg"] = data_tmp["tcg"]
-                ylabels.append("Tc$_{s}$ \n (mol m$^{-2}$ year$^{-1}$)") 
+                if(args.rel_changes):
+                    ylabels.append("$\Delta$Tc$_{s}$ \n (%)")
+                else:
+                    ylabels.append("Tc$_{s}$ \n (mol m$^{-2}$ year$^{-1}$)") 
                 method.append("sum")
             if(var == "cpcct_d"):
                 data["cpcct_d"] = data_tmp["cpcct_d"] 
-                ylabels.append("Rv$_{p}$ \n (mol m$^{-2}$ year$^{-1}$)") 
+                if(args.rel_changes):
+                    ylabels.append("$\Delta$Rv$_{p}$ \n (%)")
+                else:
+                    ylabels.append("Rv$_{p}$ \n (mol m$^{-2}$ year$^{-1}$)") 
                 method.append("sum")
             if(var == "cpccg_d"):
                 data["cpccg_d"] = data_tmp["cpccg_d"] 
-                ylabels.append("Rv$_{s}$ \n (mol m$^{-2}$ year$^{-1}$)") 
+                if(args.rel_changes):
+                    ylabels.append("$\Delta$Rv$_{s}$ \n (%)")
+                else:
+                    ylabels.append("Rv$_{s}$ \n (mol m$^{-2}$ year$^{-1}$)") 
                 method.append("sum")
             if(var == "su_avg"):
                 data["su_avg"] = data_tmp["su_avg"]
-                ylabels.append("S$_{u,avg}$ \n (-)") 
+                if(args.rel_changes):
+                    ylabels.append("$\Delta$S$_{u,avg}$ \n (%)")
+                else:
+                    ylabels.append("S$_{u,avg}$ \n (-)") 
                 method.append("mean") 
             if(var == "su_1"):
                 data["su_1"] = data_tmp["su_1"] 
-                ylabels.append("S$_{u,1}$ \n (-)")  
+                if(args.rel_changes):
+                    ylabels.append("$\Delta$S$_{u,1}$ \n (%)")
+                else:
+                    ylabels.append("S$_{u,1}$ \n (-)")  
             if(var == "zw"):
-                data["zw"] = data_tmp["zw"]     
-                ylabels.append("Z$_{w}$ \n (m)")  
+                data["zw"] = data_tmp["zw"] 
+                if(args.rel_changes):
+                    ylabels.append("$\Delta$Z$_{w}$ \n (%)")
+                else:    
+                    ylabels.append("Z$_{w}$ \n (m)")  
                 method.append("mean") 
             if(var == "ws"):
                 data["ws"] = data_tmp["ws"] 
-                ylabels.append("w$_{s}$ \n (m)") 
+                if(args.rel_changes):
+                    ylabels.append("$\Delta$w$_{s}$ \n (%)")
+                else: 
+                    ylabels.append("w$_{s}$ \n (m)") 
                 method.append("mean")  
             if(var == "spgfcf"):
                 data["spgfcf"] = data_tmp["spgfcf"]*1000
-                ylabels.append("Q$_{sf}$ \n (mm year$^{-1}$)")  
+                if(args.rel_changes):
+                    ylabels.append("$\Delta$Q$_{sf}$ \n (%)")
+                else: 
+                    ylabels.append("Q$_{sf}$ \n (mm year$^{-1}$)")  
                 method.append("sum")
             if(var == "infx"):
                 data["infx"] = data_tmp["infx"] *1000
-                ylabels.append("Q$_{iex}$ \n (mm year$^{-1}$)")  
+                if(args.rel_changes):
+                    ylabels.append("$\DeltaQ$_{iex}$ \n (%)")
+                else: 
+                    ylabels.append("Q$_{iex}$ \n (mm year$^{-1}$)")  
                 method.append("sum")
             if(var == "topt"):
-                data["topt"] = data_tmp["topt"] 
-                yylabels.append("T$_{opt}$ \n ($^{o}$C)")  
+                data["topt"] = data_tmp["topt"]
+                if(args.rel_changes):
+                    ylabels.append("$\DeltaT$_{opt}$ \n (%)")
+                else: 
+                    ylabels.append("T$_{opt}$ \n ($^{o}$C)")  
                 method.append("mean")
             if(var == "lambdat"):
                 data["lambdat"] = data_tmp["lambdat"] 
-                ylabels.append("$\lambda_{p}$ \n (mol mol$^{-1}$)") 
+                if(args.rel_changes):
+                    ylabels.append("$\Delta$$\lambda_{p}$ \n (%)")
+                else: 
+                    ylabels.append("$\lambda_{p}$ \n (mol mol$^{-1}$)") 
                 method.append("mean")
             if(var == "lambdag"):
                 data["lambdag"] = data_tmp["lambdag"] 
-                ylabels.append("$\lambda_{s}$ \n (mol mol$^{-1}$)") 
+                if(args.rel_changes):
+                    ylabels.append("$\Delta$$\lambda_{s}$ \n (%)")
+                else:
+                    ylabels.append("$\lambda_{s}$ \n (mol mol$^{-1}$)") 
                 method.append("mean") 
             if(var == "pc"):
                 data["pc"] = data_tmp["pc"] *100
-                ylabels.append(r"Proj. Cover (%)") 
+                if(args.rel_changes):
+                    ylabels.append("$\Delta Proj. Cover \n (%)")
+                else:
+                    ylabels.append(r"Proj. Cover (%)") 
                 method.append("mean") 
 
             if(var == "ncp_t"):
                 data["ncp_t"] = data_tmp["ncp_t"] 
-                ylabels.append("NCP$_{p}$ \n (mol m$^{-2}$ year$^{-1}$)")
+                if(args.rel_changes):
+                    ylabels.append("$\DeltaNCP$_{p}$ \n (%)")
+                else:
+                    ylabels.append("NCP$_{p}$ \n (mol m$^{-2}$ year$^{-1}$)")
                 method.append("sum") 
             if(var == "ncp_g"):
                 data["ncp_g"] = data_tmp["ncp_g"] 
-                ylabels.append("NCP$_{s}$ \n (mol m$^{-2}$ year$^{-1}$)") 
+                if(args.rel_changes):
+                    ylabels.append("$\DeltaNCP$_{s}$ \n (%)")
+                else:
+                    ylabels.append("NCP$_{s}$ \n (mol m$^{-2}$ year$^{-1}$)") 
                 method.append("sum")
 
 
@@ -428,25 +517,35 @@ def main():
 
 
     #############################
-    #plot 2015
-    if args.i2015 is not None:
-        for iplot in range(0, len(args.var)):
-            if(method[ivar] == "sum"):
-                ma_vals2015 = np.mean(data2015[args.var[iplot]].resample('A').sum() )
-            if(method[ivar] == "mean"):
-                ma_vals2015 = np.mean(data2015[args.var[iplot]].resample('A').mean() )  
-            ax[iplot].plot([-1,20], [ma_vals2015,ma_vals2015], color='green', lw=2,label='Schymanski et al. (2015)', zorder=2)
-
-    #############################
     #plot model results
     ind = np.arange(0,(len(args.input)))
 
     for iplot in range(0, len(args.var)):
+
+        #############################
+        #plot 2015
+        if args.i2015 is not None:
+            if(method[iplot] == "sum"):
+                ma_vals2015 = np.mean(data2015[args.var[iplot]].resample('A').sum() )
+            if(method[iplot] == "mean"):
+                ma_vals2015 = np.mean(data2015[args.var[iplot]].resample('A').mean() )  
+            if(args.rel_changes):
+                ax[iplot].plot([-1,20], [0,0], color='black', lw=1, zorder=2)
+            else:
+                ax[iplot].plot([-1,20], [ma_vals2015,ma_vals2015], color='green', lw=2,label='Schymanski et al. (2015)', zorder=2)
+
         for i in range(0, len(args.input)):
-            if(method[ivar] == "sum"):
-                ma_vals = np.mean(vals[i][args.var[iplot]].resample('A').sum() ) 
-            if(method[ivar] == "mean"):
-                ma_vals = np.mean(vals[i][args.var[iplot]].resample('A').mean() ) 
+            if(method[iplot] == "sum"):
+                if(args.rel_changes):
+                    ma_vals = 100* (np.mean(vals[i][args.var[iplot]].resample('A').sum() ) - ma_vals2015) / ma_vals2015
+                else:
+                    ma_vals = np.mean(vals[i][args.var[iplot]].resample('A').sum() ) 
+            if(method[iplot] == "mean"):
+                if(args.rel_changes):
+                    ma_vals = 100*(np.mean(vals[i][args.var[iplot]].resample('A').mean() ) - ma_vals2015) / ma_vals2015
+                else:
+                    ma_vals = np.mean(vals[i][args.var[iplot]].resample('A').mean() ) 
+
             ax[iplot].bar([i], ma_vals, color="blue", zorder=1)                 
                
         #set axis and ticks   
@@ -471,6 +570,7 @@ def main():
         ax[iplot].set_xticks(ind) 
         ax[iplot].tick_params(axis="x", pad = args.label_pad)
         ax[iplot].set_xticklabels( args.ticklabels, rotation=90, fontsize=18)
+        ax[iplot].grid(color='gray', linestyle='--', linewidth=1, alpha=0.5)
 
     #add statistics
     yloc = 0.93
