@@ -127,38 +127,38 @@ def main():
 
     for i in range(0, len(whitley_sites)):
         #read in data from BESS
-        bess_evap_stats[whitley_sites[i]] = np.genfromtxt( args.bess_evap_stats[i]  )
-        bess_ass_stats[whitley_sites[i]] = np.genfromtxt( args.bess_gpp_stats[i]  )
+        bess_evap_stats[whitley_sites[i]] = np.genfromtxt( args.bess_evap_stats[i] , skip_header = 1 )
+        bess_ass_stats[whitley_sites[i]] = np.genfromtxt( args.bess_gpp_stats[i] , skip_header = 1 )
         bess_ema[whitley_sites[i]] =  bess_evap_stats[whitley_sites[i]][8]
         bess_assma[whitley_sites[i]] = bess_ass_stats[whitley_sites[i]][8]
 
         #read in data from BIOS2
-        bios2_evap_stats[whitley_sites[i]] = np.genfromtxt( args.bios2_evap_stats[i]  )
-        bios2_ass_stats[whitley_sites[i]] = np.genfromtxt( args.bios2_gpp_stats[i]  )
+        bios2_evap_stats[whitley_sites[i]] = np.genfromtxt( args.bios2_evap_stats[i]  , skip_header = 1)
+        bios2_ass_stats[whitley_sites[i]] = np.genfromtxt( args.bios2_gpp_stats[i]  , skip_header = 1)
         bios2_ema[whitley_sites[i]] = bios2_evap_stats[whitley_sites[i]][8]
         bios2_assma[whitley_sites[i]] = bios2_ass_stats[whitley_sites[i]][8]
 
         #read in data from LPJ-GUESS, ET in W/m2, GPP in umol/m2/s
-        lpjguess_evap_stats[whitley_sites[i]] = np.genfromtxt( args.lpjguess_evap_stats[i]  )
-        lpjguess_ass_stats[whitley_sites[i]] = np.genfromtxt( args.lpjguess_gpp_stats[i]  )
+        lpjguess_evap_stats[whitley_sites[i]] = np.genfromtxt( args.lpjguess_evap_stats[i], skip_header = 1  )
+        lpjguess_ass_stats[whitley_sites[i]] = np.genfromtxt( args.lpjguess_gpp_stats[i], skip_header = 1  )
         lpjguess_ema[whitley_sites[i]] = lpjguess_evap_stats[whitley_sites[i]][8]
         lpjguess_assma[whitley_sites[i]] = lpjguess_ass_stats[whitley_sites[i]][8]
 
         #read in data from MAESPA, ET in W m-2, GPP in umol m-2 s-1
-        maespa_evap_stats[whitley_sites[i]] = np.genfromtxt( args.maespa_evap_stats[i]  )
-        maespa_ass_stats[whitley_sites[i]] = np.genfromtxt( args.maespa_gpp_stats[i]  )
+        maespa_evap_stats[whitley_sites[i]] = np.genfromtxt( args.maespa_evap_stats[i], skip_header = 1  )
+        maespa_ass_stats[whitley_sites[i]] = np.genfromtxt( args.maespa_gpp_stats[i], skip_header = 1  )
         maespa_ema[whitley_sites[i]] = maespa_evap_stats[whitley_sites[i]][8]
         maespa_assma[whitley_sites[i]] = maespa_ass_stats[whitley_sites[i]][8]
 
         #read in data from SPA, ET in W m-2, GPP in mmol m-2 s-1
-        spa_evap_stats[whitley_sites[i]] = np.genfromtxt( args.spa_evap_stats[i]  )
-        spa_ass_stats[whitley_sites[i]] = np.genfromtxt( args.spa_gpp_stats[i]  )
+        spa_evap_stats[whitley_sites[i]] = np.genfromtxt( args.spa_evap_stats[i], skip_header = 1  )
+        spa_ass_stats[whitley_sites[i]] = np.genfromtxt( args.spa_gpp_stats[i], skip_header = 1  )
         spa_ema[whitley_sites[i]] = spa_evap_stats[whitley_sites[i]][8]
         spa_assma[whitley_sites[i]] = spa_ass_stats[whitley_sites[i]][8]
 
         #read in data from CABLE, ET in kg/m^2/s, GPP in umol/m^2/s
-        cable_evap_stats[whitley_sites[i]] = np.genfromtxt( args.cable_evap_stats[i]  )
-        cable_ass_stats[whitley_sites[i]] = np.genfromtxt( args.cable_gpp_stats[i]  )
+        cable_evap_stats[whitley_sites[i]] = np.genfromtxt( args.cable_evap_stats[i], skip_header = 1  )
+        cable_ass_stats[whitley_sites[i]] = np.genfromtxt( args.cable_gpp_stats[i], skip_header = 1  )
         cable_ema[whitley_sites[i]] = cable_evap_stats[whitley_sites[i]][8]
         cable_assma[whitley_sites[i]] = cable_ass_stats[whitley_sites[i]][8]
 
@@ -186,17 +186,17 @@ def main():
 
     for i in range(0, len(args.sites)):
 
-        vom_evap_stats[args.sites[i]] = np.genfromtxt( args.vom_evap_stats[i]  )
-        vom_gpp_stats[args.sites[i]] = np.genfromtxt( args.vom_gpp_stats[i]  )
+        vom_evap_stats[args.sites[i]] = np.genfromtxt( args.vom_evap_stats[i], skip_header = 1  )
+        vom_gpp_stats[args.sites[i]] = np.genfromtxt( args.vom_gpp_stats[i], skip_header = 1  )
 
-        vom_pc_evap_stats[args.sites[i]] = np.genfromtxt( args.vom_pc_evap_stats[i]  )
-        vom_pc_gpp_stats[args.sites[i]] = np.genfromtxt( args.vom_pc_gpp_stats[i]  )
+        vom_pc_evap_stats[args.sites[i]] = np.genfromtxt( args.vom_pc_evap_stats[i], skip_header = 1  )
+        vom_pc_gpp_stats[args.sites[i]] = np.genfromtxt( args.vom_pc_gpp_stats[i], skip_header = 1  )
 
-        vom_pc2_evap_stats[args.sites[i]] = np.genfromtxt( args.vom_pc2_evap_stats[i]  )
-        vom_pc2_gpp_stats[args.sites[i]] = np.genfromtxt( args.vom_pc2_gpp_stats[i]  )
+        vom_pc2_evap_stats[args.sites[i]] = np.genfromtxt( args.vom_pc2_evap_stats[i], skip_header = 1  )
+        vom_pc2_gpp_stats[args.sites[i]] = np.genfromtxt( args.vom_pc2_gpp_stats[i], skip_header = 1  )
 
-        vom_zr_evap_stats[args.sites[i]] = np.genfromtxt( args.vom_zr_evap_stats[i]  )
-        vom_zr_gpp_stats[args.sites[i]] = np.genfromtxt( args.vom_zr_gpp_stats[i]  )
+        vom_zr_evap_stats[args.sites[i]] = np.genfromtxt( args.vom_zr_evap_stats[i], skip_header = 1  )
+        vom_zr_gpp_stats[args.sites[i]] = np.genfromtxt( args.vom_zr_gpp_stats[i], skip_header = 1  )
 
 
         vom_evap[args.sites[i]] = vom_evap_stats[args.sites[i]][8]
