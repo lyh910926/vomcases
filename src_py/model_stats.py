@@ -891,7 +891,7 @@ def calcBIAS(sim, obs ):
 
 def calcCorr(sim, obs ):
 
-        r = np.corrcoef(sim, obs)[0,1]
+        r = np.corrcoef( sim[~np.isnan(sim)], obs[~np.isnan(sim)] )[0,1]
 
         return(r)
 
