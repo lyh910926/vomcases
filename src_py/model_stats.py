@@ -76,7 +76,7 @@ def main():
     dates_obs = pd.date_range(dates_obs[0],periods=len( dates_obs ), freq='D')
     #ass_obs = -1000000*ass_obs/ (3600*24)
     assobs_pd = pd.Series(ass_obs, index = dates_obs )
-    print(assobs_pd)
+
     #load observed projective cover
     if(args.pc_obs is not None):
         pcobs = np.genfromtxt(args.pc_obs,delimiter=',', usecols=3, missing_values=-999 )
