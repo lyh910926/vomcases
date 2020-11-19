@@ -113,26 +113,26 @@ def main():
         if( args.var[ivar] == "VPD"):
             if(ivar == 0):
 
-                Tmean =np.array(meteo_data[:][5] + meteo_data[:][3])/2.0)
+                Tmean =np.array((meteo_data[:][5] + meteo_data[:][3])/2.0)
 
                 Vsat = 0.6108*np.exp( 17.27*Tmean/(Tmean+237.3) ) #kPa
                 Vact = meteo_data[:][13]*0.1 #kPa
 
                 var = Vsat - Vact
             else:
-                Tmean =np.array(meteo_data[:][5] + meteo_data[:][3])/2.0)
+                Tmean =np.array((meteo_data[:][5] + meteo_data[:][3])/2.0)
 
                 Vsat = 0.6108*np.exp( 17.27*Tmean/(Tmean+237.3) ) #kPa
                 Vact = meteo_data[:][13]*0.1 #kPa
 
                 tmp = Vsat - Vact
-                var = np.column_stack( (var, tmp) ))
+                var = np.column_stack( (var, tmp) )
         if( args.var[ivar] == "Temp"):
             if(ivar == 0):
-                var =np.array(meteo_data[:][5] + meteo_data[:][3])/2.0)
+                var =np.array((meteo_data[:][5] + meteo_data[:][3])/2.0)
             else:
-                tmp =np.array(meteo_data[:][5] + meteo_data[:][3])/2.0)
-                var = np.column_stack( (var, tmp) ))
+                tmp =np.array((meteo_data[:][5] + meteo_data[:][3])/2.0)
+                var = np.column_stack( (var, tmp) )
 
     #make series
     x_val_series = pd.DataFrame(var, index=index) 
