@@ -93,25 +93,25 @@ def main():
         emp1_data = np.genfromtxt(args.emp1[0])
         emp1_data2 = np.genfromtxt(args.emp1[1])
 
-        emp1_dates = np.arange(datetime(int(emp1_data[3][0]),int(emp1_data[2][0]),int(emp1_data[1][0])), 
-                      datetime(int(emp1_data[3][-1]),int(emp1_data[2][-1]),int(emp1_data[1][-1]))+timedelta(days=1), 
+        emp1_dates = np.arange(datetime(int(emp1_data[:,3][0]),int(emp1_data[:,2][0]),int(emp1_data[:,1][0])), 
+                      datetime(int(emp1_data[:,3][-1]),int(emp1_data[:,2][-1]),int(emp1_data[:,1][-1]))+timedelta(days=1), 
                       timedelta(days=1)).astype(datetime)
 
 
-        emp1_et = pd.Series(emp1_data[4], index = emp1_dates )
-        emp1_gpp = pd.Series(emp1_data2[4], index = emp1_dates )
+        emp1_et = pd.Series(emp1_data[:,4], index = emp1_dates )
+        emp1_gpp = pd.Series(emp1_data2[:,4], index = emp1_dates )
 
     if(args.emp2 is not None):
         emp2_data = np.genfromtxt(args.emp2[0])
         emp2_data2 = np.genfromtxt(args.emp2[1])
 
-        emp2_dates = np.arange(datetime(int(emp2_data[3][0]),int(emp2_data[2][0]),int(emp2_data[1][0])), 
-                      datetime(int(emp2_data[3][-1]),int(emp2_data[2][-1]),int(emp2_data[1][-1]))+timedelta(days=1), 
+        emp2_dates = np.arange(datetime(int(emp2_data[:,3][0]),int(emp2_data[:,2][0]),int(emp2_data[:,1][0])), 
+                      datetime(int(emp2_data[:,3][-1]),int(emp2_data[:,2][-1]),int(emp2_data[:,1][-1]))+timedelta(days=1), 
                       timedelta(days=1)).astype(datetime)
 
 
-        emp2_et = pd.Series(emp2_data[4], index = emp2_dates )
-        emp2_gpp = pd.Series(emp2_data2[4], index = emp2_dates )
+        emp2_et = pd.Series(emp2_data[:,4], index = emp2_dates )
+        emp2_gpp = pd.Series(emp2_data2[:,4], index = emp2_dates )
 
     #############################
     #read in data from VOM
