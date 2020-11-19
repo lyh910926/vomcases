@@ -241,8 +241,8 @@ def main():
      
         #write output files
         np.savetxt( args.out_vom + "/evap_beststats.txt", eresult, comments='', delimiter=" " , 
-            header = ["KGE", "Mean Ann. RE", "Mean Dry RE", "Mean Wet RE", "MAE", "Seas.Ampl.RE", "BIAS", "Min.Ann.RE", "Mean Ann.Sim", "Mean Ann. Obs", "Corr.Coeff.", "Std.", "NME"])
-        np.savetxt( args.out_vom + "/ass_beststats.txt", assresult, comments='', delimiter=" ", header = ["KGE", "Mean Ann. RE", "Mean Dry RE", "Mean Wet RE", "MAE", "Seas.Ampl.RE", "BIAS", "Min.Ann.RE", "Mean Ann.Sim", "Mean Ann. Obs", "Corr.Coeff.", "Std.", "NME"] )
+            header = "KGE, Mean Ann. RE, Mean Dry RE, Mean Wet RE, MAE, Seas.Ampl.RE, BIAS, Min.Ann.RE, Mean Ann.Sim, Mean Ann. Obs, Corr.Coeff., Std., NME")
+        np.savetxt( args.out_vom + "/ass_beststats.txt", assresult, comments='', delimiter=" ", header = "KGE, Mean Ann. RE, Mean Dry RE, Mean Wet RE, MAE, Seas.Ampl.RE, BIAS, Min.Ann.RE, Mean Ann.Sim, Mean Ann. Obs, Corr.Coeff., Std., NME" )
 
 
         #addition for the VOM:
@@ -262,7 +262,7 @@ def main():
         pcresult = [[ pcKGE, pcMeanAnnRE, pcMeanSeas1RE, pcMeanSeas2RE, pcMAE, pcBIAS, pcMinRE ]]
 
         np.savetxt( args.out_vom + "/pc_beststats.txt", pcresult, comments='', delimiter=" ",
-             header = ["KGE", "Mean Ann. RE",  "Mean Dry RE", "Mean Wet RE", "MAE", "BIAS", "Min.Ann.RE" ]) 
+             header = "KGE, Mean Ann. RE, Mean Dry RE, Mean Wet RE, MAE, BIAS, Min.Ann.RE" ) 
 
     #############################
     #BESS statistics
@@ -317,8 +317,8 @@ def main():
      
         #write output files
         np.savetxt( args.out_bess + "/evap_beststats.txt", eresult, comments='', delimiter=" " , 
-            header = ["KGE", "Mean Ann. RE", "Mean Dry RE", "Mean Wet RE", "MAE", "Seas.Ampl.RE", "BIAS", "Min.Ann.RE", "Mean Ann.Sim", "Mean Ann. Obs", "Corr.Coeff.", "Std.", "NME"])
-        np.savetxt( args.out_bess + "/ass_beststats.txt", assresult, comments='', delimiter=" ", header = ["KGE", "Mean Ann. RE", "Mean Dry RE", "Mean Wet RE", "MAE", "Seas.Ampl.RE", "BIAS", "Min.Ann.RE", "Mean Ann.Sim", "Mean Ann. Obs", "Corr.Coeff.", "Std.", "NME"] )
+            header = "KGE, Mean Ann. RE, Mean Dry RE, Mean Wet RE, MAE, Seas.Ampl.RE, BIAS, Min.Ann.RE, Mean Ann.Sim, Mean Ann. Obs, Corr.Coeff., Std., NME")
+        np.savetxt( args.out_bess + "/ass_beststats.txt", assresult, comments='', delimiter=" ", header = "KGE, Mean Ann. RE, Mean Dry RE, Mean Wet RE, MAE, Seas.Ampl.RE, BIAS, Min.Ann.RE, Mean Ann.Sim, Mean Ann. Obs, Corr.Coeff., Std., NME" )
 
     #############################
     #BIOS2 statistics
@@ -373,8 +373,8 @@ def main():
      
         #write output files
         np.savetxt( args.out_bios2 + "/evap_beststats.txt", eresult, comments='', delimiter=" " , 
-            header = ["KGE", "Mean Ann. RE", "Mean Dry RE", "Mean Wet RE", "MAE", "Seas.Ampl.RE", "BIAS", "Min.Ann.RE", "Mean Ann.Sim", "Mean Ann. Obs", "Corr.Coeff.", "Std.", "NME"])
-        np.savetxt( args.out_bios2 + "/ass_beststats.txt", assresult, comments='', delimiter=" ", header = ["KGE", "Mean Ann. RE", "Mean Dry RE", "Mean Wet RE", "MAE", "Seas.Ampl.RE", "BIAS", "Min.Ann.RE", "Mean Ann.Sim", "Mean Ann. Obs", "Corr.Coeff.", "Std.", "NME"] )
+            header = "KGE, Mean Ann. RE, Mean Dry RE, Mean Wet RE, MAE, Seas.Ampl.RE, BIAS, Min.Ann.RE, Mean Ann.Sim, Mean Ann. Obs, Corr.Coeff., Std., NME")
+        np.savetxt( args.out_bios2 + "/ass_beststats.txt", assresult, comments='', delimiter=" ", header = "KGE, Mean Ann. RE, Mean Dry RE, Mean Wet RE, MAE, Seas.Ampl.RE, BIAS, Min.Ann.RE, Mean Ann.Sim, Mean Ann. Obs, Corr.Coeff., Std., NME" )
 
    #############################
     #LPJ-GUESS statistics
@@ -429,8 +429,8 @@ def main():
      
         #write output files
         np.savetxt( args.out_lpjguess + "/evap_beststats.txt", eresult, comments='', delimiter=" " , 
-            header = ["KGE", "Mean Ann. RE", "Mean Dry RE", "Mean Wet RE", "MAE", "Seas.Ampl.RE", "BIAS", "Min.Ann.RE", "Mean Ann.Sim", "Mean Ann. Obs", "Corr.Coeff.", "Std.", "NME"])
-        np.savetxt( args.out_lpjguess + "/ass_beststats.txt", assresult, comments='', delimiter=" ", header = ["KGE", "Mean Ann. RE", "Mean Dry RE", "Mean Wet RE", "MAE", "Seas.Ampl.RE", "BIAS", "Min.Ann.RE", "Mean Ann.Sim", "Mean Ann. Obs", "Corr.Coeff.", "Std.", "NME"] )
+            header = "KGE, Mean Ann. RE, Mean Dry RE, Mean Wet RE, MAE, Seas.Ampl.RE, BIAS, Min.Ann.RE, Mean Ann.Sim, Mean Ann. Obs, Corr.Coeff., Std., NME")
+        np.savetxt( args.out_lpjguess + "/ass_beststats.txt", assresult, comments='', delimiter=" ", header = "KGE, Mean Ann. RE, Mean Dry RE, Mean Wet RE, MAE, Seas.Ampl.RE, BIAS, Min.Ann.RE, Mean Ann.Sim, Mean Ann. Obs, Corr.Coeff., Std., NME" )
 
     #############################
     #maespa statistics
@@ -485,8 +485,8 @@ def main():
      
         #write output files
         np.savetxt( args.out_maespa + "/evap_beststats.txt", eresult, comments='', delimiter=" " , 
-            header = ["KGE", "Mean Ann. RE", "Mean Dry RE", "Mean Wet RE", "MAE", "Seas.Ampl.RE", "BIAS", "Min.Ann.RE", "Mean Ann.Sim", "Mean Ann. Obs", "Corr.Coeff.", "Std.", "NME"])
-        np.savetxt( args.out_maespa + "/ass_beststats.txt", assresult, comments='', delimiter=" ", header = ["KGE", "Mean Ann. RE", "Mean Dry RE", "Mean Wet RE", "MAE", "Seas.Ampl.RE", "BIAS", "Min.Ann.RE", "Mean Ann.Sim", "Mean Ann. Obs", "Corr.Coeff.", "Std.", "NME"] )
+            header = "KGE, Mean Ann. RE, Mean Dry RE, Mean Wet RE, MAE, Seas.Ampl.RE, BIAS, Min.Ann.RE, Mean Ann.Sim, Mean Ann. Obs, Corr.Coeff., Std., NME")
+        np.savetxt( args.out_maespa + "/ass_beststats.txt", assresult, comments='', delimiter=" ", header = "KGE, Mean Ann. RE, Mean Dry RE, Mean Wet RE, MAE, Seas.Ampl.RE, BIAS, Min.Ann.RE, Mean Ann.Sim, Mean Ann. Obs, Corr.Coeff., Std., NME" )
 
     #############################
     #spa statistics
@@ -541,8 +541,8 @@ def main():
      
         #write output files
         np.savetxt( args.out_spa + "/evap_beststats.txt", eresult, comments='', delimiter=" " , 
-            header = ["KGE", "Mean Ann. RE", "Mean Dry RE", "Mean Wet RE", "MAE", "Seas.Ampl.RE", "BIAS", "Min.Ann.RE", "Mean Ann.Sim", "Mean Ann. Obs", "Corr.Coeff.", "Std.", "NME"])
-        np.savetxt( args.out_spa + "/ass_beststats.txt", assresult, comments='', delimiter=" ", header = ["KGE", "Mean Ann. RE", "Mean Dry RE", "Mean Wet RE", "MAE", "Seas.Ampl.RE", "BIAS", "Min.Ann.RE", "Mean Ann.Sim", "Mean Ann. Obs", "Corr.Coeff.", "Std.", "NME"] )
+            header = "KGE, Mean Ann. RE, Mean Dry RE, Mean Wet RE, MAE, Seas.Ampl.RE, BIAS, Min.Ann.RE, Mean Ann.Sim, Mean Ann. Obs, Corr.Coeff., Std., NME")
+        np.savetxt( args.out_spa + "/ass_beststats.txt", assresult, comments='', delimiter=" ", header = "KGE, Mean Ann. RE, Mean Dry RE, Mean Wet RE, MAE, Seas.Ampl.RE, BIAS, Min.Ann.RE, Mean Ann.Sim, Mean Ann. Obs, Corr.Coeff., Std., NME" )
 
     #############################
     #cable statistics
@@ -597,8 +597,8 @@ def main():
      
         #write output files
         np.savetxt( args.out_cable + "/evap_beststats.txt", eresult, comments='', delimiter=" " , 
-            header = ["KGE", "Mean Ann. RE", "Mean Dry RE", "Mean Wet RE", "MAE", "Seas.Ampl.RE", "BIAS", "Min.Ann.RE", "Mean Ann.Sim", "Mean Ann. Obs", "Corr.Coeff.", "Std.", "NME"])
-        np.savetxt( args.out_cable + "/ass_beststats.txt", assresult, comments='', delimiter=" ", header = ["KGE", "Mean Ann. RE", "Mean Dry RE", "Mean Wet RE", "MAE", "Seas.Ampl.RE", "BIAS", "Min.Ann.RE", "Mean Ann.Sim", "Mean Ann. Obs", "Corr.Coeff.", "Std.", "NME"] )
+            header = "KGE, Mean Ann. RE, Mean Dry RE, Mean Wet RE, MAE, Seas.Ampl.RE, BIAS, Min.Ann.RE, Mean Ann.Sim, Mean Ann. Obs, Corr.Coeff., Std., NME")
+        np.savetxt( args.out_cable + "/ass_beststats.txt", assresult, comments='', delimiter=" ", header = "KGE, Mean Ann. RE, Mean Dry RE, Mean Wet RE, MAE, Seas.Ampl.RE, BIAS, Min.Ann.RE, Mean Ann.Sim, Mean Ann. Obs, Corr.Coeff., Std., NME" )
 
     #############################
     #emp1 statistics
@@ -654,8 +654,8 @@ def main():
      
         #write output files
         np.savetxt( args.out_emp1 + "/evap_beststats.txt", eresult, comments='', delimiter=" " , 
-            header = ["KGE", "Mean Ann. RE", "Mean Dry RE", "Mean Wet RE", "MAE", "Seas.Ampl.RE", "BIAS", "Min.Ann.RE", "Mean Ann.Sim", "Mean Ann. Obs", "Corr.Coeff.", "Std.", "NME"])
-        np.savetxt( args.out_emp1 + "/ass_beststats.txt", assresult, comments='', delimiter=" ", header = ["KGE", "Mean Ann. RE", "Mean Dry RE", "Mean Wet RE", "MAE", "Seas.Ampl.RE", "BIAS", "Min.Ann.RE", "Mean Ann.Sim", "Mean Ann. Obs", "Corr.Coeff.", "Std.", "NME"] )
+            header = "KGE, Mean Ann. RE, Mean Dry RE, Mean Wet RE, MAE, Seas.Ampl.RE, BIAS, Min.Ann.RE, Mean Ann.Sim, Mean Ann. Obs, Corr.Coeff., Std., NME")
+        np.savetxt( args.out_emp1 + "/ass_beststats.txt", assresult, comments='', delimiter=" ", header = "KGE, Mean Ann. RE, Mean Dry RE, Mean Wet RE, MAE, Seas.Ampl.RE, BIAS, Min.Ann.RE, Mean Ann.Sim, Mean Ann. Obs, Corr.Coeff., Std., NME" )
 
     if(args.emp2 is not None):
         #determine which dates overlap       
@@ -709,8 +709,8 @@ def main():
      
         #write output files
         np.savetxt( args.out_emp2 + "/evap_beststats.txt", eresult, comments='', delimiter=" " , 
-            header = ["KGE", "Mean Ann. RE", "Mean Dry RE", "Mean Wet RE", "MAE", "Seas.Ampl.RE", "BIAS", "Min.Ann.RE", "Mean Ann.Sim", "Mean Ann. Obs", "Corr.Coeff.", "Std.", "NME"])
-        np.savetxt( args.out_emp2 + "/ass_beststats.txt", assresult, comments='', delimiter=" ", header = ["KGE", "Mean Ann. RE", "Mean Dry RE", "Mean Wet RE", "MAE", "Seas.Ampl.RE", "BIAS", "Min.Ann.RE", "Mean Ann.Sim", "Mean Ann. Obs", "Corr.Coeff.", "Std.", "NME"] )
+            header = "KGE, Mean Ann. RE, Mean Dry RE, Mean Wet RE, MAE, Seas.Ampl.RE, BIAS, Min.Ann.RE, Mean Ann.Sim, Mean Ann. Obs, Corr.Coeff., Std., NME")
+        np.savetxt( args.out_emp2 + "/ass_beststats.txt", assresult, comments='', delimiter=" ", header = "KGE, Mean Ann. RE, Mean Dry RE, Mean Wet RE, MAE, Seas.Ampl.RE, BIAS, Min.Ann.RE, Mean Ann.Sim, Mean Ann. Obs, Corr.Coeff., Std., NME" )
 
 
 
