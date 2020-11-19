@@ -604,7 +604,7 @@ def main():
     #emp1 statistics
     if(args.emp1 is not None):
         #determine which dates overlap       
-        dates_overlap = emp1_dates.intersection(eobs_pd.index)
+        dates_overlap = emp1_et.index.intersection(eobs_pd.index)
         print("Evaluating fluxes for:")
         print(dates_overlap[0])
         print(dates_overlap[-1])
@@ -659,7 +659,7 @@ def main():
 
     if(args.emp2 is not None):
         #determine which dates overlap       
-        dates_overlap = emp2_dates.intersection(eobs_pd.index)
+        dates_overlap = emp2_et.index.intersection(eobs_pd.index)
         print("Evaluating fluxes for:")
         print(dates_overlap[0])
         print(dates_overlap[-1])
