@@ -99,7 +99,7 @@ def main():
 
 
         emp1_et = pd.Series(emp1_data[:,4], index = emp1_dates )
-        emp1_gpp = pd.Series(emp1_data2[:,4], index = emp1_dates )
+        emp1_gpp = pd.Series(-1.0*emp1_data2[:,4], index = emp1_dates )
 
     if(args.emp2 is not None):
         emp2_data = np.genfromtxt(args.emp2[0])
@@ -111,7 +111,7 @@ def main():
 
 
         emp2_et = pd.Series(emp2_data[:,4], index = emp2_dates )
-        emp2_gpp = pd.Series(emp2_data2[:,4], index = emp2_dates )
+        emp2_gpp = pd.Series(-1.0*emp2_data2[:,4], index = emp2_dates )
 
     #############################
     #read in data from VOM
