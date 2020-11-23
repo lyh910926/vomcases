@@ -317,7 +317,7 @@ def main():
         ax[1].plot(loc, pd.Series(lpjguess_assma), "--", color="blue", zorder=1)
 
 
-    if args.print_summary is not None:
+    if args.print_summary:
 
         print("SUMMARY:")
         print("Mean annual ET and GPP difference with observations")
@@ -503,7 +503,7 @@ def main():
         iplot = iplot + 1
 
 
-        if args.print_summary is not None:
+        if args.print_summary:
 
             print("SUMMARY:" + ylabels[iplot-2] + "," + ylabels[iplot-1])
 
@@ -564,37 +564,6 @@ def main():
         plt.savefig(args.outfile, bbox_inches = "tight")
     else:
         plt.show()
-
-    if args.print_summary is not None:
-
-
-        print("SUMMARY:")
-        print("Mean annual ET and GPP difference with observations")
-        print("VOM:")
-        print("BESS:")
-        print("BIOS2:")
-        print("CABLE:")
-        print("LPJ-GUESS:")
-        print("MAESPA:")
-        print("SPA:")
-        print("=======================================================")
-        print("Mean rel. error ET and GPP ")
-        print("VOM:")
-        print("BESS:")
-        print("BIOS2:")
-        print("CABLE:")
-        print("LPJ-GUESS:")
-        print("MAESPA:")
-        print("SPA:")
-        print("=======================================================")
-        print("Mean rel. error seasonal amplitude ET and GPP ")
-        print("VOM:")
-        print("BESS:")
-        print("BIOS2:")
-        print("CABLE:")
-        print("LPJ-GUESS:")
-        print("MAESPA:")
-        print("SPA:")
 
 
 
