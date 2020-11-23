@@ -72,6 +72,7 @@ def main():
     parser.add_argument("--spa_gpp_stats", help="spa statistics assimilation", nargs='+')
     parser.add_argument("--cable_gpp_stats", help="cable statistics assimilation", nargs='+')
 
+    parser.add_argument("--print_summary", help="prints a summary of the statistics",dest="print_summary", action='store_true' )
     parser.add_argument("--sites", help="study sites, should correspond to the number and order of inputfiles", nargs='+')
     parser.add_argument("--whitley_sites", help="mask the study sites that are also used in Whitley et al.",nargs='+', type=int )
     parser.add_argument("--dingo_et", help="DINGO files evaporation", nargs='+')
@@ -82,7 +83,7 @@ def main():
     parser.add_argument("--no_fig_lab", dest="fig_lab", action='store_false', help="do not plot labels of subplots")
     parser.add_argument("--sharex", help="share x-axis", dest="sharex", action='store_true' )
     parser.add_argument("--no_sharex", help="share x-axis", dest="sharex", action='store_false')
-    parser.set_defaults(fig_lab=True, sharex = True)
+    parser.set_defaults(fig_lab=True, sharex = True, print_summary = False)
 
     args = parser.parse_args()
 
@@ -316,6 +317,23 @@ def main():
         ax[1].plot(loc, pd.Series(lpjguess_assma), "--", color="blue", zorder=1)
 
 
+    if args.print_summary is not None:
+
+        print("SUMMARY:")
+        print("Mean annual ET and GPP difference with observations")
+        print('VOM: {0:3f} |{1:3f}'.format(np.mean(pd.Series(vom_evap) - pd.Series(dingo_evap)) , np.mean(pd.Series(vom_gpp) - pd.Series(dingo_gpp))  ) )
+        print('VOM-pc: {0:3f} |{1:3f}'.format(np.mean(pd.Series(vom_pc_evap) - pd.Series(dingo_evap)) , np.mean(pd.Series(vom_pc_gpp) - pd.Series(dingo_gpp))  ) )
+        print('VOM-pc2: {0:3f} |{1:3f}'.format(np.mean(pd.Series(vom_pc2_evap) - pd.Series(dingo_evap)) , np.mean(pd.Series(vom_pc2_gpp) - pd.Series(dingo_gpp))  ) )
+        print('VOM-zr: {0:3f} |{1:3f}'.format(np.mean(pd.Series(vom_zr_evap) - pd.Series(dingo_evap)) , np.mean(pd.Series(vom_zr_gpp) - pd.Series(dingo_gpp))  ) )
+        print('BESS: {0:3f} |{1:3f}'.format(np.mean(pd.Series(bess_ema) - pd.Series(dingo_evap)) , np.mean(pd.Series(bess_assma) - pd.Series(dingo_gpp))  ) )
+        print('BIOS2: {0:3f} |{1:3f}'.format(np.mean(pd.Series(bios2_ema) - pd.Series(dingo_evap)) , np.mean(pd.Series(bios2_assma) - pd.Series(dingo_gpp))  ) )
+        print('CABLE: {0:3f} |{1:3f}'.format(np.mean(pd.Series(cable_ema) - pd.Series(dingo_evap)) , np.mean(pd.Series(cable_assma) - pd.Series(dingo_gpp))  ) )
+        print('LPJ-GUESS: {0:3f} |{1:3f}'.format(np.mean(pd.Series(lpjguess_ema) - pd.Series(dingo_evap)) , np.mean(pd.Series(lpjguess_assma) - pd.Series(dingo_gpp))  ) )
+        print('MAESPA: {0:3f} |{1:3f}'.format(np.mean(pd.Series(maespa_ema) - pd.Series(dingo_evap)) , np.mean(pd.Series(maespa_assma) - pd.Series(dingo_gpp))  ) )
+        print('SPA: {0:3f} |{1:3f}'.format(np.mean(pd.Series(spa_ema) - pd.Series(dingo_evap)) , np.mean(pd.Series(spa_assma) - pd.Series(dingo_gpp))  ) )
+        print("---------------------------------------------------")
+
+
     iplot = 0
     #loop over study sites
     for isite in range(0, len(args.sites)): 
@@ -485,6 +503,56 @@ def main():
         iplot = iplot + 1
 
 
+        if args.print_summary is not None:
+
+            print("SUMMARY:" + ylabels[iplot-2] + "," + ylabels[iplot-1])
+
+            vals_evap = np.mean(np.array([elem[i_stat] for elem in vom_evap_stats.values()]))
+            vals_gpp = np.mean(np.array([elem[i_stat] for elem in vom_gpp_stats.values()]))
+            print('VOM: {0:3f} |{1:3f}'.format(vals_evap , vals_gpp) )
+
+            vals_evap = np.mean(np.array([elem[i_stat] for elem in vom_pc_evap_stats.values()]))
+            vals_gpp = np.mean(np.array([elem[i_stat] for elem in vom_pc_gpp_stats.values()]))
+            print('VOM-pc: {0:3f} |{1:3f}'.format(vals_evap , vals_gpp) )
+
+
+            vals_evap = np.mean(np.array([elem[i_stat] for elem in vom_pc2_evap_stats.values()]))
+            vals_gpp = np.mean(np.array([elem[i_stat] for elem in vom_pc2_gpp_stats.values()]))
+            print('VOM-pc2: {0:3f} |{1:3f}'.format(vals_evap , vals_gpp) )
+
+
+            vals_evap = np.mean(np.array([elem[i_stat] for elem in vom_zr_evap_stats.values()]))
+            vals_gpp = np.mean(np.array([elem[i_stat] for elem in vom_zr_gpp_stats.values()]))
+            print('VOM-zr: {0:3f} |{1:3f}'.format(vals_evap , vals_gpp) )
+
+
+            vals_evap = np.mean(np.array([elem[i_stat] for elem in bess_evap_stats.values()]))
+            vals_gpp = np.mean(np.array([elem[i_stat] for elem in bess_ass_stats.values()]))
+            print('BESS: {0:3f} |{1:3f}'.format(vals_evap , vals_gpp) )
+
+            vals_evap = np.mean(np.array([elem[i_stat] for elem in bios2_evap_stats.values()]))
+            vals_gpp = np.mean(np.array([elem[i_stat] for elem in bios2_ass_stats.values()]))
+            print('BIOS2: {0:3f} |{1:3f}'.format(vals_evap , vals_gpp) )
+
+            vals_evap = np.mean(np.array([elem[i_stat] for elem in cable_evap_stats.values()]))
+            vals_gpp = np.mean(np.array([elem[i_stat] for elem in cable_ass_stats.values()]))
+            print('CABLE: {0:3f} |{1:3f}'.format(vals_evap , vals_gpp) )
+
+            vals_evap = np.mean(np.array([elem[i_stat] for elem in lpjguess_evap_stats.values()]))
+            vals_gpp = np.mean(np.array([elem[i_stat] for elem in lpjguess_ass_stats.values()]))
+            print('LPJ-GUESS: {0:3f} |{1:3f}'.format(vals_evap , vals_gpp) )
+
+            vals_evap = np.mean(np.array([elem[i_stat] for elem in maespa_evap_stats.values()]))
+            vals_gpp = np.mean(np.array([elem[i_stat] for elem in maespa_ass_stats.values()]))
+            print('MAESPA: {0:3f} |{1:3f}'.format(vals_evap , vals_gpp) )
+
+            vals_evap = np.mean(np.array([elem[i_stat] for elem in spa_evap_stats.values()]))
+            vals_gpp = np.mean(np.array([elem[i_stat] for elem in spa_ass_stats.values()]))
+            print('SPA: {0:3f} |{1:3f}'.format(vals_evap , vals_gpp) )
+            print("---------------------------------------------------")
+
+
+
     lines_labels = [ax.get_legend_handles_labels() for ax in fig.axes]
     lines, labels = [sum(lol, []) for lol in zip(*lines_labels)]
 
@@ -496,6 +564,39 @@ def main():
         plt.savefig(args.outfile, bbox_inches = "tight")
     else:
         plt.show()
+
+    if args.print_summary is not None:
+
+
+        print("SUMMARY:")
+        print("Mean annual ET and GPP difference with observations")
+        print("VOM:")
+        print("BESS:")
+        print("BIOS2:")
+        print("CABLE:")
+        print("LPJ-GUESS:")
+        print("MAESPA:")
+        print("SPA:")
+        print("=======================================================")
+        print("Mean rel. error ET and GPP ")
+        print("VOM:")
+        print("BESS:")
+        print("BIOS2:")
+        print("CABLE:")
+        print("LPJ-GUESS:")
+        print("MAESPA:")
+        print("SPA:")
+        print("=======================================================")
+        print("Mean rel. error seasonal amplitude ET and GPP ")
+        print("VOM:")
+        print("BESS:")
+        print("BIOS2:")
+        print("CABLE:")
+        print("LPJ-GUESS:")
+        print("MAESPA:")
+        print("SPA:")
+
+
 
 def read_bess(infile, startyear):
 
