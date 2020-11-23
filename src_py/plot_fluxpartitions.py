@@ -256,20 +256,20 @@ def main():
         fig, axes   = plt.subplots(nrows=5, ncols=2, figsize=(args.figsize[0], args.figsize[1]), sharex = True )
         ax = axes.flat
 
-        evap_barplot(esoil_ma, etmt_ma, etmg_ma, esoil_ma_pc, etmt_ma_pc, etmg_ma_pc, etot_dingo, ax[0], plot_label[0], args.sites, args.label_pad, -40, args.labsize,"Mean annual ET \n (mm year$^{-1}$)", args.loc_title[0], args.loc_title[1] )
-        ass_barplot(assg_ma, asst_ma, assg_ma_pc, asst_ma_pc, gpptot_dingo, ax[1], plot_label[1], args.sites, args.label_pad, -5, args.labsize, "Mean annual GPP \n (mol m$^{-2}$ year$^{-1}$)", args.loc_title[0], args.loc_title[1])
+        evap_barplot(esoil_ma, etmt_ma, etmg_ma, esoil_ma_pc, etmt_ma_pc, etmg_ma_pc, etot_dingo, ax[0], plot_label[0], args.sites, args.label_pad, -40, args.labsize,"Mean annual ET \n (mm year$^{-1}$)", args.loc_title[0], args.loc_title[1], True )
+        ass_barplot(assg_ma, asst_ma, assg_ma_pc, asst_ma_pc, gpptot_dingo, ax[1], plot_label[1], args.sites, args.label_pad, -5, args.labsize, "Mean annual GPP \n (mol m$^{-2}$ year$^{-1}$)", args.loc_title[0], args.loc_title[1], True)
 
-        evap_barplot(esoil_wet, etmt_wet, etmg_wet, esoil_wet_pc, etmt_wet_pc, etmg_wet_pc, ewet_dingo, ax[2], plot_label[2], args.sites, args.label_pad, -20, args.labsize, "Mean ET Dec.-March \n (mm year$^{-1}$)", args.loc_title[0], args.loc_title[1])
-        ass_barplot(assg_wet, asst_wet, assg_wet_pc, asst_wet_pc, gppwet_dingo, ax[3], plot_label[3], args.sites, args.label_pad, -3, args.labsize, "Mean GPP Dec.-March \n (mol m$^{-2}$)", args.loc_title[0], args.loc_title[1])
+        evap_barplot(esoil_wet, etmt_wet, etmg_wet, esoil_wet_pc, etmt_wet_pc, etmg_wet_pc, ewet_dingo, ax[2], plot_label[2], args.sites, args.label_pad, -20, args.labsize, "Mean ET Dec.-March \n (mm year$^{-1}$)", args.loc_title[0], args.loc_title[1], True)
+        ass_barplot(assg_wet, asst_wet, assg_wet_pc, asst_wet_pc, gppwet_dingo, ax[3], plot_label[3], args.sites, args.label_pad, -3, args.labsize, "Mean GPP Dec.-March \n (mol m$^{-2}$)", args.loc_title[0], args.loc_title[1], True)
 
-        evap_barplot(esoil_dry, etmt_dry, etmg_dry, esoil_dry_pc, etmt_dry_pc, etmg_dry_pc, edry_dingo, ax[4], plot_label[4], args.sites, args.label_pad, -10, args.labsize, "Mean ET June-Sept. \n (mm year$^{-1}$)", args.loc_title[0], args.loc_title[1])
-        ass_barplot(assg_dry, asst_dry, assg_dry_pc, asst_dry_pc, gppdry_dingo, ax[5], plot_label[5], args.sites, args.label_pad, -2, args.labsize, "Mean GPP June-Sept. \n (mol m$^{-2}$)", args.loc_title[0], args.loc_title[1])
+        evap_barplot(esoil_dry, etmt_dry, etmg_dry, esoil_dry_pc, etmt_dry_pc, etmg_dry_pc, edry_dingo, ax[4], plot_label[4], args.sites, args.label_pad, -10, args.labsize, "Mean ET June-Sept. \n (mm year$^{-1}$)", args.loc_title[0], args.loc_title[1], True)
+        ass_barplot(assg_dry, asst_dry, assg_dry_pc, asst_dry_pc, gppdry_dingo, ax[5], plot_label[5], args.sites, args.label_pad, -2, args.labsize, "Mean GPP June-Sept. \n (mol m$^{-2}$)", args.loc_title[0], args.loc_title[1], True)
 
-        evap_barplot(esoil_wet2dry, etmt_wet2dry, etmg_wet2dry, esoil_wet2dry_pc, etmt_wet2dry_pc, etmg_wet2dry_pc, ewet2dry_dingo, ax[6], plot_label[6], args.sites, args.label_pad, -5, args.labsize, "Mean ET April-May \n (mm)", args.loc_title[0], args.loc_title[1])
-        ass_barplot(assg_wet2dry, asst_wet2dry, assg_wet2dry_pc, asst_wet2dry_pc,  gppwet2dry_dingo, ax[7], plot_label[7], args.sites, args.label_pad, -1, args.labsize, "Mean GPP April-May \n (mol m$^{-2}$)", args.loc_title[0], args.loc_title[1])
+        evap_barplot(esoil_wet2dry, etmt_wet2dry, etmg_wet2dry, esoil_wet2dry_pc, etmt_wet2dry_pc, etmg_wet2dry_pc, ewet2dry_dingo, ax[6], plot_label[6], args.sites, args.label_pad, -5, args.labsize, "Mean ET April-May \n (mm)", args.loc_title[0], args.loc_title[1], True)
+        ass_barplot(assg_wet2dry, asst_wet2dry, assg_wet2dry_pc, asst_wet2dry_pc,  gppwet2dry_dingo, ax[7], plot_label[7], args.sites, args.label_pad, -1, args.labsize, "Mean GPP April-May \n (mol m$^{-2}$)", args.loc_title[0], args.loc_title[1], True)
 
-        evap_barplot(esoil_dry2wet, etmt_dry2wet, etmg_dry2wet, esoil_dry2wet_pc, etmt_dry2wet_pc, etmg_dry2wet_pc, edry2wet_dingo, ax[8], plot_label[8], args.sites, args.label_pad, -5, args.labsize, "Mean ET Oct.-Nov. \n (mm)", args.loc_title[0], args.loc_title[1])
-        ass_barplot(assg_dry2wet, asst_dry2wet, assg_dry2wet_pc, asst_dry2wet_pc,  gppdry2wet_dingo, ax[9], plot_label[9], args.sites, args.label_pad, -1, args.labsize, "Mean GPP Oct.-Nov. \n (mol m$^{-2}$)", args.loc_title[0], args.loc_title[1])
+        evap_barplot(esoil_dry2wet, etmt_dry2wet, etmg_dry2wet, esoil_dry2wet_pc, etmt_dry2wet_pc, etmg_dry2wet_pc, edry2wet_dingo, ax[8], plot_label[8], args.sites, args.label_pad, -5, args.labsize, "Mean ET Oct.-Nov. \n (mm)", args.loc_title[0], args.loc_title[1], False)
+        ass_barplot(assg_dry2wet, asst_dry2wet, assg_dry2wet_pc, asst_dry2wet_pc,  gppdry2wet_dingo, ax[9], plot_label[9], args.sites, args.label_pad, -1, args.labsize, "Mean GPP Oct.-Nov. \n (mol m$^{-2}$)", args.loc_title[0], args.loc_title[1], False)
 
 
 
@@ -508,7 +508,7 @@ def mean_annual_dingo(inputfile, inputfile_mod, startyear, endyear, startwet, en
     return result      
                 
 
-def evap_barplot(esoil, etmt, etmg, esoil_pc, etmt_pc, etmg_pc, evap_dingo, ax, title, labels, label_pad, dist_lab, lab_size,ylabel, titlex, titley):
+def evap_barplot(esoil, etmt, etmg, esoil_pc, etmt_pc, etmg_pc, evap_dingo, ax, title, labels, label_pad, dist_lab, lab_size,ylabel, titlex, titley, sharex):
 
     ind = np.arange(0,(len(esoil))*4, 4)
     ind2 = ind + 1
@@ -534,20 +534,21 @@ def evap_barplot(esoil, etmt, etmg, esoil_pc, etmt_pc, etmg_pc, evap_dingo, ax, 
     ax.text(titlex, titley, title, transform=ax.transAxes, 
                 size=18)
 
-    for loc in ind:
-        ax.text(loc, dist_lab, "Predicted", size=lab_size, rotation=90, horizontalalignment='center')
-        
-    for loc in ind2:
-        ax.text(loc, dist_lab, "Prescribed", size=lab_size, rotation=90, horizontalalignment='center')
+    if(sharex != True):
+        for loc in ind:
+            ax.text(loc, dist_lab, "Predicted", size=lab_size, rotation=90, horizontalalignment='center', verticalalignment='top')
+            
+        for loc in ind2:
+            ax.text(loc, dist_lab, "Prescribed", size=lab_size, rotation=90, horizontalalignment='center', verticalalignment='top')
 
-    for loc in ind3:
-        ax.text(loc, dist_lab, "Observed", size=lab_size, rotation=90, horizontalalignment='center')
+        for loc in ind3:
+            ax.text(loc, dist_lab, "Observed", size=lab_size, rotation=90, horizontalalignment='center', verticalalignment='top')
 
 
     return ax
 
 
-def ass_barplot(assg, asst, assg_pc, asst_pc, gpp_dingo, ax, title, labels, label_pad,dist_lab, lab_size, ylabel, titlex, titley):
+def ass_barplot(assg, asst, assg_pc, asst_pc, gpp_dingo, ax, title, labels, label_pad,dist_lab, lab_size, ylabel, titlex, titley, sharex):
 
     ind = np.arange(0,(len(assg))*4, 4)
     ind2 = ind + 1
@@ -561,14 +562,15 @@ def ass_barplot(assg, asst, assg_pc, asst_pc, gpp_dingo, ax, title, labels, labe
 
     p6 = ax.bar(ind3, gpp_dingo, color="grey")
 
-    for loc in ind:
-        ax.text(loc, dist_lab, "Predicted", size=lab_size, rotation=90, horizontalalignment='center')
-        
-    for loc in ind2:
-        ax.text(loc, dist_lab, "Prescribed", size=lab_size, rotation=90, horizontalalignment='center')
+    if(sharex != True):
+        for loc in ind:
+            ax.text(loc, dist_lab, "Predicted", size=lab_size, rotation=90, horizontalalignment='center', verticalalignment='top')
+            
+        for loc in ind2:
+            ax.text(loc, dist_lab, "Prescribed", size=lab_size, rotation=90, horizontalalignment='center', verticalalignment='top')
 
-    for loc in ind3:
-        ax.text(loc, dist_lab, "Observed", size=lab_size, rotation=90, horizontalalignment='center')
+        for loc in ind3:
+            ax.text(loc, dist_lab, "Observed", size=lab_size, rotation=90, horizontalalignment='center', verticalalignment='top')
          
     ax.set_ylabel(r'' + ylabel, fontsize=14)        
     #ax.set_ylabel(r'Assimilation [mol/m$^2$/year]', fontsize=18)
