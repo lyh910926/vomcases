@@ -80,7 +80,7 @@ def main():
     parser.add_argument("--cbar_max", help="max value for colorbar", type=float, default = 2.6 )
     parser.add_argument("--ymin", help="min value for y-axis", type=float, default = 1, nargs='+')
     parser.add_argument("--ymax", help="max value for y-axis", type=float, default = 1, nargs='+')
-    parser.add_argument("--legend", help="show legend", type=bool, default = False )
+    parser.add_argument("--legend", help="show legend", dest="legend", action='store_true')
     parser.add_argument("--label_pad", help="label pad", type=float, default = 50)
     parser.add_argument("--palette", help="color-palette", default = 'OrRd' )
     parser.add_argument("--xloc_title", help="location x title", type=float, default = 0.01 )
@@ -99,7 +99,7 @@ def main():
     parser.add_argument("--tight_layout", help="tight layout", dest="tight_layout", action='store_true' )
     parser.add_argument("--no_tight_layout", help="no tight layout", dest="tight_layout", action='store_false')
     parser.add_argument("--print_results", help="prints values", dest="print_results", action='store_true' )
-    parser.set_defaults(fig_lab=True, sharex = False, tight_layout=True, rel_changes=False, print_results=False )
+    parser.set_defaults(fig_lab=True, sharex = False, tight_layout=True, rel_changes=False, print_results=False, show_legend=False )
 
     args = parser.parse_args()
 
