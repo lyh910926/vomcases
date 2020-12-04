@@ -55,7 +55,7 @@ def main():
 
 
             #read in data from CABLE, ET in kg/m^2/s, GPP in umol/m^2/s
-            AP, xll, yll, cellsize = read_nc(args.inputfiles[i])
+            AP, west, east, south, north  = read_nc(args.inputfiles[i])
 
             if(i == 0):
                 MAP = (1/len(args.inputfiles)) * AP 
@@ -64,23 +64,16 @@ def main():
             
     #write ascii grid
     file = open(args.outfile,"w") 
-    file.write("NCOLS {0:d} \n".format( MAP.shape[1]))
-    file.write("NROWS {0:d} \n".format( MAP.shape[0])  )
-    file.write("XLLCENTER {0:.2f} \n".format( xll)  )
-    file.write("YLLCENTER {0:.2f} \n".format( yll)  )
-    file.write("CELLSIZE {0:.2f} \n".format( cellsize)  )
-    file.write("NODATA_VALUE 9999 \n")
+    file.write("cols {0:d} \n".format( MAP.shape[1]))
+    file.write("rows {0:d} \n".format( MAP.shape[0])  )
+    file.write("east {0:.2f} \n".format( east)  )
+    file.write("south {0:.2f} \n".format( south)  )
+    file.write("north {0:.2f} \n".format( north)  )
+    file.write("west {0:.2f} \n".format( west)  )
+    file.write("NULL nan \n")
     np.savetxt(file, MAP)
+    file.close
 
-    #file.close()
-   # with open(args.outfile, "ab") as file:
-    #    np.savetxt(f, a)
-
-
-    #if args.outfile is not None:
-    #    plt.savefig(args.outfile, bbox_inches = "tight")
-    #else:
-    #    plt.show()
 
 
 def read_nc(infile):
@@ -88,13 +81,13 @@ def read_nc(infile):
     data = np.squeeze(ncfile.variables["monthly_rain"]) # extract variable
     lon = np.squeeze(ncfile.variables["lon"]) # extract variable
     lat = np.squeeze(ncfile.variables["lat"]) # extract variable
-    cellsize = lon[1]-lon[0]
+    #cellsize = lon[1]-lon[0]
 
     data[data<0]=np.nan
 
     AnnPrec = np.sum(data,0)
 
-    return AnnPrec, lon[-1], lat[-1], cellsize
+    return AnnPrec, lon[-1], lon[0], lat[-1],lat[0], cellsize
 
 
 main()
