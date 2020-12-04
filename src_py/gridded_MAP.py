@@ -87,7 +87,7 @@ def read_nc(infile):
 
     AnnPrec = np.sum(data,0)
 
-    return AnnPrec, lon[-1], lon[0], lat[-1],lat[0], cellsize
+    return AnnPrec, lon[-1], lon[0], lat[-1],lat[0]
 
 
 main()
