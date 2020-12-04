@@ -98,7 +98,8 @@ def main():
     parser.add_argument("--no_sharex", help="share x-axis", dest="sharex", action='store_false')
     parser.add_argument("--tight_layout", help="tight layout", dest="tight_layout", action='store_true' )
     parser.add_argument("--no_tight_layout", help="no tight layout", dest="tight_layout", action='store_false')
-    parser.set_defaults(fig_lab=True, sharex = False, tight_layout=True, rel_changes=False )
+    parser.add_argument("--print_results", help="prints values", dest="print_results", action='store_true' )
+    parser.set_defaults(fig_lab=True, sharex = False, tight_layout=True, rel_changes=False, print_results=False )
 
     args = parser.parse_args()
 
@@ -522,6 +523,8 @@ def main():
 
     for iplot in range(0, len(args.var)):
 
+        if(args.print_results):
+            print(ylabels[iplot])               
         #############################
         #plot 2015
         if args.i2015 is not None:
@@ -546,8 +549,12 @@ def main():
                 else:
                     ma_vals = np.mean(vals[i][args.var[iplot]].resample('A').mean() ) 
 
-            ax[iplot].bar([i], ma_vals, color="blue", zorder=1)                 
-               
+            ax[iplot].bar([i], ma_vals, color="blue", zorder=1)  
+            if(args.print_results):               
+                print(args.ticklabels[i] + ": {0:.2f}".format( ma_vals) )   
+        if(args.print_results):      
+            print("========================================")               
+
         #set axis and ticks   
         ax[iplot].set_ylabel(ylabels[iplot] , size=args.labelsize  )
         ax[iplot].set_xlim([-1, len(args.input)+1]) 
