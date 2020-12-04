@@ -66,9 +66,9 @@ def main():
     file = open(args.outfile,"w") 
     file.write("cols {0:d} \n".format( MAP.shape[1]))
     file.write("rows {0:d} \n".format( MAP.shape[0])  )
-    file.write("east {0:.2f} \n".format( east)  )
-    file.write("south {0:.2f} \n".format( south)  )
     file.write("north {0:.2f} \n".format( north)  )
+    file.write("south {0:.2f} \n".format( south)  )
+    file.write("east {0:.2f} \n".format( east)  )
     file.write("west {0:.2f} \n".format( west)  )
     file.write("NULL nan \n")
     np.savetxt(file, MAP)
@@ -87,7 +87,7 @@ def read_nc(infile):
 
     AnnPrec = np.sum(data,0)
 
-    return AnnPrec, lon[-1], lon[0], lat[-1],lat[0]
+    return AnnPrec, lon[0], lon[-1], lat[0],lat[-1]
 
 
 main()
