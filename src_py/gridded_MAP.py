@@ -62,16 +62,17 @@ def main():
             else:
                 MAP = (1/len(args.inputfiles)) * AP + MAP
             
+    MAP[np.isnan(MAP)] = -9999
     #write ascii grid
     file = open(args.outfile,"w") 
-    file.write("cols {0:d} \n".format( MAP.shape[1]))
-    file.write("rows {0:d} \n".format( MAP.shape[0])  )
-    file.write("north {0:.2f} \n".format( north)  )
-    file.write("south {0:.2f} \n".format( south)  )
-    file.write("east {0:.2f} \n".format( east)  )
-    file.write("west {0:.2f} \n".format( west)  )
-    file.write("NULL nan \n")
-    np.savetxt(file, MAP)
+    file.write("north: {0:.2f} \n".format( north)  )
+    file.write("south: {0:.2f} \n".format( south)  )
+    file.write("east: {0:.2f} \n".format( east)  )
+    file.write("west: {0:.2f} \n".format( west)  )
+    file.write("rows: {0:d} \n".format( MAP.shape[0])  )
+    file.write("cols: {0:d} \n".format( MAP.shape[1]))
+    file.write("NULL: -9999 \n")
+    np.savetxt(file, np.flipud(MAP))
     file.close
 
 
