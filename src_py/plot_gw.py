@@ -6,14 +6,37 @@ import pandas as pd
 from datetime import datetime, timedelta, date
 
 
-#file to prepare timeseries plot of VOM-results
-#Vegetation Optimality Model (VOM)
-#written: June 2018, R.C. Nijzink
+#***********************************************************************
+#        plot_gw.py
+#        Plots the groundwater of the VOM, including rooting depths   
+#        and observations.
+#-----------------------------------------------------------------------
+#        Authors: Remko Nijzink
+#        Now at: LIST (Luxembourg Institute of Science and Technology)
+#-----------------------------------------------------------------------
+#
+#  Copyright (C) 2020 LIST (Luxembourg Institute of Science and Technology), all right reserved.
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+#***********************************************************************
+
 
 
 def main():
 
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description="Plots the groundwater of the VOM, including rooting depths and observations.")
 
     #required input
     parser.add_argument("-i", "--input", help="results_daily (can be multiple)", nargs='+')
@@ -26,6 +49,7 @@ def main():
 
     parser.add_argument("--maxmod", help="results_daily max-values ")
     parser.add_argument("--minmod", help="results_daily min-values")
+    parser.add_argument("--dateformat", help="dateformat for observations", default='%Y-%m-%d %H:%M:%S')
     parser.add_argument("--emp1", help="empirical solution 1")
     parser.add_argument("--emp2", help="empirical solution 2")
     parser.add_argument("--obs", help="observations", nargs='+')
@@ -145,7 +169,8 @@ def main():
             obs_tmp = (np.genfromtxt(args.obs[i], usecols=args.obs_col, missing_values="", delimiter=",", skip_header=args.obs_header) ) *args.mf_obs  #
             #date/times observations
             tobs_tmp = np.genfromtxt(args.obs[i],usecols=0, missing_values="", delimiter=",", skip_header=args.obs_header, dtype=np.str )#mm/d
-            tobs_tmp = pd.date_range(datetime.strptime(tobs_tmp[0], args.obs_timeformat), periods=len(tobs_tmp), freq=args.obs_freq)   
+
+            tobs_tmp = pd.to_datetime(tobs_tmp, format=args.dateformat)
 
             obs.append(obs_tmp)
             tobs.append(tobs_tmp)

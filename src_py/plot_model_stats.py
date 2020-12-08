@@ -1,23 +1,31 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Does maximisation of net carbon profit explain vegetation behaviour in savanna sites along a precipitation gradient?
-# 
-# It was shown by Whitley et al. (2016) that six models that expliticly included land surface exchange and vegetation dynamics (i.e. terrestial biosphere models, TBM's) were not able to represent, especially, the wet season dynamics in savanna regions. This reflects generally the simplicity used in the current generation TBM's with regard to modelling vegetation, which becomes especially apparent in the more complex ecosystems of savannas. The understanding of these more complex interactions between vegetation, water and climate in savanna-sites is therefore crucial in order to improve modelling with TBM's. 
-# Similar to the model inter-comparison presented by Whitley et al. (2016), in this study a coupled water-vegetation model (VOM, Schymanski et al. 2009) is applied in several savanna sites. In this case, vegetation properties are optimized for net carbon profit, instead of prescribing these.
-# 
-# The hypotheses tested are:
-# 
-# - Observed vegetation dynamics in tropical savanna sites can be explained by the maximization of Net Carbon Profit. 
-# 
-# - Optimization of vegetation properties for the Net Carbon Profit leads to reduced data requirements for Land Surface Models
-# 
-# - Carbon cost functions for roots, water transport system and foliage are valid along a precipitation gradient
-# 
-# 
-# 
-
-# # Results
+#***********************************************************************
+#        plot_model_stats.py
+#        Plots the statistics obtained with model_stats.py   
+#        
+#-----------------------------------------------------------------------
+#        Authors: Remko Nijzink
+#        Now at: LIST (Luxembourg Institute of Science and Technology)
+#-----------------------------------------------------------------------
+#
+#  Copyright (C) 2020 LIST (Luxembourg Institute of Science and Technology), all right reserved.
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+#***********************************************************************
 
 
 
@@ -34,7 +42,7 @@ import argparse
 
 def main():
 
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description="Plots the statistics obtained with model_stats.py")
 
     parser.add_argument("-o", "--outfile", help="outputfile with plot")
 
@@ -64,6 +72,7 @@ def main():
     parser.add_argument("--spa_gpp_stats", help="spa statistics assimilation", nargs='+')
     parser.add_argument("--cable_gpp_stats", help="cable statistics assimilation", nargs='+')
 
+    parser.add_argument("--print_summary", help="prints a summary of the statistics",dest="print_summary", action='store_true' )
     parser.add_argument("--sites", help="study sites, should correspond to the number and order of inputfiles", nargs='+')
     parser.add_argument("--whitley_sites", help="mask the study sites that are also used in Whitley et al.",nargs='+', type=int )
     parser.add_argument("--dingo_et", help="DINGO files evaporation", nargs='+')
@@ -74,7 +83,7 @@ def main():
     parser.add_argument("--no_fig_lab", dest="fig_lab", action='store_false', help="do not plot labels of subplots")
     parser.add_argument("--sharex", help="share x-axis", dest="sharex", action='store_true' )
     parser.add_argument("--no_sharex", help="share x-axis", dest="sharex", action='store_false')
-    parser.set_defaults(fig_lab=True, sharex = True)
+    parser.set_defaults(fig_lab=True, sharex = True, print_summary = False)
 
     args = parser.parse_args()
 
@@ -119,38 +128,38 @@ def main():
 
     for i in range(0, len(whitley_sites)):
         #read in data from BESS
-        bess_evap_stats[whitley_sites[i]] = np.genfromtxt( args.bess_evap_stats[i]  )
-        bess_ass_stats[whitley_sites[i]] = np.genfromtxt( args.bess_gpp_stats[i]  )
+        bess_evap_stats[whitley_sites[i]] = np.genfromtxt( args.bess_evap_stats[i] , skip_header = 1 )
+        bess_ass_stats[whitley_sites[i]] = np.genfromtxt( args.bess_gpp_stats[i] , skip_header = 1 )
         bess_ema[whitley_sites[i]] =  bess_evap_stats[whitley_sites[i]][8]
         bess_assma[whitley_sites[i]] = bess_ass_stats[whitley_sites[i]][8]
 
         #read in data from BIOS2
-        bios2_evap_stats[whitley_sites[i]] = np.genfromtxt( args.bios2_evap_stats[i]  )
-        bios2_ass_stats[whitley_sites[i]] = np.genfromtxt( args.bios2_gpp_stats[i]  )
+        bios2_evap_stats[whitley_sites[i]] = np.genfromtxt( args.bios2_evap_stats[i]  , skip_header = 1)
+        bios2_ass_stats[whitley_sites[i]] = np.genfromtxt( args.bios2_gpp_stats[i]  , skip_header = 1)
         bios2_ema[whitley_sites[i]] = bios2_evap_stats[whitley_sites[i]][8]
         bios2_assma[whitley_sites[i]] = bios2_ass_stats[whitley_sites[i]][8]
 
         #read in data from LPJ-GUESS, ET in W/m2, GPP in umol/m2/s
-        lpjguess_evap_stats[whitley_sites[i]] = np.genfromtxt( args.lpjguess_evap_stats[i]  )
-        lpjguess_ass_stats[whitley_sites[i]] = np.genfromtxt( args.lpjguess_gpp_stats[i]  )
+        lpjguess_evap_stats[whitley_sites[i]] = np.genfromtxt( args.lpjguess_evap_stats[i], skip_header = 1  )
+        lpjguess_ass_stats[whitley_sites[i]] = np.genfromtxt( args.lpjguess_gpp_stats[i], skip_header = 1  )
         lpjguess_ema[whitley_sites[i]] = lpjguess_evap_stats[whitley_sites[i]][8]
         lpjguess_assma[whitley_sites[i]] = lpjguess_ass_stats[whitley_sites[i]][8]
 
         #read in data from MAESPA, ET in W m-2, GPP in umol m-2 s-1
-        maespa_evap_stats[whitley_sites[i]] = np.genfromtxt( args.maespa_evap_stats[i]  )
-        maespa_ass_stats[whitley_sites[i]] = np.genfromtxt( args.maespa_gpp_stats[i]  )
+        maespa_evap_stats[whitley_sites[i]] = np.genfromtxt( args.maespa_evap_stats[i], skip_header = 1  )
+        maespa_ass_stats[whitley_sites[i]] = np.genfromtxt( args.maespa_gpp_stats[i], skip_header = 1  )
         maespa_ema[whitley_sites[i]] = maespa_evap_stats[whitley_sites[i]][8]
         maespa_assma[whitley_sites[i]] = maespa_ass_stats[whitley_sites[i]][8]
 
         #read in data from SPA, ET in W m-2, GPP in mmol m-2 s-1
-        spa_evap_stats[whitley_sites[i]] = np.genfromtxt( args.spa_evap_stats[i]  )
-        spa_ass_stats[whitley_sites[i]] = np.genfromtxt( args.spa_gpp_stats[i]  )
+        spa_evap_stats[whitley_sites[i]] = np.genfromtxt( args.spa_evap_stats[i], skip_header = 1  )
+        spa_ass_stats[whitley_sites[i]] = np.genfromtxt( args.spa_gpp_stats[i], skip_header = 1  )
         spa_ema[whitley_sites[i]] = spa_evap_stats[whitley_sites[i]][8]
         spa_assma[whitley_sites[i]] = spa_ass_stats[whitley_sites[i]][8]
 
         #read in data from CABLE, ET in kg/m^2/s, GPP in umol/m^2/s
-        cable_evap_stats[whitley_sites[i]] = np.genfromtxt( args.cable_evap_stats[i]  )
-        cable_ass_stats[whitley_sites[i]] = np.genfromtxt( args.cable_gpp_stats[i]  )
+        cable_evap_stats[whitley_sites[i]] = np.genfromtxt( args.cable_evap_stats[i], skip_header = 1  )
+        cable_ass_stats[whitley_sites[i]] = np.genfromtxt( args.cable_gpp_stats[i], skip_header = 1  )
         cable_ema[whitley_sites[i]] = cable_evap_stats[whitley_sites[i]][8]
         cable_assma[whitley_sites[i]] = cable_ass_stats[whitley_sites[i]][8]
 
@@ -178,17 +187,17 @@ def main():
 
     for i in range(0, len(args.sites)):
 
-        vom_evap_stats[args.sites[i]] = np.genfromtxt( args.vom_evap_stats[i]  )
-        vom_gpp_stats[args.sites[i]] = np.genfromtxt( args.vom_gpp_stats[i]  )
+        vom_evap_stats[args.sites[i]] = np.genfromtxt( args.vom_evap_stats[i], skip_header = 1  )
+        vom_gpp_stats[args.sites[i]] = np.genfromtxt( args.vom_gpp_stats[i], skip_header = 1  )
 
-        vom_pc_evap_stats[args.sites[i]] = np.genfromtxt( args.vom_pc_evap_stats[i]  )
-        vom_pc_gpp_stats[args.sites[i]] = np.genfromtxt( args.vom_pc_gpp_stats[i]  )
+        vom_pc_evap_stats[args.sites[i]] = np.genfromtxt( args.vom_pc_evap_stats[i], skip_header = 1  )
+        vom_pc_gpp_stats[args.sites[i]] = np.genfromtxt( args.vom_pc_gpp_stats[i], skip_header = 1  )
 
-        vom_pc2_evap_stats[args.sites[i]] = np.genfromtxt( args.vom_pc2_evap_stats[i]  )
-        vom_pc2_gpp_stats[args.sites[i]] = np.genfromtxt( args.vom_pc2_gpp_stats[i]  )
+        vom_pc2_evap_stats[args.sites[i]] = np.genfromtxt( args.vom_pc2_evap_stats[i], skip_header = 1  )
+        vom_pc2_gpp_stats[args.sites[i]] = np.genfromtxt( args.vom_pc2_gpp_stats[i], skip_header = 1  )
 
-        vom_zr_evap_stats[args.sites[i]] = np.genfromtxt( args.vom_zr_evap_stats[i]  )
-        vom_zr_gpp_stats[args.sites[i]] = np.genfromtxt( args.vom_zr_gpp_stats[i]  )
+        vom_zr_evap_stats[args.sites[i]] = np.genfromtxt( args.vom_zr_evap_stats[i], skip_header = 1  )
+        vom_zr_gpp_stats[args.sites[i]] = np.genfromtxt( args.vom_zr_gpp_stats[i], skip_header = 1  )
 
 
         vom_evap[args.sites[i]] = vom_evap_stats[args.sites[i]][8]
@@ -211,7 +220,7 @@ def main():
 
     #parameters for plotting
     if args.fig_lab is True:
-        plot_label = [ "a)","b)","c)","d)","e)","f)", "g)", "h)" ]
+        plot_label = [ "(a)","(b)","(c)","(d)","(e)","(f)", "(g)", "(h)" ]
     else: 
         plot_label = [ " "," "," "," "," "," ", " ", " " ]
 
@@ -306,6 +315,23 @@ def main():
         ax[1].plot(loc, pd.Series(maespa_assma), "--", color="gold", zorder=1)
         ax[1].plot(loc, pd.Series(spa_assma), "--", color="pink", zorder=1)
         ax[1].plot(loc, pd.Series(lpjguess_assma), "--", color="blue", zorder=1)
+
+
+    if args.print_summary:
+
+        print("SUMMARY:")
+        print("Mean annual ET and GPP difference with observations")
+        print('VOM: {0:3f} |{1:3f}'.format(np.mean(pd.Series(vom_evap) - pd.Series(dingo_evap)) , np.mean(pd.Series(vom_gpp) - pd.Series(dingo_gpp))  ) )
+        print('VOM-pc: {0:3f} |{1:3f}'.format(np.mean(pd.Series(vom_pc_evap) - pd.Series(dingo_evap)) , np.mean(pd.Series(vom_pc_gpp) - pd.Series(dingo_gpp))  ) )
+        print('VOM-pc2: {0:3f} |{1:3f}'.format(np.mean(pd.Series(vom_pc2_evap) - pd.Series(dingo_evap)) , np.mean(pd.Series(vom_pc2_gpp) - pd.Series(dingo_gpp))  ) )
+        print('VOM-zr: {0:3f} |{1:3f}'.format(np.mean(pd.Series(vom_zr_evap) - pd.Series(dingo_evap)) , np.mean(pd.Series(vom_zr_gpp) - pd.Series(dingo_gpp))  ) )
+        print('BESS: {0:3f} |{1:3f}'.format(np.mean(pd.Series(bess_ema) - pd.Series(dingo_evap)) , np.mean(pd.Series(bess_assma) - pd.Series(dingo_gpp))  ) )
+        print('BIOS2: {0:3f} |{1:3f}'.format(np.mean(pd.Series(bios2_ema) - pd.Series(dingo_evap)) , np.mean(pd.Series(bios2_assma) - pd.Series(dingo_gpp))  ) )
+        print('CABLE: {0:3f} |{1:3f}'.format(np.mean(pd.Series(cable_ema) - pd.Series(dingo_evap)) , np.mean(pd.Series(cable_assma) - pd.Series(dingo_gpp))  ) )
+        print('LPJ-GUESS: {0:3f} |{1:3f}'.format(np.mean(pd.Series(lpjguess_ema) - pd.Series(dingo_evap)) , np.mean(pd.Series(lpjguess_assma) - pd.Series(dingo_gpp))  ) )
+        print('MAESPA: {0:3f} |{1:3f}'.format(np.mean(pd.Series(maespa_ema) - pd.Series(dingo_evap)) , np.mean(pd.Series(maespa_assma) - pd.Series(dingo_gpp))  ) )
+        print('SPA: {0:3f} |{1:3f}'.format(np.mean(pd.Series(spa_ema) - pd.Series(dingo_evap)) , np.mean(pd.Series(spa_assma) - pd.Series(dingo_gpp))  ) )
+        print("---------------------------------------------------")
 
 
     iplot = 0
@@ -477,6 +503,56 @@ def main():
         iplot = iplot + 1
 
 
+        if args.print_summary:
+
+            print("SUMMARY:" + ylabels[iplot-2] + "," + ylabels[iplot-1])
+
+            vals_evap = np.mean(np.array([elem[i_stat] for elem in vom_evap_stats.values()]))
+            vals_gpp = np.mean(np.array([elem[i_stat] for elem in vom_gpp_stats.values()]))
+            print('VOM: {0:3f} |{1:3f}'.format(vals_evap , vals_gpp) )
+
+            vals_evap = np.mean(np.array([elem[i_stat] for elem in vom_pc_evap_stats.values()]))
+            vals_gpp = np.mean(np.array([elem[i_stat] for elem in vom_pc_gpp_stats.values()]))
+            print('VOM-pc: {0:3f} |{1:3f}'.format(vals_evap , vals_gpp) )
+
+
+            vals_evap = np.mean(np.array([elem[i_stat] for elem in vom_pc2_evap_stats.values()]))
+            vals_gpp = np.mean(np.array([elem[i_stat] for elem in vom_pc2_gpp_stats.values()]))
+            print('VOM-pc2: {0:3f} |{1:3f}'.format(vals_evap , vals_gpp) )
+
+
+            vals_evap = np.mean(np.array([elem[i_stat] for elem in vom_zr_evap_stats.values()]))
+            vals_gpp = np.mean(np.array([elem[i_stat] for elem in vom_zr_gpp_stats.values()]))
+            print('VOM-zr: {0:3f} |{1:3f}'.format(vals_evap , vals_gpp) )
+
+
+            vals_evap = np.mean(np.array([elem[i_stat] for elem in bess_evap_stats.values()]))
+            vals_gpp = np.mean(np.array([elem[i_stat] for elem in bess_ass_stats.values()]))
+            print('BESS: {0:3f} |{1:3f}'.format(vals_evap , vals_gpp) )
+
+            vals_evap = np.mean(np.array([elem[i_stat] for elem in bios2_evap_stats.values()]))
+            vals_gpp = np.mean(np.array([elem[i_stat] for elem in bios2_ass_stats.values()]))
+            print('BIOS2: {0:3f} |{1:3f}'.format(vals_evap , vals_gpp) )
+
+            vals_evap = np.mean(np.array([elem[i_stat] for elem in cable_evap_stats.values()]))
+            vals_gpp = np.mean(np.array([elem[i_stat] for elem in cable_ass_stats.values()]))
+            print('CABLE: {0:3f} |{1:3f}'.format(vals_evap , vals_gpp) )
+
+            vals_evap = np.mean(np.array([elem[i_stat] for elem in lpjguess_evap_stats.values()]))
+            vals_gpp = np.mean(np.array([elem[i_stat] for elem in lpjguess_ass_stats.values()]))
+            print('LPJ-GUESS: {0:3f} |{1:3f}'.format(vals_evap , vals_gpp) )
+
+            vals_evap = np.mean(np.array([elem[i_stat] for elem in maespa_evap_stats.values()]))
+            vals_gpp = np.mean(np.array([elem[i_stat] for elem in maespa_ass_stats.values()]))
+            print('MAESPA: {0:3f} |{1:3f}'.format(vals_evap , vals_gpp) )
+
+            vals_evap = np.mean(np.array([elem[i_stat] for elem in spa_evap_stats.values()]))
+            vals_gpp = np.mean(np.array([elem[i_stat] for elem in spa_ass_stats.values()]))
+            print('SPA: {0:3f} |{1:3f}'.format(vals_evap , vals_gpp) )
+            print("---------------------------------------------------")
+
+
+
     lines_labels = [ax.get_legend_handles_labels() for ax in fig.axes]
     lines, labels = [sum(lol, []) for lol in zip(*lines_labels)]
 
@@ -488,6 +564,8 @@ def main():
         plt.savefig(args.outfile, bbox_inches = "tight")
     else:
         plt.show()
+
+
 
 def read_bess(infile, startyear):
 

@@ -1,20 +1,44 @@
+#!/usr/bin/env python
+# coding: utf-8
+#***********************************************************************
+#        plot_rootzone_states.py
+#        Script to plot groundwater, volumetric water content, water storage 
+#        and matrix potentials of the VOM
+#-----------------------------------------------------------------------
+#        Authors: Remko Nijzink
+#        Now at: LIST (Luxembourg Institute of Science and Technology)
+#-----------------------------------------------------------------------
+#
+#  Copyright (C) 2020 LIST (Luxembourg Institute of Science and Technology), all right reserved.
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+#***********************************************************************
+
 import numpy as np
 import argparse
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdate
+from matplotlib.colors import LogNorm
 import pandas as pd
+import matplotlib.dates as mdates
 from datetime import datetime, timedelta, date
-
-
-#file to prepare timeseries plot of VOM-results
-#Vegetation Optimality Model (VOM)
-#written: June 2018, R.C. Nijzink
-
 
 def main():
 
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description="Script to plot groundwater, volumetric water content, water storage and matrix potentials of the VOM.")
 
     #required input
     parser.add_argument("-i", "--input", help="results_daily (can be multiple)")
@@ -29,8 +53,10 @@ def main():
 
     parser.add_argument("--maxmod", help="results_daily max-values ")
     parser.add_argument("--minmod", help="results_daily min-values")
+    parser.add_argument("--dateformat", help="dateformat for observations", default='%Y-%m-%d %H:%M:%S')
     parser.add_argument("--emp1", help="empirical solution 1")
     parser.add_argument("--emp2", help="empirical solution 2")
+    parser.add_argument("--mf_obs", help="multiplication factor for unit conversion observations", type=float, default = 1.0)
     parser.add_argument("--obs_gw", help="observations groundwater Howard Springs", nargs='+')
     parser.add_argument("--obs_sm", help="observations soil moisture all sites")
     parser.add_argument("--obs_evap", help="observations evaporation")
@@ -42,7 +68,6 @@ def main():
     parser.add_argument("--soildata", help="soildata used for the VOM")
     parser.add_argument("--outputfile", help="outputfile")
     parser.add_argument("--mf", help="multiplication factor for unit conversion", type=float, default = 1.0)
-    parser.add_argument("--mf_obs", help="multiplication factor for unit conversion observations", type=float, default = 1.0)
     parser.add_argument("--labels", help="labels corresponding to input-files", nargs='+', default = ["VOM"] )
     parser.add_argument("--colors", help="colors corresponding to input-files", nargs='+', default = ["red"] )
     parser.add_argument("--figsize", help="figure size", nargs='+', type=float, default = [16,5] )
@@ -50,6 +75,11 @@ def main():
     parser.add_argument("--i_cz", help="surface level, for groundwater plot", type=float )
     parser.add_argument("--i_zr", help="bottom level, for groundwater plot", type=float )
     parser.add_argument("--i_delz", help="layer thickness", type=float )
+    parser.add_argument("--i_thetar", help="Van genuchten thetar AoB2015", type=float )
+    parser.add_argument("--i_thetas", help="Van genuchten thetas AoB2015", type=float )
+    parser.add_argument("--i_avg", help="Van genuchten alpha AoB2015", type=float )
+    parser.add_argument("--i_nvg", help="Van genuchten n AoB2015", type=float )
+
     parser.add_argument("--i_cz2015", help="surface level, for groundwater plot", type=float )
     parser.add_argument("--i_zr2015", help="bottom level, for groundwater plot", type=float )
     parser.add_argument("--i_delz2015", help="bottom level, for groundwater plot", type=float )
@@ -75,7 +105,7 @@ def main():
     parser.add_argument("--yloc_title", help="location y title", type=float, default = 1.05 )
     parser.add_argument("--ylim", help="limits y-axist", type=float, nargs='+', default = [-50,0] )
     parser.add_argument("--size_title", help="size of title", type=float, default = 20 )
-
+    parser.add_argument("--print_depths", help="print rooting depths", type=lambda x: bool(int(x)),  default = False )
 
     args = parser.parse_args()
 
@@ -92,11 +122,7 @@ def main():
         t_emp = np.genfromtxt( args.emp2, usecols=0, dtype=np.str)
         t_emp = pd.date_range(t_emp[0], t_emp[-1], freq='D')    
 
-    #---------------------------------
-    #load soildata
-    if args.soildata is not None:
-        #values observations
-        soildata = np.loadtxt(args.soildata) 
+
 
     #---------------------------------
     #load parameters
@@ -120,19 +146,36 @@ def main():
     su_vals = (data["su_1"])
     ws_vals = data["ws"]
     zw_vals = zw_vals_tmp
+    del zw_vals_tmp
 
     tmod = np.arange(datetime(int(data["fyear"][0]),int(data["fmonth"][0]),int(data["fday"][0])), 
                   datetime(int(data["fyear"][-1]),int(data["fmonth"][-1]),int(data["fday"][-1]))+timedelta(days=1), 
                   timedelta(days=1)).astype(datetime)
 
-    theta_s = soildata[0,5]
-    theta_r = soildata[0,6]
-    theta_tmp = (su_vals * (theta_s - theta_r)) + theta_r
-    theta_vals = theta_tmp
+    del data
+    #---------------------------------
+    #load soildata
+    nlayers = np.int(np.ceil(args.i_cz / args.i_delz))
+
+    if args.soildata is not None:
+        #values observations
+        soildata = np.loadtxt(args.soildata) 
+        theta_s = soildata[0,5]
+        theta_r = soildata[0,6]
+        theta_tmp = (su_vals * (theta_s - theta_r)) + theta_r
+        theta_vals = theta_tmp
+        delz = soildata[:,1]
+
+    else:
+        theta_s = args.i_thetas
+        theta_r = args.i_thetar
+        theta_tmp = (su_vals * (theta_s - theta_r)) + theta_r
+        theta_vals = theta_tmp
+        delz = np.repeat(args.i_delz, nlayers)
 
     #---------------------------------
     #soil moisture results
-    nlayers = np.int(np.ceil(args.i_cz / args.i_delz))
+
 
     #open file, count lines
     file = open(args.su_hourly) #mm/d     
@@ -161,47 +204,63 @@ def main():
         t = t + 1
     file.close()
 
-    delz = soildata[:,1]
+    del tmp_data
+
     delz_sum = np.cumsum(delz)
 
     if(args.use_roots == True):
-        val5 = list(filter(lambda i: round(i,2) < params[5], delz_sum))[-1]
+        val5 = list(filter(lambda i: round(i,2) < params[8], delz_sum))[-1]
     else:
         val5 = list(filter(lambda i: round(i,2) <= 5.00, delz_sum))[-1]
     ind5 = list(delz_sum).index(val5) + 1
 
-    print("Tree rooting depth:")
-    print(val5)
-    print(params[5])
-    print("Untill layer:")
-    print(ind5)
+    if(args.print_depths == True):
+        print("Until depth:")
+        print(val5)
+        print(params[8])
+        print("Until layer:")
+        print(ind5)
 
-    theta_r = soildata[0:ind5,6]
-    theta_s = soildata[0:ind5,5]
-    alpha_vg = soildata[0:ind5,4]
-    n_vg = soildata[0:ind5,3]
-    m_vg = 1.0 -(1.0/n_vg)
 
-    su = su_data[:, 0:ind5]
+    if args.soildata is not None:
+        theta_r = soildata[0:ind5,6]
+        theta_s = soildata[0:ind5,5]
+        alpha_vg = soildata[0:ind5,4]
+        n_vg = soildata[0:ind5,3]
+        m_vg = 1.0 -(1.0/n_vg)
 
+        su = su_data[:, 0:ind5]
+        del su_data
+    else:
+        theta_r = args.i_thetar
+        theta_s = args.i_thetas
+        alpha_vg = args.i_avg
+        n_vg = args.i_nvg
+        m_vg = 1.0 -(1.0/n_vg)
+
+        su = su_data[:, 0:ind5]
+        del su_data
 
     #loop over time
     ws5_hourly = np.zeros((nlines-1))
-    watpot_hourly = np.zeros((nlines-1, len(su[0,:])  ))
+    #watpot_hourly = np.zeros((nlines-1, len(su[0,:])  ))
 
     for t in range(0, len(su[:,0])):
         ws5_hourly[t] = np.sum((-su[t,:] * theta_r + \
                                 su[t,:] *theta_s + theta_r) * delz[0:ind5] )
-        watpot_hourly[t,:] = (1.0/alpha_vg) *  ( su[t,:] ** (-1.0/m_vg) - 1.0) ** (1/n_vg)
+        #watpot_hourly[t,:] = (1.0/alpha_vg) *  ( su[t,:] ** (-1.0/m_vg) - 1.0) ** (1/n_vg)
 
         
 
 
     startdate = str(time[0][0]) + "-" + str(time[0][1]) + "-" + str(time[0][2] )
-    time_su = pd.date_range(startdate, periods = len(su_data[:,0]), freq='H')
+    time_su = pd.date_range(startdate, periods = len(su[:,0]), freq='H')
 
     ws5_pd = pd.Series(ws5_hourly, index=time_su)
-    watpot_hourly_pd = pd.DataFrame(watpot_hourly, index=time_su)
+
+    ws5_pd = ws5_pd.loc[datetime(yearstart,1, 1):datetime(yearend, 12, 31)]
+    del ws5_hourly
+    #watpot_hourly_pd = pd.DataFrame(watpot_hourly, index=time_su)
 
     #---------------------------------
     #load 2015 results
@@ -226,14 +285,14 @@ def main():
 
     #open file, count lines
     file = open(args.su_hourly2015) #mm/d     
-    nlines = 0
+    nlines2015 = 0
     for line in file: 
-        nlines = nlines + 1
+        nlines2015 = nlines2015 + 1
     file.close()
 
 
     time2015 = []
-    su_data2015 = np.zeros((nlines-1,nlayers))
+    su_data2015 = np.zeros((nlines2015-1,nlayers))
 
     t = 0
 
@@ -256,17 +315,19 @@ def main():
     delz2015_sum = np.cumsum(delz2015)
 
     if(args.use_roots == True):
-        val5 = list(filter(lambda i: round(i,2) < params2015[5], delz2015_sum))[-1]
+        val5 = list(filter(lambda i: round(i,2) < params2015[8], delz2015_sum))[-1]
     else:
         val5 = list(filter(lambda i: round(i,2) <= 5.00, delz2015_sum))[-1]
     ind5_2015 = list(delz2015_sum).index(val5) + 1
 
-    print("---")
-    print("Tree rooting depth:")
-    print(val5)
-    print(params2015[5])
-    print("Untill layer:")
-    print(ind5_2015)
+    if(args.print_depths == True):
+        print("---")
+        print("Until depth:")
+        print(val5)
+        print(params2015[8])
+        print("Until layer:")
+        print(ind5_2015)
+        print(delz[0:ind5_2015])
 
     #thetar2015 = soildata[0:ind5,6]
     #theta_s = soildata[0:ind5,5]
@@ -274,28 +335,26 @@ def main():
     n_vg2015 = args.i_nvg2015
     m_vg2015 = 1.0 -(1.0/n_vg2015)
 
-    print(alpha_vg2015)
-    print(n_vg2015)
-    print(m_vg2015)
-
-
     su2015 = su_data2015[:, 0:ind5_2015]
+    del su_data2015
 
     #loop over time
-    ws5_hourly2015 = np.zeros((nlines-1))
-    watpot_hourly2015 = np.zeros((nlines-1, len(su2015[0,:])  ))
+    ws5_hourly2015 = np.zeros((nlines2015-1))
+    #watpot_hourly2015 = np.zeros((nlines2015-1, len(su2015[0,:])  ))
 
     for t in range(0, len(su2015[:,0])):
         ws5_hourly2015[t] = np.sum((-su2015[t,:] * args.i_thetar2015 + \
-                                su2015[t,:] * args.i_thetas2015 + args.i_thetar2015) * delz[0:ind5_2015] )
-        watpot_hourly2015[t,:] = (1.0/alpha_vg2015) *  ( su2015[t,:] ** (-1.0/m_vg2015) - 1.0) ** (1.0/n_vg2015)
+                                su2015[t,:] * args.i_thetas2015 + args.i_thetar2015) * delz2015[0:ind5_2015] )
+        #watpot_hourly2015[t,:] = (1.0/alpha_vg2015) *  ( su2015[t,:] ** (-1.0/m_vg2015) - 1.0) ** (1.0/n_vg2015)
 
 
     startdate = str(time2015[0][0]) + "-" + str(time2015[0][1]) + "-" + str(time2015[0][2] )
-    time_su2015 = pd.date_range(startdate, periods = len(su_data2015[:,0]), freq='H')
+    time_su2015 = pd.date_range(startdate, periods = len(su2015[:,0]), freq='H')
 
     ws5_2015_pd = pd.Series(ws5_hourly2015, index=time_su2015)
-    watpot_hourly2015_pd = pd.DataFrame(watpot_hourly2015, index=time_su2015)
+    ws5_2015_pd = ws5_2015_pd.loc[datetime(yearstart,1, 1):datetime(yearend, 12, 31)]
+    del ws5_hourly2015
+    #watpot_hourly2015_pd = pd.DataFrame(watpot_hourly2015, index=time_su2015)
 
     #print(watpot_hourly2015_pd)
 
@@ -313,10 +372,13 @@ def main():
             obs_tmp = (np.genfromtxt(args.obs_gw[i], usecols=1, missing_values="", delimiter=",", skip_header=4) ) *args.mf_obs  #
             #date/times observations
             tobs_tmp = np.genfromtxt(args.obs_gw[i],usecols=0, missing_values="", delimiter=",", skip_header=4, dtype=np.str )#mm/d
-            tobs_tmp = pd.date_range(tobs_tmp[0], tobs_tmp[-1], freq='D')   
+            #tobs_tmp = pd.date_range(tobs_tmp[0], tobs_tmp[-1], periods = len(tobs_tmp))   
+
+            tobs_tmp = pd.to_datetime(tobs_tmp, format=args.dateformat)
 
             obs_gw.append(obs_tmp)
             tobs_gw.append(tobs_tmp)
+
 
     #observations of soil moisture
     if args.obs_sm is not None:
@@ -340,18 +402,21 @@ def main():
     #######################################################################################
     #make plot
     #fig=plt.figure(figsize=(args.figsize[0], args.figsize[1]), dpi= args.dpi, facecolor='w', edgecolor='k' )
-    fig, axes = plt.subplots(nrows=6, ncols=1, figsize=(args.figsize[0], args.figsize[1]))        
+    fig, axes = plt.subplots(nrows=5, ncols=2, figsize=(args.figsize[0], args.figsize[1]), gridspec_kw={"width_ratios":[1,0.05]})        
     ax = axes.flat
-
+        
+    fig.delaxes(ax[1]) #remove last plot
+    fig.delaxes(ax[3]) #remove last plot
+    fig.delaxes(ax[5]) #remove last plot
 
     #plot observations
     if args.obs_gw is not None:
 
         for i in range(0, len(args.obs_gw)):
             if(i == 0):
-                ax[0].plot(tobs_gw[i], -obs_gw[i], color='blue', label='Obs.', zorder=2)
+                ax[0].plot(tobs_gw[i], args.mf_obs *obs_gw[i], color='blue', label='Obs.', zorder=2)
             else:
-                ax[0].plot(tobs_gw[i], -obs_gw[i], color='blue', zorder=2)
+                ax[0].plot(tobs_gw[i], args.mf_obs *obs_gw[i], color='blue', zorder=2)
 
     #plot 2015 data
     if args.i2015 is not None:
@@ -377,11 +442,11 @@ def main():
     #plot rooting depths
     if args.pars is not None:
         if(args.depth == "True"):
-            ax[0].plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params[5], - params[5]], ":", lw=3, color='red', label='rtdepth trees')
-            ax[0].plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params[7],  -params[7]],":",lw=3,color='orange', label='rtdepth grasses')
+            ax[0].plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params[5], - params[5]], ":", lw=3, color='red', label='root depth trees')
+            ax[0].plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params[7],  -params[7]],":",lw=3,color='orange', label='root depth grasses')
         else:
-            ax[0].plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [args.i_cz- params[5], args.i_cz - params[5]], ":", lw=3, color='red', label='rtdepth trees')
-            ax[0].plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [args.i_cz - params[7], args.i_cz-params[7]],":",lw=3, color='orange', label='rtdepth grasses')
+            ax[0].plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [args.i_cz- params[5], args.i_cz - params[5]], ":", lw=3, color='red', label='root depth trees')
+            ax[0].plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [args.i_cz - params[7], args.i_cz-params[7]],":",lw=3, color='orange', label='root depth grasses')
 
 
     if args.i_zr is not None:
@@ -399,7 +464,7 @@ def main():
 
 
     #set labels
-    ax[0].set_ylabel("Water table [m]", size=24  )
+    ax[0].set_ylabel("Water table (m)", size=24  )
     ax[0].set_xlabel(args.xlabel, size=24  )
 
     #set axis and ticks
@@ -429,56 +494,123 @@ def main():
     #other plots
 
     #plot soil moisture results
-    plot_flux_obs(tmod, theta_vals, ax[1], tobs_sm, obs_sm, "Soil moisture [-]", "b)" ,yearstart, yearend) 
+    plot_flux_obs(tmod, theta_vals, ax[2], tobs_sm, obs_sm, "Volumetric \n water content (-)", "b)", args.labels[0] ,yearstart, yearend) 
 
+ 
+    #plot 2015 data
+    if args.i2015 is not None:
+        ax[2].plot(tmod2015, theta_vals2015, color='green', label='Schymanski et al. (2015)', zorder=2)
+
+
+    ##############################################################
     #plot storage results
-    plot_flux(ax[2], "Water storage [m]", "c)", yearstart, yearend ) 
-    ax[2].plot(time_su, ws5_pd, color="red", label="VOM", zorder=1) 
-
-    #plot water potentials
-
-    plot_flux(ax[3], "Water potential [m]", "d)", yearstart, yearend ) 
-    plot_flux(ax[4], "Water potential [m]", "d)", yearstart, yearend ) 
-    plot_flux(ax[5], "Water potential [m]", "d)", yearstart, yearend ) 
-
-    print("Depths:")
-    print(delz_sum[0])
-    print(delz_sum[int(ind5/2)+1])
-    print(delz_sum[ind5-1])
-
-    ax[3].plot(time_su, watpot_hourly_pd.iloc[:,0], color="red", label="VOM: 0-0.2m", zorder=1) 
-    ax[4].plot(time_su, watpot_hourly_pd.iloc[:,int(ind5/2)+1], color="red", label="VOM: 2.6-2.8m", zorder=1) 
-    ax[5].plot(time_su, watpot_hourly_pd.iloc[:,ind5-1], color="red", label="VOM: 4.8-5.0m", zorder=1) 
-
-    print("Depths 2015:")
-    print(delz2015_sum[0])
-    print(delz2015_sum[int(ind5_2015/2)])
-    print(delz2015_sum[ind5_2015-1])
+    plot_flux(ax[4], "Water storage (m)", "c)", yearstart, yearend ) 
+    ax[4].plot(ws5_pd.index, ws5_pd, color="red", label=args.labels[0], zorder=1) 
 
     #plot 2015 data
     if args.i2015 is not None:
-        ax[1].plot(tmod2015, theta_vals2015, color='green', label='Schymanski et al. (2015)', zorder=2)
-        ax[2].plot(time_su2015, ws5_2015_pd, color='green', label='Schymanski et al. (2015)', zorder=2)
+        ax[4].plot(ws5_2015_pd.index, ws5_2015_pd, color='green', label='Schymanski et al. (2015)', zorder=2)
+
+    ax[4].legend(prop={'size':15}, framealpha=1  )
 
 
-        ax[3].plot(time_su2015, watpot_hourly2015_pd.iloc[:,0], color='green', label='Schymanski et al. (2015): 0-0.5m', zorder=2)
-        ax[4].plot(time_su2015, watpot_hourly2015_pd.iloc[:,int(ind5_2015/2)], color='green', label='Schymanski et al. (2015): 2.5-3.0m', zorder=2)
-        ax[5].plot(time_su2015, watpot_hourly2015_pd.iloc[:,ind5_2015-1], color='green', label='Schymanski et al. (2015): 4.5-5.0m ', zorder=2)
+    for tick in ax[4].yaxis.get_major_ticks():
+        tick.label.set_fontsize(20)
+    for tick in ax[4].xaxis.get_major_ticks():
+        tick.label.set_fontsize(20)
 
-    print(su2015[:,3])
+    ##############################################################
+    #plot water potentials
+    #new VOM-results
+    color_map = plt. cm. get_cmap('coolwarm')
+    reversed_color_map = color_map.reversed() 
 
+    y = np.insert(-delz_sum[0:ind5],0,0)
+
+    #loop over time
+    watpot_hourly = np.zeros((nlines-1, len(su[0,:])  ))
+
+    for t in range(0, len(su[:,0])):
+        watpot_hourly[t,:] = (1.0/alpha_vg) *  ( su[t,:] ** (-1.0/m_vg) - 1.0) ** (1/n_vg)
+       
+    watpot_hourly_pd = pd.DataFrame(watpot_hourly, index=time_su)
+
+    extent = [mdates.date2num(datetime(yearstart,1, 1)), mdates.date2num(datetime( yearend ,12, 31)), -delz_sum[ind5],0]
+    #c1 = ax[6].pcolor(watpot_hourly_pd.index, y ,watpot_hourly_pd.values.T,norm=LogNorm(vmin=0.01, vmax=250), vmin=0.01, vmax=250, cmap = reversed_color_map)
+    c1 = ax[6].imshow(watpot_hourly_pd.values.T, extent =extent, norm=LogNorm(vmin=0.01, vmax=250), vmin=0.01, vmax=250, cmap=reversed_color_map,aspect='auto')
+    del watpot_hourly_pd 
+    del watpot_hourly 
+
+    ax[6].plot( [datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params[5], - params[5]], ":", lw=3, color='red', label='root depth trees')
+    ax[6].plot( [datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params[7],  -params[7]],":",lw=3,color='orange', label='root depth grasses')
+
+    ax[6].legend(prop={'size':15}, framealpha=1  )
+
+    ax[6].set_ylabel("Depth (m)", size=24)
+    for tick in ax[6].yaxis.get_major_ticks():
+        tick.label.set_fontsize(20)
+    for tick in ax[6].xaxis.get_major_ticks():
+        tick.label.set_fontsize(20)
+
+    #set colorbar
+    cb = fig.colorbar(c1,cax=ax[7])
+    cb.ax.tick_params(labelsize=14)
+    cb.set_label("Matrix potential (m)", size=20)
+
+    #Aob2015 results
+    #loop over time
+    watpot_hourly2015 = np.zeros((nlines2015-1, len(su2015[0,:])  ))
+
+    for t in range(0, len(su2015[:,0])):
+        watpot_hourly2015[t,:] = (1.0/alpha_vg2015) *  ( su2015[t,:] ** (-1.0/m_vg2015) - 1.0) ** (1.0/n_vg2015)
+
+
+    startdate = str(time2015[0][0]) + "-" + str(time2015[0][1]) + "-" + str(time2015[0][2] )
+    watpot_hourly2015_pd = pd.DataFrame(watpot_hourly2015, index=time_su2015)
+
+    y2015 = np.insert(-delz2015_sum[0:ind5_2015],0,0)
+    #c2 = ax[8].pcolor(watpot_hourly2015_pd.index, y2015, watpot_hourly2015_pd.values.T, norm=LogNorm(vmin=0.01, vmax=250), vmin=0.01, vmax=250, cmap=reversed_color_map   )
+ 
+    extent = [mdates.date2num(datetime(yearstart,1, 1)), mdates.date2num(watpot_hourly2015_pd.index[-1]), -delz2015_sum[ind5_2015],0]
+    c2 = ax[8].imshow(watpot_hourly2015_pd.values.T, extent =extent, norm=LogNorm(vmin=0.01, vmax=250), vmin=0.01, vmax=250, cmap=reversed_color_map,aspect='auto')
+
+
+
+
+    del watpot_hourly2015_pd
+    del watpot_hourly2015 
+
+    ax[8].plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params2015[5],- params2015[5]], ":", lw=3, color='red', label='root depth trees')
+    ax[8].plot([datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params2015[7],- params2015[7]],":",lw=3, color='orange', label='root depth grasses')
+
+    #set colorbar
+    cb = fig.colorbar(c2,cax=ax[9])
+    cb.ax.tick_params(labelsize=14)
+    cb.set_label("Matrix potential (m)", size=20)
+
+    ax[8].set_ylabel("Depth (m)", size=24)
+    for tick in ax[8].xaxis.get_major_ticks():
+        tick.label.set_fontsize(20)
+    for tick in ax[8].yaxis.get_major_ticks():
+        tick.label.set_fontsize(20)
+
+    #set labels/titles of plots
     if args.title is True:
 
-        plot_label = ["a)","b)","c)", "d)", "e)", "f)"]
-        for i in range(0, 6):
-            ax[i].text(args.xloc_title, args.yloc_title, plot_label[i], ha='left', va='center', transform=ax[i].transAxes, fontsize=args.size_title)
+        plot_label = ["(a)","(b)","(c)", "(d)", "(e)", "(f)"]
+        label_ax = [0,2,4,6,8]
+        for i in range(0, 5):
+            ax[label_ax[i]].text(args.xloc_title, args.yloc_title, plot_label[i], ha='left', va='center', transform=ax[label_ax[i]].transAxes, fontsize=args.size_title)
 
 
-    ax[1].legend(prop={'size':15}, framealpha=1  )
     ax[2].legend(prop={'size':15}, framealpha=1  )
-    ax[3].legend(prop={'size':15}, framealpha=1  )
     ax[4].legend(prop={'size':15}, framealpha=1  )
-    ax[5].legend(prop={'size':15}, framealpha=1  )
+    ax[6].legend(prop={'size':15}, framealpha=1  )
+    ax[8].legend(prop={'size':15}, framealpha=1  )
+    ax[6].set_xlim([datetime(yearstart,1, 1), datetime( yearend ,12, 31)]) 
+    ax[8].set_xlim([datetime(yearstart,1, 1), datetime( yearend ,12, 31)]) 
+    ax[6].xaxis.set_major_formatter(mdate.DateFormatter('%Y'))
+    ax[8].xaxis.set_major_formatter(mdate.DateFormatter('%Y'))
 
     #save figure
     if args.outputfile is not None:
@@ -495,7 +627,7 @@ def plot_flux_layers(ax, ylabel, plot_label, yearstart, yearend):
 
     end = vals.shape[1]
     for i in range(0, end):
-        ax.plot(time, vals.iloc[:,i], color="red", label="VOM", zorder=1) 
+        ax.plot(time, vals.iloc[:,i], color="red", label=args.labels[0], zorder=1) 
 
 
     ax.set_ylabel(ylabel, size=24  )
@@ -539,13 +671,13 @@ def plot_flux(ax, ylabel, plot_label, yearstart, yearend):
 
     return ax
 
-def plot_flux_obs(time, vals, ax, time_obs, vals_obs, ylabel, plot_label, yearstart, yearend):
+def plot_flux_obs(time, vals, ax, time_obs, vals_obs, ylabel, plot_label, labels, yearstart, yearend):
     
 
-    ax.plot(time, vals, color="red", label="VOM", zorder=1) 
+    ax.plot(time, vals, color="red", label=labels, zorder=1) 
 
 
-    ax.set_ylabel(ylabel, size=24  )
+    ax.set_ylabel(r'' + ylabel, size=24  )
     for tick in ax.xaxis.get_major_ticks():
         tick.label.set_fontsize(20)
     for tick in ax.yaxis.get_major_ticks():
