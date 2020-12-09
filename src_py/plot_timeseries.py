@@ -604,15 +604,15 @@ def main():
     pc_stats = []
     if args.stats_evap is not None:
         for i in range(0, len(args.stats_evap)):
-            evap_stats.append( np.genfromtxt(args.stats_evap[i] ) )
+            evap_stats.append( np.genfromtxt(args.stats_evap[i], skip_header = 1 ) )
 
     if args.stats_ass is not None:
         for i in range(0, len(args.stats_ass)):
-            ass_stats.append( np.genfromtxt(args.stats_ass[i] ) )
+            ass_stats.append( np.genfromtxt(args.stats_ass[i], skip_header = 1 ) )
 
     if args.stats_pc is not None:
         for i in range(0, len(args.stats_pc)):
-            pc_stats.append( np.genfromtxt(args.stats_pc[i] ) )
+            pc_stats.append( np.genfromtxt(args.stats_pc[i], skip_header = 1 ) )
 
 
     #######################################################################################
