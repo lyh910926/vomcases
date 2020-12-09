@@ -300,16 +300,16 @@ def main():
                     data["rrg"] = data_tmp["rrg"] 
                     ylabels.append("Rr$_{s}$ \n (mol m$^{-2}$ d$^{-1}$)")
                 if(var == "tct"):
-                    data["tct"] = data_tmp["tct"] 
+                    data["tct"] = data_tmp["tct"] *3600*24
                     ylabels.append("Tc$_{p}$ \n (mol m$^{-2}$ d$^{-1}$)")
                 if(var == "tcg"):
-                    data["tcg"] = data_tmp["tcg"]
+                    data["tcg"] = data_tmp["tcg"]*3600*24
                     ylabels.append("Tc$_{s}$ \n (mol m$^{-2}$ d$^{-1}$)") 
                 if(var == "cpcct_d"):
-                    data["cpcct_d"] = data_tmp["cpcct_d"] 
+                    data["cpcct_d"] = data_tmp["cpcct_d"] *3600*24
                     ylabels.append("Rv$_{p}$ \n (mol m$^{-2}$ d$^{-1}$)") 
                 if(var == "cpccg_d"):
-                    data["cpccg_d"] = data_tmp["cpccg_d"] 
+                    data["cpccg_d"] = data_tmp["cpccg_d"] *3600*24
                     ylabels.append("Rv$_{s}$ \n (mol m$^{-2}$ d$^{-1}$)") 
                 if(var == "su_avg"):
                     data["su_avg"] = data_tmp["su_avg"]
