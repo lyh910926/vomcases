@@ -195,8 +195,8 @@ def main():
         iplot = iplot + 2 
         ibasin = ibasin + 1
                 
-    ax[iplot-1].set_xlabel(r'$c_{rv}$ ($\mu$$mol$ $m^3$ $s^{-1}$)', size=14 )  
-    ax[iplot-2].set_xlabel(r'$c_{rv}$ ($\mu$$mol$ $m^3$ $s^{-1}$)', size=14 ) 
+    ax[iplot-1].set_xlabel(r'$c_{rv}$ ($\mu$$mol$ $m^{-3}$ $s^{-1}$)', size=14 )  
+    ax[iplot-2].set_xlabel(r'$c_{rv}$ ($\mu$$mol$ $m^{-3}$ $s^{-1}$)', size=14 ) 
      
 
     if args.outfile is not None:
