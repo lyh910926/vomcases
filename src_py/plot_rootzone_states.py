@@ -100,6 +100,8 @@ def main():
     parser.add_argument("--cbar_min", help="min value for colorbar", type=float, default = 0.2)
     parser.add_argument("--cbar_max", help="max value for colorbar", type=float, default = 2.6 )
     parser.add_argument("--legend", help="show legend", type=bool, default = False )
+    parser.add_argument("--legendsize", help="legend size", type=float, default = 15 )
+    parser.add_argument("--legendalpha", help="legend transparancy", type=float, default = 1)
     parser.add_argument("--palette", help="color-palette", default = 'OrRd' )
     parser.add_argument("--xloc_title", help="location x title", type=float, default = 0.00 )
     parser.add_argument("--yloc_title", help="location y title", type=float, default = 1.05 )
@@ -484,10 +486,10 @@ def main():
 
     ax[0].set_ylim( args.ylim )
 
-    ax[0].set_frame_on(True) # make it transparent
+    #ax[0].set_frame_on(True) # make it transparent
     
     if(args.legend == True):
-        ax[0].legend(prop={'size':15}, framealpha=1  )
+        ax[0].legend(prop={'size':args.legendsize}, framealpha=args.legendalpha )
 
 
     ##############################################################
@@ -511,7 +513,7 @@ def main():
     if args.i2015 is not None:
         ax[4].plot(ws5_2015_pd.index, ws5_2015_pd, color='green', label='Schymanski et al. (2015)', zorder=2)
 
-    ax[4].legend(prop={'size':15}, framealpha=1  )
+    ax[4].legend(prop={'size':args.legendsize}, framealpha=args.legendalpha  )
 
 
     for tick in ax[4].yaxis.get_major_ticks():
@@ -537,14 +539,14 @@ def main():
 
     extent = [mdates.date2num(datetime(yearstart,1, 1)), mdates.date2num(datetime( yearend ,12, 31)), -delz_sum[ind5],0]
     #c1 = ax[6].pcolor(watpot_hourly_pd.index, y ,watpot_hourly_pd.values.T,norm=LogNorm(vmin=0.01, vmax=250), vmin=0.01, vmax=250, cmap = reversed_color_map)
-    c1 = ax[6].imshow(watpot_hourly_pd.values.T, extent =extent, norm=LogNorm(vmin=0.01, vmax=250), vmin=0.01, vmax=250, cmap=reversed_color_map,aspect='auto')
+    c1 = ax[6].imshow(watpot_hourly_pd.values.T, extent =extent, norm=LogNorm(vmin=0.01, vmax=250), vmin=0.01, vmax=250, cmap=color_map,aspect='auto')
     del watpot_hourly_pd 
     del watpot_hourly 
 
     ax[6].plot( [datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params[5], - params[5]], ":", lw=3, color='red', label='root depth trees')
     ax[6].plot( [datetime(yearstart,1, 1), datetime( yearend ,12, 31)], [- params[7],  -params[7]],":",lw=3,color='orange', label='root depth grasses')
 
-    ax[6].legend(prop={'size':15}, framealpha=1  )
+    ax[6].legend(prop={'size':args.legendsize}, framealpha=args.legendalpha  )
 
     ax[6].set_ylabel("Depth (m)", size=24)
     for tick in ax[6].yaxis.get_major_ticks():
@@ -572,7 +574,7 @@ def main():
     #c2 = ax[8].pcolor(watpot_hourly2015_pd.index, y2015, watpot_hourly2015_pd.values.T, norm=LogNorm(vmin=0.01, vmax=250), vmin=0.01, vmax=250, cmap=reversed_color_map   )
  
     extent = [mdates.date2num(datetime(yearstart,1, 1)), mdates.date2num(watpot_hourly2015_pd.index[-1]), -delz2015_sum[ind5_2015],0]
-    c2 = ax[8].imshow(watpot_hourly2015_pd.values.T, extent =extent, norm=LogNorm(vmin=0.01, vmax=250), vmin=0.01, vmax=250, cmap=reversed_color_map,aspect='auto')
+    c2 = ax[8].imshow(watpot_hourly2015_pd.values.T, extent =extent, norm=LogNorm(vmin=0.01, vmax=250), vmin=0.01, vmax=250, cmap=color_map,aspect='auto')
 
 
 
@@ -603,10 +605,10 @@ def main():
             ax[label_ax[i]].text(args.xloc_title, args.yloc_title, plot_label[i], ha='left', va='center', transform=ax[label_ax[i]].transAxes, fontsize=args.size_title)
 
 
-    ax[2].legend(prop={'size':15}, framealpha=1  )
-    ax[4].legend(prop={'size':15}, framealpha=1  )
-    ax[6].legend(prop={'size':15}, framealpha=1  )
-    ax[8].legend(prop={'size':15}, framealpha=1  )
+    ax[2].legend(prop={'size':args.legendsize}, framealpha=args.legendalpha  )
+    ax[4].legend(prop={'size':args.legendsize}, framealpha=args.legendalpha  )
+    ax[6].legend(prop={'size':args.legendsize}, framealpha=args.legendalpha  )
+    ax[8].legend(prop={'size':args.legendsize}, framealpha=args.legendalpha )
     ax[6].set_xlim([datetime(yearstart,1, 1), datetime( yearend ,12, 31)]) 
     ax[8].set_xlim([datetime(yearstart,1, 1), datetime( yearend ,12, 31)]) 
     ax[6].xaxis.set_major_formatter(mdate.DateFormatter('%Y'))
