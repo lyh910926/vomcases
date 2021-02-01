@@ -1,220 +1,84 @@
-'@context':
-  '@version': 1.1
-  _id: '@id'
-  _project:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      created: schema:dateCreated
-      creator:
-        '@context':
-          '@version': 1.1
-          _id: '@id'
-          affiliation: schema:affiliation
-          alternate_name: schema:alternateName
-          email: schema:email
-          label: rdfs:label
-          name: schema:name
-          prov: http://www.w3.org/ns/prov#
-          rdfs: http://www.w3.org/2000/01/rdf-schema#
-          schema: http://schema.org/
-        '@id': schema:creator
-      name: schema:name
-      prov: http://www.w3.org/ns/prov#
-      schema: http://schema.org/
-      updated: schema:dateUpdated
-      version: schema:schemaVersion
-    '@id': schema:isPartOf
-  created: schema:dateCreated
-  creator:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      affiliation: schema:affiliation
-      alternate_name: schema:alternateName
-      email: schema:email
-      label: rdfs:label
-      name: schema:name
-      prov: http://www.w3.org/ns/prov#
-      rdfs: http://www.w3.org/2000/01/rdf-schema#
-      schema: http://schema.org/
-    '@id': schema:creator
-  date_published: schema:datePublished
-  description: schema:description
-  files:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      _project:
-        '@context':
-          '@version': 1.1
-          _id: '@id'
-          created: schema:dateCreated
-          creator:
-            '@context':
-              '@version': 1.1
-              _id: '@id'
-              affiliation: schema:affiliation
-              alternate_name: schema:alternateName
-              email: schema:email
-              label: rdfs:label
-              name: schema:name
-              prov: http://www.w3.org/ns/prov#
-              rdfs: http://www.w3.org/2000/01/rdf-schema#
-              schema: http://schema.org/
-            '@id': schema:creator
-          name: schema:name
-          prov: http://www.w3.org/ns/prov#
-          schema: http://schema.org/
-          updated: schema:dateUpdated
-          version: schema:schemaVersion
-        '@id': schema:isPartOf
-      added: schema:dateCreated
-      based_on: schema:isBasedOn
-      creator:
-        '@context':
-          '@version': 1.1
-          _id: '@id'
-          affiliation: schema:affiliation
-          alternate_name: schema:alternateName
-          email: schema:email
-          label: rdfs:label
-          name: schema:name
-          prov: http://www.w3.org/ns/prov#
-          rdfs: http://www.w3.org/2000/01/rdf-schema#
-          schema: http://schema.org/
-        '@id': schema:creator
-      name: schema:name
-      path: prov:atLocation
-      prov: http://www.w3.org/ns/prov#
-      schema: http://schema.org/
-      url: schema:url
-      wfprov: http://purl.org/wf4ever/wfprov#
-    '@id': schema:hasPart
-  identifier: schema:identifier
-  in_language:
-    '@context':
-      '@version': 1.1
-      alternate_name: schema:alternateName
-      name: schema:name
-      schema: http://schema.org/
-    '@id': schema:inLanguage
-  keywords: schema:keywords
-  license: schema:license
-  name: schema:name
-  path: prov:atLocation
-  prov: http://www.w3.org/ns/prov#
-  same_as:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      schema: http://schema.org/
-      url: schema:url
-    '@id': schema:sameAs
-  schema: http://schema.org/
-  short_name: schema:alternateName
-  tags:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      commit: schema:location
-      created: schema:startDate
-      dataset: schema:about
-      description: schema:description
-      name: schema:name
-      schema: http://schema.org/
-    '@id': schema:subjectOf
-  url: schema:url
-  version: schema:version
-  wfprov: http://purl.org/wf4ever/wfprov#
-'@type':
-- prov:Entity
-- schema:Dataset
-- wfprov:Artifact
-_id: https://renkulab.io/datasets/d345a174-2a03-4aa9-8c3e-a3a10229d025
-_label: d345a174-2a03-4aa9-8c3e-a3a10229d025
-_project:
+- '@id': https://renkulab.io/blob/d22889702028cc5023aeff44a4ab2db0e19ccfe1/data/MaunaLoa/weekly_in_situ_co2_mlo.csv
   '@type':
-  - prov:Location
-  - schema:Project
-  _id: https://renkulab.io/projects/remko.nijzink/vomcases
-  created: '2019-03-08T08:28:48.938000+00:00'
-  creator:
-    '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  name: VOMcases
-  updated: '2019-03-08T08:28:48.938000+00:00'
-  version: '1'
-created: '2019-03-08T08:31:00.531153+02:00'
-creator:
-- '@type':
-  - prov:Person
-  - schema:Person
-  _id: remko.nijzink
-  affiliation: null
-  alternate_name: null
-  email: remko.nijzink@list.lu
-  label: Remko Nijzink
-  name: Remko Nijzink
-date_published: null
-description: ''
-files:
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/d22889702028cc5023aeff44a4ab2db0e19ccfe1/data/MaunaLoa/weekly_in_situ_co2_mlo.csv
-  _label: data/MaunaLoa/weekly_in_situ_co2_mlo.csv@d22889702028cc5023aeff44a4ab2db0e19ccfe1
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-03-08T08:31:21.286450+02:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: remko.nijzink
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: weekly_in_situ_co2_mlo.csv
-  path: data/MaunaLoa/weekly_in_situ_co2_mlo.csv
-  url: http://scrippsco2.ucsd.edu/assets/data/atmospheric/stations/in_situ_co2/weekly/weekly_in_situ_co2_mlo.csv
-identifier: d345a174-2a03-4aa9-8c3e-a3a10229d025
-in_language: null
-keywords: []
-license: null
-name: MaunaLoa
-path: .renku/datasets/d345a174-2a03-4aa9-8c3e-a3a10229d025
-same_as: null
-short_name: MaunaLoa
-tags: []
-url: https://renkulab.io/datasets/d345a174-2a03-4aa9-8c3e-a3a10229d025
-version: null
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-03-08T08:31:21.286450+02:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': weekly_in_situ_co2_mlo.csv
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/MaunaLoa/weekly_in_situ_co2_mlo.csv
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/MaunaLoa/weekly_in_situ_co2_mlo.csv@d22889702028cc5023aeff44a4ab2db0e19ccfe1
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/MaunaLoa/weekly_in_situ_co2_mlo.csv
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': http://scrippsco2.ucsd.edu/assets/data/atmospheric/stations/in_situ_co2/weekly/weekly_in_situ_co2_mlo.csv
+- '@id': https://renkulab.io/datasets/d345a174-2a03-4aa9-8c3e-a3a10229d025
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/Dataset
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/alternateName:
+  - '@value': MaunaLoa
+  http://schema.org/creator:
+  - '@id': remko.nijzink
+  http://schema.org/dateCreated:
+  - '@value': '2019-03-08T08:31:00.531153+02:00'
+  http://schema.org/description:
+  - '@value': ''
+  http://schema.org/hasPart:
+  - '@id': https://renkulab.io/blob/d22889702028cc5023aeff44a4ab2db0e19ccfe1/data/MaunaLoa/weekly_in_situ_co2_mlo.csv
+  http://schema.org/identifier:
+  - '@value': d345a174-2a03-4aa9-8c3e-a3a10229d025
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/keywords: []
+  http://schema.org/name:
+  - '@value': MaunaLoa
+  http://schema.org/subjectOf: []
+  http://schema.org/url:
+  - '@value': https://renkulab.io/datasets/d345a174-2a03-4aa9-8c3e-a3a10229d025
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': d345a174-2a03-4aa9-8c3e-a3a10229d025
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': .renku/datasets/d345a174-2a03-4aa9-8c3e-a3a10229d025
+- '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  '@type':
+  - http://schema.org/Project
+  - http://www.w3.org/ns/prov#Location
+  http://schema.org/agent:
+  - '@value': pre-0.11.0
+  http://schema.org/creator:
+  - '@id': mailto:remko.nijzink@list.lu
+  http://schema.org/dateCreated:
+  - '@value': '2019-03-08T08:28:48.938000+00:00'
+  http://schema.org/name:
+  - '@value': VOMcases
+  http://schema.org/schemaVersion:
+  - '@value': '1'
+- '@id': mailto:remko.nijzink@list.lu
+  '@type':
+  - http://schema.org/Person
+  - http://www.w3.org/ns/prov#Person
+  http://schema.org/email:
+  - '@value': remko.nijzink@list.lu
+  http://schema.org/name:
+  - '@value': Remko Nijzink
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': Remko Nijzink
+- '@id': remko.nijzink
+  '@type':
+  - http://schema.org/Person
+  - http://www.w3.org/ns/prov#Person
+  http://schema.org/email:
+  - '@value': remko.nijzink@list.lu
+  http://schema.org/name:
+  - '@value': Remko Nijzink
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': Remko Nijzink

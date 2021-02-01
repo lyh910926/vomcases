@@ -1,179 +1,52 @@
-'@context':
-  '@version': 1.1
-  _id: '@id'
-  _project:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      created: schema:dateCreated
-      creator:
-        '@context':
-          '@version': 1.1
-          _id: '@id'
-          affiliation: schema:affiliation
-          alternate_name: schema:alternateName
-          email: schema:email
-          label: rdfs:label
-          name: schema:name
-          prov: http://www.w3.org/ns/prov#
-          rdfs: http://www.w3.org/2000/01/rdf-schema#
-          schema: http://schema.org/
-        '@id': schema:creator
-      name: schema:name
-      prov: http://www.w3.org/ns/prov#
-      schema: http://schema.org/
-      updated: schema:dateUpdated
-      version: schema:schemaVersion
-    '@id': schema:isPartOf
-  created: schema:dateCreated
-  creator:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      affiliation: schema:affiliation
-      alternate_name: schema:alternateName
-      email: schema:email
-      label: rdfs:label
-      name: schema:name
-      prov: http://www.w3.org/ns/prov#
-      rdfs: http://www.w3.org/2000/01/rdf-schema#
-      schema: http://schema.org/
-    '@id': schema:creator
-  date_published: schema:datePublished
-  description: schema:description
-  files:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      _project:
-        '@context':
-          '@version': 1.1
-          _id: '@id'
-          created: schema:dateCreated
-          creator:
-            '@context':
-              '@version': 1.1
-              _id: '@id'
-              affiliation: schema:affiliation
-              alternate_name: schema:alternateName
-              email: schema:email
-              label: rdfs:label
-              name: schema:name
-              prov: http://www.w3.org/ns/prov#
-              rdfs: http://www.w3.org/2000/01/rdf-schema#
-              schema: http://schema.org/
-            '@id': schema:creator
-          name: schema:name
-          prov: http://www.w3.org/ns/prov#
-          schema: http://schema.org/
-          updated: schema:dateUpdated
-          version: schema:schemaVersion
-        '@id': schema:isPartOf
-      added: schema:dateCreated
-      based_on: schema:isBasedOn
-      creator:
-        '@context':
-          '@version': 1.1
-          _id: '@id'
-          affiliation: schema:affiliation
-          alternate_name: schema:alternateName
-          email: schema:email
-          label: rdfs:label
-          name: schema:name
-          prov: http://www.w3.org/ns/prov#
-          rdfs: http://www.w3.org/2000/01/rdf-schema#
-          schema: http://schema.org/
-        '@id': schema:creator
-      name: schema:name
-      path: prov:atLocation
-      prov: http://www.w3.org/ns/prov#
-      schema: http://schema.org/
-      url: schema:url
-      wfprov: http://purl.org/wf4ever/wfprov#
-    '@id': schema:hasPart
-  identifier: schema:identifier
-  in_language:
-    '@context':
-      '@version': 1.1
-      alternate_name: schema:alternateName
-      name: schema:name
-      schema: http://schema.org/
-    '@id': schema:inLanguage
-  keywords: schema:keywords
-  license: schema:license
-  name: schema:name
-  path: prov:atLocation
-  prov: http://www.w3.org/ns/prov#
-  same_as:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      schema: http://schema.org/
-      url: schema:url
-    '@id': schema:sameAs
-  schema: http://schema.org/
-  short_name: schema:alternateName
-  tags:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      commit: schema:location
-      created: schema:startDate
-      dataset: schema:about
-      description: schema:description
-      name: schema:name
-      schema: http://schema.org/
-    '@id': schema:subjectOf
-  url: schema:url
-  version: schema:version
-  wfprov: http://purl.org/wf4ever/wfprov#
-'@type':
-- prov:Entity
-- schema:Dataset
-- wfprov:Artifact
-_id: https://renkulab.io/datasets/97ef95e4-9a10-4631-b1f2-4e3a846fb84b
-_label: 97ef95e4-9a10-4631-b1f2-4e3a846fb84b
-_project:
+- '@id': https://renkulab.io/datasets/97ef95e4-9a10-4631-b1f2-4e3a846fb84b
   '@type':
-  - prov:Location
-  - schema:Project
-  _id: https://renkulab.io/projects/remko.nijzink/vomcases
-  created: '2019-03-08T08:28:48.938000+00:00'
-  creator:
-    '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  name: VOMcases
-  updated: '2019-03-08T08:28:48.938000+00:00'
-  version: '1'
-created: '2019-03-08T08:29:56.063191+02:00'
-creator:
-- '@type':
-  - prov:Person
-  - schema:Person
-  _id: mailto:remko.nijzink@list.lu
-  affiliation: null
-  alternate_name: null
-  email: remko.nijzink@list.lu
-  label: Remko Nijzink
-  name: Remko Nijzink
-date_published: null
-description: ''
-files: []
-identifier: 97ef95e4-9a10-4631-b1f2-4e3a846fb84b
-in_language: null
-keywords: []
-license: null
-name: VOM_output
-path: .renku/datasets/97ef95e4-9a10-4631-b1f2-4e3a846fb84b
-same_as: null
-short_name: VOM_output
-tags: []
-url: https://renkulab.io/datasets/97ef95e4-9a10-4631-b1f2-4e3a846fb84b
-version: null
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/Dataset
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/alternateName:
+  - '@value': VOM_output
+  http://schema.org/creator:
+  - '@id': mailto:remko.nijzink@list.lu
+  http://schema.org/dateCreated:
+  - '@value': '2019-03-08T08:29:56.063191+02:00'
+  http://schema.org/description:
+  - '@value': ''
+  http://schema.org/hasPart: []
+  http://schema.org/identifier:
+  - '@value': 97ef95e4-9a10-4631-b1f2-4e3a846fb84b
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/keywords: []
+  http://schema.org/name:
+  - '@value': VOM_output
+  http://schema.org/subjectOf: []
+  http://schema.org/url:
+  - '@value': https://renkulab.io/datasets/97ef95e4-9a10-4631-b1f2-4e3a846fb84b
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': 97ef95e4-9a10-4631-b1f2-4e3a846fb84b
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': .renku/datasets/97ef95e4-9a10-4631-b1f2-4e3a846fb84b
+- '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  '@type':
+  - http://schema.org/Project
+  - http://www.w3.org/ns/prov#Location
+  http://schema.org/agent:
+  - '@value': pre-0.11.0
+  http://schema.org/creator:
+  - '@id': mailto:remko.nijzink@list.lu
+  http://schema.org/dateCreated:
+  - '@value': '2019-03-08T08:28:48.938000+00:00'
+  http://schema.org/name:
+  - '@value': VOMcases
+  http://schema.org/schemaVersion:
+  - '@value': '1'
+- '@id': mailto:remko.nijzink@list.lu
+  '@type':
+  - http://schema.org/Person
+  - http://www.w3.org/ns/prov#Person
+  http://schema.org/email:
+  - '@value': remko.nijzink@list.lu
+  http://schema.org/name:
+  - '@value': Remko Nijzink
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': Remko Nijzink

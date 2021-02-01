@@ -1,425 +1,184 @@
-'@context':
-  '@version': 1.1
-  _id: '@id'
-  _project:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      created: schema:dateCreated
-      creator:
-        '@context':
-          '@version': 1.1
-          _id: '@id'
-          affiliation: schema:affiliation
-          alternate_name: schema:alternateName
-          email: schema:email
-          label: rdfs:label
-          name: schema:name
-          prov: http://www.w3.org/ns/prov#
-          rdfs: http://www.w3.org/2000/01/rdf-schema#
-          schema: http://schema.org/
-        '@id': schema:creator
-      name: schema:name
-      prov: http://www.w3.org/ns/prov#
-      schema: http://schema.org/
-      updated: schema:dateUpdated
-      version: schema:schemaVersion
-    '@id': schema:isPartOf
-  created: schema:dateCreated
-  creator:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      affiliation: schema:affiliation
-      alternate_name: schema:alternateName
-      email: schema:email
-      label: rdfs:label
-      name: schema:name
-      prov: http://www.w3.org/ns/prov#
-      rdfs: http://www.w3.org/2000/01/rdf-schema#
-      schema: http://schema.org/
-    '@id': schema:creator
-  date_published: schema:datePublished
-  description: schema:description
-  files:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      _project:
-        '@context':
-          '@version': 1.1
-          _id: '@id'
-          created: schema:dateCreated
-          creator:
-            '@context':
-              '@version': 1.1
-              _id: '@id'
-              affiliation: schema:affiliation
-              alternate_name: schema:alternateName
-              email: schema:email
-              label: rdfs:label
-              name: schema:name
-              prov: http://www.w3.org/ns/prov#
-              rdfs: http://www.w3.org/2000/01/rdf-schema#
-              schema: http://schema.org/
-            '@id': schema:creator
-          name: schema:name
-          prov: http://www.w3.org/ns/prov#
-          schema: http://schema.org/
-          updated: schema:dateUpdated
-          version: schema:schemaVersion
-        '@id': schema:isPartOf
-      added: schema:dateCreated
-      based_on: schema:isBasedOn
-      creator:
-        '@context':
-          '@version': 1.1
-          _id: '@id'
-          affiliation: schema:affiliation
-          alternate_name: schema:alternateName
-          email: schema:email
-          label: rdfs:label
-          name: schema:name
-          prov: http://www.w3.org/ns/prov#
-          rdfs: http://www.w3.org/2000/01/rdf-schema#
-          schema: http://schema.org/
-        '@id': schema:creator
-      name: schema:name
-      path: prov:atLocation
-      prov: http://www.w3.org/ns/prov#
-      schema: http://schema.org/
-      url: schema:url
-      wfprov: http://purl.org/wf4ever/wfprov#
-    '@id': schema:hasPart
-  identifier: schema:identifier
-  in_language:
-    '@context':
-      '@version': 1.1
-      alternate_name: schema:alternateName
-      name: schema:name
-      schema: http://schema.org/
-    '@id': schema:inLanguage
-  keywords: schema:keywords
-  license: schema:license
-  name: schema:name
-  path: prov:atLocation
-  prov: http://www.w3.org/ns/prov#
-  same_as:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      schema: http://schema.org/
-      url: schema:url
-    '@id': schema:sameAs
-  schema: http://schema.org/
-  short_name: schema:alternateName
-  tags:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      commit: schema:location
-      created: schema:startDate
-      dataset: schema:about
-      description: schema:description
-      name: schema:name
-      schema: http://schema.org/
-    '@id': schema:subjectOf
-  url: schema:url
-  version: schema:version
-  wfprov: http://purl.org/wf4ever/wfprov#
-'@type':
-- prov:Entity
-- schema:Dataset
-- wfprov:Artifact
-_id: https://renkulab.io/datasets/b8e6ffd5-92b3-45aa-8930-36035c28bfc4
-_label: b8e6ffd5-92b3-45aa-8930-36035c28bfc4
-_project:
+- '@id': https://renkulab.io/blob/74522b3c513379484f008310af5a5ead7169c8c2/data/vegmachine/adelaideriver.csv
   '@type':
-  - prov:Location
-  - schema:Project
-  _id: https://renkulab.io/projects/remko.nijzink/vomcases
-  created: '2019-03-08T08:28:48.938000+00:00'
-  creator:
-    '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  name: VOMcases
-  updated: '2019-03-08T08:28:48.938000+00:00'
-  version: '1'
-created: '2020-06-03T11:34:21.071603+00:00'
-creator:
-- '@type':
-  - prov:Person
-  - schema:Person
-  _id: mailto:remko.nijzink@list.lu
-  affiliation: null
-  alternate_name: null
-  email: remko.nijzink@list.lu
-  label: Remko Nijzink
-  name: Remko Nijzink
-date_published: null
-description: ''
-files:
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/74522b3c513379484f008310af5a5ead7169c8c2/data/vegmachine/adelaideriver.csv
-  _label: data/vegmachine/adelaideriver.csv@74522b3c513379484f008310af5a5ead7169c8c2
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2020-06-03T11:35:33.399025+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: adelaideriver.csv
-  path: data/vegmachine/adelaideriver.csv
-  url: file://../../../../data/vegmachine/adelaideriver.csv
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/74522b3c513379484f008310af5a5ead7169c8c2/data/vegmachine/dalyuncleared.csv
-  _label: data/vegmachine/dalyuncleared.csv@74522b3c513379484f008310af5a5ead7169c8c2
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2020-06-03T11:35:33.467373+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: dalyuncleared.csv
-  path: data/vegmachine/dalyuncleared.csv
-  url: file://../../../../data/vegmachine/dalyuncleared.csv
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/74522b3c513379484f008310af5a5ead7169c8c2/data/vegmachine/dryriver.csv
-  _label: data/vegmachine/dryriver.csv@74522b3c513379484f008310af5a5ead7169c8c2
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2020-06-03T11:35:33.533850+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: dryriver.csv
-  path: data/vegmachine/dryriver.csv
-  url: file://../../../../data/vegmachine/dryriver.csv
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/74522b3c513379484f008310af5a5ead7169c8c2/data/vegmachine/howardsprings.csv
-  _label: data/vegmachine/howardsprings.csv@74522b3c513379484f008310af5a5ead7169c8c2
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2020-06-03T11:35:33.599816+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: howardsprings.csv
-  path: data/vegmachine/howardsprings.csv
-  url: file://../../../../data/vegmachine/howardsprings.csv
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/74522b3c513379484f008310af5a5ead7169c8c2/data/vegmachine/litchfield.csv
-  _label: data/vegmachine/litchfield.csv@74522b3c513379484f008310af5a5ead7169c8c2
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2020-06-03T11:35:33.669780+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: litchfield.csv
-  path: data/vegmachine/litchfield.csv
-  url: file://../../../../data/vegmachine/litchfield.csv
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/74522b3c513379484f008310af5a5ead7169c8c2/data/vegmachine/sturtplains.csv
-  _label: data/vegmachine/sturtplains.csv@74522b3c513379484f008310af5a5ead7169c8c2
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2020-06-03T11:35:33.735034+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: sturtplains.csv
-  path: data/vegmachine/sturtplains.csv
-  url: file://../../../../data/vegmachine/sturtplains.csv
-identifier: b8e6ffd5-92b3-45aa-8930-36035c28bfc4
-in_language: null
-keywords: []
-license: null
-name: vegmachine
-path: .renku/datasets/b8e6ffd5-92b3-45aa-8930-36035c28bfc4
-same_as: null
-short_name: vegmachine
-tags: []
-url: https://renkulab.io/datasets/b8e6ffd5-92b3-45aa-8930-36035c28bfc4
-version: null
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-06-03T11:35:33.399025+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': adelaideriver.csv
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/vegmachine/adelaideriver.csv
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/vegmachine/adelaideriver.csv@74522b3c513379484f008310af5a5ead7169c8c2
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/vegmachine/adelaideriver.csv
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': ../../../../data/vegmachine/adelaideriver.csv
+- '@id': https://renkulab.io/blob/74522b3c513379484f008310af5a5ead7169c8c2/data/vegmachine/dalyuncleared.csv
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-06-03T11:35:33.467373+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': dalyuncleared.csv
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/vegmachine/dalyuncleared.csv
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/vegmachine/dalyuncleared.csv@74522b3c513379484f008310af5a5ead7169c8c2
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/vegmachine/dalyuncleared.csv
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': ../../../../data/vegmachine/dalyuncleared.csv
+- '@id': https://renkulab.io/blob/74522b3c513379484f008310af5a5ead7169c8c2/data/vegmachine/dryriver.csv
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-06-03T11:35:33.533850+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': dryriver.csv
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/vegmachine/dryriver.csv
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/vegmachine/dryriver.csv@74522b3c513379484f008310af5a5ead7169c8c2
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/vegmachine/dryriver.csv
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': ../../../../data/vegmachine/dryriver.csv
+- '@id': https://renkulab.io/blob/74522b3c513379484f008310af5a5ead7169c8c2/data/vegmachine/howardsprings.csv
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-06-03T11:35:33.599816+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': howardsprings.csv
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/vegmachine/howardsprings.csv
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/vegmachine/howardsprings.csv@74522b3c513379484f008310af5a5ead7169c8c2
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/vegmachine/howardsprings.csv
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': ../../../../data/vegmachine/howardsprings.csv
+- '@id': https://renkulab.io/blob/74522b3c513379484f008310af5a5ead7169c8c2/data/vegmachine/litchfield.csv
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-06-03T11:35:33.669780+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': litchfield.csv
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/vegmachine/litchfield.csv
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/vegmachine/litchfield.csv@74522b3c513379484f008310af5a5ead7169c8c2
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/vegmachine/litchfield.csv
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': ../../../../data/vegmachine/litchfield.csv
+- '@id': https://renkulab.io/blob/74522b3c513379484f008310af5a5ead7169c8c2/data/vegmachine/sturtplains.csv
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-06-03T11:35:33.735034+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': sturtplains.csv
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/vegmachine/sturtplains.csv
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/vegmachine/sturtplains.csv@74522b3c513379484f008310af5a5ead7169c8c2
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/vegmachine/sturtplains.csv
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': ../../../../data/vegmachine/sturtplains.csv
+- '@id': https://renkulab.io/datasets/b8e6ffd5-92b3-45aa-8930-36035c28bfc4
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/Dataset
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/alternateName:
+  - '@value': vegmachine
+  http://schema.org/creator:
+  - '@id': mailto:remko.nijzink@list.lu
+  http://schema.org/dateCreated:
+  - '@value': '2020-06-03T11:34:21.071603+00:00'
+  http://schema.org/description:
+  - '@value': ''
+  http://schema.org/hasPart:
+  - '@id': https://renkulab.io/blob/74522b3c513379484f008310af5a5ead7169c8c2/data/vegmachine/adelaideriver.csv
+  - '@id': https://renkulab.io/blob/74522b3c513379484f008310af5a5ead7169c8c2/data/vegmachine/dalyuncleared.csv
+  - '@id': https://renkulab.io/blob/74522b3c513379484f008310af5a5ead7169c8c2/data/vegmachine/dryriver.csv
+  - '@id': https://renkulab.io/blob/74522b3c513379484f008310af5a5ead7169c8c2/data/vegmachine/howardsprings.csv
+  - '@id': https://renkulab.io/blob/74522b3c513379484f008310af5a5ead7169c8c2/data/vegmachine/litchfield.csv
+  - '@id': https://renkulab.io/blob/74522b3c513379484f008310af5a5ead7169c8c2/data/vegmachine/sturtplains.csv
+  http://schema.org/identifier:
+  - '@value': b8e6ffd5-92b3-45aa-8930-36035c28bfc4
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/keywords: []
+  http://schema.org/name:
+  - '@value': vegmachine
+  http://schema.org/subjectOf: []
+  http://schema.org/url:
+  - '@value': https://renkulab.io/datasets/b8e6ffd5-92b3-45aa-8930-36035c28bfc4
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': b8e6ffd5-92b3-45aa-8930-36035c28bfc4
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': .renku/datasets/b8e6ffd5-92b3-45aa-8930-36035c28bfc4
+- '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  '@type':
+  - http://schema.org/Project
+  - http://www.w3.org/ns/prov#Location
+  http://schema.org/agent:
+  - '@value': pre-0.11.0
+  http://schema.org/creator:
+  - '@id': mailto:remko.nijzink@list.lu
+  http://schema.org/dateCreated:
+  - '@value': '2019-03-08T08:28:48.938000+00:00'
+  http://schema.org/name:
+  - '@value': VOMcases
+  http://schema.org/schemaVersion:
+  - '@value': '1'
+- '@id': mailto:remko.nijzink@list.lu
+  '@type':
+  - http://schema.org/Person
+  - http://www.w3.org/ns/prov#Person
+  http://schema.org/email:
+  - '@value': remko.nijzink@list.lu
+  http://schema.org/name:
+  - '@value': Remko Nijzink
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': Remko Nijzink

@@ -1,671 +1,316 @@
-'@context':
-  '@version': 1.1
-  _id: '@id'
-  _project:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      created: schema:dateCreated
-      creator:
-        '@context':
-          '@version': 1.1
-          _id: '@id'
-          affiliation: schema:affiliation
-          alternate_name: schema:alternateName
-          email: schema:email
-          label: rdfs:label
-          name: schema:name
-          prov: http://www.w3.org/ns/prov#
-          rdfs: http://www.w3.org/2000/01/rdf-schema#
-          schema: http://schema.org/
-        '@id': schema:creator
-      name: schema:name
-      prov: http://www.w3.org/ns/prov#
-      schema: http://schema.org/
-      updated: schema:dateUpdated
-      version: schema:schemaVersion
-    '@id': schema:isPartOf
-  created: schema:dateCreated
-  creator:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      affiliation: schema:affiliation
-      alternate_name: schema:alternateName
-      email: schema:email
-      label: rdfs:label
-      name: schema:name
-      prov: http://www.w3.org/ns/prov#
-      rdfs: http://www.w3.org/2000/01/rdf-schema#
-      schema: http://schema.org/
-    '@id': schema:creator
-  date_published: schema:datePublished
-  description: schema:description
-  files:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      _project:
-        '@context':
-          '@version': 1.1
-          _id: '@id'
-          created: schema:dateCreated
-          creator:
-            '@context':
-              '@version': 1.1
-              _id: '@id'
-              affiliation: schema:affiliation
-              alternate_name: schema:alternateName
-              email: schema:email
-              label: rdfs:label
-              name: schema:name
-              prov: http://www.w3.org/ns/prov#
-              rdfs: http://www.w3.org/2000/01/rdf-schema#
-              schema: http://schema.org/
-            '@id': schema:creator
-          name: schema:name
-          prov: http://www.w3.org/ns/prov#
-          schema: http://schema.org/
-          updated: schema:dateUpdated
-          version: schema:schemaVersion
-        '@id': schema:isPartOf
-      added: schema:dateCreated
-      based_on: schema:isBasedOn
-      creator:
-        '@context':
-          '@version': 1.1
-          _id: '@id'
-          affiliation: schema:affiliation
-          alternate_name: schema:alternateName
-          email: schema:email
-          label: rdfs:label
-          name: schema:name
-          prov: http://www.w3.org/ns/prov#
-          rdfs: http://www.w3.org/2000/01/rdf-schema#
-          schema: http://schema.org/
-        '@id': schema:creator
-      name: schema:name
-      path: prov:atLocation
-      prov: http://www.w3.org/ns/prov#
-      schema: http://schema.org/
-      url: schema:url
-      wfprov: http://purl.org/wf4ever/wfprov#
-    '@id': schema:hasPart
-  identifier: schema:identifier
-  in_language:
-    '@context':
-      '@version': 1.1
-      alternate_name: schema:alternateName
-      name: schema:name
-      schema: http://schema.org/
-    '@id': schema:inLanguage
-  keywords: schema:keywords
-  license: schema:license
-  name: schema:name
-  path: prov:atLocation
-  prov: http://www.w3.org/ns/prov#
-  same_as:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      schema: http://schema.org/
-      url: schema:url
-    '@id': schema:sameAs
-  schema: http://schema.org/
-  short_name: schema:alternateName
-  tags:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      commit: schema:location
-      created: schema:startDate
-      dataset: schema:about
-      description: schema:description
-      name: schema:name
-      schema: http://schema.org/
-    '@id': schema:subjectOf
-  url: schema:url
-  version: schema:version
-  wfprov: http://purl.org/wf4ever/wfprov#
-'@type':
-- prov:Entity
-- schema:Dataset
-- wfprov:Artifact
-_id: https://renkulab.io/datasets/0fe23a5f-c3ea-4484-9704-74464efeea8e
-_label: 0fe23a5f-c3ea-4484-9704-74464efeea8e
-_project:
+- '@id': https://renkulab.io/blob/081ea8c2066f78f9af63cb3e19105b197bf094da/data/DINGO_QC/FeQ_howard.txt
   '@type':
-  - prov:Location
-  - schema:Project
-  _id: https://renkulab.io/projects/remko.nijzink/vomcases
-  created: '2019-03-08T08:28:48.938000+00:00'
-  creator:
-    '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  name: VOMcases
-  updated: '2019-03-08T08:28:48.938000+00:00'
-  version: '1'
-created: '2019-10-28T18:23:25.131384+00:00'
-creator:
-- '@type':
-  - prov:Person
-  - schema:Person
-  _id: mailto:remko.nijzink@list.lu
-  affiliation: null
-  alternate_name: null
-  email: remko.nijzink@list.lu
-  label: Remko Nijzink
-  name: Remko Nijzink
-date_published: null
-description: ''
-files:
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/e9cf1d1222612a4eb9951b4aa349b3ba2b28a2e0/data/DINGO_QC/FcQ_adelaide.txt
-  _label: data/DINGO_QC/FcQ_adelaide.txt@e9cf1d1222612a4eb9951b4aa349b3ba2b28a2e0
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-10-28T18:23:46.480862+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: FcQ_adelaide.txt
-  path: data/DINGO_QC/FcQ_adelaide.txt
-  url: ../../data_tmp/dingo_qc/AdelaideRiver/FcQ_adelaide.txt
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/0c118a2c1029cdfe69734363f25eba3df7acb10a/data/DINGO_QC/FeQ_adelaide.txt
-  _label: data/DINGO_QC/FeQ_adelaide.txt@0c118a2c1029cdfe69734363f25eba3df7acb10a
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-10-28T18:23:53.971792+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: FeQ_adelaide.txt
-  path: data/DINGO_QC/FeQ_adelaide.txt
-  url: ../../data_tmp/dingo_qc/AdelaideRiver/FeQ_adelaide.txt
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/248f97214eaa8cedf5830c2c6abd25dbf61d66ca/data/DINGO_QC/FcQ_daly.txt
-  _label: data/DINGO_QC/FcQ_daly.txt@248f97214eaa8cedf5830c2c6abd25dbf61d66ca
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-10-28T18:24:15.830923+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: FcQ_daly.txt
-  path: data/DINGO_QC/FcQ_daly.txt
-  url: ../../data_tmp/dingo_qc/DalyUncleared/FcQ_daly.txt
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/6d7ad52213e130fe7470bffd551a01a284c6fcd7/data/DINGO_QC/FeQ_daly.txt
-  _label: data/DINGO_QC/FeQ_daly.txt@6d7ad52213e130fe7470bffd551a01a284c6fcd7
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-10-28T18:24:23.134005+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: FeQ_daly.txt
-  path: data/DINGO_QC/FeQ_daly.txt
-  url: ../../data_tmp/dingo_qc/DalyUncleared/FeQ_daly.txt
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/ba1f4dc257c106adb8238c3d859c847eb8526082/data/DINGO_QC/FcQ_dry.txt
-  _label: data/DINGO_QC/FcQ_dry.txt@ba1f4dc257c106adb8238c3d859c847eb8526082
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-10-28T18:26:15.918900+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: FcQ_dry.txt
-  path: data/DINGO_QC/FcQ_dry.txt
-  url: ../../data_tmp/dingo_qc/DryRiver/FcQ_dry.txt
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/7a0fbeaa9cf68ed8f2c87598e53158bc2275c94e/data/DINGO_QC/FeQ_dry.txt
-  _label: data/DINGO_QC/FeQ_dry.txt@7a0fbeaa9cf68ed8f2c87598e53158bc2275c94e
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-10-28T18:26:22.192186+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: FeQ_dry.txt
-  path: data/DINGO_QC/FeQ_dry.txt
-  url: ../../data_tmp/dingo_qc/DryRiver/FeQ_dry.txt
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/d1511223ee1f50c2ab978a02fb9916c1055ec138/data/DINGO_QC/FcQ_howard.txt
-  _label: data/DINGO_QC/FcQ_howard.txt@d1511223ee1f50c2ab978a02fb9916c1055ec138
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-10-28T18:26:41.337235+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: FcQ_howard.txt
-  path: data/DINGO_QC/FcQ_howard.txt
-  url: ../../data_tmp/dingo_qc/HowardSprings/FcQ_howard.txt
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/081ea8c2066f78f9af63cb3e19105b197bf094da/data/DINGO_QC/FeQ_howard.txt
-  _label: data/DINGO_QC/FeQ_howard.txt@081ea8c2066f78f9af63cb3e19105b197bf094da
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-10-28T18:26:52.115129+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: FeQ_howard.txt
-  path: data/DINGO_QC/FeQ_howard.txt
-  url: ../../data_tmp/dingo_qc/HowardSprings/FeQ_howard.txt
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/81193d0e31cfcc046271ff19ae8e29ae7851745e/data/DINGO_QC/FcQ_litch.txt
-  _label: data/DINGO_QC/FcQ_litch.txt@81193d0e31cfcc046271ff19ae8e29ae7851745e
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-10-28T18:27:07.744168+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: FcQ_litch.txt
-  path: data/DINGO_QC/FcQ_litch.txt
-  url: ../../data_tmp/dingo_qc/Litchfield/FcQ_litch.txt
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/f40113f9d3e8f1cb1d4cab460d3c4f36f012d72b/data/DINGO_QC/FeQ_litch.txt
-  _label: data/DINGO_QC/FeQ_litch.txt@f40113f9d3e8f1cb1d4cab460d3c4f36f012d72b
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-10-28T18:27:13.733772+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: FeQ_litch.txt
-  path: data/DINGO_QC/FeQ_litch.txt
-  url: ../../data_tmp/dingo_qc/Litchfield/FeQ_litch.txt
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/6434ab0ee68cfa873d698da14a1236624099f630/data/DINGO_QC/FcQ_sturt.txt
-  _label: data/DINGO_QC/FcQ_sturt.txt@6434ab0ee68cfa873d698da14a1236624099f630
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-10-28T18:27:28.009227+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: FcQ_sturt.txt
-  path: data/DINGO_QC/FcQ_sturt.txt
-  url: ../../data_tmp/dingo_qc/SturtPlains/FcQ_sturt.txt
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/2f98c4ae620db569d6cf4139f2976cd856421064/data/DINGO_QC/FeQ_sturt.txt
-  _label: data/DINGO_QC/FeQ_sturt.txt@2f98c4ae620db569d6cf4139f2976cd856421064
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-10-28T18:27:33.770564+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: FeQ_sturt.txt
-  path: data/DINGO_QC/FeQ_sturt.txt
-  url: ../../data_tmp/dingo_qc/SturtPlains/FeQ_sturt.txt
-identifier: 0fe23a5f-c3ea-4484-9704-74464efeea8e
-in_language: null
-keywords: []
-license: null
-name: DINGO_QC
-path: .renku/datasets/0fe23a5f-c3ea-4484-9704-74464efeea8e
-same_as: null
-short_name: DINGO_QC
-tags: []
-url: https://renkulab.io/datasets/0fe23a5f-c3ea-4484-9704-74464efeea8e
-version: null
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-10-28T18:26:52.115129+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': FeQ_howard.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/DINGO_QC/FeQ_howard.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/DINGO_QC/FeQ_howard.txt@081ea8c2066f78f9af63cb3e19105b197bf094da
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/DINGO_QC/FeQ_howard.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': ../../data_tmp/dingo_qc/HowardSprings/FeQ_howard.txt
+- '@id': https://renkulab.io/blob/0c118a2c1029cdfe69734363f25eba3df7acb10a/data/DINGO_QC/FeQ_adelaide.txt
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-10-28T18:23:53.971792+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': FeQ_adelaide.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/DINGO_QC/FeQ_adelaide.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/DINGO_QC/FeQ_adelaide.txt@0c118a2c1029cdfe69734363f25eba3df7acb10a
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/DINGO_QC/FeQ_adelaide.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': ../../data_tmp/dingo_qc/AdelaideRiver/FeQ_adelaide.txt
+- '@id': https://renkulab.io/blob/248f97214eaa8cedf5830c2c6abd25dbf61d66ca/data/DINGO_QC/FcQ_daly.txt
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-10-28T18:24:15.830923+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': FcQ_daly.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/DINGO_QC/FcQ_daly.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/DINGO_QC/FcQ_daly.txt@248f97214eaa8cedf5830c2c6abd25dbf61d66ca
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/DINGO_QC/FcQ_daly.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': ../../data_tmp/dingo_qc/DalyUncleared/FcQ_daly.txt
+- '@id': https://renkulab.io/blob/2f98c4ae620db569d6cf4139f2976cd856421064/data/DINGO_QC/FeQ_sturt.txt
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-10-28T18:27:33.770564+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': FeQ_sturt.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/DINGO_QC/FeQ_sturt.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/DINGO_QC/FeQ_sturt.txt@2f98c4ae620db569d6cf4139f2976cd856421064
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/DINGO_QC/FeQ_sturt.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': ../../data_tmp/dingo_qc/SturtPlains/FeQ_sturt.txt
+- '@id': https://renkulab.io/blob/6434ab0ee68cfa873d698da14a1236624099f630/data/DINGO_QC/FcQ_sturt.txt
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-10-28T18:27:28.009227+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': FcQ_sturt.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/DINGO_QC/FcQ_sturt.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/DINGO_QC/FcQ_sturt.txt@6434ab0ee68cfa873d698da14a1236624099f630
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/DINGO_QC/FcQ_sturt.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': ../../data_tmp/dingo_qc/SturtPlains/FcQ_sturt.txt
+- '@id': https://renkulab.io/blob/6d7ad52213e130fe7470bffd551a01a284c6fcd7/data/DINGO_QC/FeQ_daly.txt
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-10-28T18:24:23.134005+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': FeQ_daly.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/DINGO_QC/FeQ_daly.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/DINGO_QC/FeQ_daly.txt@6d7ad52213e130fe7470bffd551a01a284c6fcd7
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/DINGO_QC/FeQ_daly.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': ../../data_tmp/dingo_qc/DalyUncleared/FeQ_daly.txt
+- '@id': https://renkulab.io/blob/7a0fbeaa9cf68ed8f2c87598e53158bc2275c94e/data/DINGO_QC/FeQ_dry.txt
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-10-28T18:26:22.192186+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': FeQ_dry.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/DINGO_QC/FeQ_dry.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/DINGO_QC/FeQ_dry.txt@7a0fbeaa9cf68ed8f2c87598e53158bc2275c94e
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/DINGO_QC/FeQ_dry.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': ../../data_tmp/dingo_qc/DryRiver/FeQ_dry.txt
+- '@id': https://renkulab.io/blob/81193d0e31cfcc046271ff19ae8e29ae7851745e/data/DINGO_QC/FcQ_litch.txt
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-10-28T18:27:07.744168+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': FcQ_litch.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/DINGO_QC/FcQ_litch.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/DINGO_QC/FcQ_litch.txt@81193d0e31cfcc046271ff19ae8e29ae7851745e
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/DINGO_QC/FcQ_litch.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': ../../data_tmp/dingo_qc/Litchfield/FcQ_litch.txt
+- '@id': https://renkulab.io/blob/ba1f4dc257c106adb8238c3d859c847eb8526082/data/DINGO_QC/FcQ_dry.txt
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-10-28T18:26:15.918900+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': FcQ_dry.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/DINGO_QC/FcQ_dry.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/DINGO_QC/FcQ_dry.txt@ba1f4dc257c106adb8238c3d859c847eb8526082
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/DINGO_QC/FcQ_dry.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': ../../data_tmp/dingo_qc/DryRiver/FcQ_dry.txt
+- '@id': https://renkulab.io/blob/d1511223ee1f50c2ab978a02fb9916c1055ec138/data/DINGO_QC/FcQ_howard.txt
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-10-28T18:26:41.337235+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': FcQ_howard.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/DINGO_QC/FcQ_howard.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/DINGO_QC/FcQ_howard.txt@d1511223ee1f50c2ab978a02fb9916c1055ec138
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/DINGO_QC/FcQ_howard.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': ../../data_tmp/dingo_qc/HowardSprings/FcQ_howard.txt
+- '@id': https://renkulab.io/blob/e9cf1d1222612a4eb9951b4aa349b3ba2b28a2e0/data/DINGO_QC/FcQ_adelaide.txt
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-10-28T18:23:46.480862+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': FcQ_adelaide.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/DINGO_QC/FcQ_adelaide.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/DINGO_QC/FcQ_adelaide.txt@e9cf1d1222612a4eb9951b4aa349b3ba2b28a2e0
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/DINGO_QC/FcQ_adelaide.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': ../../data_tmp/dingo_qc/AdelaideRiver/FcQ_adelaide.txt
+- '@id': https://renkulab.io/blob/f40113f9d3e8f1cb1d4cab460d3c4f36f012d72b/data/DINGO_QC/FeQ_litch.txt
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-10-28T18:27:13.733772+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': FeQ_litch.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/DINGO_QC/FeQ_litch.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/DINGO_QC/FeQ_litch.txt@f40113f9d3e8f1cb1d4cab460d3c4f36f012d72b
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/DINGO_QC/FeQ_litch.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': ../../data_tmp/dingo_qc/Litchfield/FeQ_litch.txt
+- '@id': https://renkulab.io/datasets/0fe23a5f-c3ea-4484-9704-74464efeea8e
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/Dataset
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/alternateName:
+  - '@value': DINGO_QC
+  http://schema.org/creator:
+  - '@id': mailto:remko.nijzink@list.lu
+  http://schema.org/dateCreated:
+  - '@value': '2019-10-28T18:23:25.131384+00:00'
+  http://schema.org/description:
+  - '@value': ''
+  http://schema.org/hasPart:
+  - '@id': https://renkulab.io/blob/e9cf1d1222612a4eb9951b4aa349b3ba2b28a2e0/data/DINGO_QC/FcQ_adelaide.txt
+  - '@id': https://renkulab.io/blob/0c118a2c1029cdfe69734363f25eba3df7acb10a/data/DINGO_QC/FeQ_adelaide.txt
+  - '@id': https://renkulab.io/blob/248f97214eaa8cedf5830c2c6abd25dbf61d66ca/data/DINGO_QC/FcQ_daly.txt
+  - '@id': https://renkulab.io/blob/6d7ad52213e130fe7470bffd551a01a284c6fcd7/data/DINGO_QC/FeQ_daly.txt
+  - '@id': https://renkulab.io/blob/ba1f4dc257c106adb8238c3d859c847eb8526082/data/DINGO_QC/FcQ_dry.txt
+  - '@id': https://renkulab.io/blob/7a0fbeaa9cf68ed8f2c87598e53158bc2275c94e/data/DINGO_QC/FeQ_dry.txt
+  - '@id': https://renkulab.io/blob/d1511223ee1f50c2ab978a02fb9916c1055ec138/data/DINGO_QC/FcQ_howard.txt
+  - '@id': https://renkulab.io/blob/081ea8c2066f78f9af63cb3e19105b197bf094da/data/DINGO_QC/FeQ_howard.txt
+  - '@id': https://renkulab.io/blob/81193d0e31cfcc046271ff19ae8e29ae7851745e/data/DINGO_QC/FcQ_litch.txt
+  - '@id': https://renkulab.io/blob/f40113f9d3e8f1cb1d4cab460d3c4f36f012d72b/data/DINGO_QC/FeQ_litch.txt
+  - '@id': https://renkulab.io/blob/6434ab0ee68cfa873d698da14a1236624099f630/data/DINGO_QC/FcQ_sturt.txt
+  - '@id': https://renkulab.io/blob/2f98c4ae620db569d6cf4139f2976cd856421064/data/DINGO_QC/FeQ_sturt.txt
+  http://schema.org/identifier:
+  - '@value': 0fe23a5f-c3ea-4484-9704-74464efeea8e
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/keywords: []
+  http://schema.org/name:
+  - '@value': DINGO_QC
+  http://schema.org/subjectOf: []
+  http://schema.org/url:
+  - '@value': https://renkulab.io/datasets/0fe23a5f-c3ea-4484-9704-74464efeea8e
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': 0fe23a5f-c3ea-4484-9704-74464efeea8e
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': .renku/datasets/0fe23a5f-c3ea-4484-9704-74464efeea8e
+- '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  '@type':
+  - http://schema.org/Project
+  - http://www.w3.org/ns/prov#Location
+  http://schema.org/agent:
+  - '@value': pre-0.11.0
+  http://schema.org/creator:
+  - '@id': mailto:remko.nijzink@list.lu
+  http://schema.org/dateCreated:
+  - '@value': '2019-03-08T08:28:48.938000+00:00'
+  http://schema.org/name:
+  - '@value': VOMcases
+  http://schema.org/schemaVersion:
+  - '@value': '1'
+- '@id': mailto:remko.nijzink@list.lu
+  '@type':
+  - http://schema.org/Person
+  - http://www.w3.org/ns/prov#Person
+  http://schema.org/email:
+  - '@value': remko.nijzink@list.lu
+  http://schema.org/name:
+  - '@value': Remko Nijzink
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': Remko Nijzink

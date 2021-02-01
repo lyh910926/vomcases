@@ -1,938 +1,382 @@
-'@context':
-  '@version': 1.1
-  _id: '@id'
-  _project:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      created: schema:dateCreated
-      creator:
-        '@context':
-          '@version': 1.1
-          _id: '@id'
-          affiliation: schema:affiliation
-          alternate_name: schema:alternateName
-          email: schema:email
-          label: rdfs:label
-          name: schema:name
-          prov: http://www.w3.org/ns/prov#
-          rdfs: http://www.w3.org/2000/01/rdf-schema#
-          schema: http://schema.org/
-        '@id': schema:creator
-      name: schema:name
-      prov: http://www.w3.org/ns/prov#
-      schema: http://schema.org/
-      updated: schema:dateUpdated
-      version: schema:schemaVersion
-    '@id': schema:isPartOf
-  created: schema:dateCreated
-  creator:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      affiliation: schema:affiliation
-      alternate_name: schema:alternateName
-      email: schema:email
-      label: rdfs:label
-      name: schema:name
-      prov: http://www.w3.org/ns/prov#
-      rdfs: http://www.w3.org/2000/01/rdf-schema#
-      schema: http://schema.org/
-    '@id': schema:creator
-  date_published: schema:datePublished
-  description: schema:description
-  files:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      _project:
-        '@context':
-          '@version': 1.1
-          _id: '@id'
-          created: schema:dateCreated
-          creator:
-            '@context':
-              '@version': 1.1
-              _id: '@id'
-              affiliation: schema:affiliation
-              alternate_name: schema:alternateName
-              email: schema:email
-              label: rdfs:label
-              name: schema:name
-              prov: http://www.w3.org/ns/prov#
-              rdfs: http://www.w3.org/2000/01/rdf-schema#
-              schema: http://schema.org/
-            '@id': schema:creator
-          name: schema:name
-          prov: http://www.w3.org/ns/prov#
-          schema: http://schema.org/
-          updated: schema:dateUpdated
-          version: schema:schemaVersion
-        '@id': schema:isPartOf
-      added: schema:dateCreated
-      based_on: schema:isBasedOn
-      creator:
-        '@context':
-          '@version': 1.1
-          _id: '@id'
-          affiliation: schema:affiliation
-          alternate_name: schema:alternateName
-          email: schema:email
-          label: rdfs:label
-          name: schema:name
-          prov: http://www.w3.org/ns/prov#
-          rdfs: http://www.w3.org/2000/01/rdf-schema#
-          schema: http://schema.org/
-        '@id': schema:creator
-      name: schema:name
-      path: prov:atLocation
-      prov: http://www.w3.org/ns/prov#
-      schema: http://schema.org/
-      url: schema:url
-      wfprov: http://purl.org/wf4ever/wfprov#
-    '@id': schema:hasPart
-  identifier: schema:identifier
-  in_language:
-    '@context':
-      '@version': 1.1
-      alternate_name: schema:alternateName
-      name: schema:name
-      schema: http://schema.org/
-    '@id': schema:inLanguage
-  keywords: schema:keywords
-  license: schema:license
-  name: schema:name
-  path: prov:atLocation
-  prov: http://www.w3.org/ns/prov#
-  same_as:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      schema: http://schema.org/
-      url: schema:url
-    '@id': schema:sameAs
-  schema: http://schema.org/
-  short_name: schema:alternateName
-  tags:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      commit: schema:location
-      created: schema:startDate
-      dataset: schema:about
-      description: schema:description
-      name: schema:name
-      schema: http://schema.org/
-    '@id': schema:subjectOf
-  url: schema:url
-  version: schema:version
-  wfprov: http://purl.org/wf4ever/wfprov#
-'@type':
-- prov:Entity
-- schema:Dataset
-- wfprov:Artifact
-_id: https://renkulab.io/datasets/f495c97f-80f1-41b7-8f01-275edad9ff44
-_label: f495c97f-80f1-41b7-8f01-275edad9ff44
-_project:
+- '@id': https://renkulab.io/blob/45bd0433a8ffc2cad84aea29da36fc83599eddea/data/boreholes/DataSet
   '@type':
-  - prov:Location
-  - schema:Project
-  _id: https://renkulab.io/projects/remko.nijzink/vomcases
-  created: '2019-03-08T08:28:48.938000+00:00'
-  creator:
-    '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  name: VOMcases
-  updated: '2019-03-08T08:28:48.938000+00:00'
-  version: '4'
-created: '2019-09-11T18:57:44.660880+02:00'
-creator:
-- '@type':
-  - prov:Person
-  - schema:Person
-  _id: mailto:remko.nijzink@list.lu
-  affiliation: null
-  alternate_name: null
-  email: remko.nijzink@list.lu
-  label: Remko Nijzink
-  name: Remko Nijzink
-- '@type':
-  - prov:Person
-  - schema:Person
-  _id: mailto:remko.nijzink@list.lu
-  affiliation: null
-  alternate_name: null
-  email: remko.nijzink@list.lu
-  label: Remko Nijzink
-  name: Remko Nijzink
-date_published: null
-description: ''
-files:
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/9f7d20cf2b49028c41a330580899d8fdddd77074/data/boreholes/RN030982.csv
-  _label: data/boreholes/RN030982.csv@9f7d20cf2b49028c41a330580899d8fdddd77074
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-10-21T09:58:00.846674+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: RN030982.csv
-  path: data/boreholes/RN030982.csv
-  url: https://nt.gov.au/environment/water/water-information-systems/water-data-portal
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/9f7d20cf2b49028c41a330580899d8fdddd77074/data/boreholes/glossary.htm
-  _label: data/boreholes/glossary.htm@9f7d20cf2b49028c41a330580899d8fdddd77074
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-10-21T09:58:00.879005+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: glossary.htm
-  path: data/boreholes/glossary.htm
-  url: https://nt.gov.au/environment/water/water-information-systems/water-data-portal
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/68401f3b3304ee6239813e7e2350a20a20f89cfe/data/boreholes/RN030983.csv
-  _label: data/boreholes/RN030983.csv@68401f3b3304ee6239813e7e2350a20a20f89cfe
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-10-21T09:58:46.920604+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: RN030983.csv
-  path: data/boreholes/RN030983.csv
-  url: /home/remko/data/boreholes/RN030983_20191021/RN030983.csv
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/9ad8382584e1c896bb3d00b4fdea586b7a7bc049/data/boreholes/RN030984.csv
-  _label: data/boreholes/RN030984.csv@9ad8382584e1c896bb3d00b4fdea586b7a7bc049
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-10-21T09:59:04.940160+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: RN030984.csv
-  path: data/boreholes/RN030984.csv
-  url: https://nt.gov.au/environment/water/water-information-systems/water-data-portal
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/b65f4a463e8f0ca4e613c40c28930ba710800c0d/data/boreholes/RN030695.csv
-  _label: data/boreholes/RN030695.csv@b65f4a463e8f0ca4e613c40c28930ba710800c0d
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2020-06-10T08:46:20.755927+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: RN030695.csv
-  path: data/boreholes/RN030695.csv
-  url: file://../../../../data/boreholes/RN030695.csv
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/b65f4a463e8f0ca4e613c40c28930ba710800c0d/data/boreholes/RN033034.csv
-  _label: data/boreholes/RN033034.csv@b65f4a463e8f0ca4e613c40c28930ba710800c0d
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2020-06-10T08:46:20.821716+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: RN033034.csv
-  path: data/boreholes/RN033034.csv
-  url: file://../../../../data/boreholes/RN033034.csv
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/81d1cca60d0a202360df4db2330328f8af995ce3/data/boreholes/daly_boreholes.jpg
-  _label: data/boreholes/daly_boreholes.jpg@81d1cca60d0a202360df4db2330328f8af995ce3
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2020-06-10T08:46:53.730088+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: daly_boreholes.jpg
-  path: data/boreholes/daly_boreholes.jpg
-  url: file://../../../../data/boreholes/daly_boreholes.jpg
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/81d1cca60d0a202360df4db2330328f8af995ce3/data/boreholes/dryriver_boreholes.jpg
-  _label: data/boreholes/dryriver_boreholes.jpg@81d1cca60d0a202360df4db2330328f8af995ce3
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2020-06-10T08:46:53.797832+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: dryriver_boreholes.jpg
-  path: data/boreholes/dryriver_boreholes.jpg
-  url: file://../../../../data/boreholes/dryriver_boreholes.jpg
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/81d1cca60d0a202360df4db2330328f8af995ce3/data/boreholes/howardsprings_boreholes.jpg
-  _label: data/boreholes/howardsprings_boreholes.jpg@81d1cca60d0a202360df4db2330328f8af995ce3
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2020-06-10T08:46:53.864457+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: howardsprings_boreholes.jpg
-  path: data/boreholes/howardsprings_boreholes.jpg
-  url: file://../../../../data/boreholes/howardsprings_boreholes.jpg
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/a46db1b0c58b46ac69da105f6a74c1e479499cb7/data/boreholes/DataSetExport-DepthBelowGround.Publish.110.12@RN036471-20200610191742.csv
-  _label: data/boreholes/DataSetExport-DepthBelowGround.Publish.110.12@RN036471-20200610191742.csv@a46db1b0c58b46ac69da105f6a74c1e479499cb7
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2020-06-10T10:07:09.667185+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: DataSetExport-DepthBelowGround.Publish.110.12@RN036471-20200610191742.csv
-  path: data/boreholes/DataSetExport-DepthBelowGround.Publish.110.12@RN036471-20200610191742.csv
-  url: file://../../../../data/boreholes/DataSetExport-DepthBelowGround.Publish.110.12@RN036471-20200610191742.csv
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/a46db1b0c58b46ac69da105f6a74c1e479499cb7/data/boreholes/DataSetExport-DepthBelowGround.Publish@RN036471-20200610191740.csv
-  _label: data/boreholes/DataSetExport-DepthBelowGround.Publish@RN036471-20200610191740.csv@a46db1b0c58b46ac69da105f6a74c1e479499cb7
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2020-06-10T10:07:09.735574+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: DataSetExport-DepthBelowGround.Publish@RN036471-20200610191740.csv
-  path: data/boreholes/DataSetExport-DepthBelowGround.Publish@RN036471-20200610191740.csv
-  url: file://../../../../data/boreholes/DataSetExport-DepthBelowGround.Publish@RN036471-20200610191740.csv
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/45bd0433a8ffc2cad84aea29da36fc83599eddea/data/boreholes/DataSet
-  _label: data/boreholes/DataSet@45bd0433a8ffc2cad84aea29da36fc83599eddea
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-11-02T13:38:59.034115+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: DataSet
-  path: data/boreholes/DataSet
-  url: https://water.nt.gov.au/Export/DataSet?DataSet=DepthBelowGround.Field%20Visits%40RN037499&ExportFormat=csv&Compressed=false&Unit=m&Timezone=9.5&_=1604324069732
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/c7f7bb4f6dd5a49a0d43bd5544dde0d709f9a904/data/boreholes/RN037499/DataSet
-  _label: data/boreholes/RN037499/DataSet@0fd013ca77583731d403561f9a6737f047010f9a
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-11-02T13:46:21.183498+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: DataSet
-  path: data/boreholes/RN037499/DataSet
-  url: https://water.nt.gov.au/Export/DataSet?DataSet=DepthBelowGround.Field%20Visits%40RN037499&ExportFormat=csv&Compressed=false&Unit=m&Timezone=9.5&_=1604324069732
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/65c27a7a6e1a85a372bd484818a15d0446a82d0c/data/boreholes/RN038020/DataSet
-  _label: data/boreholes/RN038020/DataSet@65c27a7a6e1a85a372bd484818a15d0446a82d0c
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-11-02T13:56:12.028462+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: DataSet
-  path: data/boreholes/RN038020/DataSet
-  url: https://water.nt.gov.au/Export/DataSet?DataSet=DepthBelowGround.Publish%40RN038020&ExportFormat=csv&Compressed=false&Unit=m&Timezone=9.5&_=1604325297490&Compressed=true&Unit=m&Timezone=9.5&_=1604325149052
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/587ab2d2372e304bb850f60eade1982ea52da052/data/boreholes/RN021012/DataSet
-  _label: data/boreholes/RN021012/DataSet@587ab2d2372e304bb850f60eade1982ea52da052
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-11-04T15:37:48.048299+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: DataSet
-  path: data/boreholes/RN021012/DataSet
-  url: https://water.nt.gov.au/Export/DataSet?DataSet=DepthBelowGround.Publish%40RN021012&ExportFormat=csv&Compressed=false&Unit=m&Timezone=9.5&_=1604500615270
-identifier: f495c97f-80f1-41b7-8f01-275edad9ff44
-in_language: null
-keywords: []
-license: null
-name: boreholes
-path: .renku/datasets/f495c97f-80f1-41b7-8f01-275edad9ff44
-same_as: null
-short_name: boreholes
-tags: []
-url: https://renkulab.io/datasets/f495c97f-80f1-41b7-8f01-275edad9ff44
-version: null
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-11-02T13:38:59.034115+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': DataSet
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/boreholes/DataSet
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/boreholes/DataSet@45bd0433a8ffc2cad84aea29da36fc83599eddea
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/boreholes/DataSet
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://water.nt.gov.au/Export/DataSet?DataSet=DepthBelowGround.Field%20Visits%40RN037499&ExportFormat=csv&Compressed=false&Unit=m&Timezone=9.5&_=1604324069732
+- '@id': https://renkulab.io/blob/587ab2d2372e304bb850f60eade1982ea52da052/data/boreholes/RN021012/DataSet
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-11-04T15:37:48.048299+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': DataSet
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/boreholes/RN021012/DataSet
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/boreholes/RN021012/DataSet@587ab2d2372e304bb850f60eade1982ea52da052
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/boreholes/RN021012/DataSet
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://water.nt.gov.au/Export/DataSet?DataSet=DepthBelowGround.Publish%40RN021012&ExportFormat=csv&Compressed=false&Unit=m&Timezone=9.5&_=1604500615270
+- '@id': https://renkulab.io/blob/65c27a7a6e1a85a372bd484818a15d0446a82d0c/data/boreholes/RN038020/DataSet
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-11-02T13:56:12.028462+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': DataSet
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/boreholes/RN038020/DataSet
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/boreholes/RN038020/DataSet@65c27a7a6e1a85a372bd484818a15d0446a82d0c
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/boreholes/RN038020/DataSet
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://water.nt.gov.au/Export/DataSet?DataSet=DepthBelowGround.Publish%40RN038020&ExportFormat=csv&Compressed=false&Unit=m&Timezone=9.5&_=1604325297490&Compressed=true&Unit=m&Timezone=9.5&_=1604325149052
+- '@id': https://renkulab.io/blob/68401f3b3304ee6239813e7e2350a20a20f89cfe/data/boreholes/RN030983.csv
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-10-21T09:58:46.920604+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': RN030983.csv
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/boreholes/RN030983.csv
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/boreholes/RN030983.csv@68401f3b3304ee6239813e7e2350a20a20f89cfe
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/boreholes/RN030983.csv
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': /home/remko/data/boreholes/RN030983_20191021/RN030983.csv
+- '@id': https://renkulab.io/blob/81d1cca60d0a202360df4db2330328f8af995ce3/data/boreholes/daly_boreholes.jpg
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-06-10T08:46:53.730088+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': daly_boreholes.jpg
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/boreholes/daly_boreholes.jpg
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/boreholes/daly_boreholes.jpg@81d1cca60d0a202360df4db2330328f8af995ce3
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/boreholes/daly_boreholes.jpg
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': ../../../../data/boreholes/daly_boreholes.jpg
+- '@id': https://renkulab.io/blob/81d1cca60d0a202360df4db2330328f8af995ce3/data/boreholes/dryriver_boreholes.jpg
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-06-10T08:46:53.797832+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': dryriver_boreholes.jpg
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/boreholes/dryriver_boreholes.jpg
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/boreholes/dryriver_boreholes.jpg@81d1cca60d0a202360df4db2330328f8af995ce3
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/boreholes/dryriver_boreholes.jpg
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': ../../../../data/boreholes/dryriver_boreholes.jpg
+- '@id': https://renkulab.io/blob/81d1cca60d0a202360df4db2330328f8af995ce3/data/boreholes/howardsprings_boreholes.jpg
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-06-10T08:46:53.864457+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': howardsprings_boreholes.jpg
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/boreholes/howardsprings_boreholes.jpg
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/boreholes/howardsprings_boreholes.jpg@81d1cca60d0a202360df4db2330328f8af995ce3
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/boreholes/howardsprings_boreholes.jpg
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': ../../../../data/boreholes/howardsprings_boreholes.jpg
+- '@id': https://renkulab.io/blob/9ad8382584e1c896bb3d00b4fdea586b7a7bc049/data/boreholes/RN030984.csv
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-10-21T09:59:04.940160+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': RN030984.csv
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/boreholes/RN030984.csv
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/boreholes/RN030984.csv@9ad8382584e1c896bb3d00b4fdea586b7a7bc049
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/boreholes/RN030984.csv
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://nt.gov.au/environment/water/water-information-systems/water-data-portal
+- '@id': https://renkulab.io/blob/9f7d20cf2b49028c41a330580899d8fdddd77074/data/boreholes/RN030982.csv
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-10-21T09:58:00.846674+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': RN030982.csv
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/boreholes/RN030982.csv
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/boreholes/RN030982.csv@9f7d20cf2b49028c41a330580899d8fdddd77074
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/boreholes/RN030982.csv
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://nt.gov.au/environment/water/water-information-systems/water-data-portal
+- '@id': https://renkulab.io/blob/9f7d20cf2b49028c41a330580899d8fdddd77074/data/boreholes/glossary.htm
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-10-21T09:58:00.879005+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': glossary.htm
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/boreholes/glossary.htm
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/boreholes/glossary.htm@9f7d20cf2b49028c41a330580899d8fdddd77074
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/boreholes/glossary.htm
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://nt.gov.au/environment/water/water-information-systems/water-data-portal
+- '@id': https://renkulab.io/blob/a46db1b0c58b46ac69da105f6a74c1e479499cb7/data/boreholes/DataSetExport-DepthBelowGround.Publish.110.12@RN036471-20200610191742.csv
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-06-10T10:07:09.667185+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': DataSetExport-DepthBelowGround.Publish.110.12@RN036471-20200610191742.csv
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/boreholes/DataSetExport-DepthBelowGround.Publish.110.12%40RN036471-20200610191742.csv
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/boreholes/DataSetExport-DepthBelowGround.Publish.110.12@RN036471-20200610191742.csv@a46db1b0c58b46ac69da105f6a74c1e479499cb7
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/boreholes/DataSetExport-DepthBelowGround.Publish.110.12@RN036471-20200610191742.csv
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': ../../../../data/boreholes/DataSetExport-DepthBelowGround.Publish.110.12@RN036471-20200610191742.csv
+- '@id': https://renkulab.io/blob/a46db1b0c58b46ac69da105f6a74c1e479499cb7/data/boreholes/DataSetExport-DepthBelowGround.Publish@RN036471-20200610191740.csv
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-06-10T10:07:09.735574+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': DataSetExport-DepthBelowGround.Publish@RN036471-20200610191740.csv
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/boreholes/DataSetExport-DepthBelowGround.Publish%40RN036471-20200610191740.csv
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/boreholes/DataSetExport-DepthBelowGround.Publish@RN036471-20200610191740.csv@a46db1b0c58b46ac69da105f6a74c1e479499cb7
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/boreholes/DataSetExport-DepthBelowGround.Publish@RN036471-20200610191740.csv
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': ../../../../data/boreholes/DataSetExport-DepthBelowGround.Publish@RN036471-20200610191740.csv
+- '@id': https://renkulab.io/blob/b65f4a463e8f0ca4e613c40c28930ba710800c0d/data/boreholes/RN030695.csv
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-06-10T08:46:20.755927+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': RN030695.csv
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/boreholes/RN030695.csv
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/boreholes/RN030695.csv@b65f4a463e8f0ca4e613c40c28930ba710800c0d
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/boreholes/RN030695.csv
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': ../../../../data/boreholes/RN030695.csv
+- '@id': https://renkulab.io/blob/b65f4a463e8f0ca4e613c40c28930ba710800c0d/data/boreholes/RN033034.csv
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-06-10T08:46:20.821716+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': RN033034.csv
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/boreholes/RN033034.csv
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/boreholes/RN033034.csv@b65f4a463e8f0ca4e613c40c28930ba710800c0d
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/boreholes/RN033034.csv
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': ../../../../data/boreholes/RN033034.csv
+- '@id': https://renkulab.io/blob/c7f7bb4f6dd5a49a0d43bd5544dde0d709f9a904/data/boreholes/RN037499/DataSet
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-11-02T13:46:21.183498+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': DataSet
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/boreholes/RN037499/DataSet
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/boreholes/RN037499/DataSet@0fd013ca77583731d403561f9a6737f047010f9a
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/boreholes/RN037499/DataSet
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://water.nt.gov.au/Export/DataSet?DataSet=DepthBelowGround.Field%20Visits%40RN037499&ExportFormat=csv&Compressed=false&Unit=m&Timezone=9.5&_=1604324069732
+- '@id': https://renkulab.io/datasets/f495c97f-80f1-41b7-8f01-275edad9ff44
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/Dataset
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/alternateName:
+  - '@value': boreholes
+  http://schema.org/creator:
+  - '@id': mailto:remko.nijzink@list.lu
+  http://schema.org/dateCreated:
+  - '@value': '2019-09-11T18:57:44.660880+02:00'
+  http://schema.org/description:
+  - '@value': ''
+  http://schema.org/hasPart:
+  - '@id': https://renkulab.io/blob/9f7d20cf2b49028c41a330580899d8fdddd77074/data/boreholes/RN030982.csv
+  - '@id': https://renkulab.io/blob/9f7d20cf2b49028c41a330580899d8fdddd77074/data/boreholes/glossary.htm
+  - '@id': https://renkulab.io/blob/68401f3b3304ee6239813e7e2350a20a20f89cfe/data/boreholes/RN030983.csv
+  - '@id': https://renkulab.io/blob/9ad8382584e1c896bb3d00b4fdea586b7a7bc049/data/boreholes/RN030984.csv
+  - '@id': https://renkulab.io/blob/b65f4a463e8f0ca4e613c40c28930ba710800c0d/data/boreholes/RN030695.csv
+  - '@id': https://renkulab.io/blob/b65f4a463e8f0ca4e613c40c28930ba710800c0d/data/boreholes/RN033034.csv
+  - '@id': https://renkulab.io/blob/81d1cca60d0a202360df4db2330328f8af995ce3/data/boreholes/daly_boreholes.jpg
+  - '@id': https://renkulab.io/blob/81d1cca60d0a202360df4db2330328f8af995ce3/data/boreholes/dryriver_boreholes.jpg
+  - '@id': https://renkulab.io/blob/81d1cca60d0a202360df4db2330328f8af995ce3/data/boreholes/howardsprings_boreholes.jpg
+  - '@id': https://renkulab.io/blob/a46db1b0c58b46ac69da105f6a74c1e479499cb7/data/boreholes/DataSetExport-DepthBelowGround.Publish.110.12@RN036471-20200610191742.csv
+  - '@id': https://renkulab.io/blob/a46db1b0c58b46ac69da105f6a74c1e479499cb7/data/boreholes/DataSetExport-DepthBelowGround.Publish@RN036471-20200610191740.csv
+  - '@id': https://renkulab.io/blob/45bd0433a8ffc2cad84aea29da36fc83599eddea/data/boreholes/DataSet
+  - '@id': https://renkulab.io/blob/c7f7bb4f6dd5a49a0d43bd5544dde0d709f9a904/data/boreholes/RN037499/DataSet
+  - '@id': https://renkulab.io/blob/65c27a7a6e1a85a372bd484818a15d0446a82d0c/data/boreholes/RN038020/DataSet
+  - '@id': https://renkulab.io/blob/587ab2d2372e304bb850f60eade1982ea52da052/data/boreholes/RN021012/DataSet
+  http://schema.org/identifier:
+  - '@value': f495c97f-80f1-41b7-8f01-275edad9ff44
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/keywords: []
+  http://schema.org/name:
+  - '@value': boreholes
+  http://schema.org/subjectOf: []
+  http://schema.org/url:
+  - '@value': https://renkulab.io/datasets/f495c97f-80f1-41b7-8f01-275edad9ff44
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': f495c97f-80f1-41b7-8f01-275edad9ff44
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': .renku/datasets/f495c97f-80f1-41b7-8f01-275edad9ff44
+- '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  '@type':
+  - http://schema.org/Project
+  - http://www.w3.org/ns/prov#Location
+  http://schema.org/agent:
+  - '@value': pre-0.11.0
+  http://schema.org/creator:
+  - '@id': mailto:remko.nijzink@list.lu
+  http://schema.org/dateCreated:
+  - '@value': '2019-03-08T08:28:48.938000+00:00'
+  http://schema.org/name:
+  - '@value': VOMcases
+  http://schema.org/schemaVersion:
+  - '@value': '4'
+- '@id': mailto:remko.nijzink@list.lu
+  '@type':
+  - http://schema.org/Person
+  - http://www.w3.org/ns/prov#Person
+  http://schema.org/email:
+  - '@value': remko.nijzink@list.lu
+  http://schema.org/name:
+  - '@value': Remko Nijzink
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': Remko Nijzink

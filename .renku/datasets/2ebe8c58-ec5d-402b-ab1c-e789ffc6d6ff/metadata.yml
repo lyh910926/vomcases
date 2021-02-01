@@ -1,671 +1,316 @@
-'@context':
-  '@version': 1.1
-  _id: '@id'
-  _project:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      created: schema:dateCreated
-      creator:
-        '@context':
-          '@version': 1.1
-          _id: '@id'
-          affiliation: schema:affiliation
-          alternate_name: schema:alternateName
-          email: schema:email
-          label: rdfs:label
-          name: schema:name
-          prov: http://www.w3.org/ns/prov#
-          rdfs: http://www.w3.org/2000/01/rdf-schema#
-          schema: http://schema.org/
-        '@id': schema:creator
-      name: schema:name
-      prov: http://www.w3.org/ns/prov#
-      schema: http://schema.org/
-      updated: schema:dateUpdated
-      version: schema:schemaVersion
-    '@id': schema:isPartOf
-  created: schema:dateCreated
-  creator:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      affiliation: schema:affiliation
-      alternate_name: schema:alternateName
-      email: schema:email
-      label: rdfs:label
-      name: schema:name
-      prov: http://www.w3.org/ns/prov#
-      rdfs: http://www.w3.org/2000/01/rdf-schema#
-      schema: http://schema.org/
-    '@id': schema:creator
-  date_published: schema:datePublished
-  description: schema:description
-  files:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      _project:
-        '@context':
-          '@version': 1.1
-          _id: '@id'
-          created: schema:dateCreated
-          creator:
-            '@context':
-              '@version': 1.1
-              _id: '@id'
-              affiliation: schema:affiliation
-              alternate_name: schema:alternateName
-              email: schema:email
-              label: rdfs:label
-              name: schema:name
-              prov: http://www.w3.org/ns/prov#
-              rdfs: http://www.w3.org/2000/01/rdf-schema#
-              schema: http://schema.org/
-            '@id': schema:creator
-          name: schema:name
-          prov: http://www.w3.org/ns/prov#
-          schema: http://schema.org/
-          updated: schema:dateUpdated
-          version: schema:schemaVersion
-        '@id': schema:isPartOf
-      added: schema:dateCreated
-      based_on: schema:isBasedOn
-      creator:
-        '@context':
-          '@version': 1.1
-          _id: '@id'
-          affiliation: schema:affiliation
-          alternate_name: schema:alternateName
-          email: schema:email
-          label: rdfs:label
-          name: schema:name
-          prov: http://www.w3.org/ns/prov#
-          rdfs: http://www.w3.org/2000/01/rdf-schema#
-          schema: http://schema.org/
-        '@id': schema:creator
-      name: schema:name
-      path: prov:atLocation
-      prov: http://www.w3.org/ns/prov#
-      schema: http://schema.org/
-      url: schema:url
-      wfprov: http://purl.org/wf4ever/wfprov#
-    '@id': schema:hasPart
-  identifier: schema:identifier
-  in_language:
-    '@context':
-      '@version': 1.1
-      alternate_name: schema:alternateName
-      name: schema:name
-      schema: http://schema.org/
-    '@id': schema:inLanguage
-  keywords: schema:keywords
-  license: schema:license
-  name: schema:name
-  path: prov:atLocation
-  prov: http://www.w3.org/ns/prov#
-  same_as:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      schema: http://schema.org/
-      url: schema:url
-    '@id': schema:sameAs
-  schema: http://schema.org/
-  short_name: schema:alternateName
-  tags:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      commit: schema:location
-      created: schema:startDate
-      dataset: schema:about
-      description: schema:description
-      name: schema:name
-      schema: http://schema.org/
-    '@id': schema:subjectOf
-  url: schema:url
-  version: schema:version
-  wfprov: http://purl.org/wf4ever/wfprov#
-'@type':
-- prov:Entity
-- schema:Dataset
-- wfprov:Artifact
-_id: https://renkulab.io/datasets/2ebe8c58-ec5d-402b-ab1c-e789ffc6d6ff
-_label: 2ebe8c58-ec5d-402b-ab1c-e789ffc6d6ff
-_project:
+- '@id': https://renkulab.io/blob/14e8774a0cb66b59e20cb505464916d9c6b3db8d/data/MODIS/dates_fpar_modis
   '@type':
-  - prov:Location
-  - schema:Project
-  _id: https://renkulab.io/projects/remko.nijzink/vomcases
-  created: '2019-03-08T08:28:48.938000+00:00'
-  creator:
-    '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  name: VOMcases
-  updated: '2019-03-08T08:28:48.938000+00:00'
-  version: '1'
-created: '2019-03-26T15:04:59.557042+02:00'
-creator:
-- '@type':
-  - prov:Person
-  - schema:Person
-  _id: mailto:remko.nijzink@list.lu
-  affiliation: null
-  alternate_name: null
-  email: remko.nijzink@list.lu
-  label: Remko Nijzink
-  name: Remko Nijzink
-date_published: null
-description: Extracted from original modis-files
-files:
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/32b59523532ac9bd257a511b5bfb63e317a4674e/data/MODIS/dates_modis
-  _label: data/MODIS/dates_modis@32b59523532ac9bd257a511b5bfb63e317a4674e
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-03-26T15:05:41.455940+02:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: dates_modis
-  path: data/MODIS/dates_modis
-  url: https://e4ftl01.cr.usgs.gov/MOLT/MOD13Q1.006/
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/ee8c05f4b56dd1c0b666540ae753c468898201b3/data/MODIS/evi_adelaide.txt
-  _label: data/MODIS/evi_adelaide.txt@ee8c05f4b56dd1c0b666540ae753c468898201b3
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-03-26T15:05:31.854232+02:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: evi_adelaide.txt
-  path: data/MODIS/evi_adelaide.txt
-  url: https://e4ftl01.cr.usgs.gov/MOLT/MOD13Q1.006/
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/ee8c05f4b56dd1c0b666540ae753c468898201b3/data/MODIS/evi_daly.txt
-  _label: data/MODIS/evi_daly.txt@ee8c05f4b56dd1c0b666540ae753c468898201b3
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-03-26T15:05:31.921770+02:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: evi_daly.txt
-  path: data/MODIS/evi_daly.txt
-  url: https://e4ftl01.cr.usgs.gov/MOLT/MOD13Q1.006/
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/ee8c05f4b56dd1c0b666540ae753c468898201b3/data/MODIS/evi_dry.txt
-  _label: data/MODIS/evi_dry.txt@ee8c05f4b56dd1c0b666540ae753c468898201b3
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-03-26T15:05:31.991138+02:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: evi_dry.txt
-  path: data/MODIS/evi_dry.txt
-  url: https://e4ftl01.cr.usgs.gov/MOLT/MOD13Q1.006/
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/ee8c05f4b56dd1c0b666540ae753c468898201b3/data/MODIS/evi_howard.txt
-  _label: data/MODIS/evi_howard.txt@ee8c05f4b56dd1c0b666540ae753c468898201b3
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-03-26T15:05:32.062147+02:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: evi_howard.txt
-  path: data/MODIS/evi_howard.txt
-  url: https://e4ftl01.cr.usgs.gov/MOLT/MOD13Q1.006/
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/ee8c05f4b56dd1c0b666540ae753c468898201b3/data/MODIS/evi_sturt.txt
-  _label: data/MODIS/evi_sturt.txt@ee8c05f4b56dd1c0b666540ae753c468898201b3
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-03-26T15:05:32.134244+02:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: evi_sturt.txt
-  path: data/MODIS/evi_sturt.txt
-  url: https://e4ftl01.cr.usgs.gov/MOLT/MOD13Q1.006/
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/14e8774a0cb66b59e20cb505464916d9c6b3db8d/data/MODIS/dates_fpar_modis
-  _label: data/MODIS/dates_fpar_modis@14e8774a0cb66b59e20cb505464916d9c6b3db8d
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2020-06-03T11:36:52.570183+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: dates_fpar_modis
-  path: data/MODIS/dates_fpar_modis
-  url: file://../../../../data/MODIS_fpar/dates_fpar_modis
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/14e8774a0cb66b59e20cb505464916d9c6b3db8d/data/MODIS/fpar_adelaide.txt
-  _label: data/MODIS/fpar_adelaide.txt@14e8774a0cb66b59e20cb505464916d9c6b3db8d
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2020-06-03T11:36:52.635661+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: fpar_adelaide.txt
-  path: data/MODIS/fpar_adelaide.txt
-  url: file://../../../../data/MODIS_fpar/fpar_adelaide.txt
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/14e8774a0cb66b59e20cb505464916d9c6b3db8d/data/MODIS/fpar_daly.txt
-  _label: data/MODIS/fpar_daly.txt@14e8774a0cb66b59e20cb505464916d9c6b3db8d
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2020-06-03T11:36:52.700148+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: fpar_daly.txt
-  path: data/MODIS/fpar_daly.txt
-  url: file://../../../../data/MODIS_fpar/fpar_daly.txt
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/14e8774a0cb66b59e20cb505464916d9c6b3db8d/data/MODIS/fpar_dry.txt
-  _label: data/MODIS/fpar_dry.txt@14e8774a0cb66b59e20cb505464916d9c6b3db8d
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2020-06-03T11:36:52.763994+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: fpar_dry.txt
-  path: data/MODIS/fpar_dry.txt
-  url: file://../../../../data/MODIS_fpar/fpar_dry.txt
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/14e8774a0cb66b59e20cb505464916d9c6b3db8d/data/MODIS/fpar_howard.txt
-  _label: data/MODIS/fpar_howard.txt@14e8774a0cb66b59e20cb505464916d9c6b3db8d
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2020-06-03T11:36:52.829924+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: fpar_howard.txt
-  path: data/MODIS/fpar_howard.txt
-  url: file://../../../../data/MODIS_fpar/fpar_howard.txt
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/14e8774a0cb66b59e20cb505464916d9c6b3db8d/data/MODIS/fpar_sturt.txt
-  _label: data/MODIS/fpar_sturt.txt@14e8774a0cb66b59e20cb505464916d9c6b3db8d
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2020-06-03T11:36:52.894807+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: fpar_sturt.txt
-  path: data/MODIS/fpar_sturt.txt
-  url: file://../../../../data/MODIS_fpar/fpar_sturt.txt
-identifier: 2ebe8c58-ec5d-402b-ab1c-e789ffc6d6ff
-in_language: null
-keywords: []
-license: null
-name: MODIS
-path: .renku/datasets/2ebe8c58-ec5d-402b-ab1c-e789ffc6d6ff
-same_as: null
-short_name: MODIS
-tags: []
-url: https://renkulab.io/datasets/2ebe8c58-ec5d-402b-ab1c-e789ffc6d6ff
-version: null
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-06-03T11:36:52.570183+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': dates_fpar_modis
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/MODIS/dates_fpar_modis
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/MODIS/dates_fpar_modis@14e8774a0cb66b59e20cb505464916d9c6b3db8d
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/MODIS/dates_fpar_modis
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': ../../../../data/MODIS_fpar/dates_fpar_modis
+- '@id': https://renkulab.io/blob/14e8774a0cb66b59e20cb505464916d9c6b3db8d/data/MODIS/fpar_adelaide.txt
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-06-03T11:36:52.635661+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': fpar_adelaide.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/MODIS/fpar_adelaide.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/MODIS/fpar_adelaide.txt@14e8774a0cb66b59e20cb505464916d9c6b3db8d
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/MODIS/fpar_adelaide.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': ../../../../data/MODIS_fpar/fpar_adelaide.txt
+- '@id': https://renkulab.io/blob/14e8774a0cb66b59e20cb505464916d9c6b3db8d/data/MODIS/fpar_daly.txt
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-06-03T11:36:52.700148+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': fpar_daly.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/MODIS/fpar_daly.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/MODIS/fpar_daly.txt@14e8774a0cb66b59e20cb505464916d9c6b3db8d
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/MODIS/fpar_daly.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': ../../../../data/MODIS_fpar/fpar_daly.txt
+- '@id': https://renkulab.io/blob/14e8774a0cb66b59e20cb505464916d9c6b3db8d/data/MODIS/fpar_dry.txt
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-06-03T11:36:52.763994+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': fpar_dry.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/MODIS/fpar_dry.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/MODIS/fpar_dry.txt@14e8774a0cb66b59e20cb505464916d9c6b3db8d
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/MODIS/fpar_dry.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': ../../../../data/MODIS_fpar/fpar_dry.txt
+- '@id': https://renkulab.io/blob/14e8774a0cb66b59e20cb505464916d9c6b3db8d/data/MODIS/fpar_howard.txt
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-06-03T11:36:52.829924+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': fpar_howard.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/MODIS/fpar_howard.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/MODIS/fpar_howard.txt@14e8774a0cb66b59e20cb505464916d9c6b3db8d
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/MODIS/fpar_howard.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': ../../../../data/MODIS_fpar/fpar_howard.txt
+- '@id': https://renkulab.io/blob/14e8774a0cb66b59e20cb505464916d9c6b3db8d/data/MODIS/fpar_sturt.txt
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-06-03T11:36:52.894807+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': fpar_sturt.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/MODIS/fpar_sturt.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/MODIS/fpar_sturt.txt@14e8774a0cb66b59e20cb505464916d9c6b3db8d
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/MODIS/fpar_sturt.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': ../../../../data/MODIS_fpar/fpar_sturt.txt
+- '@id': https://renkulab.io/blob/32b59523532ac9bd257a511b5bfb63e317a4674e/data/MODIS/dates_modis
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-03-26T15:05:41.455940+02:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': dates_modis
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/MODIS/dates_modis
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/MODIS/dates_modis@32b59523532ac9bd257a511b5bfb63e317a4674e
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/MODIS/dates_modis
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://e4ftl01.cr.usgs.gov/MOLT/MOD13Q1.006/
+- '@id': https://renkulab.io/blob/ee8c05f4b56dd1c0b666540ae753c468898201b3/data/MODIS/evi_adelaide.txt
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-03-26T15:05:31.854232+02:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': evi_adelaide.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/MODIS/evi_adelaide.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/MODIS/evi_adelaide.txt@ee8c05f4b56dd1c0b666540ae753c468898201b3
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/MODIS/evi_adelaide.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://e4ftl01.cr.usgs.gov/MOLT/MOD13Q1.006/
+- '@id': https://renkulab.io/blob/ee8c05f4b56dd1c0b666540ae753c468898201b3/data/MODIS/evi_daly.txt
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-03-26T15:05:31.921770+02:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': evi_daly.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/MODIS/evi_daly.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/MODIS/evi_daly.txt@ee8c05f4b56dd1c0b666540ae753c468898201b3
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/MODIS/evi_daly.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://e4ftl01.cr.usgs.gov/MOLT/MOD13Q1.006/
+- '@id': https://renkulab.io/blob/ee8c05f4b56dd1c0b666540ae753c468898201b3/data/MODIS/evi_dry.txt
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-03-26T15:05:31.991138+02:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': evi_dry.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/MODIS/evi_dry.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/MODIS/evi_dry.txt@ee8c05f4b56dd1c0b666540ae753c468898201b3
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/MODIS/evi_dry.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://e4ftl01.cr.usgs.gov/MOLT/MOD13Q1.006/
+- '@id': https://renkulab.io/blob/ee8c05f4b56dd1c0b666540ae753c468898201b3/data/MODIS/evi_howard.txt
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-03-26T15:05:32.062147+02:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': evi_howard.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/MODIS/evi_howard.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/MODIS/evi_howard.txt@ee8c05f4b56dd1c0b666540ae753c468898201b3
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/MODIS/evi_howard.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://e4ftl01.cr.usgs.gov/MOLT/MOD13Q1.006/
+- '@id': https://renkulab.io/blob/ee8c05f4b56dd1c0b666540ae753c468898201b3/data/MODIS/evi_sturt.txt
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-03-26T15:05:32.134244+02:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': evi_sturt.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/MODIS/evi_sturt.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/MODIS/evi_sturt.txt@ee8c05f4b56dd1c0b666540ae753c468898201b3
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/MODIS/evi_sturt.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://e4ftl01.cr.usgs.gov/MOLT/MOD13Q1.006/
+- '@id': https://renkulab.io/datasets/2ebe8c58-ec5d-402b-ab1c-e789ffc6d6ff
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/Dataset
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/alternateName:
+  - '@value': MODIS
+  http://schema.org/creator:
+  - '@id': mailto:remko.nijzink@list.lu
+  http://schema.org/dateCreated:
+  - '@value': '2019-03-26T15:04:59.557042+02:00'
+  http://schema.org/description:
+  - '@value': Extracted from original modis-files
+  http://schema.org/hasPart:
+  - '@id': https://renkulab.io/blob/32b59523532ac9bd257a511b5bfb63e317a4674e/data/MODIS/dates_modis
+  - '@id': https://renkulab.io/blob/ee8c05f4b56dd1c0b666540ae753c468898201b3/data/MODIS/evi_adelaide.txt
+  - '@id': https://renkulab.io/blob/ee8c05f4b56dd1c0b666540ae753c468898201b3/data/MODIS/evi_daly.txt
+  - '@id': https://renkulab.io/blob/ee8c05f4b56dd1c0b666540ae753c468898201b3/data/MODIS/evi_dry.txt
+  - '@id': https://renkulab.io/blob/ee8c05f4b56dd1c0b666540ae753c468898201b3/data/MODIS/evi_howard.txt
+  - '@id': https://renkulab.io/blob/ee8c05f4b56dd1c0b666540ae753c468898201b3/data/MODIS/evi_sturt.txt
+  - '@id': https://renkulab.io/blob/14e8774a0cb66b59e20cb505464916d9c6b3db8d/data/MODIS/dates_fpar_modis
+  - '@id': https://renkulab.io/blob/14e8774a0cb66b59e20cb505464916d9c6b3db8d/data/MODIS/fpar_adelaide.txt
+  - '@id': https://renkulab.io/blob/14e8774a0cb66b59e20cb505464916d9c6b3db8d/data/MODIS/fpar_daly.txt
+  - '@id': https://renkulab.io/blob/14e8774a0cb66b59e20cb505464916d9c6b3db8d/data/MODIS/fpar_dry.txt
+  - '@id': https://renkulab.io/blob/14e8774a0cb66b59e20cb505464916d9c6b3db8d/data/MODIS/fpar_howard.txt
+  - '@id': https://renkulab.io/blob/14e8774a0cb66b59e20cb505464916d9c6b3db8d/data/MODIS/fpar_sturt.txt
+  http://schema.org/identifier:
+  - '@value': 2ebe8c58-ec5d-402b-ab1c-e789ffc6d6ff
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/keywords: []
+  http://schema.org/name:
+  - '@value': MODIS
+  http://schema.org/subjectOf: []
+  http://schema.org/url:
+  - '@value': https://renkulab.io/datasets/2ebe8c58-ec5d-402b-ab1c-e789ffc6d6ff
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': 2ebe8c58-ec5d-402b-ab1c-e789ffc6d6ff
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': .renku/datasets/2ebe8c58-ec5d-402b-ab1c-e789ffc6d6ff
+- '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  '@type':
+  - http://schema.org/Project
+  - http://www.w3.org/ns/prov#Location
+  http://schema.org/agent:
+  - '@value': pre-0.11.0
+  http://schema.org/creator:
+  - '@id': mailto:remko.nijzink@list.lu
+  http://schema.org/dateCreated:
+  - '@value': '2019-03-08T08:28:48.938000+00:00'
+  http://schema.org/name:
+  - '@value': VOMcases
+  http://schema.org/schemaVersion:
+  - '@value': '1'
+- '@id': mailto:remko.nijzink@list.lu
+  '@type':
+  - http://schema.org/Person
+  - http://www.w3.org/ns/prov#Person
+  http://schema.org/email:
+  - '@value': remko.nijzink@list.lu
+  http://schema.org/name:
+  - '@value': Remko Nijzink
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': Remko Nijzink

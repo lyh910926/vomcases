@@ -1,712 +1,338 @@
-'@context':
-  '@version': 1.1
-  _id: '@id'
-  _project:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      created: schema:dateCreated
-      creator:
-        '@context':
-          '@version': 1.1
-          _id: '@id'
-          affiliation: schema:affiliation
-          alternate_name: schema:alternateName
-          email: schema:email
-          label: rdfs:label
-          name: schema:name
-          prov: http://www.w3.org/ns/prov#
-          rdfs: http://www.w3.org/2000/01/rdf-schema#
-          schema: http://schema.org/
-        '@id': schema:creator
-      name: schema:name
-      prov: http://www.w3.org/ns/prov#
-      schema: http://schema.org/
-      updated: schema:dateUpdated
-      version: schema:schemaVersion
-    '@id': schema:isPartOf
-  created: schema:dateCreated
-  creator:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      affiliation: schema:affiliation
-      alternate_name: schema:alternateName
-      email: schema:email
-      label: rdfs:label
-      name: schema:name
-      prov: http://www.w3.org/ns/prov#
-      rdfs: http://www.w3.org/2000/01/rdf-schema#
-      schema: http://schema.org/
-    '@id': schema:creator
-  date_published: schema:datePublished
-  description: schema:description
-  files:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      _project:
-        '@context':
-          '@version': 1.1
-          _id: '@id'
-          created: schema:dateCreated
-          creator:
-            '@context':
-              '@version': 1.1
-              _id: '@id'
-              affiliation: schema:affiliation
-              alternate_name: schema:alternateName
-              email: schema:email
-              label: rdfs:label
-              name: schema:name
-              prov: http://www.w3.org/ns/prov#
-              rdfs: http://www.w3.org/2000/01/rdf-schema#
-              schema: http://schema.org/
-            '@id': schema:creator
-          name: schema:name
-          prov: http://www.w3.org/ns/prov#
-          schema: http://schema.org/
-          updated: schema:dateUpdated
-          version: schema:schemaVersion
-        '@id': schema:isPartOf
-      added: schema:dateCreated
-      based_on: schema:isBasedOn
-      creator:
-        '@context':
-          '@version': 1.1
-          _id: '@id'
-          affiliation: schema:affiliation
-          alternate_name: schema:alternateName
-          email: schema:email
-          label: rdfs:label
-          name: schema:name
-          prov: http://www.w3.org/ns/prov#
-          rdfs: http://www.w3.org/2000/01/rdf-schema#
-          schema: http://schema.org/
-        '@id': schema:creator
-      name: schema:name
-      path: prov:atLocation
-      prov: http://www.w3.org/ns/prov#
-      schema: http://schema.org/
-      url: schema:url
-      wfprov: http://purl.org/wf4ever/wfprov#
-    '@id': schema:hasPart
-  identifier: schema:identifier
-  in_language:
-    '@context':
-      '@version': 1.1
-      alternate_name: schema:alternateName
-      name: schema:name
-      schema: http://schema.org/
-    '@id': schema:inLanguage
-  keywords: schema:keywords
-  license: schema:license
-  name: schema:name
-  path: prov:atLocation
-  prov: http://www.w3.org/ns/prov#
-  same_as:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      schema: http://schema.org/
-      url: schema:url
-    '@id': schema:sameAs
-  schema: http://schema.org/
-  short_name: schema:alternateName
-  tags:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      commit: schema:location
-      created: schema:startDate
-      dataset: schema:about
-      description: schema:description
-      name: schema:name
-      schema: http://schema.org/
-    '@id': schema:subjectOf
-  url: schema:url
-  version: schema:version
-  wfprov: http://purl.org/wf4ever/wfprov#
-'@type':
-- prov:Entity
-- schema:Dataset
-- wfprov:Artifact
-_id: https://renkulab.io/datasets/3ba60c7a-0121-4140-b964-1664b5922a89
-_label: 3ba60c7a-0121-4140-b964-1664b5922a89
-_project:
+- '@id': https://renkulab.io/blob/023b2771accced13e194d84dd623856f346b2410/data/fPAR/fpar_litchfield_v5.txt
   '@type':
-  - prov:Location
-  - schema:Project
-  _id: https://renkulab.io/projects/remko.nijzink/vomcases
-  created: '2019-03-08T08:28:48.938000+00:00'
-  creator:
-    '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  name: VOMcases
-  updated: '2019-03-08T08:28:48.938000+00:00'
-  version: '1'
-created: '2019-04-02T11:56:41.661110+02:00'
-creator:
-- '@type':
-  - prov:Person
-  - schema:Person
-  _id: mailto:remko.nijzink@list.lu
-  affiliation: null
-  alternate_name: null
-  email: remko.nijzink@list.lu
-  label: Remko Nijzink
-  name: Remko Nijzink
-date_published: null
-description: Extracted/repurposed from original files
-files:
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/daf3b0d09eb41eed956cb666cf0e9aea7f680478/data/fPAR/dates
-  _label: data/fPAR/dates@daf3b0d09eb41eed956cb666cf0e9aea7f680478
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-04-02T12:02:26.675826+01:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: dates
-  path: data/fPAR/dates
-  url: /home/remko/Documents/data/fpar_donohue/v4/dates
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/f4c6ca3686207d1187684b569d3788dfa71c06ee/data/fPAR/dates_v5
-  _label: data/fPAR/dates_v5@f4c6ca3686207d1187684b569d3788dfa71c06ee
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-04-05T11:05:22.050399+01:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: dates_v5
-  path: data/fPAR/dates_v5
-  url: https://doi.org/10.4225/08/50FE0CBE0DD06
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/12d155f95a049792043a90d07b52f8f8b2643651/data/fPAR/fpar_adelaide.txt
-  _label: data/fPAR/fpar_adelaide.txt@12d155f95a049792043a90d07b52f8f8b2643651
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-04-02T12:24:55.490047+01:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: fpar_adelaide.txt
-  path: data/fPAR/fpar_adelaide.txt
-  url: /home/remko/Documents/data/fpar_donohue/v4/fpar_adelaide.txt
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/f4c6ca3686207d1187684b569d3788dfa71c06ee/data/fPAR/fpar_adelaide_v5.txt
-  _label: data/fPAR/fpar_adelaide_v5.txt@f4c6ca3686207d1187684b569d3788dfa71c06ee
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-04-05T11:05:22.127599+01:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: fpar_adelaide_v5.txt
-  path: data/fPAR/fpar_adelaide_v5.txt
-  url: https://doi.org/10.4225/08/50FE0CBE0DD06
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/52eaec481d54fc5d47c2fab0258393d8c037578b/data/fPAR/fpar_daly.txt
-  _label: data/fPAR/fpar_daly.txt@52eaec481d54fc5d47c2fab0258393d8c037578b
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-04-02T12:25:01.118926+01:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: fpar_daly.txt
-  path: data/fPAR/fpar_daly.txt
-  url: /home/remko/Documents/data/fpar_donohue/v4/fpar_daly.txt
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/f4c6ca3686207d1187684b569d3788dfa71c06ee/data/fPAR/fpar_daly_v5.txt
-  _label: data/fPAR/fpar_daly_v5.txt@f4c6ca3686207d1187684b569d3788dfa71c06ee
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-04-05T11:05:22.202848+01:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: fpar_daly_v5.txt
-  path: data/fPAR/fpar_daly_v5.txt
-  url: https://doi.org/10.4225/08/50FE0CBE0DD06
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/31f313ffc3ec9dea1484b3bb9230c03b1858894b/data/fPAR/fpar_dry.txt
-  _label: data/fPAR/fpar_dry.txt@31f313ffc3ec9dea1484b3bb9230c03b1858894b
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-04-02T12:25:04.518563+01:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: fpar_dry.txt
-  path: data/fPAR/fpar_dry.txt
-  url: /home/remko/Documents/data/fpar_donohue/v4/fpar_dry.txt
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/f4c6ca3686207d1187684b569d3788dfa71c06ee/data/fPAR/fpar_dry_v5.txt
-  _label: data/fPAR/fpar_dry_v5.txt@f4c6ca3686207d1187684b569d3788dfa71c06ee
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-04-05T11:05:22.282455+01:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: fpar_dry_v5.txt
-  path: data/fPAR/fpar_dry_v5.txt
-  url: https://doi.org/10.4225/08/50FE0CBE0DD06
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/4136b77a44e36abdde9cc68fbbb6f0b5d235f8a3/data/fPAR/fpar_howard.txt
-  _label: data/fPAR/fpar_howard.txt@4136b77a44e36abdde9cc68fbbb6f0b5d235f8a3
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-04-02T12:25:09.386736+01:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: fpar_howard.txt
-  path: data/fPAR/fpar_howard.txt
-  url: /home/remko/Documents/data/fpar_donohue/v4/fpar_howard.txt
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/f4c6ca3686207d1187684b569d3788dfa71c06ee/data/fPAR/fpar_howard_v5.txt
-  _label: data/fPAR/fpar_howard_v5.txt@f4c6ca3686207d1187684b569d3788dfa71c06ee
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-04-05T11:05:22.360111+01:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: fpar_howard_v5.txt
-  path: data/fPAR/fpar_howard_v5.txt
-  url: https://doi.org/10.4225/08/50FE0CBE0DD06
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/4fd0bbba0cc4a4d3d4a631fa4f4b2203fb37b2bd/data/fPAR/fpar_sturt.txt
-  _label: data/fPAR/fpar_sturt.txt@4fd0bbba0cc4a4d3d4a631fa4f4b2203fb37b2bd
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-04-02T12:25:14.075520+01:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: fpar_sturt.txt
-  path: data/fPAR/fpar_sturt.txt
-  url: /home/remko/Documents/data/fpar_donohue/v4/fpar_sturt.txt
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/f4c6ca3686207d1187684b569d3788dfa71c06ee/data/fPAR/fpar_sturt_v5.txt
-  _label: data/fPAR/fpar_sturt_v5.txt@f4c6ca3686207d1187684b569d3788dfa71c06ee
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-04-05T11:05:22.434857+01:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: fpar_sturt_v5.txt
-  path: data/fPAR/fpar_sturt_v5.txt
-  url: https://doi.org/10.4225/08/50FE0CBE0DD06
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/023b2771accced13e194d84dd623856f346b2410/data/fPAR/fpar_litchfield_v5.txt
-  _label: data/fPAR/fpar_litchfield_v5.txt@023b2771accced13e194d84dd623856f346b2410
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2019-09-02T07:15:36.987628+01:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: fpar_litchfield_v5.txt
-  path: data/fPAR/fpar_litchfield_v5.txt
-  url: /home/remko/Documents/data/fpar_donohue/v5/fpar_sites/fpar_litchfield_v5.txt
-identifier: 3ba60c7a-0121-4140-b964-1664b5922a89
-in_language: null
-keywords: []
-license: null
-name: fPAR
-path: .renku/datasets/3ba60c7a-0121-4140-b964-1664b5922a89
-same_as: null
-short_name: fPAR
-tags: []
-url: https://renkulab.io/datasets/3ba60c7a-0121-4140-b964-1664b5922a89
-version: null
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-09-02T07:15:36.987628+01:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': fpar_litchfield_v5.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/fPAR/fpar_litchfield_v5.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/fPAR/fpar_litchfield_v5.txt@023b2771accced13e194d84dd623856f346b2410
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/fPAR/fpar_litchfield_v5.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': /home/remko/Documents/data/fpar_donohue/v5/fpar_sites/fpar_litchfield_v5.txt
+- '@id': https://renkulab.io/blob/12d155f95a049792043a90d07b52f8f8b2643651/data/fPAR/fpar_adelaide.txt
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-04-02T12:24:55.490047+01:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': fpar_adelaide.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/fPAR/fpar_adelaide.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/fPAR/fpar_adelaide.txt@12d155f95a049792043a90d07b52f8f8b2643651
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/fPAR/fpar_adelaide.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': /home/remko/Documents/data/fpar_donohue/v4/fpar_adelaide.txt
+- '@id': https://renkulab.io/blob/31f313ffc3ec9dea1484b3bb9230c03b1858894b/data/fPAR/fpar_dry.txt
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-04-02T12:25:04.518563+01:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': fpar_dry.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/fPAR/fpar_dry.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/fPAR/fpar_dry.txt@31f313ffc3ec9dea1484b3bb9230c03b1858894b
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/fPAR/fpar_dry.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': /home/remko/Documents/data/fpar_donohue/v4/fpar_dry.txt
+- '@id': https://renkulab.io/blob/4136b77a44e36abdde9cc68fbbb6f0b5d235f8a3/data/fPAR/fpar_howard.txt
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-04-02T12:25:09.386736+01:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': fpar_howard.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/fPAR/fpar_howard.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/fPAR/fpar_howard.txt@4136b77a44e36abdde9cc68fbbb6f0b5d235f8a3
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/fPAR/fpar_howard.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': /home/remko/Documents/data/fpar_donohue/v4/fpar_howard.txt
+- '@id': https://renkulab.io/blob/4fd0bbba0cc4a4d3d4a631fa4f4b2203fb37b2bd/data/fPAR/fpar_sturt.txt
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-04-02T12:25:14.075520+01:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': fpar_sturt.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/fPAR/fpar_sturt.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/fPAR/fpar_sturt.txt@4fd0bbba0cc4a4d3d4a631fa4f4b2203fb37b2bd
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/fPAR/fpar_sturt.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': /home/remko/Documents/data/fpar_donohue/v4/fpar_sturt.txt
+- '@id': https://renkulab.io/blob/52eaec481d54fc5d47c2fab0258393d8c037578b/data/fPAR/fpar_daly.txt
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-04-02T12:25:01.118926+01:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': fpar_daly.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/fPAR/fpar_daly.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/fPAR/fpar_daly.txt@52eaec481d54fc5d47c2fab0258393d8c037578b
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/fPAR/fpar_daly.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': /home/remko/Documents/data/fpar_donohue/v4/fpar_daly.txt
+- '@id': https://renkulab.io/blob/daf3b0d09eb41eed956cb666cf0e9aea7f680478/data/fPAR/dates
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-04-02T12:02:26.675826+01:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': dates
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/fPAR/dates
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/fPAR/dates@daf3b0d09eb41eed956cb666cf0e9aea7f680478
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/fPAR/dates
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': /home/remko/Documents/data/fpar_donohue/v4/dates
+- '@id': https://renkulab.io/blob/f4c6ca3686207d1187684b569d3788dfa71c06ee/data/fPAR/dates_v5
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-04-05T11:05:22.050399+01:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': dates_v5
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/fPAR/dates_v5
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/fPAR/dates_v5@f4c6ca3686207d1187684b569d3788dfa71c06ee
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/fPAR/dates_v5
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://doi.org/10.4225/08/50FE0CBE0DD06
+- '@id': https://renkulab.io/blob/f4c6ca3686207d1187684b569d3788dfa71c06ee/data/fPAR/fpar_adelaide_v5.txt
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-04-05T11:05:22.127599+01:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': fpar_adelaide_v5.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/fPAR/fpar_adelaide_v5.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/fPAR/fpar_adelaide_v5.txt@f4c6ca3686207d1187684b569d3788dfa71c06ee
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/fPAR/fpar_adelaide_v5.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://doi.org/10.4225/08/50FE0CBE0DD06
+- '@id': https://renkulab.io/blob/f4c6ca3686207d1187684b569d3788dfa71c06ee/data/fPAR/fpar_daly_v5.txt
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-04-05T11:05:22.202848+01:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': fpar_daly_v5.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/fPAR/fpar_daly_v5.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/fPAR/fpar_daly_v5.txt@f4c6ca3686207d1187684b569d3788dfa71c06ee
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/fPAR/fpar_daly_v5.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://doi.org/10.4225/08/50FE0CBE0DD06
+- '@id': https://renkulab.io/blob/f4c6ca3686207d1187684b569d3788dfa71c06ee/data/fPAR/fpar_dry_v5.txt
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-04-05T11:05:22.282455+01:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': fpar_dry_v5.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/fPAR/fpar_dry_v5.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/fPAR/fpar_dry_v5.txt@f4c6ca3686207d1187684b569d3788dfa71c06ee
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/fPAR/fpar_dry_v5.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://doi.org/10.4225/08/50FE0CBE0DD06
+- '@id': https://renkulab.io/blob/f4c6ca3686207d1187684b569d3788dfa71c06ee/data/fPAR/fpar_howard_v5.txt
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-04-05T11:05:22.360111+01:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': fpar_howard_v5.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/fPAR/fpar_howard_v5.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/fPAR/fpar_howard_v5.txt@f4c6ca3686207d1187684b569d3788dfa71c06ee
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/fPAR/fpar_howard_v5.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://doi.org/10.4225/08/50FE0CBE0DD06
+- '@id': https://renkulab.io/blob/f4c6ca3686207d1187684b569d3788dfa71c06ee/data/fPAR/fpar_sturt_v5.txt
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2019-04-05T11:05:22.434857+01:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': fpar_sturt_v5.txt
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/fPAR/fpar_sturt_v5.txt
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/fPAR/fpar_sturt_v5.txt@f4c6ca3686207d1187684b569d3788dfa71c06ee
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/fPAR/fpar_sturt_v5.txt
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://doi.org/10.4225/08/50FE0CBE0DD06
+- '@id': https://renkulab.io/datasets/3ba60c7a-0121-4140-b964-1664b5922a89
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/Dataset
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/alternateName:
+  - '@value': fPAR
+  http://schema.org/creator:
+  - '@id': mailto:remko.nijzink@list.lu
+  http://schema.org/dateCreated:
+  - '@value': '2019-04-02T11:56:41.661110+02:00'
+  http://schema.org/description:
+  - '@value': Extracted/repurposed from original files
+  http://schema.org/hasPart:
+  - '@id': https://renkulab.io/blob/daf3b0d09eb41eed956cb666cf0e9aea7f680478/data/fPAR/dates
+  - '@id': https://renkulab.io/blob/f4c6ca3686207d1187684b569d3788dfa71c06ee/data/fPAR/dates_v5
+  - '@id': https://renkulab.io/blob/12d155f95a049792043a90d07b52f8f8b2643651/data/fPAR/fpar_adelaide.txt
+  - '@id': https://renkulab.io/blob/f4c6ca3686207d1187684b569d3788dfa71c06ee/data/fPAR/fpar_adelaide_v5.txt
+  - '@id': https://renkulab.io/blob/52eaec481d54fc5d47c2fab0258393d8c037578b/data/fPAR/fpar_daly.txt
+  - '@id': https://renkulab.io/blob/f4c6ca3686207d1187684b569d3788dfa71c06ee/data/fPAR/fpar_daly_v5.txt
+  - '@id': https://renkulab.io/blob/31f313ffc3ec9dea1484b3bb9230c03b1858894b/data/fPAR/fpar_dry.txt
+  - '@id': https://renkulab.io/blob/f4c6ca3686207d1187684b569d3788dfa71c06ee/data/fPAR/fpar_dry_v5.txt
+  - '@id': https://renkulab.io/blob/4136b77a44e36abdde9cc68fbbb6f0b5d235f8a3/data/fPAR/fpar_howard.txt
+  - '@id': https://renkulab.io/blob/f4c6ca3686207d1187684b569d3788dfa71c06ee/data/fPAR/fpar_howard_v5.txt
+  - '@id': https://renkulab.io/blob/4fd0bbba0cc4a4d3d4a631fa4f4b2203fb37b2bd/data/fPAR/fpar_sturt.txt
+  - '@id': https://renkulab.io/blob/f4c6ca3686207d1187684b569d3788dfa71c06ee/data/fPAR/fpar_sturt_v5.txt
+  - '@id': https://renkulab.io/blob/023b2771accced13e194d84dd623856f346b2410/data/fPAR/fpar_litchfield_v5.txt
+  http://schema.org/identifier:
+  - '@value': 3ba60c7a-0121-4140-b964-1664b5922a89
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/keywords: []
+  http://schema.org/name:
+  - '@value': fPAR
+  http://schema.org/subjectOf: []
+  http://schema.org/url:
+  - '@value': https://renkulab.io/datasets/3ba60c7a-0121-4140-b964-1664b5922a89
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': 3ba60c7a-0121-4140-b964-1664b5922a89
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': .renku/datasets/3ba60c7a-0121-4140-b964-1664b5922a89
+- '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  '@type':
+  - http://schema.org/Project
+  - http://www.w3.org/ns/prov#Location
+  http://schema.org/agent:
+  - '@value': pre-0.11.0
+  http://schema.org/creator:
+  - '@id': mailto:remko.nijzink@list.lu
+  http://schema.org/dateCreated:
+  - '@value': '2019-03-08T08:28:48.938000+00:00'
+  http://schema.org/name:
+  - '@value': VOMcases
+  http://schema.org/schemaVersion:
+  - '@value': '1'
+- '@id': mailto:remko.nijzink@list.lu
+  '@type':
+  - http://schema.org/Person
+  - http://www.w3.org/ns/prov#Person
+  http://schema.org/email:
+  - '@value': remko.nijzink@list.lu
+  http://schema.org/name:
+  - '@value': Remko Nijzink
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': Remko Nijzink

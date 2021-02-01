@@ -1,318 +1,156 @@
-'@context':
-  '@version': 1.1
-  _id: '@id'
-  _project:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      created: schema:dateCreated
-      creator:
-        '@context':
-          '@version': 1.1
-          _id: '@id'
-          affiliation: schema:affiliation
-          alternate_name: schema:alternateName
-          email: schema:email
-          label: rdfs:label
-          name: schema:name
-          prov: http://www.w3.org/ns/prov#
-          rdfs: http://www.w3.org/2000/01/rdf-schema#
-          schema: http://schema.org/
-        '@id': schema:creator
-      name: schema:name
-      prov: http://www.w3.org/ns/prov#
-      schema: http://schema.org/
-      updated: schema:dateUpdated
-      version: schema:schemaVersion
-    '@id': schema:isPartOf
-  created: schema:dateCreated
-  creator:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      affiliation: schema:affiliation
-      alternate_name: schema:alternateName
-      email: schema:email
-      label: rdfs:label
-      name: schema:name
-      prov: http://www.w3.org/ns/prov#
-      rdfs: http://www.w3.org/2000/01/rdf-schema#
-      schema: http://schema.org/
-    '@id': schema:creator
-  date_published: schema:datePublished
-  description: schema:description
-  files:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      _project:
-        '@context':
-          '@version': 1.1
-          _id: '@id'
-          created: schema:dateCreated
-          creator:
-            '@context':
-              '@version': 1.1
-              _id: '@id'
-              affiliation: schema:affiliation
-              alternate_name: schema:alternateName
-              email: schema:email
-              label: rdfs:label
-              name: schema:name
-              prov: http://www.w3.org/ns/prov#
-              rdfs: http://www.w3.org/2000/01/rdf-schema#
-              schema: http://schema.org/
-            '@id': schema:creator
-          name: schema:name
-          prov: http://www.w3.org/ns/prov#
-          schema: http://schema.org/
-          updated: schema:dateUpdated
-          version: schema:schemaVersion
-        '@id': schema:isPartOf
-      added: schema:dateCreated
-      based_on: schema:isBasedOn
-      creator:
-        '@context':
-          '@version': 1.1
-          _id: '@id'
-          affiliation: schema:affiliation
-          alternate_name: schema:alternateName
-          email: schema:email
-          label: rdfs:label
-          name: schema:name
-          prov: http://www.w3.org/ns/prov#
-          rdfs: http://www.w3.org/2000/01/rdf-schema#
-          schema: http://schema.org/
-        '@id': schema:creator
-      name: schema:name
-      path: prov:atLocation
-      prov: http://www.w3.org/ns/prov#
-      schema: http://schema.org/
-      url: schema:url
-      wfprov: http://purl.org/wf4ever/wfprov#
-    '@id': schema:hasPart
-  identifier: schema:identifier
-  in_language:
-    '@context':
-      '@version': 1.1
-      alternate_name: schema:alternateName
-      name: schema:name
-      schema: http://schema.org/
-    '@id': schema:inLanguage
-  keywords: schema:keywords
-  license: schema:license
-  name: schema:name
-  path: prov:atLocation
-  prov: http://www.w3.org/ns/prov#
-  same_as:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      schema: http://schema.org/
-      url: schema:url
-    '@id': schema:sameAs
-  schema: http://schema.org/
-  short_name: schema:alternateName
-  tags:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      commit: schema:location
-      created: schema:startDate
-      dataset: schema:about
-      description: schema:description
-      name: schema:name
-      schema: http://schema.org/
-    '@id': schema:subjectOf
-  url: schema:url
-  version: schema:version
-  wfprov: http://purl.org/wf4ever/wfprov#
-'@type':
-- prov:Entity
-- schema:Dataset
-- wfprov:Artifact
-_id: https://renkulab.io/datasets/2a321073-9338-4803-9b76-1843e6a34e02
-_label: 2a321073-9338-4803-9b76-1843e6a34e02
-_project:
+- '@id': https://localhost/persons/Whitley%2C%20Rhys
   '@type':
-  - prov:Location
-  - schema:Project
-  _id: https://renkulab.io/projects/remko.nijzink/vomcases
-  created: '2019-03-08T08:28:48.938000+00:00'
-  creator:
-    '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  name: VOMcases
-  updated: '2019-03-08T08:28:48.938000+00:00'
-  version: '1'
-created: '2020-02-28T14:14:37.468834+00:00'
-creator:
-- '@type':
-  - prov:Person
-  - schema:Person
-  _id: _:whitleyrhys
-  affiliation: null
-  alternate_name: null
-  email: null
-  label: Whitley, Rhys
-  name: Whitley, Rhys
-- '@type':
-  - prov:Person
-  - schema:Person
-  _id: https://orcid.org/0000-0002-3399-9098
-  affiliation: ARC Centre of Excellence for Climate Extremes, University of New South
-    Wales, Australia
-  alternate_name: null
-  email: null
-  label: De Kauwe, Martin
-  name: De Kauwe, Martin
-- '@type':
-  - prov:Person
-  - schema:Person
-  _id: https://orcid.org/0000-0003-4359-5895
-  affiliation: CSIRO Ocean and Atmosphere, Canberra 2601, Australia
-  alternate_name: null
-  email: null
-  label: Haverd, Vanessa
-  name: Haverd, Vanessa
-- '@type':
-  - prov:Person
-  - schema:Person
-  _id: https://orcid.org/0000-0001-6238-2479
-  affiliation: Department of Landscape Architecture and Rural Systems Engineering,
-    Seoul National University, Seoul, South Korea
-  alternate_name: null
-  email: null
-  label: Ryu, Youngryel
-  name: Ryu, Youngryel
-- '@type':
-  - prov:Person
-  - schema:Person
-  _id: https://orcid.org/0000-0001-9983-6681
-  affiliation: School of Life Sciences, University of Technology Sydney, Sydney, New
-    South Wales, Australia
-  alternate_name: null
-  email: null
-  label: Li, Longhui
-  name: Li, Longhui
-date_published: null
-description: '<p>The modelling results of Whitley et al. (2016), consisting of the
-  models BESS, BIOS2, CABLE, LPJ-GUESS, MAESPA and SPA, for five sites along the North-Australian
-  Tropical Transect.</p>
-
-
-  <p><strong>References</strong><br>
-
-  Whitley, R., Beringer, J., Hutley, L.B., Abramowitz, G., De Kauwe, M.G., Duursma,
-  R., Evans, B., Haverd, V., Li, L., Ryu, Y., Smith, B., Wang, Y.-P., Williams, M.,
-  Yu, Q., 2016. A model inter-comparison study to examine limiting factors in modelling
-  Australian tropical savannas. Biogeosciences 13, 3245&ndash;3265. https://doi.org/10.5194/bg-13-3245-2016</p>
-
-
-  <p>&nbsp;</p>'
-files:
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/2174dbf7c7971f810c674ad9951ac6067e89280a/data/data_from_a_model_inter/SavMIP.zip
-  _label: data/data_from_a_model_inter/SavMIP.zip@2174dbf7c7971f810c674ad9951ac6067e89280a
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '1'
-  added: '2020-02-28T14:14:52.923151+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: _:whitleyrhys
-    affiliation: null
-    alternate_name: null
-    email: null
-    label: Whitley, Rhys
-    name: Whitley, Rhys
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: https://orcid.org/0000-0002-3399-9098
-    affiliation: ARC Centre of Excellence for Climate Extremes, University of New
-      South Wales, Australia
-    alternate_name: null
-    email: null
-    label: De Kauwe, Martin
-    name: De Kauwe, Martin
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: https://orcid.org/0000-0003-4359-5895
-    affiliation: CSIRO Ocean and Atmosphere, Canberra 2601, Australia
-    alternate_name: null
-    email: null
-    label: Haverd, Vanessa
-    name: Haverd, Vanessa
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: https://orcid.org/0000-0001-6238-2479
-    affiliation: Department of Landscape Architecture and Rural Systems Engineering,
+  - http://schema.org/Person
+  - http://www.w3.org/ns/prov#Person
+  http://schema.org/name:
+  - '@value': Whitley, Rhys
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': Whitley, Rhys
+- '@id': https://localhost/urls/%2F%2Fdoi.org%2F10.5281%2Fzenodo.3690711
+  '@type':
+  - http://schema.org/URL
+  http://schema.org/url:
+  - '@value': https://doi.org/10.5281/zenodo.3690711
+- '@id': https://orcid.org/0000-0001-6238-2479
+  '@type':
+  - http://schema.org/Person
+  - http://www.w3.org/ns/prov#Person
+  http://schema.org/affiliation:
+  - '@value': Department of Landscape Architecture and Rural Systems Engineering,
       Seoul National University, Seoul, South Korea
-    alternate_name: null
-    email: null
-    label: Ryu, Youngryel
-    name: Ryu, Youngryel
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: https://orcid.org/0000-0001-9983-6681
-    affiliation: School of Life Sciences, University of Technology Sydney, Sydney,
-      New South Wales, Australia
-    alternate_name: null
-    email: null
-    label: Li, Longhui
-    name: Li, Longhui
-  external: false
-  name: SavMIP.zip
-  path: data/data_from_a_model_inter/SavMIP.zip
-  url: https://zenodo.org/api/files/9d6814ad-afe7-4825-b28b-2c74a30eaab2/SavMIP.zip
-identifier: 2a321073-9338-4803-9b76-1843e6a34e02
-in_language: null
-keywords:
-- model inter-comparison
-- terrestrial biosphere models
-- North-Australian Tropical Transect
-license: http://creativecommons.org/licenses/by/4.0/legalcode
-name: Data from a model inter-comparison study to examine limiting factors in modelling
-  Australian tropical savannas
-path: .renku/datasets/2a321073-9338-4803-9b76-1843e6a34e02
-same_as:
-  '@type': schema:URL
-  _id: _:URL@4e246aeb-8474-4499-8095-626bb5a3102c
-  url: https://doi.org/10.5281/zenodo.3690711
-short_name: data_from_a_model_inter
-tags: []
-url: https://renkulab.io/datasets/2a321073-9338-4803-9b76-1843e6a34e02
-version: null
+  http://schema.org/name:
+  - '@value': Ryu, Youngryel
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': Ryu, Youngryel
+- '@id': https://orcid.org/0000-0001-9983-6681
+  '@type':
+  - http://schema.org/Person
+  - http://www.w3.org/ns/prov#Person
+  http://schema.org/affiliation:
+  - '@value': School of Life Sciences, University of Technology Sydney, Sydney, New
+      South Wales, Australia
+  http://schema.org/name:
+  - '@value': Li, Longhui
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': Li, Longhui
+- '@id': https://orcid.org/0000-0002-3399-9098
+  '@type':
+  - http://schema.org/Person
+  - http://www.w3.org/ns/prov#Person
+  http://schema.org/affiliation:
+  - '@value': ARC Centre of Excellence for Climate Extremes, University of New South
+      Wales, Australia
+  http://schema.org/name:
+  - '@value': De Kauwe, Martin
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': De Kauwe, Martin
+- '@id': https://orcid.org/0000-0003-4359-5895
+  '@type':
+  - http://schema.org/Person
+  - http://www.w3.org/ns/prov#Person
+  http://schema.org/affiliation:
+  - '@value': CSIRO Ocean and Atmosphere, Canberra 2601, Australia
+  http://schema.org/name:
+  - '@value': Haverd, Vanessa
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': Haverd, Vanessa
+- '@id': https://renkulab.io/blob/2174dbf7c7971f810c674ad9951ac6067e89280a/data/data_from_a_model_inter/SavMIP.zip
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-02-28T14:14:52.923151+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': SavMIP.zip
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/data_from_a_model_inter/SavMIP.zip
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/data_from_a_model_inter/SavMIP.zip@2174dbf7c7971f810c674ad9951ac6067e89280a
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/data_from_a_model_inter/SavMIP.zip
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://zenodo.org/api/files/9d6814ad-afe7-4825-b28b-2c74a30eaab2/SavMIP.zip
+- '@id': https://renkulab.io/datasets/2a321073-9338-4803-9b76-1843e6a34e02
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/Dataset
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/alternateName:
+  - '@value': data_from_a_model_inter
+  http://schema.org/creator:
+  - '@id': https://localhost/persons/Whitley%2C%20Rhys
+  - '@id': https://orcid.org/0000-0002-3399-9098
+  - '@id': https://orcid.org/0000-0003-4359-5895
+  - '@id': https://orcid.org/0000-0001-6238-2479
+  - '@id': https://orcid.org/0000-0001-9983-6681
+  http://schema.org/dateCreated:
+  - '@value': '2020-02-28T14:14:37.468834+00:00'
+  http://schema.org/description:
+  - '@value': '<p>The modelling results of Whitley et al. (2016), consisting of the
+      models BESS, BIOS2, CABLE, LPJ-GUESS, MAESPA and SPA, for five sites along the
+      North-Australian Tropical Transect.</p>
+
+
+      <p><strong>References</strong><br>
+
+      Whitley, R., Beringer, J., Hutley, L.B., Abramowitz, G., De Kauwe, M.G., Duursma,
+      R., Evans, B., Haverd, V., Li, L., Ryu, Y., Smith, B., Wang, Y.-P., Williams,
+      M., Yu, Q., 2016. A model inter-comparison study to examine limiting factors
+      in modelling Australian tropical savannas. Biogeosciences 13, 3245&ndash;3265.
+      https://doi.org/10.5194/bg-13-3245-2016</p>
+
+
+      <p>&nbsp;</p>'
+  http://schema.org/hasPart:
+  - '@id': https://renkulab.io/blob/2174dbf7c7971f810c674ad9951ac6067e89280a/data/data_from_a_model_inter/SavMIP.zip
+  http://schema.org/identifier:
+  - '@value': 2a321073-9338-4803-9b76-1843e6a34e02
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/keywords:
+  - '@value': model inter-comparison
+  - '@value': terrestrial biosphere models
+  - '@value': North-Australian Tropical Transect
+  http://schema.org/license:
+  - '@value': http://creativecommons.org/licenses/by/4.0/legalcode
+  http://schema.org/name:
+  - '@value': Data from a model inter-comparison study to examine limiting factors
+      in modelling Australian tropical savannas
+  http://schema.org/sameAs:
+  - '@id': https://localhost/urls/%2F%2Fdoi.org%2F10.5281%2Fzenodo.3690711
+  http://schema.org/subjectOf: []
+  http://schema.org/url:
+  - '@value': https://renkulab.io/datasets/2a321073-9338-4803-9b76-1843e6a34e02
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': 2a321073-9338-4803-9b76-1843e6a34e02
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': .renku/datasets/2a321073-9338-4803-9b76-1843e6a34e02
+- '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  '@type':
+  - http://schema.org/Project
+  - http://www.w3.org/ns/prov#Location
+  http://schema.org/agent:
+  - '@value': pre-0.11.0
+  http://schema.org/creator:
+  - '@id': mailto:remko.nijzink@list.lu
+  http://schema.org/dateCreated:
+  - '@value': '2019-03-08T08:28:48.938000+00:00'
+  http://schema.org/name:
+  - '@value': VOMcases
+  http://schema.org/schemaVersion:
+  - '@value': '1'
+- '@id': mailto:remko.nijzink@list.lu
+  '@type':
+  - http://schema.org/Person
+  - http://www.w3.org/ns/prov#Person
+  http://schema.org/email:
+  - '@value': remko.nijzink@list.lu
+  http://schema.org/name:
+  - '@value': Remko Nijzink
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': Remko Nijzink

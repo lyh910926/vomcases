@@ -1,1737 +1,886 @@
-'@context':
-  '@version': 1.1
-  _id: '@id'
-  _project:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      created: schema:dateCreated
-      creator:
-        '@context':
-          '@version': 1.1
-          _id: '@id'
-          affiliation: schema:affiliation
-          alternate_name: schema:alternateName
-          email: schema:email
-          label: rdfs:label
-          name: schema:name
-          prov: http://www.w3.org/ns/prov#
-          rdfs: http://www.w3.org/2000/01/rdf-schema#
-          schema: http://schema.org/
-        '@id': schema:creator
-      name: schema:name
-      prov: http://www.w3.org/ns/prov#
-      schema: http://schema.org/
-      updated: schema:dateUpdated
-      version: schema:schemaVersion
-    '@id': schema:isPartOf
-  created: schema:dateCreated
-  creator:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      affiliation: schema:affiliation
-      alternate_name: schema:alternateName
-      email: schema:email
-      label: rdfs:label
-      name: schema:name
-      prov: http://www.w3.org/ns/prov#
-      rdfs: http://www.w3.org/2000/01/rdf-schema#
-      schema: http://schema.org/
-    '@id': schema:creator
-  date_published: schema:datePublished
-  description: schema:description
-  files:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      _project:
-        '@context':
-          '@version': 1.1
-          _id: '@id'
-          created: schema:dateCreated
-          creator:
-            '@context':
-              '@version': 1.1
-              _id: '@id'
-              affiliation: schema:affiliation
-              alternate_name: schema:alternateName
-              email: schema:email
-              label: rdfs:label
-              name: schema:name
-              prov: http://www.w3.org/ns/prov#
-              rdfs: http://www.w3.org/2000/01/rdf-schema#
-              schema: http://schema.org/
-            '@id': schema:creator
-          name: schema:name
-          prov: http://www.w3.org/ns/prov#
-          schema: http://schema.org/
-          updated: schema:dateUpdated
-          version: schema:schemaVersion
-        '@id': schema:isPartOf
-      added: schema:dateCreated
-      based_on: schema:isBasedOn
-      creator:
-        '@context':
-          '@version': 1.1
-          _id: '@id'
-          affiliation: schema:affiliation
-          alternate_name: schema:alternateName
-          email: schema:email
-          label: rdfs:label
-          name: schema:name
-          prov: http://www.w3.org/ns/prov#
-          rdfs: http://www.w3.org/2000/01/rdf-schema#
-          schema: http://schema.org/
-        '@id': schema:creator
-      name: schema:name
-      path: prov:atLocation
-      prov: http://www.w3.org/ns/prov#
-      schema: http://schema.org/
-      url: schema:url
-      wfprov: http://purl.org/wf4ever/wfprov#
-    '@id': schema:hasPart
-  identifier: schema:identifier
-  in_language:
-    '@context':
-      '@version': 1.1
-      alternate_name: schema:alternateName
-      name: schema:name
-      schema: http://schema.org/
-    '@id': schema:inLanguage
-  keywords: schema:keywords
-  license: schema:license
-  name: schema:name
-  path: prov:atLocation
-  prov: http://www.w3.org/ns/prov#
-  same_as:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      schema: http://schema.org/
-      url: schema:url
-    '@id': schema:sameAs
-  schema: http://schema.org/
-  short_name: schema:alternateName
-  tags:
-    '@context':
-      '@version': 1.1
-      _id: '@id'
-      commit: schema:location
-      created: schema:startDate
-      dataset: schema:about
-      description: schema:description
-      name: schema:name
-      schema: http://schema.org/
-    '@id': schema:subjectOf
-  url: schema:url
-  version: schema:version
-  wfprov: http://purl.org/wf4ever/wfprov#
-'@type':
-- prov:Entity
-- schema:Dataset
-- wfprov:Artifact
-_id: https://renkulab.io/datasets/7ef7e828-b017-4ef6-870a-071ff4ff1154
-_label: 7ef7e828-b017-4ef6-870a-071ff4ff1154
-_project:
+- '@id': https://renkulab.io/blob/01d9b1c9dcf7568588cf8ef0ca440cbdcaeb1ab0/data/Silo_gridded/1981.monthly_rain.nc
   '@type':
-  - prov:Location
-  - schema:Project
-  _id: https://renkulab.io/projects/remko.nijzink/vomcases
-  created: '2019-03-08T08:28:48.938000+00:00'
-  creator:
-    '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  name: VOMcases
-  updated: '2019-03-08T08:28:48.938000+00:00'
-  version: '4'
-created: '2020-12-04T09:01:16.093365+00:00'
-creator:
-- '@type':
-  - prov:Person
-  - schema:Person
-  _id: mailto:remko.nijzink@list.lu
-  affiliation: null
-  alternate_name: null
-  email: remko.nijzink@list.lu
-  label: Remko Nijzink
-  name: Remko Nijzink
-date_published: null
-description: null
-files:
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/4dde87e19abe038ec3bf8a838d6e76bf9455a3f8/data/Silo_gridded/1980.monthly_rain.nc
-  _label: data/Silo_gridded/1980.monthly_rain.nc@4dde87e19abe038ec3bf8a838d6e76bf9455a3f8
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T09:02:54.226636+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 1980.monthly_rain.nc
-  path: data/Silo_gridded/1980.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1980.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/01d9b1c9dcf7568588cf8ef0ca440cbdcaeb1ab0/data/Silo_gridded/1981.monthly_rain.nc
-  _label: data/Silo_gridded/1981.monthly_rain.nc@01d9b1c9dcf7568588cf8ef0ca440cbdcaeb1ab0
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T09:04:49.063513+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 1981.monthly_rain.nc
-  path: data/Silo_gridded/1981.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1981.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/fa7aa436a5a623ebe80fae151694725d6e439ee2/data/Silo_gridded/1982.monthly_rain.nc
-  _label: data/Silo_gridded/1982.monthly_rain.nc@fa7aa436a5a623ebe80fae151694725d6e439ee2
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T09:11:03.535011+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 1982.monthly_rain.nc
-  path: data/Silo_gridded/1982.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1982.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/aa0433f933177f552e8d3b05a721f121bb29bd93/data/Silo_gridded/1983.monthly_rain.nc
-  _label: data/Silo_gridded/1983.monthly_rain.nc@aa0433f933177f552e8d3b05a721f121bb29bd93
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T09:13:34.684222+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 1983.monthly_rain.nc
-  path: data/Silo_gridded/1983.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1983.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/c202a8350fd66f4d80b94a2f3ef49598a79ab7d0/data/Silo_gridded/1984.monthly_rain.nc
-  _label: data/Silo_gridded/1984.monthly_rain.nc@c202a8350fd66f4d80b94a2f3ef49598a79ab7d0
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T09:15:52.329124+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 1984.monthly_rain.nc
-  path: data/Silo_gridded/1984.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1984.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/62c63e0556e4b5136ef85c0a737d3790b98804a2/data/Silo_gridded/1985.monthly_rain.nc
-  _label: data/Silo_gridded/1985.monthly_rain.nc@62c63e0556e4b5136ef85c0a737d3790b98804a2
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T09:18:14.070946+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 1985.monthly_rain.nc
-  path: data/Silo_gridded/1985.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1985.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/4804ede3ec73e7ec8d3eecd26a4dafb3bf08e3e5/data/Silo_gridded/1986.monthly_rain.nc
-  _label: data/Silo_gridded/1986.monthly_rain.nc@4804ede3ec73e7ec8d3eecd26a4dafb3bf08e3e5
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T09:21:34.326540+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 1986.monthly_rain.nc
-  path: data/Silo_gridded/1986.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1986.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/ea13ca3c5ea56e18329dee61648d0129edd38615/data/Silo_gridded/1987.monthly_rain.nc
-  _label: data/Silo_gridded/1987.monthly_rain.nc@ea13ca3c5ea56e18329dee61648d0129edd38615
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T09:23:53.145810+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 1987.monthly_rain.nc
-  path: data/Silo_gridded/1987.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1987.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/302eb5d5bb5e78b6b189b5303680510cdea859bc/data/Silo_gridded/1988.monthly_rain.nc
-  _label: data/Silo_gridded/1988.monthly_rain.nc@302eb5d5bb5e78b6b189b5303680510cdea859bc
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T09:26:11.192861+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 1988.monthly_rain.nc
-  path: data/Silo_gridded/1988.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1988.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/86a2b91d27f81d2d1a91445810b3b381096cbd4f/data/Silo_gridded/1989.monthly_rain.nc
-  _label: data/Silo_gridded/1989.monthly_rain.nc@86a2b91d27f81d2d1a91445810b3b381096cbd4f
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T09:28:29.627754+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 1989.monthly_rain.nc
-  path: data/Silo_gridded/1989.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1989.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/d06332c3bac589a5bae025e95d4fd061aa09d607/data/Silo_gridded/1990.monthly_rain.nc
-  _label: data/Silo_gridded/1990.monthly_rain.nc@d06332c3bac589a5bae025e95d4fd061aa09d607
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T09:31:04.928897+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 1990.monthly_rain.nc
-  path: data/Silo_gridded/1990.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1990.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/0512ad92541fb98b598d3ffef4aa48170e39f5d3/data/Silo_gridded/1991.monthly_rain.nc
-  _label: data/Silo_gridded/1991.monthly_rain.nc@0512ad92541fb98b598d3ffef4aa48170e39f5d3
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T09:33:21.877977+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 1991.monthly_rain.nc
-  path: data/Silo_gridded/1991.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1991.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/fcea34e3b13f5c94b5ae71378c34b5ee04e62ba6/data/Silo_gridded/1992.monthly_rain.nc
-  _label: data/Silo_gridded/1992.monthly_rain.nc@fcea34e3b13f5c94b5ae71378c34b5ee04e62ba6
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T09:35:45.888362+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 1992.monthly_rain.nc
-  path: data/Silo_gridded/1992.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1992.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/f2e798d9f71f3e800fafc0cceff80aa3747fa168/data/Silo_gridded/1993.monthly_rain.nc
-  _label: data/Silo_gridded/1993.monthly_rain.nc@f2e798d9f71f3e800fafc0cceff80aa3747fa168
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T09:37:59.748480+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 1993.monthly_rain.nc
-  path: data/Silo_gridded/1993.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1993.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/49f11630e64afe3265997d7e80b653107a70d6a1/data/Silo_gridded/1994.monthly_rain.nc
-  _label: data/Silo_gridded/1994.monthly_rain.nc@49f11630e64afe3265997d7e80b653107a70d6a1
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T09:40:19.770398+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 1994.monthly_rain.nc
-  path: data/Silo_gridded/1994.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1994.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/97a84dd1f02b24fc68be76c677a8017c48053f55/data/Silo_gridded/1995.monthly_rain.nc
-  _label: data/Silo_gridded/1995.monthly_rain.nc@97a84dd1f02b24fc68be76c677a8017c48053f55
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T09:42:34.219629+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 1995.monthly_rain.nc
-  path: data/Silo_gridded/1995.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1995.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/0515b066913c1fc7af457212e1710ea3b31db719/data/Silo_gridded/1996.monthly_rain.nc
-  _label: data/Silo_gridded/1996.monthly_rain.nc@0515b066913c1fc7af457212e1710ea3b31db719
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T09:44:50.559705+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 1996.monthly_rain.nc
-  path: data/Silo_gridded/1996.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1996.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/4e388dfb8537ad2a0a9d3794671ac522aa54fa7a/data/Silo_gridded/1997.monthly_rain.nc
-  _label: data/Silo_gridded/1997.monthly_rain.nc@4e388dfb8537ad2a0a9d3794671ac522aa54fa7a
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T09:47:08.815314+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 1997.monthly_rain.nc
-  path: data/Silo_gridded/1997.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1997.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/598381d40a3af0e0317c124b37955c4b2cac8583/data/Silo_gridded/1998.monthly_rain.nc
-  _label: data/Silo_gridded/1998.monthly_rain.nc@598381d40a3af0e0317c124b37955c4b2cac8583
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T09:49:25.567230+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 1998.monthly_rain.nc
-  path: data/Silo_gridded/1998.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1998.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/78c64933e40f521303a1d3a45fcfc562acf0ed78/data/Silo_gridded/1999.monthly_rain.nc
-  _label: data/Silo_gridded/1999.monthly_rain.nc@78c64933e40f521303a1d3a45fcfc562acf0ed78
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T09:51:57.241582+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 1999.monthly_rain.nc
-  path: data/Silo_gridded/1999.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1999.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/ccfec03f2659da4f148dda694e794acae5611ccb/data/Silo_gridded/2000.monthly_rain.nc
-  _label: data/Silo_gridded/2000.monthly_rain.nc@ccfec03f2659da4f148dda694e794acae5611ccb
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T09:54:14.622914+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 2000.monthly_rain.nc
-  path: data/Silo_gridded/2000.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2000.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/73a2941ff77cee91479a2e004a420ab79973d276/data/Silo_gridded/2001.monthly_rain.nc
-  _label: data/Silo_gridded/2001.monthly_rain.nc@73a2941ff77cee91479a2e004a420ab79973d276
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T09:56:30.831841+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 2001.monthly_rain.nc
-  path: data/Silo_gridded/2001.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2001.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/fd0d637cb3296aab4725718a4398be6d95f1cd6f/data/Silo_gridded/2002.monthly_rain.nc
-  _label: data/Silo_gridded/2002.monthly_rain.nc@fd0d637cb3296aab4725718a4398be6d95f1cd6f
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T09:58:51.199176+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 2002.monthly_rain.nc
-  path: data/Silo_gridded/2002.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2002.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/6a7d61fae7e9964f5bcc40f8abde727ab88c1d57/data/Silo_gridded/2003.monthly_rain.nc
-  _label: data/Silo_gridded/2003.monthly_rain.nc@6a7d61fae7e9964f5bcc40f8abde727ab88c1d57
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T10:01:07.924554+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 2003.monthly_rain.nc
-  path: data/Silo_gridded/2003.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2003.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/654e46e7b60abaeb71b1fc4b260b30d358130ada/data/Silo_gridded/2004.monthly_rain.nc
-  _label: data/Silo_gridded/2004.monthly_rain.nc@654e46e7b60abaeb71b1fc4b260b30d358130ada
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T10:03:28.045390+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 2004.monthly_rain.nc
-  path: data/Silo_gridded/2004.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2004.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/c3a9c8d1a0136008ac0be873f3ab6e640debaf6c/data/Silo_gridded/2005.monthly_rain.nc
-  _label: data/Silo_gridded/2005.monthly_rain.nc@c3a9c8d1a0136008ac0be873f3ab6e640debaf6c
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T10:05:52.972375+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 2005.monthly_rain.nc
-  path: data/Silo_gridded/2005.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2005.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/3217e6e0b3b74e460631970a5b15087f4518668c/data/Silo_gridded/2006.monthly_rain.nc
-  _label: data/Silo_gridded/2006.monthly_rain.nc@3217e6e0b3b74e460631970a5b15087f4518668c
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T10:08:14.045391+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 2006.monthly_rain.nc
-  path: data/Silo_gridded/2006.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2006.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/6c39cf0253e77e3a6c636d2446d2d377603e8450/data/Silo_gridded/2007.monthly_rain.nc
-  _label: data/Silo_gridded/2007.monthly_rain.nc@6c39cf0253e77e3a6c636d2446d2d377603e8450
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T10:10:33.382835+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 2007.monthly_rain.nc
-  path: data/Silo_gridded/2007.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2007.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/6bc6ca958e4aa466d96d43a65c7ecb5e8c8373d8/data/Silo_gridded/2008.monthly_rain.nc
-  _label: data/Silo_gridded/2008.monthly_rain.nc@6bc6ca958e4aa466d96d43a65c7ecb5e8c8373d8
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T10:13:28.269849+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 2008.monthly_rain.nc
-  path: data/Silo_gridded/2008.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2008.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/43372b1d66a8ee99d9636f80e0171e3a56200f8c/data/Silo_gridded/2009.monthly_rain.nc
-  _label: data/Silo_gridded/2009.monthly_rain.nc@43372b1d66a8ee99d9636f80e0171e3a56200f8c
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T10:16:34.436115+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 2009.monthly_rain.nc
-  path: data/Silo_gridded/2009.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2009.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/284e42d90d786444668dd30beb420bb34089d44a/data/Silo_gridded/2010.monthly_rain.nc
-  _label: data/Silo_gridded/2010.monthly_rain.nc@284e42d90d786444668dd30beb420bb34089d44a
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T10:18:50.301160+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 2010.monthly_rain.nc
-  path: data/Silo_gridded/2010.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2010.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/aea765d8eea3da3797d6d0a1bec87548bbbdcd00/data/Silo_gridded/2011.monthly_rain.nc
-  _label: data/Silo_gridded/2011.monthly_rain.nc@aea765d8eea3da3797d6d0a1bec87548bbbdcd00
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T10:21:08.654968+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 2011.monthly_rain.nc
-  path: data/Silo_gridded/2011.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2011.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/8dc57fc44ae695ace95608299ef58d39318d1574/data/Silo_gridded/2012.monthly_rain.nc
-  _label: data/Silo_gridded/2012.monthly_rain.nc@8dc57fc44ae695ace95608299ef58d39318d1574
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T10:24:21.188612+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 2012.monthly_rain.nc
-  path: data/Silo_gridded/2012.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2012.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/ceb713db86d8389f4071d73a7a2e13e633afb9c5/data/Silo_gridded/2013.monthly_rain.nc
-  _label: data/Silo_gridded/2013.monthly_rain.nc@ceb713db86d8389f4071d73a7a2e13e633afb9c5
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T10:27:21.983114+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 2013.monthly_rain.nc
-  path: data/Silo_gridded/2013.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2013.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/75b0733e6cac3c9296443df566e531132bcfa459/data/Silo_gridded/2014.monthly_rain.nc
-  _label: data/Silo_gridded/2014.monthly_rain.nc@75b0733e6cac3c9296443df566e531132bcfa459
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T10:30:48.578967+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 2014.monthly_rain.nc
-  path: data/Silo_gridded/2014.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2014.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/c4d74c9524f4ee40375ab236e9ee4a101e049e1e/data/Silo_gridded/2015.monthly_rain.nc
-  _label: data/Silo_gridded/2015.monthly_rain.nc@c4d74c9524f4ee40375ab236e9ee4a101e049e1e
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T10:33:09.223251+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 2015.monthly_rain.nc
-  path: data/Silo_gridded/2015.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2015.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/f301f1c05c977b60829eef9d8dc4406913fba7f1/data/Silo_gridded/2016.monthly_rain.nc
-  _label: data/Silo_gridded/2016.monthly_rain.nc@f301f1c05c977b60829eef9d8dc4406913fba7f1
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://localhost/projects/remko.nijzink/VOMcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T10:35:26.709415+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 2016.monthly_rain.nc
-  path: data/Silo_gridded/2016.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2016.monthly_rain.nc
-- '@type':
-  - prov:Entity
-  - schema:DigitalDocument
-  - wfprov:Artifact
-  _id: https://renkulab.io/blob/501133b49e9d476adb044c934aae95072c214396/data/Silo_gridded/2017.monthly_rain.nc
-  _label: data/Silo_gridded/2017.monthly_rain.nc@501133b49e9d476adb044c934aae95072c214396
-  _project:
-    '@type':
-    - prov:Location
-    - schema:Project
-    _id: https://renkulab.io/projects/remko.nijzink/vomcases
-    created: '2019-03-08T08:28:48.938000+00:00'
-    creator:
-      '@type':
-      - prov:Person
-      - schema:Person
-      _id: mailto:remko.nijzink@list.lu
-      affiliation: null
-      alternate_name: null
-      email: remko.nijzink@list.lu
-      label: Remko Nijzink
-      name: Remko Nijzink
-    name: VOMcases
-    updated: '2019-03-08T08:28:48.938000+00:00'
-    version: '4'
-  added: '2020-12-04T10:37:44.966636+00:00'
-  based_on: null
-  creator:
-  - '@type':
-    - prov:Person
-    - schema:Person
-    _id: mailto:remko.nijzink@list.lu
-    affiliation: null
-    alternate_name: null
-    email: remko.nijzink@list.lu
-    label: Remko Nijzink
-    name: Remko Nijzink
-  external: false
-  name: 2017.monthly_rain.nc
-  path: data/Silo_gridded/2017.monthly_rain.nc
-  url: https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2017.monthly_rain.nc
-identifier: 7ef7e828-b017-4ef6-870a-071ff4ff1154
-in_language: null
-keywords: []
-license: null
-name: Silo_gridded
-path: .renku/datasets/7ef7e828-b017-4ef6-870a-071ff4ff1154
-same_as: null
-short_name: Silo_gridded
-tags: []
-url: https://renkulab.io/datasets/7ef7e828-b017-4ef6-870a-071ff4ff1154
-version: null
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T09:04:49.063513+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 1981.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/1981.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/1981.monthly_rain.nc@01d9b1c9dcf7568588cf8ef0ca440cbdcaeb1ab0
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/1981.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1981.monthly_rain.nc
+- '@id': https://renkulab.io/blob/0512ad92541fb98b598d3ffef4aa48170e39f5d3/data/Silo_gridded/1991.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T09:33:21.877977+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 1991.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/1991.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/1991.monthly_rain.nc@0512ad92541fb98b598d3ffef4aa48170e39f5d3
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/1991.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1991.monthly_rain.nc
+- '@id': https://renkulab.io/blob/0515b066913c1fc7af457212e1710ea3b31db719/data/Silo_gridded/1996.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T09:44:50.559705+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 1996.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/1996.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/1996.monthly_rain.nc@0515b066913c1fc7af457212e1710ea3b31db719
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/1996.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1996.monthly_rain.nc
+- '@id': https://renkulab.io/blob/284e42d90d786444668dd30beb420bb34089d44a/data/Silo_gridded/2010.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T10:18:50.301160+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 2010.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/2010.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/2010.monthly_rain.nc@284e42d90d786444668dd30beb420bb34089d44a
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/2010.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2010.monthly_rain.nc
+- '@id': https://renkulab.io/blob/302eb5d5bb5e78b6b189b5303680510cdea859bc/data/Silo_gridded/1988.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T09:26:11.192861+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 1988.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/1988.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/1988.monthly_rain.nc@302eb5d5bb5e78b6b189b5303680510cdea859bc
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/1988.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1988.monthly_rain.nc
+- '@id': https://renkulab.io/blob/3217e6e0b3b74e460631970a5b15087f4518668c/data/Silo_gridded/2006.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T10:08:14.045391+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 2006.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/2006.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/2006.monthly_rain.nc@3217e6e0b3b74e460631970a5b15087f4518668c
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/2006.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2006.monthly_rain.nc
+- '@id': https://renkulab.io/blob/43372b1d66a8ee99d9636f80e0171e3a56200f8c/data/Silo_gridded/2009.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T10:16:34.436115+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 2009.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/2009.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/2009.monthly_rain.nc@43372b1d66a8ee99d9636f80e0171e3a56200f8c
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/2009.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2009.monthly_rain.nc
+- '@id': https://renkulab.io/blob/4804ede3ec73e7ec8d3eecd26a4dafb3bf08e3e5/data/Silo_gridded/1986.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T09:21:34.326540+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 1986.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/1986.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/1986.monthly_rain.nc@4804ede3ec73e7ec8d3eecd26a4dafb3bf08e3e5
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/1986.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1986.monthly_rain.nc
+- '@id': https://renkulab.io/blob/49f11630e64afe3265997d7e80b653107a70d6a1/data/Silo_gridded/1994.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T09:40:19.770398+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 1994.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/1994.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/1994.monthly_rain.nc@49f11630e64afe3265997d7e80b653107a70d6a1
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/1994.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1994.monthly_rain.nc
+- '@id': https://renkulab.io/blob/4dde87e19abe038ec3bf8a838d6e76bf9455a3f8/data/Silo_gridded/1980.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T09:02:54.226636+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 1980.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/1980.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/1980.monthly_rain.nc@4dde87e19abe038ec3bf8a838d6e76bf9455a3f8
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/1980.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1980.monthly_rain.nc
+- '@id': https://renkulab.io/blob/4e388dfb8537ad2a0a9d3794671ac522aa54fa7a/data/Silo_gridded/1997.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T09:47:08.815314+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 1997.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/1997.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/1997.monthly_rain.nc@4e388dfb8537ad2a0a9d3794671ac522aa54fa7a
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/1997.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1997.monthly_rain.nc
+- '@id': https://renkulab.io/blob/501133b49e9d476adb044c934aae95072c214396/data/Silo_gridded/2017.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T10:37:44.966636+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 2017.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/2017.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/2017.monthly_rain.nc@501133b49e9d476adb044c934aae95072c214396
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/2017.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2017.monthly_rain.nc
+- '@id': https://renkulab.io/blob/598381d40a3af0e0317c124b37955c4b2cac8583/data/Silo_gridded/1998.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T09:49:25.567230+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 1998.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/1998.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/1998.monthly_rain.nc@598381d40a3af0e0317c124b37955c4b2cac8583
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/1998.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1998.monthly_rain.nc
+- '@id': https://renkulab.io/blob/62c63e0556e4b5136ef85c0a737d3790b98804a2/data/Silo_gridded/1985.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T09:18:14.070946+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 1985.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/1985.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/1985.monthly_rain.nc@62c63e0556e4b5136ef85c0a737d3790b98804a2
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/1985.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1985.monthly_rain.nc
+- '@id': https://renkulab.io/blob/654e46e7b60abaeb71b1fc4b260b30d358130ada/data/Silo_gridded/2004.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T10:03:28.045390+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 2004.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/2004.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/2004.monthly_rain.nc@654e46e7b60abaeb71b1fc4b260b30d358130ada
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/2004.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2004.monthly_rain.nc
+- '@id': https://renkulab.io/blob/6a7d61fae7e9964f5bcc40f8abde727ab88c1d57/data/Silo_gridded/2003.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T10:01:07.924554+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 2003.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/2003.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/2003.monthly_rain.nc@6a7d61fae7e9964f5bcc40f8abde727ab88c1d57
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/2003.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2003.monthly_rain.nc
+- '@id': https://renkulab.io/blob/6bc6ca958e4aa466d96d43a65c7ecb5e8c8373d8/data/Silo_gridded/2008.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T10:13:28.269849+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 2008.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/2008.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/2008.monthly_rain.nc@6bc6ca958e4aa466d96d43a65c7ecb5e8c8373d8
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/2008.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2008.monthly_rain.nc
+- '@id': https://renkulab.io/blob/6c39cf0253e77e3a6c636d2446d2d377603e8450/data/Silo_gridded/2007.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T10:10:33.382835+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 2007.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/2007.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/2007.monthly_rain.nc@6c39cf0253e77e3a6c636d2446d2d377603e8450
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/2007.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2007.monthly_rain.nc
+- '@id': https://renkulab.io/blob/73a2941ff77cee91479a2e004a420ab79973d276/data/Silo_gridded/2001.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T09:56:30.831841+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 2001.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/2001.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/2001.monthly_rain.nc@73a2941ff77cee91479a2e004a420ab79973d276
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/2001.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2001.monthly_rain.nc
+- '@id': https://renkulab.io/blob/75b0733e6cac3c9296443df566e531132bcfa459/data/Silo_gridded/2014.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T10:30:48.578967+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 2014.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/2014.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/2014.monthly_rain.nc@75b0733e6cac3c9296443df566e531132bcfa459
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/2014.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2014.monthly_rain.nc
+- '@id': https://renkulab.io/blob/78c64933e40f521303a1d3a45fcfc562acf0ed78/data/Silo_gridded/1999.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T09:51:57.241582+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 1999.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/1999.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/1999.monthly_rain.nc@78c64933e40f521303a1d3a45fcfc562acf0ed78
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/1999.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1999.monthly_rain.nc
+- '@id': https://renkulab.io/blob/86a2b91d27f81d2d1a91445810b3b381096cbd4f/data/Silo_gridded/1989.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T09:28:29.627754+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 1989.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/1989.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/1989.monthly_rain.nc@86a2b91d27f81d2d1a91445810b3b381096cbd4f
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/1989.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1989.monthly_rain.nc
+- '@id': https://renkulab.io/blob/8dc57fc44ae695ace95608299ef58d39318d1574/data/Silo_gridded/2012.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T10:24:21.188612+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 2012.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/2012.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/2012.monthly_rain.nc@8dc57fc44ae695ace95608299ef58d39318d1574
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/2012.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2012.monthly_rain.nc
+- '@id': https://renkulab.io/blob/97a84dd1f02b24fc68be76c677a8017c48053f55/data/Silo_gridded/1995.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T09:42:34.219629+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 1995.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/1995.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/1995.monthly_rain.nc@97a84dd1f02b24fc68be76c677a8017c48053f55
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/1995.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1995.monthly_rain.nc
+- '@id': https://renkulab.io/blob/aa0433f933177f552e8d3b05a721f121bb29bd93/data/Silo_gridded/1983.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T09:13:34.684222+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 1983.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/1983.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/1983.monthly_rain.nc@aa0433f933177f552e8d3b05a721f121bb29bd93
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/1983.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1983.monthly_rain.nc
+- '@id': https://renkulab.io/blob/aea765d8eea3da3797d6d0a1bec87548bbbdcd00/data/Silo_gridded/2011.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T10:21:08.654968+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 2011.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/2011.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/2011.monthly_rain.nc@aea765d8eea3da3797d6d0a1bec87548bbbdcd00
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/2011.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2011.monthly_rain.nc
+- '@id': https://renkulab.io/blob/c202a8350fd66f4d80b94a2f3ef49598a79ab7d0/data/Silo_gridded/1984.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T09:15:52.329124+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 1984.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/1984.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/1984.monthly_rain.nc@c202a8350fd66f4d80b94a2f3ef49598a79ab7d0
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/1984.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1984.monthly_rain.nc
+- '@id': https://renkulab.io/blob/c3a9c8d1a0136008ac0be873f3ab6e640debaf6c/data/Silo_gridded/2005.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T10:05:52.972375+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 2005.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/2005.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/2005.monthly_rain.nc@c3a9c8d1a0136008ac0be873f3ab6e640debaf6c
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/2005.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2005.monthly_rain.nc
+- '@id': https://renkulab.io/blob/c4d74c9524f4ee40375ab236e9ee4a101e049e1e/data/Silo_gridded/2015.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T10:33:09.223251+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 2015.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/2015.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/2015.monthly_rain.nc@c4d74c9524f4ee40375ab236e9ee4a101e049e1e
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/2015.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2015.monthly_rain.nc
+- '@id': https://renkulab.io/blob/ccfec03f2659da4f148dda694e794acae5611ccb/data/Silo_gridded/2000.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T09:54:14.622914+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 2000.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/2000.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/2000.monthly_rain.nc@ccfec03f2659da4f148dda694e794acae5611ccb
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/2000.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2000.monthly_rain.nc
+- '@id': https://renkulab.io/blob/ceb713db86d8389f4071d73a7a2e13e633afb9c5/data/Silo_gridded/2013.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T10:27:21.983114+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 2013.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/2013.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/2013.monthly_rain.nc@ceb713db86d8389f4071d73a7a2e13e633afb9c5
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/2013.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2013.monthly_rain.nc
+- '@id': https://renkulab.io/blob/d06332c3bac589a5bae025e95d4fd061aa09d607/data/Silo_gridded/1990.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T09:31:04.928897+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 1990.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/1990.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/1990.monthly_rain.nc@d06332c3bac589a5bae025e95d4fd061aa09d607
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/1990.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1990.monthly_rain.nc
+- '@id': https://renkulab.io/blob/ea13ca3c5ea56e18329dee61648d0129edd38615/data/Silo_gridded/1987.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T09:23:53.145810+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 1987.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/1987.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/1987.monthly_rain.nc@ea13ca3c5ea56e18329dee61648d0129edd38615
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/1987.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1987.monthly_rain.nc
+- '@id': https://renkulab.io/blob/f2e798d9f71f3e800fafc0cceff80aa3747fa168/data/Silo_gridded/1993.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T09:37:59.748480+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 1993.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/1993.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/1993.monthly_rain.nc@f2e798d9f71f3e800fafc0cceff80aa3747fa168
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/1993.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1993.monthly_rain.nc
+- '@id': https://renkulab.io/blob/f301f1c05c977b60829eef9d8dc4406913fba7f1/data/Silo_gridded/2016.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T10:35:26.709415+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 2016.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/2016.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/2016.monthly_rain.nc@f301f1c05c977b60829eef9d8dc4406913fba7f1
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/2016.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2016.monthly_rain.nc
+- '@id': https://renkulab.io/blob/fa7aa436a5a623ebe80fae151694725d6e439ee2/data/Silo_gridded/1982.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T09:11:03.535011+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 1982.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/1982.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/1982.monthly_rain.nc@fa7aa436a5a623ebe80fae151694725d6e439ee2
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/1982.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1982.monthly_rain.nc
+- '@id': https://renkulab.io/blob/fcea34e3b13f5c94b5ae71378c34b5ee04e62ba6/data/Silo_gridded/1992.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T09:35:45.888362+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 1992.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/1992.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/1992.monthly_rain.nc@fcea34e3b13f5c94b5ae71378c34b5ee04e62ba6
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/1992.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/1992.monthly_rain.nc
+- '@id': https://renkulab.io/blob/fd0d637cb3296aab4725718a4398be6d95f1cd6f/data/Silo_gridded/2002.monthly_rain.nc
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/DigitalDocument
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T09:58:51.199176+00:00'
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/name:
+  - '@value': 2002.monthly_rain.nc
+  http://schema.org/url:
+  - '@value': https://github.com/projects/mohammad-sdsc/vomcases/files/blob/data/Silo_gridded/2002.monthly_rain.nc
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': data/Silo_gridded/2002.monthly_rain.nc@fd0d637cb3296aab4725718a4398be6d95f1cd6f
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': data/Silo_gridded/2002.monthly_rain.nc
+  https://swissdatasciencecenter.github.io/renku-ontology#external:
+  - '@value': false
+  https://swissdatasciencecenter.github.io/renku-ontology#source:
+  - '@value': https://s3-ap-southeast-2.amazonaws.com/silo-open-data/annual/monthly_rain/2002.monthly_rain.nc
+- '@id': https://renkulab.io/datasets/7ef7e828-b017-4ef6-870a-071ff4ff1154
+  '@type':
+  - http://purl.org/wf4ever/wfprov#Artifact
+  - http://schema.org/Dataset
+  - http://www.w3.org/ns/prov#Entity
+  http://schema.org/alternateName:
+  - '@value': Silo_gridded
+  http://schema.org/creator:
+  - '@id': mailto:remko.nijzink@list.lu
+  http://schema.org/dateCreated:
+  - '@value': '2020-12-04T09:01:16.093365+00:00'
+  http://schema.org/hasPart:
+  - '@id': https://renkulab.io/blob/4dde87e19abe038ec3bf8a838d6e76bf9455a3f8/data/Silo_gridded/1980.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/01d9b1c9dcf7568588cf8ef0ca440cbdcaeb1ab0/data/Silo_gridded/1981.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/fa7aa436a5a623ebe80fae151694725d6e439ee2/data/Silo_gridded/1982.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/aa0433f933177f552e8d3b05a721f121bb29bd93/data/Silo_gridded/1983.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/c202a8350fd66f4d80b94a2f3ef49598a79ab7d0/data/Silo_gridded/1984.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/62c63e0556e4b5136ef85c0a737d3790b98804a2/data/Silo_gridded/1985.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/4804ede3ec73e7ec8d3eecd26a4dafb3bf08e3e5/data/Silo_gridded/1986.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/ea13ca3c5ea56e18329dee61648d0129edd38615/data/Silo_gridded/1987.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/302eb5d5bb5e78b6b189b5303680510cdea859bc/data/Silo_gridded/1988.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/86a2b91d27f81d2d1a91445810b3b381096cbd4f/data/Silo_gridded/1989.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/d06332c3bac589a5bae025e95d4fd061aa09d607/data/Silo_gridded/1990.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/0512ad92541fb98b598d3ffef4aa48170e39f5d3/data/Silo_gridded/1991.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/fcea34e3b13f5c94b5ae71378c34b5ee04e62ba6/data/Silo_gridded/1992.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/f2e798d9f71f3e800fafc0cceff80aa3747fa168/data/Silo_gridded/1993.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/49f11630e64afe3265997d7e80b653107a70d6a1/data/Silo_gridded/1994.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/97a84dd1f02b24fc68be76c677a8017c48053f55/data/Silo_gridded/1995.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/0515b066913c1fc7af457212e1710ea3b31db719/data/Silo_gridded/1996.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/4e388dfb8537ad2a0a9d3794671ac522aa54fa7a/data/Silo_gridded/1997.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/598381d40a3af0e0317c124b37955c4b2cac8583/data/Silo_gridded/1998.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/78c64933e40f521303a1d3a45fcfc562acf0ed78/data/Silo_gridded/1999.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/ccfec03f2659da4f148dda694e794acae5611ccb/data/Silo_gridded/2000.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/73a2941ff77cee91479a2e004a420ab79973d276/data/Silo_gridded/2001.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/fd0d637cb3296aab4725718a4398be6d95f1cd6f/data/Silo_gridded/2002.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/6a7d61fae7e9964f5bcc40f8abde727ab88c1d57/data/Silo_gridded/2003.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/654e46e7b60abaeb71b1fc4b260b30d358130ada/data/Silo_gridded/2004.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/c3a9c8d1a0136008ac0be873f3ab6e640debaf6c/data/Silo_gridded/2005.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/3217e6e0b3b74e460631970a5b15087f4518668c/data/Silo_gridded/2006.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/6c39cf0253e77e3a6c636d2446d2d377603e8450/data/Silo_gridded/2007.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/6bc6ca958e4aa466d96d43a65c7ecb5e8c8373d8/data/Silo_gridded/2008.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/43372b1d66a8ee99d9636f80e0171e3a56200f8c/data/Silo_gridded/2009.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/284e42d90d786444668dd30beb420bb34089d44a/data/Silo_gridded/2010.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/aea765d8eea3da3797d6d0a1bec87548bbbdcd00/data/Silo_gridded/2011.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/8dc57fc44ae695ace95608299ef58d39318d1574/data/Silo_gridded/2012.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/ceb713db86d8389f4071d73a7a2e13e633afb9c5/data/Silo_gridded/2013.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/75b0733e6cac3c9296443df566e531132bcfa459/data/Silo_gridded/2014.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/c4d74c9524f4ee40375ab236e9ee4a101e049e1e/data/Silo_gridded/2015.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/f301f1c05c977b60829eef9d8dc4406913fba7f1/data/Silo_gridded/2016.monthly_rain.nc
+  - '@id': https://renkulab.io/blob/501133b49e9d476adb044c934aae95072c214396/data/Silo_gridded/2017.monthly_rain.nc
+  http://schema.org/identifier:
+  - '@value': 7ef7e828-b017-4ef6-870a-071ff4ff1154
+  http://schema.org/isPartOf:
+  - '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  http://schema.org/keywords: []
+  http://schema.org/name:
+  - '@value': Silo_gridded
+  http://schema.org/subjectOf: []
+  http://schema.org/url:
+  - '@value': https://renkulab.io/datasets/7ef7e828-b017-4ef6-870a-071ff4ff1154
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': 7ef7e828-b017-4ef6-870a-071ff4ff1154
+  http://www.w3.org/ns/prov#atLocation:
+  - '@value': .renku/datasets/7ef7e828-b017-4ef6-870a-071ff4ff1154
+- '@id': https://renkulab.io/projects/remko.nijzink/vomcases
+  '@type':
+  - http://schema.org/Project
+  - http://www.w3.org/ns/prov#Location
+  http://schema.org/agent:
+  - '@value': pre-0.11.0
+  http://schema.org/creator:
+  - '@id': mailto:remko.nijzink@list.lu
+  http://schema.org/dateCreated:
+  - '@value': '2019-03-08T08:28:48.938000+00:00'
+  http://schema.org/name:
+  - '@value': VOMcases
+  http://schema.org/schemaVersion:
+  - '@value': '4'
+- '@id': mailto:remko.nijzink@list.lu
+  '@type':
+  - http://schema.org/Person
+  - http://www.w3.org/ns/prov#Person
+  http://schema.org/email:
+  - '@value': remko.nijzink@list.lu
+  http://schema.org/name:
+  - '@value': Remko Nijzink
+  http://www.w3.org/2000/01/rdf-schema#label:
+  - '@value': Remko Nijzink
