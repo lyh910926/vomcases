@@ -1,43 +1,139 @@
 [
   {
-    "@id": "_:b0",
-    "@type": [
-      "https://swissdatasciencecenter.github.io/renku-ontology#ActivityCollection"
-    ],
-    "http://schema.org/hasPart": [
+    "@id": "mailto:remko.nijzink@list.lu",
+    "@type": "Person",
+    "@version": 1,
+    "affiliation": null,
+    "alternate_name": null,
+    "email": "remko.nijzink@list.lu",
+    "label": "Remko Nijzink",
+    "name": "Remko Nijzink"
+  },
+  {
+    "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.12.3.dev24",
+    "@type": "SoftwareAgent",
+    "@version": 1,
+    "label": "renku 0.12.3.dev24"
+  },
+  {
+    "@id": "https://github.com/runs/e7c6b19bb083661ccae265a72a411874200a9952/arguments/2",
+    "@type": "CommandArgument",
+    "@version": 1,
+    "label": "Command Argument \"SturtPlains/nofreedrainage_cpcff1.4/best_free/\"",
+    "position": 2,
+    "prefix": null,
+    "value": "SturtPlains/nofreedrainage_cpcff1.4/best_free/"
+  },
+  {
+    "@id": "https://github.com/plans/e7c6b19bb083661ccae265a72a411874200a9952/outputs/8806760e6d52434b872bb2a9a2619cc2",
+    "@type": "CommandOutputTemplate",
+    "@version": 1,
+    "create_folder": false,
+    "label": "Command Output Template \"work/SturtPlains/nofreedrainage_cpcff1.4/best_free/vom_namelist\"",
+    "mapped_to": null,
+    "position": null,
+    "prefix": null,
+    "produces": "work/SturtPlains/nofreedrainage_cpcff1.4/best_free/vom_namelist"
+  },
+  {
+    "@id": "https://github.com/plans/e7c6b19bb083661ccae265a72a411874200a9952/inputs/1",
+    "@type": "CommandInputTemplate",
+    "@version": 1,
+    "consumes": "work/SturtPlains/freedrainage_cpcff1.4/best",
+    "label": "Command Input Template \"work/SturtPlains/freedrainage_cpcff1.4/best\"",
+    "mapped_to": null,
+    "position": 1,
+    "prefix": "-r "
+  },
+  {
+    "@id": "https://github.com/plans/e7c6b19bb083661ccae265a72a411874200a9952",
+    "@type": "Plan",
+    "@version": 1,
+    "arguments": [
       {
-        "@id": "https://github.com/activities/208ef7f4-de3e-4a32-8b86-d5bdae3d9f56"
+        "@id": "https://github.com/runs/e7c6b19bb083661ccae265a72a411874200a9952/arguments/2"
       }
-    ]
+    ],
+    "command": "cp",
+    "inputs": [
+      {
+        "@id": "https://github.com/plans/e7c6b19bb083661ccae265a72a411874200a9952/inputs/1"
+      }
+    ],
+    "name": "cp-bc6680c1fe874a4d8709d36c0067e819",
+    "outputs": [
+      {
+        "@id": "https://github.com/plans/e7c6b19bb083661ccae265a72a411874200a9952/outputs/8806760e6d52434b872bb2a9a2619cc2"
+      }
+    ],
+    "success_codes": []
+  },
+  {
+    "@id": "renku+0.4.1.dev24@datascience.ch",
+    "@type": "SoftwareAgent",
+    "@version": 1,
+    "label": "renku 0.4.1.dev24"
+  },
+  {
+    "@id": "https://github.com/activities/208ef7f4-de3e-4a32-8b86-d5bdae3d9f56/association",
+    "@type": "Association",
+    "@version": 1,
+    "agent": {
+      "@id": "renku+0.4.1.dev24@datascience.ch"
+    },
+    "plan": {
+      "@id": "https://github.com/plans/e7c6b19bb083661ccae265a72a411874200a9952"
+    }
+  },
+  {
+    "@id": "https://github.com/blob/e9d3680362200dba3329e9420a2bea342bd7854b/work/SturtPlains/freedrainage_cpcff1.4/best/vom_namelist",
+    "@type": "Entity",
+    "@version": 1,
+    "checksum": "e9d3680362200dba3329e9420a2bea342bd7854b",
+    "path": "work/SturtPlains/freedrainage_cpcff1.4/best/vom_namelist"
+  },
+  {
+    "@id": "https://github.com/blob/a2bc50b60df9b0b86381a6f9817fb4654d30d958/work/SturtPlains/freedrainage_cpcff1.4/best",
+    "@type": "Collection",
+    "@version": 1,
+    "checksum": "a2bc50b60df9b0b86381a6f9817fb4654d30d958",
+    "members": [
+      {
+        "@id": "https://github.com/blob/e9d3680362200dba3329e9420a2bea342bd7854b/work/SturtPlains/freedrainage_cpcff1.4/best/vom_namelist"
+      }
+    ],
+    "path": "work/SturtPlains/freedrainage_cpcff1.4/best"
+  },
+  {
+    "@id": "https://github.com/activities/208ef7f4-de3e-4a32-8b86-d5bdae3d9f56/usage/84b7a330-363b-42d2-ad00-a4dbc238f8c6/a2bc50b60df9b0b86381a6f9817fb4654d30d958/work/SturtPlains/freedrainage_cpcff1.4/best",
+    "@type": "Usage",
+    "@version": 1,
+    "entity": {
+      "@id": "https://github.com/blob/a2bc50b60df9b0b86381a6f9817fb4654d30d958/work/SturtPlains/freedrainage_cpcff1.4/best"
+    },
+    "role": "inputs/1"
+  },
+  {
+    "@id": "https://github.com/blob/e9d3680362200dba3329e9420a2bea342bd7854b/work/SturtPlains/nofreedrainage_cpcff1.4/best_free/vom_namelist",
+    "@type": "Entity",
+    "@version": 1,
+    "checksum": "e9d3680362200dba3329e9420a2bea342bd7854b",
+    "path": "work/SturtPlains/nofreedrainage_cpcff1.4/best_free/vom_namelist"
+  },
+  {
+    "@id": "https://github.com/activities/208ef7f4-de3e-4a32-8b86-d5bdae3d9f56/generation/6ff703b6-f86a-47a2-a0c8-20c44e60859d/e9d3680362200dba3329e9420a2bea342bd7854b/work/SturtPlains/nofreedrainage_cpcff1.4/best_free/vom_namelist",
+    "@type": "Generation",
+    "@version": 1,
+    "entity": {
+      "@id": "https://github.com/blob/e9d3680362200dba3329e9420a2bea342bd7854b/work/SturtPlains/nofreedrainage_cpcff1.4/best_free/vom_namelist"
+    },
+    "role": "outputs/8806760e6d52434b872bb2a9a2619cc2"
   },
   {
     "@id": "https://github.com/activities/208ef7f4-de3e-4a32-8b86-d5bdae3d9f56",
-    "@type": [
-      "http://www.w3.org/ns/prov#Activity"
-    ],
-    "http://www.w3.org/ns/prov#endedAtTime": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
-        "@value": "2019-04-05T15:57:17+02:00"
-      }
-    ],
-    "http://www.w3.org/ns/prov#qualifiedAssociation": [
-      {
-        "@id": "https://github.com/activities/208ef7f4-de3e-4a32-8b86-d5bdae3d9f56/association"
-      }
-    ],
-    "http://www.w3.org/ns/prov#qualifiedUsage": [
-      {
-        "@id": "https://github.com/activities/208ef7f4-de3e-4a32-8b86-d5bdae3d9f56/usage/84b7a330-363b-42d2-ad00-a4dbc238f8c6/a2bc50b60df9b0b86381a6f9817fb4654d30d958/work/SturtPlains/freedrainage_cpcff1.4/best"
-      }
-    ],
-    "http://www.w3.org/ns/prov#startedAtTime": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
-        "@value": "2019-04-05T17:57:17+02:00"
-      }
-    ],
-    "http://www.w3.org/ns/prov#wasAssociatedWith": [
+    "@type": "Activity",
+    "@version": 1,
+    "agents": [
       {
         "@id": "mailto:remko.nijzink@list.lu"
       },
@@ -45,283 +141,32 @@
         "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.12.3.dev24"
       }
     ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#order": [
-      {
-        "@value": 381
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/activities/208ef7f4-de3e-4a32-8b86-d5bdae3d9f56/association",
-    "@type": [
-      "http://www.w3.org/ns/prov#Association"
-    ],
-    "http://www.w3.org/ns/prov#agent": [
-      {
-        "@id": "renku+0.4.1.dev24@datascience.ch"
-      }
-    ],
-    "http://www.w3.org/ns/prov#hadPlan": [
-      {
-        "@id": "https://github.com/plans/e7c6b19bb083661ccae265a72a411874200a9952"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/activities/208ef7f4-de3e-4a32-8b86-d5bdae3d9f56/generation/6ff703b6-f86a-47a2-a0c8-20c44e60859d/e9d3680362200dba3329e9420a2bea342bd7854b/work/SturtPlains/nofreedrainage_cpcff1.4/best_free/vom_namelist",
-    "@type": [
-      "http://www.w3.org/ns/prov#Generation"
-    ],
-    "http://www.w3.org/ns/prov#activity": [
-      {
-        "@id": "https://github.com/activities/208ef7f4-de3e-4a32-8b86-d5bdae3d9f56"
-      }
-    ],
-    "http://www.w3.org/ns/prov#hadRole": [
-      {
-        "@value": "outputs/8806760e6d52434b872bb2a9a2619cc2"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/activities/208ef7f4-de3e-4a32-8b86-d5bdae3d9f56/usage/84b7a330-363b-42d2-ad00-a4dbc238f8c6/a2bc50b60df9b0b86381a6f9817fb4654d30d958/work/SturtPlains/freedrainage_cpcff1.4/best",
-    "@type": [
-      "http://www.w3.org/ns/prov#Usage"
-    ],
-    "http://www.w3.org/ns/prov#entity": [
-      {
-        "@id": "https://github.com/blob/a2bc50b60df9b0b86381a6f9817fb4654d30d958/work/SturtPlains/freedrainage_cpcff1.4/best"
-      }
-    ],
-    "http://www.w3.org/ns/prov#hadRole": [
-      {
-        "@value": "inputs/1"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/blob/a2bc50b60df9b0b86381a6f9817fb4654d30d958/work/SturtPlains/freedrainage_cpcff1.4/best",
-    "@type": [
-      "http://purl.org/wf4ever/wfprov#Artifact",
-      "http://www.w3.org/ns/prov#Collection",
-      "http://www.w3.org/ns/prov#Entity"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "work/SturtPlains/freedrainage_cpcff1.4/best@UNCOMMITTED"
-      }
-    ],
-    "http://www.w3.org/ns/prov#atLocation": [
-      {
-        "@value": "work/SturtPlains/freedrainage_cpcff1.4/best"
-      }
-    ],
-    "http://www.w3.org/ns/prov#hadMember": [
-      {
-        "@id": "https://github.com/blob/e9d3680362200dba3329e9420a2bea342bd7854b/work/SturtPlains/freedrainage_cpcff1.4/best/vom_namelist"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#checksum": [
-      {
-        "@value": "a2bc50b60df9b0b86381a6f9817fb4654d30d958"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/blob/e9d3680362200dba3329e9420a2bea342bd7854b/work/SturtPlains/freedrainage_cpcff1.4/best/vom_namelist",
-    "@type": [
-      "http://purl.org/wf4ever/wfprov#Artifact",
-      "http://www.w3.org/ns/prov#Entity"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "work/SturtPlains/freedrainage_cpcff1.4/best/vom_namelist@UNCOMMITTED"
-      }
-    ],
-    "http://www.w3.org/ns/prov#atLocation": [
-      {
-        "@value": "work/SturtPlains/freedrainage_cpcff1.4/best/vom_namelist"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#checksum": [
-      {
-        "@value": "e9d3680362200dba3329e9420a2bea342bd7854b"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/blob/e9d3680362200dba3329e9420a2bea342bd7854b/work/SturtPlains/nofreedrainage_cpcff1.4/best_free/vom_namelist",
-    "@type": [
-      "http://purl.org/wf4ever/wfprov#Artifact",
-      "http://www.w3.org/ns/prov#Entity"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "work/SturtPlains/nofreedrainage_cpcff1.4/best_free/vom_namelist@UNCOMMITTED"
-      }
-    ],
-    "http://www.w3.org/ns/prov#atLocation": [
-      {
-        "@value": "work/SturtPlains/nofreedrainage_cpcff1.4/best_free/vom_namelist"
-      }
-    ],
-    "http://www.w3.org/ns/prov#qualifiedGeneration": [
+    "annotations": null,
+    "association": {
+      "@id": "https://github.com/activities/208ef7f4-de3e-4a32-8b86-d5bdae3d9f56/association"
+    },
+    "ended_at_time": "2019-04-05T15:57:17+02:00",
+    "generated": [
       {
         "@id": "https://github.com/activities/208ef7f4-de3e-4a32-8b86-d5bdae3d9f56/generation/6ff703b6-f86a-47a2-a0c8-20c44e60859d/e9d3680362200dba3329e9420a2bea342bd7854b/work/SturtPlains/nofreedrainage_cpcff1.4/best_free/vom_namelist"
       }
     ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#checksum": [
+    "invalidated": null,
+    "order": 381,
+    "qualified_usage": [
       {
-        "@value": "e9d3680362200dba3329e9420a2bea342bd7854b"
+        "@id": "https://github.com/activities/208ef7f4-de3e-4a32-8b86-d5bdae3d9f56/usage/84b7a330-363b-42d2-ad00-a4dbc238f8c6/a2bc50b60df9b0b86381a6f9817fb4654d30d958/work/SturtPlains/freedrainage_cpcff1.4/best"
       }
-    ]
+    ],
+    "started_at_time": "2019-04-05T17:57:17+02:00"
   },
   {
-    "@id": "https://github.com/plans/e7c6b19bb083661ccae265a72a411874200a9952",
-    "@type": [
-      "http://www.w3.org/ns/prov#Plan"
-    ],
-    "http://schema.org/name": [
+    "@id": "_:abf51489632b4a08909d48312b07fa4d",
+    "@type": "ActivityCollection",
+    "@version": 1,
+    "activities": [
       {
-        "@value": "cp-bc6680c1fe874a4d8709d36c0067e819"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#command": [
-      {
-        "@value": "cp"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#hasArguments": [
-      {
-        "@id": "https://github.com/runs/e7c6b19bb083661ccae265a72a411874200a9952/arguments/2"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#hasInputs": [
-      {
-        "@id": "https://github.com/plans/e7c6b19bb083661ccae265a72a411874200a9952/inputs/1"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#hasOutputs": [
-      {
-        "@id": "https://github.com/plans/e7c6b19bb083661ccae265a72a411874200a9952/outputs/8806760e6d52434b872bb2a9a2619cc2"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#successCodes": []
-  },
-  {
-    "@id": "https://github.com/plans/e7c6b19bb083661ccae265a72a411874200a9952/inputs/1",
-    "@type": [
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandInputTemplate",
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandParameter"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Command Input Template \"work/SturtPlains/freedrainage_cpcff1.4/best\""
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#consume": [
-      {
-        "@value": "work/SturtPlains/freedrainage_cpcff1.4/best"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#position": [
-      {
-        "@value": 1
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#prefix": [
-      {
-        "@value": "-r "
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/plans/e7c6b19bb083661ccae265a72a411874200a9952/outputs/8806760e6d52434b872bb2a9a2619cc2",
-    "@type": [
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandOutputTemplate",
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandParameter"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Command Output Template \"work/SturtPlains/nofreedrainage_cpcff1.4/best_free/vom_namelist\""
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#createFolder": [
-      {
-        "@value": false
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#produces": [
-      {
-        "@value": "work/SturtPlains/nofreedrainage_cpcff1.4/best_free/vom_namelist"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/runs/e7c6b19bb083661ccae265a72a411874200a9952/arguments/2",
-    "@type": [
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandArgument",
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandParameter"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Command Argument \"SturtPlains/nofreedrainage_cpcff1.4/best_free/\""
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#position": [
-      {
-        "@value": 2
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#value": [
-      {
-        "@value": "SturtPlains/nofreedrainage_cpcff1.4/best_free/"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.12.3.dev24",
-    "@type": [
-      "http://purl.org/wf4ever/wfprov#WorkflowEngine",
-      "http://www.w3.org/ns/prov#SoftwareAgent"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "renku 0.12.3.dev24"
-      }
-    ]
-  },
-  {
-    "@id": "mailto:remko.nijzink@list.lu",
-    "@type": [
-      "http://schema.org/Person",
-      "http://www.w3.org/ns/prov#Person"
-    ],
-    "http://schema.org/email": [
-      {
-        "@value": "remko.nijzink@list.lu"
-      }
-    ],
-    "http://schema.org/name": [
-      {
-        "@value": "Remko Nijzink"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Remko Nijzink"
-      }
-    ]
-  },
-  {
-    "@id": "renku+0.4.1.dev24@datascience.ch",
-    "@type": [
-      "http://purl.org/wf4ever/wfprov#WorkflowEngine",
-      "http://www.w3.org/ns/prov#SoftwareAgent"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "renku 0.4.1.dev24"
+        "@id": "https://github.com/activities/208ef7f4-de3e-4a32-8b86-d5bdae3d9f56"
       }
     ]
   }

@@ -1,43 +1,114 @@
 [
   {
-    "@id": "_:b0",
-    "@type": [
-      "https://swissdatasciencecenter.github.io/renku-ontology#ActivityCollection"
-    ],
-    "http://schema.org/hasPart": [
+    "@id": "mailto:remko.nijzink@list.lu",
+    "@type": "Person",
+    "@version": 1,
+    "affiliation": null,
+    "alternate_name": null,
+    "email": "remko.nijzink@list.lu",
+    "label": "Remko Nijzink",
+    "name": "Remko Nijzink"
+  },
+  {
+    "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.13.1.dev1",
+    "@type": "SoftwareAgent",
+    "@version": 1,
+    "label": "renku 0.13.1.dev1"
+  },
+  {
+    "@id": "https://github.com/plans/235a10a722f5c99c9796cd91573bab396b3e6aaa/outputs/2",
+    "@type": "CommandOutputTemplate",
+    "@version": 1,
+    "create_folder": true,
+    "label": "Command Output Template \"work/additional_analyses/comp2015/2_sce_check/best/input/dailyweather.prn\"",
+    "mapped_to": null,
+    "position": 2,
+    "prefix": null,
+    "produces": "work/additional_analyses/comp2015/2_sce_check/best/input/dailyweather.prn"
+  },
+  {
+    "@id": "https://github.com/plans/235a10a722f5c99c9796cd91573bab396b3e6aaa/inputs/1",
+    "@type": "CommandInputTemplate",
+    "@version": 1,
+    "consumes": "data/VOM_input/HowardSprings/2_sce_check/dailyweather.prn",
+    "label": "Command Input Template \"data/VOM_input/HowardSprings/2_sce_check/dailyweather.prn\"",
+    "mapped_to": null,
+    "position": 1,
+    "prefix": null
+  },
+  {
+    "@id": "https://github.com/plans/235a10a722f5c99c9796cd91573bab396b3e6aaa",
+    "@type": "Plan",
+    "@version": 1,
+    "arguments": [],
+    "command": "cp",
+    "inputs": [
       {
-        "@id": "https://github.com/activities/0f331612-bdc2-4f81-bb26-f5a7a88ab334"
+        "@id": "https://github.com/plans/235a10a722f5c99c9796cd91573bab396b3e6aaa/inputs/1"
       }
-    ]
+    ],
+    "name": "cp-c89c3cad2ca44d219b141ac0b04178de",
+    "outputs": [
+      {
+        "@id": "https://github.com/plans/235a10a722f5c99c9796cd91573bab396b3e6aaa/outputs/2"
+      }
+    ],
+    "success_codes": []
+  },
+  {
+    "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.10.5.dev21",
+    "@type": "SoftwareAgent",
+    "@version": 1,
+    "label": "renku 0.10.5.dev21"
+  },
+  {
+    "@id": "https://github.com/activities/0f331612-bdc2-4f81-bb26-f5a7a88ab334/association",
+    "@type": "Association",
+    "@version": 1,
+    "agent": {
+      "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.10.5.dev21"
+    },
+    "plan": {
+      "@id": "https://github.com/plans/235a10a722f5c99c9796cd91573bab396b3e6aaa"
+    }
+  },
+  {
+    "@id": "https://github.com/blob/edaf4cea864249252ea1fc881ff10685fee407a3/data/VOM_input/HowardSprings/2_sce_check/dailyweather.prn",
+    "@type": "Entity",
+    "@version": 1,
+    "checksum": "edaf4cea864249252ea1fc881ff10685fee407a3",
+    "path": "data/VOM_input/HowardSprings/2_sce_check/dailyweather.prn"
+  },
+  {
+    "@id": "https://github.com/activities/0f331612-bdc2-4f81-bb26-f5a7a88ab334/usage/e27b6cbf-5580-4e55-a3b4-7675da952789/edaf4cea864249252ea1fc881ff10685fee407a3/data/VOM_input/HowardSprings/2_sce_check/dailyweather.prn",
+    "@type": "Usage",
+    "@version": 1,
+    "entity": {
+      "@id": "https://github.com/blob/edaf4cea864249252ea1fc881ff10685fee407a3/data/VOM_input/HowardSprings/2_sce_check/dailyweather.prn"
+    },
+    "role": "inputs/1"
+  },
+  {
+    "@id": "https://github.com/blob/edaf4cea864249252ea1fc881ff10685fee407a3/work/additional_analyses/comp2015/2_sce_check/best/input/dailyweather.prn",
+    "@type": "Entity",
+    "@version": 1,
+    "checksum": "edaf4cea864249252ea1fc881ff10685fee407a3",
+    "path": "work/additional_analyses/comp2015/2_sce_check/best/input/dailyweather.prn"
+  },
+  {
+    "@id": "https://github.com/activities/0f331612-bdc2-4f81-bb26-f5a7a88ab334/generation/8fe311f9-79c2-47ad-a05b-37372c1e2e9a/edaf4cea864249252ea1fc881ff10685fee407a3/work/additional_analyses/comp2015/2_sce_check/best/input/dailyweather.prn",
+    "@type": "Generation",
+    "@version": 1,
+    "entity": {
+      "@id": "https://github.com/blob/edaf4cea864249252ea1fc881ff10685fee407a3/work/additional_analyses/comp2015/2_sce_check/best/input/dailyweather.prn"
+    },
+    "role": "outputs/2"
   },
   {
     "@id": "https://github.com/activities/0f331612-bdc2-4f81-bb26-f5a7a88ab334",
-    "@type": [
-      "http://www.w3.org/ns/prov#Activity"
-    ],
-    "http://www.w3.org/ns/prov#endedAtTime": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
-        "@value": "2020-12-08T11:45:02+01:00"
-      }
-    ],
-    "http://www.w3.org/ns/prov#qualifiedAssociation": [
-      {
-        "@id": "https://github.com/activities/0f331612-bdc2-4f81-bb26-f5a7a88ab334/association"
-      }
-    ],
-    "http://www.w3.org/ns/prov#qualifiedUsage": [
-      {
-        "@id": "https://github.com/activities/0f331612-bdc2-4f81-bb26-f5a7a88ab334/usage/e27b6cbf-5580-4e55-a3b4-7675da952789/edaf4cea864249252ea1fc881ff10685fee407a3/data/VOM_input/HowardSprings/2_sce_check/dailyweather.prn"
-      }
-    ],
-    "http://www.w3.org/ns/prov#startedAtTime": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
-        "@value": "2020-12-08T11:45:02+01:00"
-      }
-    ],
-    "http://www.w3.org/ns/prov#wasAssociatedWith": [
+    "@type": "Activity",
+    "@version": 1,
+    "agents": [
       {
         "@id": "mailto:remko.nijzink@list.lu"
       },
@@ -45,229 +116,32 @@
         "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.13.1.dev1"
       }
     ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#order": [
-      {
-        "@value": 9644
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/activities/0f331612-bdc2-4f81-bb26-f5a7a88ab334/association",
-    "@type": [
-      "http://www.w3.org/ns/prov#Association"
-    ],
-    "http://www.w3.org/ns/prov#agent": [
-      {
-        "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.10.5.dev21"
-      }
-    ],
-    "http://www.w3.org/ns/prov#hadPlan": [
-      {
-        "@id": "https://github.com/plans/235a10a722f5c99c9796cd91573bab396b3e6aaa"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/activities/0f331612-bdc2-4f81-bb26-f5a7a88ab334/generation/8fe311f9-79c2-47ad-a05b-37372c1e2e9a/edaf4cea864249252ea1fc881ff10685fee407a3/work/additional_analyses/comp2015/2_sce_check/best/input/dailyweather.prn",
-    "@type": [
-      "http://www.w3.org/ns/prov#Generation"
-    ],
-    "http://www.w3.org/ns/prov#activity": [
-      {
-        "@id": "https://github.com/activities/0f331612-bdc2-4f81-bb26-f5a7a88ab334"
-      }
-    ],
-    "http://www.w3.org/ns/prov#hadRole": [
-      {
-        "@value": "outputs/2"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/activities/0f331612-bdc2-4f81-bb26-f5a7a88ab334/usage/e27b6cbf-5580-4e55-a3b4-7675da952789/edaf4cea864249252ea1fc881ff10685fee407a3/data/VOM_input/HowardSprings/2_sce_check/dailyweather.prn",
-    "@type": [
-      "http://www.w3.org/ns/prov#Usage"
-    ],
-    "http://www.w3.org/ns/prov#entity": [
-      {
-        "@id": "https://github.com/blob/edaf4cea864249252ea1fc881ff10685fee407a3/data/VOM_input/HowardSprings/2_sce_check/dailyweather.prn"
-      }
-    ],
-    "http://www.w3.org/ns/prov#hadRole": [
-      {
-        "@value": "inputs/1"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/blob/edaf4cea864249252ea1fc881ff10685fee407a3/data/VOM_input/HowardSprings/2_sce_check/dailyweather.prn",
-    "@type": [
-      "http://purl.org/wf4ever/wfprov#Artifact",
-      "http://www.w3.org/ns/prov#Entity"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "data/VOM_input/HowardSprings/2_sce_check/dailyweather.prn@UNCOMMITTED"
-      }
-    ],
-    "http://www.w3.org/ns/prov#atLocation": [
-      {
-        "@value": "data/VOM_input/HowardSprings/2_sce_check/dailyweather.prn"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#checksum": [
-      {
-        "@value": "edaf4cea864249252ea1fc881ff10685fee407a3"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/blob/edaf4cea864249252ea1fc881ff10685fee407a3/work/additional_analyses/comp2015/2_sce_check/best/input/dailyweather.prn",
-    "@type": [
-      "http://purl.org/wf4ever/wfprov#Artifact",
-      "http://www.w3.org/ns/prov#Entity"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "work/additional_analyses/comp2015/2_sce_check/best/input/dailyweather.prn@UNCOMMITTED"
-      }
-    ],
-    "http://www.w3.org/ns/prov#atLocation": [
-      {
-        "@value": "work/additional_analyses/comp2015/2_sce_check/best/input/dailyweather.prn"
-      }
-    ],
-    "http://www.w3.org/ns/prov#qualifiedGeneration": [
+    "annotations": null,
+    "association": {
+      "@id": "https://github.com/activities/0f331612-bdc2-4f81-bb26-f5a7a88ab334/association"
+    },
+    "ended_at_time": "2020-12-08T11:45:02+01:00",
+    "generated": [
       {
         "@id": "https://github.com/activities/0f331612-bdc2-4f81-bb26-f5a7a88ab334/generation/8fe311f9-79c2-47ad-a05b-37372c1e2e9a/edaf4cea864249252ea1fc881ff10685fee407a3/work/additional_analyses/comp2015/2_sce_check/best/input/dailyweather.prn"
       }
     ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#checksum": [
+    "invalidated": null,
+    "order": 9644,
+    "qualified_usage": [
       {
-        "@value": "edaf4cea864249252ea1fc881ff10685fee407a3"
+        "@id": "https://github.com/activities/0f331612-bdc2-4f81-bb26-f5a7a88ab334/usage/e27b6cbf-5580-4e55-a3b4-7675da952789/edaf4cea864249252ea1fc881ff10685fee407a3/data/VOM_input/HowardSprings/2_sce_check/dailyweather.prn"
       }
-    ]
+    ],
+    "started_at_time": "2020-12-08T11:45:02+01:00"
   },
   {
-    "@id": "https://github.com/plans/235a10a722f5c99c9796cd91573bab396b3e6aaa",
-    "@type": [
-      "http://www.w3.org/ns/prov#Plan"
-    ],
-    "http://schema.org/name": [
+    "@id": "_:103666f6469b426687c5efbcc190aca5",
+    "@type": "ActivityCollection",
+    "@version": 1,
+    "activities": [
       {
-        "@value": "cp-c89c3cad2ca44d219b141ac0b04178de"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#command": [
-      {
-        "@value": "cp"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#hasArguments": [],
-    "https://swissdatasciencecenter.github.io/renku-ontology#hasInputs": [
-      {
-        "@id": "https://github.com/plans/235a10a722f5c99c9796cd91573bab396b3e6aaa/inputs/1"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#hasOutputs": [
-      {
-        "@id": "https://github.com/plans/235a10a722f5c99c9796cd91573bab396b3e6aaa/outputs/2"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#successCodes": []
-  },
-  {
-    "@id": "https://github.com/plans/235a10a722f5c99c9796cd91573bab396b3e6aaa/inputs/1",
-    "@type": [
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandInputTemplate",
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandParameter"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Command Input Template \"data/VOM_input/HowardSprings/2_sce_check/dailyweather.prn\""
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#consume": [
-      {
-        "@value": "data/VOM_input/HowardSprings/2_sce_check/dailyweather.prn"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#position": [
-      {
-        "@value": 1
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/plans/235a10a722f5c99c9796cd91573bab396b3e6aaa/outputs/2",
-    "@type": [
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandOutputTemplate",
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandParameter"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Command Output Template \"work/additional_analyses/comp2015/2_sce_check/best/input/dailyweather.prn\""
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#createFolder": [
-      {
-        "@value": true
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#position": [
-      {
-        "@value": 2
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#produces": [
-      {
-        "@value": "work/additional_analyses/comp2015/2_sce_check/best/input/dailyweather.prn"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.10.5.dev21",
-    "@type": [
-      "http://purl.org/wf4ever/wfprov#WorkflowEngine",
-      "http://www.w3.org/ns/prov#SoftwareAgent"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "renku 0.10.5.dev21"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.13.1.dev1",
-    "@type": [
-      "http://purl.org/wf4ever/wfprov#WorkflowEngine",
-      "http://www.w3.org/ns/prov#SoftwareAgent"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "renku 0.13.1.dev1"
-      }
-    ]
-  },
-  {
-    "@id": "mailto:remko.nijzink@list.lu",
-    "@type": [
-      "http://schema.org/Person",
-      "http://www.w3.org/ns/prov#Person"
-    ],
-    "http://schema.org/email": [
-      {
-        "@value": "remko.nijzink@list.lu"
-      }
-    ],
-    "http://schema.org/name": [
-      {
-        "@value": "Remko Nijzink"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Remko Nijzink"
+        "@id": "https://github.com/activities/0f331612-bdc2-4f81-bb26-f5a7a88ab334"
       }
     ]
   }

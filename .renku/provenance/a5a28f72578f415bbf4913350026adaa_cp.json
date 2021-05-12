@@ -1,43 +1,139 @@
 [
   {
-    "@id": "_:b0",
-    "@type": [
-      "https://swissdatasciencecenter.github.io/renku-ontology#ActivityCollection"
-    ],
-    "http://schema.org/hasPart": [
+    "@id": "mailto:remko.nijzink@list.lu",
+    "@type": "Person",
+    "@version": 1,
+    "affiliation": null,
+    "alternate_name": null,
+    "email": "remko.nijzink@list.lu",
+    "label": "Remko Nijzink",
+    "name": "Remko Nijzink"
+  },
+  {
+    "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.12.3.dev24",
+    "@type": "SoftwareAgent",
+    "@version": 1,
+    "label": "renku 0.12.3.dev24"
+  },
+  {
+    "@id": "https://github.com/runs/6257cd5c223ecfa3f0edc3d3b5c6b7b83899d3fa/arguments/2",
+    "@type": "CommandArgument",
+    "@version": 1,
+    "label": "Command Argument \"DryRiver/nofreedrainage_cpcff2.0/best_nofree/\"",
+    "position": 2,
+    "prefix": null,
+    "value": "DryRiver/nofreedrainage_cpcff2.0/best_nofree/"
+  },
+  {
+    "@id": "https://github.com/plans/6257cd5c223ecfa3f0edc3d3b5c6b7b83899d3fa/outputs/7d0feec55ec949c080cf35120b0e4071",
+    "@type": "CommandOutputTemplate",
+    "@version": 1,
+    "create_folder": false,
+    "label": "Command Output Template \"work/DryRiver/nofreedrainage_cpcff2.0/best_nofree/vom_namelist\"",
+    "mapped_to": null,
+    "position": null,
+    "prefix": null,
+    "produces": "work/DryRiver/nofreedrainage_cpcff2.0/best_nofree/vom_namelist"
+  },
+  {
+    "@id": "https://github.com/plans/6257cd5c223ecfa3f0edc3d3b5c6b7b83899d3fa/inputs/1",
+    "@type": "CommandInputTemplate",
+    "@version": 1,
+    "consumes": "work/DryRiver/freedrainage_cpcff2.0/best",
+    "label": "Command Input Template \"work/DryRiver/freedrainage_cpcff2.0/best\"",
+    "mapped_to": null,
+    "position": 1,
+    "prefix": "-r "
+  },
+  {
+    "@id": "https://github.com/plans/6257cd5c223ecfa3f0edc3d3b5c6b7b83899d3fa",
+    "@type": "Plan",
+    "@version": 1,
+    "arguments": [
       {
-        "@id": "https://github.com/activities/15b67743-3985-4270-a062-5a18379138e3"
+        "@id": "https://github.com/runs/6257cd5c223ecfa3f0edc3d3b5c6b7b83899d3fa/arguments/2"
       }
-    ]
+    ],
+    "command": "cp",
+    "inputs": [
+      {
+        "@id": "https://github.com/plans/6257cd5c223ecfa3f0edc3d3b5c6b7b83899d3fa/inputs/1"
+      }
+    ],
+    "name": "cp-394c842fe72642d9a82bdfe12800186c",
+    "outputs": [
+      {
+        "@id": "https://github.com/plans/6257cd5c223ecfa3f0edc3d3b5c6b7b83899d3fa/outputs/7d0feec55ec949c080cf35120b0e4071"
+      }
+    ],
+    "success_codes": []
+  },
+  {
+    "@id": "renku+0.4.1.dev24@datascience.ch",
+    "@type": "SoftwareAgent",
+    "@version": 1,
+    "label": "renku 0.4.1.dev24"
+  },
+  {
+    "@id": "https://github.com/activities/15b67743-3985-4270-a062-5a18379138e3/association",
+    "@type": "Association",
+    "@version": 1,
+    "agent": {
+      "@id": "renku+0.4.1.dev24@datascience.ch"
+    },
+    "plan": {
+      "@id": "https://github.com/plans/6257cd5c223ecfa3f0edc3d3b5c6b7b83899d3fa"
+    }
+  },
+  {
+    "@id": "https://github.com/blob/e1f371be06de34705d02e268ffae68f890a90873/work/DryRiver/freedrainage_cpcff2.0/best/vom_namelist",
+    "@type": "Entity",
+    "@version": 1,
+    "checksum": "e1f371be06de34705d02e268ffae68f890a90873",
+    "path": "work/DryRiver/freedrainage_cpcff2.0/best/vom_namelist"
+  },
+  {
+    "@id": "https://github.com/blob/06c99510a9e414f257617998c19a39c5b1b6d1ce/work/DryRiver/freedrainage_cpcff2.0/best",
+    "@type": "Collection",
+    "@version": 1,
+    "checksum": "06c99510a9e414f257617998c19a39c5b1b6d1ce",
+    "members": [
+      {
+        "@id": "https://github.com/blob/e1f371be06de34705d02e268ffae68f890a90873/work/DryRiver/freedrainage_cpcff2.0/best/vom_namelist"
+      }
+    ],
+    "path": "work/DryRiver/freedrainage_cpcff2.0/best"
+  },
+  {
+    "@id": "https://github.com/activities/15b67743-3985-4270-a062-5a18379138e3/usage/59f9c435-c67a-485b-b009-030740f775de/06c99510a9e414f257617998c19a39c5b1b6d1ce/work/DryRiver/freedrainage_cpcff2.0/best",
+    "@type": "Usage",
+    "@version": 1,
+    "entity": {
+      "@id": "https://github.com/blob/06c99510a9e414f257617998c19a39c5b1b6d1ce/work/DryRiver/freedrainage_cpcff2.0/best"
+    },
+    "role": "inputs/1"
+  },
+  {
+    "@id": "https://github.com/blob/e1f371be06de34705d02e268ffae68f890a90873/work/DryRiver/nofreedrainage_cpcff2.0/best_nofree/vom_namelist",
+    "@type": "Entity",
+    "@version": 1,
+    "checksum": "e1f371be06de34705d02e268ffae68f890a90873",
+    "path": "work/DryRiver/nofreedrainage_cpcff2.0/best_nofree/vom_namelist"
+  },
+  {
+    "@id": "https://github.com/activities/15b67743-3985-4270-a062-5a18379138e3/generation/ecdc66b9-795f-42e3-9904-af1c8f35c099/e1f371be06de34705d02e268ffae68f890a90873/work/DryRiver/nofreedrainage_cpcff2.0/best_nofree/vom_namelist",
+    "@type": "Generation",
+    "@version": 1,
+    "entity": {
+      "@id": "https://github.com/blob/e1f371be06de34705d02e268ffae68f890a90873/work/DryRiver/nofreedrainage_cpcff2.0/best_nofree/vom_namelist"
+    },
+    "role": "outputs/7d0feec55ec949c080cf35120b0e4071"
   },
   {
     "@id": "https://github.com/activities/15b67743-3985-4270-a062-5a18379138e3",
-    "@type": [
-      "http://www.w3.org/ns/prov#Activity"
-    ],
-    "http://www.w3.org/ns/prov#endedAtTime": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
-        "@value": "2019-04-05T15:12:23+02:00"
-      }
-    ],
-    "http://www.w3.org/ns/prov#qualifiedAssociation": [
-      {
-        "@id": "https://github.com/activities/15b67743-3985-4270-a062-5a18379138e3/association"
-      }
-    ],
-    "http://www.w3.org/ns/prov#qualifiedUsage": [
-      {
-        "@id": "https://github.com/activities/15b67743-3985-4270-a062-5a18379138e3/usage/59f9c435-c67a-485b-b009-030740f775de/06c99510a9e414f257617998c19a39c5b1b6d1ce/work/DryRiver/freedrainage_cpcff2.0/best"
-      }
-    ],
-    "http://www.w3.org/ns/prov#startedAtTime": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
-        "@value": "2019-04-05T17:12:23+02:00"
-      }
-    ],
-    "http://www.w3.org/ns/prov#wasAssociatedWith": [
+    "@type": "Activity",
+    "@version": 1,
+    "agents": [
       {
         "@id": "mailto:remko.nijzink@list.lu"
       },
@@ -45,283 +141,32 @@
         "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.12.3.dev24"
       }
     ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#order": [
-      {
-        "@value": 338
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/activities/15b67743-3985-4270-a062-5a18379138e3/association",
-    "@type": [
-      "http://www.w3.org/ns/prov#Association"
-    ],
-    "http://www.w3.org/ns/prov#agent": [
-      {
-        "@id": "renku+0.4.1.dev24@datascience.ch"
-      }
-    ],
-    "http://www.w3.org/ns/prov#hadPlan": [
-      {
-        "@id": "https://github.com/plans/6257cd5c223ecfa3f0edc3d3b5c6b7b83899d3fa"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/activities/15b67743-3985-4270-a062-5a18379138e3/generation/ecdc66b9-795f-42e3-9904-af1c8f35c099/e1f371be06de34705d02e268ffae68f890a90873/work/DryRiver/nofreedrainage_cpcff2.0/best_nofree/vom_namelist",
-    "@type": [
-      "http://www.w3.org/ns/prov#Generation"
-    ],
-    "http://www.w3.org/ns/prov#activity": [
-      {
-        "@id": "https://github.com/activities/15b67743-3985-4270-a062-5a18379138e3"
-      }
-    ],
-    "http://www.w3.org/ns/prov#hadRole": [
-      {
-        "@value": "outputs/7d0feec55ec949c080cf35120b0e4071"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/activities/15b67743-3985-4270-a062-5a18379138e3/usage/59f9c435-c67a-485b-b009-030740f775de/06c99510a9e414f257617998c19a39c5b1b6d1ce/work/DryRiver/freedrainage_cpcff2.0/best",
-    "@type": [
-      "http://www.w3.org/ns/prov#Usage"
-    ],
-    "http://www.w3.org/ns/prov#entity": [
-      {
-        "@id": "https://github.com/blob/06c99510a9e414f257617998c19a39c5b1b6d1ce/work/DryRiver/freedrainage_cpcff2.0/best"
-      }
-    ],
-    "http://www.w3.org/ns/prov#hadRole": [
-      {
-        "@value": "inputs/1"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/blob/06c99510a9e414f257617998c19a39c5b1b6d1ce/work/DryRiver/freedrainage_cpcff2.0/best",
-    "@type": [
-      "http://purl.org/wf4ever/wfprov#Artifact",
-      "http://www.w3.org/ns/prov#Collection",
-      "http://www.w3.org/ns/prov#Entity"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "work/DryRiver/freedrainage_cpcff2.0/best@UNCOMMITTED"
-      }
-    ],
-    "http://www.w3.org/ns/prov#atLocation": [
-      {
-        "@value": "work/DryRiver/freedrainage_cpcff2.0/best"
-      }
-    ],
-    "http://www.w3.org/ns/prov#hadMember": [
-      {
-        "@id": "https://github.com/blob/e1f371be06de34705d02e268ffae68f890a90873/work/DryRiver/freedrainage_cpcff2.0/best/vom_namelist"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#checksum": [
-      {
-        "@value": "06c99510a9e414f257617998c19a39c5b1b6d1ce"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/blob/e1f371be06de34705d02e268ffae68f890a90873/work/DryRiver/freedrainage_cpcff2.0/best/vom_namelist",
-    "@type": [
-      "http://purl.org/wf4ever/wfprov#Artifact",
-      "http://www.w3.org/ns/prov#Entity"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "work/DryRiver/freedrainage_cpcff2.0/best/vom_namelist@UNCOMMITTED"
-      }
-    ],
-    "http://www.w3.org/ns/prov#atLocation": [
-      {
-        "@value": "work/DryRiver/freedrainage_cpcff2.0/best/vom_namelist"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#checksum": [
-      {
-        "@value": "e1f371be06de34705d02e268ffae68f890a90873"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/blob/e1f371be06de34705d02e268ffae68f890a90873/work/DryRiver/nofreedrainage_cpcff2.0/best_nofree/vom_namelist",
-    "@type": [
-      "http://purl.org/wf4ever/wfprov#Artifact",
-      "http://www.w3.org/ns/prov#Entity"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "work/DryRiver/nofreedrainage_cpcff2.0/best_nofree/vom_namelist@UNCOMMITTED"
-      }
-    ],
-    "http://www.w3.org/ns/prov#atLocation": [
-      {
-        "@value": "work/DryRiver/nofreedrainage_cpcff2.0/best_nofree/vom_namelist"
-      }
-    ],
-    "http://www.w3.org/ns/prov#qualifiedGeneration": [
+    "annotations": null,
+    "association": {
+      "@id": "https://github.com/activities/15b67743-3985-4270-a062-5a18379138e3/association"
+    },
+    "ended_at_time": "2019-04-05T15:12:23+02:00",
+    "generated": [
       {
         "@id": "https://github.com/activities/15b67743-3985-4270-a062-5a18379138e3/generation/ecdc66b9-795f-42e3-9904-af1c8f35c099/e1f371be06de34705d02e268ffae68f890a90873/work/DryRiver/nofreedrainage_cpcff2.0/best_nofree/vom_namelist"
       }
     ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#checksum": [
+    "invalidated": null,
+    "order": 338,
+    "qualified_usage": [
       {
-        "@value": "e1f371be06de34705d02e268ffae68f890a90873"
+        "@id": "https://github.com/activities/15b67743-3985-4270-a062-5a18379138e3/usage/59f9c435-c67a-485b-b009-030740f775de/06c99510a9e414f257617998c19a39c5b1b6d1ce/work/DryRiver/freedrainage_cpcff2.0/best"
       }
-    ]
+    ],
+    "started_at_time": "2019-04-05T17:12:23+02:00"
   },
   {
-    "@id": "https://github.com/plans/6257cd5c223ecfa3f0edc3d3b5c6b7b83899d3fa",
-    "@type": [
-      "http://www.w3.org/ns/prov#Plan"
-    ],
-    "http://schema.org/name": [
+    "@id": "_:7854ba8d31d64982b1fb444c708cd2af",
+    "@type": "ActivityCollection",
+    "@version": 1,
+    "activities": [
       {
-        "@value": "cp-394c842fe72642d9a82bdfe12800186c"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#command": [
-      {
-        "@value": "cp"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#hasArguments": [
-      {
-        "@id": "https://github.com/runs/6257cd5c223ecfa3f0edc3d3b5c6b7b83899d3fa/arguments/2"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#hasInputs": [
-      {
-        "@id": "https://github.com/plans/6257cd5c223ecfa3f0edc3d3b5c6b7b83899d3fa/inputs/1"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#hasOutputs": [
-      {
-        "@id": "https://github.com/plans/6257cd5c223ecfa3f0edc3d3b5c6b7b83899d3fa/outputs/7d0feec55ec949c080cf35120b0e4071"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#successCodes": []
-  },
-  {
-    "@id": "https://github.com/plans/6257cd5c223ecfa3f0edc3d3b5c6b7b83899d3fa/inputs/1",
-    "@type": [
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandInputTemplate",
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandParameter"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Command Input Template \"work/DryRiver/freedrainage_cpcff2.0/best\""
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#consume": [
-      {
-        "@value": "work/DryRiver/freedrainage_cpcff2.0/best"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#position": [
-      {
-        "@value": 1
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#prefix": [
-      {
-        "@value": "-r "
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/plans/6257cd5c223ecfa3f0edc3d3b5c6b7b83899d3fa/outputs/7d0feec55ec949c080cf35120b0e4071",
-    "@type": [
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandOutputTemplate",
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandParameter"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Command Output Template \"work/DryRiver/nofreedrainage_cpcff2.0/best_nofree/vom_namelist\""
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#createFolder": [
-      {
-        "@value": false
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#produces": [
-      {
-        "@value": "work/DryRiver/nofreedrainage_cpcff2.0/best_nofree/vom_namelist"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/runs/6257cd5c223ecfa3f0edc3d3b5c6b7b83899d3fa/arguments/2",
-    "@type": [
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandArgument",
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandParameter"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Command Argument \"DryRiver/nofreedrainage_cpcff2.0/best_nofree/\""
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#position": [
-      {
-        "@value": 2
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#value": [
-      {
-        "@value": "DryRiver/nofreedrainage_cpcff2.0/best_nofree/"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.12.3.dev24",
-    "@type": [
-      "http://purl.org/wf4ever/wfprov#WorkflowEngine",
-      "http://www.w3.org/ns/prov#SoftwareAgent"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "renku 0.12.3.dev24"
-      }
-    ]
-  },
-  {
-    "@id": "mailto:remko.nijzink@list.lu",
-    "@type": [
-      "http://schema.org/Person",
-      "http://www.w3.org/ns/prov#Person"
-    ],
-    "http://schema.org/email": [
-      {
-        "@value": "remko.nijzink@list.lu"
-      }
-    ],
-    "http://schema.org/name": [
-      {
-        "@value": "Remko Nijzink"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Remko Nijzink"
-      }
-    ]
-  },
-  {
-    "@id": "renku+0.4.1.dev24@datascience.ch",
-    "@type": [
-      "http://purl.org/wf4ever/wfprov#WorkflowEngine",
-      "http://www.w3.org/ns/prov#SoftwareAgent"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "renku 0.4.1.dev24"
+        "@id": "https://github.com/activities/15b67743-3985-4270-a062-5a18379138e3"
       }
     ]
   }

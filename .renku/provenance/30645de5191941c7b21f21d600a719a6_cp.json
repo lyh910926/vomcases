@@ -1,43 +1,114 @@
 [
   {
-    "@id": "_:b0",
-    "@type": [
-      "https://swissdatasciencecenter.github.io/renku-ontology#ActivityCollection"
-    ],
-    "http://schema.org/hasPart": [
+    "@id": "mailto:remko.nijzink@list.lu",
+    "@type": "Person",
+    "@version": 1,
+    "affiliation": null,
+    "alternate_name": null,
+    "email": "remko.nijzink@list.lu",
+    "label": "Remko Nijzink",
+    "name": "Remko Nijzink"
+  },
+  {
+    "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.13.1.dev1",
+    "@type": "SoftwareAgent",
+    "@version": 1,
+    "label": "renku 0.13.1.dev1"
+  },
+  {
+    "@id": "https://github.com/plans/600b843bc750f6cfc18af52c1a13cd4dd12d6152/outputs/2",
+    "@type": "CommandOutputTemplate",
+    "@version": 1,
+    "create_folder": true,
+    "label": "Command Output Template \"work/additional_analyses/prescribed_cover/SturtPlains/input/soilprofile.par\"",
+    "mapped_to": null,
+    "position": 2,
+    "prefix": null,
+    "produces": "work/additional_analyses/prescribed_cover/SturtPlains/input/soilprofile.par"
+  },
+  {
+    "@id": "https://github.com/plans/600b843bc750f6cfc18af52c1a13cd4dd12d6152/inputs/1",
+    "@type": "CommandInputTemplate",
+    "@version": 1,
+    "consumes": "data/VOM_soils/SturtPlains/soilprofile.par",
+    "label": "Command Input Template \"data/VOM_soils/SturtPlains/soilprofile.par\"",
+    "mapped_to": null,
+    "position": 1,
+    "prefix": null
+  },
+  {
+    "@id": "https://github.com/plans/600b843bc750f6cfc18af52c1a13cd4dd12d6152",
+    "@type": "Plan",
+    "@version": 1,
+    "arguments": [],
+    "command": "cp",
+    "inputs": [
       {
-        "@id": "https://github.com/activities/2d5df65d-36df-4846-97c1-9d7dd3a1f188"
+        "@id": "https://github.com/plans/600b843bc750f6cfc18af52c1a13cd4dd12d6152/inputs/1"
       }
-    ]
+    ],
+    "name": "cp-d9c7301b5b4248b59ea6ac74c056f9f1",
+    "outputs": [
+      {
+        "@id": "https://github.com/plans/600b843bc750f6cfc18af52c1a13cd4dd12d6152/outputs/2"
+      }
+    ],
+    "success_codes": []
+  },
+  {
+    "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.10.5.dev21",
+    "@type": "SoftwareAgent",
+    "@version": 1,
+    "label": "renku 0.10.5.dev21"
+  },
+  {
+    "@id": "https://github.com/activities/2d5df65d-36df-4846-97c1-9d7dd3a1f188/association",
+    "@type": "Association",
+    "@version": 1,
+    "agent": {
+      "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.10.5.dev21"
+    },
+    "plan": {
+      "@id": "https://github.com/plans/600b843bc750f6cfc18af52c1a13cd4dd12d6152"
+    }
+  },
+  {
+    "@id": "https://github.com/blob/906d316a59b99fc38cb5a495957844f99fcd7bc8/data/VOM_soils/SturtPlains/soilprofile.par",
+    "@type": "Entity",
+    "@version": 1,
+    "checksum": "906d316a59b99fc38cb5a495957844f99fcd7bc8",
+    "path": "data/VOM_soils/SturtPlains/soilprofile.par"
+  },
+  {
+    "@id": "https://github.com/activities/2d5df65d-36df-4846-97c1-9d7dd3a1f188/usage/b8afade5-5a5b-4fb5-8128-8dbff5c6752c/906d316a59b99fc38cb5a495957844f99fcd7bc8/data/VOM_soils/SturtPlains/soilprofile.par",
+    "@type": "Usage",
+    "@version": 1,
+    "entity": {
+      "@id": "https://github.com/blob/906d316a59b99fc38cb5a495957844f99fcd7bc8/data/VOM_soils/SturtPlains/soilprofile.par"
+    },
+    "role": "inputs/1"
+  },
+  {
+    "@id": "https://github.com/blob/caab0c18df223a5743feef6d2d0e3cc16212971c/work/additional_analyses/no_treecover/SturtPlains/best/input/soilprofile.par",
+    "@type": "Entity",
+    "@version": 1,
+    "checksum": "caab0c18df223a5743feef6d2d0e3cc16212971c",
+    "path": "work/additional_analyses/no_treecover/SturtPlains/best/input/soilprofile.par"
+  },
+  {
+    "@id": "https://github.com/activities/2d5df65d-36df-4846-97c1-9d7dd3a1f188/generation/240cff85-2cf1-4631-ae5c-ba718dc1ec7e/caab0c18df223a5743feef6d2d0e3cc16212971c/work/additional_analyses/no_treecover/SturtPlains/best/input/soilprofile.par",
+    "@type": "Generation",
+    "@version": 1,
+    "entity": {
+      "@id": "https://github.com/blob/caab0c18df223a5743feef6d2d0e3cc16212971c/work/additional_analyses/no_treecover/SturtPlains/best/input/soilprofile.par"
+    },
+    "role": "outputs/2"
   },
   {
     "@id": "https://github.com/activities/2d5df65d-36df-4846-97c1-9d7dd3a1f188",
-    "@type": [
-      "http://www.w3.org/ns/prov#Activity"
-    ],
-    "http://www.w3.org/ns/prov#endedAtTime": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
-        "@value": "2020-12-10T08:13:38+01:00"
-      }
-    ],
-    "http://www.w3.org/ns/prov#qualifiedAssociation": [
-      {
-        "@id": "https://github.com/activities/2d5df65d-36df-4846-97c1-9d7dd3a1f188/association"
-      }
-    ],
-    "http://www.w3.org/ns/prov#qualifiedUsage": [
-      {
-        "@id": "https://github.com/activities/2d5df65d-36df-4846-97c1-9d7dd3a1f188/usage/b8afade5-5a5b-4fb5-8128-8dbff5c6752c/906d316a59b99fc38cb5a495957844f99fcd7bc8/data/VOM_soils/SturtPlains/soilprofile.par"
-      }
-    ],
-    "http://www.w3.org/ns/prov#startedAtTime": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
-        "@value": "2020-12-10T08:13:38+01:00"
-      }
-    ],
-    "http://www.w3.org/ns/prov#wasAssociatedWith": [
+    "@type": "Activity",
+    "@version": 1,
+    "agents": [
       {
         "@id": "mailto:remko.nijzink@list.lu"
       },
@@ -45,229 +116,32 @@
         "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.13.1.dev1"
       }
     ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#order": [
-      {
-        "@value": 9708
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/activities/2d5df65d-36df-4846-97c1-9d7dd3a1f188/association",
-    "@type": [
-      "http://www.w3.org/ns/prov#Association"
-    ],
-    "http://www.w3.org/ns/prov#agent": [
-      {
-        "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.10.5.dev21"
-      }
-    ],
-    "http://www.w3.org/ns/prov#hadPlan": [
-      {
-        "@id": "https://github.com/plans/600b843bc750f6cfc18af52c1a13cd4dd12d6152"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/activities/2d5df65d-36df-4846-97c1-9d7dd3a1f188/generation/240cff85-2cf1-4631-ae5c-ba718dc1ec7e/caab0c18df223a5743feef6d2d0e3cc16212971c/work/additional_analyses/no_treecover/SturtPlains/best/input/soilprofile.par",
-    "@type": [
-      "http://www.w3.org/ns/prov#Generation"
-    ],
-    "http://www.w3.org/ns/prov#activity": [
-      {
-        "@id": "https://github.com/activities/2d5df65d-36df-4846-97c1-9d7dd3a1f188"
-      }
-    ],
-    "http://www.w3.org/ns/prov#hadRole": [
-      {
-        "@value": "outputs/2"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/activities/2d5df65d-36df-4846-97c1-9d7dd3a1f188/usage/b8afade5-5a5b-4fb5-8128-8dbff5c6752c/906d316a59b99fc38cb5a495957844f99fcd7bc8/data/VOM_soils/SturtPlains/soilprofile.par",
-    "@type": [
-      "http://www.w3.org/ns/prov#Usage"
-    ],
-    "http://www.w3.org/ns/prov#entity": [
-      {
-        "@id": "https://github.com/blob/906d316a59b99fc38cb5a495957844f99fcd7bc8/data/VOM_soils/SturtPlains/soilprofile.par"
-      }
-    ],
-    "http://www.w3.org/ns/prov#hadRole": [
-      {
-        "@value": "inputs/1"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/blob/906d316a59b99fc38cb5a495957844f99fcd7bc8/data/VOM_soils/SturtPlains/soilprofile.par",
-    "@type": [
-      "http://purl.org/wf4ever/wfprov#Artifact",
-      "http://www.w3.org/ns/prov#Entity"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "data/VOM_soils/SturtPlains/soilprofile.par@UNCOMMITTED"
-      }
-    ],
-    "http://www.w3.org/ns/prov#atLocation": [
-      {
-        "@value": "data/VOM_soils/SturtPlains/soilprofile.par"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#checksum": [
-      {
-        "@value": "906d316a59b99fc38cb5a495957844f99fcd7bc8"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/blob/caab0c18df223a5743feef6d2d0e3cc16212971c/work/additional_analyses/no_treecover/SturtPlains/best/input/soilprofile.par",
-    "@type": [
-      "http://purl.org/wf4ever/wfprov#Artifact",
-      "http://www.w3.org/ns/prov#Entity"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "work/additional_analyses/no_treecover/SturtPlains/best/input/soilprofile.par@UNCOMMITTED"
-      }
-    ],
-    "http://www.w3.org/ns/prov#atLocation": [
-      {
-        "@value": "work/additional_analyses/no_treecover/SturtPlains/best/input/soilprofile.par"
-      }
-    ],
-    "http://www.w3.org/ns/prov#qualifiedGeneration": [
+    "annotations": null,
+    "association": {
+      "@id": "https://github.com/activities/2d5df65d-36df-4846-97c1-9d7dd3a1f188/association"
+    },
+    "ended_at_time": "2020-12-10T08:13:38+01:00",
+    "generated": [
       {
         "@id": "https://github.com/activities/2d5df65d-36df-4846-97c1-9d7dd3a1f188/generation/240cff85-2cf1-4631-ae5c-ba718dc1ec7e/caab0c18df223a5743feef6d2d0e3cc16212971c/work/additional_analyses/no_treecover/SturtPlains/best/input/soilprofile.par"
       }
     ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#checksum": [
+    "invalidated": null,
+    "order": 9708,
+    "qualified_usage": [
       {
-        "@value": "caab0c18df223a5743feef6d2d0e3cc16212971c"
+        "@id": "https://github.com/activities/2d5df65d-36df-4846-97c1-9d7dd3a1f188/usage/b8afade5-5a5b-4fb5-8128-8dbff5c6752c/906d316a59b99fc38cb5a495957844f99fcd7bc8/data/VOM_soils/SturtPlains/soilprofile.par"
       }
-    ]
+    ],
+    "started_at_time": "2020-12-10T08:13:38+01:00"
   },
   {
-    "@id": "https://github.com/plans/600b843bc750f6cfc18af52c1a13cd4dd12d6152",
-    "@type": [
-      "http://www.w3.org/ns/prov#Plan"
-    ],
-    "http://schema.org/name": [
+    "@id": "_:6ce995450ef64172a637b2610fd2b5cc",
+    "@type": "ActivityCollection",
+    "@version": 1,
+    "activities": [
       {
-        "@value": "cp-d9c7301b5b4248b59ea6ac74c056f9f1"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#command": [
-      {
-        "@value": "cp"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#hasArguments": [],
-    "https://swissdatasciencecenter.github.io/renku-ontology#hasInputs": [
-      {
-        "@id": "https://github.com/plans/600b843bc750f6cfc18af52c1a13cd4dd12d6152/inputs/1"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#hasOutputs": [
-      {
-        "@id": "https://github.com/plans/600b843bc750f6cfc18af52c1a13cd4dd12d6152/outputs/2"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#successCodes": []
-  },
-  {
-    "@id": "https://github.com/plans/600b843bc750f6cfc18af52c1a13cd4dd12d6152/inputs/1",
-    "@type": [
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandInputTemplate",
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandParameter"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Command Input Template \"data/VOM_soils/SturtPlains/soilprofile.par\""
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#consume": [
-      {
-        "@value": "data/VOM_soils/SturtPlains/soilprofile.par"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#position": [
-      {
-        "@value": 1
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/plans/600b843bc750f6cfc18af52c1a13cd4dd12d6152/outputs/2",
-    "@type": [
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandOutputTemplate",
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandParameter"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Command Output Template \"work/additional_analyses/prescribed_cover/SturtPlains/input/soilprofile.par\""
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#createFolder": [
-      {
-        "@value": true
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#position": [
-      {
-        "@value": 2
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#produces": [
-      {
-        "@value": "work/additional_analyses/prescribed_cover/SturtPlains/input/soilprofile.par"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.10.5.dev21",
-    "@type": [
-      "http://purl.org/wf4ever/wfprov#WorkflowEngine",
-      "http://www.w3.org/ns/prov#SoftwareAgent"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "renku 0.10.5.dev21"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.13.1.dev1",
-    "@type": [
-      "http://purl.org/wf4ever/wfprov#WorkflowEngine",
-      "http://www.w3.org/ns/prov#SoftwareAgent"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "renku 0.13.1.dev1"
-      }
-    ]
-  },
-  {
-    "@id": "mailto:remko.nijzink@list.lu",
-    "@type": [
-      "http://schema.org/Person",
-      "http://www.w3.org/ns/prov#Person"
-    ],
-    "http://schema.org/email": [
-      {
-        "@value": "remko.nijzink@list.lu"
-      }
-    ],
-    "http://schema.org/name": [
-      {
-        "@value": "Remko Nijzink"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Remko Nijzink"
+        "@id": "https://github.com/activities/2d5df65d-36df-4846-97c1-9d7dd3a1f188"
       }
     ]
   }

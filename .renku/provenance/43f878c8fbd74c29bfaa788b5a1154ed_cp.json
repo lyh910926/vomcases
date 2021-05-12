@@ -1,43 +1,139 @@
 [
   {
-    "@id": "_:b0",
-    "@type": [
-      "https://swissdatasciencecenter.github.io/renku-ontology#ActivityCollection"
-    ],
-    "http://schema.org/hasPart": [
+    "@id": "mailto:remko.nijzink@list.lu",
+    "@type": "Person",
+    "@version": 1,
+    "affiliation": null,
+    "alternate_name": null,
+    "email": "remko.nijzink@list.lu",
+    "label": "Remko Nijzink",
+    "name": "Remko Nijzink"
+  },
+  {
+    "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.12.3.dev24",
+    "@type": "SoftwareAgent",
+    "@version": 1,
+    "label": "renku 0.12.3.dev24"
+  },
+  {
+    "@id": "https://github.com/runs/cba15d71d546d34fd5bbade6b39134d428398433/arguments/2",
+    "@type": "CommandArgument",
+    "@version": 1,
+    "label": "Command Argument \"DalyUncleared/nofreedrainage_cpcff1.0/best_free/\"",
+    "position": 2,
+    "prefix": null,
+    "value": "DalyUncleared/nofreedrainage_cpcff1.0/best_free/"
+  },
+  {
+    "@id": "https://github.com/plans/cba15d71d546d34fd5bbade6b39134d428398433/outputs/e386758e040e48cb992389636f0aa4f0",
+    "@type": "CommandOutputTemplate",
+    "@version": 1,
+    "create_folder": false,
+    "label": "Command Output Template \"work/DalyUncleared/nofreedrainage_cpcff1.0/best_free/vom_namelist\"",
+    "mapped_to": null,
+    "position": null,
+    "prefix": null,
+    "produces": "work/DalyUncleared/nofreedrainage_cpcff1.0/best_free/vom_namelist"
+  },
+  {
+    "@id": "https://github.com/plans/cba15d71d546d34fd5bbade6b39134d428398433/inputs/1",
+    "@type": "CommandInputTemplate",
+    "@version": 1,
+    "consumes": "work/DalyUncleared/freedrainage_cpcff1.0/best",
+    "label": "Command Input Template \"work/DalyUncleared/freedrainage_cpcff1.0/best\"",
+    "mapped_to": null,
+    "position": 1,
+    "prefix": "-r "
+  },
+  {
+    "@id": "https://github.com/plans/cba15d71d546d34fd5bbade6b39134d428398433",
+    "@type": "Plan",
+    "@version": 1,
+    "arguments": [
       {
-        "@id": "https://github.com/activities/a1cd45a2-343c-490f-9be6-9046978c0b9c"
+        "@id": "https://github.com/runs/cba15d71d546d34fd5bbade6b39134d428398433/arguments/2"
       }
-    ]
+    ],
+    "command": "cp",
+    "inputs": [
+      {
+        "@id": "https://github.com/plans/cba15d71d546d34fd5bbade6b39134d428398433/inputs/1"
+      }
+    ],
+    "name": "cp-e1f654d3e9224e66bf36efbd278fb782",
+    "outputs": [
+      {
+        "@id": "https://github.com/plans/cba15d71d546d34fd5bbade6b39134d428398433/outputs/e386758e040e48cb992389636f0aa4f0"
+      }
+    ],
+    "success_codes": []
+  },
+  {
+    "@id": "renku+0.4.1.dev24@datascience.ch",
+    "@type": "SoftwareAgent",
+    "@version": 1,
+    "label": "renku 0.4.1.dev24"
+  },
+  {
+    "@id": "https://github.com/activities/a1cd45a2-343c-490f-9be6-9046978c0b9c/association",
+    "@type": "Association",
+    "@version": 1,
+    "agent": {
+      "@id": "renku+0.4.1.dev24@datascience.ch"
+    },
+    "plan": {
+      "@id": "https://github.com/plans/cba15d71d546d34fd5bbade6b39134d428398433"
+    }
+  },
+  {
+    "@id": "https://github.com/blob/ff50c0b104966ab1c4c40307aead9b16de5745ed/work/DalyUncleared/freedrainage_cpcff1.0/best/vom_namelist",
+    "@type": "Entity",
+    "@version": 1,
+    "checksum": "ff50c0b104966ab1c4c40307aead9b16de5745ed",
+    "path": "work/DalyUncleared/freedrainage_cpcff1.0/best/vom_namelist"
+  },
+  {
+    "@id": "https://github.com/blob/73badecfe38c38d82a8fa1e6fa20ac0d1d97e89d/work/DalyUncleared/freedrainage_cpcff1.0/best",
+    "@type": "Collection",
+    "@version": 1,
+    "checksum": "73badecfe38c38d82a8fa1e6fa20ac0d1d97e89d",
+    "members": [
+      {
+        "@id": "https://github.com/blob/ff50c0b104966ab1c4c40307aead9b16de5745ed/work/DalyUncleared/freedrainage_cpcff1.0/best/vom_namelist"
+      }
+    ],
+    "path": "work/DalyUncleared/freedrainage_cpcff1.0/best"
+  },
+  {
+    "@id": "https://github.com/activities/a1cd45a2-343c-490f-9be6-9046978c0b9c/usage/b197c377-6c3a-43de-bf50-48db7240cd64/73badecfe38c38d82a8fa1e6fa20ac0d1d97e89d/work/DalyUncleared/freedrainage_cpcff1.0/best",
+    "@type": "Usage",
+    "@version": 1,
+    "entity": {
+      "@id": "https://github.com/blob/73badecfe38c38d82a8fa1e6fa20ac0d1d97e89d/work/DalyUncleared/freedrainage_cpcff1.0/best"
+    },
+    "role": "inputs/1"
+  },
+  {
+    "@id": "https://github.com/blob/ff50c0b104966ab1c4c40307aead9b16de5745ed/work/DalyUncleared/nofreedrainage_cpcff1.0/best_free/vom_namelist",
+    "@type": "Entity",
+    "@version": 1,
+    "checksum": "ff50c0b104966ab1c4c40307aead9b16de5745ed",
+    "path": "work/DalyUncleared/nofreedrainage_cpcff1.0/best_free/vom_namelist"
+  },
+  {
+    "@id": "https://github.com/activities/a1cd45a2-343c-490f-9be6-9046978c0b9c/generation/c58a6589-21f8-4a26-9dd7-2ed9a542c663/ff50c0b104966ab1c4c40307aead9b16de5745ed/work/DalyUncleared/nofreedrainage_cpcff1.0/best_free/vom_namelist",
+    "@type": "Generation",
+    "@version": 1,
+    "entity": {
+      "@id": "https://github.com/blob/ff50c0b104966ab1c4c40307aead9b16de5745ed/work/DalyUncleared/nofreedrainage_cpcff1.0/best_free/vom_namelist"
+    },
+    "role": "outputs/e386758e040e48cb992389636f0aa4f0"
   },
   {
     "@id": "https://github.com/activities/a1cd45a2-343c-490f-9be6-9046978c0b9c",
-    "@type": [
-      "http://www.w3.org/ns/prov#Activity"
-    ],
-    "http://www.w3.org/ns/prov#endedAtTime": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
-        "@value": "2019-04-05T15:55:05+02:00"
-      }
-    ],
-    "http://www.w3.org/ns/prov#qualifiedAssociation": [
-      {
-        "@id": "https://github.com/activities/a1cd45a2-343c-490f-9be6-9046978c0b9c/association"
-      }
-    ],
-    "http://www.w3.org/ns/prov#qualifiedUsage": [
-      {
-        "@id": "https://github.com/activities/a1cd45a2-343c-490f-9be6-9046978c0b9c/usage/b197c377-6c3a-43de-bf50-48db7240cd64/73badecfe38c38d82a8fa1e6fa20ac0d1d97e89d/work/DalyUncleared/freedrainage_cpcff1.0/best"
-      }
-    ],
-    "http://www.w3.org/ns/prov#startedAtTime": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
-        "@value": "2019-04-05T17:55:05+02:00"
-      }
-    ],
-    "http://www.w3.org/ns/prov#wasAssociatedWith": [
+    "@type": "Activity",
+    "@version": 1,
+    "agents": [
       {
         "@id": "mailto:remko.nijzink@list.lu"
       },
@@ -45,283 +141,32 @@
         "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.12.3.dev24"
       }
     ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#order": [
-      {
-        "@value": 367
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/activities/a1cd45a2-343c-490f-9be6-9046978c0b9c/association",
-    "@type": [
-      "http://www.w3.org/ns/prov#Association"
-    ],
-    "http://www.w3.org/ns/prov#agent": [
-      {
-        "@id": "renku+0.4.1.dev24@datascience.ch"
-      }
-    ],
-    "http://www.w3.org/ns/prov#hadPlan": [
-      {
-        "@id": "https://github.com/plans/cba15d71d546d34fd5bbade6b39134d428398433"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/activities/a1cd45a2-343c-490f-9be6-9046978c0b9c/generation/c58a6589-21f8-4a26-9dd7-2ed9a542c663/ff50c0b104966ab1c4c40307aead9b16de5745ed/work/DalyUncleared/nofreedrainage_cpcff1.0/best_free/vom_namelist",
-    "@type": [
-      "http://www.w3.org/ns/prov#Generation"
-    ],
-    "http://www.w3.org/ns/prov#activity": [
-      {
-        "@id": "https://github.com/activities/a1cd45a2-343c-490f-9be6-9046978c0b9c"
-      }
-    ],
-    "http://www.w3.org/ns/prov#hadRole": [
-      {
-        "@value": "outputs/e386758e040e48cb992389636f0aa4f0"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/activities/a1cd45a2-343c-490f-9be6-9046978c0b9c/usage/b197c377-6c3a-43de-bf50-48db7240cd64/73badecfe38c38d82a8fa1e6fa20ac0d1d97e89d/work/DalyUncleared/freedrainage_cpcff1.0/best",
-    "@type": [
-      "http://www.w3.org/ns/prov#Usage"
-    ],
-    "http://www.w3.org/ns/prov#entity": [
-      {
-        "@id": "https://github.com/blob/73badecfe38c38d82a8fa1e6fa20ac0d1d97e89d/work/DalyUncleared/freedrainage_cpcff1.0/best"
-      }
-    ],
-    "http://www.w3.org/ns/prov#hadRole": [
-      {
-        "@value": "inputs/1"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/blob/73badecfe38c38d82a8fa1e6fa20ac0d1d97e89d/work/DalyUncleared/freedrainage_cpcff1.0/best",
-    "@type": [
-      "http://purl.org/wf4ever/wfprov#Artifact",
-      "http://www.w3.org/ns/prov#Collection",
-      "http://www.w3.org/ns/prov#Entity"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "work/DalyUncleared/freedrainage_cpcff1.0/best@UNCOMMITTED"
-      }
-    ],
-    "http://www.w3.org/ns/prov#atLocation": [
-      {
-        "@value": "work/DalyUncleared/freedrainage_cpcff1.0/best"
-      }
-    ],
-    "http://www.w3.org/ns/prov#hadMember": [
-      {
-        "@id": "https://github.com/blob/ff50c0b104966ab1c4c40307aead9b16de5745ed/work/DalyUncleared/freedrainage_cpcff1.0/best/vom_namelist"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#checksum": [
-      {
-        "@value": "73badecfe38c38d82a8fa1e6fa20ac0d1d97e89d"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/blob/ff50c0b104966ab1c4c40307aead9b16de5745ed/work/DalyUncleared/freedrainage_cpcff1.0/best/vom_namelist",
-    "@type": [
-      "http://purl.org/wf4ever/wfprov#Artifact",
-      "http://www.w3.org/ns/prov#Entity"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "work/DalyUncleared/freedrainage_cpcff1.0/best/vom_namelist@UNCOMMITTED"
-      }
-    ],
-    "http://www.w3.org/ns/prov#atLocation": [
-      {
-        "@value": "work/DalyUncleared/freedrainage_cpcff1.0/best/vom_namelist"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#checksum": [
-      {
-        "@value": "ff50c0b104966ab1c4c40307aead9b16de5745ed"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/blob/ff50c0b104966ab1c4c40307aead9b16de5745ed/work/DalyUncleared/nofreedrainage_cpcff1.0/best_free/vom_namelist",
-    "@type": [
-      "http://purl.org/wf4ever/wfprov#Artifact",
-      "http://www.w3.org/ns/prov#Entity"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "work/DalyUncleared/nofreedrainage_cpcff1.0/best_free/vom_namelist@UNCOMMITTED"
-      }
-    ],
-    "http://www.w3.org/ns/prov#atLocation": [
-      {
-        "@value": "work/DalyUncleared/nofreedrainage_cpcff1.0/best_free/vom_namelist"
-      }
-    ],
-    "http://www.w3.org/ns/prov#qualifiedGeneration": [
+    "annotations": null,
+    "association": {
+      "@id": "https://github.com/activities/a1cd45a2-343c-490f-9be6-9046978c0b9c/association"
+    },
+    "ended_at_time": "2019-04-05T15:55:05+02:00",
+    "generated": [
       {
         "@id": "https://github.com/activities/a1cd45a2-343c-490f-9be6-9046978c0b9c/generation/c58a6589-21f8-4a26-9dd7-2ed9a542c663/ff50c0b104966ab1c4c40307aead9b16de5745ed/work/DalyUncleared/nofreedrainage_cpcff1.0/best_free/vom_namelist"
       }
     ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#checksum": [
+    "invalidated": null,
+    "order": 367,
+    "qualified_usage": [
       {
-        "@value": "ff50c0b104966ab1c4c40307aead9b16de5745ed"
+        "@id": "https://github.com/activities/a1cd45a2-343c-490f-9be6-9046978c0b9c/usage/b197c377-6c3a-43de-bf50-48db7240cd64/73badecfe38c38d82a8fa1e6fa20ac0d1d97e89d/work/DalyUncleared/freedrainage_cpcff1.0/best"
       }
-    ]
+    ],
+    "started_at_time": "2019-04-05T17:55:05+02:00"
   },
   {
-    "@id": "https://github.com/plans/cba15d71d546d34fd5bbade6b39134d428398433",
-    "@type": [
-      "http://www.w3.org/ns/prov#Plan"
-    ],
-    "http://schema.org/name": [
+    "@id": "_:3bf89facecde429ea08fe8d4c3e8bbe7",
+    "@type": "ActivityCollection",
+    "@version": 1,
+    "activities": [
       {
-        "@value": "cp-e1f654d3e9224e66bf36efbd278fb782"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#command": [
-      {
-        "@value": "cp"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#hasArguments": [
-      {
-        "@id": "https://github.com/runs/cba15d71d546d34fd5bbade6b39134d428398433/arguments/2"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#hasInputs": [
-      {
-        "@id": "https://github.com/plans/cba15d71d546d34fd5bbade6b39134d428398433/inputs/1"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#hasOutputs": [
-      {
-        "@id": "https://github.com/plans/cba15d71d546d34fd5bbade6b39134d428398433/outputs/e386758e040e48cb992389636f0aa4f0"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#successCodes": []
-  },
-  {
-    "@id": "https://github.com/plans/cba15d71d546d34fd5bbade6b39134d428398433/inputs/1",
-    "@type": [
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandInputTemplate",
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandParameter"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Command Input Template \"work/DalyUncleared/freedrainage_cpcff1.0/best\""
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#consume": [
-      {
-        "@value": "work/DalyUncleared/freedrainage_cpcff1.0/best"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#position": [
-      {
-        "@value": 1
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#prefix": [
-      {
-        "@value": "-r "
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/plans/cba15d71d546d34fd5bbade6b39134d428398433/outputs/e386758e040e48cb992389636f0aa4f0",
-    "@type": [
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandOutputTemplate",
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandParameter"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Command Output Template \"work/DalyUncleared/nofreedrainage_cpcff1.0/best_free/vom_namelist\""
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#createFolder": [
-      {
-        "@value": false
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#produces": [
-      {
-        "@value": "work/DalyUncleared/nofreedrainage_cpcff1.0/best_free/vom_namelist"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/runs/cba15d71d546d34fd5bbade6b39134d428398433/arguments/2",
-    "@type": [
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandArgument",
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandParameter"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Command Argument \"DalyUncleared/nofreedrainage_cpcff1.0/best_free/\""
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#position": [
-      {
-        "@value": 2
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#value": [
-      {
-        "@value": "DalyUncleared/nofreedrainage_cpcff1.0/best_free/"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.12.3.dev24",
-    "@type": [
-      "http://purl.org/wf4ever/wfprov#WorkflowEngine",
-      "http://www.w3.org/ns/prov#SoftwareAgent"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "renku 0.12.3.dev24"
-      }
-    ]
-  },
-  {
-    "@id": "mailto:remko.nijzink@list.lu",
-    "@type": [
-      "http://schema.org/Person",
-      "http://www.w3.org/ns/prov#Person"
-    ],
-    "http://schema.org/email": [
-      {
-        "@value": "remko.nijzink@list.lu"
-      }
-    ],
-    "http://schema.org/name": [
-      {
-        "@value": "Remko Nijzink"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Remko Nijzink"
-      }
-    ]
-  },
-  {
-    "@id": "renku+0.4.1.dev24@datascience.ch",
-    "@type": [
-      "http://purl.org/wf4ever/wfprov#WorkflowEngine",
-      "http://www.w3.org/ns/prov#SoftwareAgent"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "renku 0.4.1.dev24"
+        "@id": "https://github.com/activities/a1cd45a2-343c-490f-9be6-9046978c0b9c"
       }
     ]
   }

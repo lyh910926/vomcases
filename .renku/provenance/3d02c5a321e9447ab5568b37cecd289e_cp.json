@@ -1,43 +1,114 @@
 [
   {
-    "@id": "_:b0",
-    "@type": [
-      "https://swissdatasciencecenter.github.io/renku-ontology#ActivityCollection"
-    ],
-    "http://schema.org/hasPart": [
+    "@id": "mailto:remko.nijzink@list.lu",
+    "@type": "Person",
+    "@version": 1,
+    "affiliation": null,
+    "alternate_name": null,
+    "email": "remko.nijzink@list.lu",
+    "label": "Remko Nijzink",
+    "name": "Remko Nijzink"
+  },
+  {
+    "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.12.3.dev23",
+    "@type": "SoftwareAgent",
+    "@version": 1,
+    "label": "renku 0.12.3.dev23"
+  },
+  {
+    "@id": "https://github.com/plans/8af4b77917e5317cadab5bdd8ec8d1c8bdb9433b/outputs/2",
+    "@type": "CommandOutputTemplate",
+    "@version": 1,
+    "create_folder": true,
+    "label": "Command Output Template \"work/additional_analyses/prescribed_cover/Litchfield/input/soilprofile.par\"",
+    "mapped_to": null,
+    "position": 2,
+    "prefix": null,
+    "produces": "work/additional_analyses/prescribed_cover/Litchfield/input/soilprofile.par"
+  },
+  {
+    "@id": "https://github.com/plans/8af4b77917e5317cadab5bdd8ec8d1c8bdb9433b/inputs/1",
+    "@type": "CommandInputTemplate",
+    "@version": 1,
+    "consumes": "data/VOM_soils/Litchfield/soilprofile.par",
+    "label": "Command Input Template \"data/VOM_soils/Litchfield/soilprofile.par\"",
+    "mapped_to": null,
+    "position": 1,
+    "prefix": null
+  },
+  {
+    "@id": "https://github.com/plans/8af4b77917e5317cadab5bdd8ec8d1c8bdb9433b",
+    "@type": "Plan",
+    "@version": 1,
+    "arguments": [],
+    "command": "cp",
+    "inputs": [
       {
-        "@id": "https://github.com/activities/0a645a8b-1485-4baf-a6a3-6c46e5902a5e"
+        "@id": "https://github.com/plans/8af4b77917e5317cadab5bdd8ec8d1c8bdb9433b/inputs/1"
       }
-    ]
+    ],
+    "name": "cp-ccdf76e546564b01bd2798549d73da0a",
+    "outputs": [
+      {
+        "@id": "https://github.com/plans/8af4b77917e5317cadab5bdd8ec8d1c8bdb9433b/outputs/2"
+      }
+    ],
+    "success_codes": []
+  },
+  {
+    "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.7.1.dev5",
+    "@type": "SoftwareAgent",
+    "@version": 1,
+    "label": "renku 0.7.1.dev5"
+  },
+  {
+    "@id": "https://github.com/activities/0a645a8b-1485-4baf-a6a3-6c46e5902a5e/association",
+    "@type": "Association",
+    "@version": 1,
+    "agent": {
+      "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.7.1.dev5"
+    },
+    "plan": {
+      "@id": "https://github.com/plans/8af4b77917e5317cadab5bdd8ec8d1c8bdb9433b"
+    }
+  },
+  {
+    "@id": "https://github.com/blob/20181e0cd5b536303d687f6d62bbacda5b08834c/data/VOM_soils/Litchfield/soilprofile.par",
+    "@type": "Entity",
+    "@version": 1,
+    "checksum": "20181e0cd5b536303d687f6d62bbacda5b08834c",
+    "path": "data/VOM_soils/Litchfield/soilprofile.par"
+  },
+  {
+    "@id": "https://github.com/activities/0a645a8b-1485-4baf-a6a3-6c46e5902a5e/usage/6c1ad611-af70-4797-826e-90e263081ede/20181e0cd5b536303d687f6d62bbacda5b08834c/data/VOM_soils/Litchfield/soilprofile.par",
+    "@type": "Usage",
+    "@version": 1,
+    "entity": {
+      "@id": "https://github.com/blob/20181e0cd5b536303d687f6d62bbacda5b08834c/data/VOM_soils/Litchfield/soilprofile.par"
+    },
+    "role": "inputs/1"
+  },
+  {
+    "@id": "https://github.com/blob/20181e0cd5b536303d687f6d62bbacda5b08834c/work/Litchfield/freedrainage_cpcff1.2/best/input/soilprofile.par",
+    "@type": "Entity",
+    "@version": 1,
+    "checksum": "20181e0cd5b536303d687f6d62bbacda5b08834c",
+    "path": "work/Litchfield/freedrainage_cpcff1.2/best/input/soilprofile.par"
+  },
+  {
+    "@id": "https://github.com/activities/0a645a8b-1485-4baf-a6a3-6c46e5902a5e/generation/171094c6-29f8-4d90-a7d4-a810e827cd0e/20181e0cd5b536303d687f6d62bbacda5b08834c/work/Litchfield/freedrainage_cpcff1.2/best/input/soilprofile.par",
+    "@type": "Generation",
+    "@version": 1,
+    "entity": {
+      "@id": "https://github.com/blob/20181e0cd5b536303d687f6d62bbacda5b08834c/work/Litchfield/freedrainage_cpcff1.2/best/input/soilprofile.par"
+    },
+    "role": "outputs/2"
   },
   {
     "@id": "https://github.com/activities/0a645a8b-1485-4baf-a6a3-6c46e5902a5e",
-    "@type": [
-      "http://www.w3.org/ns/prov#Activity"
-    ],
-    "http://www.w3.org/ns/prov#endedAtTime": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
-        "@value": "2019-12-05T13:43:05+01:00"
-      }
-    ],
-    "http://www.w3.org/ns/prov#qualifiedAssociation": [
-      {
-        "@id": "https://github.com/activities/0a645a8b-1485-4baf-a6a3-6c46e5902a5e/association"
-      }
-    ],
-    "http://www.w3.org/ns/prov#qualifiedUsage": [
-      {
-        "@id": "https://github.com/activities/0a645a8b-1485-4baf-a6a3-6c46e5902a5e/usage/6c1ad611-af70-4797-826e-90e263081ede/20181e0cd5b536303d687f6d62bbacda5b08834c/data/VOM_soils/Litchfield/soilprofile.par"
-      }
-    ],
-    "http://www.w3.org/ns/prov#startedAtTime": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
-        "@value": "2019-12-05T14:43:04+01:00"
-      }
-    ],
-    "http://www.w3.org/ns/prov#wasAssociatedWith": [
+    "@type": "Activity",
+    "@version": 1,
+    "agents": [
       {
         "@id": "mailto:remko.nijzink@list.lu"
       },
@@ -45,229 +116,32 @@
         "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.12.3.dev23"
       }
     ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#order": [
-      {
-        "@value": 6532
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/activities/0a645a8b-1485-4baf-a6a3-6c46e5902a5e/association",
-    "@type": [
-      "http://www.w3.org/ns/prov#Association"
-    ],
-    "http://www.w3.org/ns/prov#agent": [
-      {
-        "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.7.1.dev5"
-      }
-    ],
-    "http://www.w3.org/ns/prov#hadPlan": [
-      {
-        "@id": "https://github.com/plans/8af4b77917e5317cadab5bdd8ec8d1c8bdb9433b"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/activities/0a645a8b-1485-4baf-a6a3-6c46e5902a5e/generation/171094c6-29f8-4d90-a7d4-a810e827cd0e/20181e0cd5b536303d687f6d62bbacda5b08834c/work/Litchfield/freedrainage_cpcff1.2/best/input/soilprofile.par",
-    "@type": [
-      "http://www.w3.org/ns/prov#Generation"
-    ],
-    "http://www.w3.org/ns/prov#activity": [
-      {
-        "@id": "https://github.com/activities/0a645a8b-1485-4baf-a6a3-6c46e5902a5e"
-      }
-    ],
-    "http://www.w3.org/ns/prov#hadRole": [
-      {
-        "@value": "outputs/2"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/activities/0a645a8b-1485-4baf-a6a3-6c46e5902a5e/usage/6c1ad611-af70-4797-826e-90e263081ede/20181e0cd5b536303d687f6d62bbacda5b08834c/data/VOM_soils/Litchfield/soilprofile.par",
-    "@type": [
-      "http://www.w3.org/ns/prov#Usage"
-    ],
-    "http://www.w3.org/ns/prov#entity": [
-      {
-        "@id": "https://github.com/blob/20181e0cd5b536303d687f6d62bbacda5b08834c/data/VOM_soils/Litchfield/soilprofile.par"
-      }
-    ],
-    "http://www.w3.org/ns/prov#hadRole": [
-      {
-        "@value": "inputs/1"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/blob/20181e0cd5b536303d687f6d62bbacda5b08834c/data/VOM_soils/Litchfield/soilprofile.par",
-    "@type": [
-      "http://purl.org/wf4ever/wfprov#Artifact",
-      "http://www.w3.org/ns/prov#Entity"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "data/VOM_soils/Litchfield/soilprofile.par@UNCOMMITTED"
-      }
-    ],
-    "http://www.w3.org/ns/prov#atLocation": [
-      {
-        "@value": "data/VOM_soils/Litchfield/soilprofile.par"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#checksum": [
-      {
-        "@value": "20181e0cd5b536303d687f6d62bbacda5b08834c"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/blob/20181e0cd5b536303d687f6d62bbacda5b08834c/work/Litchfield/freedrainage_cpcff1.2/best/input/soilprofile.par",
-    "@type": [
-      "http://purl.org/wf4ever/wfprov#Artifact",
-      "http://www.w3.org/ns/prov#Entity"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "work/Litchfield/freedrainage_cpcff1.2/best/input/soilprofile.par@UNCOMMITTED"
-      }
-    ],
-    "http://www.w3.org/ns/prov#atLocation": [
-      {
-        "@value": "work/Litchfield/freedrainage_cpcff1.2/best/input/soilprofile.par"
-      }
-    ],
-    "http://www.w3.org/ns/prov#qualifiedGeneration": [
+    "annotations": null,
+    "association": {
+      "@id": "https://github.com/activities/0a645a8b-1485-4baf-a6a3-6c46e5902a5e/association"
+    },
+    "ended_at_time": "2019-12-05T13:43:05+01:00",
+    "generated": [
       {
         "@id": "https://github.com/activities/0a645a8b-1485-4baf-a6a3-6c46e5902a5e/generation/171094c6-29f8-4d90-a7d4-a810e827cd0e/20181e0cd5b536303d687f6d62bbacda5b08834c/work/Litchfield/freedrainage_cpcff1.2/best/input/soilprofile.par"
       }
     ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#checksum": [
+    "invalidated": null,
+    "order": 6532,
+    "qualified_usage": [
       {
-        "@value": "20181e0cd5b536303d687f6d62bbacda5b08834c"
+        "@id": "https://github.com/activities/0a645a8b-1485-4baf-a6a3-6c46e5902a5e/usage/6c1ad611-af70-4797-826e-90e263081ede/20181e0cd5b536303d687f6d62bbacda5b08834c/data/VOM_soils/Litchfield/soilprofile.par"
       }
-    ]
+    ],
+    "started_at_time": "2019-12-05T14:43:04+01:00"
   },
   {
-    "@id": "https://github.com/plans/8af4b77917e5317cadab5bdd8ec8d1c8bdb9433b",
-    "@type": [
-      "http://www.w3.org/ns/prov#Plan"
-    ],
-    "http://schema.org/name": [
+    "@id": "_:7eab9bca01c643cea79780a3bc69ab3c",
+    "@type": "ActivityCollection",
+    "@version": 1,
+    "activities": [
       {
-        "@value": "cp-ccdf76e546564b01bd2798549d73da0a"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#command": [
-      {
-        "@value": "cp"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#hasArguments": [],
-    "https://swissdatasciencecenter.github.io/renku-ontology#hasInputs": [
-      {
-        "@id": "https://github.com/plans/8af4b77917e5317cadab5bdd8ec8d1c8bdb9433b/inputs/1"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#hasOutputs": [
-      {
-        "@id": "https://github.com/plans/8af4b77917e5317cadab5bdd8ec8d1c8bdb9433b/outputs/2"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#successCodes": []
-  },
-  {
-    "@id": "https://github.com/plans/8af4b77917e5317cadab5bdd8ec8d1c8bdb9433b/inputs/1",
-    "@type": [
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandInputTemplate",
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandParameter"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Command Input Template \"data/VOM_soils/Litchfield/soilprofile.par\""
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#consume": [
-      {
-        "@value": "data/VOM_soils/Litchfield/soilprofile.par"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#position": [
-      {
-        "@value": 1
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/plans/8af4b77917e5317cadab5bdd8ec8d1c8bdb9433b/outputs/2",
-    "@type": [
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandOutputTemplate",
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandParameter"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Command Output Template \"work/additional_analyses/prescribed_cover/Litchfield/input/soilprofile.par\""
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#createFolder": [
-      {
-        "@value": true
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#position": [
-      {
-        "@value": 2
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#produces": [
-      {
-        "@value": "work/additional_analyses/prescribed_cover/Litchfield/input/soilprofile.par"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.12.3.dev23",
-    "@type": [
-      "http://purl.org/wf4ever/wfprov#WorkflowEngine",
-      "http://www.w3.org/ns/prov#SoftwareAgent"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "renku 0.12.3.dev23"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.7.1.dev5",
-    "@type": [
-      "http://purl.org/wf4ever/wfprov#WorkflowEngine",
-      "http://www.w3.org/ns/prov#SoftwareAgent"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "renku 0.7.1.dev5"
-      }
-    ]
-  },
-  {
-    "@id": "mailto:remko.nijzink@list.lu",
-    "@type": [
-      "http://schema.org/Person",
-      "http://www.w3.org/ns/prov#Person"
-    ],
-    "http://schema.org/email": [
-      {
-        "@value": "remko.nijzink@list.lu"
-      }
-    ],
-    "http://schema.org/name": [
-      {
-        "@value": "Remko Nijzink"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Remko Nijzink"
+        "@id": "https://github.com/activities/0a645a8b-1485-4baf-a6a3-6c46e5902a5e"
       }
     ]
   }

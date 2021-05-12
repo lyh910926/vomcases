@@ -1,43 +1,114 @@
 [
   {
-    "@id": "_:b0",
-    "@type": [
-      "https://swissdatasciencecenter.github.io/renku-ontology#ActivityCollection"
-    ],
-    "http://schema.org/hasPart": [
+    "@id": "mailto:remko.nijzink@list.lu",
+    "@type": "Person",
+    "@version": 1,
+    "affiliation": null,
+    "alternate_name": null,
+    "email": "remko.nijzink@list.lu",
+    "label": "Remko Nijzink",
+    "name": "Remko Nijzink"
+  },
+  {
+    "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.13.1.dev1",
+    "@type": "SoftwareAgent",
+    "@version": 1,
+    "label": "renku 0.13.1.dev1"
+  },
+  {
+    "@id": "https://github.com/plans/5b34b1f88d75dfe7538bec518438cae9b7f20517/outputs/2",
+    "@type": "CommandOutputTemplate",
+    "@version": 1,
+    "create_folder": true,
+    "label": "Command Output Template \"work/additional_analyses/comp2015/13_new_params2015/input/pars.txt\"",
+    "mapped_to": null,
+    "position": 2,
+    "prefix": null,
+    "produces": "work/additional_analyses/comp2015/13_new_params2015/input/pars.txt"
+  },
+  {
+    "@id": "https://github.com/plans/5b34b1f88d75dfe7538bec518438cae9b7f20517/inputs/1",
+    "@type": "CommandInputTemplate",
+    "@version": 1,
+    "consumes": "data/VOM_input/HowardSprings/1_benchmark_repr/pars.txt",
+    "label": "Command Input Template \"data/VOM_input/HowardSprings/1_benchmark_repr/pars.txt\"",
+    "mapped_to": null,
+    "position": 1,
+    "prefix": null
+  },
+  {
+    "@id": "https://github.com/plans/5b34b1f88d75dfe7538bec518438cae9b7f20517",
+    "@type": "Plan",
+    "@version": 1,
+    "arguments": [],
+    "command": "cp",
+    "inputs": [
       {
-        "@id": "https://github.com/activities/7b44f438-ffdd-45ba-be61-2142487f0779"
+        "@id": "https://github.com/plans/5b34b1f88d75dfe7538bec518438cae9b7f20517/inputs/1"
       }
-    ]
+    ],
+    "name": "cp-4273d273705d4c108fe73bca52ee5ea9",
+    "outputs": [
+      {
+        "@id": "https://github.com/plans/5b34b1f88d75dfe7538bec518438cae9b7f20517/outputs/2"
+      }
+    ],
+    "success_codes": []
+  },
+  {
+    "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.8.3.dev23",
+    "@type": "SoftwareAgent",
+    "@version": 1,
+    "label": "renku 0.8.3.dev23"
+  },
+  {
+    "@id": "https://github.com/activities/7b44f438-ffdd-45ba-be61-2142487f0779/association",
+    "@type": "Association",
+    "@version": 1,
+    "agent": {
+      "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.8.3.dev23"
+    },
+    "plan": {
+      "@id": "https://github.com/plans/5b34b1f88d75dfe7538bec518438cae9b7f20517"
+    }
+  },
+  {
+    "@id": "https://github.com/blob/84c2c5670c1f10da40ae14f9161a2ddb3d26531e/data/VOM_input/HowardSprings/1_benchmark_repr/pars.txt",
+    "@type": "Entity",
+    "@version": 1,
+    "checksum": "84c2c5670c1f10da40ae14f9161a2ddb3d26531e",
+    "path": "data/VOM_input/HowardSprings/1_benchmark_repr/pars.txt"
+  },
+  {
+    "@id": "https://github.com/activities/7b44f438-ffdd-45ba-be61-2142487f0779/usage/b0905e43-8277-44f7-8f10-c38ccc7b5754/84c2c5670c1f10da40ae14f9161a2ddb3d26531e/data/VOM_input/HowardSprings/1_benchmark_repr/pars.txt",
+    "@type": "Usage",
+    "@version": 1,
+    "entity": {
+      "@id": "https://github.com/blob/84c2c5670c1f10da40ae14f9161a2ddb3d26531e/data/VOM_input/HowardSprings/1_benchmark_repr/pars.txt"
+    },
+    "role": "inputs/1"
+  },
+  {
+    "@id": "https://github.com/blob/669d0fe8a218efb34568a53ff0e88aba995bf188/work/additional_analyses/comp2015/13_new_params2015/input/pars.txt",
+    "@type": "Entity",
+    "@version": 1,
+    "checksum": "669d0fe8a218efb34568a53ff0e88aba995bf188",
+    "path": "work/additional_analyses/comp2015/13_new_params2015/input/pars.txt"
+  },
+  {
+    "@id": "https://github.com/activities/7b44f438-ffdd-45ba-be61-2142487f0779/generation/3fbc521d-fd0a-4358-85ed-2d09e70b04f7/669d0fe8a218efb34568a53ff0e88aba995bf188/work/additional_analyses/comp2015/13_new_params2015/input/pars.txt",
+    "@type": "Generation",
+    "@version": 1,
+    "entity": {
+      "@id": "https://github.com/blob/669d0fe8a218efb34568a53ff0e88aba995bf188/work/additional_analyses/comp2015/13_new_params2015/input/pars.txt"
+    },
+    "role": "outputs/2"
   },
   {
     "@id": "https://github.com/activities/7b44f438-ffdd-45ba-be61-2142487f0779",
-    "@type": [
-      "http://www.w3.org/ns/prov#Activity"
-    ],
-    "http://www.w3.org/ns/prov#endedAtTime": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
-        "@value": "2020-02-20T15:10:15+01:00"
-      }
-    ],
-    "http://www.w3.org/ns/prov#qualifiedAssociation": [
-      {
-        "@id": "https://github.com/activities/7b44f438-ffdd-45ba-be61-2142487f0779/association"
-      }
-    ],
-    "http://www.w3.org/ns/prov#qualifiedUsage": [
-      {
-        "@id": "https://github.com/activities/7b44f438-ffdd-45ba-be61-2142487f0779/usage/b0905e43-8277-44f7-8f10-c38ccc7b5754/84c2c5670c1f10da40ae14f9161a2ddb3d26531e/data/VOM_input/HowardSprings/1_benchmark_repr/pars.txt"
-      }
-    ],
-    "http://www.w3.org/ns/prov#startedAtTime": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
-        "@value": "2020-02-20T15:10:15+01:00"
-      }
-    ],
-    "http://www.w3.org/ns/prov#wasAssociatedWith": [
+    "@type": "Activity",
+    "@version": 1,
+    "agents": [
       {
         "@id": "mailto:remko.nijzink@list.lu"
       },
@@ -45,229 +116,32 @@
         "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.13.1.dev1"
       }
     ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#order": [
-      {
-        "@value": 8337
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/activities/7b44f438-ffdd-45ba-be61-2142487f0779/association",
-    "@type": [
-      "http://www.w3.org/ns/prov#Association"
-    ],
-    "http://www.w3.org/ns/prov#agent": [
-      {
-        "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.8.3.dev23"
-      }
-    ],
-    "http://www.w3.org/ns/prov#hadPlan": [
-      {
-        "@id": "https://github.com/plans/5b34b1f88d75dfe7538bec518438cae9b7f20517"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/activities/7b44f438-ffdd-45ba-be61-2142487f0779/generation/3fbc521d-fd0a-4358-85ed-2d09e70b04f7/669d0fe8a218efb34568a53ff0e88aba995bf188/work/additional_analyses/comp2015/13_new_params2015/input/pars.txt",
-    "@type": [
-      "http://www.w3.org/ns/prov#Generation"
-    ],
-    "http://www.w3.org/ns/prov#activity": [
-      {
-        "@id": "https://github.com/activities/7b44f438-ffdd-45ba-be61-2142487f0779"
-      }
-    ],
-    "http://www.w3.org/ns/prov#hadRole": [
-      {
-        "@value": "outputs/2"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/activities/7b44f438-ffdd-45ba-be61-2142487f0779/usage/b0905e43-8277-44f7-8f10-c38ccc7b5754/84c2c5670c1f10da40ae14f9161a2ddb3d26531e/data/VOM_input/HowardSprings/1_benchmark_repr/pars.txt",
-    "@type": [
-      "http://www.w3.org/ns/prov#Usage"
-    ],
-    "http://www.w3.org/ns/prov#entity": [
-      {
-        "@id": "https://github.com/blob/84c2c5670c1f10da40ae14f9161a2ddb3d26531e/data/VOM_input/HowardSprings/1_benchmark_repr/pars.txt"
-      }
-    ],
-    "http://www.w3.org/ns/prov#hadRole": [
-      {
-        "@value": "inputs/1"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/blob/669d0fe8a218efb34568a53ff0e88aba995bf188/work/additional_analyses/comp2015/13_new_params2015/input/pars.txt",
-    "@type": [
-      "http://purl.org/wf4ever/wfprov#Artifact",
-      "http://www.w3.org/ns/prov#Entity"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "work/additional_analyses/comp2015/13_new_params2015/input/pars.txt@UNCOMMITTED"
-      }
-    ],
-    "http://www.w3.org/ns/prov#atLocation": [
-      {
-        "@value": "work/additional_analyses/comp2015/13_new_params2015/input/pars.txt"
-      }
-    ],
-    "http://www.w3.org/ns/prov#qualifiedGeneration": [
+    "annotations": null,
+    "association": {
+      "@id": "https://github.com/activities/7b44f438-ffdd-45ba-be61-2142487f0779/association"
+    },
+    "ended_at_time": "2020-02-20T15:10:15+01:00",
+    "generated": [
       {
         "@id": "https://github.com/activities/7b44f438-ffdd-45ba-be61-2142487f0779/generation/3fbc521d-fd0a-4358-85ed-2d09e70b04f7/669d0fe8a218efb34568a53ff0e88aba995bf188/work/additional_analyses/comp2015/13_new_params2015/input/pars.txt"
       }
     ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#checksum": [
+    "invalidated": null,
+    "order": 8337,
+    "qualified_usage": [
       {
-        "@value": "669d0fe8a218efb34568a53ff0e88aba995bf188"
+        "@id": "https://github.com/activities/7b44f438-ffdd-45ba-be61-2142487f0779/usage/b0905e43-8277-44f7-8f10-c38ccc7b5754/84c2c5670c1f10da40ae14f9161a2ddb3d26531e/data/VOM_input/HowardSprings/1_benchmark_repr/pars.txt"
       }
-    ]
+    ],
+    "started_at_time": "2020-02-20T15:10:15+01:00"
   },
   {
-    "@id": "https://github.com/blob/84c2c5670c1f10da40ae14f9161a2ddb3d26531e/data/VOM_input/HowardSprings/1_benchmark_repr/pars.txt",
-    "@type": [
-      "http://purl.org/wf4ever/wfprov#Artifact",
-      "http://www.w3.org/ns/prov#Entity"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
+    "@id": "_:1563dce26bfe4e4790562624d9db176e",
+    "@type": "ActivityCollection",
+    "@version": 1,
+    "activities": [
       {
-        "@value": "data/VOM_input/HowardSprings/1_benchmark_repr/pars.txt@UNCOMMITTED"
-      }
-    ],
-    "http://www.w3.org/ns/prov#atLocation": [
-      {
-        "@value": "data/VOM_input/HowardSprings/1_benchmark_repr/pars.txt"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#checksum": [
-      {
-        "@value": "84c2c5670c1f10da40ae14f9161a2ddb3d26531e"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/plans/5b34b1f88d75dfe7538bec518438cae9b7f20517",
-    "@type": [
-      "http://www.w3.org/ns/prov#Plan"
-    ],
-    "http://schema.org/name": [
-      {
-        "@value": "cp-4273d273705d4c108fe73bca52ee5ea9"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#command": [
-      {
-        "@value": "cp"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#hasArguments": [],
-    "https://swissdatasciencecenter.github.io/renku-ontology#hasInputs": [
-      {
-        "@id": "https://github.com/plans/5b34b1f88d75dfe7538bec518438cae9b7f20517/inputs/1"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#hasOutputs": [
-      {
-        "@id": "https://github.com/plans/5b34b1f88d75dfe7538bec518438cae9b7f20517/outputs/2"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#successCodes": []
-  },
-  {
-    "@id": "https://github.com/plans/5b34b1f88d75dfe7538bec518438cae9b7f20517/inputs/1",
-    "@type": [
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandInputTemplate",
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandParameter"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Command Input Template \"data/VOM_input/HowardSprings/1_benchmark_repr/pars.txt\""
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#consume": [
-      {
-        "@value": "data/VOM_input/HowardSprings/1_benchmark_repr/pars.txt"
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#position": [
-      {
-        "@value": 1
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/plans/5b34b1f88d75dfe7538bec518438cae9b7f20517/outputs/2",
-    "@type": [
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandOutputTemplate",
-      "https://swissdatasciencecenter.github.io/renku-ontology#CommandParameter"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Command Output Template \"work/additional_analyses/comp2015/13_new_params2015/input/pars.txt\""
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#createFolder": [
-      {
-        "@value": true
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#position": [
-      {
-        "@value": 2
-      }
-    ],
-    "https://swissdatasciencecenter.github.io/renku-ontology#produces": [
-      {
-        "@value": "work/additional_analyses/comp2015/13_new_params2015/input/pars.txt"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.13.1.dev1",
-    "@type": [
-      "http://purl.org/wf4ever/wfprov#WorkflowEngine",
-      "http://www.w3.org/ns/prov#SoftwareAgent"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "renku 0.13.1.dev1"
-      }
-    ]
-  },
-  {
-    "@id": "https://github.com/swissdatasciencecenter/renku-python/tree/v0.8.3.dev23",
-    "@type": [
-      "http://purl.org/wf4ever/wfprov#WorkflowEngine",
-      "http://www.w3.org/ns/prov#SoftwareAgent"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "renku 0.8.3.dev23"
-      }
-    ]
-  },
-  {
-    "@id": "mailto:remko.nijzink@list.lu",
-    "@type": [
-      "http://schema.org/Person",
-      "http://www.w3.org/ns/prov#Person"
-    ],
-    "http://schema.org/email": [
-      {
-        "@value": "remko.nijzink@list.lu"
-      }
-    ],
-    "http://schema.org/name": [
-      {
-        "@value": "Remko Nijzink"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Remko Nijzink"
+        "@id": "https://github.com/activities/7b44f438-ffdd-45ba-be61-2142487f0779"
       }
     ]
   }
