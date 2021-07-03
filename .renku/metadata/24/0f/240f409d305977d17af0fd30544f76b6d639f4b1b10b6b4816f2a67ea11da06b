@@ -1,0 +1,198 @@
+{
+  "@oid": "240f409d305977d17af0fd30544f76b6d639f4b1b10b6b4816f2a67ea11da06b",
+  "@type": "renku.core.models.provenance.activity.Activity",
+  "agents": [
+    {
+      "@oid": "60a49ea118cbd7a5ca13cf1acc9980bc10265df9294423eaa1e4e2899f8ba1c6",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.Person"
+    },
+    {
+      "@oid": "ad5b14ddae980f3d2427c5d3b7c9891bff45680d355bea774e80c9502271fcc7",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.SoftwareAgent"
+    }
+  ],
+  "annotations": [],
+  "association": {
+    "@type": "renku.core.models.provenance.activity.Association",
+    "agent": {
+      "@oid": "b97a991a63f6f1c0953b3b3dd4558d4724b3dc9000f16aa3b7d020c5fbb8196a",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.SoftwareAgent"
+    },
+    "id": "/activities/0b7cea65167e46a8955865fc4e5fddcf/association",
+    "plan": {
+      "@oid": "46f971f741bd8fa39668b0a74db56df07270394d0639dcc408b90f40fed85ce7",
+      "@reference": true,
+      "@type": "renku.core.models.workflow.plan.Plan"
+    }
+  },
+  "ended_at_time": {
+    "@type": "datetime.datetime",
+    "@value": "2020-02-07T10:51:49+01:00"
+  },
+  "generations": [
+    {
+      "@type": "renku.core.models.provenance.activity.Generation",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "59cf2210bee3e71bf536cf834f5378663e03408e",
+        "id": "/entities/59cf2210bee3e71bf536cf834f5378663e03408e/work/additional_analyses/fixed_jmax/HowardSprings/best/input/dailyweather.prn",
+        "path": "work/additional_analyses/fixed_jmax/HowardSprings/best/input/dailyweather.prn"
+      },
+      "id": "/activities/0b7cea65167e46a8955865fc4e5fddcf/generations/303c4a94-b777-46c7-9482-969bc62d01a8"
+    }
+  ],
+  "id": "/activities/0b7cea65167e46a8955865fc4e5fddcf",
+  "invalidations": [],
+  "order": null,
+  "parameters": [
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/0b7cea65167e46a8955865fc4e5fddcf/parameter-value/8c405e2ad2d2453fb02fa1342250c0a1",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandInput",
+        "default_value": "src_py/write_dailyweather.py",
+        "description": null,
+        "id": "/plans/415a62668caa6670c9a13510c9ee57e0b472bb23/inputs/1",
+        "label": "Command Input 'src_py/write_dailyweather.py'",
+        "mapped_to": null,
+        "name": "input-1",
+        "position": 1,
+        "prefix": null
+      },
+      "path": "src_py/write_dailyweather.py"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/0b7cea65167e46a8955865fc4e5fddcf/parameter-value/4eb4a448621f4e6bb4afd7e441f330d8",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandInput",
+        "default_value": "data/Silo/howard.txt",
+        "description": null,
+        "id": "/plans/415a62668caa6670c9a13510c9ee57e0b472bb23/inputs/3",
+        "label": "Command Input 'data/Silo/howard.txt'",
+        "mapped_to": null,
+        "name": "input-3",
+        "position": 3,
+        "prefix": null
+      },
+      "path": "data/Silo/howard.txt"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/0b7cea65167e46a8955865fc4e5fddcf/parameter-value/f46820555df442c7a1a39353fc6e9690",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandInput",
+        "default_value": "data/MaunaLoa/weekly_in_situ_co2_mlo.csv",
+        "description": null,
+        "id": "/plans/415a62668caa6670c9a13510c9ee57e0b472bb23/inputs/5",
+        "label": "Command Input 'data/MaunaLoa/weekly_in_situ_co2_mlo.csv'",
+        "mapped_to": null,
+        "name": "input-5",
+        "position": 5,
+        "prefix": null
+      },
+      "path": "data/MaunaLoa/weekly_in_situ_co2_mlo.csv"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/0b7cea65167e46a8955865fc4e5fddcf/parameter-value/80c2e8f3cbf44ecb93d428d8e1ba7d01",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandOutput",
+        "create_folder": true,
+        "default_value": "work/additional_analyses/fixed_jmax/HowardSprings/best/input/dailyweather.prn",
+        "description": null,
+        "id": "/plans/415a62668caa6670c9a13510c9ee57e0b472bb23/outputs/7",
+        "label": "Command Output 'work/additional_analyses/fixed_jmax/HowardSprings/best/input/dailyweather.prn'",
+        "mapped_to": null,
+        "name": "o-7",
+        "position": 7,
+        "prefix": "-o "
+      },
+      "path": "work/additional_analyses/fixed_jmax/HowardSprings/best/input/dailyweather.prn"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "id": "/activities/0b7cea65167e46a8955865fc4e5fddcf/parameter-value/cb2d35673b1e4a0193fd0eb6a2b72047",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandParameter",
+        "default_value": "m",
+        "description": null,
+        "id": "/plans/415a62668caa6670c9a13510c9ee57e0b472bb23/parameters/2",
+        "label": "Command Parameter 'm'",
+        "name": "i-2",
+        "position": 2,
+        "prefix": "-i"
+      },
+      "value": "m"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "id": "/activities/0b7cea65167e46a8955865fc4e5fddcf/parameter-value/61db1623460345dabeed284d7c652245",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandParameter",
+        "default_value": "c",
+        "description": null,
+        "id": "/plans/415a62668caa6670c9a13510c9ee57e0b472bb23/parameters/4",
+        "label": "Command Parameter 'c'",
+        "name": "i-4",
+        "position": 4,
+        "prefix": "-i"
+      },
+      "value": "c"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "id": "/activities/0b7cea65167e46a8955865fc4e5fddcf/parameter-value/a2a61584e54d445e92b5a073074f04b2",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandParameter",
+        "default_value": "linear",
+        "description": null,
+        "id": "/plans/415a62668caa6670c9a13510c9ee57e0b472bb23/parameters/6",
+        "label": "Command Parameter 'linear'",
+        "name": "p-6",
+        "position": 6,
+        "prefix": "-p "
+      },
+      "value": "linear"
+    }
+  ],
+  "started_at_time": {
+    "@type": "datetime.datetime",
+    "@value": "2020-02-07T10:51:49+01:00"
+  },
+  "usages": [
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "9e3f3a631c26a55e45fb61aab022eb7a165d7c47",
+        "id": "/entities/9e3f3a631c26a55e45fb61aab022eb7a165d7c47/src_py/write_dailyweather.py",
+        "path": "src_py/write_dailyweather.py"
+      },
+      "id": "/activities/0b7cea65167e46a8955865fc4e5fddcf/usages/9a0c4dd2-f588-45c3-86d0-d6845244c85b"
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "8ba21415289aefd2aa088b35af093abc5213fcf9",
+        "id": "/entities/8ba21415289aefd2aa088b35af093abc5213fcf9/data/Silo/howard.txt",
+        "path": "data/Silo/howard.txt"
+      },
+      "id": "/activities/0b7cea65167e46a8955865fc4e5fddcf/usages/7c351c19-c3bd-4eeb-ba54-56021d2da4f2"
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "8bf34b5c6b909789d2fce771b8ed9075b4b6679d",
+        "id": "/entities/8bf34b5c6b909789d2fce771b8ed9075b4b6679d/data/MaunaLoa/weekly_in_situ_co2_mlo.csv",
+        "path": "data/MaunaLoa/weekly_in_situ_co2_mlo.csv"
+      },
+      "id": "/activities/0b7cea65167e46a8955865fc4e5fddcf/usages/ac3203c6-90b1-4c52-b2a8-ed84b45ae94a"
+    }
+  ]
+}

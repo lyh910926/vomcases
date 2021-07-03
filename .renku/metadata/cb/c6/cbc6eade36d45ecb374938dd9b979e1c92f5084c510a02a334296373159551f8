@@ -1,0 +1,232 @@
+{
+  "@oid": "cbc6eade36d45ecb374938dd9b979e1c92f5084c510a02a334296373159551f8",
+  "@type": "renku.core.models.provenance.activity.Activity",
+  "agents": [
+    {
+      "@oid": "60a49ea118cbd7a5ca13cf1acc9980bc10265df9294423eaa1e4e2899f8ba1c6",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.Person"
+    },
+    {
+      "@oid": "5d740858661a3056f610bfd588ede9590cfed9c5f2c1112798060416000f4d53",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.SoftwareAgent"
+    }
+  ],
+  "annotations": [],
+  "association": {
+    "@type": "renku.core.models.provenance.activity.Association",
+    "agent": {
+      "@oid": "c257844a080fa864283c19a04692081e1222a8ae27a783f47f84970453a7a3ca",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.SoftwareAgent"
+    },
+    "id": "/activities/4510e193fca248fbabedcc27c5d2eb27/association",
+    "plan": {
+      "@oid": "53a1657df42867e38fe964bbd2a31faef60ce5b25a09ae83ea7dc411fb3ede49",
+      "@reference": true,
+      "@type": "renku.core.models.workflow.plan.Plan"
+    }
+  },
+  "ended_at_time": {
+    "@type": "datetime.datetime",
+    "@value": "2020-02-25T03:56:46+01:00"
+  },
+  "generations": [
+    {
+      "@type": "renku.core.models.provenance.activity.Generation",
+      "entity": {
+        "@type": "renku.core.models.entity.Collection",
+        "checksum": "18a84903b5d6035274b525734c4bd99a88c629fb",
+        "id": "/entities/18a84903b5d6035274b525734c4bd99a88c629fb/work/additional_analyses/sens_esoil/HS_0.50/input",
+        "path": "work/additional_analyses/sens_esoil/HS_0.50/input"
+      },
+      "id": "/activities/4510e193fca248fbabedcc27c5d2eb27/generations/794d44a7-e750-4c42-8120-c0abef2d400a"
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Generation",
+      "entity": {
+        "@type": "renku.core.models.entity.Collection",
+        "checksum": "6e22db9a437d066fd73a09517dc6a1fc7b2dcb27",
+        "id": "/entities/6e22db9a437d066fd73a09517dc6a1fc7b2dcb27/data/VOM_output/additional_analyses/sens_esoil/HS_0.50/sce",
+        "path": "data/VOM_output/additional_analyses/sens_esoil/HS_0.50/sce"
+      },
+      "id": "/activities/4510e193fca248fbabedcc27c5d2eb27/generations/393ce7bc-ea5e-46b4-9c7f-e01a0ac8012e"
+    }
+  ],
+  "id": "/activities/4510e193fca248fbabedcc27c5d2eb27",
+  "invalidations": [],
+  "order": null,
+  "parameters": [
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/4510e193fca248fbabedcc27c5d2eb27/parameter-value/cc7fbd94132c48e9bbda64114c958799",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandInput",
+        "default_value": "src_sh/run_vom.sh",
+        "description": null,
+        "id": "/plans/f0f9a2725cbe37392db930598f15167d1ce37ed7/inputs/1",
+        "label": "Command Input 'src_sh/run_vom.sh'",
+        "mapped_to": null,
+        "name": "input-1",
+        "position": 1,
+        "prefix": null
+      },
+      "path": "src_sh/run_vom.sh"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/4510e193fca248fbabedcc27c5d2eb27/parameter-value/eb282c6be50646c6b61b816060602099",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandInput",
+        "default_value": "src/VOM/VOM_Fortran",
+        "description": null,
+        "id": "/plans/f0f9a2725cbe37392db930598f15167d1ce37ed7/inputs/2",
+        "label": "Command Input 'src/VOM/VOM_Fortran'",
+        "mapped_to": null,
+        "name": "input-2",
+        "position": 2,
+        "prefix": null
+      },
+      "path": "src/VOM/VOM_Fortran"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/4510e193fca248fbabedcc27c5d2eb27/parameter-value/b9bd031f36704c44ae5af3691f33d60f",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandInput",
+        "default_value": "data/VOM_input/HowardSprings/dailyweather.prn",
+        "description": null,
+        "id": "/plans/f0f9a2725cbe37392db930598f15167d1ce37ed7/inputs/4",
+        "label": "Command Input 'data/VOM_input/HowardSprings/dailyweather.prn'",
+        "mapped_to": null,
+        "name": "input-4",
+        "position": 4,
+        "prefix": null
+      },
+      "path": "data/VOM_input/HowardSprings/dailyweather.prn"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/4510e193fca248fbabedcc27c5d2eb27/parameter-value/6be1974639ca40349199956abc24feaf",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandInput",
+        "default_value": "data/VOM_soils/HowardSprings/soilprofile.par",
+        "description": null,
+        "id": "/plans/f0f9a2725cbe37392db930598f15167d1ce37ed7/inputs/5",
+        "label": "Command Input 'data/VOM_soils/HowardSprings/soilprofile.par'",
+        "mapped_to": null,
+        "name": "input-5",
+        "position": 5,
+        "prefix": null
+      },
+      "path": "data/VOM_soils/HowardSprings/soilprofile.par"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/4510e193fca248fbabedcc27c5d2eb27/parameter-value/59e9e8f47eee4247b5bbc195beebee20",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandInput",
+        "default_value": "work/additional_analyses/sens_esoil/HS_0.50/vom_namelist",
+        "description": null,
+        "id": "/plans/f0f9a2725cbe37392db930598f15167d1ce37ed7/inputs/6",
+        "label": "Command Input 'work/additional_analyses/sens_esoil/HS_0.50/vom_namelist'",
+        "mapped_to": null,
+        "name": "input-6",
+        "position": 6,
+        "prefix": null
+      },
+      "path": "work/additional_analyses/sens_esoil/HS_0.50/vom_namelist"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/4510e193fca248fbabedcc27c5d2eb27/parameter-value/ae05438791c240d18a5bac81106905f4",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandOutput",
+        "create_folder": false,
+        "default_value": "work/additional_analyses/sens_esoil/HS_0.50/input",
+        "description": null,
+        "id": "/plans/f0f9a2725cbe37392db930598f15167d1ce37ed7/outputs/3",
+        "label": "Command Output 'work/additional_analyses/sens_esoil/HS_0.50/input'",
+        "mapped_to": null,
+        "name": "output-3",
+        "position": 3,
+        "prefix": null
+      },
+      "path": "work/additional_analyses/sens_esoil/HS_0.50/input"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/4510e193fca248fbabedcc27c5d2eb27/parameter-value/04e89f58331e4be4883ae2529e38f567",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandOutput",
+        "create_folder": false,
+        "default_value": "data/VOM_output/additional_analyses/sens_esoil/HS_0.50/sce",
+        "description": null,
+        "id": "/plans/f0f9a2725cbe37392db930598f15167d1ce37ed7/outputs/7",
+        "label": "Command Output 'data/VOM_output/additional_analyses/sens_esoil/HS_0.50/sce'",
+        "mapped_to": null,
+        "name": "output-7",
+        "position": 7,
+        "prefix": null
+      },
+      "path": "data/VOM_output/additional_analyses/sens_esoil/HS_0.50/sce"
+    }
+  ],
+  "started_at_time": {
+    "@type": "datetime.datetime",
+    "@value": "2020-02-24T18:48:16+01:00"
+  },
+  "usages": [
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "4eab7b699c2747d74cb3c9d0a604b36e7e2aed50",
+        "id": "/entities/4eab7b699c2747d74cb3c9d0a604b36e7e2aed50/src_sh/run_vom.sh",
+        "path": "src_sh/run_vom.sh"
+      },
+      "id": "/activities/4510e193fca248fbabedcc27c5d2eb27/usages/24b0adb9-d67b-4024-9d48-00d1595aa80c"
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "entity": {
+        "@type": "renku.core.models.entity.Collection",
+        "checksum": "583b64b2342da6ff165bbe8cd9790e2ea08d52bf",
+        "id": "/entities/583b64b2342da6ff165bbe8cd9790e2ea08d52bf/src/VOM/VOM_Fortran",
+        "path": "src/VOM/VOM_Fortran"
+      },
+      "id": "/activities/4510e193fca248fbabedcc27c5d2eb27/usages/562fa153-0cf6-4745-b448-0bd3b6aaf31b"
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "59cf2210bee3e71bf536cf834f5378663e03408e",
+        "id": "/entities/59cf2210bee3e71bf536cf834f5378663e03408e/data/VOM_input/HowardSprings/dailyweather.prn",
+        "path": "data/VOM_input/HowardSprings/dailyweather.prn"
+      },
+      "id": "/activities/4510e193fca248fbabedcc27c5d2eb27/usages/950b99e5-33f7-4b35-b46b-5903cc18452d"
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "771d759589e8e970c236d56c35b28ea3a999e508",
+        "id": "/entities/771d759589e8e970c236d56c35b28ea3a999e508/data/VOM_soils/HowardSprings/soilprofile.par",
+        "path": "data/VOM_soils/HowardSprings/soilprofile.par"
+      },
+      "id": "/activities/4510e193fca248fbabedcc27c5d2eb27/usages/22a1d526-0117-4272-b4af-f1eb0f7bf205"
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "e5e35881e7289d36ff4a60159c39cba9c5e4392b",
+        "id": "/entities/e5e35881e7289d36ff4a60159c39cba9c5e4392b/work/additional_analyses/sens_esoil/HS_0.50/vom_namelist",
+        "path": "work/additional_analyses/sens_esoil/HS_0.50/vom_namelist"
+      },
+      "id": "/activities/4510e193fca248fbabedcc27c5d2eb27/usages/c1c6ef3b-453d-460b-b9b6-fd8f85bdca3f"
+    }
+  ]
+}

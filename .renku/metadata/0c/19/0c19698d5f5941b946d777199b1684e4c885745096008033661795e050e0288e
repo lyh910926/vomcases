@@ -1,0 +1,213 @@
+{
+  "@oid": "0c19698d5f5941b946d777199b1684e4c885745096008033661795e050e0288e",
+  "@type": "renku.core.models.provenance.activity.Activity",
+  "agents": [
+    {
+      "@oid": "60a49ea118cbd7a5ca13cf1acc9980bc10265df9294423eaa1e4e2899f8ba1c6",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.Person"
+    },
+    {
+      "@oid": "ad5b14ddae980f3d2427c5d3b7c9891bff45680d355bea774e80c9502271fcc7",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.SoftwareAgent"
+    }
+  ],
+  "annotations": [],
+  "association": {
+    "@type": "renku.core.models.provenance.activity.Association",
+    "agent": {
+      "@oid": "b97a991a63f6f1c0953b3b3dd4558d4724b3dc9000f16aa3b7d020c5fbb8196a",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.SoftwareAgent"
+    },
+    "id": "/activities/562b51fa19934da48782dbd06c7cfd65/association",
+    "plan": {
+      "@oid": "0e8026a2be4c30a4434898dcf4e55d866d0eafc3c113b9099e37a69a2cb0d955",
+      "@reference": true,
+      "@type": "renku.core.models.workflow.plan.Plan"
+    }
+  },
+  "ended_at_time": {
+    "@type": "datetime.datetime",
+    "@value": "2020-01-21T09:21:24+01:00"
+  },
+  "generations": [
+    {
+      "@type": "renku.core.models.provenance.activity.Generation",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "0146c20aeb7572433f589839f6b52c25fc2eaa2d",
+        "id": "/entities/0146c20aeb7572433f589839f6b52c25fc2eaa2d/work/additional_analyses/prescribed_cover2/AdelaideRiver/input/perc_cov.txt",
+        "path": "work/additional_analyses/prescribed_cover2/AdelaideRiver/input/perc_cov.txt"
+      },
+      "id": "/activities/562b51fa19934da48782dbd06c7cfd65/generations/5f3f42d2-3448-47d3-ad0d-6baa9c700a48"
+    }
+  ],
+  "id": "/activities/562b51fa19934da48782dbd06c7cfd65",
+  "invalidations": [],
+  "order": null,
+  "parameters": [
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/562b51fa19934da48782dbd06c7cfd65/parameter-value/675e78292a4742b79364b3750093aa98",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandInput",
+        "default_value": "src_py/write_pcseries_meanmonthly.py",
+        "description": null,
+        "id": "/plans/2219cd24e087a7e7c7278aa5b622686b9f65b44e/inputs/1",
+        "label": "Command Input 'src_py/write_pcseries_meanmonthly.py'",
+        "mapped_to": null,
+        "name": "input-1",
+        "position": 1,
+        "prefix": null
+      },
+      "path": "src_py/write_pcseries_meanmonthly.py"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/562b51fa19934da48782dbd06c7cfd65/parameter-value/d70398fcbb1c490ca98edd8a86245ebf",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandInput",
+        "default_value": "data/fPAR/fpar_adelaide_v5.txt",
+        "description": null,
+        "id": "/plans/2219cd24e087a7e7c7278aa5b622686b9f65b44e/inputs/2",
+        "label": "Command Input 'data/fPAR/fpar_adelaide_v5.txt'",
+        "mapped_to": null,
+        "name": "i-2",
+        "position": 2,
+        "prefix": "-i "
+      },
+      "path": "data/fPAR/fpar_adelaide_v5.txt"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/562b51fa19934da48782dbd06c7cfd65/parameter-value/ca433b560c804f2982e29541901cad8b",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandInput",
+        "default_value": "data/fPAR/dates_v5",
+        "description": null,
+        "id": "/plans/2219cd24e087a7e7c7278aa5b622686b9f65b44e/inputs/4",
+        "label": "Command Input 'data/fPAR/dates_v5'",
+        "mapped_to": null,
+        "name": "input-4",
+        "position": 4,
+        "prefix": null
+      },
+      "path": "data/fPAR/dates_v5"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/562b51fa19934da48782dbd06c7cfd65/parameter-value/5ac7d3508b8e4f41bca1ce9fe796b34b",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandOutput",
+        "create_folder": true,
+        "default_value": "work/additional_analyses/prescribed_cover2/AdelaideRiver/input/perc_cov.txt",
+        "description": null,
+        "id": "/plans/2219cd24e087a7e7c7278aa5b622686b9f65b44e/outputs/7",
+        "label": "Command Output 'work/additional_analyses/prescribed_cover2/AdelaideRiver/input/perc_cov.txt'",
+        "mapped_to": null,
+        "name": "o-7",
+        "position": 7,
+        "prefix": "-o "
+      },
+      "path": "work/additional_analyses/prescribed_cover2/AdelaideRiver/input/perc_cov.txt"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "id": "/activities/562b51fa19934da48782dbd06c7cfd65/parameter-value/fc85c8841df14d9c8470e27637526978",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandParameter",
+        "default_value": "d",
+        "description": null,
+        "id": "/plans/2219cd24e087a7e7c7278aa5b622686b9f65b44e/parameters/3",
+        "label": "Command Parameter 'd'",
+        "name": "i-3",
+        "position": 3,
+        "prefix": "-i"
+      },
+      "value": "d"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "id": "/activities/562b51fa19934da48782dbd06c7cfd65/parameter-value/58a2e5c7ea854921a1a2c4e896b0b884",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandParameter",
+        "default_value": "01-01-1980",
+        "description": null,
+        "id": "/plans/2219cd24e087a7e7c7278aa5b622686b9f65b44e/parameters/5",
+        "label": "Command Parameter '01-01-1980'",
+        "name": "s-5",
+        "position": 5,
+        "prefix": "-s "
+      },
+      "value": "01-01-1980"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "id": "/activities/562b51fa19934da48782dbd06c7cfd65/parameter-value/c4ad29b871714ad183c7b28105af07dc",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandParameter",
+        "default_value": "31-12-2017",
+        "description": null,
+        "id": "/plans/2219cd24e087a7e7c7278aa5b622686b9f65b44e/parameters/6",
+        "label": "Command Parameter '31-12-2017'",
+        "name": "e-6",
+        "position": 6,
+        "prefix": "-e "
+      },
+      "value": "31-12-2017"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "id": "/activities/562b51fa19934da48782dbd06c7cfd65/parameter-value/f45743ec0e5e4b1db1b63cdd828c8f62",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandParameter",
+        "default_value": "True",
+        "description": null,
+        "id": "/plans/2219cd24e087a7e7c7278aa5b622686b9f65b44e/parameters/8",
+        "label": "Command Parameter 'True'",
+        "name": "plot-8",
+        "position": 8,
+        "prefix": "--plot "
+      },
+      "value": "True"
+    }
+  ],
+  "started_at_time": {
+    "@type": "datetime.datetime",
+    "@value": "2020-01-21T09:21:24+01:00"
+  },
+  "usages": [
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "cf4f8ade9279d3ee1c0d1ab64cc33716c6372e33",
+        "id": "/entities/cf4f8ade9279d3ee1c0d1ab64cc33716c6372e33/src_py/write_pcseries_meanmonthly.py",
+        "path": "src_py/write_pcseries_meanmonthly.py"
+      },
+      "id": "/activities/562b51fa19934da48782dbd06c7cfd65/usages/5ef8cf0a-f507-4176-b949-6a922b63eee2"
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "52c728442e74a564c1a212dff143c6af9808f5ee",
+        "id": "/entities/52c728442e74a564c1a212dff143c6af9808f5ee/data/fPAR/fpar_adelaide_v5.txt",
+        "path": "data/fPAR/fpar_adelaide_v5.txt"
+      },
+      "id": "/activities/562b51fa19934da48782dbd06c7cfd65/usages/5bf1fce3-8730-4575-9764-399707bea938"
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "b40288587bcbc5d23f665bcd3ae96a45349e4623",
+        "id": "/entities/b40288587bcbc5d23f665bcd3ae96a45349e4623/data/fPAR/dates_v5",
+        "path": "data/fPAR/dates_v5"
+      },
+      "id": "/activities/562b51fa19934da48782dbd06c7cfd65/usages/b0f7c403-f52d-4cab-a0bf-b4772d998dda"
+    }
+  ]
+}

@@ -1,0 +1,198 @@
+{
+  "@oid": "00da65439883feb8dd1b0f1435e827b4d66d0cd885b403ce4825cf9f8ed1fc20",
+  "@type": "renku.core.models.provenance.activity.Activity",
+  "agents": [
+    {
+      "@oid": "60a49ea118cbd7a5ca13cf1acc9980bc10265df9294423eaa1e4e2899f8ba1c6",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.Person"
+    },
+    {
+      "@oid": "ad5b14ddae980f3d2427c5d3b7c9891bff45680d355bea774e80c9502271fcc7",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.SoftwareAgent"
+    }
+  ],
+  "annotations": [],
+  "association": {
+    "@type": "renku.core.models.provenance.activity.Association",
+    "agent": {
+      "@oid": "b97a991a63f6f1c0953b3b3dd4558d4724b3dc9000f16aa3b7d020c5fbb8196a",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.SoftwareAgent"
+    },
+    "id": "/activities/df94d6d8d11e4774a394644f71e9bdf2/association",
+    "plan": {
+      "@oid": "ab2742ec7440bbf6dbe41d31df56ad51eb902bec49c2d069dabdd8737fcfbd0c",
+      "@reference": true,
+      "@type": "renku.core.models.workflow.plan.Plan"
+    }
+  },
+  "ended_at_time": {
+    "@type": "datetime.datetime",
+    "@value": "2020-02-07T18:18:05+01:00"
+  },
+  "generations": [
+    {
+      "@type": "renku.core.models.provenance.activity.Generation",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "1deb2eef1018b8a8bf9db9856ac61b6f22c7be41",
+        "id": "/entities/1deb2eef1018b8a8bf9db9856ac61b6f22c7be41/work/Litchfield/freedrainage_cpcff2.0/best/input/dailyweather.prn",
+        "path": "work/Litchfield/freedrainage_cpcff2.0/best/input/dailyweather.prn"
+      },
+      "id": "/activities/df94d6d8d11e4774a394644f71e9bdf2/generations/9c9dc703-ef7b-438b-a468-759ace91fdae"
+    }
+  ],
+  "id": "/activities/df94d6d8d11e4774a394644f71e9bdf2",
+  "invalidations": [],
+  "order": null,
+  "parameters": [
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/df94d6d8d11e4774a394644f71e9bdf2/parameter-value/254f770390904858804072437b8c5d2a",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandInput",
+        "default_value": "src_py/write_dailyweather.py",
+        "description": null,
+        "id": "/plans/37dd5a9194fd829303ed87565040d8e8a6eeb10b/inputs/1",
+        "label": "Command Input 'src_py/write_dailyweather.py'",
+        "mapped_to": null,
+        "name": "input-1",
+        "position": 1,
+        "prefix": null
+      },
+      "path": "src_py/write_dailyweather.py"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/df94d6d8d11e4774a394644f71e9bdf2/parameter-value/bdc76793950d40a9ae139c6fbfeef6f3",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandInput",
+        "default_value": "data/Silo/litchfield.txt",
+        "description": null,
+        "id": "/plans/37dd5a9194fd829303ed87565040d8e8a6eeb10b/inputs/3",
+        "label": "Command Input 'data/Silo/litchfield.txt'",
+        "mapped_to": null,
+        "name": "input-3",
+        "position": 3,
+        "prefix": null
+      },
+      "path": "data/Silo/litchfield.txt"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/df94d6d8d11e4774a394644f71e9bdf2/parameter-value/5f3cb47c1b10441898c4e7fe4b35ab30",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandInput",
+        "default_value": "data/MaunaLoa/weekly_in_situ_co2_mlo.csv",
+        "description": null,
+        "id": "/plans/37dd5a9194fd829303ed87565040d8e8a6eeb10b/inputs/5",
+        "label": "Command Input 'data/MaunaLoa/weekly_in_situ_co2_mlo.csv'",
+        "mapped_to": null,
+        "name": "input-5",
+        "position": 5,
+        "prefix": null
+      },
+      "path": "data/MaunaLoa/weekly_in_situ_co2_mlo.csv"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/df94d6d8d11e4774a394644f71e9bdf2/parameter-value/e55ec6905bdc4326a791c390c6809a37",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandOutput",
+        "create_folder": true,
+        "default_value": "work/Litchfield/freedrainage_cpcff2.0/best/input/dailyweather.prn",
+        "description": null,
+        "id": "/plans/37dd5a9194fd829303ed87565040d8e8a6eeb10b/outputs/7",
+        "label": "Command Output 'work/Litchfield/freedrainage_cpcff2.0/best/input/dailyweather.prn'",
+        "mapped_to": null,
+        "name": "o-7",
+        "position": 7,
+        "prefix": "-o "
+      },
+      "path": "work/Litchfield/freedrainage_cpcff2.0/best/input/dailyweather.prn"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "id": "/activities/df94d6d8d11e4774a394644f71e9bdf2/parameter-value/5ace858b79844a299c01591fe06e16d9",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandParameter",
+        "default_value": "m",
+        "description": null,
+        "id": "/plans/37dd5a9194fd829303ed87565040d8e8a6eeb10b/parameters/2",
+        "label": "Command Parameter 'm'",
+        "name": "i-2",
+        "position": 2,
+        "prefix": "-i"
+      },
+      "value": "m"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "id": "/activities/df94d6d8d11e4774a394644f71e9bdf2/parameter-value/df740abcea304297b81abee69a134f53",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandParameter",
+        "default_value": "c",
+        "description": null,
+        "id": "/plans/37dd5a9194fd829303ed87565040d8e8a6eeb10b/parameters/4",
+        "label": "Command Parameter 'c'",
+        "name": "i-4",
+        "position": 4,
+        "prefix": "-i"
+      },
+      "value": "c"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "id": "/activities/df94d6d8d11e4774a394644f71e9bdf2/parameter-value/ede63f0739ed4164b7f8e2266b5455db",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandParameter",
+        "default_value": "linear",
+        "description": null,
+        "id": "/plans/37dd5a9194fd829303ed87565040d8e8a6eeb10b/parameters/6",
+        "label": "Command Parameter 'linear'",
+        "name": "p-6",
+        "position": 6,
+        "prefix": "-p "
+      },
+      "value": "linear"
+    }
+  ],
+  "started_at_time": {
+    "@type": "datetime.datetime",
+    "@value": "2020-02-07T18:18:05+01:00"
+  },
+  "usages": [
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "9e3f3a631c26a55e45fb61aab022eb7a165d7c47",
+        "id": "/entities/9e3f3a631c26a55e45fb61aab022eb7a165d7c47/src_py/write_dailyweather.py",
+        "path": "src_py/write_dailyweather.py"
+      },
+      "id": "/activities/df94d6d8d11e4774a394644f71e9bdf2/usages/9578434e-b477-42ed-9af9-ea4d4d6ff79e"
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "e3c6cdf0cdb4af8dbc25a32c91a68f2757cf97a1",
+        "id": "/entities/e3c6cdf0cdb4af8dbc25a32c91a68f2757cf97a1/data/Silo/litchfield.txt",
+        "path": "data/Silo/litchfield.txt"
+      },
+      "id": "/activities/df94d6d8d11e4774a394644f71e9bdf2/usages/baae90c6-cb1b-4d76-b4f3-7b41484fa1bd"
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "8bf34b5c6b909789d2fce771b8ed9075b4b6679d",
+        "id": "/entities/8bf34b5c6b909789d2fce771b8ed9075b4b6679d/data/MaunaLoa/weekly_in_situ_co2_mlo.csv",
+        "path": "data/MaunaLoa/weekly_in_situ_co2_mlo.csv"
+      },
+      "id": "/activities/df94d6d8d11e4774a394644f71e9bdf2/usages/7250a221-4552-45e4-b71b-2b0523c16576"
+    }
+  ]
+}

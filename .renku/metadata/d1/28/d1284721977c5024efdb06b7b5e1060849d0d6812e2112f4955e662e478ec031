@@ -1,0 +1,101 @@
+{
+  "@oid": "d1284721977c5024efdb06b7b5e1060849d0d6812e2112f4955e662e478ec031",
+  "@type": "renku.core.models.provenance.activity.Activity",
+  "agents": [
+    {
+      "@oid": "60a49ea118cbd7a5ca13cf1acc9980bc10265df9294423eaa1e4e2899f8ba1c6",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.Person"
+    },
+    {
+      "@oid": "5d740858661a3056f610bfd588ede9590cfed9c5f2c1112798060416000f4d53",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.SoftwareAgent"
+    }
+  ],
+  "annotations": [],
+  "association": {
+    "@type": "renku.core.models.provenance.activity.Association",
+    "agent": {
+      "@oid": "b97a991a63f6f1c0953b3b3dd4558d4724b3dc9000f16aa3b7d020c5fbb8196a",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.SoftwareAgent"
+    },
+    "id": "/activities/3d6354418e6141eba741e8bc6a8a6088/association",
+    "plan": {
+      "@oid": "0dfe07c5c7a1a6935fed655dbc55b48d9b5391712f56af376a469cc7c6537eb5",
+      "@reference": true,
+      "@type": "renku.core.models.workflow.plan.Plan"
+    }
+  },
+  "ended_at_time": {
+    "@type": "datetime.datetime",
+    "@value": "2020-03-02T09:44:19+01:00"
+  },
+  "generations": [
+    {
+      "@type": "renku.core.models.provenance.activity.Generation",
+      "entity": {
+        "@type": "renku.core.models.entity.Collection",
+        "checksum": "d844995d0fe74ae5e7c3cec0bd8f7c5355bc91ed",
+        "id": "/entities/d844995d0fe74ae5e7c3cec0bd8f7c5355bc91ed/data/SavMIP_extracted",
+        "path": "data/SavMIP_extracted"
+      },
+      "id": "/activities/3d6354418e6141eba741e8bc6a8a6088/generations/9b4cfacd-e9d2-4203-b0c7-8de6ea284dd7"
+    }
+  ],
+  "id": "/activities/3d6354418e6141eba741e8bc6a8a6088",
+  "invalidations": [],
+  "order": null,
+  "parameters": [
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/3d6354418e6141eba741e8bc6a8a6088/parameter-value/1a12bc18e3ea447f9a9546503bdaf44a",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandInput",
+        "default_value": "data/data_from_a_model_inter/SavMIP.zip",
+        "description": null,
+        "id": "/plans/91d194001498ae07cee309865f37280bd5ca81ba/inputs/1",
+        "label": "Command Input 'data/data_from_a_model_inter/SavMIP.zip'",
+        "mapped_to": null,
+        "name": "input-1",
+        "position": 1,
+        "prefix": null
+      },
+      "path": "data/data_from_a_model_inter/SavMIP.zip"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/3d6354418e6141eba741e8bc6a8a6088/parameter-value/eddb34f6e12748afb3e3587dca9e342b",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandOutput",
+        "create_folder": true,
+        "default_value": "data/SavMIP_extracted",
+        "description": null,
+        "id": "/plans/91d194001498ae07cee309865f37280bd5ca81ba/outputs/2",
+        "label": "Command Output 'data/SavMIP_extracted'",
+        "mapped_to": null,
+        "name": "d-2",
+        "position": 2,
+        "prefix": "-d "
+      },
+      "path": "data/SavMIP_extracted"
+    }
+  ],
+  "started_at_time": {
+    "@type": "datetime.datetime",
+    "@value": "2020-03-02T09:44:19+01:00"
+  },
+  "usages": [
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "227119443942375c14173d140f1efba855b5a3fb",
+        "id": "/entities/227119443942375c14173d140f1efba855b5a3fb/data/data_from_a_model_inter/SavMIP.zip",
+        "path": "data/data_from_a_model_inter/SavMIP.zip"
+      },
+      "id": "/activities/3d6354418e6141eba741e8bc6a8a6088/usages/6ded0cc1-ddb1-4c58-94e7-78501d6950c0"
+    }
+  ]
+}
