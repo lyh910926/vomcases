@@ -1,0 +1,157 @@
+{
+  "@oid": "4a5c68d8760b8d28db1afdb189df00aa7f7b15f471adc2dc3310394cd726f9ec",
+  "@type": "renku.core.models.provenance.activity.Activity",
+  "agents": [
+    {
+      "@oid": "60a49ea118cbd7a5ca13cf1acc9980bc10265df9294423eaa1e4e2899f8ba1c6",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.Person"
+    },
+    {
+      "@oid": "cb4271e996b5745f91a740ba4bc027c9288924b598fd3c1da9157abc88793098",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.SoftwareAgent"
+    }
+  ],
+  "annotations": [],
+  "association": {
+    "@type": "renku.core.models.provenance.activity.Association",
+    "agent": {
+      "@oid": "f4a0dd07d594bb6e41e4b4a212b14124f07a427b33cbc2b004c70373ccd74663",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.SoftwareAgent"
+    },
+    "id": "/activities/27612f1155e144749bdc77113670291d/association",
+    "plan": {
+      "@oid": "634a657772d5a9b9622e5e615bd43d6337fffd768ac7322116374f41cbdcb6a7",
+      "@reference": true,
+      "@type": "renku.core.models.workflow.plan.Plan"
+    }
+  },
+  "ended_at_time": {
+    "@type": "datetime.datetime",
+    "@value": "2019-07-08T13:44:48+02:00"
+  },
+  "generations": [
+    {
+      "@type": "renku.core.models.provenance.activity.Generation",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "3a66ad38ba3f78847c6557ba3c59bc5486972ed7",
+        "id": "/entities/3a66ad38ba3f78847c6557ba3c59bc5486972ed7/data/ELVIS/dry_stats.txt",
+        "path": "data/ELVIS/dry_stats.txt"
+      },
+      "id": "/activities/27612f1155e144749bdc77113670291d/generations/bb8a4168-58f3-4218-8b87-77da6466320c"
+    }
+  ],
+  "id": "/activities/27612f1155e144749bdc77113670291d",
+  "invalidations": [],
+  "order": null,
+  "parameters": [
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/27612f1155e144749bdc77113670291d/parameter-value/de12ae8892c64e0b927f2f31ed0fa8ac",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandInput",
+        "default_value": "src_sh/gis_analysis.sh",
+        "description": null,
+        "id": "/plans/376a0c24e975c912ae463bc383445ccb81511aae/inputs/1",
+        "label": "Command Input 'src_sh/gis_analysis.sh'",
+        "mapped_to": null,
+        "name": "input-1",
+        "position": 1,
+        "prefix": null
+      },
+      "path": "src_sh/gis_analysis.sh"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/27612f1155e144749bdc77113670291d/parameter-value/ab2ec1b246d243b9bc5de2c4c412a716",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandInput",
+        "default_value": "data/ELVIS/dryriver.tif",
+        "description": null,
+        "id": "/plans/376a0c24e975c912ae463bc383445ccb81511aae/inputs/2",
+        "label": "Command Input 'data/ELVIS/dryriver.tif'",
+        "mapped_to": null,
+        "name": "input-2",
+        "position": 2,
+        "prefix": null
+      },
+      "path": "data/ELVIS/dryriver.tif"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/27612f1155e144749bdc77113670291d/parameter-value/30ad56c07621418c859bb8e17454929e",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandOutput",
+        "create_folder": true,
+        "default_value": "data/ELVIS/dry_stats.txt",
+        "description": null,
+        "id": "/plans/376a0c24e975c912ae463bc383445ccb81511aae/outputs/5",
+        "label": "Command Output 'data/ELVIS/dry_stats.txt'",
+        "mapped_to": null,
+        "name": "output-5",
+        "position": 5,
+        "prefix": null
+      },
+      "path": "data/ELVIS/dry_stats.txt"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "id": "/activities/27612f1155e144749bdc77113670291d/parameter-value/2e3fd72d02014584a9ca4e56f434d836",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandParameter",
+        "default_value": "132.374447643",
+        "description": null,
+        "id": "/plans/376a0c24e975c912ae463bc383445ccb81511aae/parameters/3",
+        "label": "Command Parameter '132.374447643'",
+        "name": "param-3",
+        "position": 3,
+        "prefix": null
+      },
+      "value": "132.374447643"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "id": "/activities/27612f1155e144749bdc77113670291d/parameter-value/93b9accb6ed84dbf9250f0815643136a",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandParameter",
+        "default_value": "5.262510562",
+        "description": null,
+        "id": "/plans/376a0c24e975c912ae463bc383445ccb81511aae/parameters/4",
+        "label": "Command Parameter '5.262510562'",
+        "name": "1-4",
+        "position": 4,
+        "prefix": "-1"
+      },
+      "value": "5.262510562"
+    }
+  ],
+  "started_at_time": {
+    "@type": "datetime.datetime",
+    "@value": "2019-07-08T15:44:46+02:00"
+  },
+  "usages": [
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "707a7cf924092c6223131e7e79e13cb5e751fde7",
+        "id": "/entities/707a7cf924092c6223131e7e79e13cb5e751fde7/src_sh/gis_analysis.sh",
+        "path": "src_sh/gis_analysis.sh"
+      },
+      "id": "/activities/27612f1155e144749bdc77113670291d/usages/bbac0858-7989-48ba-9c02-73c7e5bd14ff"
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "4ab4445967d55ef7e9f779766694c2b4f8090d23",
+        "id": "/entities/4ab4445967d55ef7e9f779766694c2b4f8090d23/data/ELVIS/dryriver.tif",
+        "path": "data/ELVIS/dryriver.tif"
+      },
+      "id": "/activities/27612f1155e144749bdc77113670291d/usages/9cfa62c7-4aac-43b5-abb6-4bb36652f5a4"
+    }
+  ]
+}

@@ -1,0 +1,232 @@
+{
+  "@oid": "b6d459b6bc6cd934691f7889383d6684480e8c96c24cb6adf033f8cae8a8cf8c",
+  "@type": "renku.core.models.provenance.activity.Activity",
+  "agents": [
+    {
+      "@oid": "60a49ea118cbd7a5ca13cf1acc9980bc10265df9294423eaa1e4e2899f8ba1c6",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.Person"
+    },
+    {
+      "@oid": "ad5b14ddae980f3d2427c5d3b7c9891bff45680d355bea774e80c9502271fcc7",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.SoftwareAgent"
+    }
+  ],
+  "annotations": [],
+  "association": {
+    "@type": "renku.core.models.provenance.activity.Association",
+    "agent": {
+      "@oid": "c257844a080fa864283c19a04692081e1222a8ae27a783f47f84970453a7a3ca",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.SoftwareAgent"
+    },
+    "id": "/activities/f709f3e132f244a78ac12cf89e2d234f/association",
+    "plan": {
+      "@oid": "4098d517e916bb191d35a9f176b60be197def2638f38b29162a7ed7513eb64f4",
+      "@reference": true,
+      "@type": "renku.core.models.workflow.plan.Plan"
+    }
+  },
+  "ended_at_time": {
+    "@type": "datetime.datetime",
+    "@value": "2019-10-04T01:33:29+02:00"
+  },
+  "generations": [
+    {
+      "@type": "renku.core.models.provenance.activity.Generation",
+      "entity": {
+        "@type": "renku.core.models.entity.Collection",
+        "checksum": "1bb2df94a9c99b720da550a234e507d560fd4335",
+        "id": "/entities/1bb2df94a9c99b720da550a234e507d560fd4335/work/AdelaideRiver/freedrainage_cpcff2.2/input",
+        "path": "work/AdelaideRiver/freedrainage_cpcff2.2/input"
+      },
+      "id": "/activities/f709f3e132f244a78ac12cf89e2d234f/generations/3aa38931-5804-4d3c-ab0c-8cebbb9af6b2"
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Generation",
+      "entity": {
+        "@type": "renku.core.models.entity.Collection",
+        "checksum": "ddd8b78d445e44e07a979e5e9f809012090e00c2",
+        "id": "/entities/ddd8b78d445e44e07a979e5e9f809012090e00c2/data/VOM_output/AdelaideRiver/freedrainage_cpcff2.2/sce",
+        "path": "data/VOM_output/AdelaideRiver/freedrainage_cpcff2.2/sce"
+      },
+      "id": "/activities/f709f3e132f244a78ac12cf89e2d234f/generations/1b0b9999-36e4-47d7-9d7a-6e6094d98d71"
+    }
+  ],
+  "id": "/activities/f709f3e132f244a78ac12cf89e2d234f",
+  "invalidations": [],
+  "order": null,
+  "parameters": [
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/f709f3e132f244a78ac12cf89e2d234f/parameter-value/c4ae079fbfa648f89520387505d291f8",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandInput",
+        "default_value": "src_sh/run_vom.sh",
+        "description": null,
+        "id": "/plans/434626c41670806d43337c012216ef54d1b2d452/inputs/1",
+        "label": "Command Input 'src_sh/run_vom.sh'",
+        "mapped_to": null,
+        "name": "input-1",
+        "position": 1,
+        "prefix": null
+      },
+      "path": "src_sh/run_vom.sh"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/f709f3e132f244a78ac12cf89e2d234f/parameter-value/abb578eb78084c359aedaf459956c74e",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandInput",
+        "default_value": "src/VOM/VOM_Fortran",
+        "description": null,
+        "id": "/plans/434626c41670806d43337c012216ef54d1b2d452/inputs/2",
+        "label": "Command Input 'src/VOM/VOM_Fortran'",
+        "mapped_to": null,
+        "name": "input-2",
+        "position": 2,
+        "prefix": null
+      },
+      "path": "src/VOM/VOM_Fortran"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/f709f3e132f244a78ac12cf89e2d234f/parameter-value/d553b2e839ad4885bc526594c4e254dd",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandInput",
+        "default_value": "data/VOM_input/AdelaideRiver/dailyweather.prn",
+        "description": null,
+        "id": "/plans/434626c41670806d43337c012216ef54d1b2d452/inputs/4",
+        "label": "Command Input 'data/VOM_input/AdelaideRiver/dailyweather.prn'",
+        "mapped_to": null,
+        "name": "input-4",
+        "position": 4,
+        "prefix": null
+      },
+      "path": "data/VOM_input/AdelaideRiver/dailyweather.prn"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/f709f3e132f244a78ac12cf89e2d234f/parameter-value/4c9d7f509df14d708fc48342467124c8",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandInput",
+        "default_value": "data/VOM_soils/AdelaideRiver/soilprofile.par",
+        "description": null,
+        "id": "/plans/434626c41670806d43337c012216ef54d1b2d452/inputs/5",
+        "label": "Command Input 'data/VOM_soils/AdelaideRiver/soilprofile.par'",
+        "mapped_to": null,
+        "name": "input-5",
+        "position": 5,
+        "prefix": null
+      },
+      "path": "data/VOM_soils/AdelaideRiver/soilprofile.par"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/f709f3e132f244a78ac12cf89e2d234f/parameter-value/95b8ca4f65464103be0ab62fd913ba67",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandInput",
+        "default_value": "work/AdelaideRiver/freedrainage_cpcff2.2/vom_namelist",
+        "description": null,
+        "id": "/plans/434626c41670806d43337c012216ef54d1b2d452/inputs/6",
+        "label": "Command Input 'work/AdelaideRiver/freedrainage_cpcff2.2/vom_namelist'",
+        "mapped_to": null,
+        "name": "input-6",
+        "position": 6,
+        "prefix": null
+      },
+      "path": "work/AdelaideRiver/freedrainage_cpcff2.2/vom_namelist"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/f709f3e132f244a78ac12cf89e2d234f/parameter-value/c37437434b5e4a0eaa759a83c7725869",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandOutput",
+        "create_folder": false,
+        "default_value": "work/AdelaideRiver/freedrainage_cpcff2.2/input",
+        "description": null,
+        "id": "/plans/434626c41670806d43337c012216ef54d1b2d452/outputs/3",
+        "label": "Command Output 'work/AdelaideRiver/freedrainage_cpcff2.2/input'",
+        "mapped_to": null,
+        "name": "output-3",
+        "position": 3,
+        "prefix": null
+      },
+      "path": "work/AdelaideRiver/freedrainage_cpcff2.2/input"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/f709f3e132f244a78ac12cf89e2d234f/parameter-value/ee7b14b3323c425ebe866eb90cd58362",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandOutput",
+        "create_folder": false,
+        "default_value": "data/VOM_output/AdelaideRiver/freedrainage_cpcff2.2/sce",
+        "description": null,
+        "id": "/plans/434626c41670806d43337c012216ef54d1b2d452/outputs/7",
+        "label": "Command Output 'data/VOM_output/AdelaideRiver/freedrainage_cpcff2.2/sce'",
+        "mapped_to": null,
+        "name": "output-7",
+        "position": 7,
+        "prefix": null
+      },
+      "path": "data/VOM_output/AdelaideRiver/freedrainage_cpcff2.2/sce"
+    }
+  ],
+  "started_at_time": {
+    "@type": "datetime.datetime",
+    "@value": "2019-10-03T21:20:13+02:00"
+  },
+  "usages": [
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "4eab7b699c2747d74cb3c9d0a604b36e7e2aed50",
+        "id": "/entities/4eab7b699c2747d74cb3c9d0a604b36e7e2aed50/src_sh/run_vom.sh",
+        "path": "src_sh/run_vom.sh"
+      },
+      "id": "/activities/f709f3e132f244a78ac12cf89e2d234f/usages/9bb562ab-e075-4617-97d2-bd66eb7ea032"
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "entity": {
+        "@type": "renku.core.models.entity.Collection",
+        "checksum": "583b64b2342da6ff165bbe8cd9790e2ea08d52bf",
+        "id": "/entities/583b64b2342da6ff165bbe8cd9790e2ea08d52bf/src/VOM/VOM_Fortran",
+        "path": "src/VOM/VOM_Fortran"
+      },
+      "id": "/activities/f709f3e132f244a78ac12cf89e2d234f/usages/cb95bb9b-3297-49bb-92a3-5bb64c88c75e"
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "2a8750d91f9ed36dfd9651501d6d07d02d5e00d6",
+        "id": "/entities/2a8750d91f9ed36dfd9651501d6d07d02d5e00d6/data/VOM_input/AdelaideRiver/dailyweather.prn",
+        "path": "data/VOM_input/AdelaideRiver/dailyweather.prn"
+      },
+      "id": "/activities/f709f3e132f244a78ac12cf89e2d234f/usages/06a83d58-05b6-4644-9e8d-33e00baa66d9"
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "e133014051f2131589d810d61db04587ab370534",
+        "id": "/entities/e133014051f2131589d810d61db04587ab370534/data/VOM_soils/AdelaideRiver/soilprofile.par",
+        "path": "data/VOM_soils/AdelaideRiver/soilprofile.par"
+      },
+      "id": "/activities/f709f3e132f244a78ac12cf89e2d234f/usages/36bc8919-dc9e-4671-ac77-19ad496957e0"
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "a12ea63886f3381405657e0551d97875329399f8",
+        "id": "/entities/a12ea63886f3381405657e0551d97875329399f8/work/AdelaideRiver/freedrainage_cpcff2.2/vom_namelist",
+        "path": "work/AdelaideRiver/freedrainage_cpcff2.2/vom_namelist"
+      },
+      "id": "/activities/f709f3e132f244a78ac12cf89e2d234f/usages/59cb7b43-5bde-4076-8bd4-a29116859c56"
+    }
+  ]
+}

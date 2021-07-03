@@ -1,0 +1,198 @@
+{
+  "@oid": "c6b8ea95788099e144e1e3fad86d17f5d8a22f72621534045c4f8dc9b00523e9",
+  "@type": "renku.core.models.provenance.activity.Activity",
+  "agents": [
+    {
+      "@oid": "60a49ea118cbd7a5ca13cf1acc9980bc10265df9294423eaa1e4e2899f8ba1c6",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.Person"
+    },
+    {
+      "@oid": "cb4271e996b5745f91a740ba4bc027c9288924b598fd3c1da9157abc88793098",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.SoftwareAgent"
+    }
+  ],
+  "annotations": [],
+  "association": {
+    "@type": "renku.core.models.provenance.activity.Association",
+    "agent": {
+      "@oid": "7be91c7bd92e37c170e2cdbe3f3a18c0e70223fba69a49061102e2e5052e8d32",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.SoftwareAgent"
+    },
+    "id": "/activities/9cc7fce5e45547909236c63cf41a6040/association",
+    "plan": {
+      "@oid": "dffd18fd7ae1309e79b60d37c14952f41b74388688d0582d32b843b588700d1f",
+      "@reference": true,
+      "@type": "renku.core.models.workflow.plan.Plan"
+    }
+  },
+  "ended_at_time": {
+    "@type": "datetime.datetime",
+    "@value": "2019-09-12T11:48:24+02:00"
+  },
+  "generations": [
+    {
+      "@type": "renku.core.models.provenance.activity.Generation",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "2a8750d91f9ed36dfd9651501d6d07d02d5e00d6",
+        "id": "/entities/2a8750d91f9ed36dfd9651501d6d07d02d5e00d6/work/AdelaideRiver/nofreedrainage_cpcff0.2/params_f0.2/input/dailyweather.prn",
+        "path": "work/AdelaideRiver/nofreedrainage_cpcff0.2/params_f0.2/input/dailyweather.prn"
+      },
+      "id": "/activities/9cc7fce5e45547909236c63cf41a6040/generations/baab7174-c4ee-45c1-8186-5f86f41e6385"
+    }
+  ],
+  "id": "/activities/9cc7fce5e45547909236c63cf41a6040",
+  "invalidations": [],
+  "order": null,
+  "parameters": [
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/9cc7fce5e45547909236c63cf41a6040/parameter-value/55790b7cabfa40f492959ce17d496c99",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandInput",
+        "default_value": "src_py/write_dailyweather.py",
+        "description": null,
+        "id": "/plans/7362f8011936b8dfc11cb889a39122baa057acc9/inputs/1",
+        "label": "Command Input 'src_py/write_dailyweather.py'",
+        "mapped_to": null,
+        "name": "input-1",
+        "position": 1,
+        "prefix": null
+      },
+      "path": "src_py/write_dailyweather.py"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/9cc7fce5e45547909236c63cf41a6040/parameter-value/17a767f7086047a6803bdeb14da90536",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandInput",
+        "default_value": "data/Silo/adelaide.txt",
+        "description": null,
+        "id": "/plans/7362f8011936b8dfc11cb889a39122baa057acc9/inputs/3",
+        "label": "Command Input 'data/Silo/adelaide.txt'",
+        "mapped_to": null,
+        "name": "input-3",
+        "position": 3,
+        "prefix": null
+      },
+      "path": "data/Silo/adelaide.txt"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/9cc7fce5e45547909236c63cf41a6040/parameter-value/89da5d5fdf0844469ab6ea67b1753277",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandInput",
+        "default_value": "data/MaunaLoa/weekly_in_situ_co2_mlo.csv",
+        "description": null,
+        "id": "/plans/7362f8011936b8dfc11cb889a39122baa057acc9/inputs/5",
+        "label": "Command Input 'data/MaunaLoa/weekly_in_situ_co2_mlo.csv'",
+        "mapped_to": null,
+        "name": "input-5",
+        "position": 5,
+        "prefix": null
+      },
+      "path": "data/MaunaLoa/weekly_in_situ_co2_mlo.csv"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/9cc7fce5e45547909236c63cf41a6040/parameter-value/d24475e7762b4b17919a4a4ff1c535ff",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandOutput",
+        "create_folder": true,
+        "default_value": "work/AdelaideRiver/nofreedrainage_cpcff0.2/params_f0.2/input/dailyweather.prn",
+        "description": null,
+        "id": "/plans/7362f8011936b8dfc11cb889a39122baa057acc9/outputs/7",
+        "label": "Command Output 'work/AdelaideRiver/nofreedrainage_cpcff0.2/params_f0.2/input/dailyweather.prn'",
+        "mapped_to": null,
+        "name": "o-7",
+        "position": 7,
+        "prefix": "-o "
+      },
+      "path": "work/AdelaideRiver/nofreedrainage_cpcff0.2/params_f0.2/input/dailyweather.prn"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "id": "/activities/9cc7fce5e45547909236c63cf41a6040/parameter-value/cccd84004f954dbea205fb0f09b8a70b",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandParameter",
+        "default_value": "m",
+        "description": null,
+        "id": "/plans/7362f8011936b8dfc11cb889a39122baa057acc9/parameters/2",
+        "label": "Command Parameter 'm'",
+        "name": "i-2",
+        "position": 2,
+        "prefix": "-i"
+      },
+      "value": "m"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "id": "/activities/9cc7fce5e45547909236c63cf41a6040/parameter-value/15f8be5589bc45ddb04bb7a5c62c6e62",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandParameter",
+        "default_value": "c",
+        "description": null,
+        "id": "/plans/7362f8011936b8dfc11cb889a39122baa057acc9/parameters/4",
+        "label": "Command Parameter 'c'",
+        "name": "i-4",
+        "position": 4,
+        "prefix": "-i"
+      },
+      "value": "c"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "id": "/activities/9cc7fce5e45547909236c63cf41a6040/parameter-value/19a0a2e5281e4d3d9c95257e3c0b74c8",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandParameter",
+        "default_value": "linear",
+        "description": null,
+        "id": "/plans/7362f8011936b8dfc11cb889a39122baa057acc9/parameters/6",
+        "label": "Command Parameter 'linear'",
+        "name": "p-6",
+        "position": 6,
+        "prefix": "-p "
+      },
+      "value": "linear"
+    }
+  ],
+  "started_at_time": {
+    "@type": "datetime.datetime",
+    "@value": "2019-09-12T13:48:14+02:00"
+  },
+  "usages": [
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "9e3f3a631c26a55e45fb61aab022eb7a165d7c47",
+        "id": "/entities/9e3f3a631c26a55e45fb61aab022eb7a165d7c47/src_py/write_dailyweather.py",
+        "path": "src_py/write_dailyweather.py"
+      },
+      "id": "/activities/9cc7fce5e45547909236c63cf41a6040/usages/756a38ef-c820-44c9-adc1-3f01e6780481"
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "8a47f2f56b17b58466836be778d83582d02c8601",
+        "id": "/entities/8a47f2f56b17b58466836be778d83582d02c8601/data/Silo/adelaide.txt",
+        "path": "data/Silo/adelaide.txt"
+      },
+      "id": "/activities/9cc7fce5e45547909236c63cf41a6040/usages/b71686b3-b7db-4be0-b439-a3612a8bb0a2"
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "8bf34b5c6b909789d2fce771b8ed9075b4b6679d",
+        "id": "/entities/8bf34b5c6b909789d2fce771b8ed9075b4b6679d/data/MaunaLoa/weekly_in_situ_co2_mlo.csv",
+        "path": "data/MaunaLoa/weekly_in_situ_co2_mlo.csv"
+      },
+      "id": "/activities/9cc7fce5e45547909236c63cf41a6040/usages/e9877d73-4eac-4ec2-a81f-da804bb5ddbc"
+    }
+  ]
+}

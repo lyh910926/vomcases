@@ -1,0 +1,82 @@
+{
+  "@oid": "root",
+  "@type": "BTrees.OOBTree.OOBTree",
+  "@value": [
+    [
+      [
+        [
+          "activities",
+          {
+            "@oid": "activities-index",
+            "@type": "renku.core.incubation.database.Index",
+            "attribute": "id",
+            "entries": {
+              "@oid": "activities",
+              "@reference": true,
+              "@type": "BTrees.OOBTree.OOBTree"
+            },
+            "key_type": null,
+            "name": "activities",
+            "object_type": "renku.core.models.provenance.activity.Activity"
+          },
+          "agents",
+          {
+            "@oid": "agents-index",
+            "@type": "renku.core.incubation.database.Index",
+            "attribute": "id",
+            "entries": {
+              "@oid": "agents",
+              "@reference": true,
+              "@type": "BTrees.OOBTree.OOBTree"
+            },
+            "key_type": null,
+            "name": "agents",
+            "object_type": "renku.core.models.provenance.agent.Agent"
+          },
+          "datasets",
+          {
+            "@oid": "datasets-index",
+            "@type": "renku.core.incubation.database.Index",
+            "attribute": "name",
+            "entries": {
+              "@oid": "datasets",
+              "@reference": true,
+              "@type": "BTrees.OOBTree.OOBTree"
+            },
+            "key_type": null,
+            "name": "datasets",
+            "object_type": "renku.core.models.dataset.Dataset"
+          },
+          "datasets-provenance",
+          {
+            "@oid": "datasets-provenance-index",
+            "@type": "renku.core.incubation.database.Index",
+            "attribute": "id",
+            "entries": {
+              "@oid": "datasets-provenance",
+              "@reference": true,
+              "@type": "BTrees.OOBTree.OOBTree"
+            },
+            "key_type": null,
+            "name": "datasets-provenance",
+            "object_type": "renku.core.models.dataset.Dataset"
+          },
+          "plans",
+          {
+            "@oid": "plans-index",
+            "@type": "renku.core.incubation.database.Index",
+            "attribute": "id",
+            "entries": {
+              "@oid": "plans",
+              "@reference": true,
+              "@type": "BTrees.OOBTree.OOBTree"
+            },
+            "key_type": null,
+            "name": "plans",
+            "object_type": "renku.core.models.workflow.plan.Plan"
+          }
+        ]
+      ]
+    ]
+  ]
+}

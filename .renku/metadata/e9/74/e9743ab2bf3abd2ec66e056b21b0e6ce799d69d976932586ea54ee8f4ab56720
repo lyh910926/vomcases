@@ -1,0 +1,262 @@
+{
+  "@oid": "e9743ab2bf3abd2ec66e056b21b0e6ce799d69d976932586ea54ee8f4ab56720",
+  "@type": "renku.core.models.provenance.activity.Activity",
+  "agents": [
+    {
+      "@oid": "60a49ea118cbd7a5ca13cf1acc9980bc10265df9294423eaa1e4e2899f8ba1c6",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.Person"
+    },
+    {
+      "@oid": "ad5b14ddae980f3d2427c5d3b7c9891bff45680d355bea774e80c9502271fcc7",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.SoftwareAgent"
+    }
+  ],
+  "annotations": [],
+  "association": {
+    "@type": "renku.core.models.provenance.activity.Association",
+    "agent": {
+      "@oid": "fd53466796f4091e7dca10dd073b1f0f372aefe8daeb9d3a7e8ef261a462ca18",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.SoftwareAgent"
+    },
+    "id": "/activities/4fa00f1cbe504eeb9d84f1edcb980c2c/association",
+    "plan": {
+      "@oid": "636474260fb48a6f870099f555d65047cacaabe4db22cecb5b267cd66252b484",
+      "@reference": true,
+      "@type": "renku.core.models.workflow.plan.Plan"
+    }
+  },
+  "ended_at_time": {
+    "@type": "datetime.datetime",
+    "@value": "2019-11-28T09:56:19+01:00"
+  },
+  "generations": [
+    {
+      "@type": "renku.core.models.provenance.activity.Generation",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "80df8cdcb52cbe4f29a6c9fbb61c8696cd44670b",
+        "id": "/entities/80df8cdcb52cbe4f29a6c9fbb61c8696cd44670b/work/additional_analyses/deep_soils/AdelaideRiver/freedrainage_cpcff0.6/best/input/pars.txt",
+        "path": "work/additional_analyses/deep_soils/AdelaideRiver/freedrainage_cpcff0.6/best/input/pars.txt"
+      },
+      "id": "/activities/4fa00f1cbe504eeb9d84f1edcb980c2c/generations/e7b0098f-eee5-4f93-a665-637e48f19448"
+    }
+  ],
+  "id": "/activities/4fa00f1cbe504eeb9d84f1edcb980c2c",
+  "invalidations": [],
+  "order": null,
+  "parameters": [
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/4fa00f1cbe504eeb9d84f1edcb980c2c/parameter-value/e1b8561d8c12455fbe86bed63eb40542",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandInput",
+        "default_value": "src_py/sce_best_param.py",
+        "description": null,
+        "id": "/plans/309392b7998dfb3ce57f7c31dbb62fe9c2d0e3ba/inputs/1",
+        "label": "Command Input 'src_py/sce_best_param.py'",
+        "mapped_to": null,
+        "name": "input-1",
+        "position": 1,
+        "prefix": null
+      },
+      "path": "src_py/sce_best_param.py"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/4fa00f1cbe504eeb9d84f1edcb980c2c/parameter-value/2b508edcca914b2f91aa28ccf4bc3ac2",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandInput",
+        "default_value": "data/VOM_output/additional_analyses/deep_soils/AdelaideRiver/freedrainage_cpcff0.6/sce/sce_out.txt",
+        "description": null,
+        "id": "/plans/309392b7998dfb3ce57f7c31dbb62fe9c2d0e3ba/inputs/2",
+        "label": "Command Input 'data/VOM_output/additional_analyses/deep_soils/AdelaideRiver/freedrainage_cpcff0.6/sce/sce_out.txt'",
+        "mapped_to": null,
+        "name": "i-2",
+        "position": 2,
+        "prefix": "-i "
+      },
+      "path": "data/VOM_output/additional_analyses/deep_soils/AdelaideRiver/freedrainage_cpcff0.6/sce/sce_out.txt"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/4fa00f1cbe504eeb9d84f1edcb980c2c/parameter-value/bc5aa638e09b422da3f090cffdf4c610",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandOutput",
+        "create_folder": true,
+        "default_value": "work/additional_analyses/deep_soils/AdelaideRiver/freedrainage_cpcff0.6/best/input/pars.txt",
+        "description": null,
+        "id": "/plans/309392b7998dfb3ce57f7c31dbb62fe9c2d0e3ba/outputs/3",
+        "label": "Command Output 'work/additional_analyses/deep_soils/AdelaideRiver/freedrainage_cpcff0.6/best/input/pars.txt'",
+        "mapped_to": null,
+        "name": "o-3",
+        "position": 3,
+        "prefix": "-o "
+      },
+      "path": "work/additional_analyses/deep_soils/AdelaideRiver/freedrainage_cpcff0.6/best/input/pars.txt"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "id": "/activities/4fa00f1cbe504eeb9d84f1edcb980c2c/parameter-value/7a9180b8fa89442d86c8bef4b364b6cb",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandParameter",
+        "default_value": "1",
+        "description": null,
+        "id": "/plans/309392b7998dfb3ce57f7c31dbb62fe9c2d0e3ba/parameters/10",
+        "label": "Command Parameter '1'",
+        "name": "param-10",
+        "position": 10,
+        "prefix": null
+      },
+      "value": "1"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "id": "/activities/4fa00f1cbe504eeb9d84f1edcb980c2c/parameter-value/79c2ef48bea949f9bf123df3264ab749",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandParameter",
+        "default_value": "0",
+        "description": null,
+        "id": "/plans/309392b7998dfb3ce57f7c31dbb62fe9c2d0e3ba/parameters/11",
+        "label": "Command Parameter '0'",
+        "name": "param-11",
+        "position": 11,
+        "prefix": null
+      },
+      "value": "0"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "id": "/activities/4fa00f1cbe504eeb9d84f1edcb980c2c/parameter-value/4fd52cde691a4b638fe577f800023bf2",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandParameter",
+        "default_value": "1",
+        "description": null,
+        "id": "/plans/309392b7998dfb3ce57f7c31dbb62fe9c2d0e3ba/parameters/12",
+        "label": "Command Parameter '1'",
+        "name": "param-12",
+        "position": 12,
+        "prefix": null
+      },
+      "value": "1"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "id": "/activities/4fa00f1cbe504eeb9d84f1edcb980c2c/parameter-value/fa1e0f569961406d9dc7073559f804db",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandParameter",
+        "default_value": "p",
+        "description": null,
+        "id": "/plans/309392b7998dfb3ce57f7c31dbb62fe9c2d0e3ba/parameters/4",
+        "label": "Command Parameter 'p'",
+        "name": "o-4",
+        "position": 4,
+        "prefix": "-o"
+      },
+      "value": "p"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "id": "/activities/4fa00f1cbe504eeb9d84f1edcb980c2c/parameter-value/d56c7170f50246f2a1a868c48a8883a5",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandParameter",
+        "default_value": "1",
+        "description": null,
+        "id": "/plans/309392b7998dfb3ce57f7c31dbb62fe9c2d0e3ba/parameters/5",
+        "label": "Command Parameter '1'",
+        "name": "param-5",
+        "position": 5,
+        "prefix": null
+      },
+      "value": "1"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "id": "/activities/4fa00f1cbe504eeb9d84f1edcb980c2c/parameter-value/33cd92f1a53c43d99da40ea58433570d",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandParameter",
+        "default_value": "1",
+        "description": null,
+        "id": "/plans/309392b7998dfb3ce57f7c31dbb62fe9c2d0e3ba/parameters/6",
+        "label": "Command Parameter '1'",
+        "name": "param-6",
+        "position": 6,
+        "prefix": null
+      },
+      "value": "1"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "id": "/activities/4fa00f1cbe504eeb9d84f1edcb980c2c/parameter-value/3d6c5c1fc37a472cbd1432b4855b5c36",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandParameter",
+        "default_value": "1",
+        "description": null,
+        "id": "/plans/309392b7998dfb3ce57f7c31dbb62fe9c2d0e3ba/parameters/7",
+        "label": "Command Parameter '1'",
+        "name": "param-7",
+        "position": 7,
+        "prefix": null
+      },
+      "value": "1"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "id": "/activities/4fa00f1cbe504eeb9d84f1edcb980c2c/parameter-value/7d96c8d8a517414c85a6a63ad7204c7f",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandParameter",
+        "default_value": "1",
+        "description": null,
+        "id": "/plans/309392b7998dfb3ce57f7c31dbb62fe9c2d0e3ba/parameters/8",
+        "label": "Command Parameter '1'",
+        "name": "param-8",
+        "position": 8,
+        "prefix": null
+      },
+      "value": "1"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "id": "/activities/4fa00f1cbe504eeb9d84f1edcb980c2c/parameter-value/607585cb220c4c66b2e051a3b23d3f34",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandParameter",
+        "default_value": "1",
+        "description": null,
+        "id": "/plans/309392b7998dfb3ce57f7c31dbb62fe9c2d0e3ba/parameters/9",
+        "label": "Command Parameter '1'",
+        "name": "param-9",
+        "position": 9,
+        "prefix": null
+      },
+      "value": "1"
+    }
+  ],
+  "started_at_time": {
+    "@type": "datetime.datetime",
+    "@value": "2019-11-28T10:56:17+01:00"
+  },
+  "usages": [
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "d19c5b5dee99b6a9b29753e42e17db9ec85840a9",
+        "id": "/entities/d19c5b5dee99b6a9b29753e42e17db9ec85840a9/src_py/sce_best_param.py",
+        "path": "src_py/sce_best_param.py"
+      },
+      "id": "/activities/4fa00f1cbe504eeb9d84f1edcb980c2c/usages/3c068cef-6aef-4400-914f-0f92b6a947ba"
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "a2e584013f4f9742b1b83676935e31853e8880c6",
+        "id": "/entities/a2e584013f4f9742b1b83676935e31853e8880c6/data/VOM_output/additional_analyses/deep_soils/AdelaideRiver/freedrainage_cpcff0.6/sce/sce_out.txt",
+        "path": "data/VOM_output/additional_analyses/deep_soils/AdelaideRiver/freedrainage_cpcff0.6/sce/sce_out.txt"
+      },
+      "id": "/activities/4fa00f1cbe504eeb9d84f1edcb980c2c/usages/de7514ba-4bf8-4ace-949c-7f07a5f3da2b"
+    }
+  ]
+}

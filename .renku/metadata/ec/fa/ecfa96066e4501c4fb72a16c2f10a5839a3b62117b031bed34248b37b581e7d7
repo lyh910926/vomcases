@@ -1,0 +1,199 @@
+{
+  "@oid": "ecfa96066e4501c4fb72a16c2f10a5839a3b62117b031bed34248b37b581e7d7",
+  "@type": "renku.core.models.provenance.activity.Activity",
+  "agents": [
+    {
+      "@oid": "60a49ea118cbd7a5ca13cf1acc9980bc10265df9294423eaa1e4e2899f8ba1c6",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.Person"
+    },
+    {
+      "@oid": "cb4271e996b5745f91a740ba4bc027c9288924b598fd3c1da9157abc88793098",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.SoftwareAgent"
+    }
+  ],
+  "annotations": [],
+  "association": {
+    "@type": "renku.core.models.provenance.activity.Association",
+    "agent": {
+      "@oid": "f4a0dd07d594bb6e41e4b4a212b14124f07a427b33cbc2b004c70373ccd74663",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.SoftwareAgent"
+    },
+    "id": "/activities/c33f15c89e584ffe832de3aaf8840afe/association",
+    "plan": {
+      "@oid": "25b7d3a42f528c4b67a39d122bfe604b1cdc08ebb9330a964a594211e0cba8ce",
+      "@reference": true,
+      "@type": "renku.core.models.workflow.plan.Plan"
+    }
+  },
+  "ended_at_time": {
+    "@type": "datetime.datetime",
+    "@value": "2019-07-08T13:04:36+02:00"
+  },
+  "generations": [
+    {
+      "@type": "renku.core.models.provenance.activity.Generation",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+        "id": "/entities/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391/data/ELVIS/litchfield_slopestats.txt",
+        "path": "data/ELVIS/litchfield_slopestats.txt"
+      },
+      "id": "/activities/c33f15c89e584ffe832de3aaf8840afe/generations/ba600cba-d70f-4b4d-9422-1d149535c883"
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Generation",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "da6ab015ce5203166caf1a00f8fb6f9c0e9934ab",
+        "id": "/entities/da6ab015ce5203166caf1a00f8fb6f9c0e9934ab/data/ELVIS/litchfield_area.txt",
+        "path": "data/ELVIS/litchfield_area.txt"
+      },
+      "id": "/activities/c33f15c89e584ffe832de3aaf8840afe/generations/6625724a-82a9-4319-80e3-145bf99bbfc8"
+    }
+  ],
+  "id": "/activities/c33f15c89e584ffe832de3aaf8840afe",
+  "invalidations": [],
+  "order": null,
+  "parameters": [
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/c33f15c89e584ffe832de3aaf8840afe/parameter-value/4c3760f1de254400bb9d85e2adc21342",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandInput",
+        "default_value": "src_sh/gis_analysis.sh",
+        "description": null,
+        "id": "/plans/54267ce531e9a38ed0d33b14a8a6140377823aba/inputs/1",
+        "label": "Command Input 'src_sh/gis_analysis.sh'",
+        "mapped_to": null,
+        "name": "input-1",
+        "position": 1,
+        "prefix": null
+      },
+      "path": "src_sh/gis_analysis.sh"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/c33f15c89e584ffe832de3aaf8840afe/parameter-value/5cb44df7fb69483d905dada94efb9829",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandInput",
+        "default_value": "data/ELVIS/litchfield.tif",
+        "description": null,
+        "id": "/plans/54267ce531e9a38ed0d33b14a8a6140377823aba/inputs/2",
+        "label": "Command Input 'data/ELVIS/litchfield.tif'",
+        "mapped_to": null,
+        "name": "input-2",
+        "position": 2,
+        "prefix": null
+      },
+      "path": "data/ELVIS/litchfield.tif"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/c33f15c89e584ffe832de3aaf8840afe/parameter-value/7bc07d34c0744fdba00d931cd4cba69d",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandOutput",
+        "create_folder": true,
+        "default_value": "data/ELVIS/litchfield_slopestats.txt",
+        "description": null,
+        "id": "/plans/54267ce531e9a38ed0d33b14a8a6140377823aba/outputs/6",
+        "label": "Command Output 'data/ELVIS/litchfield_slopestats.txt'",
+        "mapped_to": null,
+        "name": "output-6",
+        "position": 6,
+        "prefix": null
+      },
+      "path": "data/ELVIS/litchfield_slopestats.txt"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "id": "/activities/c33f15c89e584ffe832de3aaf8840afe/parameter-value/deb8c621a4d54829a182e98bdec5d0f1",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandOutput",
+        "create_folder": true,
+        "default_value": "data/ELVIS/litchfield_area.txt",
+        "description": null,
+        "id": "/plans/54267ce531e9a38ed0d33b14a8a6140377823aba/outputs/7",
+        "label": "Command Output 'data/ELVIS/litchfield_area.txt'",
+        "mapped_to": null,
+        "name": "output-7",
+        "position": 7,
+        "prefix": null
+      },
+      "path": "data/ELVIS/litchfield_area.txt"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "id": "/activities/c33f15c89e584ffe832de3aaf8840afe/parameter-value/e5c578f3ade9442394190c1fd69875a8",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandParameter",
+        "default_value": "130.795565681",
+        "description": null,
+        "id": "/plans/54267ce531e9a38ed0d33b14a8a6140377823aba/parameters/3",
+        "label": "Command Parameter '130.795565681'",
+        "name": "param-3",
+        "position": 3,
+        "prefix": null
+      },
+      "value": "130.795565681"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "id": "/activities/c33f15c89e584ffe832de3aaf8840afe/parameter-value/0a6f8bfd5f4f4d5692b64cc4452d5fed",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandParameter",
+        "default_value": "3.179210211",
+        "description": null,
+        "id": "/plans/54267ce531e9a38ed0d33b14a8a6140377823aba/parameters/4",
+        "label": "Command Parameter '3.179210211'",
+        "name": "1-4",
+        "position": 4,
+        "prefix": "-1"
+      },
+      "value": "3.179210211"
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "id": "/activities/c33f15c89e584ffe832de3aaf8840afe/parameter-value/64c9fd1f75d24e6fa178e8b8e52e706e",
+      "parameter": {
+        "@type": "renku.core.models.workflow.parameter.CommandParameter",
+        "default_value": "data/ELVIS/litchfield_demstats.txt",
+        "description": null,
+        "id": "/plans/54267ce531e9a38ed0d33b14a8a6140377823aba/parameters/5",
+        "label": "Command Parameter 'data/ELVIS/litchfield_demstats.txt'",
+        "name": "param-5",
+        "position": 5,
+        "prefix": null
+      },
+      "value": "data/ELVIS/litchfield_demstats.txt"
+    }
+  ],
+  "started_at_time": {
+    "@type": "datetime.datetime",
+    "@value": "2019-07-08T15:04:34+02:00"
+  },
+  "usages": [
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "52dc07e486a364f83a04de9afcb09282dd39bb4b",
+        "id": "/entities/52dc07e486a364f83a04de9afcb09282dd39bb4b/src_sh/gis_analysis.sh",
+        "path": "src_sh/gis_analysis.sh"
+      },
+      "id": "/activities/c33f15c89e584ffe832de3aaf8840afe/usages/37af5f3f-3bff-4990-8d8e-9939c7ab5919"
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "entity": {
+        "@type": "renku.core.models.entity.Entity",
+        "checksum": "61851e676e0bde0f5eefbd27e381bc31921bfe9c",
+        "id": "/entities/61851e676e0bde0f5eefbd27e381bc31921bfe9c/data/ELVIS/litchfield.tif",
+        "path": "data/ELVIS/litchfield.tif"
+      },
+      "id": "/activities/c33f15c89e584ffe832de3aaf8840afe/usages/b7c685c3-8dcc-428b-a967-af74b22260e6"
+    }
+  ]
+}
