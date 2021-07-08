@@ -1,0 +1,244 @@
+{
+  "@oid": "8ca4e60207b01ed635cd3689659cdc6372b4e2f83ec51d4c3ddccae15c6522b2",
+  "@type": "renku.core.models.provenance.activity.Activity",
+  "agents": [
+    {
+      "@oid": "60a49ea118cbd7a5ca13cf1acc9980bc10265df9294423eaa1e4e2899f8ba1c6",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.Person"
+    },
+    {
+      "@oid": "cb4271e996b5745f91a740ba4bc027c9288924b598fd3c1da9157abc88793098",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.SoftwareAgent"
+    }
+  ],
+  "annotations": [],
+  "association": {
+    "@type": "renku.core.models.provenance.activity.Association",
+    "@value": {
+      "agent": {
+        "@oid": "7be91c7bd92e37c170e2cdbe3f3a18c0e70223fba69a49061102e2e5052e8d32",
+        "@reference": true,
+        "@type": "renku.core.models.provenance.agent.SoftwareAgent"
+      },
+      "id": "/activities/b1ae1063a045416286f7cc9eb62b1c14/association",
+      "plan": {
+        "@oid": "2eac5d0eceba9c0b9a1a7d5430f7883c660e2f9a83fb77c74cb7e4400c19feac",
+        "@reference": true,
+        "@type": "renku.core.models.workflow.plan.Plan"
+      }
+    }
+  },
+  "ended_at_time": {
+    "@type": "datetime.datetime",
+    "@value": "2019-09-12T11:56:36+02:00"
+  },
+  "generations": [
+    {
+      "@type": "renku.core.models.provenance.activity.Generation",
+      "@value": {
+        "entity": {
+          "@type": "renku.core.models.entity.Entity",
+          "@value": {
+            "checksum": "149e8d1a43b9840cd860b18bf59c013f828b9702",
+            "id": "/entities/149e8d1a43b9840cd860b18bf59c013f828b9702/work/DalyUncleared/freedrainage_cpcff2.0/params_nf2.0/input/dailyweather.prn",
+            "path": "work/DalyUncleared/freedrainage_cpcff2.0/params_nf2.0/input/dailyweather.prn"
+          }
+        },
+        "id": "/activities/b1ae1063a045416286f7cc9eb62b1c14/generations/fc72ce1d-6ee2-423f-aed5-21fd86472bdb"
+      }
+    }
+  ],
+  "id": "/activities/b1ae1063a045416286f7cc9eb62b1c14",
+  "invalidations": [],
+  "order": null,
+  "parameters": [
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "@value": {
+        "id": "/activities/b1ae1063a045416286f7cc9eb62b1c14/parameter-value/4ca1a17ff6fa49dfbeb705c2274fa704",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandInput",
+          "@value": {
+            "default_value": "src_py/write_dailyweather.py",
+            "description": null,
+            "id": "/plans/f32733299844ec8f9a0c7c4c1b302394a3a9c82e/inputs/1",
+            "label": "Command Input 'src_py/write_dailyweather.py'",
+            "mapped_to": null,
+            "name": "input-1",
+            "position": 1,
+            "prefix": null
+          }
+        },
+        "path": "src_py/write_dailyweather.py"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "@value": {
+        "id": "/activities/b1ae1063a045416286f7cc9eb62b1c14/parameter-value/85102c6fc0784a6697ab1b1743015423",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandInput",
+          "@value": {
+            "default_value": "data/Silo/daly.txt",
+            "description": null,
+            "id": "/plans/f32733299844ec8f9a0c7c4c1b302394a3a9c82e/inputs/3",
+            "label": "Command Input 'data/Silo/daly.txt'",
+            "mapped_to": null,
+            "name": "input-3",
+            "position": 3,
+            "prefix": null
+          }
+        },
+        "path": "data/Silo/daly.txt"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "@value": {
+        "id": "/activities/b1ae1063a045416286f7cc9eb62b1c14/parameter-value/997a0d8ad102402ba1ef8d08802a7a0c",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandInput",
+          "@value": {
+            "default_value": "data/MaunaLoa/weekly_in_situ_co2_mlo.csv",
+            "description": null,
+            "id": "/plans/f32733299844ec8f9a0c7c4c1b302394a3a9c82e/inputs/5",
+            "label": "Command Input 'data/MaunaLoa/weekly_in_situ_co2_mlo.csv'",
+            "mapped_to": null,
+            "name": "input-5",
+            "position": 5,
+            "prefix": null
+          }
+        },
+        "path": "data/MaunaLoa/weekly_in_situ_co2_mlo.csv"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "@value": {
+        "id": "/activities/b1ae1063a045416286f7cc9eb62b1c14/parameter-value/33f780532dac4dd8a4f318422acb8241",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandOutput",
+          "@value": {
+            "create_folder": true,
+            "default_value": "work/DalyUncleared/freedrainage_cpcff2.0/params_nf2.0/input/dailyweather.prn",
+            "description": null,
+            "id": "/plans/f32733299844ec8f9a0c7c4c1b302394a3a9c82e/outputs/7",
+            "label": "Command Output 'work/DalyUncleared/freedrainage_cpcff2.0/params_nf2.0/input/dailyweather.prn'",
+            "mapped_to": null,
+            "name": "o-7",
+            "position": 7,
+            "prefix": "-o "
+          }
+        },
+        "path": "work/DalyUncleared/freedrainage_cpcff2.0/params_nf2.0/input/dailyweather.prn"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "@value": {
+        "id": "/activities/b1ae1063a045416286f7cc9eb62b1c14/parameter-value/87dc1a5b3fca46b58d6eb182842742bd",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandParameter",
+          "@value": {
+            "default_value": "m",
+            "description": null,
+            "id": "/plans/f32733299844ec8f9a0c7c4c1b302394a3a9c82e/parameters/2",
+            "label": "Command Parameter 'm'",
+            "name": "i-2",
+            "position": 2,
+            "prefix": "-i"
+          }
+        },
+        "value": "m"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "@value": {
+        "id": "/activities/b1ae1063a045416286f7cc9eb62b1c14/parameter-value/3ccf84cea94b40dda267d60687b22c24",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandParameter",
+          "@value": {
+            "default_value": "c",
+            "description": null,
+            "id": "/plans/f32733299844ec8f9a0c7c4c1b302394a3a9c82e/parameters/4",
+            "label": "Command Parameter 'c'",
+            "name": "i-4",
+            "position": 4,
+            "prefix": "-i"
+          }
+        },
+        "value": "c"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "@value": {
+        "id": "/activities/b1ae1063a045416286f7cc9eb62b1c14/parameter-value/4ea68d2fb74840eaab7e5b10b5b89d71",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandParameter",
+          "@value": {
+            "default_value": "linear",
+            "description": null,
+            "id": "/plans/f32733299844ec8f9a0c7c4c1b302394a3a9c82e/parameters/6",
+            "label": "Command Parameter 'linear'",
+            "name": "p-6",
+            "position": 6,
+            "prefix": "-p "
+          }
+        },
+        "value": "linear"
+      }
+    }
+  ],
+  "started_at_time": {
+    "@type": "datetime.datetime",
+    "@value": "2019-09-12T13:56:27+02:00"
+  },
+  "usages": [
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "@value": {
+        "entity": {
+          "@type": "renku.core.models.entity.Entity",
+          "@value": {
+            "checksum": "9e3f3a631c26a55e45fb61aab022eb7a165d7c47",
+            "id": "/entities/9e3f3a631c26a55e45fb61aab022eb7a165d7c47/src_py/write_dailyweather.py",
+            "path": "src_py/write_dailyweather.py"
+          }
+        },
+        "id": "/activities/b1ae1063a045416286f7cc9eb62b1c14/usages/3fb4add6-01ba-48b8-b307-22a755f202c9"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "@value": {
+        "entity": {
+          "@type": "renku.core.models.entity.Entity",
+          "@value": {
+            "checksum": "7980b54d0005e8f0e2ac4f8fcd95ffb2fb2380e4",
+            "id": "/entities/7980b54d0005e8f0e2ac4f8fcd95ffb2fb2380e4/data/Silo/daly.txt",
+            "path": "data/Silo/daly.txt"
+          }
+        },
+        "id": "/activities/b1ae1063a045416286f7cc9eb62b1c14/usages/449f7cb7-97d0-4ada-8859-51831ee0629f"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "@value": {
+        "entity": {
+          "@type": "renku.core.models.entity.Entity",
+          "@value": {
+            "checksum": "8bf34b5c6b909789d2fce771b8ed9075b4b6679d",
+            "id": "/entities/8bf34b5c6b909789d2fce771b8ed9075b4b6679d/data/MaunaLoa/weekly_in_situ_co2_mlo.csv",
+            "path": "data/MaunaLoa/weekly_in_situ_co2_mlo.csv"
+          }
+        },
+        "id": "/activities/b1ae1063a045416286f7cc9eb62b1c14/usages/c3901b8e-72d1-4bb5-8a46-afd474350ab2"
+      }
+    }
+  ]
+}

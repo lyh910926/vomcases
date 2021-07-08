@@ -1,0 +1,290 @@
+{
+  "@oid": "529ac4ece9752b10dc997408d5311fd52188620ef4a46204563e220045aaef68",
+  "@type": "renku.core.models.provenance.activity.Activity",
+  "agents": [
+    {
+      "@oid": "60a49ea118cbd7a5ca13cf1acc9980bc10265df9294423eaa1e4e2899f8ba1c6",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.Person"
+    },
+    {
+      "@oid": "ad5b14ddae980f3d2427c5d3b7c9891bff45680d355bea774e80c9502271fcc7",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.SoftwareAgent"
+    }
+  ],
+  "annotations": [],
+  "association": {
+    "@type": "renku.core.models.provenance.activity.Association",
+    "@value": {
+      "agent": {
+        "@oid": "c257844a080fa864283c19a04692081e1222a8ae27a783f47f84970453a7a3ca",
+        "@reference": true,
+        "@type": "renku.core.models.provenance.agent.SoftwareAgent"
+      },
+      "id": "/activities/148e5d1fc9da49229cbfad371abe6e55/association",
+      "plan": {
+        "@oid": "15b0026802f41108859139a013b2550a9e0464064df09fcdcbbd82876f180940",
+        "@reference": true,
+        "@type": "renku.core.models.workflow.plan.Plan"
+      }
+    }
+  },
+  "ended_at_time": {
+    "@type": "datetime.datetime",
+    "@value": "2019-10-02T06:11:02+02:00"
+  },
+  "generations": [
+    {
+      "@type": "renku.core.models.provenance.activity.Generation",
+      "@value": {
+        "entity": {
+          "@type": "renku.core.models.entity.Collection",
+          "@value": {
+            "checksum": "d9536352769fc366b009c0334d68b3d9f17c2810",
+            "id": "/entities/d9536352769fc366b009c0334d68b3d9f17c2810/work/HowardSprings/freedrainage_cpcff1.0/input",
+            "path": "work/HowardSprings/freedrainage_cpcff1.0/input"
+          }
+        },
+        "id": "/activities/148e5d1fc9da49229cbfad371abe6e55/generations/db28afad-7a16-44d5-9001-df028f4eb669"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Generation",
+      "@value": {
+        "entity": {
+          "@type": "renku.core.models.entity.Collection",
+          "@value": {
+            "checksum": "5c650a21a491d5bd25be37d8f2181019fd97534c",
+            "id": "/entities/5c650a21a491d5bd25be37d8f2181019fd97534c/data/VOM_output/HowardSprings/freedrainage_cpcff1.0/sce",
+            "path": "data/VOM_output/HowardSprings/freedrainage_cpcff1.0/sce"
+          }
+        },
+        "id": "/activities/148e5d1fc9da49229cbfad371abe6e55/generations/16c2ca39-4eb0-454c-acce-93a0065de4b2"
+      }
+    }
+  ],
+  "id": "/activities/148e5d1fc9da49229cbfad371abe6e55",
+  "invalidations": [],
+  "order": null,
+  "parameters": [
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "@value": {
+        "id": "/activities/148e5d1fc9da49229cbfad371abe6e55/parameter-value/dc6cb93473024418bd9a20b5df7f10e4",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandInput",
+          "@value": {
+            "default_value": "src_sh/run_vom.sh",
+            "description": null,
+            "id": "/plans/a1b9b34b641e6171f72942a1859fd3d3125ba054/inputs/1",
+            "label": "Command Input 'src_sh/run_vom.sh'",
+            "mapped_to": null,
+            "name": "input-1",
+            "position": 1,
+            "prefix": null
+          }
+        },
+        "path": "src_sh/run_vom.sh"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "@value": {
+        "id": "/activities/148e5d1fc9da49229cbfad371abe6e55/parameter-value/78c7eb860cf04a0ea0d2da887ee69049",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandInput",
+          "@value": {
+            "default_value": "src/VOM/VOM_Fortran",
+            "description": null,
+            "id": "/plans/a1b9b34b641e6171f72942a1859fd3d3125ba054/inputs/2",
+            "label": "Command Input 'src/VOM/VOM_Fortran'",
+            "mapped_to": null,
+            "name": "input-2",
+            "position": 2,
+            "prefix": null
+          }
+        },
+        "path": "src/VOM/VOM_Fortran"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "@value": {
+        "id": "/activities/148e5d1fc9da49229cbfad371abe6e55/parameter-value/5f52e42cd01e4cd3b5a31824254a0315",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandInput",
+          "@value": {
+            "default_value": "data/VOM_input/HowardSprings/dailyweather.prn",
+            "description": null,
+            "id": "/plans/a1b9b34b641e6171f72942a1859fd3d3125ba054/inputs/4",
+            "label": "Command Input 'data/VOM_input/HowardSprings/dailyweather.prn'",
+            "mapped_to": null,
+            "name": "input-4",
+            "position": 4,
+            "prefix": null
+          }
+        },
+        "path": "data/VOM_input/HowardSprings/dailyweather.prn"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "@value": {
+        "id": "/activities/148e5d1fc9da49229cbfad371abe6e55/parameter-value/dedb75d13472486fb68ff0fb5a0f7b8e",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandInput",
+          "@value": {
+            "default_value": "data/VOM_soils/HowardSprings/soilprofile.par",
+            "description": null,
+            "id": "/plans/a1b9b34b641e6171f72942a1859fd3d3125ba054/inputs/5",
+            "label": "Command Input 'data/VOM_soils/HowardSprings/soilprofile.par'",
+            "mapped_to": null,
+            "name": "input-5",
+            "position": 5,
+            "prefix": null
+          }
+        },
+        "path": "data/VOM_soils/HowardSprings/soilprofile.par"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "@value": {
+        "id": "/activities/148e5d1fc9da49229cbfad371abe6e55/parameter-value/2d0da9dc67484e85afc8332d3e964a93",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandInput",
+          "@value": {
+            "default_value": "work/HowardSprings/freedrainage_cpcff1.0/vom_namelist",
+            "description": null,
+            "id": "/plans/a1b9b34b641e6171f72942a1859fd3d3125ba054/inputs/6",
+            "label": "Command Input 'work/HowardSprings/freedrainage_cpcff1.0/vom_namelist'",
+            "mapped_to": null,
+            "name": "input-6",
+            "position": 6,
+            "prefix": null
+          }
+        },
+        "path": "work/HowardSprings/freedrainage_cpcff1.0/vom_namelist"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "@value": {
+        "id": "/activities/148e5d1fc9da49229cbfad371abe6e55/parameter-value/20d3ecd289534e539afbfe77e1716b22",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandOutput",
+          "@value": {
+            "create_folder": false,
+            "default_value": "work/HowardSprings/freedrainage_cpcff1.0/input",
+            "description": null,
+            "id": "/plans/a1b9b34b641e6171f72942a1859fd3d3125ba054/outputs/3",
+            "label": "Command Output 'work/HowardSprings/freedrainage_cpcff1.0/input'",
+            "mapped_to": null,
+            "name": "output-3",
+            "position": 3,
+            "prefix": null
+          }
+        },
+        "path": "work/HowardSprings/freedrainage_cpcff1.0/input"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "@value": {
+        "id": "/activities/148e5d1fc9da49229cbfad371abe6e55/parameter-value/cefa8c066765454ca49819a965d3602b",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandOutput",
+          "@value": {
+            "create_folder": false,
+            "default_value": "data/VOM_output/HowardSprings/freedrainage_cpcff1.0/sce",
+            "description": null,
+            "id": "/plans/a1b9b34b641e6171f72942a1859fd3d3125ba054/outputs/7",
+            "label": "Command Output 'data/VOM_output/HowardSprings/freedrainage_cpcff1.0/sce'",
+            "mapped_to": null,
+            "name": "output-7",
+            "position": 7,
+            "prefix": null
+          }
+        },
+        "path": "data/VOM_output/HowardSprings/freedrainage_cpcff1.0/sce"
+      }
+    }
+  ],
+  "started_at_time": {
+    "@type": "datetime.datetime",
+    "@value": "2019-10-01T16:10:35+02:00"
+  },
+  "usages": [
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "@value": {
+        "entity": {
+          "@type": "renku.core.models.entity.Entity",
+          "@value": {
+            "checksum": "4eab7b699c2747d74cb3c9d0a604b36e7e2aed50",
+            "id": "/entities/4eab7b699c2747d74cb3c9d0a604b36e7e2aed50/src_sh/run_vom.sh",
+            "path": "src_sh/run_vom.sh"
+          }
+        },
+        "id": "/activities/148e5d1fc9da49229cbfad371abe6e55/usages/166279b4-36ee-466c-8292-22ef2819c679"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "@value": {
+        "entity": {
+          "@type": "renku.core.models.entity.Collection",
+          "@value": {
+            "checksum": "583b64b2342da6ff165bbe8cd9790e2ea08d52bf",
+            "id": "/entities/583b64b2342da6ff165bbe8cd9790e2ea08d52bf/src/VOM/VOM_Fortran",
+            "path": "src/VOM/VOM_Fortran"
+          }
+        },
+        "id": "/activities/148e5d1fc9da49229cbfad371abe6e55/usages/5552cde0-a9a3-44d6-9ff4-f094326ff3c2"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "@value": {
+        "entity": {
+          "@type": "renku.core.models.entity.Entity",
+          "@value": {
+            "checksum": "59cf2210bee3e71bf536cf834f5378663e03408e",
+            "id": "/entities/59cf2210bee3e71bf536cf834f5378663e03408e/data/VOM_input/HowardSprings/dailyweather.prn",
+            "path": "data/VOM_input/HowardSprings/dailyweather.prn"
+          }
+        },
+        "id": "/activities/148e5d1fc9da49229cbfad371abe6e55/usages/b26daf52-8d0b-449c-9712-03a0bb5cb988"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "@value": {
+        "entity": {
+          "@type": "renku.core.models.entity.Entity",
+          "@value": {
+            "checksum": "5d29cfbd680a725db8544366ad3dff12d2a140bf",
+            "id": "/entities/5d29cfbd680a725db8544366ad3dff12d2a140bf/data/VOM_soils/HowardSprings/soilprofile.par",
+            "path": "data/VOM_soils/HowardSprings/soilprofile.par"
+          }
+        },
+        "id": "/activities/148e5d1fc9da49229cbfad371abe6e55/usages/c31bb0a8-b707-44f2-bc81-3fb4389dbcf5"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "@value": {
+        "entity": {
+          "@type": "renku.core.models.entity.Entity",
+          "@value": {
+            "checksum": "0fbaf5a012c055938aaffc154a8d496847d9c109",
+            "id": "/entities/0fbaf5a012c055938aaffc154a8d496847d9c109/work/HowardSprings/freedrainage_cpcff1.0/vom_namelist",
+            "path": "work/HowardSprings/freedrainage_cpcff1.0/vom_namelist"
+          }
+        },
+        "id": "/activities/148e5d1fc9da49229cbfad371abe6e55/usages/9b61752d-6f93-416d-9d8f-bc12bf72a19e"
+      }
+    }
+  ]
+}

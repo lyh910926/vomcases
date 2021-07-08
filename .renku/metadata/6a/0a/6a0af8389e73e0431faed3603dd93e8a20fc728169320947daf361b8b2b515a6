@@ -1,0 +1,131 @@
+{
+  "@oid": "6a0af8389e73e0431faed3603dd93e8a20fc728169320947daf361b8b2b515a6",
+  "@type": "renku.core.models.provenance.activity.Activity",
+  "agents": [
+    {
+      "@oid": "60a49ea118cbd7a5ca13cf1acc9980bc10265df9294423eaa1e4e2899f8ba1c6",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.Person"
+    },
+    {
+      "@oid": "cb4271e996b5745f91a740ba4bc027c9288924b598fd3c1da9157abc88793098",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.SoftwareAgent"
+    }
+  ],
+  "annotations": [],
+  "association": {
+    "@type": "renku.core.models.provenance.activity.Association",
+    "@value": {
+      "agent": {
+        "@oid": "7be91c7bd92e37c170e2cdbe3f3a18c0e70223fba69a49061102e2e5052e8d32",
+        "@reference": true,
+        "@type": "renku.core.models.provenance.agent.SoftwareAgent"
+      },
+      "id": "/activities/66b90561260d4295af9d5aee6820141d/association",
+      "plan": {
+        "@oid": "78cc33c87617b3b4b89a4d22cf97c1885b3665c59aa734319e785f725335abe9",
+        "@reference": true,
+        "@type": "renku.core.models.workflow.plan.Plan"
+      }
+    }
+  },
+  "ended_at_time": {
+    "@type": "datetime.datetime",
+    "@value": "2019-07-26T11:52:39+02:00"
+  },
+  "generations": [
+    {
+      "@type": "renku.core.models.provenance.activity.Generation",
+      "@value": {
+        "entity": {
+          "@type": "renku.core.models.entity.Entity",
+          "@value": {
+            "checksum": "e806718968ee4c6038c6a70cac0bd8dbd2ef83eb",
+            "id": "/entities/e806718968ee4c6038c6a70cac0bd8dbd2ef83eb/wc_adelaide",
+            "path": "wc_adelaide"
+          }
+        },
+        "id": "/activities/66b90561260d4295af9d5aee6820141d/generations/c7b75ddc-3a90-42ad-be8d-2d37b43e25fb"
+      }
+    }
+  ],
+  "id": "/activities/66b90561260d4295af9d5aee6820141d",
+  "invalidations": [],
+  "order": null,
+  "parameters": [
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "@value": {
+        "id": "/activities/66b90561260d4295af9d5aee6820141d/parameter-value/93bafc0c2af34a49b5d6a8f979f55347",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandInput",
+          "@value": {
+            "default_value": "data/Silo/adelaide.txt",
+            "description": null,
+            "id": "/plans/60ac014512e1214318d844e73669b593952bfee4/inputs/stdin",
+            "label": "Command Input 'data/Silo/adelaide.txt'",
+            "mapped_to": {
+              "@type": "renku.core.models.workflow.parameter.MappedIOStream",
+              "@value": {
+                "id": "/iostreams/stdin",
+                "stream_type": "stdin"
+              }
+            },
+            "name": "input-c4c4",
+            "position": null,
+            "prefix": null
+          }
+        },
+        "path": "data/Silo/adelaide.txt"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "@value": {
+        "id": "/activities/66b90561260d4295af9d5aee6820141d/parameter-value/81fdb68eb18246c1bd7747c213f34611",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandOutput",
+          "@value": {
+            "create_folder": false,
+            "default_value": "wc_adelaide",
+            "description": null,
+            "id": "/plans/60ac014512e1214318d844e73669b593952bfee4/outputs/stdout",
+            "label": "Command Output 'wc_adelaide'",
+            "mapped_to": {
+              "@type": "renku.core.models.workflow.parameter.MappedIOStream",
+              "@value": {
+                "id": "/iostreams/stdout",
+                "stream_type": "stdout"
+              }
+            },
+            "name": "output-367e",
+            "position": null,
+            "prefix": null
+          }
+        },
+        "path": "wc_adelaide"
+      }
+    }
+  ],
+  "started_at_time": {
+    "@type": "datetime.datetime",
+    "@value": "2019-07-26T13:52:38+02:00"
+  },
+  "usages": [
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "@value": {
+        "entity": {
+          "@type": "renku.core.models.entity.Entity",
+          "@value": {
+            "checksum": "8a47f2f56b17b58466836be778d83582d02c8601",
+            "id": "/entities/8a47f2f56b17b58466836be778d83582d02c8601/data/Silo/adelaide.txt",
+            "path": "data/Silo/adelaide.txt"
+          }
+        },
+        "id": "/activities/66b90561260d4295af9d5aee6820141d/usages/758c69ba-34a5-43a1-86eb-5bb85cdabc01"
+      }
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "@oid": "951f7598c775ff4ec72d09717b97e63e14b64366c7bb2d05d23d63c1695fe3db",
+  "@type": "renku.core.models.provenance.activity.Activity",
+  "agents": [
+    {
+      "@oid": "60a49ea118cbd7a5ca13cf1acc9980bc10265df9294423eaa1e4e2899f8ba1c6",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.Person"
+    },
+    {
+      "@oid": "5d740858661a3056f610bfd588ede9590cfed9c5f2c1112798060416000f4d53",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.SoftwareAgent"
+    }
+  ],
+  "annotations": [],
+  "association": {
+    "@type": "renku.core.models.provenance.activity.Association",
+    "@value": {
+      "agent": {
+        "@oid": "b97a991a63f6f1c0953b3b3dd4558d4724b3dc9000f16aa3b7d020c5fbb8196a",
+        "@reference": true,
+        "@type": "renku.core.models.provenance.agent.SoftwareAgent"
+      },
+      "id": "/activities/fb379adc1ce142f1ac4f3c606c2a7f02/association",
+      "plan": {
+        "@oid": "0dfe07c5c7a1a6935fed655dbc55b48d9b5391712f56af376a469cc7c6537eb5",
+        "@reference": true,
+        "@type": "renku.core.models.workflow.plan.Plan"
+      }
+    }
+  },
+  "ended_at_time": {
+    "@type": "datetime.datetime",
+    "@value": "2020-03-02T09:44:19+01:00"
+  },
+  "generations": [
+    {
+      "@type": "renku.core.models.provenance.activity.Generation",
+      "@value": {
+        "entity": {
+          "@type": "renku.core.models.entity.Collection",
+          "@value": {
+            "checksum": "d844995d0fe74ae5e7c3cec0bd8f7c5355bc91ed",
+            "id": "/entities/d844995d0fe74ae5e7c3cec0bd8f7c5355bc91ed/data/SavMIP_extracted",
+            "path": "data/SavMIP_extracted"
+          }
+        },
+        "id": "/activities/fb379adc1ce142f1ac4f3c606c2a7f02/generations/6a995a0c-c358-4ba1-92b7-fa2a4475ac69"
+      }
+    }
+  ],
+  "id": "/activities/fb379adc1ce142f1ac4f3c606c2a7f02",
+  "invalidations": [],
+  "order": null,
+  "parameters": [
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "@value": {
+        "id": "/activities/fb379adc1ce142f1ac4f3c606c2a7f02/parameter-value/47ab92f6a3dd4022a9e0674aecacda61",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandInput",
+          "@value": {
+            "default_value": "data/data_from_a_model_inter/SavMIP.zip",
+            "description": null,
+            "id": "/plans/91d194001498ae07cee309865f37280bd5ca81ba/inputs/1",
+            "label": "Command Input 'data/data_from_a_model_inter/SavMIP.zip'",
+            "mapped_to": null,
+            "name": "input-1",
+            "position": 1,
+            "prefix": null
+          }
+        },
+        "path": "data/data_from_a_model_inter/SavMIP.zip"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "@value": {
+        "id": "/activities/fb379adc1ce142f1ac4f3c606c2a7f02/parameter-value/9c43b279904d41d0890ee4ab7a4cba4d",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandOutput",
+          "@value": {
+            "create_folder": true,
+            "default_value": "data/SavMIP_extracted",
+            "description": null,
+            "id": "/plans/91d194001498ae07cee309865f37280bd5ca81ba/outputs/2",
+            "label": "Command Output 'data/SavMIP_extracted'",
+            "mapped_to": null,
+            "name": "d-2",
+            "position": 2,
+            "prefix": "-d "
+          }
+        },
+        "path": "data/SavMIP_extracted"
+      }
+    }
+  ],
+  "started_at_time": {
+    "@type": "datetime.datetime",
+    "@value": "2020-03-02T09:44:19+01:00"
+  },
+  "usages": [
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "@value": {
+        "entity": {
+          "@type": "renku.core.models.entity.Entity",
+          "@value": {
+            "checksum": "227119443942375c14173d140f1efba855b5a3fb",
+            "id": "/entities/227119443942375c14173d140f1efba855b5a3fb/data/data_from_a_model_inter/SavMIP.zip",
+            "path": "data/data_from_a_model_inter/SavMIP.zip"
+          }
+        },
+        "id": "/activities/fb379adc1ce142f1ac4f3c606c2a7f02/usages/a3267e22-f2a1-4b00-a440-e84d0fa4474b"
+      }
+    }
+  ]
+}

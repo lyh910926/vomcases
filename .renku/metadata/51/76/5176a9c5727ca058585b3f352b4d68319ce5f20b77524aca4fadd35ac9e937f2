@@ -1,0 +1,290 @@
+{
+  "@oid": "5176a9c5727ca058585b3f352b4d68319ce5f20b77524aca4fadd35ac9e937f2",
+  "@type": "renku.core.models.provenance.activity.Activity",
+  "agents": [
+    {
+      "@oid": "60a49ea118cbd7a5ca13cf1acc9980bc10265df9294423eaa1e4e2899f8ba1c6",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.Person"
+    },
+    {
+      "@oid": "ad5b14ddae980f3d2427c5d3b7c9891bff45680d355bea774e80c9502271fcc7",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.SoftwareAgent"
+    }
+  ],
+  "annotations": [],
+  "association": {
+    "@type": "renku.core.models.provenance.activity.Association",
+    "@value": {
+      "agent": {
+        "@oid": "c257844a080fa864283c19a04692081e1222a8ae27a783f47f84970453a7a3ca",
+        "@reference": true,
+        "@type": "renku.core.models.provenance.agent.SoftwareAgent"
+      },
+      "id": "/activities/ceb6946af09648dca21062f850469324/association",
+      "plan": {
+        "@oid": "1230ff57c4e5453ecb66dfe3ada6852bd0fa675480189c228f46eeafaf82f87f",
+        "@reference": true,
+        "@type": "renku.core.models.workflow.plan.Plan"
+      }
+    }
+  },
+  "ended_at_time": {
+    "@type": "datetime.datetime",
+    "@value": "2019-12-02T22:16:20+01:00"
+  },
+  "generations": [
+    {
+      "@type": "renku.core.models.provenance.activity.Generation",
+      "@value": {
+        "entity": {
+          "@type": "renku.core.models.entity.Collection",
+          "@value": {
+            "checksum": "4d9a2aaceed201da6f899470f72f2008162aaf5f",
+            "id": "/entities/4d9a2aaceed201da6f899470f72f2008162aaf5f/work/additional_analyses/deep_soils/Litchfield/freedrainage_cpcff0.8/input",
+            "path": "work/additional_analyses/deep_soils/Litchfield/freedrainage_cpcff0.8/input"
+          }
+        },
+        "id": "/activities/ceb6946af09648dca21062f850469324/generations/aae0d654-3278-46d9-b7b8-a34b8d662d47"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Generation",
+      "@value": {
+        "entity": {
+          "@type": "renku.core.models.entity.Entity",
+          "@value": {
+            "checksum": "917b0f0b2886b6ebaee45d796a3775aded41fb71",
+            "id": "/entities/917b0f0b2886b6ebaee45d796a3775aded41fb71/data/VOM_output/additional_analyses/deep_soils/Litchfield/freedrainage_cpcff0.8/sce",
+            "path": "data/VOM_output/additional_analyses/deep_soils/Litchfield/freedrainage_cpcff0.8/sce"
+          }
+        },
+        "id": "/activities/ceb6946af09648dca21062f850469324/generations/e817342c-c1ca-4be8-9a10-d89e406dc772"
+      }
+    }
+  ],
+  "id": "/activities/ceb6946af09648dca21062f850469324",
+  "invalidations": [],
+  "order": null,
+  "parameters": [
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "@value": {
+        "id": "/activities/ceb6946af09648dca21062f850469324/parameter-value/5d6dacf1d5c14b87b8b338894f30a700",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandInput",
+          "@value": {
+            "default_value": "src_sh/run_vom.sh",
+            "description": null,
+            "id": "/plans/87b9997b95327096126d79e8628f98878112f118/inputs/1",
+            "label": "Command Input 'src_sh/run_vom.sh'",
+            "mapped_to": null,
+            "name": "input-1",
+            "position": 1,
+            "prefix": null
+          }
+        },
+        "path": "src_sh/run_vom.sh"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "@value": {
+        "id": "/activities/ceb6946af09648dca21062f850469324/parameter-value/51031a18b97547f99c2998fe936149b2",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandInput",
+          "@value": {
+            "default_value": "src/VOM/VOM_Fortran",
+            "description": null,
+            "id": "/plans/87b9997b95327096126d79e8628f98878112f118/inputs/2",
+            "label": "Command Input 'src/VOM/VOM_Fortran'",
+            "mapped_to": null,
+            "name": "input-2",
+            "position": 2,
+            "prefix": null
+          }
+        },
+        "path": "src/VOM/VOM_Fortran"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "@value": {
+        "id": "/activities/ceb6946af09648dca21062f850469324/parameter-value/83355491c65b45f89d626fa63ba91a68",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandInput",
+          "@value": {
+            "default_value": "data/VOM_input/Litchfield/dailyweather.prn",
+            "description": null,
+            "id": "/plans/87b9997b95327096126d79e8628f98878112f118/inputs/4",
+            "label": "Command Input 'data/VOM_input/Litchfield/dailyweather.prn'",
+            "mapped_to": null,
+            "name": "input-4",
+            "position": 4,
+            "prefix": null
+          }
+        },
+        "path": "data/VOM_input/Litchfield/dailyweather.prn"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "@value": {
+        "id": "/activities/ceb6946af09648dca21062f850469324/parameter-value/e3cf67f867fb49b8816dd0865e9145e5",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandInput",
+          "@value": {
+            "default_value": "data/VOM_soils/Litchfield/deepsoils/soilprofile.par",
+            "description": null,
+            "id": "/plans/87b9997b95327096126d79e8628f98878112f118/inputs/5",
+            "label": "Command Input 'data/VOM_soils/Litchfield/deepsoils/soilprofile.par'",
+            "mapped_to": null,
+            "name": "input-5",
+            "position": 5,
+            "prefix": null
+          }
+        },
+        "path": "data/VOM_soils/Litchfield/deepsoils/soilprofile.par"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "@value": {
+        "id": "/activities/ceb6946af09648dca21062f850469324/parameter-value/0b423e2d3053458ba340b06f166e034c",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandInput",
+          "@value": {
+            "default_value": "work/additional_analyses/deep_soils/Litchfield/freedrainage_cpcff0.8/vom_namelist",
+            "description": null,
+            "id": "/plans/87b9997b95327096126d79e8628f98878112f118/inputs/6",
+            "label": "Command Input 'work/additional_analyses/deep_soils/Litchfield/freedrainage_cpcff0.8/vom_namelist'",
+            "mapped_to": null,
+            "name": "input-6",
+            "position": 6,
+            "prefix": null
+          }
+        },
+        "path": "work/additional_analyses/deep_soils/Litchfield/freedrainage_cpcff0.8/vom_namelist"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "@value": {
+        "id": "/activities/ceb6946af09648dca21062f850469324/parameter-value/eca59efac1b74e5da3a45e603b2b5668",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandOutput",
+          "@value": {
+            "create_folder": false,
+            "default_value": "work/additional_analyses/deep_soils/Litchfield/freedrainage_cpcff0.8/input",
+            "description": null,
+            "id": "/plans/87b9997b95327096126d79e8628f98878112f118/outputs/3",
+            "label": "Command Output 'work/additional_analyses/deep_soils/Litchfield/freedrainage_cpcff0.8/input'",
+            "mapped_to": null,
+            "name": "output-3",
+            "position": 3,
+            "prefix": null
+          }
+        },
+        "path": "work/additional_analyses/deep_soils/Litchfield/freedrainage_cpcff0.8/input"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "@value": {
+        "id": "/activities/ceb6946af09648dca21062f850469324/parameter-value/f5002adc8a1b48ff869983a790d82346",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandOutput",
+          "@value": {
+            "create_folder": false,
+            "default_value": "data/VOM_output/additional_analyses/deep_soils/Litchfield/freedrainage_cpcff0.8/sce",
+            "description": null,
+            "id": "/plans/87b9997b95327096126d79e8628f98878112f118/outputs/7",
+            "label": "Command Output 'data/VOM_output/additional_analyses/deep_soils/Litchfield/freedrainage_cpcff0.8/sce'",
+            "mapped_to": null,
+            "name": "output-7",
+            "position": 7,
+            "prefix": null
+          }
+        },
+        "path": "data/VOM_output/additional_analyses/deep_soils/Litchfield/freedrainage_cpcff0.8/sce"
+      }
+    }
+  ],
+  "started_at_time": {
+    "@type": "datetime.datetime",
+    "@value": "2019-12-02T12:00:13+01:00"
+  },
+  "usages": [
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "@value": {
+        "entity": {
+          "@type": "renku.core.models.entity.Entity",
+          "@value": {
+            "checksum": "4eab7b699c2747d74cb3c9d0a604b36e7e2aed50",
+            "id": "/entities/4eab7b699c2747d74cb3c9d0a604b36e7e2aed50/src_sh/run_vom.sh",
+            "path": "src_sh/run_vom.sh"
+          }
+        },
+        "id": "/activities/ceb6946af09648dca21062f850469324/usages/1561caaf-5ea0-40ca-888f-f7e93c420320"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "@value": {
+        "entity": {
+          "@type": "renku.core.models.entity.Collection",
+          "@value": {
+            "checksum": "583b64b2342da6ff165bbe8cd9790e2ea08d52bf",
+            "id": "/entities/583b64b2342da6ff165bbe8cd9790e2ea08d52bf/src/VOM/VOM_Fortran",
+            "path": "src/VOM/VOM_Fortran"
+          }
+        },
+        "id": "/activities/ceb6946af09648dca21062f850469324/usages/52405036-8bba-4e58-93db-b15d18724062"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "@value": {
+        "entity": {
+          "@type": "renku.core.models.entity.Entity",
+          "@value": {
+            "checksum": "1fcab01ce7e0e6c9e267b0fb777d30dc3cfa3787",
+            "id": "/entities/1fcab01ce7e0e6c9e267b0fb777d30dc3cfa3787/data/VOM_input/Litchfield/dailyweather.prn",
+            "path": "data/VOM_input/Litchfield/dailyweather.prn"
+          }
+        },
+        "id": "/activities/ceb6946af09648dca21062f850469324/usages/de233477-9115-4d08-b21b-3bf494f8f4fe"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "@value": {
+        "entity": {
+          "@type": "renku.core.models.entity.Entity",
+          "@value": {
+            "checksum": "6ecf3a5399d06389d9923c855289b3204258d691",
+            "id": "/entities/6ecf3a5399d06389d9923c855289b3204258d691/data/VOM_soils/Litchfield/deepsoils/soilprofile.par",
+            "path": "data/VOM_soils/Litchfield/deepsoils/soilprofile.par"
+          }
+        },
+        "id": "/activities/ceb6946af09648dca21062f850469324/usages/f33f62b1-24bb-4564-afc5-ab5a41101d81"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "@value": {
+        "entity": {
+          "@type": "renku.core.models.entity.Entity",
+          "@value": {
+            "checksum": "3b529b8d1c2a99a404d7a57b99914dd516da925f",
+            "id": "/entities/3b529b8d1c2a99a404d7a57b99914dd516da925f/work/additional_analyses/deep_soils/Litchfield/freedrainage_cpcff0.8/vom_namelist",
+            "path": "work/additional_analyses/deep_soils/Litchfield/freedrainage_cpcff0.8/vom_namelist"
+          }
+        },
+        "id": "/activities/ceb6946af09648dca21062f850469324/usages/dcd8fbff-3011-4620-a607-8bdb4e0df882"
+      }
+    }
+  ]
+}

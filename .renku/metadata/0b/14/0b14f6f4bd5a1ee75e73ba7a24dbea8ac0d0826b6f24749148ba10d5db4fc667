@@ -1,0 +1,271 @@
+{
+  "@oid": "0b14f6f4bd5a1ee75e73ba7a24dbea8ac0d0826b6f24749148ba10d5db4fc667",
+  "@type": "renku.core.models.provenance.activity.Activity",
+  "agents": [
+    {
+      "@oid": "60a49ea118cbd7a5ca13cf1acc9980bc10265df9294423eaa1e4e2899f8ba1c6",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.Person"
+    },
+    {
+      "@oid": "ad5b14ddae980f3d2427c5d3b7c9891bff45680d355bea774e80c9502271fcc7",
+      "@reference": true,
+      "@type": "renku.core.models.provenance.agent.SoftwareAgent"
+    }
+  ],
+  "annotations": [],
+  "association": {
+    "@type": "renku.core.models.provenance.activity.Association",
+    "@value": {
+      "agent": {
+        "@oid": "fd53466796f4091e7dca10dd073b1f0f372aefe8daeb9d3a7e8ef261a462ca18",
+        "@reference": true,
+        "@type": "renku.core.models.provenance.agent.SoftwareAgent"
+      },
+      "id": "/activities/ec248d36546d4d0faf5c985de58af113/association",
+      "plan": {
+        "@oid": "02f7ca4a2ea7f59e0312d2a8735b2a2efb95b47d603da142814b4fe51ef531d3",
+        "@reference": true,
+        "@type": "renku.core.models.workflow.plan.Plan"
+      }
+    }
+  },
+  "ended_at_time": {
+    "@type": "datetime.datetime",
+    "@value": "2019-11-28T10:14:43+01:00"
+  },
+  "generations": [
+    {
+      "@type": "renku.core.models.provenance.activity.Generation",
+      "@value": {
+        "entity": {
+          "@type": "renku.core.models.entity.Entity",
+          "@value": {
+            "checksum": "19303e303e3e2e933b1883ed60a7d7c9419598bb",
+            "id": "/entities/19303e303e3e2e933b1883ed60a7d7c9419598bb/work/additional_analyses/deep_soils/SturtPlains/freedrainage_cpcff1.8/vom_namelist",
+            "path": "work/additional_analyses/deep_soils/SturtPlains/freedrainage_cpcff1.8/vom_namelist"
+          }
+        },
+        "id": "/activities/ec248d36546d4d0faf5c985de58af113/generations/cdae068d-f884-46c3-b0c6-b64114e77db2"
+      }
+    }
+  ],
+  "id": "/activities/ec248d36546d4d0faf5c985de58af113",
+  "invalidations": [],
+  "order": null,
+  "parameters": [
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "@value": {
+        "id": "/activities/ec248d36546d4d0faf5c985de58af113/parameter-value/1e82e7fc4ff54089bdd016677bab067f",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandInput",
+          "@value": {
+            "default_value": "src_py/write_namelist.py",
+            "description": null,
+            "id": "/plans/e9ded78321373b391b7e4a8997c80be8598b7507/inputs/1",
+            "label": "Command Input 'src_py/write_namelist.py'",
+            "mapped_to": null,
+            "name": "input-1",
+            "position": 1,
+            "prefix": null
+          }
+        },
+        "path": "src_py/write_namelist.py"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.PathParameterValue",
+      "@value": {
+        "id": "/activities/ec248d36546d4d0faf5c985de58af113/parameter-value/c3d64fbd3ecb40d99125ec2f63923bb1",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandOutput",
+          "@value": {
+            "create_folder": true,
+            "default_value": "work/additional_analyses/deep_soils/SturtPlains/freedrainage_cpcff1.8/vom_namelist",
+            "description": null,
+            "id": "/plans/e9ded78321373b391b7e4a8997c80be8598b7507/outputs/10",
+            "label": "Command Output 'work/additional_analyses/deep_soils/SturtPlains/freedrainage_cpcff1.8/vom_namelist'",
+            "mapped_to": null,
+            "name": "o-10",
+            "position": 10,
+            "prefix": "-o "
+          }
+        },
+        "path": "work/additional_analyses/deep_soils/SturtPlains/freedrainage_cpcff1.8/vom_namelist"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "@value": {
+        "id": "/activities/ec248d36546d4d0faf5c985de58af113/parameter-value/dc1a204f8ead466482ebf1a079076442",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandParameter",
+          "@value": {
+            "default_value": "30.0",
+            "description": null,
+            "id": "/plans/e9ded78321373b391b7e4a8997c80be8598b7507/parameters/2",
+            "label": "Command Parameter '30.0'",
+            "name": "i_cz-2",
+            "position": 2,
+            "prefix": "--i_cz "
+          }
+        },
+        "value": "30.0"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "@value": {
+        "id": "/activities/ec248d36546d4d0faf5c985de58af113/parameter-value/68323b5b3e234a97b999b3dd82461439",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandParameter",
+          "@value": {
+            "default_value": "1.8d-6",
+            "description": null,
+            "id": "/plans/e9ded78321373b391b7e4a8997c80be8598b7507/parameters/3",
+            "label": "Command Parameter '1.8d-6'",
+            "name": "i_cpccf-3",
+            "position": 3,
+            "prefix": "--i_cpccf "
+          }
+        },
+        "value": "1.8d-6"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "@value": {
+        "id": "/activities/ec248d36546d4d0faf5c985de58af113/parameter-value/722d8e735c384bbfb52f55cb82c749f8",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandParameter",
+          "@value": {
+            "default_value": "7.1507",
+            "description": null,
+            "id": "/plans/e9ded78321373b391b7e4a8997c80be8598b7507/parameters/5",
+            "label": "Command Parameter '7.1507'",
+            "name": "1-5",
+            "position": 5,
+            "prefix": "-1"
+          }
+        },
+        "value": "7.1507"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "@value": {
+        "id": "/activities/ec248d36546d4d0faf5c985de58af113/parameter-value/005674b12c1a49fba80f66129f2ac915",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandParameter",
+          "@value": {
+            "default_value": "2.0",
+            "description": null,
+            "id": "/plans/e9ded78321373b391b7e4a8997c80be8598b7507/parameters/6",
+            "label": "Command Parameter '2.0'",
+            "name": "i_cgs-6",
+            "position": 6,
+            "prefix": "--i_cgs "
+          }
+        },
+        "value": "2.0"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "@value": {
+        "id": "/activities/ec248d36546d4d0faf5c985de58af113/parameter-value/cc89552431734cb28f36ac9b9cf274b4",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandParameter",
+          "@value": {
+            "default_value": "0.20",
+            "description": null,
+            "id": "/plans/e9ded78321373b391b7e4a8997c80be8598b7507/parameters/7",
+            "label": "Command Parameter '0.20'",
+            "name": "i_zr-7",
+            "position": 7,
+            "prefix": "--i_zr "
+          }
+        },
+        "value": "0.20"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "@value": {
+        "id": "/activities/ec248d36546d4d0faf5c985de58af113/parameter-value/b1ebb3a70bb14da0a94df4385d2c8d1d",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandParameter",
+          "@value": {
+            "default_value": "0.02",
+            "description": null,
+            "id": "/plans/e9ded78321373b391b7e4a8997c80be8598b7507/parameters/8",
+            "label": "Command Parameter '0.02'",
+            "name": "i_go-8",
+            "position": 8,
+            "prefix": "--i_go "
+          }
+        },
+        "value": "0.02"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "@value": {
+        "id": "/activities/ec248d36546d4d0faf5c985de58af113/parameter-value/404401b1fa334269be362be7ae729923",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandParameter",
+          "@value": {
+            "default_value": "0.2",
+            "description": null,
+            "id": "/plans/e9ded78321373b391b7e4a8997c80be8598b7507/parameters/9",
+            "label": "Command Parameter '0.2'",
+            "name": "i_delz-9",
+            "position": 9,
+            "prefix": "--i_delz "
+          }
+        },
+        "value": "0.2"
+      }
+    },
+    {
+      "@type": "renku.core.models.provenance.parameter.VariableParameterValue",
+      "@value": {
+        "id": "/activities/ec248d36546d4d0faf5c985de58af113/parameter-value/03a5d6c7b32240dc959c7dcca4130091",
+        "parameter": {
+          "@type": "renku.core.models.workflow.parameter.CommandParameter",
+          "@value": {
+            "default_value": "--i_lat",
+            "description": null,
+            "id": "/plans/e9ded78321373b391b7e4a8997c80be8598b7507/parameters/4",
+            "label": "Command Parameter '--i_lat'",
+            "name": "param-4",
+            "position": 4,
+            "prefix": null
+          }
+        },
+        "value": "--i_lat"
+      }
+    }
+  ],
+  "started_at_time": {
+    "@type": "datetime.datetime",
+    "@value": "2019-11-28T11:14:41+01:00"
+  },
+  "usages": [
+    {
+      "@type": "renku.core.models.provenance.activity.Usage",
+      "@value": {
+        "entity": {
+          "@type": "renku.core.models.entity.Entity",
+          "@value": {
+            "checksum": "1310317e00e057fca08b55493a6cfddf353944d6",
+            "id": "/entities/1310317e00e057fca08b55493a6cfddf353944d6/src_py/write_namelist.py",
+            "path": "src_py/write_namelist.py"
+          }
+        },
+        "id": "/activities/ec248d36546d4d0faf5c985de58af113/usages/3ed508bb-2c96-45bc-8503-53ca8e613cc7"
+      }
+    }
+  ]
+}
